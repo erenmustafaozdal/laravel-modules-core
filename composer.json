@@ -1,0 +1,28 @@
+{
+    "name": "erenmustafaozdal/laravel-modules-core",
+    "description": "core of the laravel 5.1 modules",
+    "license": "MT",
+    "authors": [
+        {
+            "name": "Eren Mustafa ÖZDAL",
+            "email": "eren.060737@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ErenMustafaOzdal\\LaravelModulesCore\\": "src/"
+        },
+        "files": [
+            "src/Helpers/helpers.php"
+        ]
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/support": "~5",
+        "caffeinated/menus": "~2.0"
+    },
+    "require-dev": {
+
+    }
+}
