@@ -12,4 +12,5 @@ return [
     'title'             => 'Yönetim',
     'profile'           => 'Profil',
     'logout'            => 'Çıkış yap',
+    'actions'           => 'Eylemler'
 ];

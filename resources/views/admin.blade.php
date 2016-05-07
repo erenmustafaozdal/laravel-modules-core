@@ -1,88 +1,128 @@
 <!DOCTYPE html>
+
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
 <html lang="{!! config('laravel-modules-core.views.html_lang') !!}">
+<!--<![endif]-->
 
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="{!! config('laravel-modules-core.views.html_head.content_type') !!}">
-    <meta charset="{!! config('laravel-modules-core.views.html_head.charset') !!}">
-    <meta name="description" content="{!! config('laravel-modules-core.views.html_head.meta_description') !!}"/>
-    <meta name="author" content="{!! config('laravel-modules-core.views.html_head.meta_author') !!}"/>
-    <meta name="keywords" content="{!! config('laravel-modules-core.views.html_head.meta_keywords') !!}"/>
-    <meta name="robots" content="{!! config('laravel-modules-core.views.html_head.meta_robots') !!}"/>
-    <meta name="googlebot" content="{!! config('laravel-modules-core.views.html_head.meta_googlebot') !!}"/>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <head>
+        <title>@yield('title') | {!! config('laravel-modules-core.views.html_head.default_title') !!}</title>
 
-    <title>@yield('title') | {!! config('laravel-modules-core.views.html_head.default_title') !!}</title>
+        {{-- Meta tags --}}
+        <meta charset="{!! config('laravel-modules-core.views.html_head.charset') !!}">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="description" content="{!! config('laravel-modules-core.views.html_head.meta_description') !!}"/>
+        <meta name="author" content="{!! config('laravel-modules-core.views.html_head.meta_author') !!}"/>
+        <meta http-equiv="Content-Type" content="{!! config('laravel-modules-core.views.html_head.content_type') !!}">
+        <meta name="keywords" content="{!! config('laravel-modules-core.views.html_head.meta_keywords') !!}"/>
+        <meta name="robots" content="{!! config('laravel-modules-core.views.html_head.meta_robots') !!}"/>
+        <meta name="googlebot" content="{!! config('laravel-modules-core.views.html_head.meta_googlebot') !!}"/>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+        {{-- /Meta tags --}}
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-hQpvDQiCJaD2H465dQfA717v7lu5qHWtDbWNPvaTJ0ID5xnPUlVXnKzq7b8YUkbN" crossorigin="anonymous">
-    {!! Html::style('vendor/laravel-modules-core/css/global.css') !!}
+        {{-- Global styles --}}
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+        {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/font-awesome/css/font-awesome.min.css') !!}
+        {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/simple-line-icons/simple-line-icons.min.css') !!}
+        {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap/css/bootstrap.min.css') !!}
+        {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/uniform/css/uniform.default.css') !!}
+        {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
+        {{-- /Global styles --}}
 
-</head>
+        {{-- Global Theme Styles --}}
+        {!! Html::style('vendor/laravel-modules-core/assets/global/css/met-global.css') !!}
+        {{-- /Global Theme Styles --}}
 
-<body class="nav-md">
+        {{-- Theme Layout Styles --}}
+        <link href="{!! lmcElixir('assets/layouts/layout4/css/admin.css') !!}" rel="stylesheet" type="text/css" />
+        {!! Html::style('vendor/laravel-modules-core/assets/layouts/layout4/css/themes/light-theme.css') !!}
+        {{-- /Theme Layout Styles --}}
 
-    <div class="container body">
+        @section('css')
 
-        <div class="main_container">
+        @show
 
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
+        <link rel="shortcut icon" href="/favicon.ico" />
 
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="#" class="site_title">{!! config('laravel-modules-core.app_name') !!}</a>
+    </head>
+
+    <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
+
+        {{-- Header --}}
+        <div class="page-header navbar navbar-fixed-top">
+            {{-- Header Inner --}}
+            <div class="page-header-inner ">
+                {{-- Logo --}}
+                <div class="page-logo">
+                    <a href="index.html">
+                        {!! HTML::image(
+                            'vendor/laravel-modules-core/assets/global/img/logo-dark.png',
+                            config('laravel-modules-core.app_name'),
+                            ['class' => 'logo-default']
+                        ) !!}
+                    </a>
+                    <div class="menu-toggler sidebar-toggler"></div>
+                </div>
+                {{-- /Logo --}}
+                
+                {{-- Responsive Menu Toggler --}}
+                <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
+                {{-- /Responsive Menu Toggler --}}
+                
+                {{-- Page Actions --}}
+                <div class="page-actions">
+                    <div class="btn-group">
+                        <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown"  data-close-others="true">
+                            <span class="hidden-sm hidden-xs">{!! trans('laravel-modules-core::admin.actions') !!}</span>
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="icon-docs"></i> New Post </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="icon-tag"></i> New Comment </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="icon-share"></i> Share </a>
+                            </li>
+                            <li class="divider"> </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="icon-flag"></i> Comments
+                                    <span class="badge badge-success">4</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <i class="icon-users"></i> Feedbacks
+                                    <span class="badge badge-danger">2</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="clearfix"></div>
-
-                    @include('laravel-modules-core::partials.admin.menu_profile')
-
-                    @include('laravel-modules-core::partials.admin.sidebar', ['items' => $menu_sidebar->roots()])
-
-                    @include('laravel-modules-core::partials.admin.sidebar_footer')
-
                 </div>
+                {{-- /Page Actions --}}
             </div>
-
-            {{-- top navigation --}}
-            <div class="top_nav">
-
-                <div class="nav_menu">
-                    <nav class="" role="navigation">
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-
-                        @include('laravel-modules-core::partials.admin.topbar', ['usermenu_items' => $menu_topbarUser->roots()])
-                    </nav>
-                </div>
-
-            </div>
-            {{-- /top navigation --}}
-
-            {{-- page content --}}
-            <div class="right_col" role="main"></div>
-            {{-- /page content --}}
-
-            {{-- footer content --}}
-            <footer>
-                <div class="pull-right">
-                    ©{!! config('laravel-modules-core.copyright_year') !!}
-                    {!! str_replace(':app_name',config('laravel-modules-core.app_name'),trans('laravel-modules-core::global.copyright_message')) !!}
-                </div>
-                <div class="clearfix"></div>
-            </footer>
-            {{-- /footer content --}}
-
+            {{-- /Header Inner --}}
         </div>
+        {{-- /Header --}}
+        @yield('content')
 
-    </div>
+    </body>
 
-</body>
+    <!--[if lt IE 9]>
+    <script src="/vendor/laravel-modules-core/assets/global/plugins/ltie9.js"></script>
+    <![endif]-->
 
-{!! Html::script('vendor/laravel-modules-core/js/adminDatatable7.js') !!}
-<!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin.js') !!}"></script>
+
+    @section('script')
+
+    @show
 </html>

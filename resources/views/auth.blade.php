@@ -31,15 +31,15 @@
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
         {{-- /Global styles --}}
         
-        {{-- Global Metronic Styles --}}
+        {{-- Global Theme Styles --}}
         {!! Html::style('vendor/laravel-modules-core/assets/global/css/met-global.css') !!}
-        {{-- /Global Metronic Styles --}}
+        {{-- /Global Theme Styles --}}
 
         {{-- Page Styles --}}
         {!! Html::style('vendor/laravel-modules-core/assets/pages/css/login.css') !!}
         {{-- /Page Styles --}}
 
-        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
     </head>
 
     <body class=" login">

@@ -28,6 +28,15 @@ return [
             'meta_robots'               => 'noindex,nofollow',
             'meta_googlebot'            => 'noindex,nofollow'
         ]
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Used Packages for Eren Mustafa Özdal
+    |--------------------------------------------------------------------------
+    */
+    'packages' => [
+        'laravel-user-module'           => \ErenMustafaOzdal\LaravelUserModule\LaravelUserModuleServiceProvider::class
     ]
 
 ];
