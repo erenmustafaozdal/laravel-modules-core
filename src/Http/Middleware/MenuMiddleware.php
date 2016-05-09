@@ -36,7 +36,7 @@ class MenuMiddleware
         {
             $this->actionsMenu();
             $this->sidebarMenu();
-            $this->topbarUserMenu();
+            $this->topbarUserLoginMenu();
         }
         return $next($request);
     }
@@ -49,14 +49,9 @@ class MenuMiddleware
         Menu::make('actions', function ($menu)
         {
             if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
-
+                $menu->add(trans('laravel-user-module::admin.menu.user.add'),['route' => 'admin.user.create'] )
+                    ->attribute('data-icon', 'icon-user'); // simple-line-icons
             }
-            $menu->add(trans('laravel-user-module::admin.profile'),['route' => ['admin.user.show', 'id' => $this->user->id]] )
-                ->attribute('active', 'admin.user.show')
-                ->attribute('data-icon', 'user');
-
-            $menu->add(trans('laravel-user-module::admin.logout'),['route' => 'getLogout'] )
-                ->attribute('data-icon', 'sign-out');
         });
     }
 
@@ -67,41 +62,44 @@ class MenuMiddleware
     {
         Menu::make('sidebar', function ($menu)
         {
-            // user menus
-            $user = $menu->add(trans('laravel-user-module::admin.menu.user.root'), 'javascript:;')
-                ->attribute('data-icon', 'user')
-                ->attribute('active', 'admin.user');
-            $user->add(trans('laravel-user-module::admin.menu.user.all'), ['route' => 'admin.user.index'])
-                ->attribute('active', 'admin.user');
-            $user->add(trans('laravel-user-module::admin.menu.user.add'), ['route' => 'admin.user.create'])
-                ->attribute('data-icon', 'plus')
-                ->attribute('active', 'admin.user');
+            // laravel user module | User & Role
+            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
+                $user = $menu->add(trans('laravel-user-module::admin.menu.user.root'), 'javascript:;')
+                    ->attribute('data-icon', 'icon-user')
+                    ->attribute('active', 'admin.user');
+                $user->add(trans('laravel-user-module::admin.menu.user.all'), ['route' => 'admin.user.index'])
+                    ->attribute('data-icon', 'icon-list')
+                    ->attribute('active', 'admin.user');
+                $user->add(trans('laravel-user-module::admin.menu.user.add'), ['route' => 'admin.user.create'])
+                    ->attribute('data-icon', 'icon-plus')
+                    ->attribute('active', 'admin.user');
 
-            // role menus
-            $role = $menu->add(trans('laravel-user-module::admin.menu.role.root'), 'javascript:;')
-                ->attribute('data-icon', 'users')
-                ->attribute('active', 'admin.role');
-            $role->add(trans('laravel-user-module::admin.menu.role.all'), ['route' => 'admin.role.index'])
-                ->attribute('active', 'admin.role');
-            $role->add(trans('laravel-user-module::admin.menu.role.add'), ['route' => 'admin.role.create'])
-                ->attribute('data-icon', 'plus')
-                ->attribute('active', 'admin.role');
+                $role = $menu->add(trans('laravel-user-module::admin.menu.role.root'), 'javascript:;')
+                    ->attribute('data-icon', 'icon-users')
+                    ->attribute('active', 'admin.role');
+                $role->add(trans('laravel-user-module::admin.menu.role.all'), ['route' => 'admin.role.index'])
+                    ->attribute('data-icon', 'icon-list')
+                    ->attribute('active', 'admin.role');
+                $role->add(trans('laravel-user-module::admin.menu.role.add'), ['route' => 'admin.role.create'])
+                    ->attribute('data-icon', 'icon-plus')
+                    ->attribute('active', 'admin.role');
+            }
         });
     }
 
     /**
      * Admin top bar user menu
      */
-    public function topbarUserMenu()
+    public function topbarUserLoginMenu()
     {
-        Menu::make('topbarUser', function ($menu)
+        Menu::make('topbarUserLogin', function ($menu)
         {
-            $menu->add(trans('laravel-user-module::admin.profile'),['route' => ['admin.user.show', 'id' => $this->user->id]] )
+            $menu->add(trans('laravel-modules-core::admin.profile'),['route' => ['admin.user.show', 'id' => $this->user->id]] )
                 ->attribute('active', 'admin.user.show')
-                ->attribute('data-icon', 'user');
+                ->attribute('data-icon', 'icon-user'); // simple-line-icons
 
-            $menu->add(trans('laravel-user-module::admin.logout'),['route' => 'getLogout'] )
-                ->attribute('data-icon', 'sign-out');
+            $menu->add(trans('laravel-modules-core::admin.logout'),['route' => 'getLogout'] )
+                ->attribute('data-icon', 'icon-logout'); // simple-line-icons
         });
     }
 }

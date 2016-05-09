@@ -1,6 +1,8 @@
 {
-  "assets/layouts/layout4/css/admin.css": "assets/layouts/layout4/css/admin-03434314a6.css",
-  "assets/pages/js/loaders/admin.js": "assets/pages/js/loaders/admin-b354bd921a.js",
+  "assets/global/scripts/config.js": "assets/global/scripts/config-0ef7c33556.js",
+  "assets/layouts/layout4/css/admin.css": "assets/layouts/layout4/css/admin-395683cf6b.css",
+  "assets/layouts/layout4/scripts/theme.js": "assets/layouts/layout4/scripts/theme-d24c6e9a62.js",
+  "assets/pages/js/loaders/admin.js": "assets/pages/js/loaders/admin-1fc90c0171.js",
   "assets/pages/js/loaders/login.js": "assets/pages/js/loaders/login-d9915ca653.js",
   "assets/pages/scripts/login.js": "assets/pages/scripts/login-75b3c3b18e.js"
 }

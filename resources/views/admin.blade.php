@@ -29,6 +29,7 @@
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap/css/bootstrap.min.css') !!}
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/uniform/css/uniform.default.css') !!}
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
+        {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-toastr/toastr.min.css') !!}
         {{-- /Global styles --}}
 
         {{-- Global Theme Styles --}}
@@ -49,7 +50,6 @@
     </head>
 
     <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo page-md">
-
         {{-- Header --}}
         <div class="page-header navbar navbar-fixed-top">
             {{-- Header Inner --}}
@@ -74,45 +74,87 @@
                 {{-- Page Actions --}}
                 <div class="page-actions">
                     <div class="btn-group">
-                        <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown"  data-close-others="true">
-                            <span class="hidden-sm hidden-xs">{!! trans('laravel-modules-core::admin.actions') !!}</span>
-                            <i class="fa fa-angle-down"></i>
-                        </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-docs"></i> New Post </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-tag"></i> New Comment </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-share"></i> Share </a>
-                            </li>
-                            <li class="divider"> </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-flag"></i> Comments
-                                    <span class="badge badge-success">4</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:;">
-                                    <i class="icon-users"></i> Feedbacks
-                                    <span class="badge badge-danger">2</span>
-                                </a>
-                            </li>
-                        </ul>
+                        @include('laravel-modules-core::partials.admin.topbarActions')
                     </div>
                 </div>
                 {{-- /Page Actions --}}
+
+                {{-- Page Top --}}
+                <div class="page-top">
+                    {{-- Navigation Menu --}}
+                    <div class="top-menu">
+                        <ul class="nav navbar-nav pull-right">
+                            <li class="separator hide"></li>
+                            {{-- User Login Dropdown --}}
+                            <li class="dropdown dropdown-user dropdown-dark">
+                                @include('laravel-modules-core::partials.admin.topbarUserLogin')
+                            </li>
+                            {{-- /User Login Dropdown --}}
+                        </ul>
+                    </div>
+                    {{-- /Navigation Menu --}}
+                </div>
+                {{-- /Page Top --}}
             </div>
             {{-- /Header Inner --}}
         </div>
         {{-- /Header --}}
+        <div class="clearfix"> </div>
+        
+        {{-- Container --}}
+        <div class="page-container">
+            
+            {{-- Sidebar Wrapper --}}
+            <div class="page-sidebar-wrapper">
+                {{-- Sidebar --}}
+                <div class="page-sidebar navbar-collapse collapse">
+                    @include('laravel-modules-core::partials.admin.sidebar')
+                </div>
+                {{-- /Sidebar --}}
+
+                {{-- Page Content Wrapper --}}
+                <div class="page-content-wrapper">
+                    {{-- Page Content Body --}}
+                    <div class="page-content">
+                        {{-- Page Head --}}
+                        <div class="page-head">
+                            {{-- Page Title --}}
+                            <div class="page-title">
+                                @yield('page-title')
+                            </div>
+                            {{-- /Page Title --}}
+
+                            {{-- Page Toolbar --}}
+                            <div class="page-toolbar">
+                                {{-- Theme Panel --}}
+                                @include('laravel-modules-core::partials.admin.themePanel')
+                                {{-- /Theme Panel --}}
+                            </div>
+                            {{-- /Page Toolbar --}}
+                        </div>
+                        {{-- /Page Head --}}
+                    </div>
+                    {{-- /Page Content Body --}}
+                </div>
+                {{-- /Page Content Wrapper --}}
+            </div>
+            {{-- /Sidebar Wrapper --}}
+            
+        </div>
+        {{-- /Container --}}
         @yield('content')
+
+        {{-- Footer --}}
+        <div class="page-footer">
+            <div class="page-footer-inner">
+                ©{!! config('laravel-modules-core.copyright_year') !!}
+                {!! str_replace(':app_name',config('laravel-modules-core.app_name'),trans('laravel-modules-core::global.copyright_message')) !!}
+            </div>
+            <div class="scroll-to-top">
+                <i class="icon-arrow-up"></i>
+            </div>
+        </div>
+        {{-- /Footer --}}
 
     </body>
 
@@ -120,7 +162,18 @@
     <script src="/vendor/laravel-modules-core/assets/global/plugins/ltie9.js"></script>
     <![endif]-->
 
+    <script type="text/javascript">
+        var themeJs = "{!! lmcElixir('assets/layouts/layout4/scripts/theme.js') !!}";
+        var configJs = "{!! lmcElixir('assets/global/scripts/config.js') !!}";
+        var themeApiUrl = "{!! route('api.theme.change') !!}";
+    </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin.js') !!}"></script>
+    <script type="text/javascript">
+        $script.ready('theme', function() {
+            Theme.init();
+            Theme.initLayoutChange("{!! Cache::get('theme_tool')['layout'] !!}");
+        });
+    </script>
 
     @section('script')
 

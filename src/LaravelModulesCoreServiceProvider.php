@@ -14,6 +14,10 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (! $this->app->routesAreCached()) {
+            require __DIR__.'/Http/routes.php';
+        }
+
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'laravel-modules-core');
         $this->publishes([
             __DIR__.'/../resources/lang' => base_path('resources/lang/vendor/laravel-modules-core'),

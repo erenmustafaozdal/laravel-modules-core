@@ -118,6 +118,7 @@
 });
 ;(function() {
     "use strict";
+    $script('/vendor/laravel-modules-core/assets/global/plugins/pace/pace.min.js');
     $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.min.js','jquery');
     $script('/vendor/laravel-modules-core/assets/global/plugins/js.cookie.min.js');
 
@@ -132,10 +133,20 @@
 
     $script.ready('bootstrap', function() {
         $script('/vendor/laravel-modules-core/assets/global/scripts/app.js','app');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootbox/bootbox.min.js');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-toastr/toastr.min.js');
     });
 
     $script.ready('app', function() {
-        $script('/vendor/laravel-modules-core/assets/layouts/layout4/scripts/layout.js');
-        $script('/vendor/laravel-modules-core/assets/layouts/global/scripts/quick-sidebar.js');
+        $script('/vendor/laravel-modules-core/assets/layouts/layout4/scripts/layout.js','layout');
+    });
+
+    $script.ready('layout', function() {
+        $script(themeJs,'theme');
+        $script(configJs,'config');
+    });
+
+    $script.ready('config', function() {
+        Config.init();
     });
 })();
