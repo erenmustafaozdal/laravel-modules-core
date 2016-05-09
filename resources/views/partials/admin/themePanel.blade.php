@@ -38,14 +38,22 @@
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.header_label') !!}
                         <select class="page-header-option form-control input-small input-sm">
-                            <option value="fixed" selected="selected">{!! trans('laravel-modules-core::admin.toolbar.layout.header_fixed') !!}</option>
-                            <option value="default">{!! trans('laravel-modules-core::admin.toolbar.layout.header_default') !!}</option>
+                            <option value="fixed"
+                                    {!! Cache::get('theme_tool')['header'] === 'fixed' ? 'selected="selected"' : '' !!}
+                            >{!! trans('laravel-modules-core::admin.toolbar.layout.header_fixed') !!}</option>
+                            <option value="default"
+                                    {!! Cache::get('theme_tool')['header'] === 'default' ? 'selected="selected"' : '' !!}
+                            >{!! trans('laravel-modules-core::admin.toolbar.layout.header_default') !!}</option>
                         </select>
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_label') !!}
                         <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
-                            <option value="light">{!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_light') !!}</option>
-                            <option value="dark" selected="selected">{!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_dark') !!}</option>
+                            <option value="light"
+                                    {!! Cache::get('theme_tool')['headerTopDropdown'] === 'light' ? 'selected="selected"' : '' !!}
+                            >{!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_light') !!}</option>
+                            <option value="dark"
+                                    {!! Cache::get('theme_tool')['headerTopDropdown'] === 'dark' ? 'selected="selected"' : '' !!}
+                            >{!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_dark') !!}</option>
                         </select>
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_mode_label') !!}

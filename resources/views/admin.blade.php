@@ -172,6 +172,8 @@
         $script.ready('theme', function() {
             Theme.init();
             Theme.initLayoutChange("{!! Cache::get('theme_tool')['layout'] !!}");
+            Theme.initHeaderChange("{!! Cache::get('theme_tool')['layout'] !!}");
+            Theme.initDropdownChange("{!! Cache::get('theme_tool')['headerTopDropdown'] !!}");
         });
     </script>
 

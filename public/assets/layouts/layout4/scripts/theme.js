@@ -92,18 +92,10 @@ var Theme = function () {
                 url: themeApiUrl,
                 data: beforeData,
                 success: function(data) {
-                    resetLayout(); // reset layout to default state
-
+                    resetLayout();
                     handleLayoutChange(layoutOption);
-
-                    //header
-                    if (headerOption === 'fixed') {
-                        $("body").addClass("page-header-fixed");
-                        $(".page-header").removeClass("navbar-static-top").addClass("navbar-fixed-top");
-                    } else {
-                        $("body").removeClass("page-header-fixed");
-                        $(".page-header").removeClass("navbar-fixed-top").addClass("navbar-static-top");
-                    }
+                    handleHeaderChange(headerOption);
+                    handleDropdownChange(headerTopDropdownStyle);
 
                     //sidebar
                     if ($('body').hasClass('page-full-width') === false) {
@@ -118,13 +110,6 @@ var Theme = function () {
                             $("page-sidebar-menu").removeClass("page-sidebar-menu-fixed");
                             $('.page-sidebar-menu').unbind('mouseenter').unbind('mouseleave');
                         }
-                    }
-
-                    // top dropdown style
-                    if (headerTopDropdownStyle === 'dark') {
-                        $(".top-menu > .navbar-nav > li.dropdown").addClass("dropdown-dark");
-                    } else {
-                        $(".top-menu > .navbar-nav > li.dropdown").removeClass("dropdown-dark");
                     }
 
                     //footer
@@ -273,17 +258,43 @@ var Theme = function () {
         lastSelectedLayout = layout;
     };
 
-    return {
+    var handleHeaderChange = function(header)
+    {
+        if (header === 'fixed') {
+            $("body").addClass("page-header-fixed");
+            $(".page-header").removeClass("navbar-static-top").addClass("navbar-fixed-top");
+        } else {
+            $("body").removeClass("page-header-fixed");
+            $(".page-header").removeClass("navbar-fixed-top").addClass("navbar-static-top");
+        }
+    };
 
-        //main function to initiate the theme
+    var handleDropdownChange = function(dropdown)
+    {
+
+        if (dropdown === 'dark') {
+            $(".top-menu > .navbar-nav > li.dropdown").addClass("dropdown-dark");
+        } else {
+            $(".top-menu > .navbar-nav > li.dropdown").removeClass("dropdown-dark");
+        }
+    };
+
+    return {
         init: function()
         {
-            // handles style customer tool
             handleTheme();
         },
         initLayoutChange: function(layout)
         {
             handleLayoutChange(layout);
+        },
+        initHeaderChange: function(header)
+        {
+            handleHeaderChange(header);
+        },
+        initDropdownChange: function(dropdown)
+        {
+            handleDropdownChange(dropdown);
         }
     };
 
