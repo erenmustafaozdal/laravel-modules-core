@@ -20,17 +20,32 @@ class ThemeController extends Controller
     }
 
     /**
-     * Admin Theme Change
+     * Admin Theme Layout Change
      *
      * @param   Request         $request
-     * @return  Redirector
+     * @return  \Illuminate\Http\Response
      */
-    public function getThemeChange(Request $request)
+    public function getThemeLayoutChange(Request $request)
     {
-        if (Cache::has('theme_tool')) {
-            Cache::forget('theme_tool');
+        if (Cache::has('theme_layout')) {
+            Cache::forget('theme_layout');
         }
-        Cache::forever('theme_tool', $request->all());
+        Cache::forever('theme_layout', $request->all());
+        return response()->json(['result' => true]);
+    }
+
+    /**
+     * Admin Theme Color Change
+     *
+     * @param   Request         $request
+     * @return  \Illuminate\Http\Response
+     */
+    public function getThemeColorChange(Request $request)
+    {
+        if (Cache::has('theme_color')) {
+            Cache::forget('theme_color');
+        }
+        Cache::forever('theme_color', $request->all());
         return response()->json(['result' => true]);
     }
 }

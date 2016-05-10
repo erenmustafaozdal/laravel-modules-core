@@ -15,6 +15,7 @@ Route::group([
 {
     /*==========  Theme  ==========*/
     Route::controller('theme', 'ThemeController', [
-        'getThemeChange'        => 'api.theme.change',
+        'getThemeLayoutChange'      => 'api.themeLayout.change',
+        'getThemeColorChange'       => 'api.themeColor.change',
     ]);
 });

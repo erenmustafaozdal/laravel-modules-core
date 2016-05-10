@@ -61,7 +61,6 @@ var Theme = function () {
             var headerOption = $('.page-header-option', panel).val();
             var footerOption = $('.page-footer-option', panel).val();
             var sidebarPosOption = $('.sidebar-pos-option', panel).val();
-            var sidebarStyleOption = $('.sidebar-style-option', panel).val();
             var sidebarMenuOption = $('.sidebar-menu-option', panel).val();
             var headerTopDropdownStyle = $('.page-header-top-dropdown-style-option', panel).val();
 
@@ -70,115 +69,39 @@ var Theme = function () {
                 bootbox.alert("<em>Varsayılan başlık</em> ayarı ile <em>kayan yan menü</em> desteklenmiyor. Lütfen <em>kayan yan menü</em> ayarını, <em>kayan başlık</em> ayarı ile birlikte kullan.");
                 $('.page-header-option', panel).val("fixed");
                 $('.sidebar-option', panel).val("fixed");
-                sidebarOption = 'fixed';
-                headerOption = 'fixed';
+                return false;
+            }
+            // eğer sidebar menu hover ve sidebar fixed ise geri dön
+            if (sidebarMenuOption === 'hover' && sidebarOption == 'fixed') {
+                bootbox.alert("<em>Yan menü üzerine gelme</em> ayarı ile <em>kayan yan menü</em> uyumlu değil. Lütfen <em>yan menü üzerine gelme</em> ayarını, <em>varsayılan yan menü</em> ayarı ile birlikte kullan.");
+                $('.sidebar-menu-option', panel).val("accordion");
+                return false;
             }
 
             /**
              * Ajax işlemi yapılır ve başarılı ise devam edilir
              */
-            var beforeData = {
-                layout              : layoutOption,
-                sidebar             : sidebarOption,
-                header              : headerOption,
-                footer              : footerOption,
-                sidebarPos          : sidebarPosOption,
-                sidebarStyle        : sidebarStyleOption,
-                sidebarMenu         : sidebarMenuOption,
-                headerTopDropdown   : headerTopDropdownStyle
-            };
             $.ajax({
                 type: 'GET',
-                url: themeApiUrl,
-                data: beforeData,
+                url: themeLayoutChangeApiUrl,
+                data: {
+                    layout              : layoutOption,
+                    header              : headerOption,
+                    headerTopDropdown   : headerTopDropdownStyle,
+                    sidebar             : sidebarOption,
+                    sidebarMenu         : sidebarMenuOption,
+                    sidebarPos          : sidebarPosOption,
+                    footer              : footerOption
+                },
                 success: function(data) {
                     resetLayout(); // reset layout to default state
-
                     handleLayoutChange(layoutOption);
-
-                    //header
-                    if (headerOption === 'fixed') {
-                        $("body").addClass("page-header-fixed");
-                        $(".page-header").removeClass("navbar-static-top").addClass("navbar-fixed-top");
-                    } else {
-                        $("body").removeClass("page-header-fixed");
-                        $(".page-header").removeClass("navbar-fixed-top").addClass("navbar-static-top");
-                    }
-
-                    //sidebar
-                    if ($('body').hasClass('page-full-width') === false) {
-                        if (sidebarOption === 'fixed') {
-                            $("body").addClass("page-sidebar-fixed");
-                            $("page-sidebar-menu").addClass("page-sidebar-menu-fixed");
-                            $("page-sidebar-menu").removeClass("page-sidebar-menu-default");
-                            Layout.initFixedSidebarHoverEffect();
-                        } else {
-                            $("body").removeClass("page-sidebar-fixed");
-                            $("page-sidebar-menu").addClass("page-sidebar-menu-default");
-                            $("page-sidebar-menu").removeClass("page-sidebar-menu-fixed");
-                            $('.page-sidebar-menu').unbind('mouseenter').unbind('mouseleave');
-                        }
-                    }
-
-                    // top dropdown style
-                    if (headerTopDropdownStyle === 'dark') {
-                        $(".top-menu > .navbar-nav > li.dropdown").addClass("dropdown-dark");
-                    } else {
-                        $(".top-menu > .navbar-nav > li.dropdown").removeClass("dropdown-dark");
-                    }
-
-                    //footer
-                    if (footerOption === 'fixed') {
-                        $("body").addClass("page-footer-fixed");
-                    } else {
-                        $("body").removeClass("page-footer-fixed");
-                    }
-
-                    //sidebar style
-                    if (sidebarStyleOption === 'compact') {
-                        $(".page-sidebar-menu").addClass("page-sidebar-menu-compact");
-                    } else {
-                        $(".page-sidebar-menu").removeClass("page-sidebar-menu-compact");
-                    }
-
-                    //sidebar menu
-                    if (sidebarMenuOption === 'hover') {
-                        if (sidebarOption == 'fixed') {
-                            $('.sidebar-menu-option', panel).val("accordion");
-                            alert("Hover Sidebar Menu is not compatible with Fixed Sidebar Mode. Select Default Sidebar Mode Instead.");
-                        } else {
-                            $(".page-sidebar-menu").addClass("page-sidebar-menu-hover-submenu");
-                        }
-                    } else {
-                        $(".page-sidebar-menu").removeClass("page-sidebar-menu-hover-submenu");
-                    }
-
-                    //sidebar position
-                    if (App.isRTL()) {
-                        if (sidebarPosOption === 'left') {
-                            $("body").addClass("page-sidebar-reversed");
-                            $('#frontend-link').tooltip('destroy').tooltip({
-                                placement: 'right'
-                            });
-                        } else {
-                            $("body").removeClass("page-sidebar-reversed");
-                            $('#frontend-link').tooltip('destroy').tooltip({
-                                placement: 'left'
-                            });
-                        }
-                    } else {
-                        if (sidebarPosOption === 'right') {
-                            $("body").addClass("page-sidebar-reversed");
-                            $('#frontend-link').tooltip('destroy').tooltip({
-                                placement: 'left'
-                            });
-                        } else {
-                            $("body").removeClass("page-sidebar-reversed");
-                            $('#frontend-link').tooltip('destroy').tooltip({
-                                placement: 'right'
-                            });
-                        }
-                    }
+                    handleHeaderChange(headerOption);
+                    handleDropdownChange(headerTopDropdownStyle);
+                    handleSidebarChange(sidebarOption);
+                    handleSidebarMenuChange(sidebarMenuOption);
+                    handleSidebarPositionChange(sidebarPosOption);
+                    handleFooterChange(footerOption);
 
                     Layout.fixContentHeight(); // fix content height
                     Layout.initFixedSidebar(); // reinitialize fixed sidebar
@@ -186,24 +109,27 @@ var Theme = function () {
             });
         };
 
-        // handle theme colors
-        var setColor = function (color) {
-            var color_ = (App.isRTL() ? color + '-rtl' : color);
-            $('#style_color').attr("href", Layout.getLayoutCssPath() + 'themes/' + color_ + ".min.css");
-        };
-
-
         $('.theme-colors > li', panel).click(function () {
-            var color = $(this).attr("data-theme");
-            setColor(color);
-            $('ul > li', panel).removeClass("active");
-            $(this).addClass("active");
+            var el = $(this);
+            var color = el.attr("data-theme");
+            $.ajax({
+                type: 'GET',
+                url: themeColorChangeApiUrl,
+                data: {
+                    color               : color
+                },
+                success: function(data) {
+                    handleSetColor(color);
+                    $('ul > li', panel).removeClass("active");
+                    el.addClass("active");
 
-            if (color === 'dark') {
-                $('.page-actions .btn').removeClass('red-haze').addClass('btn-default btn-transparent');
-            } else {
-                $('.page-actions .btn').removeClass('btn-default btn-transparent').addClass('red-haze');
-            }
+                    if (color === 'dark') {
+                        $('.page-actions .btn').removeClass('red-haze').addClass('btn-default btn-transparent');
+                    } else {
+                        $('.page-actions .btn').removeClass('btn-default btn-transparent').addClass('red-haze');
+                    }
+                }
+            });
         });
 
         // set default theme options:
@@ -273,17 +199,112 @@ var Theme = function () {
         lastSelectedLayout = layout;
     };
 
-    return {
+    var handleHeaderChange = function(header)
+    {
+        if (header === 'fixed') {
+            $("body").addClass("page-header-fixed");
+            $(".page-header").removeClass("navbar-static-top").addClass("navbar-fixed-top");
+        } else {
+            $("body").removeClass("page-header-fixed");
+            $(".page-header").removeClass("navbar-fixed-top").addClass("navbar-static-top");
+        }
+    };
 
-        //main function to initiate the theme
+    var handleDropdownChange = function(dropdown)
+    {
+        if (dropdown === 'dark') {
+            $(".top-menu > .navbar-nav > li.dropdown").addClass("dropdown-dark");
+        } else {
+            $(".top-menu > .navbar-nav > li.dropdown").removeClass("dropdown-dark");
+        }
+    };
+
+    var handleSidebarMenuChange = function(sidebarMenu)
+    {
+        if (sidebarMenu === 'hover') {
+            $(".page-sidebar-menu").addClass("page-sidebar-menu-hover-submenu");
+        } else {
+            $(".page-sidebar-menu").removeClass("page-sidebar-menu-hover-submenu");
+        }
+    };
+
+    var handleSidebarChange = function(sidebar)
+    {
+        if ($('body').hasClass('page-full-width') === false) {
+            if (sidebar === 'fixed') {
+                $("body").addClass("page-sidebar-fixed");
+                $("page-sidebar-menu").addClass("page-sidebar-menu-fixed");
+                $("page-sidebar-menu").removeClass("page-sidebar-menu-default");
+                Layout.initFixedSidebarHoverEffect();
+            } else {
+                $("body").removeClass("page-sidebar-fixed");
+                $("page-sidebar-menu").addClass("page-sidebar-menu-default");
+                $("page-sidebar-menu").removeClass("page-sidebar-menu-fixed");
+                $('.page-sidebar-menu').unbind('mouseenter').unbind('mouseleave');
+            }
+        }
+    };
+
+    var handleSidebarPositionChange = function(sidebarPosition)
+    {
+        if (sidebarPosition === 'right') {
+            $("body").addClass("page-sidebar-reversed");
+            $('#frontend-link').tooltip('destroy').tooltip({
+                placement: 'left'
+            });
+        } else {
+            $("body").removeClass("page-sidebar-reversed");
+            $('#frontend-link').tooltip('destroy').tooltip({
+                placement: 'right'
+            });
+        }
+    };
+
+    var handleFooterChange = function(footerOption)
+    {
+        if (footerOption === 'fixed') {
+            $("body").addClass("page-footer-fixed");
+        } else {
+            $("body").removeClass("page-footer-fixed");
+        }
+    };
+
+    var handleSetColor = function (color) {
+        $('#style_color').attr("href", '/vendor/laravel-modules-core/assets/layouts/layout4/css/themes/' + color + "-theme.css");
+    };
+
+    return {
         init: function()
         {
-            // handles style customer tool
             handleTheme();
         },
         initLayoutChange: function(layout)
         {
             handleLayoutChange(layout);
+        },
+        initHeaderChange: function(header)
+        {
+            handleHeaderChange(header);
+        },
+        initDropdownChange: function(dropdown)
+        {
+            handleDropdownChange(dropdown);
+        },
+        initSidebarChange: function(sidebar)
+        {
+            handleSidebarChange(sidebar);
+        },
+        initSidebarMenuChange: function(sidebarMenu)
+        {
+            handleSidebarMenuChange(sidebarMenu);
+        },
+        initSidebarPositionChange: function(sidebarPosition)
+        {
+            handleSidebarPositionChange(sidebarPosition);
+        },
+        initFooterChange: function(footer)
+        {
+            handleFooterChange(footer);
         }
     };
 

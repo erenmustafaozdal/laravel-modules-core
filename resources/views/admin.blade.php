@@ -38,7 +38,9 @@
 
         {{-- Theme Layout Styles --}}
         <link href="{!! lmcElixir('assets/layouts/layout4/css/admin.css') !!}" rel="stylesheet" type="text/css" />
-        {!! Html::style('vendor/laravel-modules-core/assets/layouts/layout4/css/themes/light-theme.css') !!}
+        {!! Html::style('vendor/laravel-modules-core/assets/layouts/layout4/css/themes/'. Cache::get('theme_color')['color'] .'-theme.css', [
+            'id'    => 'style_color'
+        ]) !!}
         {{-- /Theme Layout Styles --}}
 
         @section('css')
@@ -111,34 +113,34 @@
                     @include('laravel-modules-core::partials.admin.sidebar')
                 </div>
                 {{-- /Sidebar --}}
-
-                {{-- Page Content Wrapper --}}
-                <div class="page-content-wrapper">
-                    {{-- Page Content Body --}}
-                    <div class="page-content">
-                        {{-- Page Head --}}
-                        <div class="page-head">
-                            {{-- Page Title --}}
-                            <div class="page-title">
-                                @yield('page-title')
-                            </div>
-                            {{-- /Page Title --}}
-
-                            {{-- Page Toolbar --}}
-                            <div class="page-toolbar">
-                                {{-- Theme Panel --}}
-                                @include('laravel-modules-core::partials.admin.themePanel')
-                                {{-- /Theme Panel --}}
-                            </div>
-                            {{-- /Page Toolbar --}}
-                        </div>
-                        {{-- /Page Head --}}
-                    </div>
-                    {{-- /Page Content Body --}}
-                </div>
-                {{-- /Page Content Wrapper --}}
             </div>
             {{-- /Sidebar Wrapper --}}
+
+            {{-- Page Content Wrapper --}}
+            <div class="page-content-wrapper">
+                {{-- Page Content Body --}}
+                <div class="page-content">
+                    {{-- Page Head --}}
+                    <div class="page-head">
+                        {{-- Page Title --}}
+                        <div class="page-title">
+                            @yield('page-title')
+                        </div>
+                        {{-- /Page Title --}}
+
+                        {{-- Page Toolbar --}}
+                        <div class="page-toolbar">
+                            {{-- Theme Panel --}}
+                            @include('laravel-modules-core::partials.admin.themePanel')
+                            {{-- /Theme Panel --}}
+                        </div>
+                        {{-- /Page Toolbar --}}
+                    </div>
+                    {{-- /Page Head --}}
+                </div>
+                {{-- /Page Content Body --}}
+            </div>
+            {{-- /Page Content Wrapper --}}
             
         </div>
         {{-- /Container --}}
@@ -165,15 +167,21 @@
     <script type="text/javascript">
         var themeJs = "{!! lmcElixir('assets/layouts/layout4/scripts/theme.js') !!}";
         var configJs = "{!! lmcElixir('assets/global/scripts/config.js') !!}";
-        var themeApiUrl = "{!! route('api.theme.change') !!}";
+        var themeLayoutChangeApiUrl = "{!! route('api.themeLayout.change') !!}";
+        var themeColorChangeApiUrl = "{!! route('api.themeColor.change') !!}";
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin.js') !!}"></script>
     <script type="text/javascript">
         $script.ready('theme', function() {
             Theme.init();
-            Theme.initLayoutChange("{!! Cache::get('theme_tool')['layout'] !!}");
-            Theme.initHeaderChange("{!! Cache::get('theme_tool')['layout'] !!}");
-            Theme.initDropdownChange("{!! Cache::get('theme_tool')['headerTopDropdown'] !!}");
+            Theme.initLayoutChange("{!! Cache::get('theme_layout')['layout'] !!}");
+            Theme.initHeaderChange("{!! Cache::get('theme_layout')['layout'] !!}");
+            Theme.initDropdownChange("{!! Cache::get('theme_layout')['headerTopDropdown'] !!}");
+            Theme.initDropdownChange("{!! Cache::get('theme_layout')['headerTopDropdown'] !!}");
+            Theme.initSidebarChange("{!! Cache::get('theme_layout')['sidebar'] !!}");
+            Theme.initSidebarMenuChange("{!! Cache::get('theme_layout')['sidebarMenu'] !!}");
+            Theme.initSidebarPositionChange("{!! Cache::get('theme_layout')['sidebarPos'] !!}");
+            Theme.initFooterChange("{!! Cache::get('theme_layout')['footer'] !!}");
         });
     </script>
 
