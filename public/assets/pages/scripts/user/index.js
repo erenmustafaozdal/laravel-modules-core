@@ -44,14 +44,7 @@ var Index = {
                             return '<img src="'+data+'" width="35" class="img-circle">';
                         }
                     },
-                    { data: "first_name", name: "first_name"},
-                    { data: "last_name", name: "last_name"},
-                    { data: "email", name: "email",
-                        render: function ( data, type, full, meta )
-                        {
-                            return '<a href="mailto:'+data+'">'+data+'</a>';
-                        }
-                    },
+                    { data: "first_name", name: "fullname"},
                     { data: "status", name: "is_active",
                         render: function ( data, type, full, meta )
                         {
@@ -61,7 +54,6 @@ var Index = {
                             return '<span class="label label-danger"> Aktif Değil </span>';
                         }
                     },
-                    { data: {_: 'last_login.display', sort: 'last_login.timestamp' }, name: "last_login"},
                     { data: { _: 'created_at.display', sort: 'created_at.timestamp' }, name: "created_at"},
                     {
                         data: "action", name: "action", searchable: false, orderable: false,
