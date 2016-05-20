@@ -45,5 +45,10 @@ return [
             'footer_fixed'                  => 'Kayan',
             'footer_default'                => 'Varsayılan',
         ],
-    ]
+    ],
+
+    // operations
+    'ops' => [
+        'add'                               => 'Yeni Ekle'
+    ],
 ];

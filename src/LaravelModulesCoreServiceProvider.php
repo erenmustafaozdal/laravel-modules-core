@@ -3,6 +3,7 @@
 namespace ErenMustafaOzdal\LaravelModulesCore;
 
 use ErenMustafaOzdal\LaravelModulesCore\Services\ValidationService;
+use ErenMustafaOzdal\LaravelModulesCore\Services\BreadcrumbService;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelModulesCoreServiceProvider extends ServiceProvider
@@ -52,11 +53,13 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
 
         // register services
         $this->registerValidationService();
+        $this->registerBreadcrumbService();
 
         $this->app->booting(function()
         {
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias('LMCValidation', 'ErenMustafaOzdal\LaravelModulesCore\Facades\Validation');
+            $loader->alias('LMCBreadcrumb', 'ErenMustafaOzdal\LaravelModulesCore\Facades\Breadcrumb');
         });
     }
 
@@ -69,6 +72,18 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
     {
         $this->app->singleton('laravelmodulescore.validation', function ($app) {
             return new ValidationService();
+        });
+    }
+
+    /**
+     * Registers the breadcrumb service
+     *
+     * @return void
+     */
+    protected function registerBreadcrumbService()
+    {
+        $this->app->singleton('laravelmodulescore.breadcrumb', function ($app) {
+            return new BreadcrumbService();
         });
     }
 }

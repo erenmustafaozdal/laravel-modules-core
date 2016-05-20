@@ -1,18 +1,9 @@
 <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-close-others="true">
     <span class="username username-hide-on-mobile"> {{ $auth_user->first_name }} </span>
-    @if( is_null($auth_user->photo) )
-        {!! HTML::image(
-            'vendor/laravel-modules-core/assets/global/img/avatar.png',
-            $auth_user->fullname,
-            ['class' => 'img-circle']
-        ) !!}
-    @else
-        {!! HTML::image(
-            $auth_user->photo_url,
-            $auth_user->fullname,
-            ['class' => 'img-circle profile_img']
-        ) !!}
-    @endif
+    {!! $auth_user->getPhoto([
+        'class' => 'img-circle',
+        'alt'   => $auth_user->fullname
+    ]) !!}
 </a>
 <ul class="dropdown-menu dropdown-menu-default">
     @foreach($menu_topbarUserLogin->roots() as $item)

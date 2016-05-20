@@ -109,6 +109,7 @@ var Theme = function () {
             });
         };
 
+        // theme color change
         $('.theme-colors > li', panel).click(function () {
             var el = $(this);
             var color = el.attr("data-theme");

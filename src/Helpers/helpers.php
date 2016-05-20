@@ -1,5 +1,9 @@
 <?php
-
+/*
+|--------------------------------------------------------------------------
+| laravel elixir helper hacked
+|--------------------------------------------------------------------------
+*/
 if (! function_exists('lmcElixir')) {
     /**
      * Get the path to a versioned Elixir file.

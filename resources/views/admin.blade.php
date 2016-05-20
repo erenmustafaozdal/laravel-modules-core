@@ -32,6 +32,10 @@
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-toastr/toastr.min.css') !!}
         {{-- /Global styles --}}
 
+        @section('css')
+
+        @show
+
         {{-- Global Theme Styles --}}
         {!! Html::style('vendor/laravel-modules-core/assets/global/css/met-global.css') !!}
         {{-- /Global Theme Styles --}}
@@ -42,10 +46,6 @@
             'id'    => 'style_color'
         ]) !!}
         {{-- /Theme Layout Styles --}}
-
-        @section('css')
-
-        @show
 
         <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -137,6 +137,14 @@
                         {{-- /Page Toolbar --}}
                     </div>
                     {{-- /Page Head --}}
+
+                    {{-- Page Breadcrumb --}}
+                    {!! LMCBreadcrumb::getBreadcrumb() !!}
+                    {{-- /Page Breadcrumb --}}
+
+                    {{-- Page Base Content --}}
+                    @yield('content')
+                    {{-- /Page Base Content --}}
                 </div>
                 {{-- /Page Content Body --}}
             </div>
@@ -144,7 +152,6 @@
             
         </div>
         {{-- /Container --}}
-        @yield('content')
 
         {{-- Footer --}}
         <div class="page-footer">

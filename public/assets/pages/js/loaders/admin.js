@@ -147,6 +147,6 @@
     });
 
     $script.ready('config', function() {
-        Config.init();
+        LMCApp.init();
     });
 })();
