@@ -49,6 +49,13 @@ return [
 
     // operations
     'ops' => [
-        'add'                               => 'Yeni Ekle'
+        'add'                               => 'Yeni Ekle',
+        'tools'                             => 'Araçlar',
+        'print'                             => 'Yazdır',
+        'copy'                              => 'Kopyala',
+        'pdf'                               => 'PDF',
+        'excel'                             => 'Excel',
+        'csv'                               => 'CSV',
+        'reload'                            => 'Tekrar Yükle',
     ],
 ];

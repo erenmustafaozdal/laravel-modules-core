@@ -22,13 +22,6 @@ var Index = {
                 // on data load function
             },
             dataTable: {
-                rowCallback: function( row, data, index ) {
-                    $('td:eq(1)', row).prop( "align", "center" );
-                    $('td:eq(2)', row).prop( "align", "center" );
-                    $('td:eq(6)', row).prop( "align", "center" );
-                    $('td:eq(7)', row).prop( "align", "center" );
-                    $('td:eq(8)', row).prop( "align", "center" );
-                },
                 columns: [
                     {
                         data : "check_id", name: "check_id", searchable: false, orderable: false,
@@ -37,15 +30,16 @@ var Index = {
                             return '<input type="checkbox" name="id[]" value="'+data+'">';
                         }
                     },
-                    { data: "id", name: "id"},
-                    { data: "photo", name: "photo", searchable: false, orderable: false,
+                    { className: 'control', searchable: false, orderable: false, data: null, defaultContent: '' },
+                    { data: "id", name: "id", className: 'text-center' },
+                    { data: "photo", name: "photo", searchable: false, orderable: false, className: 'text-center',
                         render: function ( data, type, full, meta )
                         {
                             return '<img src="'+data+'" width="35" class="img-circle">';
                         }
                     },
                     { data: "first_name", name: "fullname"},
-                    { data: "status", name: "is_active",
+                    { data: "status", name: "is_active", className: 'text-center',
                         render: function ( data, type, full, meta )
                         {
                             if (data) {
@@ -54,9 +48,9 @@ var Index = {
                             return '<span class="label label-danger"> Aktif Değil </span>';
                         }
                     },
-                    { data: { _: 'created_at.display', sort: 'created_at.timestamp' }, name: "created_at"},
+                    { data: { _: 'created_at.display', sort: 'created_at.timestamp' }, name: "created_at", className: 'text-center'},
                     {
-                        data: "action", name: "action", searchable: false, orderable: false,
+                        data: "action", name: "action", searchable: false, orderable: false, className: 'text-center',
                         render: function ( data, type, full, meta )
                         {
                             return 'action';

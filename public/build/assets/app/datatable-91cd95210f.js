@@ -104,6 +104,12 @@ var DataTable = {
             e.preventDefault();
             theDataTable.resetFilter();
         });
+
+        // handle datatable custom tools
+        $('#lmcDataTableTools > li > a.tool-action').on('click', function() {
+            var action = $(this).attr('data-action');
+            theDataTable.getDataTable().button(action).trigger();
+        });
     },
 
     /**
@@ -203,6 +209,38 @@ var DataTable = {
     },
 
     /**
+     * get datatable
+     * @return DataTable
+     */
+    getDataTable: function() {
+        return this.dataTable;
+    },
+
+    /**
+     * get table wrapper
+     * @return table wraper
+     */
+    getTableWrapper: function() {
+        return this.tableWrapper;
+    },
+
+    /**
+     * get table container
+     * @return table container
+     */
+    gettableContainer: function() {
+        return this.tableContainer;
+    },
+
+    /**
+     * get table
+     * @return table
+     */
+    getTable: function() {
+        return this.table;
+    },
+
+    /**
      * get default data table options function
      */
     getDefaultOptions: function()
@@ -214,6 +252,19 @@ var DataTable = {
             loadingMessage: 'Yükleniyor...',
             dataTable: {
                 dom: "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r><'table-responsive't><'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>", // datatable layout
+                buttons: [
+                    { extend: 'print',key: { key: 'p', altKey: true, shiftKey: true } },
+                    { extend: 'copy',key: { key: 'c', altKey: true, shiftKey: true } },
+                    { extend: 'pdf',key: { key: 'd', altKey: true, shiftKey: true } },
+                    { extend: 'excel',key: { key: 'e', altKey: true, shiftKey: true } },
+                    { extend: 'csv',key: { key: 'v', altKey: true, shiftKey: true } },
+                    {
+                        text: 'Reload', key: { key: 'r', altKey: true, shiftKey: true },
+                        action: function ( e, dt, node, config ) {
+                            dt.ajax.reload();
+                        }
+                    }
+                ],
                 pageLength: 10, // default records per page
                 language: {
                     // data tables spesific
@@ -241,6 +292,12 @@ var DataTable = {
                         sortAscending: ": artan sıralama",
                         sortDescending: ": azalan sıralama"
                     },
+                    buttons: {
+                        copySuccess: {
+                            _: "<strong>%d</strong> satır panoya kopyalandı"
+                        },
+                        copyTitle: 'Veriler kopyalandı',
+                    },
 
                     // personal spesific
                     groupActions: "_TOTAL_ kayıt seçildi:  ",
@@ -251,7 +308,7 @@ var DataTable = {
                 orderCellsTop: true,
                 columnDefs: [{ // define columns sorting options(by default all columns are sortable extept the first checkbox column)
                     'orderable': false,
-                    'targets': [0]
+                    'targets': [0,1]
                 }],
                 bStateSave: true, // save datatable state(pagination, sort, etc) in cookie.
 
@@ -260,7 +317,7 @@ var DataTable = {
                     [10, 20, 50, 100, 150, "Hepsi"] // change per page values here
                 ],
                 order: [
-                    [1, "asc"]
+                    [2, "asc"]
                 ], // set first column as a default sort by asc
 
                 pagingType: "bootstrap_extended", // pagination type(bootstrap, bootstrap_full_number or bootstrap_extended)
