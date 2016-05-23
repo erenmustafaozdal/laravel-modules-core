@@ -21,6 +21,30 @@ var Index = {
             {
                 // on data load function
             },
+
+            /**
+             * get detail child row table format
+             * @param data
+             */
+            getDetailTableFormat: function(data)
+            {
+                return '<form class="form-horizontal">' +
+                    '<div class="form-body">' +
+                        '<h3 class="form-section">' +  + '</h3>' +
+                    '</div>';
+                return '<table class="table">' +
+                    '<thead>' +
+                        '<tr>' +
+                            '<th> # </th>' +
+                        '</tr>' +
+                    '</thead>' +
+                    '<tbody>' +
+                        '<tr>' +
+                            '<td> 1 </td>' +
+                        '</tr>' +
+                    '</tbody>' +
+                '</table>';
+            },
             dataTable: {
                 columns: [
                     {

@@ -34,6 +34,12 @@ var DataTable = {
     ajaxParams: {},
 
     /**
+     * detail rows
+     * @var array
+     */
+    detailRows: [],
+
+    /**
      * init function
      * @param options
      */
@@ -109,6 +115,37 @@ var DataTable = {
         $('#lmcDataTableTools > li > a.tool-action').on('click', function() {
             var action = $(this).attr('data-action');
             theDataTable.getDataTable().button(action).trigger();
+        });
+
+        // add event listener for opening and closing details
+        $('.lmcDataTable tbody').on('click','tr td.control',function()
+        {
+            console.log($(this).closest('tr'));
+            var tr = $(this).closest('tr');
+            var row = theDataTable.getDataTable().row(tr);
+            var id = row.data().id;
+            var idx = $.inArray( id, theDataTable.detailRows );
+            if (row.child.isShown()) {
+                row.child.hide();
+                tr.removeClass('shown');
+                theDataTable.detailRows.splice( idx, 1 );
+            } else {
+                var data = theDataTable.getDetailTableDatas(row.data().details_url);
+                row.child( theDataTable.tableOptions.getDetailTableFormat( data ) ).show();
+                //theDataTable.initDetailTable(tableId, row.data());
+                tr.addClass('shown');
+                if ( idx === -1 ) {
+                    theDataTable.detailRows.push( id );
+                }
+            }
+        });
+    },
+
+    getDetailTableDatas: function(url)
+    {
+        return $.ajax({
+            url: url,
+            type: 'GET'
         });
     },
 
@@ -212,7 +249,8 @@ var DataTable = {
      * get datatable
      * @return DataTable
      */
-    getDataTable: function() {
+    getDataTable: function()
+    {
         return this.dataTable;
     },
 
@@ -220,7 +258,8 @@ var DataTable = {
      * get table wrapper
      * @return table wraper
      */
-    getTableWrapper: function() {
+    getTableWrapper: function()
+    {
         return this.tableWrapper;
     },
 
@@ -228,7 +267,8 @@ var DataTable = {
      * get table container
      * @return table container
      */
-    gettableContainer: function() {
+    gettableContainer: function()
+    {
         return this.tableContainer;
     },
 
@@ -236,7 +276,8 @@ var DataTable = {
      * get table
      * @return table
      */
-    getTable: function() {
+    getTable: function()
+    {
         return this.table;
     },
 
@@ -252,6 +293,12 @@ var DataTable = {
             loadingMessage: 'Yükleniyor...',
             dataTable: {
                 dom: "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r><'table-responsive't><'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>", // datatable layout
+                responsive: {
+                    details: {
+                        type: 'column',
+                        target: 1
+                    }
+                },
                 buttons: [
                     { extend: 'print',key: { key: 'p', altKey: true, shiftKey: true } },
                     { extend: 'copy',key: { key: 'c', altKey: true, shiftKey: true } },
@@ -306,7 +353,7 @@ var DataTable = {
                 },
 
                 orderCellsTop: true,
-                columnDefs: [{ // define columns sorting options(by default all columns are sortable extept the first checkbox column)
+                columnDefs: [{
                     'orderable': false,
                     'targets': [0,1]
                 }],
