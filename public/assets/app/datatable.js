@@ -34,12 +34,6 @@ var DataTable = {
     ajaxParams: {},
 
     /**
-     * detail rows
-     * @var array
-     */
-    detailRows: [],
-
-    /**
      * init function
      * @param options
      */
@@ -120,32 +114,22 @@ var DataTable = {
         // add event listener for opening and closing details
         $('.lmcDataTable tbody').on('click','tr td.control',function()
         {
-            console.log($(this).closest('tr'));
             var tr = $(this).closest('tr');
             var row = theDataTable.getDataTable().row(tr);
-            var id = row.data().id;
-            var idx = $.inArray( id, theDataTable.detailRows );
             if (row.child.isShown()) {
                 row.child.hide();
-                tr.removeClass('shown');
-                theDataTable.detailRows.splice( idx, 1 );
+                tr.removeClass('parent');
             } else {
-                var data = theDataTable.getDetailTableDatas(row.data().details_url);
-                row.child( theDataTable.tableOptions.getDetailTableFormat( data ) ).show();
-                //theDataTable.initDetailTable(tableId, row.data());
-                tr.addClass('shown');
-                if ( idx === -1 ) {
-                    theDataTable.detailRows.push( id );
-                }
+                $.ajax({
+                    url: row.data().details_url,
+                    type: 'GET',
+                    success: function(data)
+                    {
+                        row.child( theDataTable.tableOptions.getDetailTableFormat( data.data[0] ) ).show();
+                        tr.addClass('parent').next().addClass('child').children('td').addClass('child');
+                    }
+                });
             }
-        });
-    },
-
-    getDetailTableDatas: function(url)
-    {
-        return $.ajax({
-            url: url,
-            type: 'GET'
         });
     },
 

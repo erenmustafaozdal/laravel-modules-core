@@ -28,19 +28,25 @@ var Index = {
              */
             getDetailTableFormat: function(data)
             {
-                return '<form class="form-horizontal">' +
-                    '<div class="form-body">' +
-                        '<h3 class="form-section">' +  + '</h3>' +
-                    '</div>';
-                return '<table class="table">' +
-                    '<thead>' +
-                        '<tr>' +
-                            '<th> # </th>' +
-                        '</tr>' +
-                    '</thead>' +
+                console.log(data);
+                console.log(data.email);
+                return '<table class="table table-hover table-light">' +
                     '<tbody>' +
                         '<tr>' +
-                            '<td> 1 </td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>E-posta:</strong> </td>' +
+                            '<td class="text-left">' + data.email + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Son Giriş:</strong> </td>' +
+                            '<td class="text-left">' + data.last_login.display + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
+                            '<td class="text-left">' + data.updated_at.display + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Roller:</strong> </td>' +
+                            '<td class="text-left">' + data.roles + '</td>' +
                         '</tr>' +
                     '</tbody>' +
                 '</table>';

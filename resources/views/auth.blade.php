@@ -12,7 +12,7 @@
         {{-- Meta tags --}}
         <meta charset="{!! config('laravel-modules-core.views.html_head.charset') !!}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <meta name="description" content="{!! config('laravel-modules-core.views.html_head.meta_description') !!}"/>
         <meta name="author" content="{!! config('laravel-modules-core.views.html_head.meta_author') !!}"/>
         <meta http-equiv="Content-Type" content="{!! config('laravel-modules-core.views.html_head.content_type') !!}">
