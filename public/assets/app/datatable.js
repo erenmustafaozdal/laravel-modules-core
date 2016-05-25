@@ -126,7 +126,7 @@ var DataTable = {
                 tr.removeClass('parent');
             } else {
                 $.ajax({
-                    url: row.data().details_url,
+                    url: row.data().urls.details,
                     type: 'GET',
                     success: function(data)
                     {
@@ -281,6 +281,60 @@ var DataTable = {
     },
 
     /**
+     * get table action column menu
+     * @param options
+     */
+    getActionMenu: function(options)
+    {
+        var menu = '<div class="btn-group">';
+        var ops = $.extend(true, {
+            id: -1,
+            showUrl: '',
+            buttons: []
+        }, options);
+
+        // show button
+        menu += '<a href="' + ops.showUrl + '" ' +
+            'class="btn green btn-outline btn-sm tooltips" ' +
+            'title="' + LMCApp.lang.admin.ops.show + '" ' +
+            'style="margin-right:0;">';
+        menu += '<i class="fa fa-search"></i>';
+        menu += '</a>';
+
+        if (ops.buttons.length < 1) {
+            return menu + '</div>';
+        }
+
+        // dropdown button
+        menu += '<button type="button" class="btn green btn-outline btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-angle-down"></i></button>';
+
+        // dropdown menus
+        menu += '<ul class="dropdown-menu pull-right" role="menu">';
+        $.each(ops.buttons, function(key, value)
+        {
+            if (value === 'divider') {
+                menu += '<li class="divider"></li>';
+                return;
+            }
+
+            menu += '<li>';
+            menu += '<a';
+            $.each(value.attributes, function(key, value)
+            {
+                menu += ' ' + key + '="' + value + '"';
+            });
+            menu += '>';
+            menu += value.title;
+            menu += '</a>';
+            menu += '</li>';
+        });
+        menu += '</ul>';
+
+        menu += '</div>';
+        return menu;
+    },
+
+    /**
      * get default data table options function
      */
     getDefaultOptions: function()
@@ -353,8 +407,7 @@ var DataTable = {
 
                 orderCellsTop: true,
                 columnDefs: [{
-                    'orderable': false,
-                    'targets': [0,1]
+                    orderable: false, searchable: false, targets: [0,1,-1]
                 }],
                 bStateSave: true, // save datatable state(pagination, sort, etc) in cookie.
 
@@ -410,6 +463,7 @@ var DataTable = {
                         theDataTable.table.show(); // display table
                     }
                     App.initUniform($('input[type="checkbox"]', theDataTable.table)); // reinitialize uniform checkboxes on each table reload
+                    LMCApp.initTooltips();
                     theDataTable.countSelectedRecords(); // reset selected records indicator
 
                     // callback for ajax data load

@@ -37,6 +37,16 @@ var LMCApp = {
                 title: 'Ayrıştırılamadı',
                 message: 'İstek sunucu tarafından ayrıştırılamadı. Lütfen aynı işlemi daha sonra tekrar dene.'
             }
+        },
+        // admin
+        admin: {
+            ops: {
+                show: 'Göster',
+                edit: 'Düzenle',
+                destroy: 'Sil',
+                activate: 'Aktifleştir',
+                not_activate: 'Aktifliği Kaldır',
+            }
         }
     },
 
