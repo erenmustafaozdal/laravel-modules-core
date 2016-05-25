@@ -9,6 +9,10 @@
         $script(datatableJs,'app_datatable');
         $script('/vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js','bootstrap');
     });
+    $script.ready('app_datatable', function()
+    {
+        $script(editorJs,'app_editor');
+    });
     $script.ready('bootstrap', function()
     {
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js','datepicker');

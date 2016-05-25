@@ -248,5 +248,27 @@ var LMCApp = {
                 }
             }
         });
+    },
+
+
+
+    /*
+     |--------------------------------------------------------------------------
+     | global functions
+     |--------------------------------------------------------------------------
+     */
+
+    /**
+     * reset all form fields
+     * @param target
+     */
+    resetAllFormFields: function(target)
+    {
+        $('textarea, select, input', target).each(function() {
+            $(this).val("");
+        });
+        $('input[type="checkbox"]', target).each(function() {
+            $(this).attr("checked", false);
+        });
     }
 };

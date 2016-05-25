@@ -50,6 +50,8 @@ return [
     // operations
     'ops' => [
         'add'                               => 'Yeni Ekle',
+        'fast_add'                          => 'Hızlı Ekle',
+        'cancel'                            => 'İptal',
         'tools'                             => 'Araçlar',
         'print'                             => 'Yazdır',
         'copy'                              => 'Kopyala',
@@ -57,5 +59,13 @@ return [
         'excel'                             => 'Excel',
         'csv'                               => 'CSV',
         'reload'                            => 'Tekrar Yükle',
+        'shortcut' => [
+            'print'                         => 'Kısayol: (alt + shift + p)',
+            'copy'                          => 'Kısayol: (alt + shift + c)',
+            'pdf'                           => 'Kısayol: (alt + shift + d)',
+            'excel'                         => 'Kısayol: (alt + shift + e)',
+            'csv'                           => 'Kısayol: (alt + shift + v)',
+            'reload'                        => 'Kısayol: (alt + shift + r)',
+        ]
     ],
 ];

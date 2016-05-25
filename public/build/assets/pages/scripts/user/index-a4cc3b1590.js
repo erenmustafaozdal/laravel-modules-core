@@ -28,8 +28,6 @@ var Index = {
              */
             getDetailTableFormat: function(data)
             {
-                console.log(data);
-                console.log(data.email);
                 return '<table class="table table-hover table-light">' +
                     '<tbody>' +
                         '<tr>' +
@@ -91,6 +89,10 @@ var Index = {
                     url: ajaxURL                  // ajax source url
                 }
             }
+        });
+
+        Editor.init({
+
         });
     }
 

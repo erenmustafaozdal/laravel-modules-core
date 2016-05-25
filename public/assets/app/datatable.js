@@ -78,7 +78,8 @@ var DataTable = {
         }
 
         // handle group checkboxes check/uncheck
-        $('.group-checkable', this.table).change(function() {
+        $('.group-checkable', this.table).change(function()
+        {
             var set = theDataTable.table.find('tbody > tr > td:nth-child(1) input[type="checkbox"]');
             var checked = $(this).prop("checked");
             $(set).each(function() {
@@ -89,24 +90,28 @@ var DataTable = {
         });
 
         // handle row's checkbox click
-        this.table.on('change', 'tbody > tr > td:nth-child(1) input[type="checkbox"]', function() {
+        this.table.on('change', 'tbody > tr > td:nth-child(1) input[type="checkbox"]', function()
+        {
             theDataTable.countSelectedRecords();
         });
 
         // handle filter submit button click
-        this.table.on('click', '.filter-submit', function(e) {
+        this.table.on('click', '.filter-submit', function(e)
+        {
             e.preventDefault();
             theDataTable.submitFilter();
         });
 
         // handle filter cancel button click
-        this.table.on('click', '.filter-cancel', function(e) {
+        this.table.on('click', '.filter-cancel', function(e)
+        {
             e.preventDefault();
             theDataTable.resetFilter();
         });
 
         // handle datatable custom tools
-        $('#lmcDataTableTools > li > a.tool-action').on('click', function() {
+        $('#lmcDataTableTools > li > a.tool-action').on('click', function()
+        {
             var action = $(this).attr('data-action');
             theDataTable.getDataTable().button(action).trigger();
         });
@@ -147,6 +152,21 @@ var DataTable = {
         }
     },
 
+    getSelectedRowsCount: function()
+    {
+        return $('tbody > tr > td:nth-child(1) input[type="checkbox"]:checked', table).size();
+    },
+
+    getSelectedRows: function()
+    {
+        var rows = [];
+        $('tbody > tr > td:nth-child(1) input[type="checkbox"]:checked', table).each(function() {
+            rows.push($(this).val());
+        });
+
+        return rows;
+    },
+
     /**
      * submit filter of table
      */
@@ -177,12 +197,7 @@ var DataTable = {
      */
     resetFilter: function()
     {
-        $('textarea.form-filter, select.form-filter, input.form-filter', this.table).each(function() {
-            $(this).val("");
-        });
-        $('input.form-filter[type="checkbox"]', this.table).each(function() {
-            $(this).attr("checked", false);
-        });
+        LMCApp.resetAllFormFields(this.table);
         this.clearAjaxParams();
         this.addAjaxParam("action", this.tableOptions.filterCancelAction);
         this.dataTable.ajax.reload();
