@@ -94,7 +94,7 @@ var Index = {
                                 showUrl: full.urls.show,
                                 buttons: [
                                     {
-                                        title: '<i class="fa fa-pencil"></i> ' + LMCApp.lang.admin.ops.edit,
+                                        title: '<i class="fa fa-pencil"></i> ' + LMCApp.lang.admin.ops.fast_edit,
                                         attributes: {
                                             href: '#editor-modal',
                                             'data-toggle': 'modal',
@@ -130,7 +130,9 @@ var Index = {
         });
 
         Editor.init({
-
+            actionButtonCallback: function(Editor) {
+                console.log(Editor);
+            }
         });
     }
 

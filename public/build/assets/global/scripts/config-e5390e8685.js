@@ -41,8 +41,10 @@ var LMCApp = {
         // admin
         admin: {
             ops: {
+                fast_add: 'Hızlı Ekle',
                 show: 'Göster',
                 edit: 'Düzenle',
+                fast_edit: 'Hızlı Düzenle',
                 destroy: 'Sil',
                 activate: 'Aktifleştir',
                 not_activate: 'Aktifliği Kaldır',
@@ -83,11 +85,12 @@ var LMCApp = {
      */
     init: function()
     {
-        lmcApp = lmcApp === "undefined" ? this : lmcApp;
+        lmcApp = this;
         this.initTooltips(); // init tooltips
         this.setToastrOptions(); // set toastr default options
         this.setBootboxOptions(); // set bootbox default options
         this.setPaceOptions(); // set pace default options
+        this.setAjaxOptions();
     },
 
     /**
@@ -274,10 +277,12 @@ var LMCApp = {
      */
     resetAllFormFields: function(target)
     {
-        $('textarea, select, input', target).each(function() {
+        $('textarea, select, input', target).each(function()
+        {
             $(this).val("");
         });
-        $('input[type="checkbox"]', target).each(function() {
+        $('input[type="checkbox"]', target).each(function()
+        {
             $(this).attr("checked", false);
         });
     }

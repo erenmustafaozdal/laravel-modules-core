@@ -11,15 +11,6 @@ use Illuminate\Support\Facades\Cache;
 class ThemeController extends Controller
 {
     /**
-     * Abort if request is not ajax
-     * @param Request $request
-     */
-    public function __construct(Request $request)
-    {
-        if(! $request->ajax()) abort(403, 'Forbidden');
-    }
-
-    /**
      * Admin Theme Layout Change
      *
      * @param   Request         $request

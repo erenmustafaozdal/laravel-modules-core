@@ -9,7 +9,7 @@ ini_set('xdebug.max_nesting_level', 300);
 */
 Route::group([
     'prefix' => 'api',
-    'middleware' => ['auth'],
+    'middleware' => ['auth','theme_api'],
     'namespace' => 'ErenMustafaOzdal\LaravelModulesCore\Http\Controllers'
 ], function()
 {

@@ -51,6 +51,9 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
             __DIR__.'/../config/laravel-modules-core.php', 'laravel-modules-core'
         );
 
+        $router = $this->app['router'];
+        $router->middleware('theme_api',\ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\ApiTheme::class);
+
         // register services
         $this->registerValidationService();
         $this->registerBreadcrumbService();
