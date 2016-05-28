@@ -131,7 +131,40 @@ var Index = {
 
         Editor.init({
             actionButtonCallback: function(Editor) {
-                console.log(Editor);
+                var url = Editor.actionType === 'fast-add' ? apiStoreURL : Editor.row.data().urls.edit ;
+                // validation ve user form dosyaları yüklenir
+                $script(userFormLoaderJs, 'formLoader');
+                $script.ready(['formLoader','validation'], function()
+                {
+                    $script(userFormJs, 'user_form');
+                });
+                $script.ready('user_form', function()
+                {
+                    UserForm.init({
+                        isAjax: true,
+                        ajaxURL: url,
+                        submitAjax: function(validation)
+                        {
+                            console.log(validation.form.serialize());
+                            //$.ajax({
+                            //    url: url,
+                            //    success: function(data)
+                            //    {
+                            //
+                            //    }
+                            //});
+                        }
+                    });
+                    if (Editor.actionType === 'fast-add') {
+                        Validation.addElementRule('password', { required: true });
+                        Validation.addElementRule('password_confirmation', { required: true });
+                    } else {
+                        Validation.removeElementRule('password', 'required');
+                        Validation.removeElementRule('password_confirmation', 'required');
+                    }
+                    // form is submit
+                    $(Editor.editorOptions.formSrc).submit();
+                });
             }
         });
     }

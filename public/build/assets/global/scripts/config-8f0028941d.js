@@ -4,6 +4,7 @@
  | Javascript config file and object
  |--------------------------------------------------------------------------
  */
+"use strict";
 var LMCApp = {
 
     /*
@@ -16,6 +17,10 @@ var LMCApp = {
      * default language object
      */
     lang: {
+        formError: {
+            defaultTitle: 'Form Hatalı',
+            defaultMessage: 'Formda bazı hatalar var. Lütfen tekrar kontrol et.'
+        },
         transactionError: {
             title: 'İşlem Devam Ediyor',
             message: 'Bir önceki işlemin bitmeden başka işlem yapamazsın'
@@ -279,11 +284,13 @@ var LMCApp = {
     {
         $('textarea, select, input', target).each(function()
         {
-            $(this).val("");
+            $(this).val("").closest('.form-group')
+                .removeClass('has-error').find('span.help-block').remove();
         });
         $('input[type="checkbox"]', target).each(function()
         {
-            $(this).attr("checked", false);
+            $(this).attr("checked", false).closest('.form-group')
+                .removeClass('has-error').find('span.help-block').remove();
         });
     }
 };

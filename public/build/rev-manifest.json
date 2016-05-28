@@ -1,12 +1,15 @@
 {
-  "assets/app/datatable.js": "assets/app/datatable-da78a0adc8.js",
-  "assets/app/editor.js": "assets/app/editor-43d7905450.js",
-  "assets/global/scripts/config.js": "assets/global/scripts/config-e5390e8685.js",
+  "assets/app/datatable.js": "assets/app/datatable-302cc42f95.js",
+  "assets/app/editor.js": "assets/app/editor-0e106343f2.js",
+  "assets/app/validation.js": "assets/app/validation-26115ac50e.js",
+  "assets/global/scripts/config.js": "assets/global/scripts/config-8f0028941d.js",
   "assets/layouts/layout4/css/admin.css": "assets/layouts/layout4/css/admin-395683cf6b.css",
   "assets/layouts/layout4/scripts/theme.js": "assets/layouts/layout4/scripts/theme-4300496d8b.js",
+  "assets/pages/js/loaders/admin-form.js": "assets/pages/js/loaders/admin-form-8ebadcdbc2.js",
   "assets/pages/js/loaders/admin-index.js": "assets/pages/js/loaders/admin-index-9e26a621fa.js",
   "assets/pages/js/loaders/admin.js": "assets/pages/js/loaders/admin-ab462b7e6c.js",
   "assets/pages/js/loaders/login.js": "assets/pages/js/loaders/login-d9915ca653.js",
   "assets/pages/scripts/login.js": "assets/pages/scripts/login-75b3c3b18e.js",
-  "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-63d55a8d4b.js"
+  "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-1c35ef2715.js",
+  "assets/pages/scripts/user/user-form.js": "assets/pages/scripts/user/user-form-89e21370d6.js"
 }

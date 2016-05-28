@@ -116,8 +116,7 @@ var Editor = {
         return {
             modalSrc: "#editor-modal", // modal
             actionSrc: ".editor-action", // modal action button
-            formSrc: ".editor-form",
-            actionButtonCallback: function() {}
+            formSrc: ".form"
         };
     }
 

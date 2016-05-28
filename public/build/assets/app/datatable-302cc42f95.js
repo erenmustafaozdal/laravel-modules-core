@@ -286,7 +286,7 @@ var DataTable = {
      */
     getActionMenu: function(options)
     {
-        var menu = '<div class="btn-group">';
+        var menu = '<div class="btn-group" role="group">';
         var ops = $.extend(true, {
             id: -1,
             showUrl: '',
@@ -295,7 +295,7 @@ var DataTable = {
 
         // show button
         menu += '<a href="' + ops.showUrl + '" ' +
-            'class="btn green btn-outline btn-sm tooltips" ' +
+            'class="btn green btn-outline tooltips" ' +
             'title="' + LMCApp.lang.admin.ops.show + '" ' +
             'style="margin-right:0;">';
         menu += '<i class="fa fa-search"></i>';
@@ -305,15 +305,16 @@ var DataTable = {
             return menu + '</div>';
         }
 
+        menu += '<div class="btn-group" role="group">';
         // dropdown button
-        menu += '<button type="button" class="btn green btn-outline btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-angle-down"></i></button>';
+        menu += '<button type="button" class="btn green btn-outline dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-angle-down"></i></button>';
 
         // dropdown menus
         menu += '<ul class="dropdown-menu pull-right" role="menu">';
         $.each(ops.buttons, function(key, value)
         {
             if (value === 'divider') {
-                menu += '<li class="divider"></li>';
+                menu += '<li class="divider" role="presentation"></li>';
                 return;
             }
 
@@ -329,6 +330,7 @@ var DataTable = {
             menu += '</li>';
         });
         menu += '</ul>';
+        menu += '</div>';
 
         menu += '</div>';
         return menu;
