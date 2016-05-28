@@ -87,7 +87,8 @@ var Validation = {
                 invalidHandler: function(event, validator) { //display error alert on form submit
                     LMCApp.getNoty({
                         message: LMCApp.lang.formError.defaultMessage,
-                        title: LMCApp.lang.formError.defaultTitle
+                        title: LMCApp.lang.formError.defaultTitle,
+                        type: 'error'
                     });
                 },
                 highlight: function(element) { // hightlight error inputs

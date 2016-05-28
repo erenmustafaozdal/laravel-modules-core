@@ -30,6 +30,10 @@ var LMCApp = {
                 title: 'Yetkin Yok',
                 message: 'Bu işlemi yapmak için yetkin yok.'
             },
+            validation: {
+                title: 'Veriler Onaylanmadı',
+                message: 'Formda hata var veya aynı veriler tekrar kayıt edilmek istendi.'
+            },
             timeout: {
                 title: 'Zaman Aşımı',
                 message: 'İstek zaman aşımına uğradı. Lütfen aynı işlemi daha sonra tekrar dene.'
@@ -53,6 +57,16 @@ var LMCApp = {
                 destroy: 'Sil',
                 activate: 'Aktifleştir',
                 not_activate: 'Aktifliği Kaldır',
+            },
+            flash: {
+                store_success: {
+                    title: 'Ekleme Tamamlandı',
+                    message: 'Ekleme işlemi başarılı bir şekilde gerçekleşti.'
+                },
+                store_error: {
+                    title: 'Kayıt Eklenemedi',
+                    message: 'Ekleme işlemi gerçekleşmedi. Lütfen daha sonra dene!'
+                }
             }
         }
     },
@@ -223,7 +237,8 @@ var LMCApp = {
                 if (lmcApp.hasTransaction) {
                     lmcApp.getNoty({
                         title: lmcApp.lang.transactionError.title,
-                        message: lmcApp.lang.transactionError.message
+                        message: lmcApp.lang.transactionError.message,
+                        type: 'error'
                     });
                     return false;
                 }
@@ -236,10 +251,32 @@ var LMCApp = {
                 lmcApp.hasTransaction = false;
                 switch (status) {
                     case 'error': // hata
-                        if (xhr.status == 403 || xhr.status == 401) {
+                        // authorization
+                        if (xhr.status === 403 || xhr.status === 401) {
                             lmcApp.getNoty({
                                 title: lmcApp.lang.ajaxErrors.authorization.title,
-                                message: lmcApp.lang.ajaxErrors.authorization.message
+                                message: lmcApp.lang.ajaxErrors.authorization.message,
+                                type: 'error'
+                            });
+                            return;
+                        }
+                        // validation
+                        if (xhr.status === 422) {
+                            var errors = JSON.parse(xhr.responseText), message;
+                            if (errors.length < 1) {
+                                message = lmcApp.lang.ajaxErrors.validation.message;
+                            } else {
+                                message  = '<ul>';
+                                $.each(errors, function(key,value)
+                                {
+                                    message += '<li> ' + value + '</li>';
+                                });
+                                message += '</ul>';
+                            }
+                            lmcApp.getNoty({
+                                title: lmcApp.lang.ajaxErrors.validation.title,
+                                message: message,
+                                type: 'error'
                             });
                             return;
                         }
@@ -248,19 +285,22 @@ var LMCApp = {
                     case 'timeout': // zaman aşımı
                         lmcApp.getNoty({
                             title: lmcApp.lang.ajaxErrors.timeout.title,
-                            message: lmcApp.lang.ajaxErrors.timeout.message
+                            message: lmcApp.lang.ajaxErrors.timeout.message,
+                            type: 'error'
                         });
                         break;
                     case 'abort': // iptal edildi
                         lmcApp.getNoty({
                             title: lmcApp.lang.ajaxErrors.abort.title,
-                            message: lmcApp.lang.ajaxErrors.abort.message
+                            message: lmcApp.lang.ajaxErrors.abort.message,
+                            type: 'error'
                         });
                         break;
                     case 'parsererror': // ayrıştırılamadı
                         lmcApp.getNoty({
                             title: lmcApp.lang.ajaxErrors.parsererror.title,
-                            message: lmcApp.lang.ajaxErrors.parsererror.message
+                            message: lmcApp.lang.ajaxErrors.parsererror.message,
+                            type: 'error'
                         });
                         break;
                 }

@@ -145,14 +145,33 @@ var Index = {
                         ajaxURL: url,
                         submitAjax: function(validation)
                         {
-                            console.log(validation.form.serialize());
-                            //$.ajax({
-                            //    url: url,
-                            //    success: function(data)
-                            //    {
-                            //
-                            //    }
-                            //});
+                            var datas  = validation.form.serialize() + '&is_active=' + $('#is_active').bootstrapSwitch('state');
+                            $.ajax({
+                                url: url,
+                                data: datas,
+                                success: function(data)
+                                {
+                                    if (data.result === 'success') {
+                                        LMCApp.getNoty({
+                                            message: LMCApp.lang.admin.flash.store_success.message,
+                                            title: LMCApp.lang.admin.flash.store_success.title,
+                                            type: 'success'
+                                        });
+                                        Editor.modal.modal('hide');
+                                        return;
+                                    }
+                                    LMCApp.getNoty({
+                                        message: LMCApp.lang.admin.flash.store_error.message,
+                                        title: LMCApp.lang.admin.flash.store_error.title,
+                                        type: 'error'
+                                    });
+                                }
+                            }).done(function( data ) {
+                                if ( data.result === 'success' ) {
+                                    LMCApp.hasTransaction = false;
+                                    DataTable.dataTable.ajax.reload();
+                                }
+                            });
                         }
                     });
                     if (Editor.actionType === 'fast-add') {
