@@ -117,7 +117,7 @@ var DataTable = {
         });
 
         // add event listener for opening and closing details
-        $('.lmcDataTable tbody').on('click','tr td.control',function()
+        $(this.tableOptions.src + ' tbody').on('click','tr td.control',function()
         {
             var tr = $(this).closest('tr');
             var row = theDataTable.getDataTable().row(tr);
@@ -135,6 +135,42 @@ var DataTable = {
                     }
                 });
             }
+        });
+
+        // destroy api
+        $(this.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-destroy',function()
+        {
+            var tr = $(this).closest('tr');
+            var row = theDataTable.getDataTable().row(tr);
+            tr.fadeOut();
+            LMCApp.startDestroyTimer(function()
+            {
+                $.ajax({
+                    url: row.data().urls.destroy,
+                    type: 'DELETE',
+                    success: function(data)
+                    {
+                        if (data.result === 'success') {
+                            row.remove();
+                            LMCApp.getNoty({
+                                message: LMCApp.lang.admin.flash.destroy_success.message,
+                                title: LMCApp.lang.admin.flash.destroy_success.title,
+                                type: 'success'
+                            });
+                            return;
+                        }
+                        LMCApp.getNoty({
+                            message: LMCApp.lang.admin.flash.destroy_error.message,
+                            title: LMCApp.lang.admin.flash.destroy_error.title,
+                            type: 'error'
+                        });
+                        tr.fadeIn();
+                    }
+                });
+            }, function()
+            {
+                tr.fadeIn();
+            });
         });
     },
 
@@ -418,7 +454,7 @@ var DataTable = {
                     [10, 20, 50, 100, 150, "Hepsi"] // change per page values here
                 ],
                 order: [
-                    [2, "asc"]
+                    [2, "desc"]
                 ], // set first column as a default sort by asc
 
                 pagingType: "bootstrap_extended", // pagination type(bootstrap, bootstrap_full_number or bootstrap_extended)

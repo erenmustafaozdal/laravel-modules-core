@@ -72,9 +72,21 @@ var LMCApp = {
                     message: 'Düzenleme işlemi başarılı bir şekilde gerçekleşti.'
                 },
                 update_error: {
-                    title: 'Kayıt Düzenlendi',
+                    title: 'Kayıt Düzenlenemedi',
                     message: 'Düzenleme işlemi gerçekleşmedi. Lütfen daha sonra dene!'
-                }
+                },
+                destroy_info: {
+                    title: 'Kayıt Silinecek',
+                    message: 'Kayıt silinmek üzere... İstersen iptal ederek işlemi geri alabilirsin.<div class="clearfix"></div><button type="button" role="button" class="btn dark cancel-destroy"> İptal Et </button> '
+                },
+                destroy_success: {
+                    title: 'Silme Tamamlandı',
+                    message: 'Silme işlemi başarılı bir şekilde gerçekleşti.'
+                },
+                destroy_error: {
+                    title: 'Kayıt Silinemedi',
+                    message: 'Silme işlemi gerçekleşmedi. Lütfen daha sonra dene!'
+                },
             }
         }
     },
@@ -97,6 +109,17 @@ var LMCApp = {
         title: 'Bilinmeyen Hata',
         type: 'error'
     },
+
+    /**
+     * toastr and destroy miliseconds
+     * @var integer
+     */
+    waitMiliSeconds: 10000,
+
+    /**
+     * destroy timer
+     */
+    destroyTimer: null,
 
 
 
@@ -203,7 +226,7 @@ var LMCApp = {
             debug: false,
             positionClass: 'toast-bottom-left',
             onclick: null,
-            timeOut: 10000,
+            timeOut: this.waitMiliSeconds,
             extendedTimeOut: 5000
         };
     },
@@ -226,7 +249,7 @@ var LMCApp = {
     {
         window.paceOptions = {
             ajax: true,
-            "startOnPageLoad": false
+            startOnPageLoad: false
         };
     },
 
@@ -339,6 +362,27 @@ var LMCApp = {
         {
             $(this).attr("checked", false).closest('.form-group')
                 .removeClass('has-error').find('span.help-block').remove();
+        });
+    },
+
+    /**
+     * timer when click destroy
+     * @param destroyCallback
+     * @param cancelCallback
+     */
+    startDestroyTimer: function(destroyCallback, cancelCallback)
+    {
+        this.getNoty({
+            message: this.lang.admin.flash.destroy_info.message,
+            title: this.lang.admin.flash.destroy_info.title,
+            type: 'info'
+        });
+        this.destroyTimer = window.setTimeout(destroyCallback, this.waitMiliSeconds);
+
+        $('.toast-message').on('click', '.cancel-destroy', function()
+        {
+            clearTimeout(LMCApp.destroyTimer);
+            cancelCallback.call();
         });
     }
 };

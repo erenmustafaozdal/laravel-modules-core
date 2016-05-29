@@ -71,7 +71,7 @@ var Index = {
                         }
                     },
                     // fullname
-                    { data: "first_name", name: "fullname"},
+                    { data: "fullname", name: "first_name"},
                     // status
                     { data: "status", name: "is_active", className: 'text-center',
                         render: function ( data, type, full, meta )
@@ -158,7 +158,7 @@ var Index = {
                                 password: validation.form.find('input[name="password"]').val(),
                                 password_confirmation: validation.form.find('input[name="password_confirmation"]').val(),
                                 is_active: $('#is_active').bootstrapSwitch('state')
-                            }
+                            };
                             if (Editor.actionType === 'fast-add') {
                                 var type =  'POST';
                                 var message_success = LMCApp.lang.admin.flash.store_success.message;
@@ -214,6 +214,7 @@ var Index = {
                 });
             }
         });
+
     }
 
 };
