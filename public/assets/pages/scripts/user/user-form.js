@@ -11,7 +11,6 @@ var UserForm = {
         return {
             src: '.form',
             isAjax: false,
-            ajaxURL: '',
             submitAjax: function(validation)
             {
                 //

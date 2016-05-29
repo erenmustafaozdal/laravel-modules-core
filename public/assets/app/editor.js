@@ -71,6 +71,11 @@ var Editor = {
             var tr = button.closest('tr');
             theEditor.row = theDataTable.getDataTable().row(tr);
             theEditor.getEditDataToForm();
+
+            // modal açıldı callback call
+            if (theEditor.editorOptions.modalShowCallback) {
+                theEditor.editorOptions.modalShowCallback.call(this, theEditor);
+            }
         });
 
         // editor modal kapandığında yapılacak işlemler

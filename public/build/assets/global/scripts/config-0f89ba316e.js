@@ -66,6 +66,14 @@ var LMCApp = {
                 store_error: {
                     title: 'Kayıt Eklenemedi',
                     message: 'Ekleme işlemi gerçekleşmedi. Lütfen daha sonra dene!'
+                },
+                update_success: {
+                    title: 'Düzenleme Tamamlandı',
+                    message: 'Düzenleme işlemi başarılı bir şekilde gerçekleşti.'
+                },
+                update_error: {
+                    title: 'Kayıt Düzenlendi',
+                    message: 'Düzenleme işlemi gerçekleşmedi. Lütfen daha sonra dene!'
                 }
             }
         }

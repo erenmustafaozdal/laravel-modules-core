@@ -130,7 +130,14 @@ var Index = {
         });
 
         Editor.init({
-            actionButtonCallback: function(Editor) {
+            modalShowCallback: function(Editor)
+            {
+                if (Editor.actionType === 'fast-edit') {
+                    $(Editor.editorOptions.formSrc).find('input[name="email"]').attr('disabled','disabled');
+                }
+            },
+            actionButtonCallback: function(Editor)
+            {
                 var url = Editor.actionType === 'fast-add' ? apiStoreURL : Editor.row.data().urls.edit ;
                 // validation ve user form dosyaları yüklenir
                 $script(userFormLoaderJs, 'formLoader');
@@ -142,27 +149,48 @@ var Index = {
                 {
                     UserForm.init({
                         isAjax: true,
-                        ajaxURL: url,
                         submitAjax: function(validation)
                         {
-                            var datas  = validation.form.serialize() + '&is_active=' + $('#is_active').bootstrapSwitch('state');
+                            var datas = {
+                                first_name: validation.form.find('input[name="first_name"]').val(),
+                                last_name: validation.form.find('input[name="last_name"]').val(),
+                                email: validation.form.find('input[name="email"]').val(),
+                                password: validation.form.find('input[name="password"]').val(),
+                                password_confirmation: validation.form.find('input[name="password_confirmation"]').val(),
+                                is_active: $('#is_active').bootstrapSwitch('state')
+                            }
+                            if (Editor.actionType === 'fast-add') {
+                                var type =  'POST';
+                                var message_success = LMCApp.lang.admin.flash.store_success.message;
+                                var title_success = LMCApp.lang.admin.flash.store_success.title;
+                                var message_error = LMCApp.lang.admin.flash.store_error.message;
+                                var title_error = LMCApp.lang.admin.flash.store_error.title;
+                            } else {
+                                var type =  'PATCH';
+                                var message_success = LMCApp.lang.admin.flash.update_success.message;
+                                var title_success = LMCApp.lang.admin.flash.update_success.title;
+                                var message_error = LMCApp.lang.admin.flash.update_error.message;
+                                var title_error = LMCApp.lang.admin.flash.update_error.title;
+                            }
+                            
                             $.ajax({
                                 url: url,
                                 data: datas,
+                                type: type,
                                 success: function(data)
                                 {
                                     if (data.result === 'success') {
                                         LMCApp.getNoty({
-                                            message: LMCApp.lang.admin.flash.store_success.message,
-                                            title: LMCApp.lang.admin.flash.store_success.title,
+                                            message: message_success,
+                                            title: title_success,
                                             type: 'success'
                                         });
                                         Editor.modal.modal('hide');
                                         return;
                                     }
                                     LMCApp.getNoty({
-                                        message: LMCApp.lang.admin.flash.store_error.message,
-                                        title: LMCApp.lang.admin.flash.store_error.title,
+                                        message: message_error,
+                                        title: title_error,
                                         type: 'error'
                                     });
                                 }
