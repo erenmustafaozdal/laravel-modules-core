@@ -87,6 +87,10 @@ var LMCApp = {
                     title: 'Kayıt Silinemedi',
                     message: 'Silme işlemi gerçekleşmedi. Lütfen daha sonra dene!'
                 },
+                destroy_self: {
+                    title: 'Kendini Silemezsin',
+                    message: 'Silme işlemi gerçekleşmedi. Kendini silemezsin!'
+                }
             }
         }
     },

@@ -159,11 +159,19 @@ var DataTable = {
                             });
                             return;
                         }
-                        LMCApp.getNoty({
-                            message: LMCApp.lang.admin.flash.destroy_error.message,
-                            title: LMCApp.lang.admin.flash.destroy_error.title,
-                            type: 'error'
-                        });
+                        if (data.result === 'error') {
+                            LMCApp.getNoty({
+                                message: LMCApp.lang.admin.flash.destroy_error.message,
+                                title: LMCApp.lang.admin.flash.destroy_error.title,
+                                type: 'error'
+                            });
+                            tr.fadeIn();
+                            return;
+                        }
+                        // call on delete error function
+                        if (theDataTable.tableOptions.onDeleteError) {
+                            theDataTable.tableOptions.onDeleteError.call(data);
+                        }
                         tr.fadeIn();
                     }
                 });
