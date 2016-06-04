@@ -56,7 +56,7 @@ var LMCApp = {
                 fast_edit: 'Hızlı Düzenle',
                 destroy: 'Sil',
                 activate: 'Aktifleştir',
-                not_activate: 'Aktifliği Kaldır',
+                not_activate: 'Aktifliği Kaldır'
             },
             flash: {
                 store_success: {
@@ -90,6 +90,22 @@ var LMCApp = {
                 destroy_self: {
                     title: 'Kendini Silemezsin',
                     message: 'Silme işlemi gerçekleşmedi. Kendini silemezsin!'
+                },
+                activate_success: {
+                    title: 'Aktifleştirme Tamamlandı',
+                    message: 'Aktifleştirme işlemi başarılı bir şekilde gerçekleşti.'
+                },
+                activate_error: {
+                    title: 'Aktifleştirilemedi',
+                    message: 'Aktifleştirme işlemi gerçekleşmedi. Lütfen daha sonra dene!'
+                },
+                not_activate_success: {
+                    title: 'Aktifliği Kaldırma Tamamlandı',
+                    message: 'Aktifliği kaldırma işlemi başarılı bir şekilde gerçekleşti.'
+                },
+                not_activate_error: {
+                    title: 'Aktiflik Kaldırılamadı',
+                    message: 'Aktifliği kaldırma işlemi gerçekleşmedi. Lütfen daha sonra dene!'
                 }
             }
         }

@@ -183,6 +183,22 @@ var DataTable = {
     },
 
     /**
+     * update cell
+     *
+     * @param row
+     * @param cell
+     * @param value
+     */
+    updateCell: function(row, cell, value)
+    {
+        var dtCell = this.getDataTable().cell(row, cell);
+        if (value !== null) {
+            dtCell.data(value);
+        }
+        return dtCell;
+    },
+
+    /**
      * get count selected records
      */
     countSelectedRecords: function()

@@ -1,8 +1,90 @@
+;var UserIndex;
 var Index = {
+
+    /**
+     * table columns
+     */
+    columns: {
+        check_id:   0,
+        control:    1,
+        id:         2,
+        photo:      3,
+        fullname:   4,
+        status:     5,
+        created_at: 6,
+        action:     7
+    },
+
 
     init: function () {
         LMCApp.initDatepicker();
         this.handleDatatable();
+        UserIndex = this;
+
+        // activate user
+        $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-activate',function()
+        {
+            var tr = $(this).closest('tr');
+            var table = theDataTable.getDataTable();
+            var row = table.row(tr);
+            $.ajax({
+                url: row.data().urls.activate,
+                success: function(data)
+                {
+                    if (data.result === 'success') {
+                        LMCApp.getNoty({
+                            message: LMCApp.lang.admin.flash.activate_success.message,
+                            title: LMCApp.lang.admin.flash.activate_success.title,
+                            type: 'success'
+                        });
+                        return;
+                    }
+                    LMCApp.getNoty({
+                        message: LMCApp.lang.admin.flash.activate_error.message,
+                        title: LMCApp.lang.admin.flash.activate_error.title,
+                        type: 'error'
+                    });
+                }
+            }).done(function( data ) {
+                if ( data.result === 'success' ) {
+                    LMCApp.hasTransaction = false;
+                    table.draw();
+                }
+            });
+        });
+
+        // not activate user
+        $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-not-activate',function()
+        {
+            var tr = $(this).closest('tr');
+            var table = theDataTable.getDataTable();
+            var row = table.row(tr);
+            $.ajax({
+                url: row.data().urls.not_activate,
+                success: function(data)
+                {
+                    if (data.result === 'success') {
+                        LMCApp.getNoty({
+                            message: LMCApp.lang.admin.flash.not_activate_success.message,
+                            title: LMCApp.lang.admin.flash.not_activate_success.title,
+                            type: 'success'
+                        });
+                        return;
+                    }
+                    LMCApp.getNoty({
+                        message: LMCApp.lang.admin.flash.not_activate_error.message,
+                        title: LMCApp.lang.admin.flash.not_activate_error.title,
+                        type: 'error'
+                    });
+                }
+            }).done(function( data ) {
+                if ( data.result === 'success' ) {
+                    LMCApp.hasTransaction = false;
+                    table.draw();
+                }
+            });
+        });
+
     },
 
     handleDatatable: function()
