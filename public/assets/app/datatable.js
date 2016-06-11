@@ -48,12 +48,12 @@ var DataTable = {
         theDataTable = this;
 
         // default settings
-        this.options = options;
-        this.tableOptions = $.extend(true, this.getDefaultOptions(), options);
+        theDataTable.options = options;
+        theDataTable.tableOptions = $.extend(true, theDataTable.getDefaultOptions(), options);
 
         // create table's jquery object
-        this.table = $(this.tableOptions.src);
-        this.tableContainer = this.table.parents('.table-container');
+        theDataTable.table = $(theDataTable.tableOptions.src);
+        theDataTable.tableContainer = theDataTable.table.parents('.table-container');
 
         // apply the special class that used to restyle the default datatable
         var tmp = $.fn.dataTableExt.oStdClasses;
@@ -63,7 +63,7 @@ var DataTable = {
         $.fn.dataTableExt.oStdClasses.sLengthSelect = "form-control input-xs input-sm input-inline";
 
         // initialize a datatable
-        this.dataTable = this.table.DataTable(this.tableOptions.dataTable);
+        theDataTable.dataTable = theDataTable.table.DataTable(theDataTable.tableOptions.dataTable);
 
         // revert back to default
         $.fn.dataTableExt.oStdClasses.sWrapper = tmp.sWrapper;
@@ -71,16 +71,16 @@ var DataTable = {
         $.fn.dataTableExt.oStdClasses.sLengthSelect = tmp.sLengthSelect;
 
         // get table wrapper
-        this.tableWrapper = this.table.parents('.dataTables_wrapper');
+        theDataTable.tableWrapper = theDataTable.table.parents('.dataTables_wrapper');
 
         // build table group actions panel
-        if ($('.table-actions-wrapper', this.tableContainer).size() === 1) {
-            $('.table-group-actions', this.tableWrapper).html($('.table-actions-wrapper', this.tableContainer).html()); // place the panel inside the wrapper
-            $('.table-actions-wrapper', this.tableContainer).remove(); // remove the template container
+        if ($('.table-actions-wrapper', theDataTable.tableContainer).size() === 1) {
+            $('.table-group-actions', theDataTable.tableWrapper).html($('.table-actions-wrapper', theDataTable.tableContainer).html()); // place the panel inside the wrapper
+            $('.table-actions-wrapper', theDataTable.tableContainer).remove(); // remove the template container
         }
 
         // handle group checkboxes check/uncheck
-        $('.group-checkable', this.table).change(function()
+        $('.group-checkable', theDataTable.table).change(function()
         {
             var set = theDataTable.table.find('tbody > tr > td:nth-child(1) input[type="checkbox"]');
             var checked = $(this).prop("checked");
@@ -92,20 +92,20 @@ var DataTable = {
         });
 
         // handle row's checkbox click
-        this.table.on('change', 'tbody > tr > td:nth-child(1) input[type="checkbox"]', function()
+        theDataTable.table.on('change', 'tbody > tr > td:nth-child(1) input[type="checkbox"]', function()
         {
             theDataTable.countSelectedRecords();
         });
 
         // handle filter submit button click
-        this.table.on('click', '.filter-submit', function(e)
+        theDataTable.table.on('click', '.filter-submit', function(e)
         {
             e.preventDefault();
             theDataTable.submitFilter();
         });
 
         // handle filter cancel button click
-        this.table.on('click', '.filter-cancel', function(e)
+        theDataTable.table.on('click', '.filter-cancel', function(e)
         {
             e.preventDefault();
             theDataTable.resetFilter();
@@ -119,7 +119,7 @@ var DataTable = {
         });
 
         // add event listener for opening and closing details
-        $(this.tableOptions.src + ' tbody').on('click','tr td.control',function()
+        $(theDataTable.tableOptions.src + ' tbody').on('click','tr td.control',function()
         {
             var tr = $(this).closest('tr');
             var row = theDataTable.getDataTable().row(tr);
@@ -140,7 +140,7 @@ var DataTable = {
         });
 
         // destroy api
-        $(this.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-destroy',function()
+        $(theDataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-destroy',function()
         {
             var tr = $(this).closest('tr');
             var row = theDataTable.getDataTable().row(tr);
@@ -182,6 +182,37 @@ var DataTable = {
                 tr.fadeIn();
             });
         });
+
+        // handle group actionsubmit button click
+        theDataTable.getTableWrapper().on('click', '.table-group-action-submit', function(e)
+        {
+            e.preventDefault();
+            var action = $(".table-group-action-input", theDataTable.getTableWrapper());
+            // seçilen satır sayısı 0'dan büyük ve action seçilmiş ise
+            if (action.val() != '' && theDataTable.getSelectedRowsCount() > 0) {
+                theDataTable.setAjaxParam('action', action.val());
+                theDataTable.setAjaxParam('id', theDataTable.getSelectedRows());
+                // ajax
+                theDataTable.dataTable.ajax.reload();
+                theDataTable.clearAjaxParams();
+            }
+            // eğer action seçilmemişse
+            else if (action.val() == '') {
+                LMCApp.getNoty({
+                    title: LMCApp.lang.admin.flash.not_select_action.title,
+                    message: LMCApp.lang.admin.flash.not_select_action.message,
+                    type: 'error'
+                });
+            }
+            // eğer satır seçilmediyse
+            else if (theDataTable.getSelectedRowsCount() === 0) {
+                LMCApp.getNoty({
+                    title: LMCApp.lang.admin.flash.not_select_rows.title,
+                    message: LMCApp.lang.admin.flash.not_select_rows.message,
+                    type: 'error'
+                });
+            }
+        });
     },
 
     /**
@@ -216,13 +247,13 @@ var DataTable = {
 
     getSelectedRowsCount: function()
     {
-        return $('tbody > tr > td:nth-child(1) input[type="checkbox"]:checked', table).size();
+        return $('tbody > tr > td:nth-child(1) input[type="checkbox"]:checked', this.table).size();
     },
 
     getSelectedRows: function()
     {
         var rows = [];
-        $('tbody > tr > td:nth-child(1) input[type="checkbox"]:checked', table).each(function() {
+        $('tbody > tr > td:nth-child(1) input[type="checkbox"]:checked', this.table).each(function() {
             rows.push($(this).val());
         });
 
@@ -251,7 +282,7 @@ var DataTable = {
             theDataTable.setAjaxParam($(this).attr("name"), $(this).val());
         });
 
-        this.dataTable.ajax.reload();
+        theDataTable.dataTable.ajax.reload();
     },
 
     /**

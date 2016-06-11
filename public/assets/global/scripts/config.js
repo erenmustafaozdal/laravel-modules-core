@@ -106,6 +106,14 @@ var LMCApp = {
                 not_activate_error: {
                     title: 'Aktiflik Kaldırılamadı',
                     message: 'Aktifliği kaldırma işlemi gerçekleşmedi. Lütfen daha sonra dene!'
+                },
+                not_select_rows: {
+                    title: 'Veri Seçilmedi',
+                    message: 'Veri tablosunda hiçbir satır seçilmedi.'
+                },
+                not_select_action: {
+                    title: 'Eylem Seçilmedi',
+                    message: 'Veri tablosunda işlem yapmak için hiçbir eylem seçilmedi.'
                 }
             }
         }
