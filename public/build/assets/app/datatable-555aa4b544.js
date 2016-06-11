@@ -187,31 +187,59 @@ var DataTable = {
         theDataTable.getTableWrapper().on('click', '.table-group-action-submit', function(e)
         {
             e.preventDefault();
-            var action = $(".table-group-action-input", theDataTable.getTableWrapper());
-            // seçilen satır sayısı 0'dan büyük ve action seçilmiş ise
-            if (action.val() != '' && theDataTable.getSelectedRowsCount() > 0) {
-                theDataTable.setAjaxParam('action', action.val());
-                theDataTable.setAjaxParam('id', theDataTable.getSelectedRows());
-                // ajax
-                theDataTable.dataTable.ajax.reload();
-                theDataTable.clearAjaxParams();
-            }
+            var input = $(".table-group-action-input", theDataTable.getTableWrapper());
+            var action = input;
             // eğer action seçilmemişse
-            else if (action.val() == '') {
+            if (action.val() == '') {
                 LMCApp.getNoty({
                     title: LMCApp.lang.admin.flash.not_select_action.title,
                     message: LMCApp.lang.admin.flash.not_select_action.message,
                     type: 'error'
                 });
+                return;
             }
             // eğer satır seçilmediyse
-            else if (theDataTable.getSelectedRowsCount() === 0) {
+            if (theDataTable.getSelectedRowsCount() === 0) {
                 LMCApp.getNoty({
                     title: LMCApp.lang.admin.flash.not_select_rows.title,
                     message: LMCApp.lang.admin.flash.not_select_rows.message,
                     type: 'error'
                 });
+                return;
             }
+            // seçilen satır sayısı 0'dan büyük ve action seçilmiş ise
+            theDataTable.setAjaxParam('action', action.val());
+            theDataTable.setAjaxParam('id', theDataTable.getSelectedRows());
+            $.ajax({
+                url: apiGroupAction,
+                data: theDataTable.ajaxParams,
+                success: function(data)
+                {
+                    if (data.result === 'success') {
+                        LMCApp.getNoty({
+                            title: LMCApp.lang.admin.flash.group_action_success.title,
+                            message: LMCApp.lang.admin.flash.group_action_success.message,
+                            type: 'success'
+                        });
+                        return;
+                    }
+
+                    LMCApp.getNoty({
+                        title: LMCApp.lang.admin.flash.group_action_error.title,
+                        message: LMCApp.lang.admin.flash.group_action_error.message,
+                        type: 'error'
+                    });
+                }
+            }).done(function( data ) {
+                if ( data.result === 'success' ) {
+                    LMCApp.hasTransaction = false;
+                    theDataTable.dataTable.ajax.reload();
+                    theDataTable.clearAjaxParams();
+                }
+            });
+
+            // seçim sıfırlanır
+            input.val('');
         });
     },
 
@@ -359,7 +387,7 @@ var DataTable = {
      * get table container
      * @return table container
      */
-    gettableContainer: function()
+    getTableContainer: function()
     {
         return this.tableContainer;
     },
