@@ -1,21 +1,6 @@
 ;var UserIndex;
 var Index = {
 
-    /**
-     * table columns
-     */
-    columns: {
-        check_id:   0,
-        control:    1,
-        id:         2,
-        photo:      3,
-        fullname:   4,
-        status:     5,
-        created_at: 6,
-        action:     7
-    },
-
-
     init: function () {
         LMCApp.initDatepicker();
         this.handleDatatable();
@@ -138,6 +123,13 @@ var Index = {
                         '</tr>' +
                     '</tbody>' +
                 '</table>';
+            },
+
+            /**
+             * export data table options for columns
+             */
+            exportOptions: {
+                columns: [2,4,5,6]
             },
             dataTable: {
                 columns: [

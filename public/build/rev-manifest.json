@@ -1,5 +1,5 @@
 {
-  "assets/app/datatable.js": "assets/app/datatable-e841c5d0bb.js",
+  "assets/app/datatable.js": "assets/app/datatable-096bf2c1a1.js",
   "assets/app/editor.js": "assets/app/editor-33629b62dd.js",
   "assets/app/validation.js": "assets/app/validation-e251d9cb28.js",
   "assets/global/scripts/config.js": "assets/global/scripts/config-03a50ec74a.js",
@@ -10,6 +10,6 @@
   "assets/pages/js/loaders/admin.js": "assets/pages/js/loaders/admin-ab462b7e6c.js",
   "assets/pages/js/loaders/login.js": "assets/pages/js/loaders/login-d9915ca653.js",
   "assets/pages/scripts/login.js": "assets/pages/scripts/login-75b3c3b18e.js",
-  "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-00980ebc82.js",
+  "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-9ae915d622.js",
   "assets/pages/scripts/user/user-form.js": "assets/pages/scripts/user/user-form-f73b985adf.js"
 }
