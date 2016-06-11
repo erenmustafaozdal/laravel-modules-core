@@ -6,6 +6,7 @@ var DataTable = {
      * @var object
      */
     tableOptions: {},
+    options: {},
 
     /**
      * table jquery object
@@ -47,6 +48,7 @@ var DataTable = {
         theDataTable = this;
 
         // default settings
+        this.options = options;
         this.tableOptions = $.extend(true, this.getDefaultOptions(), options);
 
         // create table's jquery object
@@ -415,13 +417,13 @@ var DataTable = {
                     }
                 },
                 buttons: [
-                    { extend: 'print',key: { key: 'p', altKey: true, shiftKey: true } },
-                    { extend: 'copy',key: { key: 'c', altKey: true, shiftKey: true } },
-                    { extend: 'pdf',key: { key: 'd', altKey: true, shiftKey: true } },
-                    { extend: 'excel',key: { key: 'e', altKey: true, shiftKey: true } },
-                    { extend: 'csv',key: { key: 'v', altKey: true, shiftKey: true } },
+                    { extend: 'print',key: { key: 'p', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
+                    { extend: 'copy',key: { key: 'c', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
+                    { extend: 'pdf',key: { key: 'd', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
+                    { extend: 'excel',key: { key: 'e', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
+                    { extend: 'csv',key: { key: 'v', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
                     {
-                        text: 'Reload', key: { key: 'r', altKey: true, shiftKey: true },
+                        text: 'Reload', key: { key: 'r', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions,
                         action: function ( e, dt, node, config ) {
                             dt.ajax.reload();
                         }
