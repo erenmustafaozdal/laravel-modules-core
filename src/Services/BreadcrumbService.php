@@ -48,7 +48,7 @@ class BreadcrumbService
     {
         $path_args = explode('\\', $action);
         $module = snake_case($path_args[1]);
-        return str_replace('_','-',$module);
+        return 'laravel-modules-core::'.str_replace('_','-',$module).'/';
     }
 
     /**
@@ -61,11 +61,7 @@ class BreadcrumbService
         $breadcrumbs  = '<ul class="page-breadcrumb breadcrumb">';
         // admin dashboard
         if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-dashboard-module')))) {
-            $breadcrumbs  .= '<li>';
-            $breadcrumbs  .= '<a href="'.route('admin.dashboard.index').'">';
-            $breadcrumbs  .= trans('laravel-dashboard-module::admin.dashboard.index');
-            $breadcrumbs  .= '</a>';
-            $breadcrumbs  .= '</li>';
+            $breadcrumbs .= $this->getDashboardBreadcrumb();
         }
         // if admin dashboard index return
         if(strpos($this->route_name, 'dashboard')  !== false) {
@@ -75,15 +71,36 @@ class BreadcrumbService
 
         $breadcrumbs  .= '<li>';
         $parent_text   = strpos($this->route_name, 'index')  !== false ?
-            trans($this->module_name.'::'.$this->route_name) :
-            trans($this->module_name.'::'.$this->index_route_name);
+            trans($this->module_name.$this->route_name) :
+            trans($this->module_name.$this->index_route_name);
 
         $breadcrumbs  .= strpos($this->route_name, 'index')  !== false ?
             $parent_text :
-            '<a href="'.route($this->index_route_name).'">'.$parent_text.'</a>';
+            '<a href="'.route($this->index_route_name).'">'.$parent_text.'</a><i class="fa fa-circle"></i>';
 
         $breadcrumbs  .= '</li>';
+
+        if (strpos($this->route_name, 'index')  === false) {
+            $breadcrumbs  .= '<li> <span class="active"> '.trans($this->module_name.$this->route_name).'</span> </li>';
+        }
+
         $breadcrumbs .= '</ul>';
+        return $breadcrumbs;
+    }
+
+    /**
+     * get dashboard breadcrumb
+     *
+     * @return string
+     */
+    public function getDashboardBreadcrumb()
+    {
+        $breadcrumbs  .= '<li>';
+        $breadcrumbs  .= '<a href="'.route('admin.dashboard.index').'">';
+        $breadcrumbs  .= trans('laravel-modules-core::laravel-dashboard-module/admin.dashboard.index');
+        $breadcrumbs  .= '</a>';
+        $breadcrumbs  .= '<i class="fa fa-circle"></i>';
+        $breadcrumbs  .= '</li>';
         return $breadcrumbs;
     }
 }

@@ -69,20 +69,20 @@ class MenuMiddleware
                     ->attribute('active', 'admin.user');
                 $user->add(trans('laravel-modules-core::laravel-user-module/admin.menu.user.all'), ['route' => 'admin.user.index'])
                     ->attribute('data-icon', 'icon-list')
-                    ->attribute('active', 'admin.user');
+                    ->attribute('active', 'admin.user.index');
                 $user->add(trans('laravel-modules-core::laravel-user-module/admin.menu.user.add'), ['route' => 'admin.user.create'])
                     ->attribute('data-icon', 'icon-plus')
-                    ->attribute('active', 'admin.user');
+                    ->attribute('active', 'admin.user.create');
 
                 $role = $menu->add(trans('laravel-modules-core::laravel-user-module/admin.menu.role.root'), 'javascript:;')
                     ->attribute('data-icon', 'icon-users')
                     ->attribute('active', 'admin.role');
                 $role->add(trans('laravel-modules-core::laravel-user-module/admin.menu.role.all'), ['route' => 'admin.role.index'])
                     ->attribute('data-icon', 'icon-list')
-                    ->attribute('active', 'admin.role');
+                    ->attribute('active', 'admin.role.index');
                 $role->add(trans('laravel-modules-core::laravel-user-module/admin.menu.role.add'), ['route' => 'admin.role.create'])
                     ->attribute('data-icon', 'icon-plus')
-                    ->attribute('active', 'admin.role');
+                    ->attribute('active', 'admin.role.create');
             }
         });
     }

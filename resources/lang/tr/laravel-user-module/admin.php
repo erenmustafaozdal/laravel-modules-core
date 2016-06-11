@@ -12,7 +12,8 @@ return [
         'index_description'         => 'Sistem içindeki bütün yöneticiler',
         'edit'                      => 'Yönetici Düzenle',
         'create'                    => 'Yönetici Ekle',
-        'show'                      => 'Yönetici Bilgileri'
+        'show'                      => 'Yönetici Bilgileri',
+        'show_description'          => ':user hakkında bilgiler'
     ],
     'role' => [
         'index'                     => 'Yönetici Rolleri',

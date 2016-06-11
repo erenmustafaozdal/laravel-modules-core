@@ -7,7 +7,7 @@
 </a>
 <ul class="dropdown-menu dropdown-menu-default">
     @foreach($menu_topbarUserLogin->roots() as $item)
-        <li {{ (strpos(Route::currentRouteName(),$item->attribute('active')) !== false) ? 'class=active' : '' }}>
+        <li>
             <a href="{{ $item->url() }}">
                 <i class="{{ $item->attribute('data-icon') }}"></i>
                 <span>{!! $item->title !!}</span>
