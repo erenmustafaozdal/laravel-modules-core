@@ -114,6 +114,14 @@ var LMCApp = {
                 not_select_action: {
                     title: 'Eylem Seçilmedi',
                     message: 'Veri tablosunda işlem yapmak için hiçbir eylem seçilmedi.'
+                },
+                group_action_success: {
+                    title: 'Toplu İşlem Tamamlandı',
+                    message: 'Toplu işlem başarılı bir şekilde gerçekleşti.'
+                },
+                group_action_error: {
+                    title: 'Toplu İşlem Gerçekleşmedi',
+                    message: 'Toplu işlem gerçekleşmedi. Lütfen daha sonra dene!'
                 }
             }
         }
