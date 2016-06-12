@@ -52,6 +52,11 @@
         
         {{-- Portlet Body --}}
         <div class="portlet-body profile">
+
+            {{-- Error Messages --}}
+            @include('laravel-modules-core::partials.error_message')
+            {{-- /Error Messages --}}
+
             <div class="row profile-account">
                 
                 {{-- Profile Navigation --}}

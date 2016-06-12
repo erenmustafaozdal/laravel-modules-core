@@ -1,16 +1,21 @@
 <div id="edit_info" class="tab-pane form">
-    <form action="{!! route('admin.user.update', ['id' => $user->id]) !!}" method="post">
+    {!! Form::open([
+        'method'    => 'PATCH',
+        'url'       => route('admin.user.update', ['id' => $user->id])
+    ]) !!}
         
         {{-- Form Action Top --}}
         <div class="form-actions top">
             <div class="row">
                 <div class="col-md-offset-3 col-md-9">
-                    <button type="button" class="btn red btn-outline">
-                        {!! trans('laravel-modules-core::admin.ops.cancel') !!}
-                    </button>
-                    <button type="submit" class="btn blue btn-outline">
-                        {!! trans('laravel-modules-core::admin.ops.submit') !!}
-                    </button>
+                    {!! Form::button( trans('laravel-modules-core::admin.ops.cancel'), [
+                        'class' => 'btn red btn-outline',
+                        'type' => 'reset'
+                    ]) !!}
+                    {!! Form::button( trans('laravel-modules-core::admin.ops.submit'), [
+                        'class' => 'btn blue btn-outline',
+                        'type' => 'submit'
+                    ]) !!}
                 </div>
             </div>
         </div>
@@ -21,7 +26,9 @@
             {{-- First Name --}}
             <div class="form-group">
                 <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!}</label>
-                <input type="text" name="first_name" class="form-control" placeholder="{{ $user->first_name }}">
+                {!! Form::text( 'first_name', $user->first_name, [
+                    'class'         => 'form-control form-control-solid placeholder-no-fix'
+                ]) !!}
             </div>
             {{-- /First Name --}}
 
@@ -29,7 +36,9 @@
             {{-- Last Name --}}
             <div class="form-group">
                 <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}</label>
-                <input type="text" name="last_name" class="form-control" placeholder="{{ $user->last_name }}">
+                {!! Form::text( 'last_name', $user->last_name, [
+                    'class'         => 'form-control form-control-solid placeholder-no-fix'
+                ]) !!}
             </div>
             {{-- /Last Name --}}
 
@@ -37,7 +46,10 @@
             {{-- Email --}}
             <div class="form-group">
                 <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.email') !!}</label>
-                <input type="text" class="form-control" value="{{ $user->email }}" disabled>
+                {!! Form::text( 'email,', $user->email, [
+                    'class'         => 'form-control form-control-solid placeholder-no-fix',
+                    'disabled'      => 'disabled'
+                ]) !!}
                 <span class="help-block text-info">
                     {!! lmcTrans('laravel-user-module/admin.helpers.user.email_not_changeable') !!}
                 </span>
@@ -48,12 +60,13 @@
             <div class="form-group last">
                 <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.status') !!}</label>
                 <div class="clearfix"></div>
-                <input type="checkbox" class="make-switch" name="is_active" value="1" {{ $user->is_active ? 'checked' : '' }}
-                       data-on-text="{!! lmcTrans('laravel-user-module/admin.fields.user.active') !!}"
-                       data-on-color="success"
-                       data-off-text="{!! lmcTrans('laravel-user-module/admin.fields.user.not_active') !!}"
-                       data-off-color="danger"
-                >
+                {!! Form::checkbox( 'is_active', 1, $user->is_active, [
+                    'class'         => 'make-switch',
+                    'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.user.active'),
+                    'data-on-color' => 'success',
+                    'data-off-text' => lmcTrans('laravel-user-module/admin.fields.user.not_active'),
+                    'data-off-color'=> 'danger',
+                ]) !!}
                 <span class="help-block"> {!! lmcTrans('laravel-user-module/admin.helpers.user.is_active_help') !!} </span>
             </div>
             {{-- /Status --}}
@@ -64,15 +77,17 @@
         <div class="form-actions fluid">
             <div class="row">
                 <div class="col-md-offset-3 col-md-9">
-                    <button type="button" class="btn red btn-outline">
-                        {!! trans('laravel-modules-core::admin.ops.cancel') !!}
-                    </button>
-                    <button type="submit" class="btn blue btn-outline">
-                        {!! trans('laravel-modules-core::admin.ops.submit') !!}
-                    </button>
+                    {!! Form::button( trans('laravel-modules-core::admin.ops.cancel'), [
+                        'class' => 'btn red btn-outline',
+                        'type' => 'reset'
+                    ]) !!}
+                    {!! Form::button( trans('laravel-modules-core::admin.ops.submit'), [
+                        'class' => 'btn blue btn-outline',
+                        'type' => 'submit'
+                    ]) !!}
                 </div>
             </div>
         </div>
         {{-- /Form Action Bottom --}}
-    </form>
+    {!! Form::close() !!}
 </div>

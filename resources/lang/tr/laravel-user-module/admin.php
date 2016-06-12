@@ -64,7 +64,7 @@ return [
     // helpers
     'helpers' => [
         'user' => [
-            'is_active_help'        => 'Hesabın aktif olması, yöneticinin sistem içine girmesini sağlar. Hesabı aktif olmayan yöneticiler <em>Yönetim Paneli</em>\'ne giriş yapamaz.',
+            'is_active_help'        => 'Hesabın aktif olması, yöneticinin sistem içine girmesini sağlar. Hesabı aktif olmayan yöneticiler <em class="label label-info">Yönetim Paneli</em>\'ne giriş yapamaz.',
             'email_not_changeable'  => 'E-posta adresi değiştirilemez.'
         ]
     ],

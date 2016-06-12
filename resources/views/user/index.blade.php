@@ -145,6 +145,11 @@
 
         {{-- Table Portlet Body --}}
         <div class="portlet-body">
+
+            {{-- Error Messages --}}
+            @include('laravel-modules-core::partials.error_message')
+            {{-- /Error Messages --}}
+
             <div class="table-container">
                 {{-- Table Actions --}}
                 <div class="table-actions-wrapper">
