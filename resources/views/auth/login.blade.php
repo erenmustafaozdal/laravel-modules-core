@@ -1,7 +1,7 @@
 @extends(config('laravel-user-module.views.auth.layout'))
 
 @section('title')
-    {!! trans('laravel-modules-core::laravel-user-module/auth.login.title') !!}
+    {!! lmcTrans('laravel-user-module/auth.login.title') !!}
 @endsection
 
 @section('script')
@@ -29,7 +29,7 @@
         'url'       => route('postLogin'),
         'class'     => 'login-form'
     ]) !!}
-        <h3 class="form-title font-green">{!! trans('laravel-modules-core::laravel-user-module/auth.login.title') !!}</h3>
+        <h3 class="form-title font-green">{!! lmcTrans('laravel-user-module/auth.login.title') !!}</h3>
 
         {{-- Error Messages --}}
         @include('laravel-modules-core::partials.error_message')
@@ -37,42 +37,42 @@
 
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">
-                <span>{!! trans('laravel-modules-core::laravel-user-module/auth.login.email') !!}</span>
+                <span>{!! lmcTrans('laravel-user-module/auth.login.email') !!}</span>
             </label>
             {!! Form::text( 'email', null, [
                 'class'         => 'form-control form-control-solid placeholder-no-fix',
-                'placeholder'   => trans('laravel-modules-core::laravel-user-module/auth.login.email'),
+                'placeholder'   => lmcTrans('laravel-user-module/auth.login.email'),
                 'value'         => old('email'),
                 'autocomplete'  => 'off'
             ]) !!}
         </div>
         <div class="form-group">
             <label class="control-label visible-ie8 visible-ie9">
-                <span>{!! trans('laravel-modules-core::laravel-user-module/auth.login.password') !!}</span>
+                <span>{!! lmcTrans('laravel-user-module/auth.login.password') !!}</span>
             </label>
             {!! Form::password( 'password', [
                 'class'         => 'form-control form-control-solid placeholder-no-fix',
-                'placeholder'   => trans('laravel-modules-core::laravel-user-module/auth.login.password'),
+                'placeholder'   => lmcTrans('laravel-user-module/auth.login.password'),
                 'autocomplete'  => 'off'
             ]) !!}
         </div>
         <div class="form-actions">
-            {!! Form::button( trans('laravel-modules-core::laravel-user-module/auth.login.submit'), [
+            {!! Form::button( lmcTrans('laravel-user-module/auth.login.submit'), [
                 'class' => 'btn green uppercase',
                 'type' => 'submit'
             ]) !!}
             <label class="rememberme check">
                 <input type="checkbox" name="remember" value="1" />
-                <span>{!! trans('laravel-modules-core::laravel-user-module/auth.login.remember') !!}</span>
+                <span>{!! lmcTrans('laravel-user-module/auth.login.remember') !!}</span>
             </label>
             <a href="{!! route('getForgetPassword') !!}" id="forget-password" class="forget-password">
-                <span>{!! trans('laravel-modules-core::laravel-user-module/auth.login.forget_password') !!}</span>
+                <span>{!! lmcTrans('laravel-user-module/auth.login.forget_password') !!}</span>
             </a>
         </div>
         <div class="create-account">
             <p>
                 <a href="{!! route('getRegister') !!}" id="register-btn" class="uppercase">
-                    <span>{!! trans('laravel-modules-core::laravel-user-module/auth.login.register') !!}</span>
+                    <span>{!! lmcTrans('laravel-user-module/auth.login.register') !!}</span>
                 </a>
             </p>
         </div>

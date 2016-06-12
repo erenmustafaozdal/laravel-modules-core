@@ -28,3 +28,23 @@ if (! function_exists('lmcElixir')) {
         throw new InvalidArgumentException("File {$file} not defined in asset manifest.");
     }
 }
+
+
+
+/*
+|--------------------------------------------------------------------------
+| laravel trans helper hacked
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('lmcTrans')) {
+    /**
+     * translate given message with laravel trans function
+     *
+     * @param  string  $id
+     * @return string
+     */
+    function lmcTrans($id)
+    {
+        return trans('laravel-modules-core::'.$id);
+    }
+}

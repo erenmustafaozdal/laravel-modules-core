@@ -36,20 +36,6 @@ return [
         ],
     ],
 
-    // operations
-    'ops' => [
-        'action'                    => 'Eylem',
-        'select'                    => 'Seç...',
-        'activate'                  => 'Aktifleştir',
-        'not_activate'              => 'Aktifliği kaldır',
-        'destroy'                   => 'Sil',
-        'submit'                    => 'Gönder',
-        'search'                    => 'Ara',
-        'reset'                     => 'Temizle',
-        'date_from'                 => 'Tarihinden',
-        'date_to'                   => 'Tarihine',
-    ],
-
     // fields
     'fields' => [
         'user' => [
@@ -62,10 +48,24 @@ return [
             'password_comfirmation' => 'Şifre Onayı',
             'status'                => 'Durum',
             'last_login'            => 'Son Giriş',
-            'created_at'            => 'Kayıt',
+            'last_login_description'=> ':date giriş yaptı',
             'active'                => 'Aktif',
+            'active_user'           => 'Aktif yönetici',
             'not_active'            => 'Aktif Değil',
-            'is_active_help'        => 'Hesabını aktifleştir ve giriş yapmasına izin ver. Ya da şimdilik sadece bilgileri ekle.',
+            'not_active_user'       => 'Aktif olmayan yönetici',
+
+            'overview'              => 'Genel Bilgiler',
+            'edit_info'             => 'Bilgileri Düzenle',
+            'change_avatar'         => 'Fotoğrafı Değiştir',
+            'change_password'       => 'Şifreyi Değiştir',
+        ]
+    ],
+
+    // helpers
+    'helpers' => [
+        'user' => [
+            'is_active_help'        => 'Hesabın aktif olması, yöneticinin sistem içine girmesini sağlar. Hesabı aktif olmayan yöneticiler <em>Yönetim Paneli</em>\'ne giriş yapamaz.',
+            'email_not_changeable'  => 'E-posta adresi değiştirilemez.'
         ]
     ],
 

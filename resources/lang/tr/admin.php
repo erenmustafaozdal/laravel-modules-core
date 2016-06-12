@@ -49,9 +49,22 @@ return [
 
     // operations
     'ops' => [
+        // actions
+        'action'                            => 'Eylem',
+        'select'                            => 'Seç...',
+        'activate'                          => 'Aktifleştir',
+        'not_activate'                      => 'Aktifliği kaldır',
+        'destroy'                           => 'Sil',
+        'submit'                            => 'Gönder',
+        'search'                            => 'Ara',
+        'reset'                             => 'Temizle',
         'add'                               => 'Yeni Ekle',
         'fast_add'                          => 'Hızlı Ekle',
         'cancel'                            => 'İptal',
+        // description
+        'date_from'                         => 'Tarihinden',
+        'date_to'                           => 'Tarihine',
+        // tools
         'tools'                             => 'Araçlar',
         'print'                             => 'Yazdır',
         'copy'                              => 'Kopyala',
@@ -59,6 +72,7 @@ return [
         'excel'                             => 'Excel',
         'csv'                               => 'CSV',
         'reload'                            => 'Tekrar Yükle',
+        // shortcuts
         'shortcut' => [
             'print'                         => 'Kısayol: (alt + shift + p)',
             'copy'                          => 'Kısayol: (alt + shift + c)',
@@ -68,4 +82,12 @@ return [
             'reload'                        => 'Kısayol: (alt + shift + r)',
         ]
     ],
+
+    // fields
+    'fields' => [
+        'created_at'                        => 'Kayıt Tarihi',
+        'created_at_description'            => ':date kaydedildi',
+        'updated_at'                        => 'Güncelleme Tarihi',
+        'updated_at_description'            => ':date güncellendi',
+    ]
 ];

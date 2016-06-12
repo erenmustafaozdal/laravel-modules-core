@@ -1,12 +1,12 @@
 @extends(config('laravel-user-module.views.user.layout'))
 
 @section('title')
-    {!! trans('laravel-modules-core::laravel-user-module/admin.user.index') !!}
+    {!! lmcTrans('laravel-user-module/admin.user.index') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! trans('laravel-modules-core::laravel-user-module/admin.user.index') !!}
-        <small>{!! trans('laravel-modules-core::laravel-user-module/admin.user.index_description') !!}</small>
+    <h1>{!! lmcTrans('laravel-user-module/admin.user.index') !!}
+        <small>{!! lmcTrans('laravel-user-module/admin.user.index_description') !!}</small>
     </h1>
 @endsection
 
@@ -80,22 +80,18 @@
             <div class="caption">
                 <i class="icon-users font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! trans('laravel-modules-core::laravel-user-module/admin.user.index') !!}
+                    {!! lmcTrans('laravel-user-module/admin.user.index') !!}
                 </span>
             </div>
             <div class="actions">
-                <div class="btn-group">
-                    <a class="btn green btn-outline" data-toggle="modal" href="#editor-modal" data-action="fast-add">
-                        {!! trans('laravel-modules-core::admin.ops.fast_add') !!}
-                        <i class="fa fa-plus"></i>
-                    </a>
-                </div>
-                <div class="btn-group">
-                    <a class="btn green btn-outline" href="{!! route('admin.user.create') !!}">
-                        {!! trans('laravel-modules-core::admin.ops.add') !!}
-                        <i class="fa fa-plus"></i>
-                    </a>
-                </div>
+                <a class="btn green btn-outline" data-toggle="modal" href="#editor-modal" data-action="fast-add">
+                    {!! trans('laravel-modules-core::admin.ops.fast_add') !!}
+                    <i class="fa fa-plus"></i>
+                </a>
+                <a class="btn green btn-outline" href="{!! route('admin.user.create') !!}">
+                    {!! trans('laravel-modules-core::admin.ops.add') !!}
+                    <i class="fa fa-plus"></i>
+                </a>
                 <div class="btn-group">
                     <a class="btn red btn-outline" href="javascript:;" data-toggle="dropdown">
                         <i class="fa fa-share"></i>
@@ -154,13 +150,13 @@
                 <div class="table-actions-wrapper">
                     <span> </span>
                     <select class="table-group-action-input form-control input-inline input-small input-sm">
-                        <option value="">{!! trans('laravel-modules-core::laravel-user-module/admin.ops.select') !!}</option>
-                        <option value="activate">{!! trans('laravel-modules-core::laravel-user-module/admin.ops.activate') !!}</option>
-                        <option value="not_activate">{!! trans('laravel-modules-core::laravel-user-module/admin.ops.not_activate') !!}</option>
-                        <option value="destroy">{!! trans('laravel-modules-core::laravel-user-module/admin.ops.destroy') !!}</option>
+                        <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
+                        <option value="activate">{!! trans('laravel-modules-core::admin.ops.activate') !!}</option>
+                        <option value="not_activate">{!! trans('laravel-modules-core::admin.ops.not_activate') !!}</option>
+                        <option value="destroy">{!! trans('laravel-modules-core::admin.ops.destroy') !!}</option>
                     </select>
                     <button class="btn btn-sm green btn-outline table-group-action-submit">
-                        <i class="fa fa-check"></i> {!! trans('laravel-modules-core::laravel-user-module/admin.ops.submit') !!}</button>
+                        <i class="fa fa-check"></i> {!! trans('laravel-modules-core::admin.ops.submit') !!}</button>
                 </div>
                 {{-- /Table Actions --}}
 
@@ -170,33 +166,33 @@
                         <tr role="row" class="heading">
                             <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
                             <th class="all" width="2%"></th>
-                            <th class="all" width="5%"> {!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.id') !!} </th>
-                            <th class="all" width="5%"> {!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.photo') !!} </th>
-                            <th class="all" width="100"> {!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.first_name') !!} </th>
-                            <th class="all" width="10%"> {!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.status') !!} </th>
-                            <th class="all" width="20%"> {!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.created_at') !!} </th>
-                            <th class="all" width="10%"> {!! trans('laravel-modules-core::laravel-user-module/admin.ops.action') !!} </th>
+                            <th class="all" width="5%"> {!! lmcTrans('laravel-user-module/admin.fields.user.id') !!} </th>
+                            <th class="all" width="5%"> {!! lmcTrans('laravel-user-module/admin.fields.user.photo') !!} </th>
+                            <th class="all" width="100"> {!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} </th>
+                            <th class="all" width="10%"> {!! lmcTrans('laravel-user-module/admin.fields.user.status') !!} </th>
+                            <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
+                            <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
                         </tr>
                         <tr role="row" class="filter">
                             <td></td>
                             <td></td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.id') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.id') !!}">
                             </td>
                             <td> </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="first_name" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.first_name') !!} - {!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.last_name') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="first_name" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} - {!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}">
                             </td>
                             <td>
                                 <select name="status" class="form-control form-filter input-sm">
-                                    <option value="">{!! trans('laravel-modules-core::laravel-user-module/admin.ops.select') !!}</option>
-                                    <option value="1">{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.active') !!}</option>
-                                    <option value="0">{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.not_active') !!}</option>
+                                    <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
+                                    <option value="1">{!! trans('laravel-modules-core::admin.fields.user.active') !!}</option>
+                                    <option value="0">{!! trans('laravel-modules-core::admin.fields.user.not_active') !!}</option>
                                 </select>
                             </td>
                             <td>
                                 <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
-                                    <input type="text" class="form-control form-filter input-sm" readonly name="created_at_from" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.ops.date_from') !!}">
+                                    <input type="text" class="form-control form-filter input-sm" readonly name="created_at_from" placeholder="{!! trans('laravel-modules-core::admin.ops.date_from') !!}">
                                         <span class="input-group-btn">
                                             <button class="btn btn-sm default" type="button">
                                                 <i class="fa fa-calendar"></i>
@@ -204,7 +200,7 @@
                                         </span>
                                 </div>
                                 <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
-                                    <input type="text" class="form-control form-filter input-sm" readonly name="created_at_to" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.ops.date_to') !!}">
+                                    <input type="text" class="form-control form-filter input-sm" readonly name="created_at_to" placeholder="{!! trans('laravel-modules-core::admin.ops.date_to') !!}">
                                         <span class="input-group-btn">
                                             <button class="btn btn-sm default" type="button">
                                                 <i class="fa fa-calendar"></i>
@@ -216,12 +212,12 @@
                                 <div class="margin-bottom-5">
                                     <button class="btn btn-sm green btn-outline filter-submit margin-bottom">
                                         <i class="fa fa-search"></i>
-                                        {!! trans('laravel-modules-core::laravel-user-module/admin.ops.search') !!}
+                                        {!! trans('laravel-modules-core::admin.ops.search') !!}
                                     </button>
                                 </div>
                                 <button class="btn btn-sm red btn-outline filter-cancel">
                                     <i class="fa fa-times"></i>
-                                    {!! trans('laravel-modules-core::laravel-user-module/admin.ops.reset') !!}
+                                    {!! trans('laravel-modules-core::admin.ops.reset') !!}
                                 </button>
                             </td>
                         </tr>
@@ -249,36 +245,36 @@
                         {{-- form elements --}}
                         <form class="form">
                             <div class="form-group">
-                                <label class="control-label">{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.first_name') !!}</label>
-                                <input type="text" name="first_name" class="form-control" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.first_name') !!}">
+                                <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!}</label>
+                                <input type="text" name="first_name" class="form-control" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!}">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.last_name') !!}</label>
-                                <input type="text" name="last_name" class="form-control" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.last_name') !!}">
+                                <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}</label>
+                                <input type="text" name="last_name" class="form-control" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.email') !!}</label>
-                                <input type="text" name="email" class="form-control" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.email') !!}">
+                                <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.email') !!}</label>
+                                <input type="text" name="email" class="form-control" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.email') !!}">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.password') !!}</label>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.password') !!}">
+                                <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.password') !!}</label>
+                                <input type="password" name="password" id="password" class="form-control" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.password') !!}">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.password_comfirmation') !!}</label>
-                                <input type="password" name="password_confirmation" class="form-control" placeholder="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.password_comfirmation') !!}">
+                                <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.password_comfirmation') !!}</label>
+                                <input type="password" name="password_confirmation" class="form-control" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.password_comfirmation') !!}">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.status') !!}</label>
+                                <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.status') !!}</label>
                                 <div class="clearfix"></div>
                                 <input type="checkbox" class="make-switch" id="is_active" name="is_active" 
-                                       data-on-text="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.active') !!}"
+                                       data-on-text="{!! lmcTrans('laravel-user-module/admin.fields.user.active') !!}"
                                        data-on-color="success"
-                                       data-off-text="{!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.not_active') !!}"
+                                       data-off-text="{!! lmcTrans('laravel-user-module/admin.fields.user.not_active') !!}"
                                        data-off-color="danger"
                                 >
-                                <span class="help-block"> {!! trans('laravel-modules-core::laravel-user-module/admin.fields.user.is_active_help') !!} </span>
                             </div>
+                            <span class="help-block"> {!! lmcTrans('laravel-user-module/admin.helpers.user.is_active_help') !!} </span>
                         </form>
                         {{-- /form elements --}}
                     </div>

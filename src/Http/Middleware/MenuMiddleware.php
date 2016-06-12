@@ -49,7 +49,7 @@ class MenuMiddleware
         Menu::make('actions', function ($menu)
         {
             if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
-                $menu->add(trans('laravel-modules-core::laravel-user-module/admin.menu.user.add'),['route' => 'admin.user.create'] )
+                $menu->add(lmcTrans('laravel-user-module/admin.menu.user.add'),['route' => 'admin.user.create'] )
                     ->attribute('data-icon', 'icon-user'); // simple-line-icons
             }
         });
@@ -64,23 +64,23 @@ class MenuMiddleware
         {
             // laravel user module | User & Role
             if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
-                $user = $menu->add(trans('laravel-modules-core::laravel-user-module/admin.menu.user.root'), 'javascript:;')
+                $user = $menu->add(lmcTrans('laravel-user-module/admin.menu.user.root'), 'javascript:;')
                     ->attribute('data-icon', 'icon-user')
                     ->attribute('active', 'admin.user');
-                $user->add(trans('laravel-modules-core::laravel-user-module/admin.menu.user.all'), ['route' => 'admin.user.index'])
+                $user->add(lmcTrans('laravel-user-module/admin.menu.user.all'), ['route' => 'admin.user.index'])
                     ->attribute('data-icon', 'icon-list')
                     ->attribute('active', 'admin.user.index');
-                $user->add(trans('laravel-modules-core::laravel-user-module/admin.menu.user.add'), ['route' => 'admin.user.create'])
+                $user->add(lmcTrans('laravel-user-module/admin.menu.user.add'), ['route' => 'admin.user.create'])
                     ->attribute('data-icon', 'icon-plus')
                     ->attribute('active', 'admin.user.create');
 
-                $role = $menu->add(trans('laravel-modules-core::laravel-user-module/admin.menu.role.root'), 'javascript:;')
+                $role = $menu->add(lmcTrans('laravel-user-module/admin.menu.role.root'), 'javascript:;')
                     ->attribute('data-icon', 'icon-users')
                     ->attribute('active', 'admin.role');
-                $role->add(trans('laravel-modules-core::laravel-user-module/admin.menu.role.all'), ['route' => 'admin.role.index'])
+                $role->add(lmcTrans('laravel-user-module/admin.menu.role.all'), ['route' => 'admin.role.index'])
                     ->attribute('data-icon', 'icon-list')
                     ->attribute('active', 'admin.role.index');
-                $role->add(trans('laravel-modules-core::laravel-user-module/admin.menu.role.add'), ['route' => 'admin.role.create'])
+                $role->add(lmcTrans('laravel-user-module/admin.menu.role.add'), ['route' => 'admin.role.create'])
                     ->attribute('data-icon', 'icon-plus')
                     ->attribute('active', 'admin.role.create');
             }
