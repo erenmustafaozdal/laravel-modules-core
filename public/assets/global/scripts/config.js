@@ -123,6 +123,15 @@ var LMCApp = {
                     title: 'Toplu İşlem Gerçekleşmedi',
                     message: 'Toplu işlem gerçekleşmedi. Lütfen daha sonra dene!'
                 }
+            },
+            extensions: {
+                dropzone: {
+                    dictDefaultMessage: 'Yüklemek için dosyayı buraya bırak veya buraya tıkla',
+                    dictFallbackMessage: 'Tarayıcın sürükle bırak dosya yüklemeyi desteklemiyor.',
+                    dictInvalidFileType: 'Dosya tipi desteklenmiyor. Lütfen dosyanın resim dosyası olduğundan emin ol.',
+                    dictFileTooBig: 'Dosya boyutu çok büyük. Dosya boyutu: <strong>{{filesize}}</strong>, İstenen boyut: <strong>{{maxFilesize}}</strong>',
+                    dictResponseError: 'Dosya yüklenemedi! Lütfen daha sonra tekrar dene.'
+                }
             }
         }
     },

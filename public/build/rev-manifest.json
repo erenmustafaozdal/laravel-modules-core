@@ -1,15 +1,18 @@
 {
   "assets/app/datatable.js": "assets/app/datatable-555aa4b544.js",
+  "assets/app/dropzone.js": "assets/app/dropzone-ae18c39546.js",
   "assets/app/editor.js": "assets/app/editor-33629b62dd.js",
   "assets/app/validation.js": "assets/app/validation-e251d9cb28.js",
-  "assets/global/scripts/config.js": "assets/global/scripts/config-001775d77d.js",
+  "assets/global/scripts/config.js": "assets/global/scripts/config-dc64d0b66e.js",
   "assets/layouts/layout4/css/admin.css": "assets/layouts/layout4/css/admin-513a80b700.css",
   "assets/layouts/layout4/scripts/theme.js": "assets/layouts/layout4/scripts/theme-4300496d8b.js",
   "assets/pages/js/loaders/admin-form.js": "assets/pages/js/loaders/admin-form-8ebadcdbc2.js",
+  "assets/pages/js/loaders/admin-image.js": "assets/pages/js/loaders/admin-image-642472fdbf.js",
   "assets/pages/js/loaders/admin-index.js": "assets/pages/js/loaders/admin-index-9e26a621fa.js",
   "assets/pages/js/loaders/admin.js": "assets/pages/js/loaders/admin-ab462b7e6c.js",
   "assets/pages/js/loaders/login.js": "assets/pages/js/loaders/login-d9915ca653.js",
   "assets/pages/scripts/login.js": "assets/pages/scripts/login-75b3c3b18e.js",
   "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-9ae915d622.js",
+  "assets/pages/scripts/user/show.js": "assets/pages/scripts/user/show-c701b3a512.js",
   "assets/pages/scripts/user/user-form.js": "assets/pages/scripts/user/user-form-f73b985adf.js"
 }

@@ -15,10 +15,36 @@
     {{-- Profile CSS --}}
     {!! Html::style('vendor/laravel-modules-core/assets/pages/css/profile-2.css') !!}
     {{-- /Profile CSS --}}
+
+    {{-- jCrop Image Crop Extension --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jcrop/css/jquery.Jcrop.min.css') !!}
+    {{-- /jCrop Image Crop Extension --}}
+
+    {{-- Dropzone image drop upload --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/dropzone/dropzone.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/dropzone/basic.min.css') !!}
+    {{-- /Dropzone image drop upload --}}
 @endsection
 
 @section('script')
     @parent
+    <script type="text/javascript">
+        {{-- js file path --}}
+        var dropzoneJS = "{!! lmcElixir('assets/app/dropzone.js') !!}";
+        {{-- /js file path --}}
+
+        {{-- scripts --}}
+        $script.ready('app_dropzone', function()
+        {
+            $script("{!! lmcElixir('assets/pages/scripts/user/show.js') !!}",'show');
+        });
+        $script.ready(['show', 'config'], function()
+        {
+            Show.init();
+        });
+        {{-- /scripts --}}
+    </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
 @endsection
 
 @section('content')
