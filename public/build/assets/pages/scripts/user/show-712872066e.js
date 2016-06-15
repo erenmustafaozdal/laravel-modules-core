@@ -1,8 +1,16 @@
 ;var UserShow;
 var Show = {
 
+    /**
+     * template preview element
+     * @var jquery element
+     */
+    templatePreview: null,
+
     init: function () {
         UserShow = this;
+
+        this.templatePreview = $('#temp-photo-preview');
 
         // LMCDropzone app is init
         LMCDropzone.init({
@@ -13,7 +21,7 @@ var Show = {
                 maxFilesize: 5,
                 filesizeBase: 1024,
                 uploadMultiple: false,
-                acceptedFiles: 'image/*',
+                acceptedFiles: '.jpg, .jpeg, .png',
                 previewsContainer: '#dropzonePreview',
                 previewTemplate: document.querySelector('#preview-template').innerHTML,
                 dictDefaultMessage: LMCApp.lang.admin.extensions.dropzone.dictDefaultMessage,
@@ -39,6 +47,8 @@ var Show = {
 
                     // Remove the file preview.
                     _this.removeFile(file);
+                    UserShow.templatePreview.html('');
+
                 });
 
                 // Add the button to the file preview element.
@@ -46,9 +56,15 @@ var Show = {
             },
             success: function (file, dataUrl)
             {
-                var preview_el = $('#temp-photo-preview');
-                preview_el.html('<img src="' + dataUrl + '" class="img-responsive">');
-                console.log(file);
+                UserShow.templatePreview.html('<img src="' + dataUrl + '" class="img-responsive">');
+            },
+            error: function (file, errorMessage)
+            {
+                LMCApp.getNoty({
+                    message: errorMessage,
+                    title: LMCApp.lang.admin.extensions.dropzone.error_title,
+                    type: 'error'
+                });
             }
         });
     }

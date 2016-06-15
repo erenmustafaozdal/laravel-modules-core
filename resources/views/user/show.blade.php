@@ -18,6 +18,7 @@
 
     {{-- jCrop Image Crop Extension --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jcrop/css/jquery.Jcrop.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') !!}
     {{-- /jCrop Image Crop Extension --}}
 
     {{-- Dropzone image drop upload --}}
@@ -36,11 +37,27 @@
         {{-- scripts --}}
         $script.ready('app_dropzone', function()
         {
+            $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js');
             $script("{!! lmcElixir('assets/pages/scripts/user/show.js') !!}",'show');
         });
         $script.ready(['show', 'config'], function()
         {
             Show.init();
+            $('#photo2').fileinput();
+            //$('#photo').fileinput({
+            //    language: 'tr',
+            //    allowedFileExtensions: ['jpg', 'png', 'gif'],
+            //    showUpload: false,
+            //    maxFileSize: 1024*5,
+            //    showCaption: false,
+            //    browseClass: 'btn bg-blue',
+            //    browseLabel: 'GÖZAT',
+            //    browseIcon: '<i class="icon-folder-alt"></i> ',
+            //    removeClass: 'btn btn-danger',
+            //    removeLabel: "SİL",
+            //    removeIcon: '<i class="icon-trash"></i> ',
+            //    previewFileType: 'image'
+            //});
         });
         {{-- /scripts --}}
     </script>

@@ -61,6 +61,8 @@ return [
         'add'                               => 'Yeni Ekle',
         'fast_add'                          => 'Hızlı Ekle',
         'cancel'                            => 'İptal',
+        'select_file'                       => 'Dosya Seç',
+        'upload'                            => 'Yükle',
         // description
         'date_from'                         => 'Tarihinden',
         'date_to'                           => 'Tarihine',

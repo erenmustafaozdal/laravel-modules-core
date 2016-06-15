@@ -130,7 +130,9 @@ var LMCApp = {
                     dictFallbackMessage: 'Tarayıcın sürükle bırak dosya yüklemeyi desteklemiyor.',
                     dictInvalidFileType: 'Dosya tipi desteklenmiyor. Lütfen dosyanın resim dosyası olduğundan emin ol.',
                     dictFileTooBig: 'Dosya boyutu çok büyük. Dosya boyutu: <strong>{{filesize}}</strong>, İstenen boyut: <strong>{{maxFilesize}}</strong>',
-                    dictResponseError: 'Dosya yüklenemedi! Lütfen daha sonra tekrar dene.'
+                    dictResponseError: 'Dosya yüklenemedi! Lütfen daha sonra tekrar dene.',
+                    // flash messages
+                    error_title: 'Bir Hata Oldu'
                 }
             }
         }

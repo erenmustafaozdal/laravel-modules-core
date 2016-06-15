@@ -1,28 +1,43 @@
 <div id="change_avatar" class="tab-pane">
-        {!! Form::open([
+
+    {{-- template photo preview before crop --}}
+    <div id="temp-photo-preview"></div>
+    {{-- /template photo preview before crop --}}
+
+    {{-- Dropzone Form --}}
+    {!! Form::open([
         'method'    => 'POST',
         'url'       => route('admin.user.temp_photo', ['id' => $user->id]),
         'class'     => 'dropzone dropzone-file-area bg-grey-cararra font-grey-mint border-grey-mint',
-        'id'        => 'temp-photo',
-        'style'     => 'margin-top: 50px;',
-        'files'     =>true
+        //'id'        => 'temp-photo',
+        'files'     => true
     ]) !!}
-        <h3 class="sbold"><span class="icon-cloud-upload"></span></h3>
+    <h3 class="sbold"><span class="icon-cloud-upload"></span></h3>
 
-        <div class="fallback">
-            {!! Form::file('photo') !!}
+    <div class="fallback" style="text-align: left;">
+        <div class="form-body last">
+            {{-- File --}}
+            <div class="form-group">
+                <label class="control-label">{!! trans('laravel-modules-core::admin.ops.select_file') !!}</label>
+                {!! Form::file('photo', ['id' => 'photo']) !!}
+            </div>
+            {{-- /File --}}
         </div>
-
-        <div class="dropzone-previews" id="dropzonePreview"></div>
-    {!! Form::close() !!}
-    <div class="jumbotron how-to-create">
-        <ul>
-            <li>Images are uploaded as soon as you drop them</li>
-            <li>Maximum allowed size of image is 8MB</li>
-        </ul>
-
+        <div class="form-actions fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    {!! Form::button( trans('laravel-modules-core::admin.ops.upload'), [
+                        'class' => 'btn blue btn-outline',
+                        'type' => 'submit'
+                    ]) !!}
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="dropzone-previews" id="dropzonePreview"></div>
+    {!! Form::close() !!}
+    {{-- /Dropzone Form --}}
 
 
 
@@ -37,11 +52,10 @@
                 <div class="dz-filename"><span data-dz-name=""></span></div>
             </div>
             <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress=""></span></div>
-            <div class="dz-error-message"><span data-dz-errormessage=""></span></div>
+            <div class="dz-error-message" style="color: #ffffff;"><span data-dz-errormessage=""></span></div>
 
             <div class="dz-success-mark">
                 <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <!-- Generator: Sketch 3.2.1 (9971) - http://www.bohemiancoding.com/sketch -->
                     <title>Check</title>
                     <desc>Created with Sketch.</desc>
                     <defs></defs>
@@ -53,7 +67,6 @@
 
             <div class="dz-error-mark">
                 <svg width="54px" height="54px" viewBox="0 0 54 54" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-                    <!-- Generator: Sketch 3.2.1 (9971) - http://www.bohemiancoding.com/sketch -->
                     <title>error</title>
                     <desc>Created with Sketch.</desc>
                     <defs></defs>
