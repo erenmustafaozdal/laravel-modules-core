@@ -18,7 +18,7 @@
 
     {{-- jCrop Image Crop Extension --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jcrop/css/jquery.Jcrop.min.css') !!}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
     {{-- /jCrop Image Crop Extension --}}
 
     {{-- Dropzone image drop upload --}}
@@ -31,33 +31,32 @@
     @parent
     <script type="text/javascript">
         {{-- js file path --}}
-        var dropzoneJS = "{!! lmcElixir('assets/app/dropzone.js') !!}";
+        var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
         {{-- /js file path --}}
 
+        {{-- routes --}}
+        var templatePhotoURL = "{!! route('admin.user.temp_photo', ['id' => $user->id]) !!}";
+        {{-- /routes --}}
+
         {{-- scripts --}}
-        $script.ready('app_dropzone', function()
+        $script.ready('app_fileinput', function()
         {
-            $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js');
             $script("{!! lmcElixir('assets/pages/scripts/user/show.js') !!}",'show');
         });
         $script.ready(['show', 'config'], function()
         {
             Show.init();
-            $('#photo2').fileinput();
-            //$('#photo').fileinput({
-            //    language: 'tr',
-            //    allowedFileExtensions: ['jpg', 'png', 'gif'],
-            //    showUpload: false,
-            //    maxFileSize: 1024*5,
-            //    showCaption: false,
-            //    browseClass: 'btn bg-blue',
-            //    browseLabel: 'GÖZAT',
-            //    browseIcon: '<i class="icon-folder-alt"></i> ',
-            //    removeClass: 'btn btn-danger',
-            //    removeLabel: "SİL",
-            //    removeIcon: '<i class="icon-trash"></i> ',
-            //    previewFileType: 'image'
-            //});
+            $('#photo').on('fileloaded', function(event, file, previewId, index, reader) {
+                $('#temp-photo-preview').html('<img src="' + reader.result + '" class="img-responsive">')
+            });
+            $('#photo').on('fileerror', function(event, data, msg) {
+                console.log(data.id);
+                console.log(data.index);
+                console.log(data.file);
+                console.log(data.reader);
+                console.log(data.files);
+                console.log(msg);
+            });
         });
         {{-- /scripts --}}
     </script>

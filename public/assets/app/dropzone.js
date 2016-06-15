@@ -30,12 +30,12 @@ var LMCDropzone = {
 
         // disable auto init
         Dropzone.autoDiscover = false;
-        //var dropzone = new Dropzone(this.options.src,this.options.dropzone);
+        var dropzone = new Dropzone(this.options.src,this.options.dropzone);
 
-        //// on added file
-        //dropzone.on('addedfile', this.options.addedfile);
-        //dropzone.on('success', this.options.success);
-        //dropzone.on('error', this.options.error);
+        // on added file
+        dropzone.on('addedfile', this.options.addedfile);
+        dropzone.on('success', this.options.success);
+        dropzone.on('error', this.options.error);
     },
 
     /**

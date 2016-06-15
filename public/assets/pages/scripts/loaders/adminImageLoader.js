@@ -4,10 +4,14 @@
     {
         $script('/vendor/laravel-modules-core/assets/global/plugins/jcrop/js/jquery.color.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jcrop/js/jquery.Jcrop.min.js');
-        $script('/vendor/laravel-modules-core/assets/global/plugins/dropzone/dropzone.min.js', 'dropzone');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/js/fileinput.min.js','fileinput');
     });
-    $script.ready('dropzone', function()
+    $script.ready('fileinput', function()
     {
-        $script(dropzoneJS, 'app_dropzone');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/js/locales/tr_edit.js','fileinput_tr');
+    });
+    $script.ready(['fileinput','fileinput_tr'], function()
+    {
+        $script(fileinputJS, 'app_fileinput');
     });
 })();
