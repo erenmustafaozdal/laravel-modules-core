@@ -63,6 +63,7 @@ return [
         'cancel'                            => 'İptal',
         'select_file'                       => 'Dosya Seç',
         'upload'                            => 'Yükle',
+        'crop_image'                        => 'Fotoğrafı Kırp',
         // description
         'date_from'                         => 'Tarihinden',
         'date_to'                           => 'Tarihine',

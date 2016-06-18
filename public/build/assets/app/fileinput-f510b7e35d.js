@@ -8,7 +8,7 @@ var LMCFileinput = {
     fileElement: null,
 
     /**
-     * validation options
+     * fileinput options
      * @var object
      */
     options: {},
@@ -23,17 +23,19 @@ var LMCFileinput = {
         theLMCFileinput = this;
 
         // default settings
-        this.options = $.extend(true, this.getDefaultOptions(), options);
+        theLMCFileinput.options = $.extend(true, theLMCFileinput.getDefaultOptions(), options);
 
         // fileElement jquery element
-        this.fileElement = $(this.options.src);
+        theLMCFileinput.fileElement = $(theLMCFileinput.options.src);
 
-        this.fileElement.fileinput(this.options.fileinput);
+        theLMCFileinput.fileElement.fileinput(theLMCFileinput.options.fileinput);
 
-        // on added file
-        //fileinput.on('addedfile', this.options.addedfile);
-        //fileinput.on('success', this.options.success);
-        //fileinput.on('error', this.options.error);
+        // file input events
+        theLMCFileinput.fileElement.on('filebrowse', theLMCFileinput.options.filebrowse);
+        theLMCFileinput.fileElement.on('fileloaded', theLMCFileinput.options.fileloaded);
+        theLMCFileinput.fileElement.on('filecleared', theLMCFileinput.options.filecleared);
+        theLMCFileinput.fileElement.on('filereset', theLMCFileinput.options.filereset);
+        theLMCFileinput.fileElement.on('fileuploaded', theLMCFileinput.options.fileuploaded);
     },
 
     /**
@@ -43,11 +45,15 @@ var LMCFileinput = {
     {
         return {
             src: '',
+            formSrc: '',
             fileinput: {
+                uploadUrl: '',
                 language: 'tr',
                 allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'],
                 allowedFileTypes: ['image'],
                 previewFileType: 'image',
+                previewFileIcon: '<i class="fa fa-file-photo-o"></i>',
+                msgErrorClass: 'alert alert-danger',
                 maxFileSize: 1024*5,
                 showUpload: true,
                 showCaption: true,
@@ -72,19 +78,36 @@ var LMCFileinput = {
                 fileActionSettings: {
                     showUpload: true,
                     uploadIcon: '<i class="icon-cloud-upload"></i> ',
-                    uploadClass: 'btn btn-xs green-meadow btn-outline',
+                    uploadClass: 'btn btn-xs green-meadow btn-outline tooltips',
                     showRemove: true,
                     removeIcon: '<i class="icon-trash"></i> ',
-                    removeClass: 'btn btn-xs red btn-outline',
+                    removeClass: 'btn btn-xs red btn-outline tooltips',
                     showZoom: true,
                     zoomIcon: '<i class="icon-magnifier-add"></i> ',
-                    zoomClass: 'btn btn-xs purple btn-outline',
-                    showDrag: true,
-                    dragIcon: '<i class="icon-magnifier-add"></i> ',
-                    dragClass: 'btn btn-xs yellow-saffron btn-outline'
+                    zoomClass: 'btn btn-xs purple btn-outline tooltips'
                 }
-            }
+            },
             // events
+            filebrowse: function(event)
+            {
+                //
+            },
+            fileloaded: function(event, file, previewId, index, reader)
+            {
+                //
+            },
+            filecleared: function(event)
+            {
+                //
+            },
+            filereset: function(event)
+            {
+                //
+            },
+            fileuploaded: function(event, data, previewId, index)
+            {
+                //
+            }
         };
     }
 

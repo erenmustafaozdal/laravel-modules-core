@@ -18,6 +18,7 @@
 
     {{-- jCrop Image Crop Extension --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jcrop/css/jquery.Jcrop.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
     {{-- /jCrop Image Crop Extension --}}
 
@@ -32,31 +33,17 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
+        var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         {{-- /js file path --}}
 
-        {{-- routes --}}
-        var templatePhotoURL = "{!! route('admin.user.temp_photo', ['id' => $user->id]) !!}";
-        {{-- /routes --}}
-
         {{-- scripts --}}
-        $script.ready('app_fileinput', function()
+        $script.ready(['app_fileinput','app_jcrop'], function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/user/show.js') !!}",'show');
         });
         $script.ready(['show', 'config'], function()
         {
             Show.init();
-            $('#photo').on('fileloaded', function(event, file, previewId, index, reader) {
-                $('#temp-photo-preview').html('<img src="' + reader.result + '" class="img-responsive">')
-            });
-            $('#photo').on('fileerror', function(event, data, msg) {
-                console.log(data.id);
-                console.log(data.index);
-                console.log(data.file);
-                console.log(data.reader);
-                console.log(data.files);
-                console.log(msg);
-            });
         });
         {{-- /scripts --}}
     </script>
