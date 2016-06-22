@@ -128,6 +128,32 @@ var Show = {
     },
 
     /**
+     * avatar photo uploaded
+     */
+    fileUploaded: function(data)
+    {
+        if (data.result != 'success') {
+            LMCApp.getNoty({
+                message: LMCApp.lang.admin.flash.update_error.message,
+                title: LMCApp.lang.admin.flash.update_error.title,
+                type: 'error'
+            });
+            return;
+        }
+        // profil fotoğrafları yerleştirilir
+        $('li.dropdown-user').find('img').prop('src', data.photos.thumbnails.small);
+        $('img#nav-profile-photo').prop('src', data.photos.thumbnails.big);
+        // file input sıfırlanır
+        LMCFileinput.clear();
+        
+        LMCApp.getNoty({
+            message: LMCApp.lang.admin.flash.update_success.message,
+            title: LMCApp.lang.admin.flash.update_success.title,
+            type: 'success'
+        });
+    },
+
+    /**
      * get file input init options
      */
     getFileinputInitOptions: function()
@@ -137,6 +163,15 @@ var Show = {
             formSrc:  UserShow.options.formSrc,
             fileinput: {
                 uploadUrl: UserShow.form.prop('action'),
+                uploadExtraData: function (previewId, index)
+                {
+                    return {
+                        x: $('#x1').val(),
+                        y: $('#y1').val(),
+                        width: $('#width').val(),
+                        height: $('#height').val()
+                    };
+                },
                 otherActionButtons: '<button type="button" id="image-crop-action" class="btn btn-xs yellow btn-outline tooltips" data-toggle="modal" title="' + LMCApp.lang.admin.ops.crop + '"><i class="icon-crop"></i> </button>'
             },
             // events
@@ -173,7 +208,11 @@ var Show = {
             },
             fileuploaded: function(event, data, previewId, index)
             {
-                //var form = data.form, files = data.files, extra = data.extra, response = data.response, reader = data.reader;
+                UserShow.fileUploaded(data.response);
+            },
+            filebatchuploadsuccess: function(event, data, previewId, index)
+            {
+                UserShow.fileUploaded(data.response);
             }
         };
     },

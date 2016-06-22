@@ -3,7 +3,7 @@
     {!! $auth_user->getPhoto([
         'class' => 'img-circle',
         'alt'   => $auth_user->fullname
-    ]) !!}
+    ], 'small') !!}
 </a>
 <ul class="dropdown-menu dropdown-menu-default">
     @foreach($menu_topbarUserLogin->roots() as $item)

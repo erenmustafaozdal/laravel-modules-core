@@ -23,19 +23,28 @@ var LMCFileinput = {
         theLMCFileinput = this;
 
         // default settings
-        theLMCFileinput.options = $.extend(true, theLMCFileinput.getDefaultOptions(), options);
+        this.options = $.extend(true, this.getDefaultOptions(), options);
 
         // fileElement jquery element
-        theLMCFileinput.fileElement = $(theLMCFileinput.options.src);
+        this.fileElement = $(this.options.src);
 
-        theLMCFileinput.fileElement.fileinput(theLMCFileinput.options.fileinput);
+        this.fileElement.fileinput(this.options.fileinput);
 
         // file input events
-        theLMCFileinput.fileElement.on('filebrowse', theLMCFileinput.options.filebrowse);
-        theLMCFileinput.fileElement.on('fileloaded', theLMCFileinput.options.fileloaded);
-        theLMCFileinput.fileElement.on('filecleared', theLMCFileinput.options.filecleared);
-        theLMCFileinput.fileElement.on('filereset', theLMCFileinput.options.filereset);
-        theLMCFileinput.fileElement.on('fileuploaded', theLMCFileinput.options.fileuploaded);
+        this.fileElement.on('filebrowse', this.options.filebrowse);
+        this.fileElement.on('fileloaded', this.options.fileloaded);
+        this.fileElement.on('filecleared', this.options.filecleared);
+        this.fileElement.on('filereset', this.options.filereset);
+        this.fileElement.on('fileuploaded', this.options.fileuploaded);
+        this.fileElement.on('filebatchuploadsuccess', this.options.filebatchuploadsuccess);
+    },
+
+    /**
+     * file input clear
+     */
+    clear: function()
+    {
+        this.fileElement.fileinput('clear');
     },
 
     /**
@@ -105,6 +114,10 @@ var LMCFileinput = {
                 //
             },
             fileuploaded: function(event, data, previewId, index)
+            {
+                //
+            },
+            filebatchuploadsuccess: function(event, data, previewId, index)
             {
                 //
             }

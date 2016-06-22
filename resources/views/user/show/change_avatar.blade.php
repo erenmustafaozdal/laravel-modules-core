@@ -1,7 +1,7 @@
 <div id="change_avatar" class="tab-pane">
     {!! Form::open([
         'method'    => 'PATCH',
-        'url'       => route('admin.user.temp_photo', ['id' => $user->id]),
+        'url'       => route('admin.user.avatar_photo', ['id' => $user->id]),
         'id'        => 'change-avatar-form'
     ]) !!}
 

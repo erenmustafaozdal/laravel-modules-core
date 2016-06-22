@@ -94,8 +94,9 @@
                         <li>
                             {!! $user->getPhoto([
                                 'class' => 'img-responsive pic-bordered',
-                                'alt'   => $user->fullname
-                            ], 'original') !!}
+                                'alt'   => $user->fullname,
+                                'id'    => 'nav-profile-photo'
+                            ], 'biggest') !!}
                         </li>
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
