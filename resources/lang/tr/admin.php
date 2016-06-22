@@ -64,6 +64,7 @@ return [
         'select_file'                       => 'Dosya Seç',
         'upload'                            => 'Yükle',
         'crop_image'                        => 'Fotoğrafı Kırp',
+        'destroy_image'                     => 'Fotoğrafı Sil',
         // description
         'date_from'                         => 'Tarihinden',
         'date_to'                           => 'Tarihine',

@@ -34,7 +34,12 @@
         {{-- js file path --}}
         var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
         var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
+        var avatarPhotoPath = "{!! '/' . config('laravel-user-module.user.avatar_path') !!}";
         {{-- /js file path --}}
+
+        {{-- routes --}}
+        var destroyAvatarURL = "{!! route('api.user.destroy_avatar', ['id' => $user->id]) !!}";
+        {{-- /routes --}}
 
         {{-- scripts --}}
         $script.ready(['app_fileinput','app_jcrop'], function()
@@ -98,6 +103,15 @@
                                 'id'    => 'nav-profile-photo'
                             ], 'biggest') !!}
                         </li>
+                        {{-- Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
+                        <li {!! $user->photo == '' ? 'class="hidden"' : '' !!}>
+                            <a href="javascript:;" class="font-red" id="destroy-avatar">
+                                <i class="fa fa-times"></i>
+                                {!! trans('laravel-modules-core::admin.ops.destroy_image') !!}
+                            </a>
+                            <span class="after"> </span>
+                        </li>
+                        {{-- /Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
                                 <i class="fa fa-info"></i>
