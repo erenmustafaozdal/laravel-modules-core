@@ -45,7 +45,7 @@ return [
             'last_name'             => 'Soyad',
             'email'                 => 'E-posta',
             'password'              => 'Şifre',
-            'password_comfirmation' => 'Şifre Onayı',
+            'password_confirmation' => 'Şifre Onayı',
             'status'                => 'Durum',
             'last_login'            => 'Son Giriş',
             'last_login_description'=> ':date giriş yaptı',
