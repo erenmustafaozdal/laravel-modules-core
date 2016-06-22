@@ -1,7 +1,8 @@
 <div id="edit_info" class="tab-pane form">
     {!! Form::open([
         'method'    => 'PATCH',
-        'url'       => route('admin.user.update', ['id' => $user->id])
+        'url'       => route('admin.user.update', ['id' => $user->id]),
+        'id'        => 'user-edit-info'
     ]) !!}
         
         {{-- Form Action Top --}}

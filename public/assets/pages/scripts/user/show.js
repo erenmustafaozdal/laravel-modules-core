@@ -97,6 +97,25 @@ var Show = {
                 UserShow.changeAvatar('add', UserShow.top_src, UserShow.nav_src);
             });
         });
+
+        // edit info form validation
+        Validation.init({
+            src: '#user-edit-info',
+            isAjax: false,
+            validate: {
+                rules: {
+                    first_name: {
+                        required: true
+                    },
+                    last_name: {
+                        required: true
+                    }
+                },
+                messages: userEditInfoMessages
+            }
+        });
+        // change password form validation
+
     },
 
     /**

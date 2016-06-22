@@ -32,14 +32,27 @@
     @parent
     <script type="text/javascript">
         {{-- js file path --}}
+        var userFormLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
         var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
         var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
+        var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var avatarPhotoPath = "{!! '/' . config('laravel-user-module.user.avatar_path') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
         var destroyAvatarURL = "{!! route('api.user.destroy_avatar', ['id' => $user->id]) !!}";
         {{-- /routes --}}
+
+        {{-- languages --}}
+        var userEditInfoMessages = {
+            first_name: {
+                required: "{!! LMCValidation::getMessage('first_name','required') !!}"
+            },
+            last_name: {
+                required: "{!! LMCValidation::getMessage('last_name','required') !!}"
+            }
+        };
+        {{-- /languages --}}
 
         {{-- scripts --}}
         $script.ready(['app_fileinput','app_jcrop'], function()
@@ -106,7 +119,7 @@
                         {{-- Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
                         <li {!! $user->photo == '' ? 'class="hidden"' : '' !!}>
                             <a href="javascript:;" class="font-red" id="destroy-avatar">
-                                <i class="fa fa-times"></i>
+                                <i class="fa fa-trash"></i>
                                 {!! trans('laravel-modules-core::admin.ops.destroy_image') !!}
                             </a>
                             <span class="after"> </span>
