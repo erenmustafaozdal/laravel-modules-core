@@ -3,7 +3,8 @@
     <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.password') !!}</label>
     {!! Form::password( 'password', [
         'class'         => 'form-control form-control-solid placeholder-no-fix',
-        'placeholder'   => lmcTrans('laravel-user-module/admin.fields.user.password')
+        'placeholder'   => lmcTrans('laravel-user-module/admin.fields.user.password'),
+        'id'            => 'password'
     ]) !!}
 </div>
 {{-- /Password --}}

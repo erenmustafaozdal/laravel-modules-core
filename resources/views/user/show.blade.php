@@ -52,6 +52,17 @@
                 required: "{!! LMCValidation::getMessage('last_name','required') !!}"
             }
         };
+        var userChangePasswordMessages = {
+            password: {
+                required: "{!! LMCValidation::getMessage('password','required') !!}",
+                minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}"
+            },
+            password_confirmation: {
+                required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}",
+                minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}",
+                equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}"
+            }
+        };
         {{-- /languages --}}
 
         {{-- scripts --}}

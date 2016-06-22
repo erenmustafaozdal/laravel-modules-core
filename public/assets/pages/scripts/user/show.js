@@ -114,7 +114,26 @@ var Show = {
                 messages: userEditInfoMessages
             }
         });
+
         // change password form validation
+        Validation.init({
+            src: '#user-change-password',
+            isAjax: false,
+            validate: {
+                rules: {
+                    password: {
+                        required: true,
+                        minlength: 6
+                    },
+                    password_confirmation: {
+                        required: true,
+                        minlength: 6,
+                        equalTo: "#password"
+                    }
+                },
+                messages: userChangePasswordMessages
+            }
+        });
 
     },
 
