@@ -1,7 +1,7 @@
 {
   "assets/app/datatable.js": "assets/app/datatable-555aa4b544.js",
   "assets/app/editor.js": "assets/app/editor-33629b62dd.js",
-  "assets/app/fileinput.js": "assets/app/fileinput-c1763ca5b0.js",
+  "assets/app/fileinput.js": "assets/app/fileinput-45158336ca.js",
   "assets/app/jcrop.js": "assets/app/jcrop-36bb466098.js",
   "assets/app/validation.js": "assets/app/validation-e251d9cb28.js",
   "assets/global/scripts/config.js": "assets/global/scripts/config-ab85f2d826.js",
@@ -13,7 +13,8 @@
   "assets/pages/js/loaders/admin.js": "assets/pages/js/loaders/admin-ab462b7e6c.js",
   "assets/pages/js/loaders/login.js": "assets/pages/js/loaders/login-d9915ca653.js",
   "assets/pages/scripts/login.js": "assets/pages/scripts/login-75b3c3b18e.js",
+  "assets/pages/scripts/user/create.js": "assets/pages/scripts/user/create-0730c6b79d.js",
   "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-9ae915d622.js",
-  "assets/pages/scripts/user/show.js": "assets/pages/scripts/user/show-74c5aec834.js",
+  "assets/pages/scripts/user/show.js": "assets/pages/scripts/user/show-51a7662e48.js",
   "assets/pages/scripts/user/user-form.js": "assets/pages/scripts/user/user-form-f73b985adf.js"
 }

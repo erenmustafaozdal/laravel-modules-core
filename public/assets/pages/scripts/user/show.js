@@ -2,12 +2,6 @@
 var Show = {
 
     /**
-     * user photo srcs
-     */
-    top_src: '',
-    nav_src: '',
-
-    /**
      * user show options
      * @var object
      */
@@ -62,101 +56,6 @@ var Show = {
 
         // LMCDropzone app is init
         LMCFileinput.init(this.getFileinputInitOptions());
-
-        // destroy avatar
-        $('#destroy-avatar').on('click', function(event)
-        {
-            var top_photo = avatarPhotoPath + '/small.jpg',
-                nav_photo = avatarPhotoPath + '/biggest.jpg';
-
-            UserShow.changeAvatar('remove', top_photo, nav_photo);
-            LMCApp.startDestroyTimer(function()
-            {
-                $.ajax({
-                    url: destroyAvatarURL,
-                    success: function(data)
-                    {
-                        if (data.result === 'success') {
-                            LMCApp.getNoty({
-                                message: LMCApp.lang.admin.flash.destroy_success.message,
-                                title: LMCApp.lang.admin.flash.destroy_success.title,
-                                type: 'success'
-                            });
-                            return;
-                        }
-                        LMCApp.getNoty({
-                            message: LMCApp.lang.admin.flash.destroy_error.message,
-                            title: LMCApp.lang.admin.flash.destroy_error.title,
-                            type: 'error'
-                        });
-                        UserShow.changeAvatar('add', UserShow.top_src, UserShow.nav_src);
-                    }
-                });
-            }, function()
-            {
-                UserShow.changeAvatar('add', UserShow.top_src, UserShow.nav_src);
-            });
-        });
-
-        // edit info form validation
-        Validation.init({
-            src: '#user-edit-info',
-            isAjax: false,
-            validate: {
-                rules: {
-                    first_name: {
-                        required: true
-                    },
-                    last_name: {
-                        required: true
-                    }
-                },
-                messages: userEditInfoMessages
-            }
-        });
-
-        // change password form validation
-        Validation.init({
-            src: '#user-change-password',
-            isAjax: false,
-            validate: {
-                rules: {
-                    password: {
-                        required: true,
-                        minlength: 6
-                    },
-                    password_confirmation: {
-                        required: true,
-                        minlength: 6,
-                        equalTo: "#password"
-                    }
-                },
-                messages: userChangePasswordMessages
-            }
-        });
-
-    },
-
-    /**
-     * add or remove | change avatar image to page
-     *
-     * @var type add|remove
-     * @var top_photo
-     * @var nav_photo
-     */
-    changeAvatar: function(type, top_photo, nav_photo)
-    {
-        var top = $('li.dropdown-user').find('img'), nav = $('img#nav-profile-photo');
-        this.top_src = top.prop('src');
-        this.nav_src = nav.prop('src');
-        top.prop('src', top_photo);
-        nav.prop('src', nav_photo);
-        var li = $('#destroy-avatar').closest('li');
-        if (type === 'add') {
-            li.removeClass('hidden');
-            return;
-        }
-        li.addClass('hidden');
     },
 
     /**
@@ -242,7 +141,8 @@ var Show = {
             return;
         }
         // profil fotoğrafları yerleştirilir
-        this.changeAvatar('add', data.photos.thumbnails.small, data.photos.thumbnails.biggest);
+        $('li.dropdown-user').find('img').prop('src', data.photos.thumbnails.small);
+        $('img#nav-profile-photo').prop('src', data.photos.thumbnails.big);
         // file input sıfırlanır
         LMCFileinput.clear();
 

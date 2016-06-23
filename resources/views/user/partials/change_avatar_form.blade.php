@@ -1,3 +1,4 @@
+<label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.photo') !!}</label>
 {{-- template photo preview before crop --}}
 <div class="note note-info margin-bottom-25 hidden" id="jcrop-preview">
     <div class="row">
@@ -27,10 +28,8 @@
 {{-- /Fileinput file element --}}
 
 {{-- Jcrop Form Elements --}}
-{!! Form::hidden('x1', null, ['id' => 'x1']) !!}
-{!! Form::hidden('y1', null, ['id' => 'y1']) !!}
-{!! Form::hidden('x2', null, ['id' => 'x2']) !!}
-{!! Form::hidden('y2', null, ['id' => 'y2']) !!}
+{!! Form::hidden('x', null, ['id' => 'x']) !!}
+{!! Form::hidden('y', null, ['id' => 'y']) !!}
 {!! Form::hidden('width', null, ['id' => 'width']) !!}
 {!! Form::hidden('height', null, ['id' => 'height']) !!}
 {{-- /Jcrop Form Elements --}}

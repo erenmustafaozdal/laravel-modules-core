@@ -58,7 +58,7 @@ var LMCFileinput = {
             fileinput: {
                 uploadUrl: '',
                 language: 'tr',
-                allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif'],
+                allowedFileExtensions: ['jpg', 'jpeg', 'png'],
                 allowedFileTypes: ['image'],
                 previewFileType: 'image',
                 previewFileIcon: '<i class="fa fa-file-photo-o"></i>',

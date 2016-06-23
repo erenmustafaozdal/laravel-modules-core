@@ -12,6 +12,7 @@ return [
         'index_description'         => 'Sistem içindeki bütün yöneticiler',
         'edit'                      => 'Yönetici Düzenle',
         'create'                    => 'Yönetici Ekle',
+        'create_description'        => 'Yeni bir yönetici ekle',
         'show'                      => 'Yönetici Bilgileri',
         'show_description'          => ':user hakkında bilgiler'
     ],

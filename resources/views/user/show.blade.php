@@ -21,11 +21,6 @@
     {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
     {{-- /jCrop Image Crop Extension --}}
-
-    {{-- Dropzone image drop upload --}}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/dropzone/dropzone.min.css') !!}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/dropzone/basic.min.css') !!}
-    {{-- /Dropzone image drop upload --}}
 @endsection
 
 @section('script')
@@ -81,7 +76,7 @@
 
 @section('content')
     {{-- Portlet --}}
-    <div class="portlet light portlet-fit bordered mt-element-ribbon">
+    <div class="portlet light bordered mt-element-ribbon">
         <div class="ribbon ribbon-right ribbon-clip ribbon-shadow ribbon-border-dash-hor ribbon-color-{{ $user->is_active ? 'success' : 'danger' }} uppercase">
             <div class="ribbon-sub ribbon-clip ribbon-right"></div>
             {{ $user->is_active ? lmcTrans('laravel-user-module/admin.fields.user.active_user') : lmcTrans('laravel-user-module/admin.fields.user.not_active_user') }}
