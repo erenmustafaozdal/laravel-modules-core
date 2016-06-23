@@ -6,7 +6,7 @@
             <h4>{!! trans('laravel-modules-core::admin.ops.crop_image') !!}</h4>
             <img class="img-responsive" src="" id="img-jcrop">
         </div>
-        <div class="col-md-4 responsive-1024">
+        <div class="col-md-4 responsive-1024" id="preview-pane-wrapper">
             <div id="preview-pane">
                 <div class="preview-container">
                     <img class="jcrop-preview" src="" id="img-jcrop-preview">
