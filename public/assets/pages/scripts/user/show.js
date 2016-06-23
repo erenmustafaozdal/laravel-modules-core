@@ -181,7 +181,6 @@ var Show = {
             },
             fileloaded: function(event, file, previewId, index, reader)
             {
-                theLMCJcrop.setOriginalImage(reader.result);
                 // init tooltips
                 LMCApp.initTooltips();
                 // image crop action button click
