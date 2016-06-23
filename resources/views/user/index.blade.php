@@ -74,7 +74,7 @@
 
 @section('content')
     {{-- Table Portlet --}}
-    <div class="portlet light portlet-fit portlet-datatable bordered">
+    <div class="portlet light portlet-datatable bordered">
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">
@@ -266,8 +266,8 @@
                                 <input type="password" name="password" id="password" class="form-control" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.password') !!}">
                             </div>
                             <div class="form-group">
-                                <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.password_comfirmation') !!}</label>
-                                <input type="password" name="password_confirmation" class="form-control" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.password_comfirmation') !!}">
+                                <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.password_confirmation') !!}</label>
+                                <input type="password" name="password_confirmation" class="form-control" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.password_confirmation') !!}">
                             </div>
                             <div class="form-group">
                                 <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.status') !!}</label>

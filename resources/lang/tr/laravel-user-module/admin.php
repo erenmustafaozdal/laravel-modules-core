@@ -12,6 +12,7 @@ return [
         'index_description'         => 'Sistem içindeki bütün yöneticiler',
         'edit'                      => 'Yönetici Düzenle',
         'create'                    => 'Yönetici Ekle',
+        'create_description'        => 'Yeni bir yönetici ekle',
         'show'                      => 'Yönetici Bilgileri',
         'show_description'          => ':user hakkında bilgiler'
     ],
@@ -45,7 +46,7 @@ return [
             'last_name'             => 'Soyad',
             'email'                 => 'E-posta',
             'password'              => 'Şifre',
-            'password_comfirmation' => 'Şifre Onayı',
+            'password_confirmation' => 'Şifre Onayı',
             'status'                => 'Durum',
             'last_login'            => 'Son Giriş',
             'last_login_description'=> ':date giriş yaptı',
