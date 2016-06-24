@@ -222,12 +222,12 @@ var Index = {
             {
                 var url = Editor.actionType === 'fast-add' ? apiStoreURL : Editor.row.data().urls.edit ;
                 // validation ve user form dosyaları yüklenir
-                $script(userFormLoaderJs, 'formLoader');
+                $script(formLoaderJs, 'formLoader');
                 $script.ready(['formLoader','validation'], function()
                 {
-                    $script(userFormJs, 'user_form');
+                    $script(formJs, 'form');
                 });
-                $script.ready('user_form', function()
+                $script.ready('form', function()
                 {
                     UserForm.init({
                         isAjax: true,

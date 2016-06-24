@@ -1,12 +1,12 @@
 @extends(config('laravel-user-module.views.user.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-user-module/admin.user.index') !!}
+    {!! lmcTrans('laravel-user-module/admin.role.index') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-user-module/admin.user.index') !!}
-        <small>{!! lmcTrans('laravel-user-module/admin.user.index_description') !!}</small>
+    <h1>{!! lmcTrans('laravel-user-module/admin.role.index') !!}
+        <small>{!! lmcTrans('laravel-user-module/admin.role.index_description') !!}</small>
     </h1>
 @endsection
 
@@ -25,43 +25,34 @@
         var datatableJs = "{!! lmcElixir('assets/app/datatable.js') !!}";
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var formJs = "{!! lmcElixir('assets/pages/scripts/user/user-form.js') !!}";
+        var formJs = "{!! lmcElixir('assets/pages/scripts/role/role-form.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.user.index') !!}";
-        var apiStoreURL = "{!! route('api.user.store') !!}";
-        var apiGroupAction = "{!! route('api.user.group') !!}";
+        var ajaxURL = "{!! route('api.role.index') !!}";
+        var apiStoreURL = "{!! route('api.role.store') !!}";
+        var apiGroupAction = "{!! route('api.role.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            first_name: {
-                required: "{!! LMCValidation::getMessage('first_name','required') !!}"
+            name: {
+                required: "{!! LMCValidation::getMessage('name','required') !!}"
             },
-            last_name: {
-                required: "{!! LMCValidation::getMessage('last_name','required') !!}"
-            },
-            email: {
-                required: "{!! LMCValidation::getMessage('email','required') !!}",
-                email: "{!! LMCValidation::getMessage('email','email') !!}"
-            },
-            password: {
-                required: "{!! LMCValidation::getMessage('password','required') !!}",
-                minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}"
-            },
-            password_confirmation: {
-                required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}",
-                minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}",
-                equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}"
+            slug: {
+                alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}"
             }
         };
         {{-- /languages --}}
 
         {{-- scripts --}}
+        $script.ready('validation', function()
+        {
+            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
+        });
         $script.ready('app_editor', function()
         {
-            $script("{!! lmcElixir('assets/pages/scripts/user/index.js') !!}",'index');
+            $script("{!! lmcElixir('assets/pages/scripts/role/index.js') !!}",'index');
         });
         $script.ready(['config','index'], function()
         {
@@ -80,10 +71,10 @@
             <div class="caption">
                 <i class="icon-users font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-user-module/admin.user.index') !!}
+                    {!! lmcTrans('laravel-user-module/admin.role.index') !!}
                 </span>
             </div>
-            @include('laravel-modules-core::partials.common.indexActions', ['module' => 'user'])
+            @include('laravel-modules-core::partials.common.indexActions', ['module' => 'role'])
         </div>
         {{-- /Table Portlet Title and Actions --}}
 
@@ -97,7 +88,7 @@
             <div class="table-container">
                 {{-- Table Actions --}}
                 @include('laravel-modules-core::partials.common.indexTableActions', [
-                    'actions'   => ['activate','not_activate','destroy']
+                    'actions'   => ['destroy']
                 ])
                 {{-- /Table Actions --}}
 
@@ -108,9 +99,8 @@
                             <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
                             <th class="all" width="2%"></th>
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
-                            <th class="all" width="5%"> {!! lmcTrans('laravel-user-module/admin.fields.user.photo') !!} </th>
-                            <th class="all" width="100"> {!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} </th>
-                            <th class="all" width="10%"> {!! lmcTrans('laravel-user-module/admin.fields.user.status') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-user-module/admin.fields.role.name') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-user-module/admin.fields.role.slug') !!} </th>
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
                         </tr>
@@ -120,16 +110,11 @@
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
                             </td>
-                            <td> </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="first_name" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} - {!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="name" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.role.name') !!}">
                             </td>
                             <td>
-                                <select name="status" class="form-control form-filter input-sm">
-                                    <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
-                                    <option value="1">{!! trans('laravel-modules-core::admin.fields.user.active') !!}</option>
-                                    <option value="0">{!! trans('laravel-modules-core::admin.fields.user.not_active') !!}</option>
-                                </select>
+                                <input type="text" class="form-control form-filter input-sm" name="slug" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.role.slug') !!}">
                             </td>
                             <td>
                                 @include('laravel-modules-core::partials.common.datatables.filterDate')
@@ -152,8 +137,7 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'user.partials.edit_info_form'          => [ 'helpBlockAfter'    => true ],
-            'user.partials.change_password_form'    => [ 'helpBlockAfter'    => true ],
+            'role.partials.form'        => [ 'helpBlockAfter'    => true ]
         ]
     ])
     {{-- /Create and Edit modal --}}

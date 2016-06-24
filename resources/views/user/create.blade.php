@@ -97,7 +97,7 @@
                 'class'     => 'form'
             ]) !!}
 
-            @include('laravel-modules-core::partials.form.form_actions', ['type' => 'top'])
+            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
             {{-- Form Body --}}
             <div class="form-body">
@@ -107,7 +107,7 @@
             </div>
             {{-- /Form Body --}}
 
-            @include('laravel-modules-core::partials.form.form_actions', ['type' => 'fluid'])
+            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
 
             {!! Form::close() !!}
             {{-- /Create Form --}}

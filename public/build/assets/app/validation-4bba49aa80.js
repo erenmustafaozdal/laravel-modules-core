@@ -79,7 +79,7 @@ var Validation = {
             src: '',
             isAjax: false,
             validate: {
-                errorElement: 'span', //default input error message container
+                errorElement: 'em', //default input error message container
                 errorClass: 'help-block', // default input error message class
                 focusInvalid: false, // do not focus the last invalid input
                 rules: {},

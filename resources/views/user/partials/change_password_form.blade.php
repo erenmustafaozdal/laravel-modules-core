@@ -9,7 +9,6 @@
 </div>
 {{-- /Password --}}
 
-
 {{-- Password Confirmation --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.password_confirmation') !!}</label>

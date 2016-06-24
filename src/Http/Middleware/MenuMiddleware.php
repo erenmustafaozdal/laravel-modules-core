@@ -50,7 +50,9 @@ class MenuMiddleware
         {
             if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
                 $menu->add(lmcTrans('laravel-user-module/admin.menu.user.add'),['route' => 'admin.user.create'] )
-                    ->attribute('data-icon', 'icon-user'); // simple-line-icons
+                    ->attribute('data-icon', 'icon-user-follow'); // simple-line-icons
+                $menu->add(lmcTrans('laravel-user-module/admin.menu.role.add'),['route' => 'admin.role.create'] )
+                    ->attribute('data-icon', 'icon-users'); // simple-line-icons
             }
         });
     }

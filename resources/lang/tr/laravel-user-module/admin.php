@@ -18,6 +18,7 @@ return [
     ],
     'role' => [
         'index'                     => 'Yönetici Rolleri',
+        'index_description'         => 'Sistemde bulunan bütün yönetici rolleri',
         'edit'                      => 'Rol Düzenle',
         'create'                    => 'Rol Ekle',
         'show'                      => 'Rol Bilgileri'
@@ -40,7 +41,6 @@ return [
     // fields
     'fields' => [
         'user' => [
-            'id'                    => 'ID',
             'photo'                 => 'Fotoğraf',
             'first_name'            => 'Ad',
             'last_name'             => 'Soyad',
@@ -59,6 +59,10 @@ return [
             'edit_info'             => 'Bilgileri Düzenle',
             'change_avatar'         => 'Fotoğrafı Değiştir',
             'change_password'       => 'Şifreyi Değiştir',
+        ],
+        'role' => [
+            'name'                  => 'Rol Adı',
+            'slug'                  => 'Tanımlama',
         ]
     ],
 
@@ -67,6 +71,9 @@ return [
         'user' => [
             'is_active_help'        => 'Hesabın aktif olması, yöneticinin sistem içine girmesini sağlar. Hesabı aktif olmayan yöneticiler <em class="label label-info">Yönetim Paneli</em>\'ne giriş yapamaz.',
             'email_not_changeable'  => 'E-posta adresi değiştirilemez.'
+        ],
+        'role' => [
+            'slug'                  => 'Benzersiz bir tanımlama yapın. Tanımlama yaparken <em class="label label-warning">Türkçe karakterler</em> kullanmayın. İzin verilen karakterler: <em class="label label-info">büyük küçük harfler (A-Z)</em>, <em class="label label-info">rakamlar (0-9)</em>, <em class="label label-info">tire (-)</em> ve <em class="label label-info">alt tire (_)</em>. Bu alanı boş bırakırsan; sistem otomatik olarak üretecektir.'
         ]
     ],
 
