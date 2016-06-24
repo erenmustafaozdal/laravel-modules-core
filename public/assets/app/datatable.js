@@ -576,8 +576,11 @@ var DataTable = {
                         if (theDataTable.tableOptions.onError) {
                             theDataTable.tableOptions.onError.call(undefined, theDataTable);
                         }
-
-                        getNoty(theDataTable.tableOptions.dataTable.language.ajaxRequestGeneralErrorTitle,theDataTable.tableOptions.dataTable.language.ajaxRequestGeneralError,'error');
+                        LMCApp.getNoty({
+                            message: theDataTable.tableOptions.dataTable.language.ajaxRequestGeneralError,
+                            title: theDataTable.tableOptions.dataTable.language.ajaxRequestGeneralErrorTitle,
+                            type: 'error'
+                        });
                     }
                 },
                 drawCallback: function(oSettings) { // run some code on table redraw

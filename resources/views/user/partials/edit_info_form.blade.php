@@ -38,11 +38,17 @@
         ]) !!}
     @endif
     {{-- /if user isset, email is disabled --}}
-
+    @if ( ! isset($helpBlockAfter) )
     <span class="help-block text-info">
         {!! lmcTrans('laravel-user-module/admin.helpers.user.email_not_changeable') !!}
     </span>
+    @endif
 </div>
+@if ( isset($helpBlockAfter) )
+    <span class="help-block text-info">
+        {!! lmcTrans('laravel-user-module/admin.helpers.user.email_not_changeable') !!}
+    </span>
+@endif
 {{-- /Email --}}
 
 {{-- Status --}}
@@ -56,6 +62,11 @@
         'data-off-text' => lmcTrans('laravel-user-module/admin.fields.user.not_active'),
         'data-off-color'=> 'danger',
     ]) !!}
-    <span class="help-block"> {!! lmcTrans('laravel-user-module/admin.helpers.user.is_active_help') !!} </span>
+    @if ( ! isset($helpBlockAfter) )
+        <span class="help-block"> {!! lmcTrans('laravel-user-module/admin.helpers.user.is_active_help') !!} </span>
+    @endif
 </div>
+@if ( isset($helpBlockAfter) )
+    <span class="help-block"> {!! lmcTrans('laravel-user-module/admin.helpers.user.is_active_help') !!} </span>
+@endif
 {{-- /Status --}}

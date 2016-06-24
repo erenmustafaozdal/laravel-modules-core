@@ -1,11 +1,11 @@
 {
-  "assets/app/datatable.js": "assets/app/datatable-555aa4b544.js",
+  "assets/app/datatable.js": "assets/app/datatable-204e3ca461.js",
   "assets/app/editor.js": "assets/app/editor-33629b62dd.js",
   "assets/app/fileinput.js": "assets/app/fileinput-ef7d193f5d.js",
   "assets/app/jcrop.js": "assets/app/jcrop-87b97f55df.js",
-  "assets/app/validation.js": "assets/app/validation-e251d9cb28.js",
+  "assets/app/validation.js": "assets/app/validation-4bba49aa80.js",
   "assets/global/scripts/config.js": "assets/global/scripts/config-ab85f2d826.js",
-  "assets/layouts/layout4/css/admin.css": "assets/layouts/layout4/css/admin-513a80b700.css",
+  "assets/layouts/layout4/css/admin.css": "assets/layouts/layout4/css/admin-7e86587140.css",
   "assets/layouts/layout4/scripts/theme.js": "assets/layouts/layout4/scripts/theme-4300496d8b.js",
   "assets/pages/js/loaders/admin-form.js": "assets/pages/js/loaders/admin-form-8ebadcdbc2.js",
   "assets/pages/js/loaders/admin-image.js": "assets/pages/js/loaders/admin-image-fd16bf2ca3.js",
@@ -13,8 +13,10 @@
   "assets/pages/js/loaders/admin.js": "assets/pages/js/loaders/admin-ab462b7e6c.js",
   "assets/pages/js/loaders/login.js": "assets/pages/js/loaders/login-d9915ca653.js",
   "assets/pages/scripts/login.js": "assets/pages/scripts/login-75b3c3b18e.js",
+  "assets/pages/scripts/role/index.js": "assets/pages/scripts/role/index-323e947bcf.js",
+  "assets/pages/scripts/role/role-form.js": "assets/pages/scripts/role/role-form-8f907e7201.js",
   "assets/pages/scripts/user/create.js": "assets/pages/scripts/user/create-4d6a7199b4.js",
-  "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-9ae915d622.js",
+  "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-9273b2c722.js",
   "assets/pages/scripts/user/show.js": "assets/pages/scripts/user/show-3f7c165359.js",
   "assets/pages/scripts/user/user-form.js": "assets/pages/scripts/user/user-form-f73b985adf.js"
 }

@@ -1,75 +1,10 @@
-;var UserIndex;
+;var RoleIndex;
 var Index = {
 
     init: function () {
         LMCApp.initDatepicker();
         this.handleDatatable();
-        UserIndex = this;
-
-        // activate user
-        $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-activate',function()
-        {
-            var tr = $(this).closest('tr');
-            var table = theDataTable.getDataTable();
-            var row = table.row(tr);
-            $.ajax({
-                url: row.data().urls.activate,
-                success: function(data)
-                {
-                    if (data.result === 'success') {
-                        LMCApp.getNoty({
-                            message: LMCApp.lang.admin.flash.activate_success.message,
-                            title: LMCApp.lang.admin.flash.activate_success.title,
-                            type: 'success'
-                        });
-                        return;
-                    }
-                    LMCApp.getNoty({
-                        message: LMCApp.lang.admin.flash.activate_error.message,
-                        title: LMCApp.lang.admin.flash.activate_error.title,
-                        type: 'error'
-                    });
-                }
-            }).done(function( data ) {
-                if ( data.result === 'success' ) {
-                    LMCApp.hasTransaction = false;
-                    table.draw();
-                }
-            });
-        });
-
-        // not activate user
-        $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-not-activate',function()
-        {
-            var tr = $(this).closest('tr');
-            var table = theDataTable.getDataTable();
-            var row = table.row(tr);
-            $.ajax({
-                url: row.data().urls.not_activate,
-                success: function(data)
-                {
-                    if (data.result === 'success') {
-                        LMCApp.getNoty({
-                            message: LMCApp.lang.admin.flash.not_activate_success.message,
-                            title: LMCApp.lang.admin.flash.not_activate_success.title,
-                            type: 'success'
-                        });
-                        return;
-                    }
-                    LMCApp.getNoty({
-                        message: LMCApp.lang.admin.flash.not_activate_error.message,
-                        title: LMCApp.lang.admin.flash.not_activate_error.title,
-                        type: 'error'
-                    });
-                }
-            }).done(function( data ) {
-                if ( data.result === 'success' ) {
-                    LMCApp.hasTransaction = false;
-                    table.draw();
-                }
-            });
-        });
-
+        RoleIndex = this;
     },
 
     handleDatatable: function()
@@ -145,25 +80,10 @@ var Index = {
                     { className: 'control', searchable: false, orderable: false, data: null, defaultContent: '' },
                     // id
                     { data: "id", name: "id", className: 'text-center' },
-                    // photo
-                    { data: "photo", name: "photo", searchable: false, orderable: false, className: 'text-center',
-                        render: function ( data, type, full, meta )
-                        {
-                            return '<img src="'+data+'" width="35" class="img-circle">';
-                        }
-                    },
-                    // fullname
-                    { data: "fullname", name: "first_name"},
+                    // name
+                    { data: "name", name: "name" },
                     // status
-                    { data: "status", name: "is_active", className: 'text-center',
-                        render: function ( data, type, full, meta )
-                        {
-                            if (data) {
-                                return '<span class="label label-success"> Aktif </span>';
-                            }
-                            return '<span class="label label-danger"> Aktif Değil </span>';
-                        }
-                    },
+                    { data: "slug", name: "slug", className: 'text-center' },
                     // created_at
                     { data: { _: 'created_at.display', sort: 'created_at.timestamp' }, name: "created_at", className: 'text-center'},
                     // action
@@ -194,13 +114,6 @@ var Index = {
                                     'divider'
                                 ]
                             };
-                            options.buttons.push({
-                                title: full.status ? '<i class="fa fa-times"></i> ' + LMCApp.lang.admin.ops.not_activate : '<i class="fa fa-check"></i> ' + LMCApp.lang.admin.ops.activate,
-                                attributes: {
-                                    href: 'javascript:;',
-                                    class: full.status ? 'fast-not-activate' : 'fast-activate'
-                                }
-                            });
                             return theDataTable.getActionMenu(options);
                         }
                     }
@@ -214,32 +127,26 @@ var Index = {
         Editor.init({
             modalShowCallback: function(Editor)
             {
-                if (Editor.actionType === 'fast-edit') {
-                    $(Editor.editorOptions.formSrc).find('input[name="email"]').attr('disabled','disabled');
-                }
+                //
             },
             actionButtonCallback: function(Editor)
             {
                 var url = Editor.actionType === 'fast-add' ? apiStoreURL : Editor.row.data().urls.edit ;
                 // validation ve user form dosyaları yüklenir
-                $script(userFormLoaderJs, 'formLoader');
+                $script(formLoaderJs, 'formLoader');
                 $script.ready(['formLoader','validation'], function()
                 {
-                    $script(userFormJs, 'user_form');
+                    $script(formJs, 'form');
                 });
-                $script.ready('user_form', function()
+                $script.ready('form', function()
                 {
                     UserForm.init({
                         isAjax: true,
                         submitAjax: function(validation)
                         {
                             var datas = {
-                                first_name: validation.form.find('input[name="first_name"]').val(),
-                                last_name: validation.form.find('input[name="last_name"]').val(),
-                                email: validation.form.find('input[name="email"]').val(),
-                                password: validation.form.find('input[name="password"]').val(),
-                                password_confirmation: validation.form.find('input[name="password_confirmation"]').val(),
-                                is_active: $('#is_active').bootstrapSwitch('state')
+                                name: validation.form.find('input[name="name"]').val(),
+                                slug: validation.form.find('input[name="slug"]').val()
                             };
                             if (Editor.actionType === 'fast-add') {
                                 var type =  'POST';
@@ -284,13 +191,6 @@ var Index = {
                             });
                         }
                     });
-                    if (Editor.actionType === 'fast-add') {
-                        Validation.addElementRule('password', { required: true });
-                        Validation.addElementRule('password_confirmation', { required: true });
-                    } else {
-                        Validation.removeElementRule('password', 'required');
-                        Validation.removeElementRule('password_confirmation', 'required');
-                    }
                     // form is submit
                     $(Editor.editorOptions.formSrc).submit();
                 });

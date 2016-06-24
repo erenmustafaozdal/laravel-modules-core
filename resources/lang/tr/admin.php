@@ -89,6 +89,7 @@ return [
 
     // fields
     'fields' => [
+        'id'                                => 'ID',
         'created_at'                        => 'Kayıt Tarihi',
         'created_at_description'            => ':date kaydedildi',
         'updated_at'                        => 'Güncelleme Tarihi',

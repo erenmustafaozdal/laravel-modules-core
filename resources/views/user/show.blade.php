@@ -312,7 +312,7 @@
                                 'id'        => 'user-edit-info'
                             ]) !!}
 
-                            @include('laravel-modules-core::partials.form.form_actions', ['type' => 'top'])
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
                             {{-- Form Body --}}
                             <div class="form-body">
@@ -320,7 +320,7 @@
                             </div>
                             {{-- /Form Body --}}
 
-                            @include('laravel-modules-core::partials.form.form_actions', ['type' => 'fluid'])
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
 
                             {!! Form::close() !!}
                         </div>
@@ -348,7 +348,7 @@
                                 'id'        => 'user-change-password'
                             ]) !!}
 
-                            @include('laravel-modules-core::partials.form.form_actions', ['type' => 'top'])
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
                             {{-- Form Body --}}
                             <div class="form-body">
@@ -356,7 +356,7 @@
                             </div>
                             {{-- /Form Body --}}
 
-                            @include('laravel-modules-core::partials.form.form_actions', ['type' => 'fluid'])
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
 
                             {!! Form::close() !!}
                         </div>
