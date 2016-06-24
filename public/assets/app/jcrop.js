@@ -133,6 +133,7 @@ var LMCJcrop = {
      */
     jcropPreInit: function(src)
     {
+        this.setOriginalImage(src);
         this.imgJcrop.prop('src', src);
         this.imgJcropPreview.prop('src', src);
         this.jcropWrapper.removeClass('hidden');
@@ -164,8 +165,8 @@ var LMCJcrop = {
      */
     setFormElements: function(coordinates)
     {
-        $('#x').val(coordinates.x);
-        $('#y').val(coordinates.y);
+        $('#x').val(coordinates.x1);
+        $('#y').val(coordinates.y1);
         $('#width').val(coordinates.width);
         $('#height').val(coordinates.height);
     },
@@ -238,7 +239,7 @@ var LMCJcrop = {
                 {
                     if (parseInt(coords.w) > 0)
                     {
-                        var recoords = LMCJcrop.getCropSize(
+                        var recoords = theLMCJcrop.getCropSize(
                             coords,
                             {width: theLMCJcrop.xsize, height: theLMCJcrop.ysize},
                             {width: theLMCJcrop.boundx, height: theLMCJcrop.boundy},
@@ -251,7 +252,7 @@ var LMCJcrop = {
                             marginLeft: '-' + recoords.x1 + 'px',
                             marginTop: '-' + recoords.y1 + 'px'
                         });
-                        LMCJcrop.setFormElements(LMCJcrop.getCropSize(
+                        LMCJcrop.setFormElements(theLMCJcrop.getCropSize(
                             coords,
                             {width: theLMCJcrop.xsize, height: theLMCJcrop.ysize},
                             {width: theLMCJcrop.boundx, height: theLMCJcrop.boundy},
@@ -261,12 +262,12 @@ var LMCJcrop = {
                 },
                 onSelect: function(coords)
                 {
-                    LMCJcrop.setFormElements(LMCJcrop.getCropSize(
-                        coords,
-                        {width: theLMCJcrop.xsize, height: theLMCJcrop.ysize},
-                        {width: theLMCJcrop.boundx, height: theLMCJcrop.boundy},
-                        false
-                    ));
+                    LMCJcrop.setFormElements(theLMCJcrop.getCropSize(
+                    coords,
+                    {width: theLMCJcrop.xsize, height: theLMCJcrop.ysize},
+                    {width: theLMCJcrop.boundx, height: theLMCJcrop.boundy},
+                    false
+                ));
                 }
             }
         };

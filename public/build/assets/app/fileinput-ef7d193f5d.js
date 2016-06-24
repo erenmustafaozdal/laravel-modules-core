@@ -91,7 +91,7 @@ var LMCFileinput = {
                     showRemove: true,
                     removeIcon: '<i class="icon-trash"></i> ',
                     removeClass: 'btn btn-xs red btn-outline tooltips',
-                    showZoom: true,
+                    showZoom: false,
                     zoomIcon: '<i class="icon-magnifier-add"></i> ',
                     zoomClass: 'btn btn-xs purple btn-outline tooltips'
                 }

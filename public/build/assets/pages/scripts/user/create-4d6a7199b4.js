@@ -23,6 +23,9 @@ var Create = {
         // LMCDropzone app is init
         LMCFileinput.init(this.getFileinputInitOptions());
 
+        // LMCJcrop app element is setup
+        LMCJcrop.setupElements();
+
         // create form validation
         Validation.init({
             src: this.options.formSrc,
@@ -64,8 +67,9 @@ var Create = {
             src: UserCreate.options.fileinputSrc,
             formSrc:  UserCreate.options.formSrc,
             fileinput: {
+                uploadUrl: UserCreate.form.prop('action'),
                 showUpload: false,
-                showCancel: true,
+                showCancel: false,
                 fileActionSettings: {
                     showUpload: false
                 },
@@ -74,21 +78,18 @@ var Create = {
             // events
             filebrowse: function(event)
             {
-                theLMCJcrop == undefined ? LMCJcrop.setupElements() : theLMCJcrop.setupElements();
                 theLMCJcrop.jcropReset();
             },
             fileloaded: function(event, file, previewId, index, reader)
             {
-                var img = new Image();
-                img.src = reader.result;
-                theLMCJcrop.originalImage = img;
                 // init tooltips
                 LMCApp.initTooltips();
                 // image crop action button click
                 $('#image-crop-action').on('click', function(event)
                 {
                     // jcrop init
-                    theLMCJcrop.jcropInit(event, file, previewId, index, reader, UserCreate.getJcropInitOptions());
+                    theLMCJcrop.jcropPreInit(reader.result)
+                        .init(UserCreate.getJcropInitOptions());
                 });
                 // image crop cancel button click
                 theLMCJcrop.imgCropCancelBtn.on('click', function(event)
