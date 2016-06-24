@@ -73,7 +73,7 @@ return [
             'email_not_changeable'  => 'E-posta adresi değiştirilemez.'
         ],
         'role' => [
-            'slug'                  => 'Benzersiz bir tanımlama yapın. Tanımlama yaparken <em class="label label-info">Türkçe karakterler</em> kullanmayın. İzin verilen karakterler: <em class="label label-info">A-Z (büyük-küçük)</em> veya <em class="label label-info">0-9</em>'
+            'slug'                  => 'Benzersiz bir tanımlama yapın. Tanımlama yaparken <em class="label label-warning">Türkçe karakterler</em> kullanmayın. İzin verilen karakterler: <em class="label label-info">büyük küçük harfler (A-Z)</em>, <em class="label label-info">rakamlar (0-9)</em>, <em class="label label-info">tire (-)</em> ve <em class="label label-info">alt tire (_)</em>. Bu alanı boş bırakırsan; sistem otomatik olarak üretecektir.'
         ]
     ],
 

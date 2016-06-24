@@ -40,13 +40,16 @@
                 required: "{!! LMCValidation::getMessage('name','required') !!}"
             },
             slug: {
-                required: "{!! LMCValidation::getMessage('slug','required') !!}",
-                alphanumeric: "{!! LMCValidation::getMessage('slug','alpha_num') !!}"
+                alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}"
             }
         };
         {{-- /languages --}}
 
         {{-- scripts --}}
+        $script.ready('validation', function()
+        {
+            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
+        });
         $script.ready('app_editor', function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/role/index.js') !!}",'index');

@@ -21,8 +21,7 @@ var UserForm = {
                         required: true
                     },
                     slug: {
-                        required: true,
-                        alphanumeric: true
+                        alpha_dash: true
                     }
                 },
                 messages: messagesOfRules

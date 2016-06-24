@@ -41,20 +41,20 @@ var Index = {
                 return '<table class="table table-hover table-light">' +
                     '<tbody>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>E-posta:</strong> </td>' +
-                            '<td class="text-left">' + data.email + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Rol Adı:</strong> </td>' +
+                            '<td class="text-left">' + data.name + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Son Giriş:</strong> </td>' +
-                            '<td class="text-left">' + data.last_login.display + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Tanımlama:</strong> </td>' +
+                            '<td class="text-left">' + data.slug + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
+                            '<td class="text-left">' + data.created_at.display + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
                             '<td class="text-left">' + data.updated_at.display + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Roller:</strong> </td>' +
-                            '<td class="text-left">' + data.roles + '</td>' +
                         '</tr>' +
                     '</tbody>' +
                 '</table>';
@@ -64,7 +64,7 @@ var Index = {
              * export data table options for columns
              */
             exportOptions: {
-                columns: [2,4,5,6]
+                columns: [2,3,4,5]
             },
             dataTable: {
                 columns: [
@@ -83,7 +83,7 @@ var Index = {
                     // name
                     { data: "name", name: "name" },
                     // status
-                    { data: "slug", name: "slug", className: 'text-center' },
+                    { data: "slug", name: "slug" },
                     // created_at
                     { data: { _: 'created_at.display', sort: 'created_at.timestamp' }, name: "created_at", className: 'text-center'},
                     // action
@@ -110,8 +110,7 @@ var Index = {
                                             href: 'javascript:;',
                                             class: 'fast-destroy'
                                         }
-                                    },
-                                    'divider'
+                                    }
                                 ]
                             };
                             return theDataTable.getActionMenu(options);
@@ -161,7 +160,6 @@ var Index = {
                                 var message_error = LMCApp.lang.admin.flash.update_error.message;
                                 var title_error = LMCApp.lang.admin.flash.update_error.title;
                             }
-                            
                             $.ajax({
                                 url: url,
                                 data: datas,
