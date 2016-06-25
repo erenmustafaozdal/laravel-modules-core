@@ -1,4 +1,4 @@
-@extends(config('laravel-user-module.views.user.layout'))
+@extends(config('laravel-user-module.views.role.layout'))
 
 @section('title')
     {!! lmcTrans('laravel-user-module/admin.role.index') !!}

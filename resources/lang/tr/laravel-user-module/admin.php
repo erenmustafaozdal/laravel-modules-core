@@ -21,6 +21,7 @@ return [
         'index_description'         => 'Sistemde bulunan bütün yönetici rolleri',
         'edit'                      => 'Rol Düzenle',
         'create'                    => 'Rol Ekle',
+        'create_description'        => 'Yeni bir yönetici rolü ekle',
         'show'                      => 'Rol Bilgileri'
     ],
 
@@ -63,6 +64,8 @@ return [
         'role' => [
             'name'                  => 'Rol Adı',
             'slug'                  => 'Tanımlama',
+            'permissions'           => 'İşlem İzinleri',
+            'total_permission'      => 'Toplam işlem sayısı: :count'
         ]
     ],
 

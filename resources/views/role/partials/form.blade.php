@@ -17,7 +17,7 @@
     ]) !!}
 
     @if ( ! isset($helpBlockAfter) )
-        <span class="help-block text-info">
+        <span class="help-block">
         {!! lmcTrans('laravel-user-module/admin.helpers.role.slug') !!}
     </span>
     @endif

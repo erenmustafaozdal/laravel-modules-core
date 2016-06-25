@@ -23,7 +23,7 @@
     @parent
     <script type="text/javascript">
         {{-- js file path --}}
-        var userFormLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
+        var formLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
         var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
         var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
@@ -54,6 +54,10 @@
         {{-- /languages --}}
 
         {{-- scripts --}}
+        $script.ready('validation', function()
+        {
+            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
+        });
         $script.ready(['app_fileinput','app_jcrop'], function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/user/create.js') !!}",'create');

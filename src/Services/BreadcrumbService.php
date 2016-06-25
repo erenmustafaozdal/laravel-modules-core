@@ -95,12 +95,12 @@ class BreadcrumbService
      */
     public function getDashboardBreadcrumb()
     {
-        $breadcrumbs  .= '<li>';
-        $breadcrumbs  .= '<a href="'.route('admin.dashboard.index').'">';
-        $breadcrumbs  .= trans('laravel-modules-core::laravel-dashboard-module/admin.dashboard.index');
-        $breadcrumbs  .= '</a>';
-        $breadcrumbs  .= '<i class="fa fa-circle"></i>';
-        $breadcrumbs  .= '</li>';
+        $breadcrumbs  = '<li>';
+        $breadcrumbs .= '<a href="'.route('admin.dashboard.index').'">';
+        $breadcrumbs .= trans('laravel-modules-core::laravel-dashboard-module/admin.dashboard.index');
+        $breadcrumbs .= '</a>';
+        $breadcrumbs .= '<i class="fa fa-circle"></i>';
+        $breadcrumbs .= '</li>';
         return $breadcrumbs;
     }
 }
