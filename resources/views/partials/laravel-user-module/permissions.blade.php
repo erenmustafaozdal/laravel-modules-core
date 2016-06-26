@@ -60,7 +60,7 @@
                                         </a>
                                     </div>
                                     <div class="task-status">
-                                        {!! Form::checkbox( 'permissions[]', 1, 0, [
+                                        {!! Form::checkbox( "permissions[{$route['route']}]", 1, 0, [
                                             'class'         => 'make-switch  item-permission',
                                             'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.role.permission_on'),
                                             'data-on-color' => 'success',
@@ -83,7 +83,7 @@
                         <div class="task-footer bg-grey-steel">
                             <div class="row">
                                 <div class="col-md-12">
-                                    {!! Form::checkbox( 'permissions[]', 1, 0, [
+                                    {!! Form::checkbox( '', 1, 0, [
                                         'class'         => 'make-switch group-permission',
                                         'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.role.permission_group_on'),
                                         'data-on-color' => 'success',

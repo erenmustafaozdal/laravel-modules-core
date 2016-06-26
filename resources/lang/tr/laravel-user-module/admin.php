@@ -64,6 +64,7 @@ return [
         'role' => [
             'name'                  => 'Rol Adı',
             'slug'                  => 'Tanımlama',
+            'role_info'             => 'Rol Bilgileri',
             'permissions'           => 'İşlem İzinleri',
             'total_permission'      => 'Toplam işlem sayısı: :count',
             'permission_on'         => 'Açık',

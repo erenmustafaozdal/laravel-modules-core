@@ -86,8 +86,33 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::role.partials.form')
-                @include('laravel-modules-core::partials.laravel-user-module.permissions')
+                <div class="tabbable-custom">
+                    {{-- Nav Tabs --}}
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#info" data-toggle="tab" aria-expanded="true">
+                                {!! lmcTrans('laravel-user-module/admin.fields.role.role_info') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#permission" data-toggle="tab" aria-expanded="true">
+                                {!! lmcTrans('laravel-user-module/admin.fields.role.permissions') !!}
+                            </a>
+                        </li>
+                    </ul>
+                    {{-- /Nav Tabs --}}
+                    
+                    {{-- Tab Contents --}}
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="info">
+                            @include('laravel-modules-core::role.partials.form')
+                        </div>
+                        <div class="tab-pane" id="permission">
+                            @include('laravel-modules-core::partials.laravel-user-module.permissions')
+                        </div>
+                    </div>
+                    {{-- /Tab Contents --}}
+                </div>
             </div>
             {{-- /Form Body --}}
 
