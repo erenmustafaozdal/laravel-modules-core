@@ -40,10 +40,12 @@
         $script.ready('jquery', function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/role/create.js') !!}",'create');
+            $script("{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}", 'permission');
         });
-        $script.ready(['config','create'], function()
+        $script.ready(['config','create','permission'], function()
         {
             Create.init();
+            Permission.init();
         });
         {{-- /scripts --}}
     </script>
