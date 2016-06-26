@@ -29,11 +29,51 @@
         <div class="list-todo-line"></div>
 
         <ul>
-            @foreach($permission->groupByController() as $controller)
-
+            @foreach($permission->groupByController() as $namespace => $routes)
             <li class="mt-list-item">
                 <div class="list-todo-icon bg-white">
-                    <i class="fa fa-database"></i>
+                    <i class="{!! trans($namespace . '.icon') !!}"></i>
+                </div>
+
+                <div class="list-todo-item grey">
+                    <a class="list-toggle-container font-white" data-toggle="collapse" href="#{!! $routes->first()['controller'] !!}" aria-expanded="false">
+                        <div class="list-toggle">
+                            <div class="list-toggle-title bold">{!! trans($namespace . '.title') !!}</div>
+                            <div class="badge badge-default pull-right bold">{!! $routes->count() !!}</div>
+                        </div>
+                    </a>
+                    <div class="task-list panel-collapse collapse" id="{!! $routes->first()['controller'] !!}" aria-expanded="true">
+                        
+                        {{-- İzin Rotoları --}}
+                        <ul>
+                            @foreach($routes as $route)
+                                <li class="task-list-item done">
+                                    <div class="task-icon">
+                                        <a href="javascript:;">
+                                            <i class="{!! trans($namespace . '.icon') !!}"></i>
+                                        </a>
+                                    </div>
+                                    <div class="task-status">
+                                        {!! Form::checkbox( 'permissions[]', 1, 0, [
+                                            'class'         => 'make-switch',
+                                            'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.role.permission_on'),
+                                            'data-on-color' => 'success',
+                                            'data-off-text' => lmcTrans('laravel-user-module/admin.fields.role.permission_off'),
+                                            'data-off-color'=> 'danger',
+                                        ]) !!}
+                                    </div>
+                                    <div class="task-content">
+                                        <h4 class="bold">
+                                            <a href="javascript:;">{!! trans($namespace . '.' . str_replace('.','_',$route['sub_route'])) !!}</a>
+                                        </h4>
+                                        <p>{!! trans($namespace . '.' . str_replace('.','_',$route['sub_route']) . '_desc') !!} </p>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                        {{-- /İzin Rotoları --}}
+                        
+                    </div>
                 </div>
             </li>
 

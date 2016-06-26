@@ -65,7 +65,9 @@ return [
             'name'                  => 'Rol Adı',
             'slug'                  => 'Tanımlama',
             'permissions'           => 'İşlem İzinleri',
-            'total_permission'      => 'Toplam işlem sayısı: :count'
+            'total_permission'      => 'Toplam işlem sayısı: :count',
+            'permission_on'         => 'Açık',
+            'permission_off'        => 'Kapalı'
         ]
     ],
 
@@ -77,6 +79,57 @@ return [
         ],
         'role' => [
             'slug'                  => 'Benzersiz bir tanımlama yapın. Tanımlama yaparken <em class="label label-warning">Türkçe karakterler</em> kullanmayın. İzin verilen karakterler: <em class="label label-info">büyük küçük harfler (A-Z)</em>, <em class="label label-info">rakamlar (0-9)</em>, <em class="label label-info">tire (-)</em> ve <em class="label label-info">alt tire (_)</em>. Bu alanı boş bırakırsan; sistem otomatik olarak üretecektir.'
+        ]
+    ],
+
+    // permissions
+    'permission' => [
+        'RoleController' => [
+            'icon'                  => 'fa fa-users',
+            'title'                 => 'Yönetici Rolü İşlemleri',
+            // routes
+            'role_index'            => 'Roller Sayfası',
+            'role_index_desc'       => 'Bu izne sahip olanlar yönetici rollerinin listelendiği sayfaya gidebilir',
+            'role_create'           => 'Ekle Sayfası',
+            'role_create_desc'      => 'Bu izne sahip olanlar yönetici rolü ekleme sayfasına gidebilir',
+            'role_store'            => 'Ekleme',
+            'role_store_desc'       => 'Bu izne sahip olanlar yönetici rolü ekleyebilir',
+            'role_show'             => 'Bilgiler Sayfası',
+            'role_show_desc'        => 'Bu izne sahip olanlar yönetici rolünün bilgilerini görüntüleyebilir',
+            'role_edit'             => 'Düzenleme Sayfası',
+            'role_edit_desc'        => 'Bu izne sahip olanlar yönetici rolü bilgilerini düzenleme sayfasına gidebilir',
+            'role_update'           => 'Düzenleme',
+            'role_update_desc'      => 'Bu izne sahip olanlar yönetici rolü bilgilerini düzenleyebilir',
+            'role_destroy'          => 'Silme',
+            'role_destroy_desc'     => 'Bu izne sahip olanlar yönetici rolü silebilir',
+        ],
+        'RoleApiController' => [
+            'icon'                  => 'fa fa-users',
+            'title'                 => 'Yönetici Rolü Uzak Bağlantı İşlemleri',
+            // routes
+            'role_group'            => 'Toplu İşlem',
+            'role_group_desc'       => 'Bu izne sahip olanlar yönetici rollerinin listelendiği sayfada toplu işlem yapabilir',
+            'role_detail'           => 'Detaylar',
+            'role_detail_desc'      => 'Bu izne sahip olanlar yönetici rollerinin listelendiği sayfada rol detayını görebilir',
+            'role_fast_edit'        => 'Hızlı Düzenleme Bilgileri',
+            'role_fast_edit_desc'   => 'Bu izne sahip olanlar yönetici rollerinin listelendiği sayfada hızlı düzenlemek amacıyla rol bilgilerini sayfaya getirebilir',
+            'role_index'            => 'Listeleme',
+            'role_index_desc'       => 'Bu izne sahip olanlar yönetici rollerini listeleyebilir',
+            'role_store'            => 'Hızlı Ekleme',
+            'role_store_desc'       => 'Bu izne sahip olanlar yönetici rollerinin listelendiği sayfada hızlı şekilde rol ekleyebilir',
+            'role_update'           => 'Hızlı Düzenleme',
+            'role_update_desc'      => 'Bu izne sahip olanlar yönetici rollerinin listelendiği sayfada rol bilgisini hızlı şekilde düzenleyebilir',
+            'role_destroy'          => 'Silme',
+            'role_destroy_desc'     => 'Bu izne sahip olanlar yönetici rolü silebilir',
+        ],
+        'UserController' => [
+            'icon'                  => 'fa fa-user',
+            'title'                 => 'Yönetici İşlemleri'
+        ]
+        ,
+        'UserApiController' => [
+            'icon'                  => 'fa fa-user',
+            'title'                 => 'Yönetici Uzak Bağlantı İşlemleri'
         ]
     ],
 

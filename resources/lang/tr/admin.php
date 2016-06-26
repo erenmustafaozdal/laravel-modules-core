@@ -94,5 +94,18 @@ return [
         'created_at_description'            => ':date kaydedildi',
         'updated_at'                        => 'Güncelleme Tarihi',
         'updated_at_description'            => ':date güncellendi',
-    ]
+    ],
+
+    // permissions
+    'permission' => [
+        'ThemeController' => [
+            'icon'                          => 'fa fa-pencil',
+            'title'                         => 'Yönetim Paneli Tema İşlemleri',
+            // routes
+            'themeLayout_change'            => 'Yönetim Paneli Yerleşimi',
+            'themeLayout_change_desc'       => 'Bu izne sahip olanlar yönetim panelinin yerleşim düzenini değiştirebilir',
+            'themeColor_change'             => 'Yönetim Paneli Rengi',
+            'themeColor_change_desc'        => 'Bu izne sahip olanlar yönetim panelinin rengini değiştirebilir'
+        ]
+    ],
 ];
