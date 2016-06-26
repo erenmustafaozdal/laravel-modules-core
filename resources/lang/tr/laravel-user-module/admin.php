@@ -64,10 +64,14 @@ return [
         'role' => [
             'name'                  => 'Rol Adı',
             'slug'                  => 'Tanımlama',
+            'role_info'             => 'Rol Bilgileri',
             'permissions'           => 'İşlem İzinleri',
             'total_permission'      => 'Toplam işlem sayısı: :count',
             'permission_on'         => 'Açık',
-            'permission_off'        => 'Kapalı'
+            'permission_off'        => 'Kapalı',
+            'permission_group_on'   => 'Grubu Aç',
+            'permission_group_off'  => 'Grubu Kapat',
+            'permission_all_on_off' => 'Hepsini Aç/Kapat',
         ]
     ],
 
@@ -124,12 +128,52 @@ return [
         ],
         'UserController' => [
             'icon'                  => 'fa fa-user',
-            'title'                 => 'Yönetici İşlemleri'
+            'title'                 => 'Yönetici İşlemleri',
+            // routes
+            'user_changePassword'  => 'Şifre Güncelleme',
+            'user_changePassword_desc'=> 'Bu izne sahip olanlar yöneticinin şifresini güncelleyebilir',
+            'user_index'            => 'Yöneticiler Sayfası',
+            'user_index_desc'       => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfaya gidebilir',
+            'user_create'           => 'Ekle Sayfası',
+            'user_create_desc'      => 'Bu izne sahip olanlar yönetici ekleme sayfasına gidebilir',
+            'user_store'            => 'Ekleme',
+            'user_store_desc'       => 'Bu izne sahip olanlar yönetici ekleyebilir',
+            'user_show'             => 'Bilgiler Sayfası',
+            'user_show_desc'        => 'Bu izne sahip olanlar yönetici bilgilerini görüntüleyebilir',
+            'user_edit'             => 'Düzenleme Sayfası',
+            'user_edit_desc'        => 'Bu izne sahip olanlar yönetici bilgilerini düzenleme sayfasına gidebilir',
+            'user_update'           => 'Düzenleme',
+            'user_update_desc'      => 'Bu izne sahip olanlar yönetici bilgilerini düzenleyebilir',
+            'user_destroy'          => 'Silme',
+            'user_destroy_desc'     => 'Bu izne sahip olanlar yöneticiyi silebilir',
         ]
         ,
         'UserApiController' => [
             'icon'                  => 'fa fa-user',
-            'title'                 => 'Yönetici Uzak Bağlantı İşlemleri'
+            'title'                 => 'Yönetici Uzak Bağlantı İşlemleri',
+            // routes
+            'user_group'            => 'Toplu İşlem',
+            'user_group_desc'       => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfada toplu işlem yapabilir',
+            'user_detail'           => 'Detaylar',
+            'user_detail_desc'      => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfada yönetici detayını görebilir',
+            'user_fast_edit'        => 'Hızlı Düzenleme Bilgileri',
+            'user_fast_edit_desc'   => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfada hızlı düzenlemek amacıyla yönetci bilgilerini sayfaya getirebilir',
+            'user_activate'         => 'Aktifleştirme',
+            'user_activate_desc'    => 'Bu izne sahip olanlar yöneticinin hesabını aktifleştirebilir',
+            'user_not_activate'     => 'Aktifliği Kaldırma',
+            'user_not_activate_desc'=> 'Bu izne sahip olanlar yöneticinin hesabını aktifliğini kaldırabilir',
+            'user_avatar_photo'     => 'Fotoğraf Yükleme',
+            'user_avatar_photo_desc'=> 'Bu izne sahip olanlar yöneticinin profil fotoğrafını değiştirebilir',
+            'user_destroy_avatar'   => 'Fotoğraf Silme',
+            'user_destroy_avatar_desc'=> 'Bu izne sahip olanlar yöneticinin profil fotoğrafını silip, varsayılan profil fotoğrafını aktif hale getirebilir',
+            'user_index'            => 'Listeleme',
+            'user_index_desc'       => 'Bu izne sahip olanlar yöneticileri listeleyebilir',
+            'user_store'            => 'Hızlı Ekleme',
+            'user_store_desc'       => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfada hızlı şekilde yönetici ekleyebilir',
+            'user_update'           => 'Hızlı Düzenleme',
+            'user_update_desc'      => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfada yönetici bilgisini hızlı şekilde düzenleyebilir',
+            'user_destroy'          => 'Silme',
+            'user_destroy_desc'     => 'Bu izne sahip olanlar yöneticiyi silebilir',
         ]
     ],
 

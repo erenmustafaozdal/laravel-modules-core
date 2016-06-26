@@ -4,7 +4,7 @@
 <div class="mt-element-list">
     
     {{-- List Head --}}
-    <div class="mt-list-head list-todo red">
+    <div class="mt-list-head list-todo grey">
         <div class="list-head-title-container">
 
             <h3 class="list-title">{!! lmcTrans('laravel-user-module/admin.fields.role.permissions') !!}</h3>
@@ -21,6 +21,12 @@
             </div>
 
         </div>
+
+        <a href="javascript:;" id="all-permission">
+            <div class="list-count pull-right default tooltips" title="{!! lmcTrans('laravel-user-module/admin.fields.role.permission_all_on_off') !!}">
+                <i class="fa fa-check"></i>
+            </div>
+        </a>
     </div>
     {{-- /List Head --}}
     
@@ -35,7 +41,7 @@
                     <i class="{!! trans($namespace . '.icon') !!}"></i>
                 </div>
 
-                <div class="list-todo-item grey">
+                <div class="list-todo-item grey-steel">
                     <a class="list-toggle-container font-white" data-toggle="collapse" href="#{!! $routes->first()['controller'] !!}" aria-expanded="false">
                         <div class="list-toggle">
                             <div class="list-toggle-title bold">{!! trans($namespace . '.title') !!}</div>
@@ -54,8 +60,8 @@
                                         </a>
                                     </div>
                                     <div class="task-status">
-                                        {!! Form::checkbox( 'permissions[]', 1, 0, [
-                                            'class'         => 'make-switch',
+                                        {!! Form::checkbox( "permissions[{$route['route']}]", 1, 0, [
+                                            'class'         => 'make-switch  item-permission',
                                             'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.role.permission_on'),
                                             'data-on-color' => 'success',
                                             'data-off-text' => lmcTrans('laravel-user-module/admin.fields.role.permission_off'),
@@ -72,6 +78,22 @@
                             @endforeach
                         </ul>
                         {{-- /İzin Rotoları --}}
+                        
+                        {{-- Toplu atama butonu --}}
+                        <div class="task-footer bg-grey-steel">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    {!! Form::checkbox( '', 1, 0, [
+                                        'class'         => 'make-switch group-permission',
+                                        'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.role.permission_group_on'),
+                                        'data-on-color' => 'success',
+                                        'data-off-text' => lmcTrans('laravel-user-module/admin.fields.role.permission_group_off'),
+                                        'data-off-color'=> 'danger',
+                                    ]) !!}
+                                </div>
+                            </div>
+                        </div>
+                        {{-- /Toplu atama butonu --}}
                         
                     </div>
                 </div>
