@@ -48,3 +48,41 @@ if (! function_exists('lmcTrans')) {
         return trans('laravel-modules-core::'.$id);
     }
 }
+
+
+
+/*
+|--------------------------------------------------------------------------
+| get operation buttons
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('getOps')) {
+    /**
+     * get operation buttons
+     *
+     * @param $model
+     * @return string
+     */
+    function getOps($model)
+    {
+        $route_name = snake_case(class_basename($model));
+
+
+        $ops  = Form::open(['method' => 'DELETE', 'url' => route("admin.{$route_name}.destroy", ['id' => $model->id]), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
+
+        // düzenleme butoun
+        $ops .= '<a href="' . route("admin.{$route_name}.edit", ['id' => $model->id]) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
+        $ops .= '<i class="fa fa-pencil"></i>';
+        $ops .= trans('laravel-modules-core::admin.ops.edit');
+        $ops .= '</a>';
+
+        // silme butonu
+        $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline">';
+        $ops .= '<i class="fa fa-trash"></i>';
+        $ops .= trans('laravel-modules-core::admin.ops.destroy');
+        $ops .= '</button>';
+
+        $ops .= Form::close();
+        return $ops;
+    }
+}

@@ -185,6 +185,12 @@ var Index = {
                                         }
                                     },
                                     {
+                                        title: '<i class="fa fa-pencil"></i> ' + LMCApp.lang.admin.ops.edit,
+                                        attributes: {
+                                            href: full.urls.edit_page
+                                        }
+                                    },
+                                    {
                                         title: '<i class="fa fa-trash"></i> ' + LMCApp.lang.admin.ops.destroy,
                                         attributes: {
                                             href: 'javascript:;',

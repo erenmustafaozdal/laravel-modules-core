@@ -15,6 +15,8 @@ var Permission = {
 
         // check all
         this.checkAll();
+        // check groups
+        this.checkGroups();
 
         // all permission change
         $('#all-permission').on('click', function(event)
@@ -79,6 +81,24 @@ var Permission = {
         });
 
         this.isAllChecked = isAllChecked;
+    },
+
+    /**
+     * check groups
+     */
+    checkGroups: function()
+    {
+        $('.group-permission').each(function(index, element)
+        {
+            var isGroupChecked = true;
+            $(element).closest('.task-list').find('input[type="checkbox"].item-permission').each(function(index, subElement)
+            {
+                if ( ! $(subElement).bootstrapSwitch('state') ) {
+                    isGroupChecked = false;
+                }
+            });
+            $(element).bootstrapSwitch('state', isGroupChecked, true);
+        });
     }
 
 };

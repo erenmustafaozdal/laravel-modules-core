@@ -55,6 +55,8 @@ return [
         'activate'                          => 'Aktifleştir',
         'not_activate'                      => 'Aktifliği kaldır',
         'destroy'                           => 'Sil',
+        'edit'                              => 'Düzenle',
+        'destroy_confirmation'              => 'Kayıt silinecek! Emin misin?',
         'submit'                            => 'Gönder',
         'search'                            => 'Ara',
         'reset'                             => 'Temizle',
@@ -94,6 +96,11 @@ return [
         'created_at_description'            => ':date kaydedildi',
         'updated_at'                        => 'Güncelleme Tarihi',
         'updated_at_description'            => ':date güncellendi',
+
+        'overview'                          => 'Genel Bilgiler',
+        'edit_info'                         => 'Bilgileri Düzenle',
+        'change_avatar'                     => 'Fotoğrafı Değiştir',
+        'change_password'                   => 'Şifreyi Değiştir',
     ],
 
     // permissions

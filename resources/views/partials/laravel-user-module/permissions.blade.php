@@ -1,7 +1,7 @@
 @inject('permission', 'ErenMustafaOzdal\LaravelUserModule\Services\PermissionService')
 
 {{-- Element List For Permission --}}
-<div class="mt-element-list">
+<div class="mt-element-list padding-tb-10">
     
     {{-- List Head --}}
     <div class="mt-list-head list-todo grey">
@@ -60,7 +60,7 @@
                                         </a>
                                     </div>
                                     <div class="task-status">
-                                        {!! Form::checkbox( "permissions[{$route['route']}]", 1, 0, [
+                                        {!! Form::checkbox( "permissions[{$route['route']}]", 1, isset($permissions[$route['route']]), [
                                             'class'         => 'make-switch  item-permission',
                                             'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.role.permission_on'),
                                             'data-on-color' => 'success',

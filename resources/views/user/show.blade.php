@@ -134,27 +134,27 @@
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
                                 <i class="fa fa-info"></i>
-                                {!! lmcTrans('laravel-user-module/admin.fields.user.overview') !!}
+                                {!! trans('laravel-modules-core::admin.fields.overview') !!}
                             </a>
                             <span class="after"> </span>
                         </li>
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
-                                {!! lmcTrans('laravel-user-module/admin.fields.user.edit_info') !!}
+                                {!! trans('laravel-modules-core::admin.fields.edit_info') !!}
                             </a>
                             <span class="after"> </span>
                         </li>
                         <li>
                             <a data-toggle="tab" href="#change_avatar">
                                 <i class="fa fa-picture-o"></i>
-                                {!! lmcTrans('laravel-user-module/admin.fields.user.change_avatar') !!}
+                                {!! trans('laravel-modules-core::admin.fields.change_avatar') !!}
                             </a>
                         </li>
                         <li>
                             <a data-toggle="tab" href="#change_password">
                                 <i class="fa fa-lock"></i>
-                                {!! lmcTrans('laravel-user-module/admin.fields.user.change_password') !!}
+                                {!! trans('laravel-modules-core::admin.fields.change_password') !!}
                             </a>
                         </li>
                     </ul>

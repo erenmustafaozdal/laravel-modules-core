@@ -91,7 +91,7 @@
                     <ul class="nav nav-tabs">
                         <li class="active">
                             <a href="#info" data-toggle="tab" aria-expanded="true">
-                                {!! lmcTrans('laravel-user-module/admin.fields.role.role_info') !!}
+                                {!! trans('laravel-modules-core::admin.fields.overview') !!}
                             </a>
                         </li>
                         <li>
