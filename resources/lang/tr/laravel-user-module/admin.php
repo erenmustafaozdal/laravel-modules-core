@@ -22,7 +22,8 @@ return [
         'edit'                      => 'Rol Düzenle',
         'create'                    => 'Rol Ekle',
         'create_description'        => 'Yeni bir yönetici rolü ekle',
-        'show'                      => 'Rol Bilgileri'
+        'show'                      => 'Rol Bilgileri',
+        'show_description'          => ':role rolü hakkında bilgiler'
     ],
 
     // menu
@@ -55,18 +56,15 @@ return [
             'active_user'           => 'Aktif yönetici',
             'not_active'            => 'Aktif Değil',
             'not_active_user'       => 'Aktif olmayan yönetici',
-
-            'overview'              => 'Genel Bilgiler',
-            'edit_info'             => 'Bilgileri Düzenle',
-            'change_avatar'         => 'Fotoğrafı Değiştir',
-            'change_password'       => 'Şifreyi Değiştir',
         ],
         'role' => [
             'name'                  => 'Rol Adı',
             'slug'                  => 'Tanımlama',
             'role_info'             => 'Rol Bilgileri',
             'permissions'           => 'İşlem İzinleri',
+            'edit_permission'       => 'İzinleri Düzenle',
             'total_permission'      => 'Toplam işlem sayısı: :count',
+            'permission_rate'       => 'İşlem izin oranı: %:rate',
             'permission_on'         => 'Açık',
             'permission_off'        => 'Kapalı',
             'permission_group_on'   => 'Grubu Aç',

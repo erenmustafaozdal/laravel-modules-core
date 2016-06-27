@@ -48,3 +48,30 @@ if (! function_exists('lmcTrans')) {
         return trans('laravel-modules-core::'.$id);
     }
 }
+
+
+
+/*
+|--------------------------------------------------------------------------
+| get operation buttons
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('getOps')) {
+    /**
+     * get operation buttons
+     *
+     * @param $model
+     * @return string
+     */
+    function getOps($model)
+    {
+        // silme butonu
+        $ops  = Form::open(['method' => 'DELETE', 'url' => route('admin.role.destroy', ['id' => $model->id]), 'style' => 'margin:0', 'id' => 'destroy_form_' . $model->id]);
+        $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline">';
+        $ops .= '<i class="fa fa-trash"></i>';
+        $ops .= trans('laravel-modules-core::admin.ops.destroy');
+        $ops .= '</button>';
+        $ops .= Form::close();
+        return $ops;
+    }
+}
