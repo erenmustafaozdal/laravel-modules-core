@@ -105,9 +105,41 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::user.partials.change_avatar_form')
-                @include('laravel-modules-core::user.partials.edit_info_form')
-                @include('laravel-modules-core::user.partials.change_password_form')
+                <div class="tabbable-custom">
+                    {{-- Nav Tabs --}}
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#info" data-toggle="tab" aria-expanded="true">
+                                {!! trans('laravel-modules-core::admin.fields.overview') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#avatar" data-toggle="tab" aria-expanded="true">
+                                {!! lmcTrans('laravel-user-module/admin.fields.user.photo') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#permission" data-toggle="tab" aria-expanded="true">
+                                {!! lmcTrans('laravel-user-module/admin.fields.role.permissions') !!}
+                            </a>
+                        </li>
+                    </ul>
+                    {{-- /Nav Tabs --}}
+
+                    {{-- Tab Contents --}}
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="info">
+                            @include('laravel-modules-core::user.partials.edit_info_form')
+                            @include('laravel-modules-core::user.partials.change_password_form')
+                        </div>
+                        <div class="tab-pane" id="avatar">
+                            @include('laravel-modules-core::user.partials.change_avatar_form')
+                        </div>
+                        <div class="tab-pane" id="permission">
+                            @include('laravel-modules-core::partials.laravel-user-module.permissions')
+                        </div>
+                    </div>
+                </div>
             </div>
             {{-- /Form Body --}}
 
