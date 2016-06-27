@@ -20,6 +20,7 @@ return [
         'index'                     => 'Yönetici Rolleri',
         'index_description'         => 'Sistemde bulunan bütün yönetici rolleri',
         'edit'                      => 'Rol Düzenle',
+        'edit_description'          => ':role rolü bilgierini düzenle',
         'create'                    => 'Rol Ekle',
         'create_description'        => 'Yeni bir yönetici rolü ekle',
         'show'                      => 'Rol Bilgileri',
