@@ -152,6 +152,7 @@
                     {{-- Tab Contents --}}
                     <div class="tab-content">
                         <div class="tab-pane active" id="info">
+                            @include('laravel-modules-core::user.partials.roles_form')
                             @include('laravel-modules-core::user.partials.edit_info_form')
                             @include('laravel-modules-core::user.partials.change_password_form')
                         </div>

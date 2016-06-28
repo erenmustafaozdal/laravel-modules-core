@@ -79,6 +79,7 @@ return [
     'helpers' => [
         'user' => [
             'is_active_help'        => 'Hesabın aktif olması, yöneticinin sistem içine girmesini sağlar. Hesabı aktif olmayan yöneticiler <em class="label label-info">Yönetim Paneli</em>\'ne giriş yapamaz.',
+            'roles_help'            => 'Roller yöneticinin role ait izinleri üzerine alması anlamına gelir. Birden fazla rol seçebilirsin. Bunun için; kutucuğa tıkla ve yazmaya başla...',
             'email_not_changeable'  => 'E-posta adresi değiştirilemez.'
         ],
         'role' => [

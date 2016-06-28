@@ -1,13 +1,3 @@
-{{-- Roles --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.roles') !!}</label>
-    {!! Form::select('roles', [], null, [
-        'class'         => 'form-control form-control-solid placeholder-no-fix select2',
-        'multiple'      => true
-    ]) !!}
-</div>
-{{-- /Roles --}}
-
 {{-- First Name --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!}</label>
