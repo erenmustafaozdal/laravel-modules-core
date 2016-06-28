@@ -58,7 +58,8 @@ var LMCApp = {
                 activate: 'Aktifleştir',
                 not_activate: 'Aktifliği Kaldır',
                 browse: 'Gözat',
-                crop: 'Kırp'
+                crop: 'Kırp',
+                select: 'Seç'
             },
             flash: {
                 store_success: {

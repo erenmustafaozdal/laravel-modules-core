@@ -61,7 +61,7 @@
         {{-- /languages --}}
 
         {{-- scripts --}}
-        $script.ready(['app_fileinput','app_jcrop'], function()
+        $script.ready(['app_fileinput','app_jcrop','validation'], function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/user/show.js') !!}",'show');
         });

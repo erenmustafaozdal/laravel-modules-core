@@ -44,6 +44,7 @@ return [
     // fields
     'fields' => [
         'user' => [
+            'roles'                 => 'Roller',
             'photo'                 => 'Fotoğraf',
             'first_name'            => 'Ad',
             'last_name'             => 'Soyad',
@@ -110,6 +111,8 @@ return [
             'icon'                  => 'fa fa-users',
             'title'                 => 'Yönetici Rolü Uzak Bağlantı İşlemleri',
             // routes
+            'role_models'           => 'Rolleri Listeleme',
+            'role_models_desc'      => 'Bu izne sahip olanlar yönetici rollerini bazı seçim kutularında listeleyebilir',
             'role_group'            => 'Toplu İşlem',
             'role_group_desc'       => 'Bu izne sahip olanlar yönetici rollerinin listelendiği sayfada toplu işlem yapabilir',
             'role_detail'           => 'Detaylar',
