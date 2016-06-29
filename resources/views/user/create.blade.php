@@ -17,6 +17,10 @@
     {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
     {{-- /jCrop Image Crop Extension --}}
+
+    {{-- Select2 --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
+    {{-- /Select2 --}}
 @endsection
 
 @section('script')
@@ -27,7 +31,12 @@
         var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
         var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
+        var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         {{-- /js file path --}}
+
+        {{-- routes --}}
+        var modelsURL = "{!! route('api.role.models') !!}";
+        {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
@@ -58,17 +67,33 @@
         {
             $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
         });
-        $script.ready(['app_fileinput','app_jcrop'], function()
+        $script.ready(['app_fileinput','app_jcrop', 'validation'], function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/user/create.js') !!}",'create');
+            $script("{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}", 'permission');
         });
-        $script.ready(['config','create'], function()
+        $script.ready(['config','create','permission'], function()
         {
             Create.init();
+            Permission.init();
+        });
+        $script.ready(['config','app_select2'], function()
+        {
+            Select2.init({
+                variableNames: {
+                    text: 'name'
+                },
+                select2: {
+                    ajax: {
+                        url: modelsURL
+                    }
+                }
+            });
         });
         {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -98,16 +123,50 @@
             {!! Form::open([
                 'method'    => 'POST',
                 'url'       => route('admin.user.store'),
-                'class'     => 'form'
+                'class'     => 'form',
+                'files'     => true
             ]) !!}
 
             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::user.partials.change_avatar_form')
-                @include('laravel-modules-core::user.partials.edit_info_form')
-                @include('laravel-modules-core::user.partials.change_password_form')
+                <div class="tabbable-custom">
+                    {{-- Nav Tabs --}}
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#info" data-toggle="tab" aria-expanded="true">
+                                {!! trans('laravel-modules-core::admin.fields.overview') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#avatar" data-toggle="tab" aria-expanded="true">
+                                {!! lmcTrans('laravel-user-module/admin.fields.user.photo') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#permission" data-toggle="tab" aria-expanded="true">
+                                {!! lmcTrans('laravel-user-module/admin.fields.role.permissions') !!}
+                            </a>
+                        </li>
+                    </ul>
+                    {{-- /Nav Tabs --}}
+
+                    {{-- Tab Contents --}}
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="info">
+                            @include('laravel-modules-core::user.partials.roles_form')
+                            @include('laravel-modules-core::user.partials.edit_info_form')
+                            @include('laravel-modules-core::user.partials.change_password_form')
+                        </div>
+                        <div class="tab-pane" id="avatar">
+                            @include('laravel-modules-core::user.partials.change_avatar_form')
+                        </div>
+                        <div class="tab-pane" id="permission">
+                            @include('laravel-modules-core::partials.laravel-user-module.permissions')
+                        </div>
+                    </div>
+                </div>
             </div>
             {{-- /Form Body --}}
 

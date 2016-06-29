@@ -20,6 +20,7 @@ return [
         'index'                     => 'Yönetici Rolleri',
         'index_description'         => 'Sistemde bulunan bütün yönetici rolleri',
         'edit'                      => 'Rol Düzenle',
+        'edit_description'          => ':role rolü bilgierini düzenle',
         'create'                    => 'Rol Ekle',
         'create_description'        => 'Yeni bir yönetici rolü ekle',
         'show'                      => 'Rol Bilgileri',
@@ -43,6 +44,7 @@ return [
     // fields
     'fields' => [
         'user' => [
+            'roles'                 => 'Roller',
             'photo'                 => 'Fotoğraf',
             'first_name'            => 'Ad',
             'last_name'             => 'Soyad',
@@ -77,6 +79,7 @@ return [
     'helpers' => [
         'user' => [
             'is_active_help'        => 'Hesabın aktif olması, yöneticinin sistem içine girmesini sağlar. Hesabı aktif olmayan yöneticiler <em class="label label-info">Yönetim Paneli</em>\'ne giriş yapamaz.',
+            'roles_help'            => 'Roller yöneticinin role ait izinleri üzerine alması anlamına gelir. Birden fazla rol seçebilirsin. Bunun için; kutucuğa tıkla ve yazmaya başla...',
             'email_not_changeable'  => 'E-posta adresi değiştirilemez.'
         ],
         'role' => [
@@ -109,6 +112,8 @@ return [
             'icon'                  => 'fa fa-users',
             'title'                 => 'Yönetici Rolü Uzak Bağlantı İşlemleri',
             // routes
+            'role_models'           => 'Rolleri Listeleme',
+            'role_models_desc'      => 'Bu izne sahip olanlar yönetici rollerini bazı seçim kutularında listeleyebilir',
             'role_group'            => 'Toplu İşlem',
             'role_group_desc'       => 'Bu izne sahip olanlar yönetici rollerinin listelendiği sayfada toplu işlem yapabilir',
             'role_detail'           => 'Detaylar',
