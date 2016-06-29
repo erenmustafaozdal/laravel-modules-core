@@ -70,10 +70,12 @@
         $script.ready(['app_fileinput','app_jcrop', 'validation'], function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/user/create.js') !!}",'create');
+            $script("{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}", 'permission');
         });
-        $script.ready(['config','create'], function()
+        $script.ready(['config','create','permission'], function()
         {
             Create.init();
+            Permission.init();
         });
         $script.ready(['config','app_select2'], function()
         {
@@ -121,7 +123,8 @@
             {!! Form::open([
                 'method'    => 'POST',
                 'url'       => route('admin.user.store'),
-                'class'     => 'form'
+                'class'     => 'form',
+                'files'     => true
             ]) !!}
 
             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
