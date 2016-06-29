@@ -8,7 +8,7 @@
   "assets/app/validation.js": "assets/app/validation-4bba49aa80.js",
   "assets/app/validationMethods.js": "assets/app/validationMethods-35cb01f669.js",
   "assets/global/scripts/config.js": "assets/global/scripts/config-bb8ffd765a.js",
-  "assets/layouts/layout4/css/admin.css": "assets/layouts/layout4/css/admin-7e86587140.css",
+  "assets/layouts/layout4/css/admin.css": "assets/layouts/layout4/css/admin-513a80b700.css",
   "assets/layouts/layout4/scripts/theme.js": "assets/layouts/layout4/scripts/theme-4300496d8b.js",
   "assets/pages/js/loaders/admin-form.js": "assets/pages/js/loaders/admin-form-8ebadcdbc2.js",
   "assets/pages/js/loaders/admin-image.js": "assets/pages/js/loaders/admin-image-a9708388bf.js",
@@ -22,7 +22,7 @@
   "assets/pages/scripts/role/permission.js": "assets/pages/scripts/role/permission-6b71450e08.js",
   "assets/pages/scripts/role/role-form.js": "assets/pages/scripts/role/role-form-9c8ac55511.js",
   "assets/pages/scripts/role/show.js": "assets/pages/scripts/role/show-74224dd0d4.js",
-  "assets/pages/scripts/user/create.js": "assets/pages/scripts/user/create-4d6a7199b4.js",
+  "assets/pages/scripts/user/create.js": "assets/pages/scripts/user/create-43f8b6d284.js",
   "assets/pages/scripts/user/index.js": "assets/pages/scripts/user/index-58d096eb76.js",
   "assets/pages/scripts/user/show.js": "assets/pages/scripts/user/show-3f7c165359.js",
   "assets/pages/scripts/user/user-form.js": "assets/pages/scripts/user/user-form-f73b985adf.js"

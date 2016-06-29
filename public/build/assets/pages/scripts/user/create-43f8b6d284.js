@@ -15,7 +15,7 @@ var Create = {
      */
     form: null,
 
-    init: function () {
+    init: function (options) {
         UserCreate = this;
 
         this.form = $(this.options.formSrc);
@@ -31,27 +31,7 @@ var Create = {
             src: this.options.formSrc,
             isAjax: false,
             validate: {
-                rules: {
-                    first_name: {
-                        required: true
-                    },
-                    last_name: {
-                        required: true
-                    },
-                    email: {
-                        required: true,
-                        email: true
-                    },
-                    password: {
-                        required: true,
-                        minlength: 6
-                    },
-                    password_confirmation: {
-                        required: true,
-                        minlength: 6,
-                        equalTo: "#password"
-                    }
-                },
+                rules: options,
                 messages: messagesOfRules
             }
         });

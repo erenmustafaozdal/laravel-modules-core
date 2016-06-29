@@ -74,7 +74,27 @@
         });
         $script.ready(['config','create','permission'], function()
         {
-            Create.init();
+            Create.init({
+                first_name: {
+                    required: true
+                },
+                last_name: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                password: {
+                    required: true,
+                    minlength: 6
+                },
+                password_confirmation: {
+                    required: true,
+                    minlength: 6,
+                    equalTo: "#password"
+                }
+            });
             Permission.init();
         });
         $script.ready(['config','app_select2'], function()

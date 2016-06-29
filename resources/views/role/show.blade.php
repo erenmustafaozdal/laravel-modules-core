@@ -83,7 +83,7 @@
 
             {{-- Actions --}}
             <div class="actions pull-left">
-                {!! getOps($role) !!}
+                {!! getOps($role,'show') !!}
             </div>
             {{-- /Actions --}}
         </div>
@@ -102,7 +102,7 @@
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
                         <li class="padding-tb-10">
-                            @include('laravel-modules-core::partials.laravel-user-module.permissions_rate')
+                            @include('laravel-modules-core::partials.laravel-user-module.permissions_rate',['model'=>$role])
                         </li>
                         <li class="active">
                             <a data-toggle="tab" href="#overview">

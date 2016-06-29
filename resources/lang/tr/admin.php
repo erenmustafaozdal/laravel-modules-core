@@ -56,6 +56,7 @@ return [
         'not_activate'                      => 'Aktifliği kaldır',
         'destroy'                           => 'Sil',
         'edit'                              => 'Düzenle',
+        'show'                              => 'Göster',
         'destroy_confirmation'              => 'Kayıt silinecek! Emin misin?',
         'submit'                            => 'Gönder',
         'search'                            => 'Ara',

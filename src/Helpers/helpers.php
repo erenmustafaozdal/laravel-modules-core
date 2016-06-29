@@ -61,20 +61,31 @@ if (! function_exists('getOps')) {
      * get operation buttons
      *
      * @param $model
+     * @param string $currentPage
      * @return string
      */
-    function getOps($model)
+    function getOps($model, $currentPage)
     {
         $route_name = snake_case(class_basename($model));
 
 
         $ops  = Form::open(['method' => 'DELETE', 'url' => route("admin.{$route_name}.destroy", ['id' => $model->id]), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
 
-        // düzenleme butoun
-        $ops .= '<a href="' . route("admin.{$route_name}.edit", ['id' => $model->id]) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
-        $ops .= '<i class="fa fa-pencil"></i>';
-        $ops .= trans('laravel-modules-core::admin.ops.edit');
-        $ops .= '</a>';
+        // edit buton
+        if ($currentPage !== 'edit') {
+            $ops .= '<a href="' . route("admin.{$route_name}.edit", ['id' => $model->id]) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
+            $ops .= '<i class="fa fa-pencil"></i>';
+            $ops .= trans('laravel-modules-core::admin.ops.edit');
+            $ops .= '</a>';
+        }
+
+        // show buton
+        if ($currentPage !== 'show') {
+            $ops .= '<a href="' . route("admin.{$route_name}.show", ['id' => $model->id]) . '" class="btn btn-sm btn-outline green margin-right-10">';
+            $ops .= '<i class="fa fa-search"></i>';
+            $ops .= trans('laravel-modules-core::admin.ops.show');
+            $ops .= '</a>';
+        }
 
         // silme butonu
         $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline">';
