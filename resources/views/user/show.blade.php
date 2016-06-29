@@ -21,6 +21,10 @@
     {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
     {{-- /jCrop Image Crop Extension --}}
+
+    {{-- Select2 --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
+    {{-- /Select2 --}}
 @endsection
 
 @section('script')
@@ -32,10 +36,12 @@
         var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var avatarPhotoPath = "{!! '/' . config('laravel-user-module.user.avatar_path') !!}";
+        var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
         var destroyAvatarURL = "{!! route('api.user.destroy_avatar', ['id' => $user->id]) !!}";
+        var modelsURL = "{!! route('api.role.models') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -64,14 +70,38 @@
         $script.ready(['app_fileinput','app_jcrop','validation'], function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/user/show.js') !!}",'show');
+            $script("{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}", 'permission');
+            $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-easypiechart/dist/jquery.easypiechart.min.js','easypiechart');
+            $script("{!! lmcElixir('assets/app/easypiechart.js') !!}", 'app_easypiechart');
         });
-        $script.ready(['show', 'config'], function()
+        $script.ready(['show', 'config','permission'], function()
         {
             Show.init();
+            Permission.init();
+        });
+        $script.ready(['config', 'easypiechart', 'app_easypiechart'], function()
+        {
+            EasyPie.init({
+                src: '.easy-pie-chart .number'
+            });
+        });
+        $script.ready(['config','app_select2'], function()
+        {
+            Select2.init({
+                variableNames: {
+                    text: 'name'
+                },
+                select2: {
+                    ajax: {
+                        url: modelsURL
+                    }
+                }
+            });
         });
         {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -94,10 +124,7 @@
 
             {{-- Actions --}}
             <div class="actions pull-left">
-                <a class="btn red btn-outline" href="{!! route('admin.user.destroy', ['id' => $user->id]) !!}">
-                    {!! trans('laravel-modules-core::admin.ops.destroy') !!}
-                    <i class="fa fa-trash"></i>
-                </a>
+                {!! getOps($user, 'show') !!}
             </div>
             {{-- /Actions --}}
         </div>
@@ -115,6 +142,9 @@
                 {{-- Profile Navigation --}}
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
+                        <li class="padding-tb-10">
+                            @include('laravel-modules-core::partials.laravel-user-module.permissions_rate',['model'=>$user])
+                        </li>
                         <li>
                             {!! $user->getPhoto([
                                 'class' => 'img-responsive pic-bordered',
@@ -155,6 +185,12 @@
                             <a data-toggle="tab" href="#change_password">
                                 <i class="fa fa-lock"></i>
                                 {!! trans('laravel-modules-core::admin.fields.change_password') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#permission">
+                                <i class="fa fa-user-secret"></i>
+                                {!! lmcTrans('laravel-user-module/admin.fields.role.permissions') !!}
                             </a>
                         </li>
                     </ul>
@@ -213,6 +249,17 @@
 
                                 {{-- Information on Form --}}
                                 <form class="form-horizontal" role="form" action="#">
+                                    {{-- Roles --}}
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">
+                                            {!! lmcTrans('laravel-user-module/admin.fields.user.roles') !!}
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static"> {{ $user->roles->implode('name', ', ') }} </p>
+                                        </div>
+                                    </div>
+                                    {{-- /Roles --}}
+
                                     {{-- First Name --}}
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">
@@ -316,6 +363,7 @@
 
                             {{-- Form Body --}}
                             <div class="form-body">
+                                @include('laravel-modules-core::user.partials.roles_form')
                                 @include('laravel-modules-core::user.partials.edit_info_form')
                             </div>
                             {{-- /Form Body --}}
@@ -361,6 +409,29 @@
                             {!! Form::close() !!}
                         </div>
                         {{-- /Change Password --}}
+
+                        {{-- Permission --}}
+                        <div id="permission" class="tab-pane form">
+                            {!! Form::open([
+                                'method'    => 'POST',
+                                'url'       => route('admin.user.permission', ['id' => $user->id])
+                            ]) !!}
+
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+
+                            {{-- Form Body --}}
+                            <div class="form-body">
+                                @include('laravel-modules-core::partials.laravel-user-module.permissions', [
+                                    'permissions'       => $user->permissions
+                                ])
+                            </div>
+                            {{-- /Form Body --}}
+
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+
+                            {!! Form::close() !!}
+                        </div>
+                        {{-- /Permission --}}
                         
                     </div>
                 </div>

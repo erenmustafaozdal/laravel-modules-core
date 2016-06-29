@@ -1,12 +1,12 @@
 @extends(config('laravel-user-module.views.user.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-user-module/admin.user.create') !!}
+    {!! lmcTrans('laravel-user-module/admin.user.edit') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-user-module/admin.user.create') !!}
-        <small>{!! lmcTrans('laravel-user-module/admin.user.create_description') !!}</small>
+    <h1>{!! lmcTrans('laravel-user-module/admin.user.edit') !!}
+        <small>{!! str_replace([':user'], [$user->fullname], lmcTrans('laravel-user-module/admin.user.edit_description'))  !!}</small>
     </h1>
 @endsection
 
@@ -86,11 +86,9 @@
                     email: true
                 },
                 password: {
-                    required: true,
                     minlength: 6
                 },
                 password_confirmation: {
-                    required: true,
                     minlength: 6,
                     equalTo: "#password"
                 }
@@ -122,13 +120,19 @@
         {{-- Portlet Title and Actions --}}
         <div class="portlet-title">
             {{-- Caption --}}
-            <div class="caption">
+            <div class="caption margin-right-10">
                 <i class="icon-user-follow font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-user-module/admin.user.create') !!}
+                    {!! lmcTrans('laravel-user-module/admin.user.edit') !!}
                 </span>
             </div>
             {{-- /Caption --}}
+
+            {{-- Actions --}}
+            <div class="actions pull-left">
+                {!! getOps($user,'edit') !!}
+            </div>
+            {{-- /Actions --}}
         </div>
         {{-- /Portlet Title and Actions --}}
 
@@ -141,8 +145,8 @@
 
             {{-- Create Form --}}
             {!! Form::open([
-                'method'    => 'POST',
-                'url'       => route('admin.user.store'),
+                'method'    => 'PATCH',
+                'url'       => route('admin.user.update', ['id' => $user->id]),
                 'class'     => 'form',
                 'files'     => true
             ]) !!}
@@ -183,7 +187,9 @@
                             @include('laravel-modules-core::user.partials.change_avatar_form')
                         </div>
                         <div class="tab-pane" id="permission">
-                            @include('laravel-modules-core::partials.laravel-user-module.permissions')
+                            @include('laravel-modules-core::partials.laravel-user-module.permissions', [
+                                'permissions'       => $user->permissions
+                            ])
                         </div>
                     </div>
                 </div>
