@@ -2,6 +2,11 @@
 var Show = {
 
     /**
+     * is auth user
+     */
+    isAuthUser: false,
+
+    /**
      * user photo srcs
      */
     top_src: '',
@@ -23,6 +28,7 @@ var Show = {
 
     init: function () {
         UserShow = this;
+        this.isAuthUser = isAuthUser;
 
         this.form = $(this.options.formSrc);
 
@@ -115,10 +121,13 @@ var Show = {
      */
     changeAvatar: function(type, top_photo, nav_photo)
     {
-        var top = $('li.dropdown-user').find('img'), nav = $('img#nav-profile-photo');
-        this.top_src = top.prop('src');
+        if (this.isAuthUser) {
+            var top = $('li.dropdown-user').find('img');
+            this.top_src = top.prop('src');
+            top.prop('src', top_photo);
+        }
+        var nav = $('img#nav-profile-photo');
         this.nav_src = nav.prop('src');
-        top.prop('src', top_photo);
         nav.prop('src', nav_photo);
         var li = $('#destroy-avatar').closest('li');
         if (type === 'add') {

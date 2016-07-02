@@ -10,20 +10,24 @@
     </a>
     <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
         <div class="row">
-            <div class="col-md-4 col-sm-4 col-xs-12">
-                <h3>{!! trans('laravel-modules-core::admin.toolbar.theme.title') !!}</h3>
-                <ul class="theme-colors">
-                    <li class="theme-color theme-color-default {!! Cache::get('theme_color')['color'] === 'default' ? 'active' : '' !!}" data-theme="default">
-                        <span class="theme-color-view"></span>
-                        <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.dark_header') !!}</span>
-                    </li>
-                    <li class="theme-color theme-color-light {!! Cache::get('theme_color')['color'] === 'light' ? 'active' : '' !!}" data-theme="light">
-                        <span class="theme-color-view"></span>
-                        <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.light_header') !!}</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-8 col-sm-8 col-xs-12 seperator">
+            @if ( Sentinel::hasAccess('api.themeColor.change') )
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <h3>{!! trans('laravel-modules-core::admin.toolbar.theme.title') !!}</h3>
+                    <ul class="theme-colors">
+                        <li class="theme-color theme-color-default {!! Cache::get('theme_color')['color'] === 'default' ? 'active' : '' !!}" data-theme="default">
+                            <span class="theme-color-view"></span>
+                            <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.dark_header') !!}</span>
+                        </li>
+                        <li class="theme-color theme-color-light {!! Cache::get('theme_color')['color'] === 'light' ? 'active' : '' !!}" data-theme="light">
+                            <span class="theme-color-view"></span>
+                            <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.light_header') !!}</span>
+                        </li>
+                    </ul>
+                </div>
+            @endif
+
+            @if ( Sentinel::hasAccess('api.themeLayout.change') )
+                <div class="col-md-8 col-sm-8 col-xs-12 seperator">
                 <h3>{!! trans('laravel-modules-core::admin.toolbar.layout.title') !!}</h3>
                 <ul class="theme-settings">
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.layout_label') !!}
@@ -98,6 +102,7 @@
                     </li>
                 </ul>
             </div>
+            @endif
         </div>
     </div>
 </div>

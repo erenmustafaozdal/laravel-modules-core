@@ -221,7 +221,9 @@ var Index = {
             modalShowCallback: function(Editor)
             {
                 if (Editor.actionType === 'fast-edit') {
-                    $(Editor.editorOptions.formSrc).find('input[name="email"]').attr('disabled','disabled');
+                    $(Editor.editorOptions.formSrc).find('input[name="email"]').prop('disabled',true);
+                } else {
+                    $(Editor.editorOptions.formSrc).find('input[name="email"]').prop('disabled',false);
                 }
             },
             actionButtonCallback: function(Editor)
@@ -245,7 +247,7 @@ var Index = {
                                 email: validation.form.find('input[name="email"]').val(),
                                 password: validation.form.find('input[name="password"]').val(),
                                 password_confirmation: validation.form.find('input[name="password_confirmation"]').val(),
-                                is_active: $('#is_active').bootstrapSwitch('state')
+                                is_active: validation.form.find('input[name="is_active"]').bootstrapSwitch('state')
                             };
                             if (Editor.actionType === 'fast-add') {
                                 var type =  'POST';
@@ -260,7 +262,7 @@ var Index = {
                                 var message_error = LMCApp.lang.admin.flash.update_error.message;
                                 var title_error = LMCApp.lang.admin.flash.update_error.title;
                             }
-                            
+
                             $.ajax({
                                 url: url,
                                 data: datas,

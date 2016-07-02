@@ -60,7 +60,7 @@
                                         </a>
                                     </div>
                                     <div class="task-status">
-                                        {!! Form::checkbox( "permissions[{$route['route']}]", 1, isset($permissions[$route['route']]), [
+                                        {!! Form::checkbox( "permissions[{$route['route']}]", true, isset($permissions[$route['route']]), [
                                             'class'         => 'make-switch  item-permission',
                                             'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.role.permission_on'),
                                             'data-on-color' => 'success',

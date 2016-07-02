@@ -21,6 +21,11 @@
     {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
     {{-- /jCrop Image Crop Extension --}}
+
+    {{-- Select2 --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
+    {{-- /Select2 --}}
 @endsection
 
 @section('script')
@@ -32,10 +37,12 @@
         var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var avatarPhotoPath = "{!! '/' . config('laravel-user-module.user.avatar_path') !!}";
+        var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var destroyAvatarURL = "{!! route('api.user.destroy_avatar', ['id' => $user->id]) !!}";
+        var destroyAvatarURL = "{!! route('api.user.destroyAvatar', ['id' => $user->id]) !!}";
+        var modelsURL = "{!! route('api.role.models') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -58,20 +65,45 @@
                 equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}"
             }
         };
+        var isAuthUser = {{ $user->id === \Cartalyst\Sentinel\Laravel\Facades\Sentinel::getUser()->id ? 'true' : 'false' }};
         {{-- /languages --}}
 
         {{-- scripts --}}
         $script.ready(['app_fileinput','app_jcrop','validation'], function()
         {
             $script("{!! lmcElixir('assets/pages/scripts/user/show.js') !!}",'show');
+            $script("{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}", 'permission');
+            $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-easypiechart/dist/jquery.easypiechart.min.js','easypiechart');
+            $script("{!! lmcElixir('assets/app/easypiechart.js') !!}", 'app_easypiechart');
         });
-        $script.ready(['show', 'config'], function()
+        $script.ready(['show', 'config','permission'], function()
         {
             Show.init();
+            Permission.init();
+        });
+        $script.ready(['config', 'easypiechart', 'app_easypiechart'], function()
+        {
+            EasyPie.init({
+                src: '.easy-pie-chart .number'
+            });
+        });
+        $script.ready(['config','app_select2'], function()
+        {
+            Select2.init({
+                variableNames: {
+                    text: 'name'
+                },
+                select2: {
+                    ajax: {
+                        url: modelsURL
+                    }
+                }
+            });
         });
         {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -94,10 +126,7 @@
 
             {{-- Actions --}}
             <div class="actions pull-left">
-                <a class="btn red btn-outline" href="{!! route('admin.user.destroy', ['id' => $user->id]) !!}">
-                    {!! trans('laravel-modules-core::admin.ops.destroy') !!}
-                    <i class="fa fa-trash"></i>
-                </a>
+                {!! getOps($user, 'show') !!}
             </div>
             {{-- /Actions --}}
         </div>
@@ -115,6 +144,9 @@
                 {{-- Profile Navigation --}}
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
+                        <li class="padding-tb-10">
+                            @include('laravel-modules-core::partials.laravel-user-module.permissions_rate',['model'=>$user])
+                        </li>
                         <li>
                             {!! $user->getPhoto([
                                 'class' => 'img-responsive pic-bordered',
@@ -123,6 +155,7 @@
                             ], 'biggest') !!}
                         </li>
                         {{-- Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.destroyAvatar'))
                         <li {!! $user->photo == '' ? 'class="hidden"' : '' !!}>
                             <a href="javascript:;" class="font-red" id="destroy-avatar">
                                 <i class="fa fa-trash"></i>
@@ -130,6 +163,7 @@
                             </a>
                             <span class="after"> </span>
                         </li>
+                        @endif
                         {{-- /Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
@@ -138,6 +172,8 @@
                             </a>
                             <span class="after"> </span>
                         </li>
+
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -145,18 +181,34 @@
                             </a>
                             <span class="after"> </span>
                         </li>
+                        @endif
+
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.avatarPhoto'))
                         <li>
                             <a data-toggle="tab" href="#change_avatar">
                                 <i class="fa fa-picture-o"></i>
                                 {!! trans('laravel-modules-core::admin.fields.change_avatar') !!}
                             </a>
                         </li>
+                        @endif
+
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.changePassword'))
                         <li>
                             <a data-toggle="tab" href="#change_password">
                                 <i class="fa fa-lock"></i>
                                 {!! trans('laravel-modules-core::admin.fields.change_password') !!}
                             </a>
                         </li>
+                        @endif
+
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.permission'))
+                        <li>
+                            <a data-toggle="tab" href="#permission">
+                                <i class="fa fa-user-secret"></i>
+                                {!! lmcTrans('laravel-user-module/admin.fields.role.permissions') !!}
+                            </a>
+                        </li>
+                        @endif
                     </ul>
                 </div>
                 {{-- /Profile Navigation --}}
@@ -213,6 +265,17 @@
 
                                 {{-- Information on Form --}}
                                 <form class="form-horizontal" role="form" action="#">
+                                    {{-- Roles --}}
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">
+                                            {!! lmcTrans('laravel-user-module/admin.fields.user.roles') !!}
+                                        </label>
+                                        <div class="col-sm-10">
+                                            <p class="form-control-static"> {{ $user->roles->implode('name', ', ') }} </p>
+                                        </div>
+                                    </div>
+                                    {{-- /Roles --}}
+
                                     {{-- First Name --}}
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">
@@ -305,6 +368,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -316,6 +380,7 @@
 
                             {{-- Form Body --}}
                             <div class="form-body">
+                                @include('laravel-modules-core::user.partials.roles_form')
                                 @include('laravel-modules-core::user.partials.edit_info_form')
                             </div>
                             {{-- /Form Body --}}
@@ -324,13 +389,15 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Edit Info --}}
 
                         {{-- Change Avatar --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.avatarPhoto'))
                         <div id="change_avatar" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('api.user.avatar_photo', ['id' => $user->id]),
+                                'url'       => route('api.user.avatarPhoto', ['id' => $user->id]),
                                 'id'        => 'change-avatar-form'
                             ]) !!}
 
@@ -338,9 +405,11 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Change Avatar --}}
 
                         {{-- Change Password --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.changePassword'))
                         <div id="change_password" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'POST',
@@ -360,7 +429,33 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Change Password --}}
+
+                        {{-- Permission --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.permission'))
+                        <div id="permission" class="tab-pane form">
+                            {!! Form::open([
+                                'method'    => 'POST',
+                                'url'       => route('admin.user.permission', ['id' => $user->id])
+                            ]) !!}
+
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+
+                            {{-- Form Body --}}
+                            <div class="form-body">
+                                @include('laravel-modules-core::partials.laravel-user-module.permissions', [
+                                    'permissions'       => $user->permissions
+                                ])
+                            </div>
+                            {{-- /Form Body --}}
+
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+
+                            {!! Form::close() !!}
+                        </div>
+                        @endif
+                        {{-- /Permission --}}
                         
                     </div>
                 </div>
