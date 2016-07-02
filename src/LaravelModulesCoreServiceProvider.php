@@ -47,7 +47,6 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
     {
         $this->app->register('Illuminate\Html\HtmlServiceProvider');
         $this->app->register('Caffeinated\Menus\MenusServiceProvider');
-        $this->app->register('Cartalyst\Sentinel\Laravel\SentinelServiceProvider');
 
         $this->mergeConfigFrom(
             __DIR__.'/../config/laravel-modules-core.php', 'laravel-modules-core'
@@ -65,7 +64,6 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
             $loader->alias('Html', 'Illuminate\Html\HtmlFacade');
             $loader->alias('Form', 'Illuminate\Html\FormFacade');
-            $loader->alias('Sentinel', 'Cartalyst\Sentinel\Laravel\Facades\Sentinel');
             $loader->alias('LMCValidation', 'ErenMustafaOzdal\LaravelModulesCore\Facades\Validation');
             $loader->alias('LMCBreadcrumb', 'ErenMustafaOzdal\LaravelModulesCore\Facades\Breadcrumb');
         });

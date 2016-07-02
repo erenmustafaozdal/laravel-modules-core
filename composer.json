@@ -21,8 +21,8 @@
         "php": ">=5.5.9",
         "illuminate/support": "~5",
         "caffeinated/menus": "~2.0",
-        "cartalyst/sentinel": "2.0.*",
-        "illuminate/html": "^5.0"
+        "illuminate/html": "^5.0",
+        "erenmustafaozdal/laravel-modules-base": "*"
     },
     "require-dev": {
 

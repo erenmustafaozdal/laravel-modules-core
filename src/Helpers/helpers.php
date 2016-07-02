@@ -72,26 +72,35 @@ if (! function_exists('getOps')) {
         $ops  = Form::open(['method' => 'DELETE', 'url' => route("admin.{$route_name}.destroy", ['id' => $model->id]), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
 
         // edit buton
-        if ($currentPage !== 'edit') {
-            $ops .= '<a href="' . route("admin.{$route_name}.edit", ['id' => $model->id]) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
-            $ops .= '<i class="fa fa-pencil"></i>';
-            $ops .= trans('laravel-modules-core::admin.ops.edit');
-            $ops .= '</a>';
+        if ( $currentPage !== 'edit' ) {
+            if ( ($route_name === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$route_name}.edit") ) {
+                $ops .= '<a href="' . route("admin.{$route_name}.edit", ['id' => $model->id]) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
+                $ops .= '<i class="fa fa-pencil"></i>';
+                $ops .= trans('laravel-modules-core::admin.ops.edit');
+                $ops .= '</a>';
+            }
         }
 
         // show buton
-        if ($currentPage !== 'show') {
-            $ops .= '<a href="' . route("admin.{$route_name}.show", ['id' => $model->id]) . '" class="btn btn-sm btn-outline green margin-right-10">';
-            $ops .= '<i class="fa fa-search"></i>';
-            $ops .= trans('laravel-modules-core::admin.ops.show');
-            $ops .= '</a>';
+        if ( $currentPage !== 'show' ) {
+            if ( ($route_name === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$route_name}.show") ) {
+                $ops .= '<a href="' . route("admin.{$route_name}.show", ['id' => $model->id]) . '" class="btn btn-sm btn-outline green margin-right-10">';
+                $ops .= '<i class="fa fa-search"></i>';
+                $ops .= trans('laravel-modules-core::admin.ops.show');
+                $ops .= '</a>';
+            }
         }
 
         // silme butonu
-        $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline">';
-        $ops .= '<i class="fa fa-trash"></i>';
-        $ops .= trans('laravel-modules-core::admin.ops.destroy');
-        $ops .= '</button>';
+        if ( Sentinel::hasAccess("admin.{$route_name}.destroy") ) {
+            if ( $route_name !== 'user' || $model->id !== Sentinel::getUser()->id ) {
+                $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline">';
+                $ops .= '<i class="fa fa-trash"></i>';
+                $ops .= trans('laravel-modules-core::admin.ops.destroy');
+                $ops .= '</button>';
+            }
+        }
+
 
         $ops .= Form::close();
         return $ops;

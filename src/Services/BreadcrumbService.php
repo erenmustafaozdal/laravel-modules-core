@@ -3,6 +3,7 @@
 namespace ErenMustafaOzdal\LaravelModulesCore\Services;
 
 use Route;
+use Sentinel;
 
 class BreadcrumbService
 {
@@ -74,9 +75,12 @@ class BreadcrumbService
             trans($this->module_name.$this->route_name) :
             trans($this->module_name.$this->index_route_name);
 
-        $breadcrumbs  .= strpos($this->route_name, 'index')  !== false ?
-            $parent_text :
-            '<a href="'.route($this->index_route_name).'">'.$parent_text.'</a><i class="fa fa-circle"></i>';
+        if ( strpos($this->route_name, 'index')  !== false ) {
+            $breadcrumbs  .= $parent_text;
+        } else {
+            $route = Sentinel::hasAccess($this->index_route_name) ? route($this->index_route_name) : 'javascript:;';
+            $breadcrumbs  .= '<a href="'. $route .'">'.$parent_text.'</a><i class="fa fa-circle"></i>';
+        }
 
         $breadcrumbs  .= '</li>';
 
@@ -95,6 +99,9 @@ class BreadcrumbService
      */
     public function getDashboardBreadcrumb()
     {
+        if ( ! Sentinel::hasAccess('admin.dashboard.index') ) {
+            return '';
+        }
         $breadcrumbs  = '<li>';
         $breadcrumbs .= '<a href="'.route('admin.dashboard.index').'">';
         $breadcrumbs .= trans('laravel-modules-core::laravel-dashboard-module/admin.dashboard.index');

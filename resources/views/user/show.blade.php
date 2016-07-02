@@ -155,6 +155,7 @@
                             ], 'biggest') !!}
                         </li>
                         {{-- Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.destroyAvatar'))
                         <li {!! $user->photo == '' ? 'class="hidden"' : '' !!}>
                             <a href="javascript:;" class="font-red" id="destroy-avatar">
                                 <i class="fa fa-trash"></i>
@@ -162,6 +163,7 @@
                             </a>
                             <span class="after"> </span>
                         </li>
+                        @endif
                         {{-- /Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
@@ -170,6 +172,8 @@
                             </a>
                             <span class="after"> </span>
                         </li>
+
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -177,24 +181,34 @@
                             </a>
                             <span class="after"> </span>
                         </li>
+                        @endif
+
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.avatarPhoto'))
                         <li>
                             <a data-toggle="tab" href="#change_avatar">
                                 <i class="fa fa-picture-o"></i>
                                 {!! trans('laravel-modules-core::admin.fields.change_avatar') !!}
                             </a>
                         </li>
+                        @endif
+
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.changePassword'))
                         <li>
                             <a data-toggle="tab" href="#change_password">
                                 <i class="fa fa-lock"></i>
                                 {!! trans('laravel-modules-core::admin.fields.change_password') !!}
                             </a>
                         </li>
+                        @endif
+
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.permission'))
                         <li>
                             <a data-toggle="tab" href="#permission">
                                 <i class="fa fa-user-secret"></i>
                                 {!! lmcTrans('laravel-user-module/admin.fields.role.permissions') !!}
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </div>
                 {{-- /Profile Navigation --}}
@@ -354,6 +368,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -374,9 +389,11 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Edit Info --}}
 
                         {{-- Change Avatar --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.avatarPhoto'))
                         <div id="change_avatar" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -388,9 +405,11 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Change Avatar --}}
 
                         {{-- Change Password --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.changePassword'))
                         <div id="change_password" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'POST',
@@ -410,9 +429,11 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Change Password --}}
 
                         {{-- Permission --}}
+                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.permission'))
                         <div id="permission" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'POST',
@@ -433,6 +454,7 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Permission --}}
                         
                     </div>

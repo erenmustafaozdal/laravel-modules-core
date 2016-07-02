@@ -111,6 +111,8 @@
                             </a>
                             <span class="after"> </span>
                         </li>
+
+                        @if (Sentinel::hasAccess('admin.role.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -118,12 +120,16 @@
                             </a>
                             <span class="after"> </span>
                         </li>
+                        @endif
+
+                        @if (Sentinel::hasAccess('admin.role.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_permission">
                                 <i class="fa fa-user-secret"></i>
                                 {!! lmcTrans('laravel-user-module/admin.fields.role.edit_permission') !!}
                             </a>
                         </li>
+                        @endif
                     </ul>
                 </div>
                 {{-- /Profile Navigation --}}
@@ -193,6 +199,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
+                        @if (Sentinel::hasAccess('admin.role.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -212,9 +219,11 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Edit Info --}}
 
                         {{-- Edit Permission --}}
+                        @if (Sentinel::hasAccess('admin.role.update'))
                         <div id="edit_permission" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -236,6 +245,7 @@
 
                             {!! Form::close() !!}
                         </div>
+                        @endif
                         {{-- /Edit Permission --}}
                         
                     </div>

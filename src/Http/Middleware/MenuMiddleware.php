@@ -47,11 +47,16 @@ class MenuMiddleware
     {
         Menu::make('actions', function ($menu)
         {
+            // laravel user module action menus
             if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
-                $menu->add(lmcTrans('laravel-user-module/admin.menu.user.add'),['route' => 'admin.user.create'] )
-                    ->attribute('data-icon', 'icon-user-follow'); // simple-line-icons
-                $menu->add(lmcTrans('laravel-user-module/admin.menu.role.add'),['route' => 'admin.role.create'] )
-                    ->attribute('data-icon', 'icon-users'); // simple-line-icons
+                if ( Sentinel::hasAccess('admin.user.create') ) {
+                    $menu->add(lmcTrans('laravel-user-module/admin.menu.user.add'),['route' => 'admin.user.create'] )
+                        ->attribute('data-icon', 'icon-user-follow');
+                }
+                if ( Sentinel::hasAccess('admin.role.create') ) {
+                    $menu->add(lmcTrans('laravel-user-module/admin.menu.role.add'),['route' => 'admin.role.create'] )
+                        ->attribute('data-icon', 'icon-users');
+                }
             }
         });
     }
@@ -65,25 +70,38 @@ class MenuMiddleware
         {
             // laravel user module | User & Role
             if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
-                $user = $menu->add(lmcTrans('laravel-user-module/admin.menu.user.root'), 'javascript:;')
-                    ->attribute('data-icon', 'icon-user')
-                    ->attribute('active', 'admin.user');
-                $user->add(lmcTrans('laravel-user-module/admin.menu.user.all'), ['route' => 'admin.user.index'])
-                    ->attribute('data-icon', 'icon-list')
-                    ->attribute('active', 'admin.user.index');
-                $user->add(lmcTrans('laravel-user-module/admin.menu.user.add'), ['route' => 'admin.user.create'])
-                    ->attribute('data-icon', 'icon-plus')
-                    ->attribute('active', 'admin.user.create');
 
-                $role = $menu->add(lmcTrans('laravel-user-module/admin.menu.role.root'), 'javascript:;')
-                    ->attribute('data-icon', 'icon-users')
-                    ->attribute('active', 'admin.role');
-                $role->add(lmcTrans('laravel-user-module/admin.menu.role.all'), ['route' => 'admin.role.index'])
-                    ->attribute('data-icon', 'icon-list')
-                    ->attribute('active', 'admin.role.index');
-                $role->add(lmcTrans('laravel-user-module/admin.menu.role.add'), ['route' => 'admin.role.create'])
-                    ->attribute('data-icon', 'icon-plus')
-                    ->attribute('active', 'admin.role.create');
+                if ( Sentinel::hasAnyAccess(['admin.user.index', 'admin.user.create']) ) {
+                    $user = $menu->add(lmcTrans('laravel-user-module/admin.menu.user.root'), 'javascript:;')
+                        ->attribute('data-icon', 'icon-user')
+                        ->attribute('active', 'admin.user');
+                    if ( Sentinel::hasAccess('admin.user.index') ) {
+                        $user->add(lmcTrans('laravel-user-module/admin.menu.user.all'), ['route' => 'admin.user.index'])
+                            ->attribute('data-icon', 'icon-list')
+                            ->attribute('active', 'admin.user.index');
+                    }
+                    if ( Sentinel::hasAccess('admin.user.create') ) {
+                        $user->add(lmcTrans('laravel-user-module/admin.menu.user.add'), ['route' => 'admin.user.create'])
+                            ->attribute('data-icon', 'icon-plus')
+                            ->attribute('active', 'admin.user.create');
+                    }
+                }
+
+                if ( Sentinel::hasAnyAccess(['admin.role.index', 'admin.role.create']) ) {
+                    $role = $menu->add(lmcTrans('laravel-user-module/admin.menu.role.root'), 'javascript:;')
+                        ->attribute('data-icon', 'icon-users')
+                        ->attribute('active', 'admin.role');
+                    if ( Sentinel::hasAccess('admin.role.index') ) {
+                        $role->add(lmcTrans('laravel-user-module/admin.menu.role.all'), ['route' => 'admin.role.index'])
+                            ->attribute('data-icon', 'icon-list')
+                            ->attribute('active', 'admin.role.index');
+                    }
+                    if ( Sentinel::hasAccess('admin.role.create') ) {
+                        $role->add(lmcTrans('laravel-user-module/admin.menu.role.add'), ['route' => 'admin.role.create'])
+                            ->attribute('data-icon', 'icon-plus')
+                            ->attribute('active', 'admin.role.create');
+                    }
+                }
             }
         });
     }
