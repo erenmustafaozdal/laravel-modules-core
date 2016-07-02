@@ -40,7 +40,7 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var destroyAvatarURL = "{!! route('api.user.destroy_avatar', ['id' => $user->id]) !!}";
+        var destroyAvatarURL = "{!! route('api.user.destroyAvatar', ['id' => $user->id]) !!}";
         var modelsURL = "{!! route('api.role.models') !!}";
         {{-- /routes --}}
 
@@ -64,6 +64,7 @@
                 equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}"
             }
         };
+        var isAuthUser = {{ $user->id === \Cartalyst\Sentinel\Laravel\Facades\Sentinel::getUser()->id ? 'true' : 'false' }};
         {{-- /languages --}}
 
         {{-- scripts --}}
@@ -378,7 +379,7 @@
                         <div id="change_avatar" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('api.user.avatar_photo', ['id' => $user->id]),
+                                'url'       => route('api.user.avatarPhoto', ['id' => $user->id]),
                                 'id'        => 'change-avatar-form'
                             ]) !!}
 

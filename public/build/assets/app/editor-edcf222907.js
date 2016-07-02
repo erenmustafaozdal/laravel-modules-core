@@ -57,6 +57,12 @@ var Editor = {
             var button = $(event.relatedTarget); // fast-add | fast-edit
             theEditor.actionType = button.data('action'); // data-action
             var modal = $(this);
+
+            // modal açıldı callback call
+            if (theEditor.editorOptions.modalShowCallback) {
+                theEditor.editorOptions.modalShowCallback.call(this, theEditor);
+            }
+
             // if fast-add
             if (theEditor.actionType === 'fast-add') {
                 modal.find('.modal-title').text(LMCApp.lang.admin.ops.fast_add);
@@ -71,11 +77,6 @@ var Editor = {
             var tr = button.closest('tr');
             theEditor.row = theDataTable.getDataTable().row(tr);
             theEditor.getEditDataToForm();
-
-            // modal açıldı callback call
-            if (theEditor.editorOptions.modalShowCallback) {
-                theEditor.editorOptions.modalShowCallback.call(this, theEditor);
-            }
         });
 
         // editor modal kapandığında yapılacak işlemler

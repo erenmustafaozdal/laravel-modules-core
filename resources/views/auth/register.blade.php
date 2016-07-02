@@ -46,7 +46,7 @@
         <h3 class="form-title font-green">{!! lmcTrans('laravel-user-module/auth.register.title') !!}</h3>
 
         {{-- Error Messages --}}
-        @include('laravel-modules.core::partials.error_message')
+        @include('laravel-modules-core::partials.error_message')
         {{-- /Error Messages --}}
 
         <div class="form-group">
