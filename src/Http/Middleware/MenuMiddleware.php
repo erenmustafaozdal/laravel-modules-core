@@ -4,8 +4,7 @@ namespace ErenMustafaOzdal\LaravelModulesCore\Http\Middleware;
 
 use Closure;
 use Caffeinated\Menus\Facades\Menu;
-use Caffeinated\Menus\Builder;
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Sentinel;
 
 class MenuMiddleware
 {

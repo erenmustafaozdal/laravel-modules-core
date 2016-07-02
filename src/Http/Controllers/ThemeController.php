@@ -8,21 +8,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use Route;
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 
 class ThemeController extends Controller
 {
-    /**
-     * Abort if request is not ajax
-     * @param Request $request
-     */
-    public function __construct(Request $request)
-    {
-        if(! $request->ajax() ||  ! Sentinel::hasAccess( Route::currentRouteName() )) {
-            abort(403);
-        }
-    }
-
     /**
      * Admin Theme Layout Change
      *

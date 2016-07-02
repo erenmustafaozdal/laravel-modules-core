@@ -4,7 +4,7 @@ namespace ErenMustafaOzdal\LaravelModulesCore\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+use Sentinel;
 
 class ApiTheme
 {
@@ -35,10 +35,10 @@ class ApiTheme
     public function handle($request, Closure $next)
     {
         if ( ! Sentinel::check()) {
-            return response('Unauthorized.', 401);
+            abort(401);
         }
         if(! $request->ajax()) {
-            return response('Forbidden.', 403);
+            abort(403);
         }
 
         return $next($request);
