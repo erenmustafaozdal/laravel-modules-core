@@ -2,13 +2,13 @@ Laravel Modules Core
 ===================
 [![Laravel 5.1](https://img.shields.io/badge/Laravel-5.1-orange.svg?style=flat-square)](https://laravel.com/docs/5.1/)
 [![Source](https://img.shields.io/badge/source-erenmustafaozdal/laravel--modules--core-blue.svg?style=flat-square)](https://github.com/erenmustafaozdal/laravel-modules-core)
-[![License](http://img.shields.io/badge/license-MIT-brig
+[![License](http://img.shields.io/badge/license-MIT-brig)
 
 **Laravel Modules Core** geliştirdiğim Laravel 5.1 modüllerinde, kendi ihtiyaçlarıma göre dizayn ettiğim tsaarımları kapsamaktadır. Kendi ihtiyaçlarım için geliştirirken, diğer geliştiricilerin de tercihine sunmaktayım. İstersen bu şekilde kullanabilir veya esinlenebilirsin.
 
 :exclamation: Bu pakette tasarım ve javascript işlemleri tamamen kendi ihtiyaçlarımı karşılama amacıyla tasarlanmıştır. Her türlü fikir ve eleştirilerinizi kabul etmekle birlite, her an kendi ihtiyacıma göre dizaynı veya işleyişi değiştirme hakkımı saklı tutarım.
 
-**Laravel Modules Core** kurulumu gayet basit bir tasarım paketidir. Diğer geliştirdiğim veya geliştireceğim modüllerle tam uyumlu çalışmaktadır. Kurulumu yaptıktan sonra, eğer hiçbir değişiklik yapmayacaksan; var olan modülleri kullancak şekilde hiçbir işlem yapmana gerek kalmayacaktır.
+**Laravel Modules Core** kurulumu gayet basit bir tasarım paketidir. Diğer geliştirdiğim veya geliştireceğim modüllerle tam uyumlu çalışmaktadır. Kurulumu yaptıktan sonra, eğer hiçbir değişiklik yapmayacaksan; var olan modülleri kullanacak şekilde hiçbir işlem yapmana gerek kalmayacaktır.
 
 1. [Kurulum](#kurulum)
     1. [Dosyaların Yayınlanması](#kurulum-dosyalarinYayinlanmasi)
@@ -74,7 +74,7 @@ Kullanım
 
 Kurulum bittikten sonra, varolan paketlerin için her şey hazır olmuş olacak. Harika değil mi? Şimdi istersen biraz ayarlamalarda oynamalar yapalım.
 
-> :exclamation: metinler yanlış görünüyorsa, paketin İngilizce dil dosyaları hazır olmadığı içindir. Bu sebeple projenin `config/app.php` dosyasında `'locale' => 'tr'` tanımlaması yapmalısın.
+> :exclamation: Metinler yanlış görünüyorsa, paketin İngilizce dil dosyaları hazır olmadığı içindir. Bu sebeple projenin `config/app.php` dosyasında `'locale' => 'tr'` tanımlaması yapmalısın.
 
 
 <a name="kullanim-ayarDosyasi"></a>
@@ -113,7 +113,7 @@ Görünümler içinde kullanılan bazı değerlerin tanımlamalarıdır. Ayar do
 <a name="kullanim-ayarDosyasi-paketlerAyarlari"></a>
 ##### Paketler Ayarları
 
-Tasarımda kullanılan paketlerin tanımlaması. Yani burada bulunan paketleri kullanıyorum ve tasarımda bu paketlerle ilgili içerikler ekle! Bu ayar, ayar dosyasının `packages` alanı altında bulunuyor.
+Tasarımda kullanılan paketlerin tanımlaması. Yani "Burada bulunan paketleri kullanıyorum ve tasarımda bu paketlerle ilgili içerikler ekle" anlamına gelen ayarlar! Bu ayar, ayar dosyasının `packages` alanı altında bulunuyor.
 
 
 > :exclamation: varsayılan olarak bütün paketler burada tanımlıdır veya tanımlı olacaktır. Kullanmadıklarını buradan çıkarmalısın. Örnek tanımlama şu şeklidedir:
