@@ -18,6 +18,7 @@ Laravel Modules Core
     2. [Görünüm Ayarları](#kullanim-ayarDosyasi-gorunumAyarlari)
     3. [Paketler Ayarları](#kullanim-ayarDosyasi-paketlerAyarlari)
 3. [Lisans](#lisans)
+4. [Ekran Görüntüleri](#ekranGoruntuleri)
 
 
 <a name="kurulum"></a>
@@ -129,3 +130,18 @@ Tasarımda kullanılan paketlerin tanımlaması. Yani "Burada bulunan paketleri 
 Lisans
 ------
 MIT
+
+
+ <a name="ekranGoruntuleri"></a>
+Ekran Görüntüleri
+------
+[![Kullanıcılar](http://i.hizliresim.com/mLZN02.png)](http://hizliresim.com/mLZN02)
+[![Kullanıcılar sayfası hızlı kullanıcı ekleme ekranı](http://i.hizliresim.com/AJPXpQ.png)](http://hizliresim.com/AJPXpQ)
+[![Yeni kullanıcı ekleme](http://i.hizliresim.com/aERN6d.png)](http://hizliresim.com/aERN6d)
+[![Yeni kullanıcı ekleme - Fotoğraf](http://i.hizliresim.com/nroNBa.png)](http://hizliresim.com/nroNBa)
+[![Yeni kullanıcı ekleme - İzinler](http://i.hizliresim.com/qBnNV3.png)](http://hizliresim.com/qBnNV3)
+[![Kullanıcı bilgileri](http://i.hizliresim.com/WYRp5q.png)](http://hizliresim.com/WYRp5q)
+[![Roller](http://i.hizliresim.com/GzX4ay.png)](http://hizliresim.com/GzX4ay)
+[![Roller sayfası hızlı rol ekleme ekranı](http://i.hizliresim.com/pPVNlN.png)](http://hizliresim.com/pPVNlN)
+[![Yeni rol ekleme](http://i.hizliresim.com/l1RNml.png)](http://hizliresim.com/l1RNml)
+[![Rol bilgileri](http://i.hizliresim.com/X4p3Ao.png)](http://hizliresim.com/X4p3Ao)
