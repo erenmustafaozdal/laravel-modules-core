@@ -10,7 +10,7 @@
     </a>
     <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click">
         <div class="row">
-            @if ( Sentinel::hasAccess('api.themeColor.change') )
+            @if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.themeColor.change') )
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <h3>{!! trans('laravel-modules-core::admin.toolbar.theme.title') !!}</h3>
                     <ul class="theme-colors">
@@ -26,7 +26,7 @@
                 </div>
             @endif
 
-            @if ( Sentinel::hasAccess('api.themeLayout.change') )
+            @if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.themeLayout.change') )
                 <div class="col-md-8 col-sm-8 col-xs-12 seperator">
                 <h3>{!! trans('laravel-modules-core::admin.toolbar.layout.title') !!}</h3>
                 <ul class="theme-settings">

@@ -155,7 +155,7 @@
                             ], 'biggest') !!}
                         </li>
                         {{-- Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.destroyAvatar'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.destroyAvatar'))
                         <li {!! $user->photo == '' ? 'class="hidden"' : '' !!}>
                             <a href="javascript:;" class="font-red" id="destroy-avatar">
                                 <i class="fa fa-trash"></i>
@@ -173,7 +173,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.update'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -183,7 +183,7 @@
                         </li>
                         @endif
 
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.avatarPhoto'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.avatarPhoto'))
                         <li>
                             <a data-toggle="tab" href="#change_avatar">
                                 <i class="fa fa-picture-o"></i>
@@ -192,7 +192,7 @@
                         </li>
                         @endif
 
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.changePassword'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.changePassword'))
                         <li>
                             <a data-toggle="tab" href="#change_password">
                                 <i class="fa fa-lock"></i>
@@ -201,7 +201,7 @@
                         </li>
                         @endif
 
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.permission'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.permission'))
                         <li>
                             <a data-toggle="tab" href="#permission">
                                 <i class="fa fa-user-secret"></i>
@@ -368,7 +368,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.update'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -393,7 +393,7 @@
                         {{-- /Edit Info --}}
 
                         {{-- Change Avatar --}}
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.avatarPhoto'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.avatarPhoto'))
                         <div id="change_avatar" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -409,7 +409,7 @@
                         {{-- /Change Avatar --}}
 
                         {{-- Change Password --}}
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.changePassword'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.changePassword'))
                         <div id="change_password" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'POST',
@@ -433,7 +433,7 @@
                         {{-- /Change Password --}}
 
                         {{-- Permission --}}
-                        @if ($user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.permission'))
+                        @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('admin.user.permission'))
                         <div id="permission" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'POST',

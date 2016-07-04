@@ -13,7 +13,6 @@ return [
     |--------------------------------------------------------------------------
     | View config
     |--------------------------------------------------------------------------
-    | dot notation of blade view path, its position on the /resources/views directory
     */
     'views' => [
         // all layouts default values
@@ -21,10 +20,10 @@ return [
         'html_head' => [
             'content_type'              => 'text/html; charset=UTF-8',
             'charset'                   => 'utf-8',
-            'default_title'             => 'Laravel User Module',   // default page title of all pages
-            'meta_description'          => 'Laravel User Module package',
+            'default_title'             => 'Laravel Modules',   // default page title of all pages
+            'meta_description'          => 'Laravel Modules packages',
             'meta_author'               => 'Eren Mustafa ÖZDAL',
-            'meta_keywords'             => 'laravel,user,module,package',
+            'meta_keywords'             => 'laravel,modules,packages',
             'meta_robots'               => 'noindex,nofollow',
             'meta_googlebot'            => 'noindex,nofollow'
         ]

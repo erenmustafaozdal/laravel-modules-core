@@ -78,7 +78,7 @@ class BreadcrumbService
         if ( strpos($this->route_name, 'index')  !== false ) {
             $breadcrumbs  .= $parent_text;
         } else {
-            $route = Sentinel::hasAccess($this->index_route_name) ? route($this->index_route_name) : 'javascript:;';
+            $route = Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($this->index_route_name) ? route($this->index_route_name) : 'javascript:;';
             $breadcrumbs  .= '<a href="'. $route .'">'.$parent_text.'</a><i class="fa fa-circle"></i>';
         }
 
@@ -99,7 +99,7 @@ class BreadcrumbService
      */
     public function getDashboardBreadcrumb()
     {
-        if ( ! Sentinel::hasAccess('admin.dashboard.index') ) {
+        if ( ! Sentinel::getUser()->is_super_admin && ! Sentinel::hasAccess('admin.dashboard.index') ) {
             return '';
         }
         $breadcrumbs  = '<li>';

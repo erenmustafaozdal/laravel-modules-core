@@ -131,7 +131,7 @@
                         {{-- Page Toolbar --}}
                         <div class="page-toolbar">
                             {{-- Theme Panel --}}
-                            @if ( Sentinel::hasAnyAccess(['api.themeLayout.change', 'api.themeColor.change']) )
+                            @if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['api.themeLayout.change', 'api.themeColor.change']) )
                                 @include('laravel-modules-core::partials.admin.themePanel')
                             @endif
                             {{-- /Theme Panel --}}

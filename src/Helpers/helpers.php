@@ -73,7 +73,7 @@ if (! function_exists('getOps')) {
 
         // edit buton
         if ( $currentPage !== 'edit' ) {
-            if ( ($route_name === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$route_name}.edit") ) {
+            if ( Sentinel::getUser()->is_super_admin || ($route_name === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$route_name}.edit") ) {
                 $ops .= '<a href="' . route("admin.{$route_name}.edit", ['id' => $model->id]) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
                 $ops .= '<i class="fa fa-pencil"></i>';
                 $ops .= trans('laravel-modules-core::admin.ops.edit');
@@ -83,7 +83,7 @@ if (! function_exists('getOps')) {
 
         // show buton
         if ( $currentPage !== 'show' ) {
-            if ( ($route_name === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$route_name}.show") ) {
+            if ( Sentinel::getUser()->is_super_admin || ($route_name === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$route_name}.show") ) {
                 $ops .= '<a href="' . route("admin.{$route_name}.show", ['id' => $model->id]) . '" class="btn btn-sm btn-outline green margin-right-10">';
                 $ops .= '<i class="fa fa-search"></i>';
                 $ops .= trans('laravel-modules-core::admin.ops.show');
@@ -92,7 +92,7 @@ if (! function_exists('getOps')) {
         }
 
         // silme butonu
-        if ( Sentinel::hasAccess("admin.{$route_name}.destroy") ) {
+        if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$route_name}.destroy") ) {
             if ( $route_name !== 'user' || $model->id !== Sentinel::getUser()->id ) {
                 $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline">';
                 $ops .= '<i class="fa fa-trash"></i>';
