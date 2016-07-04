@@ -2,7 +2,7 @@ Laravel Modules Core
 ===================
 [![Laravel 5.1](https://img.shields.io/badge/Laravel-5.1-orange.svg?style=flat-square)](https://laravel.com/docs/5.1/)
 [![Source](https://img.shields.io/badge/source-erenmustafaozdal/laravel--modules--core-blue.svg?style=flat-square)](https://github.com/erenmustafaozdal/laravel-modules-core)
-[![License](http://img.shields.io/badge/license-MIT-brig)
+[![License](http://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://tldrlegal.com/license/mit-license)
 
 **Laravel Modules Core** geliştirdiğim Laravel 5.1 modüllerinde, kendi ihtiyaçlarıma göre dizayn ettiğim tsaarımları kapsamaktadır. Kendi ihtiyaçlarım için geliştirirken, diğer geliştiricilerin de tercihine sunmaktayım. İstersen bu şekilde kullanabilir veya esinlenebilirsin.
 
