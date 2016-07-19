@@ -44,6 +44,7 @@ return [
         'email'                         => 'E-posta',
         'submit'                        => 'Gönder',
         'login'                         => 'Giriş Yap!',
+        'mail_subject'                  => 'Şifreni Sıfırla',
         'mail_content'                  => 'Merhaba :name! Şifreni sıfırla: <a href="'.route('getResetPassword',['token'=> ':token']).'">'.route('getResetPassword',['token'=> ':token']).'</a>',
     ],
 

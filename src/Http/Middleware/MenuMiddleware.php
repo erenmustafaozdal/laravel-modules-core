@@ -58,6 +58,18 @@ class MenuMiddleware
                         ->attribute('data-icon', 'icon-users');
                 }
             }
+
+            // laravel page module action menus
+            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-page-module')))) {
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.create') ) {
+                    $menu->add(lmcTrans('laravel-page-module/admin.menu.page_category.add'),['route' => 'admin.page_category.create'] )
+                        ->attribute('data-icon', 'icon-user-follow');
+                }
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.create') ) {
+                    $menu->add(lmcTrans('laravel-user-module/admin.menu.role.add'),['route' => 'admin.role.create'] )
+                        ->attribute('data-icon', 'icon-users');
+                }
+            }
         });
     }
 

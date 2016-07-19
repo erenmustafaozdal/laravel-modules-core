@@ -35,7 +35,8 @@ return [
     |--------------------------------------------------------------------------
     */
     'packages' => [
-        'laravel-user-module'           => \ErenMustafaOzdal\LaravelUserModule\LaravelUserModuleServiceProvider::class
+        'laravel-user-module'           => \ErenMustafaOzdal\LaravelUserModule\LaravelUserModuleServiceProvider::class,
+        'laravel-page-module'           => \ErenMustafaOzdal\LaravelPageModule\LaravelPageModuleServiceProvider::class,
     ]
 
 ];
