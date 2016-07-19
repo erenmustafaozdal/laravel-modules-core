@@ -163,7 +163,7 @@ return [
             'user_detail'           => 'Detaylar',
             'user_detail_desc'      => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfada yönetici detayını görebilir',
             'user_fastEdit'         => 'Hızlı Düzenleme Bilgileri',
-            'user_fastEdit_desc'    => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfada hızlı düzenlemek amacıyla yönetci bilgilerini sayfaya getirebilir',
+            'user_fastEdit_desc'    => 'Bu izne sahip olanlar yöneticilerin listelendiği sayfada hızlı düzenlemek amacıyla yönetici bilgilerini sayfaya getirebilir',
             'user_activate'         => 'Aktifleştirme',
             'user_activate_desc'    => 'Bu izne sahip olanlar yöneticinin hesabını aktifleştirebilir',
             'user_notActivate'      => 'Aktifliği Kaldırma',

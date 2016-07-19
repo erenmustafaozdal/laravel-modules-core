@@ -63,11 +63,11 @@ class MenuMiddleware
             if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-page-module')))) {
                 if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.create') ) {
                     $menu->add(lmcTrans('laravel-page-module/admin.menu.page_category.add'),['route' => 'admin.page_category.create'] )
-                        ->attribute('data-icon', 'icon-user-follow');
+                        ->attribute('data-icon', 'icon-doc');
                 }
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.create') ) {
-                    $menu->add(lmcTrans('laravel-user-module/admin.menu.role.add'),['route' => 'admin.role.create'] )
-                        ->attribute('data-icon', 'icon-users');
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.create') ) {
+                    $menu->add(lmcTrans('laravel-page-module/admin.menu.page.add'),['route' => 'admin.page.create'] )
+                        ->attribute('data-icon', 'icon-doc');
                 }
             }
         });
@@ -112,6 +112,42 @@ class MenuMiddleware
                         $role->add(lmcTrans('laravel-user-module/admin.menu.role.add'), ['route' => 'admin.role.create'])
                             ->attribute('data-icon', 'icon-plus')
                             ->attribute('active', 'admin.role.create');
+                    }
+                }
+                }
+
+            // laravel page module | Page Category & Page
+            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-page-module')))) {
+
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['admin.page_category.index', 'admin.page_category.create']) ) {
+                    $user = $menu->add(lmcTrans('laravel-page-module/admin.menu.page_category.root'), 'javascript:;')
+                        ->attribute('data-icon', 'icon-doc')
+                        ->attribute('active', 'admin.page_category');
+                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.index') ) {
+                        $user->add(lmcTrans('laravel-page-module/admin.menu.page_category.all'), ['route' => 'admin.page_category.index'])
+                            ->attribute('data-icon', 'icon-list')
+                            ->attribute('active', 'admin.page_category.index');
+                    }
+                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.create') ) {
+                        $user->add(lmcTrans('laravel-page-module/admin.menu.page_category.add'), ['route' => 'admin.page_category.create'])
+                            ->attribute('data-icon', 'icon-plus')
+                            ->attribute('active', 'admin.page_category.create');
+                    }
+                }
+
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['admin.page.index', 'admin.page.create']) ) {
+                    $role = $menu->add(lmcTrans('laravel-page-module/admin.menu.page.root'), 'javascript:;')
+                        ->attribute('data-icon', 'icon-doc')
+                        ->attribute('active', 'admin.page');
+                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.index') ) {
+                        $role->add(lmcTrans('laravel-page-module/admin.menu.page.all'), ['route' => 'admin.page.index'])
+                            ->attribute('data-icon', 'icon-list')
+                            ->attribute('active', 'admin.page.index');
+                    }
+                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.create') ) {
+                        $role->add(lmcTrans('laravel-page-module/admin.menu.page.add'), ['route' => 'admin.page.create'])
+                            ->attribute('data-icon', 'icon-plus')
+                            ->attribute('active', 'admin.page.create');
                     }
                 }
             }
