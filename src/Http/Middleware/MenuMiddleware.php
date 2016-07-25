@@ -138,7 +138,7 @@ class MenuMiddleware
                 if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['admin.page.index', 'admin.page.create']) ) {
                     $role = $menu->add(lmcTrans('laravel-page-module/admin.menu.page.root'), 'javascript:;')
                         ->attribute('data-icon', 'icon-doc')
-                        ->attribute('active', 'admin.page');
+                        ->attribute('active', 'admin.page.');
                     if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.index') ) {
                         $role->add(lmcTrans('laravel-page-module/admin.menu.page.all'), ['route' => 'admin.page.index'])
                             ->attribute('data-icon', 'icon-list')

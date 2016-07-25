@@ -45,7 +45,7 @@ return [
     // fields
     'fields' => [
         'page_category' => [
-
+            'name'                          => 'Ad'
         ],
         'page' => [
 
