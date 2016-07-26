@@ -25,22 +25,19 @@
         var datatableJs = "{!! lmcElixir('assets/app/datatable.js') !!}";
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var formJs = "{!! lmcElixir('assets/pages/scripts/role/role-form.js') !!}";
+        var formJs = "{!! lmcElixir('assets/pages/scripts/page_category/page_category-form.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.role.index') !!}";
-        var apiStoreURL = "{!! route('api.role.store') !!}";
-        var apiGroupAction = "{!! route('api.role.group') !!}";
+        var ajaxURL = "{!! route('api.page_category.index') !!}";
+        var apiStoreURL = "{!! route('api.page_category.store') !!}";
+        var apiGroupAction = "{!! route('api.page_category.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
             name: {
                 required: "{!! LMCValidation::getMessage('name','required') !!}"
-            },
-            slug: {
-                alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}"
             }
         };
         {{-- /languages --}}
@@ -52,7 +49,7 @@
         });
         $script.ready('app_editor', function()
         {
-            $script("{!! lmcElixir('assets/pages/scripts/role/index.js') !!}",'index');
+            $script("{!! lmcElixir('assets/pages/scripts/page_category/index.js') !!}",'index');
         });
         $script.ready(['config','index'], function()
         {
@@ -100,7 +97,6 @@
                             <th class="all" width="2%"></th>
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!} </th>
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page_category.parent') !!} </th>
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
                         </tr>
@@ -112,9 +108,6 @@
                             </td>
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="name" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!}">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="slug" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page_category.parent') !!}">
                             </td>
                             <td>
                                 @include('laravel-modules-core::partials.common.datatables.filterDate')
@@ -137,7 +130,7 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'role.partials.form'        => [ 'helpBlockAfter'    => true ]
+            'page_category.partials.form'        => [ 'helpBlockAfter'    => true ]
         ]
     ])
     {{-- /Create and Edit modal --}}

@@ -1,1 +1,0 @@
-$.validator.addMethod("alpha_dash",function(a,e){return this.optional(e)||/^[a-zA-Z0-9-_]+$/i.test(a)},"Letters, numbers, dash and underscores only please");
