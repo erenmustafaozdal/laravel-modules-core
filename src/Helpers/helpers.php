@@ -63,14 +63,13 @@ if (! function_exists('getOps')) {
      *
      * @param $model
      * @param string $currentPage
+     * @param boolean $isPublishable
      * @return string
      */
-    function getOps($model, $currentPage)
+    function getOps($model, $currentPage, $isPublishable = false)
     {
         $route_name = snake_case(class_basename($model));
-
-
-        $ops  = Form::open(['method' => 'DELETE', 'url' => route("admin.{$route_name}.destroy", ['id' => $model->id]), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
+        $ops = Form::open(['method' => 'DELETE', 'url' => route("admin.{$route_name}.destroy", ['id' => $model->id]), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
 
         // edit buton
         if ( $currentPage !== 'edit' ) {
@@ -102,6 +101,27 @@ if (! function_exists('getOps')) {
             }
         }
 
+        // yayınlama veya yayından kaldırma butonu
+        if ( $isPublishable ) {
+            // yayından kaldırma
+            if ($model->is_publish) {
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$route_name}.notPublish") ) {
+                    $ops .= '<a href="' . route("admin.{$route_name}.notPublish", ['id' => $model->id]) . '" class="btn btn-sm btn-outline purple margin-right-10">';
+                    $ops .= '<i class="fa fa-times"></i>';
+                    $ops .= trans('laravel-modules-core::admin.ops.not_publish');
+                    $ops .= '</a>';
+                }
+            }
+            // yayınlama
+            else {
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$route_name}.notPublish") ) {
+                    $ops .= '<a href="' . route("admin.{$route_name}.notPublish", ['id' => $model->id]) . '" class="btn btn-sm btn-outline blue margin-right-10">';
+                    $ops .= '<i class="fa fa-bullhorn"></i>';
+                    $ops .= trans('laravel-modules-core::admin.ops.publish');
+                    $ops .= '</a>';
+                }
+            }
+        }
 
         $ops .= Form::close();
         return $ops;

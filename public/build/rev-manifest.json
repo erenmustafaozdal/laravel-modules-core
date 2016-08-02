@@ -19,6 +19,7 @@
   "assets/pages/scripts/login.js": "assets/pages/scripts/login-75b3c3b18e.js",
   "assets/pages/scripts/page/index.js": "assets/pages/scripts/page/index-1c15d9271d.js",
   "assets/pages/scripts/page/page-form.js": "assets/pages/scripts/page/page-form-b7f30c7f87.js",
+  "assets/pages/scripts/page_category/create.js": "assets/pages/scripts/page_category/create-ff00ffa6e0.js",
   "assets/pages/scripts/page_category/index.js": "assets/pages/scripts/page_category/index-535bdd5429.js",
   "assets/pages/scripts/page_category/page_category-form.js": "assets/pages/scripts/page_category/page_category-form-684e799cb0.js",
   "assets/pages/scripts/page_category/show.js": "assets/pages/scripts/page_category/show-d15f1793a5.js",
