@@ -1,12 +1,12 @@
 @extends(config('laravel-page-module.views.page_category.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-page-module/admin.page_category.create') !!}
+    {!! lmcTrans('laravel-page-module/admin.page_category.edit') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-page-module/admin.page_category.create') !!}
-        <small>{!! lmcTrans('laravel-page-module/admin.page_category.create_description') !!}</small>
+    <h1>{!! lmcTrans('laravel-page-module/admin.page_category.edit') !!}
+        <small>{!! lmcTrans('laravel-page-module/admin.page_category.edit_description', [ 'page_category' => $page_category->name ]) !!}</small>
     </h1>
 @endsection
 
@@ -56,7 +56,7 @@
             <div class="caption">
                 <i class="icon-user-follow font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-page-module/admin.page_category.create') !!}
+                    {!! lmcTrans('laravel-page-module/admin.page_category.edit') !!}
                 </span>
             </div>
             {{-- /Caption --}}
@@ -72,8 +72,8 @@
 
             {{-- Create Form --}}
             {!! Form::open([
-                'method'    => 'POST',
-                'url'       => route('admin.page_category.store'),
+                'method'    => 'PATCH',
+                'url'       => route('admin.page_category.update', [ 'id' => $page_category->id ]),
                 'class'     => 'form'
             ]) !!}
 
