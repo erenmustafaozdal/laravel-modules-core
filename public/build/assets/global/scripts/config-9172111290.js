@@ -57,6 +57,8 @@ var LMCApp = {
                 destroy: 'Sil',
                 activate: 'Aktifleştir',
                 not_activate: 'Aktifliği Kaldır',
+                publish: 'Yayınla',
+                not_publish: 'Yayından Kaldır',
                 browse: 'Gözat',
                 crop: 'Kırp',
                 select: 'Seç'
@@ -109,6 +111,22 @@ var LMCApp = {
                 not_activate_error: {
                     title: 'Aktiflik Kaldırılamadı',
                     message: 'Aktifliği kaldırma işlemi gerçekleşmedi. Lütfen daha sonra dene!'
+                },
+                publish_success: {
+                    title: 'Yayınlama Tamamlandı',
+                    message: 'Yayınlama işlemi başarılı bir şekilde gerçekleşti.'
+                },
+                publish_error: {
+                    title: 'Yayınlanamadı',
+                    message: 'Yayınlama işlemi gerçekleşmedi. Lütfen daha sonra dene!'
+                },
+                not_publish_success: {
+                    title: 'Yayından Kaldırma Tamamlandı',
+                    message: 'Yayından kaldırma işlemi başarılı bir şekilde gerçekleşti.'
+                },
+                not_publish_error: {
+                    title: 'Yayından Kaldırılamadı',
+                    message: 'Yayından kaldırma işlemi gerçekleşmedi. Lütfen daha sonra dene!'
                 },
                 not_select_rows: {
                     title: 'Veri Seçilmedi',
@@ -175,11 +193,31 @@ var LMCApp = {
     init: function()
     {
         lmcApp = this;
+        this.initMaxLength(); // init maxlength
         this.initTooltips(); // init tooltips
         this.setToastrOptions(); // set toastr default options
         this.setBootboxOptions(); // set bootbox default options
         this.setPaceOptions(); // set pace default options
         this.setAjaxOptions();
+    },
+
+    /**
+     * maxlength init
+     */
+    initMaxLength: function()
+    {
+        var element = $('.maxlength');
+        var limit = element.prop('maxlength');
+        element.maxlength({
+            limitReachedClass: "label label-danger",
+            warningClass: "label label-info",
+            separator: ' / ',
+            preText: 'En fazla ' + limit + ' karakter kullanabilirsin! ',
+            postText: ' karakter kullanıldı.',
+            validate: true,
+            alwaysShow: true
+        });
+
     },
 
     /**

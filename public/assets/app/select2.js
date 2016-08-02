@@ -46,7 +46,7 @@ var Select2 = {
             select2: {
                 language: 'tr',
                 placeholder: LMCApp.lang.admin.ops.select,
-                minimumInputLength: 2,
+                minimumInputLength: -1,
                 tags: false,
                 allowClear: true,
                 closeOnSelect: true,

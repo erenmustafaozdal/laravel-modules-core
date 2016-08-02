@@ -18,8 +18,8 @@
 
     @if ( ! isset($helpBlockAfter) )
         <span class="help-block">
-        {!! lmcTrans('laravel-user-module/admin.helpers.role.slug') !!}
-    </span>
+            {!! lmcTrans('laravel-user-module/admin.helpers.role.slug') !!}
+        </span>
     @endif
 </div>
 @if ( isset($helpBlockAfter) )

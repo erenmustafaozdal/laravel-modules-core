@@ -1,12 +1,12 @@
-@extends(config('laravel-user-module.views.user.layout'))
+@extends(config('laravel-page-module.views.page.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-user-module/admin.user.index') !!}
+    {!! lmcTrans('laravel-page-module/admin.page.index') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-user-module/admin.user.index') !!}
-        <small>{!! lmcTrans('laravel-user-module/admin.user.index_description') !!}</small>
+    <h1>{!! lmcTrans('laravel-page-module/admin.page.index') !!}
+        <small>{!! lmcTrans('laravel-page-module/admin.page.index_description') !!}</small>
     </h1>
 @endsection
 
@@ -15,6 +15,11 @@
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/datatables.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
+
+    {{-- Select2 --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
+    {{-- /Select2 --}}
 @endsection
 
 @section('script')
@@ -25,43 +30,39 @@
         var datatableJs = "{!! lmcElixir('assets/app/datatable.js') !!}";
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var formJs = "{!! lmcElixir('assets/pages/scripts/user/user-form.js') !!}";
+        var formJs = "{!! lmcElixir('assets/pages/scripts/page/page-form.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.user.index') !!}";
-        var apiStoreURL = "{!! route('api.user.store') !!}";
-        var apiGroupAction = "{!! route('api.user.group') !!}";
+        var ajaxURL = "{!! route('api.page.index') !!}";
+        var apiStoreURL = "{!! route('api.page.store') !!}";
+        var apiGroupAction = "{!! route('api.page.group') !!}";
+        var modelsURL = "{!! route('api.page_category.models') !!}";
+        var categoryURL = "{!! route('admin.page_category.show', ['id' => 'id']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            first_name: {
-                required: "{!! LMCValidation::getMessage('first_name','required') !!}"
+            category_id: {
+                required: "{!! LMCValidation::getMessage('category_id','required') !!}"
             },
-            last_name: {
-                required: "{!! LMCValidation::getMessage('last_name','required') !!}"
+            title: {
+                required: "{!! LMCValidation::getMessage('title','required') !!}"
             },
-            email: {
-                required: "{!! LMCValidation::getMessage('email','required') !!}",
-                email: "{!! LMCValidation::getMessage('email','email') !!}"
-            },
-            password: {
-                required: "{!! LMCValidation::getMessage('password','required') !!}",
-                minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}"
-            },
-            password_confirmation: {
-                required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}",
-                minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}",
-                equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}"
+            slug: {
+                alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}"
             }
         };
         {{-- /languages --}}
 
         {{-- scripts --}}
+        $script.ready('validation', function()
+        {
+            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
+        });
         $script.ready('app_editor', function()
         {
-            $script("{!! lmcElixir('assets/pages/scripts/user/index.js') !!}",'index');
+            $script("{!! lmcElixir('assets/pages/scripts/page/index.js') !!}",'index');
         });
         $script.ready(['config','index'], function()
         {
@@ -80,10 +81,10 @@
             <div class="caption">
                 <i class="icon-users font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-user-module/admin.user.index') !!}
+                    {!! lmcTrans('laravel-page-module/admin.page.index') !!}
                 </span>
             </div>
-            @include('laravel-modules-core::partials.common.indexActions', ['module' => 'user'])
+            @include('laravel-modules-core::partials.common.indexActions', ['module' => 'page'])
         </div>
         {{-- /Table Portlet Title and Actions --}}
 
@@ -97,7 +98,7 @@
             <div class="table-container">
                 {{-- Table Actions --}}
                 @include('laravel-modules-core::partials.common.indexTableActions', [
-                    'actions'   => ['activate','not_activate','destroy']
+                    'actions'   => ['publish','not_publish','destroy']
                 ])
                 {{-- /Table Actions --}}
 
@@ -108,9 +109,10 @@
                             <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
                             <th class="all" width="2%"></th>
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
-                            <th class="all" width="5%"> {!! lmcTrans('laravel-user-module/admin.fields.user.photo') !!} </th>
-                            <th class="all" width="100"> {!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} </th>
-                            <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page.title') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!} </th>
+                            <th class="all" width="%30"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
                         </tr>
@@ -120,15 +122,20 @@
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
                             </td>
-                            <td> </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="first_name" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} - {!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="title" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page.title') !!}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-filter input-sm" name="slug" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!}">
                             </td>
                             <td>
                                 <select name="status" class="form-control form-filter input-sm">
                                     <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
-                                    <option value="1">{!! trans('laravel-modules-core::admin.ops.active') !!}</option>
-                                    <option value="0">{!! trans('laravel-modules-core::admin.ops.not_active') !!}</option>
+                                    <option value="1">{!! trans('laravel-modules-core::admin.ops.published') !!}</option>
+                                    <option value="0">{!! trans('laravel-modules-core::admin.ops.not_published') !!}</option>
                                 </select>
                             </td>
                             <td>
@@ -152,8 +159,7 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'user.partials.edit_info_form'          => [ 'helpBlockAfter'    => true ],
-            'user.partials.change_password_form'    => [ 'helpBlockAfter'    => true ],
+            'page.partials.form'        => [ 'helpBlockAfter'    => true ]
         ]
     ])
     {{-- /Create and Edit modal --}}

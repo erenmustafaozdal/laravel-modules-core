@@ -183,7 +183,7 @@ var DataTable = {
             });
         });
 
-        // handle group actionsubmit button click
+        // handle group action submit button click
         theDataTable.getTableWrapper().on('click', '.table-group-action-submit', function(e)
         {
             e.preventDefault();
