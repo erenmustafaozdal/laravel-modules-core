@@ -1,5 +1,5 @@
-{!! str_replace(
-    [':name',':id',':code'],
-    [$user->first_name,$user->id,$activation->code],
-    lmcTrans('laravel-user-module/auth.activation.mail_content'))
-!!}
+{!! lmcTrans('laravel-user-module/auth.activation.mail_content',[
+    'name'  => $user->first_name,
+    'id'    => $user->id,
+    'code'  => $activation->code,
+]) !!}

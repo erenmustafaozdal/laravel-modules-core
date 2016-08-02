@@ -1,5 +1,4 @@
-{!! str_replace(
-    [':name',':token'],
-    [$user->first_name,$reminder->code],
-    lmcTrans('laravel-user-module/auth.forget_password.mail_content'))
-!!}
+{!! lmcTrans('laravel-user-module/auth.forget_password.mail_content',[
+    'name'  => $user->first_name,
+    'token' => $reminder->code
+]) !!}

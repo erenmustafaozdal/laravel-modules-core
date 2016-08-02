@@ -21,6 +21,7 @@
   "assets/pages/scripts/page/page-form.js": "assets/pages/scripts/page/page-form-b7f30c7f87.js",
   "assets/pages/scripts/page_category/index.js": "assets/pages/scripts/page_category/index-535bdd5429.js",
   "assets/pages/scripts/page_category/page_category-form.js": "assets/pages/scripts/page_category/page_category-form-684e799cb0.js",
+  "assets/pages/scripts/page_category/show.js": "assets/pages/scripts/page_category/show-d15f1793a5.js",
   "assets/pages/scripts/role/create.js": "assets/pages/scripts/role/create-8cc3be37f3.js",
   "assets/pages/scripts/role/index.js": "assets/pages/scripts/role/index-1b04046396.js",
   "assets/pages/scripts/role/permission.js": "assets/pages/scripts/role/permission-6b71450e08.js",

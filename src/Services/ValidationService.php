@@ -30,12 +30,10 @@ class ValidationService
         $messageKey = "validation.{$lowerRule}";
         $attributeKey = "validation.attributes.{$attribute}";
         if (is_null($placeholders)) {
-            return str_replace([':attribute'], [trans($attributeKey)], trans($messageKey));
+            return trans($messageKey, [ 'attribute' => trans($attributeKey) ]);
         }
 
-        $placeholders[':attribute'] = trans($attributeKey);
-        $keys = array_keys($placeholders);
-        $values = array_values($placeholders);
-        return str_replace($keys, $values, trans($messageKey));
+        $placeholders['attribute'] = trans($attributeKey);
+        return trans($messageKey, $placeholders);
     }
 }

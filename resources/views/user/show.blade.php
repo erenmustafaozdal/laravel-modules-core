@@ -6,7 +6,7 @@
 
 @section('page-title')
     <h1>{!! lmcTrans('laravel-user-module/admin.user.show') !!}
-        <small>{!! str_replace([':user'], [$user->fullname], lmcTrans('laravel-user-module/admin.user.show_description'))  !!}</small>
+        <small>{!! lmcTrans('laravel-user-module/admin.user.show_description', [ 'user' => $user->fullname ])  !!}</small>
     </h1>
 @endsection
 
@@ -227,28 +227,16 @@
                                     @if( ! is_null($user->last_login))
                                         <li>
                                             <i class="fa fa-calendar"></i>
-                                            {{ str_replace(
-                                                [':date'],
-                                                [$user->last_login_for_humans],
-                                                lmcTrans('laravel-user-module/admin.fields.user.last_login_description')
-                                            ) }}
+                                            {{ lmcTrans('laravel-user-module/admin.fields.user.last_login_description', [ 'date' => $user->last_login_for_humans ]) }}
                                         </li>
                                     @endif
                                     <li>
                                         <i class="fa fa-calendar"></i>
-                                        {{ str_replace(
-                                            [':date'],
-                                            [$user->created_at_for_humans],
-                                            trans('laravel-modules-core::admin.fields.created_at_description')
-                                        ) }}
+                                        {{ trans('laravel-modules-core::admin.fields.created_at_description', [ 'date' => $user->created_at_for_humans ]) }}
                                     </li>
                                     <li>
                                         <i class="fa fa-calendar"></i>
-                                        {{ str_replace(
-                                            [':date'],
-                                            [$user->updated_at_for_humans],
-                                            trans('laravel-modules-core::admin.fields.updated_at_description')
-                                        ) }}
+                                        {{ trans('laravel-modules-core::admin.fields.updated_at_description', [ 'date' => $user->updated_at_for_humans ]) }}
                                     </li>
                                     <li>
                                         @if ($user->is_active)
