@@ -6,7 +6,7 @@
 
 @section('page-title')
     <h1>{!! lmcTrans('laravel-user-module/admin.user.edit') !!}
-        <small>{!! str_replace([':user'], [$user->fullname], lmcTrans('laravel-user-module/admin.user.edit_description'))  !!}</small>
+        <small>{!! lmcTrans('laravel-user-module/admin.user.edit_description', [ 'user' => $user->fullname ])  !!}</small>
     </h1>
 @endsection
 

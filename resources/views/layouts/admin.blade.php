@@ -159,7 +159,7 @@
         <div class="page-footer">
             <div class="page-footer-inner">
                 ©{!! config('laravel-modules-core.copyright_year') !!}
-                {!! str_replace(':app_name',config('laravel-modules-core.app_name'),trans('laravel-modules-core::global.copyright_message')) !!}
+                {!! trans('laravel-modules-core::global.copyright_message',['app_name' => config('laravel-modules-core.app_name') ]) !!}
             </div>
             <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>

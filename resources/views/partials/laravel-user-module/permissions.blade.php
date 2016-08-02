@@ -12,11 +12,7 @@
             <div class="list-head-count">
                 <div class="list-head-count-item">
                     <i class="fa fa-user-secret"></i>
-                    {{ str_replace(
-                        [':count'],
-                        [$permission->permissionCount()],
-                        lmcTrans('laravel-user-module/admin.fields.role.total_permission')
-                    ) }}
+                    {{ lmcTrans('laravel-user-module/admin.fields.role.total_permission', [ 'count' => $permission->permissionCount() ]) }}
                 </div>
             </div>
 

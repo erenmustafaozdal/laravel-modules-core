@@ -1,12 +1,12 @@
-@extends(config('laravel-user-module.views.user.layout'))
+@extends(config('laravel-page-module.views.page_category.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-user-module/admin.role.show') !!}
+    {!! lmcTrans('laravel-page-module/admin.role.show') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-user-module/admin.user.show') !!}
-        <small>{!! lmcTrans('laravel-user-module/admin.role.show_description', [ 'role'  => $role->name ])  !!}</small>
+    <h1>{!! lmcTrans('laravel-page-module/admin.user.show') !!}
+        <small>{!! lmcTrans('laravel-page-module/admin.role.show_description',[ 'page_category' => $page_category->name ])  !!}</small>
     </h1>
 @endsection
 
@@ -76,7 +76,7 @@
             <div class="caption margin-right-10">
                 <i class="icon-user font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-user-module/admin.role.show') !!}
+                    {!! lmcTrans('laravel-page-module/admin.role.show') !!}
                 </span>
             </div>
             {{-- /Caption --}}
@@ -102,13 +102,13 @@
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
                         <li class="padding-tb-10">
-                            @include('laravel-modules-core::partials.laravel-user-module.permissions_rate',['model'=>$role])
+                            @include('laravel-modules-core::partials.laravel-page-module.permissions_rate',['model'=>$role])
                         </li>
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
                                 <i class="fa fa-info"></i>
                                 {!! trans('laravel-modules-core::admin.fields.overview') !!}
-                            </a>
+                            </a>"
                             <span class="after"> </span>
                         </li>
 
@@ -126,7 +126,7 @@
                         <li>
                             <a data-toggle="tab" href="#edit_permission">
                                 <i class="fa fa-user-secret"></i>
-                                {!! lmcTrans('laravel-user-module/admin.fields.role.edit_permission') !!}
+                                {!! lmcTrans('laravel-page-module/admin.fields.role.edit_permission') !!}
                             </a>
                         </li>
                         @endif
@@ -151,7 +151,7 @@
                                     {{-- Name --}}
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">
-                                            {!! lmcTrans('laravel-user-module/admin.fields.role.name') !!}
+                                            {!! lmcTrans('laravel-page-module/admin.fields.role.name') !!}
                                         </label>
                                         <div class="col-sm-10">
                                             <p class="form-control-static"> {{ $role->name }} </p>
@@ -162,7 +162,7 @@
                                     {{-- Slug --}}
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">
-                                            {!! lmcTrans('laravel-user-module/admin.fields.role.slug') !!}
+                                            {!! lmcTrans('laravel-page-module/admin.fields.role.slug') !!}
                                         </label>
                                         <div class="col-sm-10">
                                             <p class="form-control-static"> {{ $role->slug }} </p>
@@ -235,7 +235,7 @@
 
                             {{-- Form Body --}}
                             <div class="form-body">
-                                @include('laravel-modules-core::partials.laravel-user-module.permissions', [
+                                @include('laravel-modules-core::partials.laravel-page-module.permissions', [
                                     'permissions'   => $role->permissions
                                 ])
                             </div>

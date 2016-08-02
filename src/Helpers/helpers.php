@@ -40,12 +40,13 @@ if (! function_exists('lmcTrans')) {
     /**
      * translate given message with laravel trans function
      *
-     * @param  string  $id
+     * @param string $id
+     * @param array $parameters
      * @return string
      */
-    function lmcTrans($id)
+    function lmcTrans($id, $parameters = [])
     {
-        return trans('laravel-modules-core::'.$id);
+        return trans('laravel-modules-core::'.$id, $parameters);
     }
 }
 
