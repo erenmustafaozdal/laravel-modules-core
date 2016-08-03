@@ -53,13 +53,19 @@
         {{-- Portlet Title and Actions --}}
         <div class="portlet-title">
             {{-- Caption --}}
-            <div class="caption">
+            <div class="caption margin-right-10">
                 <i class="icon-user-follow font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     {!! lmcTrans('laravel-page-module/admin.page_category.edit') !!}
                 </span>
             </div>
             {{-- /Caption --}}
+
+            {{-- Actions --}}
+            <div class="actions pull-left">
+                {!! getOps($page_category, 'edit') !!}
+            </div>
+            {{-- /Actions --}}
         </div>
         {{-- /Portlet Title and Actions --}}
 
