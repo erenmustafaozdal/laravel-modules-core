@@ -54,7 +54,7 @@ var Summernote = {
                     ['insert', ['addclass','table','link','picture','video','map','hr']],
                     ['misc', ['print']],
                     ['ops', ['undo','redo']],
-                    ['view', ['codeview']],
+                    ['view', ['fullscreen','codeview']],
                     ['help', ['help']]
                 ],
                 popover: {
@@ -84,11 +84,6 @@ var Summernote = {
                         {tag: 'div', title:'Not (Başarılı)',value:'note note-success'},
                         {tag: 'div', title:'Not (Uyarı)',value:'note note-warning'},
                         {tag: 'div', title:'Not (Tehlike)',value:'note note-danger'},
-                        {tag: 'span', title:'Etiket (Varsayılan)',value:'label label-default'},
-                        {tag: 'span', title:'Etiket (Bilgi)',value:'label label-info'},
-                        {tag: 'span', title:'Etiket (Başarılı)',value:'label label-success'},
-                        {tag: 'span', title:'Etiket (Uyarı)',value:'label label-warning'},
-                        {tag: 'span', title:'Etiket (Tehlike)',value:'label label-danger'},
                         {tag: 'div', title:'Kaynak',value:'well'},
                         {title:'Öne Çıkar',value:'lead'},
                         {title:'Kenarları Yuvarlanmış fotoğraf',value:'img-rounded'},

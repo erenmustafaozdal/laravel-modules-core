@@ -1,0 +1,3 @@
+Summernote fork edilip bazı değişiklikler yapıldı:
+
+* video ekleme yerinde youtube dışında diğer siteler match değeri "false" olarak işaretlendi

@@ -1,4 +1,4 @@
-@extends(config('laravel-page-module.views.page_category.layout'))
+@extends(config('laravel-page-module.views.page.layout'))
 
 @section('title')
     {!! lmcTrans('laravel-page-module/admin.page.create') !!}
@@ -22,10 +22,6 @@
     {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-summernote/summernote.css') !!}
     {{-- /Summernote --}}
-    <style>
-
-
-    </style>
 @endsection
 
 @section('script')
@@ -62,7 +58,7 @@
         });
         $script.ready('jquery', function()
         {
-            $script("{!! lmcElixir('assets/pages/scripts/page_category/create.js') !!}",'create');
+            $script("{!! lmcElixir('assets/pages/scripts/page/create.js') !!}",'create');
         });
         $script.ready(['config','create'], function()
         {
