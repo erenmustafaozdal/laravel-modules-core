@@ -187,6 +187,7 @@
                             @include('laravel-modules-core::partials.laravel-user-module.permissions')
                         </div>
                     </div>
+                    {{-- /Tab Contents --}}
                 </div>
             </div>
             {{-- /Form Body --}}

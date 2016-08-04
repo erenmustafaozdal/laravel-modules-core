@@ -94,7 +94,7 @@ if (! function_exists('getOps')) {
         // silme butonu
         if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$route_name}.destroy") ) {
             if ( $route_name !== 'user' || $model->id !== Sentinel::getUser()->id ) {
-                $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline">';
+                $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline margin-right-10">';
                 $ops .= '<i class="fa fa-trash"></i>';
                 $ops .= trans('laravel-modules-core::admin.ops.destroy');
                 $ops .= '</button>';

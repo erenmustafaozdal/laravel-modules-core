@@ -6,3 +6,19 @@
     top: 4px;
     z-index: 10000;
 }
+
+/* summernote */
+.modal-dialog .modal-body .checkbox > label {
+    padding-left: 20px !important;
+}
+div.note-editor .note-popover .popover-content .note-para .dropdown-menu, .panel-heading.note-toolbar .note-para .dropdown-menu {
+    min-width: 225px !important;
+}
+div.note-editor .note-popover .popover-content .note-color .dropdown-menu, .panel-heading.note-toolbar .note-color .dropdown-menu {
+    min-width: 170px !important;
+}
+
+/* Dtatable */
+.lmcDataTable .table-light > tbody > tr > td {
+    vertical-align: top !important;
+}
