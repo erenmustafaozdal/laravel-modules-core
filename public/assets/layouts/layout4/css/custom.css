@@ -17,8 +17,18 @@ div.note-editor .note-popover .popover-content .note-para .dropdown-menu, .panel
 div.note-editor .note-popover .popover-content .note-color .dropdown-menu, .panel-heading.note-toolbar .note-color .dropdown-menu {
     min-width: 170px !important;
 }
+.modal-open .modal {
+    z-index: 10050 !important;
+}
+.note-popover.popover {
+    z-index: 10050 !important;
+}
+/* Google Map search dropbox */
+.pac-container {
+    z-index: 10051 !important;
+}
 
-/* Dtatable */
+/* Datatable */
 .lmcDataTable .table-light > tbody > tr > td {
     vertical-align: top !important;
 }
