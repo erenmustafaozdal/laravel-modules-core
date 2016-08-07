@@ -47,6 +47,7 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
     {
         $this->app->register('Illuminate\Html\HtmlServiceProvider');
         $this->app->register('Caffeinated\Menus\MenusServiceProvider');
+        $this->app->register('Barryvdh\Elfinder\ElfinderServiceProvider');
 
         $this->mergeConfigFrom(
             __DIR__.'/../config/laravel-modules-core.php', 'laravel-modules-core'
@@ -67,6 +68,10 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
             $loader->alias('LMCValidation', 'ErenMustafaOzdal\LaravelModulesCore\Facades\Validation');
             $loader->alias('LMCBreadcrumb', 'ErenMustafaOzdal\LaravelModulesCore\Facades\Breadcrumb');
         });
+
+        // elfinder config override
+        $config = $this->app['config']->get('laravel-modules-core.elfinder', []);
+        $this->app['config']->set('elfinder', $config);
     }
 
     /**

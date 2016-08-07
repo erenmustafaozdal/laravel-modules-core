@@ -109,6 +109,8 @@ return [
         'edit_info'                         => 'Bilgileri Düzenle',
         'change_avatar'                     => 'Fotoğrafı Değiştir',
         'change_password'                   => 'Şifreyi Değiştir',
+
+        'file_manager'                      => 'Dosya Yöneticisi',
     ],
 
     // permissions

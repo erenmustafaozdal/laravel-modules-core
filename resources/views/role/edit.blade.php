@@ -92,9 +92,9 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                <div class="tabbable-custom">
+                <div class="tabbable-line">
                     {{-- Nav Tabs --}}
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs nav-tabs-lg">
                         <li class="active">
                             <a href="#info" data-toggle="tab" aria-expanded="true">
                                 {!! trans('laravel-modules-core::admin.fields.overview') !!}

@@ -129,6 +129,8 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.blockui.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/uniform/jquery.uniform.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js');
+        // file manager color box
+        $script('/vendor/laravel-modules-core/assets/global/plugins/colorbox/jquery.colorbox-min.js','colorbox');
     });
 
     $script.ready('bootstrap', function() {
@@ -149,5 +151,11 @@
 
     $script.ready('config', function() {
         LMCApp.init();
+    });
+
+    // file manager
+    $script.ready('colorbox', function() {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/colorbox/i18n/jquery.colorbox-tr.js');
+        $script('/packages/barryvdh/elfinder/js/standalonepopup.min.js');
     });
 })();

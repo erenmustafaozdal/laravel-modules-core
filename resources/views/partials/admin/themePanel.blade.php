@@ -3,7 +3,7 @@
        class="btn dropdown-toggle tooltips"
        data-toggle="dropdown"
        data-container="body"
-       data-placement="bottom"
+       data-placement="left"
        data-original-title="{!! trans('laravel-modules-core::admin.toolbar.title') !!}"
     >
         <i class="icon-settings"></i>

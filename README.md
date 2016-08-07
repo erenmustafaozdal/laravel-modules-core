@@ -52,6 +52,8 @@ ErenMustafaOzdal\LaravelModulesCore\LaravelModulesCoreServiceProvider::class,
 
 > :exclamation: Bu paketin service provider tanımlamasını, modüllerin service provider tanımlamalarının üzerinde yapmalısın.
 
+> :exclamation: **Laravel Modules Core** dosya yönetimi arayüzü ve arka plan işlemleri için  [barryvdh/laravel-elfinder](https://github.com/barryvdh/laravel-elfinder) paketini kullanıyor. Kurulum sonrasında bu paketin ayar dosyasını da yayınlayıp, kendine göre düzenlemelisin.
+
 
 <a name="kurulum-dosyalarinYayinlanmasi"></a>
 ##### Dosyaların Yayınlanması

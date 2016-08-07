@@ -46,6 +46,10 @@
             'id'    => 'style_color'
         ]) !!}
         {{-- /Theme Layout Styles --}}
+        
+        {{-- File Manager --}}
+        {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/colorbox/example5/colorbox.css') !!}
+        {{-- /File Manager --}}
 
         <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -75,9 +79,7 @@
                 
                 {{-- Page Actions --}}
                 <div class="page-actions">
-                    <div class="btn-group">
-                        @include('laravel-modules-core::partials.admin.topbarActions')
-                    </div>
+                    @include('laravel-modules-core::partials.admin.topbarActions')
                 </div>
                 {{-- /Page Actions --}}
 
@@ -130,6 +132,17 @@
 
                         {{-- Page Toolbar --}}
                         <div class="page-toolbar">
+                            {{-- File Manager --}}
+                            <a href="{!! route('elfinder.popup',[ 'input_id' => 'filemanager']) !!}"
+                               class="pull-right tooltips btn btn-fit-height green btn-outline popup_selector"
+                               data-original-title="{!! trans('laravel-modules-core::admin.fields.file_manager') !!}"
+                               data-container="body"
+                               data-placement="left"
+                            >
+                                <i class="fa fa-folder-open"></i>
+                            </a>
+                            {{-- /File Manager --}}
+
                             {{-- Theme Panel --}}
                             @if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['api.themeLayout.change', 'api.themeColor.change']) )
                                 @include('laravel-modules-core::partials.admin.themePanel')

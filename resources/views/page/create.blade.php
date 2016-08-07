@@ -30,7 +30,7 @@
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
-        var summernoteJs = "{!! lmcElixir('assets/app/summernote.js') !!}";
+        var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
@@ -77,15 +77,17 @@
                 }
             });
         });
-        $script.ready(['config','app_summernote'], function()
+        $script.ready(['config','app_tinymce'], function()
         {
-            Summernote.init();
+            Tinymce.init({
+                route: '{!! route('elfinder.tinymce4') !!}'
+            });
         });
         {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-summernote.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -122,9 +124,9 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                <div class="tabbable-custom">
+                <div class="tabbable-line">
                     {{-- Nav Tabs --}}
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-tabs nav-tabs-lg">
                         <li class="active">
                             <a href="#info" data-toggle="tab" aria-expanded="true">
                                 {!! trans('laravel-modules-core::admin.fields.overview') !!}

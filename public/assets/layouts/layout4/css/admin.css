@@ -1888,6 +1888,11 @@ div.note-editor .note-popover .popover-content .note-color .dropdown-menu, .pane
     z-index: 10051 !important;
 }
 
+/* tinymce */
+div.mce-fullscreen {
+    z-index: 9995 !important;
+}
+
 /* Datatable */
 .lmcDataTable .table-light > tbody > tr > td {
     vertical-align: top !important;

@@ -1,9 +1,10 @@
 <div class="btn-group">
-    <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown"  data-close-others="true">
+    {{-- Action Menu --}}
+    <button type="button" class="btn red-haze btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"  data-close-others="true">
         <span class="hidden-sm hidden-xs">{!! trans('laravel-modules-core::admin.actions') !!}</span>
         <i class="fa fa-angle-down"></i>
     </button>
-    <ul class="dropdown-menu" role="menu">
+    <ul class="dropdown-menu pull-right" role="menu">
         @foreach($menu_actions->roots() as $item)
             <li>
                 <a href="{!! $item->url() !!}">
@@ -13,4 +14,5 @@
             </li>
         @endforeach
     </ul>
+    {{-- /Action Menu --}}
 </div>
