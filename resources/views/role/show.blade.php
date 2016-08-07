@@ -69,7 +69,7 @@
 
 @section('content')
     {{-- Portlet --}}
-    <div class="portlet light bordered mt-element-ribbon">
+    <div class="portlet light bordered portlet-fit">
         {{-- Portlet Title --}}
         <div class="portlet-title">
             {{-- Caption --}}

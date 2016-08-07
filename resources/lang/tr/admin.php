@@ -105,10 +105,13 @@ return [
         'updated_at'                        => 'Güncelleme Tarihi',
         'updated_at_description'            => ':date güncellendi',
 
-        'overview'                          => 'Genel Bilgiler',
-        'edit_info'                         => 'Bilgileri Düzenle',
         'change_avatar'                     => 'Fotoğrafı Değiştir',
         'change_password'                   => 'Şifreyi Değiştir',
+
+        'overview'                          => 'Genel Bilgiler',
+        'edit_info'                         => 'Bilgileri Düzenle',
+        'content_info'                      => 'İçerik Bilgisi',
+        'seo'                               => 'SEO Bilgileri',
 
         'file_manager'                      => 'Dosya Yöneticisi',
     ],

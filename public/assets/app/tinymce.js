@@ -62,6 +62,7 @@ var Tinymce = {
         return {
             src: '.tinymce',
             route: '',
+            saveRoute: '',
             tinymce: {
                 selector:'',
                 cache_suffix: '?v=4.1.6',
@@ -195,12 +196,8 @@ var Tinymce = {
                 br_in_pre: false,
                 custom_undo_redo_levels: 10,
                 fullpage_hide_in_source_view: true,
-                autoresize_max_height: 500,
+                autoresize_max_height: 600,
                 visual_table_class: 'table',
-                //height: 300,
-                //file_browser_callback_types: 'file image media',
-                //file_picker_types: 'file image media',
-                //toolbar_items_size: 'small',
                 style_formats: [
                     {title: 'Uyarılar', items: [
                         { title:'Bilgi', block: 'div', classes:'alert alert-info' },
@@ -268,7 +265,35 @@ var Tinymce = {
                     'fontselect fontsizeselect | forecolor backcolor | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media table template | styleselect codesample emoticons insertdatetime hr pagebreak charmap',
                     'undo redo print searchreplace | code fullscreen preview'
                 ],
-                file_browser_callback : theTinymce.fileBrowserCallback
+                file_browser_callback : theTinymce.fileBrowserCallback,
+                setup: function (editor) {
+                    editor.addButton('saveToDb', {
+                        text: 'Kaydet',
+                        icon: 'save',
+                        onclick: function () {
+                            $.ajax({
+                                url: theTinymce.options.saveRoute,
+                                data: { content: editor.getContent() },
+                                success: function(data)
+                                {
+                                    if (data.result === 'success') {
+                                        LMCApp.getNoty({
+                                            message: LMCApp.lang.admin.flash.update_success.message,
+                                            title: LMCApp.lang.admin.flash.update_success.title,
+                                            type: 'success'
+                                        });
+                                        return;
+                                    }
+                                    LMCApp.getNoty({
+                                        message: LMCApp.lang.admin.flash.update_error.message,
+                                        title: LMCApp.lang.admin.flash.update_error.title,
+                                        type: 'error'
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
             }
         };
     }

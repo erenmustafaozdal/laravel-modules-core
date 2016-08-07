@@ -16,12 +16,6 @@
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
     {{-- /Select2 --}}
-
-    {{-- Summernote --}}
-    {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/codemirror.css') !!}
-    {!! Html::style('//cdnjs.cloudflare.com/ajax/libs/codemirror/3.20.0/theme/monokai.css') !!}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-summernote/summernote.css') !!}
-    {{-- /Summernote --}}
 @endsection
 
 @section('script')
@@ -134,12 +128,12 @@
                         </li>
                         <li>
                             <a href="#content_info" data-toggle="tab" aria-expanded="true">
-                                {!! lmcTrans('laravel-page-module/admin.fields.page.content_info') !!}
+                                {!! trans('laravel-modules-core::admin.fields.content_info') !!}
                             </a>
                         </li>
                         <li>
                             <a href="#seo" data-toggle="tab" aria-expanded="true">
-                                {!! lmcTrans('laravel-page-module/admin.fields.page.seo') !!}
+                                {!! trans('laravel-modules-core::admin.fields.seo') !!}
                             </a>
                         </li>
                     </ul>
@@ -151,7 +145,7 @@
                             @include('laravel-modules-core::page.partials.form', [ 'select2' => true ])
                         </div>
                         <div class="tab-pane" id="content_info">
-                            @include('laravel-modules-core::page.partials.content_form')
+                            @include('laravel-modules-core::page.partials.content_form', [ 'isForm' => true ])
                         </div>
                         <div class="tab-pane" id="seo">
                             @include('laravel-modules-core::page.partials.seo_form')

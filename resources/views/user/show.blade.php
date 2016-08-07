@@ -108,7 +108,7 @@
 
 @section('content')
     {{-- Portlet --}}
-    <div class="portlet light bordered mt-element-ribbon">
+    <div class="portlet light bordered mt-element-ribbon portlet-fit">
         <div class="ribbon ribbon-right ribbon-clip ribbon-shadow ribbon-border-dash-hor ribbon-color-{{ $user->is_active ? 'success' : 'danger' }} uppercase">
             <div class="ribbon-sub ribbon-clip ribbon-right"></div>
             {{ $user->is_active ? lmcTrans('laravel-user-module/admin.fields.user.active_user') : lmcTrans('laravel-user-module/admin.fields.user.not_active_user') }}

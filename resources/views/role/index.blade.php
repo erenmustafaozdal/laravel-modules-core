@@ -65,7 +65,7 @@
 
 @section('content')
     {{-- Table Portlet --}}
-    <div class="portlet light portlet-datatable bordered">
+    <div class="portlet light portlet-datatable bordered portlet-fit">
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">

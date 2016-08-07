@@ -55,8 +55,6 @@ return [
             'meta_title'                    => 'META Başlık',
             'meta_description'              => 'META Açıklama',
             'meta_keywords'                 => 'META Anahtar Kelimeler',
-            'content_info'                  => 'İçerik Bilgileri',
-            'seo'                           => 'SEO Bilgileri',
         ]
     ],
 
@@ -72,6 +70,7 @@ return [
             'meta_description_help'         => 'Arama motorlarını bilgilendirmek amacıyla içerik açıklaması yazın.',
             'meta_keywords_help'            => 'Arama motorlarını bilgilendirmek amacıyla içerik ile ilgili anahtar kelimeler yazın. Anahtar kelimeler arasına <em class="label label-info">virgül (,)</em> koyun.',
             'is_publish_help'               => 'Sayfanın yayında olması, ziyaretçilerin sayfayı görebilmesini sağlar. Yayında olmayan sayfalar ziyaretçilere açık değildir.',
+            'inline_edit_help'              => '<h4>Satır İçi Düzenleme</h4><p>Düzenlemeni satır içi yap. Düzenlemeni kaydetmek istediğinde, editörün araç çubuğundaki kaydet tuşuna bas.</p><p><small class="text-muted">Bu sayfada daha basit özelliklerle düzenleme yapabilirsin. Detaylı düzenleme için <em class="label label-sm label-info">Düzenle</em> sayfasına gitmelisin.</small></p>'
         ]
     ],
 
@@ -151,6 +150,8 @@ return [
             'page_publish_desc'             => 'Bu izne sahip olanlar sayfaların listelendiği sayfada hızlı şekilde sayfa yayınlayabilir',
             'page_notPublish'               => 'Hızlı Yayından Kaldırma',
             'page_notPublish_desc'          => 'Bu izne sahip olanlar sayfaların listelendiği sayfada hızlı şekilde sayfa yayından kaldırabilir',
+            'page_contentUpdate'            => 'Satır İçi Düzenleme',
+            'page_contentUpdate_desc'       => 'Bu izne sahip olanlar sayfayı satır içi düzenleyip kaydedebilir',
             'page_index'                    => 'Listeleme',
             'page_index_desc'               => 'Bu izne sahip olanlar sayfaları listeleyebilir',
             'page_store'                    => 'Hızlı Ekleme',
