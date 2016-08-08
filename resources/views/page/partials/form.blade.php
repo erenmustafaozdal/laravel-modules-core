@@ -7,7 +7,7 @@
             @foreach(\App\PageCategory::all('id','name') as $category)
                 <option value="{{ $category->id }}">{{ $category->name }}</option>
             @endforeach
-        @else
+        @elseif(isset($page))
             <option value="{{ $page->category->id }}" selected>{{ $page->category->name }}</option>
         @endif
     </select>

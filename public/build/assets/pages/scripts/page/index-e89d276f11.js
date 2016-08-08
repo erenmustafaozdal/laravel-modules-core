@@ -254,7 +254,8 @@ var Index = {
                                 category_id: validation.form.find('select[name="category_id"]').val(),
                                 title: validation.form.find('input[name="title"]').val(),
                                 slug: validation.form.find('input[name="slug"]').val(),
-                                description: validation.form.find('textarea[name="description"]').val()
+                                description: validation.form.find('textarea[name="description"]').val(),
+                                is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
                             };
                             if (Editor.actionType === 'fast-add') {
                                 var type =  'POST';

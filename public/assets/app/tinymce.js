@@ -65,10 +65,11 @@ var Tinymce = {
             saveRoute: '',
             tinymce: {
                 selector:'',
-                cache_suffix: '?v=4.1.6',
                 language: 'tr_TR',
                 language_url: '/vendor/laravel-modules-core/assets/global/plugins/tinymce/langs/tr_TR.js',
                 browser_spellcheck: true,
+                relative_urls: false,
+                remove_script_host: false,
                 image_caption: true,
                 image_title: true,
                 image_advtab: true,
