@@ -47,27 +47,10 @@ class MenuMiddleware
     {
         Menu::make('actions', function ($menu)
         {
-            // laravel user module action menus
-            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.user.create') ) {
-                    $menu->add(lmcTrans('laravel-user-module/admin.menu.user.add'),['route' => 'admin.user.create'] )
-                        ->attribute('data-icon', 'icon-user-follow');
-                }
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.create') ) {
-                    $menu->add(lmcTrans('laravel-user-module/admin.menu.role.add'),['route' => 'admin.role.create'] )
-                        ->attribute('data-icon', 'icon-users');
-                }
-            }
-
-            // laravel page module action menus
-            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-page-module')))) {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.create') ) {
-                    $menu->add(lmcTrans('laravel-page-module/admin.menu.page_category.add'),['route' => 'admin.page_category.create'] )
-                        ->attribute('data-icon', 'icon-doc');
-                }
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.create') ) {
-                    $menu->add(lmcTrans('laravel-page-module/admin.menu.page.add'),['route' => 'admin.page.create'] )
-                        ->attribute('data-icon', 'icon-doc');
+            foreach( config('laravel-modules-core.menus.action') as $action ) {
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($action['route']) ) {
+                    $menu->add(trans($action['trans']),['route' => $action['route']] )
+                        ->attribute('data-icon', $action['icon']);
                 }
             }
         });
@@ -80,78 +63,35 @@ class MenuMiddleware
     {
         Menu::make('sidebar', function ($menu)
         {
-            // laravel user module | User & Role
-            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
-
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['admin.user.index', 'admin.user.create']) ) {
-                    $user = $menu->add(lmcTrans('laravel-user-module/admin.menu.user.root'), 'javascript:;')
-                        ->attribute('data-icon', 'icon-user')
-                        ->attribute('active', 'admin.user');
-                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.user.index') ) {
-                        $user->add(lmcTrans('laravel-user-module/admin.menu.user.all'), ['route' => 'admin.user.index'])
-                            ->attribute('data-icon', 'icon-list')
-                            ->attribute('active', 'admin.user.index');
-                    }
-                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.user.create') ) {
-                        $user->add(lmcTrans('laravel-user-module/admin.menu.user.add'), ['route' => 'admin.user.create'])
-                            ->attribute('data-icon', 'icon-plus')
-                            ->attribute('active', 'admin.user.create');
-                    }
-                }
-
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['admin.role.index', 'admin.role.create']) ) {
-                    $role = $menu->add(lmcTrans('laravel-user-module/admin.menu.role.root'), 'javascript:;')
-                        ->attribute('data-icon', 'icon-users')
-                        ->attribute('active', 'admin.role');
-                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.index') ) {
-                        $role->add(lmcTrans('laravel-user-module/admin.menu.role.all'), ['route' => 'admin.role.index'])
-                            ->attribute('data-icon', 'icon-list')
-                            ->attribute('active', 'admin.role.index');
-                    }
-                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.create') ) {
-                        $role->add(lmcTrans('laravel-user-module/admin.menu.role.add'), ['route' => 'admin.role.create'])
-                            ->attribute('data-icon', 'icon-plus')
-                            ->attribute('active', 'admin.role.create');
-                    }
-                }
-                }
-
-            // laravel page module | Page Category & Page
-            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-page-module')))) {
-
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['admin.page_category.index', 'admin.page_category.create']) ) {
-                    $user = $menu->add(lmcTrans('laravel-page-module/admin.menu.page_category.root'), 'javascript:;')
-                        ->attribute('data-icon', 'icon-doc')
-                        ->attribute('active', 'admin.page_category');
-                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.index') ) {
-                        $user->add(lmcTrans('laravel-page-module/admin.menu.page_category.all'), ['route' => 'admin.page_category.index'])
-                            ->attribute('data-icon', 'icon-list')
-                            ->attribute('active', 'admin.page_category.index');
-                    }
-                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.create') ) {
-                        $user->add(lmcTrans('laravel-page-module/admin.menu.page_category.add'), ['route' => 'admin.page_category.create'])
-                            ->attribute('data-icon', 'icon-plus')
-                            ->attribute('active', 'admin.page_category.create');
-                    }
-                }
-
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['admin.page.index', 'admin.page.create']) ) {
-                    $role = $menu->add(lmcTrans('laravel-page-module/admin.menu.page.root'), 'javascript:;')
-                        ->attribute('data-icon', 'icon-doc')
-                        ->attribute('active', 'admin.page.');
-                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.index') ) {
-                        $role->add(lmcTrans('laravel-page-module/admin.menu.page.all'), ['route' => 'admin.page.index'])
-                            ->attribute('data-icon', 'icon-list')
-                            ->attribute('active', 'admin.page.index');
-                    }
-                    if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.create') ) {
-                        $role->add(lmcTrans('laravel-page-module/admin.menu.page.add'), ['route' => 'admin.page.create'])
-                            ->attribute('data-icon', 'icon-plus')
-                            ->attribute('active', 'admin.page.create');
-                    }
-                }
-            }
+            $this->sideMenuDetect($menu,config('laravel-modules-core.menus.side'));
         });
+    }
+
+    /**
+     * side bar menu detect
+     *
+     * @param Menu $menu
+     * @param array $elements
+     * @return Menu $menu
+     */
+    private function sideMenuDetect($menu, $elements)
+    {
+        foreach($elements as $element) {
+            $access = is_array($element['access']) ? Sentinel::hasAnyAccess($element['access']) : Sentinel::hasAccess($element['access']);
+
+            if (Sentinel::getUser()->is_super_admin || $access) {
+                $route = is_array($element['route']) ? route($element['route']) : $element['route'] === 'javascript:;' ? $element['route'] : ['route' => $element['route']];
+
+                $part = $menu->add(trans($element['trans']), $route)
+                    ->attribute('data-icon', $element['icon'])
+                    ->attribute('active', $element['active']);
+                if (isset($element['child'])) {
+                    $this->sideMenuDetect($part,$element['child']);
+                }
+
+            }
+        }
+        return $menu;
     }
 
     /**
