@@ -47,27 +47,10 @@ class MenuMiddleware
     {
         Menu::make('actions', function ($menu)
         {
-            // laravel user module action menus
-            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-user-module')))) {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.user.create') ) {
-                    $menu->add(lmcTrans('laravel-user-module/admin.menu.user.add'),['route' => 'admin.user.create'] )
-                        ->attribute('data-icon', 'icon-user-follow');
-                }
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.create') ) {
-                    $menu->add(lmcTrans('laravel-user-module/admin.menu.role.add'),['route' => 'admin.role.create'] )
-                        ->attribute('data-icon', 'icon-users');
-                }
-            }
-
-            // laravel page module action menus
-            if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-page-module')))) {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.create') ) {
-                    $menu->add(lmcTrans('laravel-page-module/admin.menu.page_category.add'),['route' => 'admin.page_category.create'] )
-                        ->attribute('data-icon', 'icon-doc');
-                }
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.create') ) {
-                    $menu->add(lmcTrans('laravel-page-module/admin.menu.page.add'),['route' => 'admin.page.create'] )
-                        ->attribute('data-icon', 'icon-doc');
+            foreach( config('laravel-modules-core.menus.action') as $action ) {
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($action['route']) ) {
+                    $menu->add(trans($action['trans']),['route' => $action['route']] )
+                        ->attribute('data-icon', $action['icon']);
                 }
             }
         });

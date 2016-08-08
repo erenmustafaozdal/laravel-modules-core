@@ -41,6 +41,46 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Menus [Action,Side]
+    |--------------------------------------------------------------------------
+    */
+    'menus' => [
+        // action menu on the top header
+        // title    => trans key
+        // route    => route name
+        // icon     => icon class -> font awesome, simple line etc.
+        'action' => [
+            // add user
+            [
+                'trans'                     => 'laravel-modules-core::laravel-user-module/admin.menu.user.add',
+                'route'                     => 'admin.user.create',
+                'icon'                      => 'icon-user-follow'
+            ],
+            // add role
+            [
+                'trans'                     => 'laravel-modules-core::laravel-user-module/admin.menu.role.add',
+                'route'                     => 'admin.role.create',
+                'icon'                      => 'icon-users'
+            ],
+            // add page category
+            [
+                'trans'                     => 'laravel-modules-core::laravel-page-module/admin.menu.page_category.add',
+                'route'                     => 'admin.page_category.create',
+                'icon'                      => 'icon-doc'
+            ],
+            // add page
+            [
+                'trans'                     => 'laravel-modules-core::laravel-page-module/admin.menu.page.add',
+                'route'                     => 'admin.page.create',
+                'icon'                      => 'icon-doc'
+            ]
+        ]
+    ],
+
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Elfinder Configs
     |--------------------------------------------------------------------------
     */
