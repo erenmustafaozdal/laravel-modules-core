@@ -21,7 +21,6 @@
     @parent
     <script type="text/javascript">
         {{-- js file path --}}
-        var formLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         {{-- /js file path --}}
 

@@ -26,7 +26,6 @@
     @parent
     <script type="text/javascript">
         {{-- js file path --}}
-        var formLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
@@ -82,6 +81,7 @@
                 saveRoute: '{!! route('api.page.contentUpdate', [ 'id' => $page->id ]) !!}',
                 tinymce: {
                     inline: true,
+                    content_css: '',
                     toolbar: [
                         'saveToDb undo redo | fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify',
                         'bullist numlist outdent indent | link image | styleselect emoticons hr'
@@ -92,6 +92,7 @@
         @endif
         {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>
 @endsection
@@ -99,7 +100,7 @@
 @section('content')
     {{-- Portlet --}}
     <div class="portlet light bordered mt-element-ribbon portlet-fit">
-        <div class="ribbon ribbon-right ribbon-clip ribbon-shadow ribbon-border-dash-hor ribbon-color-{{ $page->is_active ? 'success' : 'danger' }} uppercase">
+        <div class="ribbon ribbon-right ribbon-clip ribbon-shadow ribbon-border-dash-hor ribbon-color-{{ $page->is_publish ? 'success' : 'danger' }} uppercase">
             <div class="ribbon-sub ribbon-clip ribbon-right"></div>
             {{ $page->is_publish ? trans('laravel-modules-core::admin.ops.published') : trans('laravel-modules-core::admin.ops.not_published') }}
         </div>
@@ -175,7 +176,7 @@
                         {{-- /Overview --}}
 
                         {{-- Overview --}}
-                        <div id="content_info" class="tab-pane active">
+                        <div id="content_info" class="tab-pane">
                             @include('laravel-modules-core::page.partials.content_form', [ 'isForm' => false ])
                         </div>
                         {{-- /Overview --}}
