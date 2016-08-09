@@ -61,20 +61,32 @@ if (! function_exists('getOps')) {
     /**
      * get operation buttons
      *
-     * @param $model
+     * @param \Illuminate\Support\Collection $model
      * @param string $currentPage
      * @param boolean $isPublishable
+     * @param \Illuminate\Support\Collection|null $relatedModel
+     * @param string $modelRouteRegex
      * @return string
      */
-    function getOps($model, $currentPage, $isPublishable = false)
+    function getOps($model, $currentPage, $isPublishable = false, $relatedModel = null, $modelRouteRegex = '')
     {
-        $route_name = snake_case(class_basename($model));
-        $ops = Form::open(['method' => 'DELETE', 'url' => route("admin.{$route_name}.destroy", ['id' => $model->id]), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
+        $routeName = snake_case(class_basename($model));
+        $routeParams = ['id' => $model->id];
+
+        if ( ! is_null($relatedModel)) {
+            $routeName = snake_case(class_basename($relatedModel)) . '.' . $routeName;
+            $routeParams = [
+                'id'                => $relatedModel->id,
+                $modelRouteRegex    => $model->id
+            ];
+        }
+
+        $ops = Form::open(['method' => 'DELETE', 'url' => route("admin.{$routeName}.destroy", $routeParams), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
 
         // edit buton
         if ( $currentPage !== 'edit' ) {
-            if ( Sentinel::getUser()->is_super_admin || ($route_name === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$route_name}.edit") ) {
-                $ops .= '<a href="' . route("admin.{$route_name}.edit", ['id' => $model->id]) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
+            if ( Sentinel::getUser()->is_super_admin || ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$routeName}.edit") ) {
+                $ops .= '<a href="' . route("admin.{$routeName}.edit", $routeParams) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
                 $ops .= '<i class="fa fa-pencil"></i>';
                 $ops .= trans('laravel-modules-core::admin.ops.edit');
                 $ops .= '</a>';
@@ -83,8 +95,8 @@ if (! function_exists('getOps')) {
 
         // show buton
         if ( $currentPage !== 'show' ) {
-            if ( Sentinel::getUser()->is_super_admin || ($route_name === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$route_name}.show") ) {
-                $ops .= '<a href="' . route("admin.{$route_name}.show", ['id' => $model->id]) . '" class="btn btn-sm btn-outline green margin-right-10">';
+            if ( Sentinel::getUser()->is_super_admin || ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$routeName}.show") ) {
+                $ops .= '<a href="' . route("admin.{$routeName}.show", $routeParams) . '" class="btn btn-sm btn-outline green margin-right-10">';
                 $ops .= '<i class="fa fa-search"></i>';
                 $ops .= trans('laravel-modules-core::admin.ops.show');
                 $ops .= '</a>';
@@ -92,8 +104,8 @@ if (! function_exists('getOps')) {
         }
 
         // silme butonu
-        if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$route_name}.destroy") ) {
-            if ( $route_name !== 'user' || $model->id !== Sentinel::getUser()->id ) {
+        if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.destroy") ) {
+            if ( $routeName !== 'user' || $model->id !== Sentinel::getUser()->id ) {
                 $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline margin-right-10">';
                 $ops .= '<i class="fa fa-trash"></i>';
                 $ops .= trans('laravel-modules-core::admin.ops.destroy');
@@ -105,8 +117,8 @@ if (! function_exists('getOps')) {
         if ( $isPublishable ) {
             // yayından kaldırma
             if ($model->is_publish) {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$route_name}.notPublish") ) {
-                    $ops .= '<a href="' . route("admin.{$route_name}.notPublish", ['id' => $model->id]) . '" class="btn btn-sm btn-outline purple margin-right-10">';
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.notPublish") ) {
+                    $ops .= '<a href="' . route("admin.{$routeName}.notPublish", $routeParams) . '" class="btn btn-sm btn-outline purple margin-right-10">';
                     $ops .= '<i class="fa fa-times"></i>';
                     $ops .= trans('laravel-modules-core::admin.ops.not_publish');
                     $ops .= '</a>';
@@ -114,8 +126,8 @@ if (! function_exists('getOps')) {
             }
             // yayınlama
             else {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$route_name}.notPublish") ) {
-                    $ops .= '<a href="' . route("admin.{$route_name}.notPublish", ['id' => $model->id]) . '" class="btn btn-sm btn-outline blue margin-right-10">';
+                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.notPublish") ) {
+                    $ops .= '<a href="' . route("admin.{$routeName}.publish", $routeParams) . '" class="btn btn-sm btn-outline blue margin-right-10">';
                     $ops .= '<i class="fa fa-bullhorn"></i>';
                     $ops .= trans('laravel-modules-core::admin.ops.publish');
                     $ops .= '</a>';
@@ -125,5 +137,48 @@ if (! function_exists('getOps')) {
 
         $ops .= Form::close();
         return $ops;
+    }
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| sidebar detect
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('sidebarDetect')) {
+    /**
+     * detect the side bar menu
+     *
+     * @param array $elements
+     * @param boolean $isChildren
+     * @return Caffeinated\Menus\Menu $menu
+     */
+    function sidebarDetect($elements, $isChildren = false)
+    {
+        $sidebar = $isChildren ? '<ul class="sub-menu">' : '';
+        foreach($elements as $element) {
+            // menu item
+            $isCurrent = strpos(Route::currentRouteName(),$element->attribute('active')) !== false;
+            $sidebar .= '<li class="nav-item';
+            $sidebar .=  $isCurrent && $element->hasChildren() ? ' active open">' : $isCurrent ? ' active">' : '">';
+            $sidebar .= '';
+
+            // menu a link
+            $sidebar .= '<a href="'. $element->url() .'" class="nav-link';
+            $sidebar .= $element->hasChildren() ? ' nav-toogle">' : '">';
+            $sidebar .= '<i class="'. $element->attribute('data-icon') .'"></i>';
+            $sidebar .= '<span class="title">'. $element->title .'</span>';
+            $sidebar .= $element->hasChildren() ? '<span class="arrow"></span>' : '';
+            $sidebar .= '</a>';
+
+            if($element->hasChildren()) {
+                $sidebar .= sidebarDetect($element->children(), true);
+            }
+
+            $sidebar .= '</li>';
+        }
+        return $isChildren ? $sidebar . '</ul>' : $sidebar;
     }
 }

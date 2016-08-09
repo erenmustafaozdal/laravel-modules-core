@@ -3,7 +3,7 @@
         {!! trans('laravel-modules-core::admin.ops.fast_add') !!}
         <i class="fa fa-plus"></i>
     </a>
-    <a class="btn green btn-outline" href="{!! route("admin.{$module}.create") !!}">
+    <a class="btn green btn-outline" href="{!! is_array($module) ? route("admin.{$module['route']}.create", ['id' => $module['id']]) : route("admin.{$module}.create") !!}">
         {!! trans('laravel-modules-core::admin.ops.add') !!}
         <i class="fa fa-plus"></i>
     </a>

@@ -5,70 +5,6 @@ var Index = {
         LMCApp.initDatepicker();
         this.handleDatatable();
         ModelIndex = this;
-
-        // publish model
-        $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-publish',function()
-        {
-            var tr = $(this).closest('tr');
-            var table = theDataTable.getDataTable();
-            var row = table.row(tr);
-            $.ajax({
-                url: row.data().urls.publish,
-                success: function(data)
-                {
-                    if (data.result === 'success') {
-                        LMCApp.getNoty({
-                            message: LMCApp.lang.admin.flash.publish_success.message,
-                            title: LMCApp.lang.admin.flash.publish_success.title,
-                            type: 'success'
-                        });
-                        return;
-                    }
-                    LMCApp.getNoty({
-                        message: LMCApp.lang.admin.flash.publish_error.message,
-                        title: LMCApp.lang.admin.flash.publish_error.title,
-                        type: 'error'
-                    });
-                }
-            }).done(function( data ) {
-                if ( data.result === 'success' ) {
-                    LMCApp.hasTransaction = false;
-                    table.draw();
-                }
-            });
-        });
-
-        // not publish model
-        $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-not-publish',function()
-        {
-            var tr = $(this).closest('tr');
-            var table = theDataTable.getDataTable();
-            var row = table.row(tr);
-            $.ajax({
-                url: row.data().urls.not_publish,
-                success: function(data)
-                {
-                    if (data.result === 'success') {
-                        LMCApp.getNoty({
-                            message: LMCApp.lang.admin.flash.not_publish_success.message,
-                            title: LMCApp.lang.admin.flash.not_publish_success.title,
-                            type: 'success'
-                        });
-                        return;
-                    }
-                    LMCApp.getNoty({
-                        message: LMCApp.lang.admin.flash.not_publish_error.message,
-                        title: LMCApp.lang.admin.flash.not_publish_error.title,
-                        type: 'error'
-                    });
-                }
-            }).done(function( data ) {
-                if ( data.result === 'success' ) {
-                    LMCApp.hasTransaction = false;
-                    table.draw();
-                }
-            });
-        });
     },
 
     handleDatatable: function()
@@ -105,20 +41,8 @@ var Index = {
                 return '<table class="table table-hover table-light">' +
                     '<tbody>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Kategori:</strong> </td>' +
-                            '<td class="text-left">' + ( data.category.name == null ? '' : data.category.name ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Tanımlama:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title == null ? '' : data.slug ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Açıklama:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description == null ? '' : data.description ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Kategori Adı:</strong> </td>' +
+                            '<td class="text-left">' + data.name + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
@@ -128,10 +52,6 @@ var Index = {
                             '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
                             '<td class="text-left">' + data.updated_at.display + '</td>' +
                         '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>İçerik:</strong> </td>' +
-                            '<td class="text-left">' + ( data.content == null ? '' : data.content ) + '</td>' +
-                        '</tr>' +
                     '</tbody>' +
                 '</table>';
             },
@@ -140,7 +60,7 @@ var Index = {
              * export data table options for columns
              */
             exportOptions: {
-                columns: [2,3,4,5,6,7]
+                columns: [2,3,4]
             },
             dataTable: {
                 columns: [
@@ -156,27 +76,8 @@ var Index = {
                     { className: 'control', searchable: false, orderable: false, data: null, defaultContent: '' },
                     // id
                     { data: "id", name: "id", className: 'text-center' },
-                    // title
-                    { data: "title", name: "title" },
-                    // slug
-                    { data: "slug", name: "slug" },
-                    // category name
-                    { data: "category", name: "category",
-                        render: function ( data, type, full, meta )
-                        {
-                            return '<a href="' + categoryURL.replace("id", data.id) + '"> ' + data.name + ' </a>';
-                        }
-                    },
-                    // status
-                    { data: "status", name: "is_publish", className: 'text-center',
-                        render: function ( data, type, full, meta )
-                        {
-                            if (data) {
-                                return '<span class="label label-success"> Yayında </span>';
-                            }
-                            return '<span class="label label-danger"> Yayında Değil </span>';
-                        }
-                    },
+                    // name
+                    { data: "name", name: "name" },
                     // created_at
                     { data: { _: 'created_at.display', sort: 'created_at.timestamp' }, name: "created_at", className: 'text-center'},
                     // action
@@ -210,16 +111,15 @@ var Index = {
                                             class: 'fast-destroy'
                                         }
                                     },
-                                    'divider'
+                                    'divider',
+                                    {
+                                        title: '<i class="fa fa-files-o"></i> ' + LMCApp.lang.admin.ops.relations,
+                                        attributes: {
+                                            href: full.urls.relations
+                                        }
+                                    }
                                 ]
                             };
-                            options.buttons.push({
-                                title: full.status ? '<i class="fa fa-times"></i> ' + LMCApp.lang.admin.ops.not_publish : '<i class="fa fa-check"></i> ' + LMCApp.lang.admin.ops.publish,
-                                attributes: {
-                                    href: 'javascript:;',
-                                    class: full.status ? 'fast-not-publish' : 'fast-publish'
-                                }
-                            });
                             return theDataTable.getActionMenu(options);
                         }
                     }
@@ -251,11 +151,7 @@ var Index = {
                         submitAjax: function(validation)
                         {
                             var datas = {
-                                category_id: validation.form.find('select[name="category_id"]').val(),
-                                title: validation.form.find('input[name="title"]').val(),
-                                slug: validation.form.find('input[name="slug"]').val(),
-                                description: validation.form.find('textarea[name="description"]').val(),
-                                is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
+                                name: validation.form.find('input[name="name"]').val()
                             };
                             if (Editor.actionType === 'fast-add') {
                                 var type =  'POST';

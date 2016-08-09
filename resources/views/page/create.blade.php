@@ -1,14 +1,30 @@
 @extends(config('laravel-page-module.views.page.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-page-module/admin.page.create') !!}
+    @if(isset($page_category))
+        {!! lmcTrans('laravel-page-module/admin.page_category.page.create', ['page_category' => $page_category->name]) !!}
+    @else
+        {!! lmcTrans('laravel-page-module/admin.page.create') !!}
+    @endif
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-page-module/admin.page.create') !!}
-        <small>{!! lmcTrans('laravel-page-module/admin.page.create_description') !!}</small>
-    </h1>
+    @if(isset($page_category))
+        <h1>{!! lmcTrans('laravel-page-module/admin.page_category.page.create', ['page_category' => $page_category->name]) !!}
+            <small>{!! lmcTrans('laravel-page-module/admin.page_category.page.create_description', ['page_category' => $page_category->name]) !!}</small>
+        </h1>
+    @else
+        <h1>{!! lmcTrans('laravel-page-module/admin.page.create') !!}
+            <small>{!! lmcTrans('laravel-page-module/admin.page.create_description') !!}</small>
+        </h1>
+    @endif
 @endsection
+
+@if(isset($page_category))
+@section('breadcrumb')
+    {!! LMCBreadcrumb::getBreadcrumb($page_category, 'name') !!}
+@endsection
+@endif
 
 @section('css')
     @parent
@@ -28,7 +44,11 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var modelsURL = "{!! route('api.page_category.models') !!}";
+        @if(isset($page_category))
+            var modelsURL = '';
+        @else
+            var modelsURL = "{!! route('api.page_category.models') !!}";
+        @endif
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -110,7 +130,9 @@
             {{-- Create Form --}}
             {!! Form::open([
                 'method'    => 'POST',
-                'url'       => route('admin.page.store'),
+                'url'       => isset($page_category) ? route('admin.page_category.page.store', [
+                    'id'    => $page_category->id
+                ]) : route('admin.page.store'),
                 'class'     => 'form'
             ]) !!}
 
@@ -142,7 +164,10 @@
                     {{-- Tab Contents --}}
                     <div class="tab-content">
                         <div class="tab-pane active" id="info">
-                            @include('laravel-modules-core::page.partials.form', [ 'select2' => true ])
+                            @include('laravel-modules-core::page.partials.form', [
+                                'select2'       => true,
+                                'isRelation'    => isset($page_category) ? true : false
+                            ])
                         </div>
                         <div class="tab-pane" id="content_info">
                             @include('laravel-modules-core::page.partials.content_form', [ 'isForm' => true ])

@@ -1,14 +1,33 @@
 @extends(config('laravel-page-module.views.page.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-page-module/admin.page.edit') !!}
+    @if(isset($page_category))
+        {!! lmcTrans('laravel-page-module/admin.page_category.page.edit', ['page_category' => $page_category->name]) !!}
+    @else
+        {!! lmcTrans('laravel-page-module/admin.page.edit') !!}
+    @endif
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-page-module/admin.page.edit') !!}
-        <small>{!! lmcTrans('laravel-page-module/admin.page.edit_description', [ 'page' => $page->title ]) !!}</small>
-    </h1>
+    @if(isset($page_category))
+        <h1>{!! lmcTrans('laravel-page-module/admin.page_category.page.edit', ['page_category' => $page_category->name]) !!}
+            <small>{!! lmcTrans('laravel-page-module/admin.page_category.page.edit_description', [
+                'page_category' => $page_category->name,
+                'page'          => $page->title
+            ]) !!}</small>
+        </h1>
+    @else
+        <h1>{!! lmcTrans('laravel-page-module/admin.page.edit') !!}
+            <small>{!! lmcTrans('laravel-page-module/admin.page.edit_description', [ 'page' => $page->title ]) !!}</small>
+        </h1>
+    @endif
 @endsection
+
+@if(isset($page_category))
+@section('breadcrumb')
+    {!! LMCBreadcrumb::getBreadcrumb($page_category, 'name') !!}
+@endsection
+@endif
 
 @section('css')
     @parent
@@ -28,7 +47,11 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var modelsURL = "{!! route('api.page_category.models') !!}";
+        @if(isset($page_category))
+            var modelsURL = '';
+        @else
+            var modelsURL = "{!! route('api.page_category.models') !!}";
+        @endif
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -100,7 +123,11 @@
 
             {{-- Actions --}}
             <div class="actions pull-left">
-                {!! getOps($page, 'edit') !!}
+                @if(isset($page_category))
+                    {!! getOps($page, 'edit', true, $page_category, config('laravel-page-module.url.page')) !!}
+                @else
+                    {!! getOps($page, 'edit', true) !!}
+                @endif
             </div>
             {{-- /Actions --}}
         </div>
@@ -116,7 +143,10 @@
             {{-- Create Form --}}
             {!! Form::open([
                 'method'    => 'PATCH',
-                'url'       => route('admin.page.update', [ 'id' => $page->id ]),
+                'url'       => isset($page_category) ? route('admin.page_category.page.update', [
+                    'id'                                    => $page_category->id,
+                    config('laravel-page-module.url.page')  => $page->id
+                ]) : route('admin.page.update', [ 'id' => $page->id ]),
                 'class'     => 'form'
             ]) !!}
 
@@ -148,7 +178,10 @@
                     {{-- Tab Contents --}}
                     <div class="tab-content">
                         <div class="tab-pane active" id="info">
-                            @include('laravel-modules-core::page.partials.form', [ 'select2' => true ])
+                            @include('laravel-modules-core::page.partials.form', [
+                                'select2'       => true,
+                                'isRelation'    => isset($page_category) ? true : false
+                            ])
                         </div>
                         <div class="tab-pane" id="content_info">
                             @include('laravel-modules-core::page.partials.content_form', [ 'isForm' => true ])

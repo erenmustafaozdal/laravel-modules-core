@@ -55,10 +55,15 @@ class BreadcrumbService
     /**
      * get theme breadcrumb
      *
+     * @param \Illuminate\Support\Collection|null $model
+     * @param string|null $column
      * @return  string
      */
-    public function getBreadcrumb()
+    public function getBreadcrumb($model = null, $column = null)
     {
+        $modelTrans = is_null($model) ? [] : [ snake_case( substr( strrchr( get_class($model), '\\' ), 1 ) ) => $model->$column ];
+        $modelRoute = is_null($model) ? [] : [ 'id' => $model->id ];
+
         $breadcrumbs  = '<ul class="page-breadcrumb breadcrumb">';
         // admin dashboard
         if ( ! is_null(app()->getProvider(config('laravel-modules-core.packages.laravel-dashboard-module')))) {
@@ -72,20 +77,20 @@ class BreadcrumbService
 
         $breadcrumbs  .= '<li>';
         $parent_text   = strpos($this->route_name, 'index')  !== false ?
-            trans($this->module_name.$this->route_name) :
-            trans($this->module_name.$this->index_route_name);
+            trans($this->module_name.$this->route_name, $modelTrans) :
+            trans($this->module_name.$this->index_route_name, $modelTrans);
 
         if ( strpos($this->route_name, 'index')  !== false ) {
             $breadcrumbs  .= $parent_text;
         } else {
-            $route = Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($this->index_route_name) ? route($this->index_route_name) : 'javascript:;';
+            $route = Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($this->index_route_name) ? route($this->index_route_name, $modelRoute) : 'javascript:;';
             $breadcrumbs  .= '<a href="'. $route .'">'.$parent_text.'</a><i class="fa fa-circle"></i>';
         }
 
         $breadcrumbs  .= '</li>';
 
         if (strpos($this->route_name, 'index')  === false) {
-            $breadcrumbs  .= '<li> <span class="active"> '.trans($this->module_name.$this->route_name).'</span> </li>';
+            $breadcrumbs  .= '<li> <span class="active"> '.trans($this->module_name.$this->route_name, $modelTrans).'</span> </li>';
         }
 
         $breadcrumbs .= '</ul>';

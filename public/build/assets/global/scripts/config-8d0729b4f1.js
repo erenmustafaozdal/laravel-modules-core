@@ -62,7 +62,8 @@ var LMCApp = {
                 browse: 'Gözat',
                 crop: 'Kırp',
                 select: 'Seç',
-                write_here: 'Buraya yaz...'
+                write_here: 'Buraya yaz...',
+                relations: 'İlişkili Veriler'
             },
             flash: {
                 store_success: {
@@ -431,7 +432,7 @@ var LMCApp = {
      */
     resetAllFormFields: function(target)
     {
-        $('textarea, select, input', target).each(function()
+        $('textarea, select, input[type!="hidden"]', target).each(function()
         {
             $(this).val("").closest('.form-group')
                 .removeClass('has-error').find('span.help-block').remove();
