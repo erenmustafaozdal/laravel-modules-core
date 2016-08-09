@@ -160,10 +160,9 @@ if (! function_exists('sidebarDetect')) {
         $sidebar = $isChildren ? '<ul class="sub-menu">' : '';
         foreach($elements as $element) {
             // menu item
-            $isCurrent = strpos(Route::currentRouteName(),$element->attribute('active')) !== false;
+            $isCurrent = is_array($element->attribute('active')) ? route($element->attribute('active')[0], $element->attribute('active')[1]) == Request::url() : strpos(Route::currentRouteName(),$element->attribute('active')) !== false;
             $sidebar .= '<li class="nav-item';
             $sidebar .=  $isCurrent && $element->hasChildren() ? ' active open">' : $isCurrent ? ' active">' : '">';
-            $sidebar .= '';
 
             // menu a link
             $sidebar .= '<a href="'. $element->url() .'" class="nav-link';

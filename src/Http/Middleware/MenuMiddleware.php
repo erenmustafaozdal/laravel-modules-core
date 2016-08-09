@@ -80,7 +80,7 @@ class MenuMiddleware
             $access = is_array($element['access']) ? Sentinel::hasAnyAccess($element['access']) : Sentinel::hasAccess($element['access']);
 
             if (Sentinel::getUser()->is_super_admin || $access) {
-                $route = is_array($element['route']) ? route($element['route']) : $element['route'] === 'javascript:;' ? $element['route'] : ['route' => $element['route']];
+                $route = $element['route'] === 'javascript:;' ? $element['route'] : ['route' => $element['route']];
 
                 $part = $menu->add(trans($element['trans']), $route)
                     ->attribute('data-icon', $element['icon'])

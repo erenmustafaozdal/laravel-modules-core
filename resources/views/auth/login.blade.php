@@ -69,6 +69,7 @@
                 <span>{!! lmcTrans('laravel-user-module/auth.login.forget_password') !!}</span>
             </a>
         </div>
+        @if(config('laravel-user-module.use_register'))
         <div class="create-account">
             <p>
                 <a href="{!! route('getRegister') !!}" id="register-btn" class="uppercase">
@@ -76,5 +77,6 @@
                 </a>
             </p>
         </div>
+        @endif
     {!! Form::close() !!}
 @endsection
