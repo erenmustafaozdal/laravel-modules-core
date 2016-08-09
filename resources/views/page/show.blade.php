@@ -1,14 +1,33 @@
 @extends(config('laravel-page-module.views.page.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-page-module/admin.page.show') !!}
+    @if(isset($page_category))
+        {!! lmcTrans('laravel-page-module/admin.page_category.page.show', ['page_category' => $page_category->name]) !!}
+    @else
+        {!! lmcTrans('laravel-page-module/admin.page.show') !!}
+    @endif
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-page-module/admin.page.show') !!}
-        <small>{!! lmcTrans('laravel-page-module/admin.page.show_description', [ 'page' => $page->title ])  !!}</small>
-    </h1>
+    @if(isset($page_category))
+        <h1>{!! lmcTrans('laravel-page-module/admin.page_category.page.show', ['page_category' => $page_category->name]) !!}
+            <small>{!! lmcTrans('laravel-page-module/admin.page_category.page.show_description', [
+                'page_category' => $page_category->name,
+                'page'          => $page->title
+            ]) !!}</small>
+        </h1>
+    @else
+        <h1>{!! lmcTrans('laravel-page-module/admin.page.show') !!}
+            <small>{!! lmcTrans('laravel-page-module/admin.page.show_description', [ 'page' => $page->title ]) !!}</small>
+        </h1>
+    @endif
 @endsection
+
+@if(isset($page_category))
+@section('breadcrumb')
+    {!! LMCBreadcrumb::getBreadcrumb($page_category, 'name') !!}
+@endsection
+@endif
 
 @section('css')
     @parent
@@ -32,7 +51,11 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var modelsURL = "{!! route('api.page_category.models') !!}";
+        @if(isset($page_category))
+            var modelsURL = '';
+        @else
+            var modelsURL = "{!! route('api.page_category.models') !!}";
+        @endif
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -117,7 +140,11 @@
 
             {{-- Actions --}}
             <div class="actions pull-left">
-                {!! getOps($page, 'show') !!}
+                @if(isset($page_category))
+                    {!! getOps($page, 'show', true, $page_category, config('laravel-page-module.url.page')) !!}
+                @else
+                    {!! getOps($page, 'show', true) !!}
+                @endif
             </div>
             {{-- /Actions --}}
         </div>
@@ -151,7 +178,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($page_category) ? 'page_category.page' : 'page') .'.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -182,11 +209,14 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($page_category) ? 'page_category.page' : 'page') .'.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('admin.page.update', ['id' => $page->id]),
+                                'url'       => isset($page_category) ? route('admin.page_category.page.update', [
+                                    'id'                                    => $page_category->id,
+                                    config('laravel-page-module.url.page')  => $page->id
+                                ]) : route('admin.page.update', [ 'id' => $page->id ]),
                                 'id'        => 'page-edit-info'
                             ]) !!}
 
@@ -194,7 +224,10 @@
 
                             {{-- Form Body --}}
                             <div class="form-body">
-                                @include('laravel-modules-core::page.partials.form', [ 'select2' => true ])
+                                @include('laravel-modules-core::page.partials.form', [
+                                    'select2'       => true,
+                                    'isRelation'    => isset($page_category) ? true : false
+                                ])
                                 @include('laravel-modules-core::page.partials.seo_form')
                             </div>
                             {{-- /Form Body --}}

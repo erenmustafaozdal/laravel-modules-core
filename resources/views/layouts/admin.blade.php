@@ -154,7 +154,9 @@
                     {{-- /Page Head --}}
 
                     {{-- Page Breadcrumb --}}
-                    {!! LMCBreadcrumb::getBreadcrumb() !!}
+                    @section('breadcrumb')
+                        {!! LMCBreadcrumb::getBreadcrumb() !!}
+                    @show
                     {{-- /Page Breadcrumb --}}
 
                     {{-- Page Base Content --}}

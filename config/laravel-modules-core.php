@@ -160,7 +160,7 @@ return [
                 'route'             => 'javascript:;',
                 'icon'              => 'icon-doc',
                 'access'            => ['admin.page.index', 'admin.page.create'],
-                'active'            => 'admin.page',
+                'active'            => 'admin.page.',
                 'child' => [
                     [
                         'trans'             => 'laravel-modules-core::laravel-page-module/admin.menu.page.all',

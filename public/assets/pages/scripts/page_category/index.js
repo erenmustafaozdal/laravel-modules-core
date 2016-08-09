@@ -110,6 +110,13 @@ var Index = {
                                             href: 'javascript:;',
                                             class: 'fast-destroy'
                                         }
+                                    },
+                                    'divider',
+                                    {
+                                        title: '<i class="fa fa-files-o"></i> ' + LMCApp.lang.admin.ops.relations,
+                                        attributes: {
+                                            href: full.urls.relations
+                                        }
                                     }
                                 ]
                             };

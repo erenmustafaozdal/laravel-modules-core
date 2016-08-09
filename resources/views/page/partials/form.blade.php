@@ -1,24 +1,28 @@
 {{-- Page Category --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!}</label>
-    <select class="form-control form-control-solid placeholder-no-fix select2" name="category_id" style="width: 100%">
-        @if( ! isset($select2) )
-            <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
-            @foreach(\App\PageCategory::all('id','name') as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
-            @endforeach
-        @elseif(isset($page))
-            <option value="{{ $page->category->id }}" selected>{{ $page->category->name }}</option>
-        @endif
-    </select>
+@if($isRelation)
+    {!! Form::hidden('category_id', $page_category->id) !!}
+@else
+    <div class="form-group">
+        <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!}</label>
+        <select class="form-control form-control-solid placeholder-no-fix select2" name="category_id" style="width: 100%">
+            @if( ! isset($select2) )
+                <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
+                @foreach(\App\PageCategory::all('id','name') as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            @elseif(isset($page))
+                <option value="{{ $page->category->id }}" selected>{{ $page->category->name }}</option>
+            @endif
+        </select>
 
-    @if ( ! isset($helpBlockAfter) )
+        @if ( ! isset($helpBlockAfter) )
+            <span class="help-block"> {!! lmcTrans('laravel-page-module/admin.helpers.page.category_id_help') !!} </span>
+        @endif
+
+    </div>
+    @if ( isset($helpBlockAfter) )
         <span class="help-block"> {!! lmcTrans('laravel-page-module/admin.helpers.page.category_id_help') !!} </span>
     @endif
-
-</div>
-@if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-page-module/admin.helpers.page.category_id_help') !!} </span>
 @endif
 {{-- /Page Category --}}
 

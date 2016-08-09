@@ -1,25 +1,36 @@
 @extends(config('laravel-page-module.views.page.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-page-module/admin.page.index') !!}
+    @if(isset($page_category))
+        {!! lmcTrans('laravel-page-module/admin.page_category.page.index', ['page_category' => $page_category->name]) !!}
+    @else
+        {!! lmcTrans('laravel-page-module/admin.page.index') !!}
+    @endif
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-page-module/admin.page.index') !!}
-        <small>{!! lmcTrans('laravel-page-module/admin.page.index_description') !!}</small>
-    </h1>
+    @if(isset($page_category))
+        <h1>{!! lmcTrans('laravel-page-module/admin.page_category.page.index', ['page_category' => $page_category->name]) !!}
+            <small>{!! lmcTrans('laravel-page-module/admin.page_category.page.index_description', ['page_category' => $page_category->name]) !!}</small>
+        </h1>
+    @else
+        <h1>{!! lmcTrans('laravel-page-module/admin.page.index') !!}
+            <small>{!! lmcTrans('laravel-page-module/admin.page.index_description') !!}</small>
+        </h1>
+    @endif
 @endsection
+
+@if(isset($page_category))
+@section('breadcrumb')
+    {!! LMCBreadcrumb::getBreadcrumb($page_category, 'name') !!}
+@endsection
+@endif
 
 @section('css')
     @parent
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/datatables.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
-
-    {{-- Select2 --}}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
-    {{-- /Select2 --}}
 @endsection
 
 @section('script')
@@ -34,7 +45,11 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
+        @if(isset($page_category))
+        var ajaxURL = "{!! route('api.page_category.page.index', ['id' => $page_category->id]) !!}";
+        @else
         var ajaxURL = "{!! route('api.page.index') !!}";
+        @endif
         var apiStoreURL = "{!! route('api.page.store') !!}";
         var apiGroupAction = "{!! route('api.page.group') !!}";
         var modelsURL = "{!! route('api.page_category.models') !!}";
@@ -66,7 +81,11 @@
         });
         $script.ready(['config','index'], function()
         {
+            @if(isset($page_category))
+            Index.init('category_id');
+            @else
             Index.init();
+            @endif
         });
         {{-- /scripts --}}
     </script>
@@ -84,7 +103,11 @@
                     {!! lmcTrans('laravel-page-module/admin.page.index') !!}
                 </span>
             </div>
-            @include('laravel-modules-core::partials.common.indexActions', ['module' => 'page'])
+            @if(isset($page_category))
+            @include('laravel-modules-core::partials.common.indexActions', ['module' => [ 'id' =>  $page_category->id, 'route' => 'page_category.page']])
+            @else
+                @include('laravel-modules-core::partials.common.indexActions', ['module' => 'page'])
+            @endif
         </div>
         {{-- /Table Portlet Title and Actions --}}
 
@@ -111,7 +134,9 @@
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page.title') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!} </th>
+                            @if( ! isset($page_category))
                             <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!} </th>
+                            @endif
                             <th class="all" width="%30"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
@@ -128,9 +153,11 @@
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="slug" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!}">
                             </td>
+                            @if( ! isset($page_category))
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!}">
                             </td>
+                            @endif
                             <td>
                                 <select name="status" class="form-control form-filter input-sm">
                                     <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
@@ -159,7 +186,10 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'page.partials.form'        => [ 'helpBlockAfter'    => true ]
+            'page.partials.form'        => [
+                'helpBlockAfter'    => true,
+                'isRelation'        => isset($page_category) ? true : false
+            ]
         ]
     ])
     {{-- /Create and Edit modal --}}

@@ -11,17 +11,27 @@ return [
         'index'                             => 'Sayfa Kategorileri',
         'index_description'                 => 'Sistem içindeki bütün sayfa kategorileri',
         'edit'                              => 'Sayfa Kategorisi Düzenle',
-        'edit_description'                  => ':page_category adlı sayfa kategorisinin bilgierini düzenle',
+        'edit_description'                  => ':page_category adlı sayfa kategorisinin bilgilerini düzenle',
         'create'                            => 'Sayfa Kategorisi Ekle',
         'create_description'                => 'Yeni bir sayfa kategorisi ekle',
         'show'                              => 'Sayfa Kategorisi Bilgileri',
-        'show_description'                  => ':page_category hakkında bilgiler'
+        'show_description'                  => ':page_category hakkında bilgiler',
+        'page' => [
+            'index'                             => ':page_category Sayfalar',
+            'index_description'                 => 'Bütün :page_category sayfalar',
+            'edit'                              => ':page_category Sayfa Düzenle',
+            'edit_description'                  => ':page_category sayfalardan :page sayfası bilgilerini düzenle',
+            'create'                            => ':page_category Sayfa Ekle',
+            'create_description'                => 'Yeni bir :page_category sayfa ekle',
+            'show'                              => ':page_category Sayfa Bilgileri',
+            'show_description'                  => ':page_category sayfa :page sayfası hakkında bilgiler'
+        ]
     ],
     'page' => [
         'index'                             => 'Sayfalar',
         'index_description'                 => 'Sistemde bulunan bütün sayfalar',
         'edit'                              => 'Sayfa Düzenle',
-        'edit_description'                  => ':page sayfası bilgierini düzenle',
+        'edit_description'                  => ':page sayfası bilgilerini düzenle',
         'create'                            => 'Sayfa Ekle',
         'create_description'                => 'Yeni bir sayfa ekle',
         'show'                              => 'Sayfa Bilgileri',
