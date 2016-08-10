@@ -13,10 +13,15 @@ Laravel Modules Core
 Güncellemeler
 -------
 #### 10 Ağustos 2016 - v0.1.1
+* [barryvdh/laravel-elfinder](https://github.com/barryvdh/laravel-elfinder) ile Elfinder dosya yöneticisi sisteme dahil edildi. Bu paketin ayarlarını ['config/laravel-modules-core'](https://github.com/erenmustafaozdal/laravel-modules-core/blob/develop/config/laravel-modules-core.php) dosyasından yapabilirsin.
+* Admin panelinde üstte bulunan "Eylemler" ve yanda bulunan "Kenar" menüleri ayar dosyası üzerinden düzenleme imkanı getirildi. Bunun için ayar dosyasında `menus.action` ve `menus.side` değişkenlerini düzenleyin.
+* Genelde görünüm dosyalarında olmak üzere çeşitli yerlerde metin düzenleme işlemlerinde kullanılan `str_replace()` fonksiyonu kaldırılmıştır. Bu düzenlemeler için `trans()` fonksiyonunun ikinci parametresi kullanılmaya başlanmıştır.
+* Assets içindeki `css` ve `js` dosyaları minimize edilmiş hali yerine orjinal hali getirilmiştir. Gerekli düzenlemeleri yazılımcıların yapabilmesi göz önünde bulundurulmuştur.
 
 
 Yapılacaklar
 -------
+* Ayar dosyasındaki menü yönetimi daha basit hale getirilecek.
 
 
 
@@ -147,6 +152,9 @@ MIT
  <a name="ekranGoruntuleri"></a>
 Ekran Görüntüleri
 ------
+
+### Laravel User Module
+
 [![Kullanıcılar](http://i.hizliresim.com/mLZN02.png)](http://hizliresim.com/mLZN02)
 [![Kullanıcılar sayfası hızlı kullanıcı ekleme ekranı](http://i.hizliresim.com/AJPXpQ.png)](http://hizliresim.com/AJPXpQ)
 [![Yeni kullanıcı ekleme](http://i.hizliresim.com/aERN6d.png)](http://hizliresim.com/aERN6d)
@@ -157,3 +165,11 @@ Ekran Görüntüleri
 [![Roller sayfası hızlı rol ekleme ekranı](http://i.hizliresim.com/pPVNlN.png)](http://hizliresim.com/pPVNlN)
 [![Yeni rol ekleme](http://i.hizliresim.com/l1RNml.png)](http://hizliresim.com/l1RNml)
 [![Rol bilgileri](http://i.hizliresim.com/X4p3Ao.png)](http://hizliresim.com/X4p3Ao)
+
+### Laravel Page Module
+
+[![Sayfaların ve sayfa kategorilerinin listelendiği sayfa](http://i.hizliresim.com/NkVGlO.jpg)](http://hizliresim.com/NkVGlO)
+[![Hızlı sayfa ekleme penceresi](http://i.hizliresim.com/LQPGZj.jpg)](http://hizliresim.com/LQPGZj)
+[![Elfinder dosya yöneticisi](http://i.hizliresim.com/kEr0bW.jpg)](http://hizliresim.com/kEr0bW)
+[![Sayfa ekleme ve düzenleme sayfası ve editör (Tinymce)](http://i.hizliresim.com/LQPGyj.jpg)](http://hizliresim.com/LQPGyj)
+[![Sayfa bilgilerinin gösterildiği ve satır içi düzenleme yapıldı sayfa](http://i.hizliresim.com/dXjMGX.jpg)](http://hizliresim.com/dXjMGX)
