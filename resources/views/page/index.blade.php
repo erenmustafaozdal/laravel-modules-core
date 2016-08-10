@@ -49,11 +49,11 @@
         var ajaxURL = "{!! route('api.page_category.page.index', ['id' => $page_category->id]) !!}";
         @else
         var ajaxURL = "{!! route('api.page.index') !!}";
+        var categoryURL = "{!! route('admin.page_category.show', ['id' => 'id']) !!}";
+        var modelsURL = "{!! route('api.page_category.models') !!}";
         @endif
         var apiStoreURL = "{!! route('api.page.store') !!}";
         var apiGroupAction = "{!! route('api.page.group') !!}";
-        var modelsURL = "{!! route('api.page_category.models') !!}";
-        var categoryURL = "{!! route('admin.page_category.show', ['id' => 'id']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

@@ -159,8 +159,31 @@ if (! function_exists('sidebarDetect')) {
     {
         $sidebar = $isChildren ? '<ul class="sub-menu">' : '';
         foreach($elements as $element) {
+            // set is current?
+            $isCurrent = false;
+            if (is_string($element->attribute('active'))) {
+                $isCurrent = strpos(Route::currentRouteName(),$element->attribute('active')) !== false;
+            } else {
+                if (is_string($element->attribute('active')[0])) {
+                    //$isCurrent = strpos(Request::url(),route($element->attribute('active')[0], $element->attribute('active')[1])) !== false;
+                    $isCurrent = Request::url() === route($element->attribute('active')[0], $element->attribute('active')[1]);
+                } else {
+                    foreach($element->attribute('active') as $active) {
+                        if ($isCurrent) {
+                            continue;
+                        }
+                        if (is_string($element->attribute('active'))) {
+                            $isCurrent = strpos(Route::currentRouteName(),$active) !== false;
+                        } else {
+                            //$isCurrent = strpos(Request::url(), route($active[0], $active[1])) !== false;
+                            $isCurrent = Request::url() === route($active[0], $active[1]);
+                        }
+                    }
+                }
+            }
+
+
             // menu item
-            $isCurrent = is_array($element->attribute('active')) ? route($element->attribute('active')[0], $element->attribute('active')[1]) == Request::url() : strpos(Route::currentRouteName(),$element->attribute('active')) !== false;
             $sidebar .= '<li class="nav-item';
             $sidebar .=  $isCurrent && $element->hasChildren() ? ' active open">' : $isCurrent ? ' active">' : '">';
 

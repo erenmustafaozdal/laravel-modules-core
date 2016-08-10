@@ -48,6 +48,12 @@ class BreadcrumbService
     public function getModule($action)
     {
         $path_args = explode('\\', $action);
+        if ($path_args[0] !== 'ErenMustafaOzdal') {
+            $path_args = explode('@', $action);
+            $parent_action = get_parent_class( new $path_args[0]() );
+            $path_args = explode('\\', $parent_action);
+        }
+
         $module = snake_case($path_args[1]);
         return 'laravel-modules-core::'.str_replace('_','-',$module).'/';
     }

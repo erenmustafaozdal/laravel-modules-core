@@ -10,6 +10,16 @@ Laravel Modules Core
 
 **Laravel Modules Core** kurulumu gayet basit bir tasarım paketidir. Diğer geliştirdiğim veya geliştireceğim modüllerle tam uyumlu çalışmaktadır. Kurulumu yaptıktan sonra, eğer hiçbir değişiklik yapmayacaksan; var olan modülleri kullanacak şekilde hiçbir işlem yapmana gerek kalmayacaktır.
 
+Güncellemeler
+-------
+#### 10 Ağustos 2016 - v0.1.1
+
+
+Yapılacaklar
+-------
+
+
+
 1. [Kurulum](#kurulum)
     1. [Dosyaların Yayınlanması](#kurulum-dosyalarinYayinlanmasi)
     2. [Menü Tasarımı](#kurulum-menuTasarimi)
@@ -66,7 +76,7 @@ php artisan vendor:publish --provider="ErenMustafaOzdal\LaravelModulesCore\Larav
 
 
 <a name="kurulum-menuTasarimi"></a>
-##### Menü Tasarımı
+#### # Menü Tasarımı
 **Laravel Modules Core** varsayılan tasarımı içinde [caffeinated/menus](https://github.com/caffeinated/menus) paketini kullanarak menü oluşturuyor. Menülerin aktif hale gelmesi için `app/Http/Kernel.php` dosyandaki `$middleware` dizi değişkenine `\ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\MenuMiddleware::class` değerini eklemeyi unutma!
 
 

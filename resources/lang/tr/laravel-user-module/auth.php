@@ -21,7 +21,7 @@ return [
     // activation
     'activation' => [
         'mail_subject'                  => 'Lütfen Hesabını Aktifleştir',
-        'mail_content'                  => 'Merhaba :name! Lütfen hesabını aktifleştir: <a href="'.route('accountActivate',['id'=> ':id','code' => ':code']).'">'.route('accountActivate',['id'=> ':id','code' => ':code']).'</a>'
+        'mail_content'                  => 'Merhaba :name! Lütfen hesabını aktifleştir: <a href=":route">:route</a>'
     ],
 
 
