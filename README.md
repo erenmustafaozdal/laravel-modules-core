@@ -12,7 +12,7 @@ Laravel Modules Core
 
 Güncellemeler
 -------
-#### 10 Ağustos 2016 - v0.1.1
+#### 10 Ağustos 2016 - v0.2.0
 * [barryvdh/laravel-elfinder](https://github.com/barryvdh/laravel-elfinder) ile Elfinder dosya yöneticisi sisteme dahil edildi. Bu paketin ayarlarını ['config/laravel-modules-core'](https://github.com/erenmustafaozdal/laravel-modules-core/blob/develop/config/laravel-modules-core.php) dosyasından yapabilirsin.
 * Admin panelinde üstte bulunan "Eylemler" ve yanda bulunan "Kenar" menüleri ayar dosyası üzerinden düzenleme imkanı getirildi. Bunun için ayar dosyasında `menus.action` ve `menus.side` değişkenlerini düzenleyin.
 * Genelde görünüm dosyalarında olmak üzere çeşitli yerlerde metin düzenleme işlemlerinde kullanılan `str_replace()` fonksiyonu kaldırılmıştır. Bu düzenlemeler için `trans()` fonksiyonunun ikinci parametresi kullanılmaya başlanmıştır.
