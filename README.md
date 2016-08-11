@@ -50,7 +50,7 @@ Ya da `composer.json` dosyana, aşağıdaki gibi ekleme yapıp, paketleri günce
 ```json
 {
     "require": {
-        "erenmustafaozdal/laravel-modules-core": "~0.1"
+        "erenmustafaozdal/laravel-modules-core": "~0.2"
     }
 }
 ```
