@@ -57,7 +57,7 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-user font-red"></i>
+                <i class="icon-note font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     {!! lmcTrans('laravel-page-module/admin.page_category.show') !!}
                 </span>

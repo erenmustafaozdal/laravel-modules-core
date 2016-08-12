@@ -66,7 +66,7 @@
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">
-                <i class="icon-users font-red"></i>
+                <i class="icon-note font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     {!! lmcTrans('laravel-page-module/admin.page_category.index') !!}
                 </span>

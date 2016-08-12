@@ -147,7 +147,7 @@ return [
             'page_update'                   => 'Düzenleme',
             'page_update_desc'              => 'Bu izne sahip olanlar sayfa bilgilerini düzenleyebilir',
             'page_destroy'                  => 'Silme',
-            'page_destroy_desc'             => 'Bu izne sahip olanlar belirli bir kategoriye ait sayfayı silebilir',
+            'page_destroy_desc'             => 'Bu izne sahip olanlar sayfayı silebilir',
             'page_category_page_publish'    => 'Sayfa Yayınlama',
             'page_category_page_publish_desc'=> 'Bu izne sahip olanlar belirli bir kategoriye ait sayfa yayınlayabilir',
             'page_category_page_notPublish' => 'Sayfa Yayından Kaldırma',

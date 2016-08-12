@@ -66,12 +66,24 @@ return [
             [
                 'trans'             => 'laravel-modules-core::laravel-page-module/admin.menu.page_category.add',
                 'route'             => 'admin.page_category.create',
-                'icon'              => 'icon-doc'
+                'icon'              => 'icon-note'
             ],
             // add page
             [
                 'trans'             => 'laravel-modules-core::laravel-page-module/admin.menu.page.add',
                 'route'             => 'admin.page.create',
+                'icon'              => 'icon-note'
+            ],
+            // add document category
+            [
+                'trans'             => 'laravel-modules-core::laravel-document-module/admin.menu.document_category.add',
+                'route'             => 'admin.document_category.create',
+                'icon'              => 'icon-doc'
+            ],
+            // add document
+            [
+                'trans'             => 'laravel-modules-core::laravel-document-module/admin.menu.document.add',
+                'route'             => 'admin.document.create',
                 'icon'              => 'icon-doc'
             ]
         ],
@@ -135,7 +147,7 @@ return [
             [
                 'trans'             => 'laravel-modules-core::laravel-page-module/admin.menu.page_category.root',
                 'route'             => 'javascript:;',
-                'icon'              => 'icon-doc',
+                'icon'              => 'icon-note',
                 'access'            => ['admin.page_category.index', 'admin.page_category.create'],
                 'active'            => 'admin.page_category',
                 'child' => [
@@ -158,7 +170,7 @@ return [
             [
                 'trans'             => 'laravel-modules-core::laravel-page-module/admin.menu.page.root',
                 'route'             => 'javascript:;',
-                'icon'              => 'icon-doc',
+                'icon'              => 'icon-note',
                 'access'            => ['admin.page.index', 'admin.page.create'],
                 'active'            => 'admin.page.',
                 'child' => [
@@ -177,7 +189,54 @@ return [
                         'active'            => 'admin.page.create'
                     ]
                 ] // end of child
-            ] // end of part
+            ], // end of part
+            // laravel document module
+            [
+                'trans'             => 'laravel-modules-core::laravel-document-module/admin.menu.document_category.root',
+                'route'             => 'javascript:;',
+                'icon'              => 'icon-doc',
+                'access'            => ['admin.document_category.index', 'admin.document_category.create'],
+                'active'            => 'admin.document_category',
+                'child' => [
+                    [
+                        'trans'             => 'laravel-modules-core::laravel-document-module/admin.menu.document_category.all',
+                        'route'             => 'admin.document_category.index',
+                        'icon'              => 'icon-list',
+                        'access'            => 'admin.document_category.index',
+                        'active'            => 'admin.document_category.index'
+                    ],
+                    [
+                        'trans'             => 'laravel-modules-core::laravel-document-module/admin.menu.document_category.add',
+                        'route'             => 'admin.document_category.create',
+                        'icon'              => 'icon-plus',
+                        'access'            => 'admin.document_category.create',
+                        'active'            => 'admin.document_category.create'
+                    ]
+                ] // end of child
+            ], // end of part
+            [
+                'trans'             => 'laravel-modules-core::laravel-document-module/admin.menu.document.root',
+                'route'             => 'javascript:;',
+                'icon'              => 'icon-doc',
+                'access'            => ['admin.document.index', 'admin.document.create'],
+                'active'            => 'admin.document.',
+                'child' => [
+                    [
+                        'trans'             => 'laravel-modules-core::laravel-document-module/admin.menu.document.all',
+                        'route'             => 'admin.document.index',
+                        'icon'              => 'icon-list',
+                        'access'            => 'admin.document.index',
+                        'active'            => 'admin.document.index'
+                    ],
+                    [
+                        'trans'             => 'laravel-modules-core::laravel-document-module/admin.menu.document.add',
+                        'route'             => 'admin.document.create',
+                        'icon'              => 'icon-plus',
+                        'access'            => 'admin.document.create',
+                        'active'            => 'admin.document.create'
+                    ]
+                ] // end of child
+            ], // end of part
         ]
     ],
 
@@ -197,7 +256,7 @@ return [
     | The dir where to store the images (relative from public)
     |
     */
-        'dir' => ['files'], // create this directory in public dir
+        'dir' => ['dosyalar'], // create this directory in public dir
 
         /*
         |--------------------------------------------------------------------------

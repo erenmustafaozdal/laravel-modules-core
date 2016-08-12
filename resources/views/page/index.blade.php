@@ -49,7 +49,7 @@
         var ajaxURL = "{!! route('api.page_category.page.index', ['id' => $page_category->id]) !!}";
         @else
         var ajaxURL = "{!! route('api.page.index') !!}";
-        var categoryURL = "{!! route('admin.page_category.show', ['id' => 'id']) !!}";
+        var categoryURL = "{!! route('admin.page_category.show', ['id' => '{id}']) !!}";
         var modelsURL = "{!! route('api.page_category.models') !!}";
         @endif
         var apiStoreURL = "{!! route('api.page.store') !!}";
@@ -98,7 +98,7 @@
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">
-                <i class="icon-users font-red"></i>
+                <i class="icon-note font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     {!! lmcTrans('laravel-page-module/admin.page.index') !!}
                 </span>

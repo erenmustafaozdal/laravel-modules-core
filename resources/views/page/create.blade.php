@@ -111,7 +111,7 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption">
-                <i class="icon-user-follow font-red"></i>
+                <i class="icon-note font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     {!! lmcTrans('laravel-page-module/admin.page.create') !!}
                 </span>

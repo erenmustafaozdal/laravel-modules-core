@@ -110,7 +110,7 @@ var Index = {
                         data: "category", name: "category",
                         render: function ( data, type, full, meta )
                         {
-                            return '<a href="' + categoryURL.replace("id", data.id) + '"> ' + data.name + ' </a>';
+                            return '<a href="' + categoryURL.replace("{id}", data.id) + '"> ' + data.name + ' </a>';
                         }
                     });
                 }
