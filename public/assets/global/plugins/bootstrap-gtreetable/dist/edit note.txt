@@ -1,0 +1,1 @@
+alert ve confirm fonksiyonları bootbox ile değiştirildi

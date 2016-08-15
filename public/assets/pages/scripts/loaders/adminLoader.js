@@ -1,7 +1,7 @@
 ;(function() {
     "use strict";
     $script('/vendor/laravel-modules-core/assets/global/plugins/pace/pace.min.js');
-    $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.min.js','jquery');
+    $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.js','jquery');
     $script('/vendor/laravel-modules-core/assets/global/plugins/js.cookie.min.js');
 
     $script.ready('jquery', function() {
@@ -17,7 +17,7 @@
 
     $script.ready('bootstrap', function() {
         $script('/vendor/laravel-modules-core/assets/global/scripts/app.js','app');
-        $script('/vendor/laravel-modules-core/assets/global/plugins/bootbox/bootbox.min.js');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootbox/bootbox.min.js','bootbox');
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-toastr/toastr.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.js');
     });

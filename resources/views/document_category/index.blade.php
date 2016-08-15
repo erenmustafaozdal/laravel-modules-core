@@ -45,21 +45,21 @@
         var ajaxURL = "{!! route('api.document_category.document_category.index', ['id' => $document_category->id]) !!}";
         var showURL = "{!! route('admin.document_category.show', [
             'id' => $document_category->id,
-            config('laravel-document-module.url.document_category') => '{id}'
+            config('laravel-document-module.url.document_category') => '###id###'
         ]) !!}";
         var editURL = "{!! route('admin.document_category.edit', [
             'id' => $document_category->id,
-            config('laravel-document-module.url.document_category') => '{id}'
+            config('laravel-document-module.url.document_category') => '###id###'
         ]) !!}";
         @else
         var ajaxURL = "{!! route('api.document_category.index') !!}";
-        var showURL = "{!! route('admin.document_category.show', ['id' => '{id}']) !!}";
-        var editURL = "{!! route('admin.document_category.edit', ['id' => '{id}']) !!}";
+        var showURL = "{!! route('admin.document_category.show', ['id' => '###id###']) !!}";
+        var editURL = "{!! route('admin.document_category.edit', ['id' => '###id###']) !!}";
         @endif
         var apiStoreURL = "{!! route('api.document_category.store') !!}";
-        var apiUpdateURL = "{!! route('api.document_category.update', ['id' => '{id}']) !!}";
-        var apiDestroyURL = "{!! route('api.document_category.destroy', ['id' => '{id}']) !!}";
-        var apiMoveURL = "{!! route('api.document_category.move', ['id' => '{id}']) !!}";
+        var apiUpdateURL = "{!! route('api.document_category.update', ['id' => '###id###']) !!}";
+        var apiDestroyURL = "{!! route('api.document_category.destroy', ['id' => '###id###']) !!}";
+        var apiMoveURL = "{!! route('api.document_category.move', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- scripts --}}
@@ -100,15 +100,7 @@
             <div class="table-container">
 
                 {{-- DataTable --}}
-                <table class="table table-striped table-bordered table-hover gtreetable">
-                    <thead>
-                    <tr>
-                        <th>
-                            {!! lmcTrans('laravel-document-module/admin.document_category.index') !!}
-                        </th>
-                    </tr>
-                    </thead>
-                </table>
+                <table class="table table-striped table-bordered table-hover gtreetable"></table>
                 {{-- /DataTable --}}
             </div>
         </div>
