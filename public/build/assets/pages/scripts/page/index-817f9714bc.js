@@ -208,11 +208,7 @@ var Index = {
             },
             onDeleteError: function(data)
             {
-                LMCApp.getNoty({
-                    message: LMCApp.lang.admin.flash.destroy_self.message,
-                    title: LMCApp.lang.admin.flash.destroy_self.title,
-                    type: 'error'
-                });
+                // on delete error function
             },
 
             /**

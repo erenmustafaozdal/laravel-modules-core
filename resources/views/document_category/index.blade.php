@@ -69,7 +69,17 @@
         });
         $script.ready(['config','index'], function()
         {
-            Index.init();
+            Index.init({
+                relationLinks: {
+                    category: {!! config('laravel-document-module.document_category.show_relation_category_link') ? true : false !!},
+                    model: {!! config('laravel-document-module.document_category.show_relation_document_link') ? true : false !!}
+                },
+                relationURLs: {
+                    category: "{!! config('laravel-document-module.document_category.show_relation_category_link') ? route('admin.document_category.document_category.index', ['id' => '###id###']) : '#' !!}",
+                    model: "{!! config('laravel-document-module.document_category.show_relation_document_link') ? route('admin.document_category.document.index', ['id' => '###id###']) : '#' !!}"
+                },
+                nestableLevel: {!! isset($document_category) ? config('laravel-document-module.document_category.nestable_level.nested_category') : config('laravel-document-module.document_category.nestable_level.root') !!}
+            });
         });
         {{-- /scripts --}}
     </script>
@@ -87,6 +97,21 @@
                     {!! lmcTrans('laravel-document-module/admin.document_category.index') !!}
                 </span>
             </div>
+            @if(isset($document_category))
+                @include('laravel-modules-core::partials.common.indexActions', [
+                    'module'    => [ 'id' =>  $document_category->id, 'route' => 'document_category.document_category'],
+                    'fast_add'  => false,
+                    'add'       => true,
+                    'tools'     => false
+                ])
+            @else
+                @include('laravel-modules-core::partials.common.indexActions', [
+                    'module'    => 'document_category',
+                    'fast_add'  => false,
+                    'add'       => true,
+                    'tools'     => false
+                ])
+            @endif
         </div>
         {{-- /Table Portlet Title and Actions --}}
 
@@ -100,7 +125,15 @@
             <div class="table-container">
 
                 {{-- DataTable --}}
-                <table class="table table-striped table-bordered table-hover gtreetable"></table>
+                {{-- if is not have child show info, if have child show table --}}
+                @if( (isset($document_category) && $document_category->isLeaf()) || App\DocumentCategory::all()->count() == 0 )
+                    <div class="well well-lg">
+                        {!! lmcTrans('laravel-document-module/admin.helpers.document_category.not_have_child') !!}
+                    </div>
+                @else
+                    <table class="table table-striped table-bordered table-hover gtreetable"></table>
+                @endif
+                {{-- /if is not have child show info, if have child show table --}}
                 {{-- /DataTable --}}
             </div>
         </div>

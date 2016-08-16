@@ -83,7 +83,12 @@
                     {!! lmcTrans('laravel-user-module/admin.user.index') !!}
                 </span>
             </div>
-            @include('laravel-modules-core::partials.common.indexActions', ['module' => 'user'])
+            @include('laravel-modules-core::partials.common.indexActions', [
+                'module' => 'user',
+                'fast_add'  => true,
+                'add'       => true,
+                'tools'     => true
+            ])
         </div>
         {{-- /Table Portlet Title and Actions --}}
 

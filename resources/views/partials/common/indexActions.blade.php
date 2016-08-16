@@ -1,12 +1,20 @@
 <div class="actions">
+
+    @if ($fast_add)
     <a class="btn green btn-outline" data-toggle="modal" href="#editor-modal" data-action="fast-add">
         {!! trans('laravel-modules-core::admin.ops.fast_add') !!}
         <i class="fa fa-plus"></i>
     </a>
+    @endif
+
+    @if ($add)
     <a class="btn green btn-outline" href="{!! is_array($module) ? route("admin.{$module['route']}.create", ['id' => $module['id']]) : route("admin.{$module}.create") !!}">
         {!! trans('laravel-modules-core::admin.ops.add') !!}
         <i class="fa fa-plus"></i>
     </a>
+    @endif
+
+    @if ($tools)
     <div class="btn-group">
         <a class="btn red btn-outline" href="javascript:;" data-toggle="dropdown">
             <i class="fa fa-share"></i>
@@ -54,4 +62,5 @@
             </li>
         </ul>
     </div>
+    @endif
 </div>

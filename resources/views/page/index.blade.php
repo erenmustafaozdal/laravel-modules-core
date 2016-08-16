@@ -104,9 +104,19 @@
                 </span>
             </div>
             @if(isset($page_category))
-            @include('laravel-modules-core::partials.common.indexActions', ['module' => [ 'id' =>  $page_category->id, 'route' => 'page_category.page']])
+                @include('laravel-modules-core::partials.common.indexActions', [
+                    'module' => [ 'id' =>  $page_category->id, 'route' => 'page_category.page'],
+                    'fast_add'  => true,
+                    'add'       => true,
+                    'tools'     => true
+                ])
             @else
-                @include('laravel-modules-core::partials.common.indexActions', ['module' => 'page'])
+                @include('laravel-modules-core::partials.common.indexActions', [
+                    'module' => 'page',
+                    'fast_add'  => true,
+                    'add'       => true,
+                    'tools'     => true
+                ])
             @endif
         </div>
         {{-- /Table Portlet Title and Actions --}}

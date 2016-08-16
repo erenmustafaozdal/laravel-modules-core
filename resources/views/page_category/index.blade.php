@@ -71,7 +71,12 @@
                     {!! lmcTrans('laravel-page-module/admin.page_category.index') !!}
                 </span>
             </div>
-            @include('laravel-modules-core::partials.common.indexActions', ['module' => 'page_category'])
+            @include('laravel-modules-core::partials.common.indexActions', [
+                'module' => 'page_category',
+                'fast_add'  => true,
+                'add'       => true,
+                'tools'     => true
+            ])
         </div>
         {{-- /Table Portlet Title and Actions --}}
 

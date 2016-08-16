@@ -23,6 +23,27 @@ var GTreeTable = {
 
         // default settings
         this.options = $.extend(true, this.getDefaultOptions(), options);
+        // add items to action
+        if (this.options.relationLinks.category || this.options.relationLinks.model) {
+            this.options.gtreetable.actions.push({ divider: true });
+        }
+        if (this.options.relationLinks.category) {
+            this.options.gtreetable.actions.push({
+                name: LMCApp.lang.admin.ops.relation_categories,
+                event: function (node, manager) {
+                    window.location.href = theGTreeTable.options.relationURLs.category.replace('###id###',node.id);
+                }
+            });
+        }
+        if (this.options.relationLinks.model) {
+            this.options.gtreetable.actions.push({
+                name: LMCApp.lang.admin.ops.relations,
+                event: function (node, manager) {
+                    window.location.href = theGTreeTable.options.relationURLs.model.replace('###id###',node.id);
+                }
+            });
+        }
+
         this.element = $(this.options.src);
 
         // gtreetable init
@@ -37,7 +58,18 @@ var GTreeTable = {
      */
     onSave: function(node)
     {
-        var type = node.isSaved() ? 'POST' : 'PATCH';
+        console.log(node);
+        console.log(theGTreeTable.options.nestableLevel);
+        if (node.level > theGTreeTable.options.nestableLevel) {
+            theGTreeTable.getLevelError();
+            return {
+                beforeSend: function(xhr,settings){
+                    return false;
+                }
+            };
+        }
+
+        var type = ! node.isSaved() ? 'POST' : 'PATCH';
         return {
             url: ! node.isSaved() ? apiStoreURL : apiUpdateURL.replace('###id###',node.getId()),
             type: type,
@@ -46,8 +78,7 @@ var GTreeTable = {
                 name: node.getName(),
                 position: node.getInsertPosition(),
                 related: node.getRelatedNodeId()
-            },
-            error: LMCApp.getErrorMessage
+            }
         };
     },
 
@@ -58,11 +89,9 @@ var GTreeTable = {
      */
     onDelete: function(node)
     {
-        console.log(node.getId());
         return {
             url: apiDestroyURL.replace('###id###',node.getId()),
-            type: 'DELETE',
-            error: LMCApp.getErrorMessage
+            type: 'DELETE'
         };
     },
 
@@ -75,13 +104,25 @@ var GTreeTable = {
      */
     onMove: function(source, destination, position)
     {
+        var dl = destination.level, nl = theGTreeTable.options.nestableLevel, p = position;
+        console.log(dl);
+        console.log(nl);
+        console.log(p);
+        if (dl > nl || (dl == nl && p.search("Child") != -1)) {
+            theGTreeTable.getLevelError();
+            return {
+                beforeSend: function(xhr,settings){
+                    return false;
+                }
+            };
+        }
+
         return {
             url: apiMoveURL.replace('###id###', source.getId()),
             data: {
                 related: destination.getId(),
                 position: position
-            },
-            error: LMCApp.getErrorMessage
+            }
         };
     },
 
@@ -95,9 +136,20 @@ var GTreeTable = {
         return {
             url: ajaxURL,
             type: 'GET',
-            data: { id: id },
-            error: LMCApp.getErrorMessage
+            data: { id: id }
         };
+    },
+
+    /**
+     * get level error
+     */
+    getLevelError: function()
+    {
+        lmcApp.getNoty({
+            title: LMCApp.lang.admin.flash.nestable_level_error.title,
+            message: LMCApp.lang.admin.flash.nestable_level_error.message,
+            type: 'error'
+        });
     },
 
     /**
@@ -107,6 +159,15 @@ var GTreeTable = {
     {
         return {
             src: '.gtreetable',
+            relationLinks: {
+                category: false,
+                model: false
+            },
+            relationURLs: {
+                category: false,
+                model: false
+            },
+            nestableLevel: 0,
             gtreetable: {
                 language: 'tr',
                 draggable: true,

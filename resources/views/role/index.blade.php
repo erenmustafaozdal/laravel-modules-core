@@ -74,7 +74,12 @@
                     {!! lmcTrans('laravel-user-module/admin.role.index') !!}
                 </span>
             </div>
-            @include('laravel-modules-core::partials.common.indexActions', ['module' => 'role'])
+            @include('laravel-modules-core::partials.common.indexActions', [
+                'module' => 'role',
+                'fast_add'  => true,
+                'add'       => true,
+                'tools'     => true
+            ])
         </div>
         {{-- /Table Portlet Title and Actions --}}
 

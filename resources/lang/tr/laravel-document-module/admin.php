@@ -16,6 +16,16 @@ return [
         'create_description'                => 'Yeni bir belge kategorisi ekle',
         'show'                              => 'Belge Kategorisi Bilgileri',
         'show_description'                  => ':document_category hakkında bilgiler',
+        'document_category' => [
+            'index'                             => ':document_category Alt Kategoriler',
+            'index_description'                 => 'Bütün :document_category alt kategorileri',
+            'edit'                              => ':document_category Alt Kategori Düzenle',
+            'edit_description'                  => ':document_category alt kategorilerden :document kategorisi bilgilerini düzenle',
+            'create'                            => ':document_category Alt Kategori Ekle',
+            'create_description'                => 'Yeni bir :document_category alt kategorisi ekle',
+            'show'                              => ':document_category Alt Kategori Bilgileri',
+            'show_description'                  => ':document_category alt kategorilerinden :document kategorisi hakkında bilgiler'
+        ],
         'document' => [
             'index'                             => ':document_category Belgeler',
             'index_description'                 => 'Bütün :document_category belgeler',
@@ -70,7 +80,7 @@ return [
     // helpers
     'helpers' => [
         'document_category' => [
-
+            'not_have_child'                => '<h3>Gösterilecek kategori yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni kategori eklemek için sağ üst tarafta bulunan <a class="btn green btn-outline" href="javascript:;"> Yeni Ekle <i class="fa fa-plus"></i> </a> tuşa tıkla.</p>'
         ],
         'document' => [
             'category_id_help'              => 'Belgenin kategorisini seç. Bu alan <em class="label label-warning">zorunludur</em>.',

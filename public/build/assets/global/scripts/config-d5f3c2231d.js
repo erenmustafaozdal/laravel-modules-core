@@ -104,7 +104,8 @@ var LMCApp = {
                 crop: 'Kırp',
                 select: 'Seç',
                 write_here: 'Buraya yaz...',
-                relations: 'İlişkili Veriler'
+                relations: 'İlişkili Veriler',
+                relation_categories: 'İlişkili Kategoriler'
             },
             flash: {
                 store_success: {
@@ -186,6 +187,10 @@ var LMCApp = {
                 group_action_error: {
                     title: 'Toplu İşlem Gerçekleşmedi',
                     message: 'Toplu işlem gerçekleşmedi. Lütfen daha sonra dene!'
+                },
+                nestable_level_error: {
+                    title: 'Alt Öğe Ekleyemezsin',
+                    message: 'İzin verilen alt öğe sınırı aşıldı! Bu öğeyi daha üst seviyeye eklemelisin.'
                 }
             }
         }
@@ -483,23 +488,9 @@ var LMCApp = {
      */
     getErrorMessage: function(xhr)
     {
-        var message = LMCApp.lang.ajaxErrors[xhr.status].message;
-        var errors = JSON.parse(xhr.responseText);
-        if (xhr.status == 422) {
-            message += '<ul>';
-            if (errors.length > 0) {
-                $.each(errors, function (key, value) {
-                    message += '<li> ' + value + '</li>';
-                });
-            } else {
-                message += '<li> ' + errors + '</li>';
-            }
-            message += '</ul>';
-        }
-
         lmcApp.getNoty({
             title: LMCApp.lang.ajaxErrors[xhr.status].title,
-            message: message,
+            message: LMCApp.lang.ajaxErrors[xhr.status].message,
             type: 'error'
         });
     }
