@@ -37,6 +37,26 @@ return [
     'packages' => [
         'laravel-user-module'       => \ErenMustafaOzdal\LaravelUserModule\LaravelUserModuleServiceProvider::class,
         'laravel-page-module'       => \ErenMustafaOzdal\LaravelPageModule\LaravelPageModuleServiceProvider::class,
+        'laravel-document-module'   => \ErenMustafaOzdal\LaravelDocumentModule\LaravelDocumentModuleServiceProvider::class,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Modules Options
+    |--------------------------------------------------------------------------
+    */
+    'options' => [
+        // document category
+        'document_category' => [
+            'show_relation_category_link'=> true, // is show document category nested category link on table
+            'show_relation_document_link'=> true, // is show document category relation document link on table
+
+            // nestable level type : 0 (unlimited), 1 (only root level) or any integer > 1
+            'nestable_level' => [
+                'root'                  => 0, // nestable level on root of document category index
+                'nested_category'       => 1  // nestable level on nested category of document category index
+            ]
+        ]
     ],
 
     /*

@@ -53,6 +53,8 @@ return [
         'action'                            => 'Eylem',
         'select'                            => 'Seç...',
         'status'                            => 'Durum',
+        'yes'                               => 'Evet',
+        'no'                                => 'Hayır',
         'activate'                          => 'Aktifleştir',
         'not_activate'                      => 'Aktifliği kaldır',
         'active'                            => 'Aktif',

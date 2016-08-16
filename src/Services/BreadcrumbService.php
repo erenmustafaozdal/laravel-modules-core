@@ -67,7 +67,14 @@ class BreadcrumbService
      */
     public function getBreadcrumb($model = null, $column = null)
     {
-        $modelTrans = is_null($model) ? [] : [ snake_case( substr( strrchr( get_class($model), '\\' ), 1 ) ) => $model->$column ];
+        $module_name = is_null($model) ? '' : snake_case( substr( strrchr( get_class($model), '\\' ), 1 ) );
+
+        // eğer route_name ikinci ve üçüncü parametresi aynı ise; module_name önüne parent_ ekle
+        // çünkü ikisi aynı model ve iç içe ilişkisi var => admin.document_category.document_category.show gibi
+        $route_name_parts = explode('.', $this->route_name);
+        $module_name = !is_null($model) && $route_name_parts[1] === $route_name_parts[2] ? 'parent_' . $module_name : $module_name;
+
+        $modelTrans = is_null($model) ? [] : [ $module_name => $model->$column ];
         $modelRoute = is_null($model) ? [] : [ 'id' => $model->id ];
 
         $breadcrumbs  = '<ul class="page-breadcrumb breadcrumb">';

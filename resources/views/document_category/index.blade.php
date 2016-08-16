@@ -1,17 +1,17 @@
 @extends(config('laravel-document-module.views.document_category.layout'))
 
 @section('title')
-    @if(isset($document_category))
-        {!! lmcTrans('laravel-document-module/admin.document_category.document_category.index', ['document_category' => $document_category->name]) !!}
+    @if(isset($parent_document_category))
+        {!! lmcTrans('laravel-document-module/admin.document_category.document_category.index', ['parent_document_category' => $parent_document_category->name]) !!}
     @else
         {!! lmcTrans('laravel-document-module/admin.document_category.index') !!}
     @endif
 @endsection
 
 @section('page-title')
-    @if(isset($document_category))
-        <h1>{!! lmcTrans('laravel-document-module/admin.document_category.document_category.index', ['document_category' => $document_category->name]) !!}
-            <small>{!! lmcTrans('laravel-document-module/admin.document_category.document_category.index_description', ['document_category' => $document_category->name]) !!}</small>
+    @if(isset($parent_document_category))
+        <h1>{!! lmcTrans('laravel-document-module/admin.document_category.document_category.index', ['parent_document_category' => $parent_document_category->name]) !!}
+            <small>{!! lmcTrans('laravel-document-module/admin.document_category.document_category.index_description', ['parent_document_category' => $parent_document_category->name]) !!}</small>
         </h1>
     @else
         <h1>{!! lmcTrans('laravel-document-module/admin.document_category.index') !!}
@@ -20,9 +20,9 @@
     @endif
 @endsection
 
-@if(isset($document_category))
+@if(isset($parent_document_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($document_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb($parent_document_category, 'name') !!}
 @endsection
 @endif
 
@@ -41,14 +41,14 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        @if(isset($document_category))
-        var ajaxURL = "{!! route('api.document_category.document_category.index', ['id' => $document_category->id]) !!}";
-        var showURL = "{!! route('admin.document_category.show', [
-            'id' => $document_category->id,
+        @if(isset($parent_document_category))
+        var ajaxURL = "{!! route('api.document_category.document_category.index', ['id' => $parent_document_category->id]) !!}";
+        var showURL = "{!! route('admin.document_category.document_category.show', [
+            'id' => $parent_document_category->id,
             config('laravel-document-module.url.document_category') => '###id###'
         ]) !!}";
-        var editURL = "{!! route('admin.document_category.edit', [
-            'id' => $document_category->id,
+        var editURL = "{!! route('admin.document_category.document_category.edit', [
+            'id' => $parent_document_category->id,
             config('laravel-document-module.url.document_category') => '###id###'
         ]) !!}";
         @else
@@ -71,14 +71,14 @@
         {
             Index.init({
                 relationLinks: {
-                    category: {!! config('laravel-document-module.document_category.show_relation_category_link') ? true : false !!},
-                    model: {!! config('laravel-document-module.document_category.show_relation_document_link') ? true : false !!}
+                    category: {!! config('laravel-modules-core.options.document_category.show_relation_category_link') ? true : false !!},
+                    model: {!! config('laravel-modules-core.options.document_category.show_relation_document_link') ? true : false !!}
                 },
                 relationURLs: {
-                    category: "{!! config('laravel-document-module.document_category.show_relation_category_link') ? route('admin.document_category.document_category.index', ['id' => '###id###']) : '#' !!}",
-                    model: "{!! config('laravel-document-module.document_category.show_relation_document_link') ? route('admin.document_category.document.index', ['id' => '###id###']) : '#' !!}"
+                    category: "{!! config('laravel-modules-core.options.document_category.show_relation_category_link') ? route('admin.document_category.document_category.index', ['id' => '###id###']) : '#' !!}",
+                    model: "{!! config('laravel-modules-core.options.document_category.show_relation_document_link') ? route('admin.document_category.document.index', ['id' => '###id###']) : '#' !!}"
                 },
-                nestableLevel: {!! isset($document_category) ? config('laravel-document-module.document_category.nestable_level.nested_category') : config('laravel-document-module.document_category.nestable_level.root') !!}
+                nestableLevel: {!! isset($parent_document_category) ? config('laravel-modules-core.options.document_category.nestable_level.nested_category') : config('laravel-modules-core.options.document_category.nestable_level.root') !!}
             });
         });
         {{-- /scripts --}}
@@ -97,9 +97,9 @@
                     {!! lmcTrans('laravel-document-module/admin.document_category.index') !!}
                 </span>
             </div>
-            @if(isset($document_category))
+            @if(isset($parent_document_category))
                 @include('laravel-modules-core::partials.common.indexActions', [
-                    'module'    => [ 'id' =>  $document_category->id, 'route' => 'document_category.document_category'],
+                    'module'    => [ 'id' =>  $parent_document_category->id, 'route' => 'document_category.document_category'],
                     'fast_add'  => false,
                     'add'       => true,
                     'tools'     => false
@@ -126,7 +126,7 @@
 
                 {{-- DataTable --}}
                 {{-- if is not have child show info, if have child show table --}}
-                @if( (isset($document_category) && $document_category->isLeaf()) || App\DocumentCategory::all()->count() == 0 )
+                @if( (isset($parent_document_category) && $parent_document_category->isLeaf()) || App\DocumentCategory::all()->count() == 0 )
                     <div class="well well-lg">
                         {!! lmcTrans('laravel-document-module/admin.helpers.document_category.not_have_child') !!}
                     </div>

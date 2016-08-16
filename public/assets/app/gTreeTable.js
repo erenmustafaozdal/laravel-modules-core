@@ -58,8 +58,6 @@ var GTreeTable = {
      */
     onSave: function(node)
     {
-        console.log(node);
-        console.log(theGTreeTable.options.nestableLevel);
         if (node.level > theGTreeTable.options.nestableLevel) {
             theGTreeTable.getLevelError();
             return {
@@ -105,9 +103,6 @@ var GTreeTable = {
     onMove: function(source, destination, position)
     {
         var dl = destination.level, nl = theGTreeTable.options.nestableLevel, p = position;
-        console.log(dl);
-        console.log(nl);
-        console.log(p);
         if (dl > nl || (dl == nl && p.search("Child") != -1)) {
             theGTreeTable.getLevelError();
             return {
