@@ -23,47 +23,20 @@
         {{-- js file path --}}
         var formLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
+        var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
+        var showJs = "{!! lmcElixir('assets/pages/scripts/role/show.js') !!}";
+        var permissionJs = "{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}";
+        var easypiechartJs = "{!! lmcElixir('assets/app/easypiechart.js') !!}";
         {{-- /js file path --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            name: {
-                required: "{!! LMCValidation::getMessage('name','required') !!}"
-            },
-            slug: {
-                alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}"
-            }
+            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
+            slug: { alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}" }
         };
         {{-- /languages --}}
-
-        {{-- scripts --}}
-        $script.ready('validation', function()
-        {
-            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
-        });
-        $script.ready('jquery', function()
-        {
-            $script("{!! lmcElixir('assets/pages/scripts/role/show.js') !!}",'show');
-            $script("{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}", 'permission');
-            $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-easypiechart/dist/jquery.easypiechart.min.js','easypiechart');
-            $script("{!! lmcElixir('assets/app/easypiechart.js') !!}", 'app_easypiechart');
-        });
-        $script.ready(['show', 'config'], function()
-        {
-            Show.init();
-        });
-        $script.ready(['config', 'permission'], function()
-        {
-            Permission.init();
-        });
-        $script.ready(['config', 'easypiechart', 'app_easypiechart'], function()
-        {
-            EasyPie.init({
-                src: '.easy-pie-chart .number'
-            });
-        });
-        {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/role/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
 @endsection
 

@@ -48,6 +48,8 @@
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
+        var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
+        var showJs = "{!! lmcElixir('assets/pages/scripts/page/show.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
@@ -56,65 +58,20 @@
         @else
             var modelsURL = "{!! route('api.page_category.models') !!}";
         @endif
+        var tinymceURL = "{!! route('elfinder.tinymce4') !!}";
+        var tinymceSaveURL = "{!! route('api.page.contentUpdate', [ 'id' => $page->id ]) !!}";
+        var tinymcePermission = {!! Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.page.update') ? 'true' : 'false' !!};
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            category_id: {
-                required: "{!! LMCValidation::getMessage('category_id','required') !!}"
-            },
-            title: {
-                required: "{!! LMCValidation::getMessage('title','required') !!}"
-            },
-            slug: {
-                alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}"
-            }
+            category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
+            slug: { alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}" }
         };
         {{-- /languages --}}
-
-        {{-- scripts --}}
-        $script.ready(['validation'], function()
-        {
-            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
-            $script("{!! lmcElixir('assets/pages/scripts/page/show.js') !!}",'show');
-        });
-        $script.ready(['show', 'config'], function()
-        {
-            Show.init();
-        });
-        $script.ready(['config','app_select2'], function()
-        {
-            Select2.init({
-                variableNames: {
-                    text: 'name'
-                },
-                select2: {
-                    ajax: {
-                        url: modelsURL
-                    }
-                }
-            });
-        });
-
-        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.page.update'))
-        $script.ready(['config','app_tinymce'], function()
-        {
-            Tinymce.init({
-                route: '{!! route('elfinder.tinymce4') !!}',
-                saveRoute: '{!! route('api.page.contentUpdate', [ 'id' => $page->id ]) !!}',
-                tinymce: {
-                    inline: true,
-                    content_css: '',
-                    toolbar: [
-                        'saveToDb undo redo | fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify',
-                        'bullist numlist outdent indent | link image | styleselect emoticons hr'
-                    ]
-                }
-            });
-        });
-        @endif
-        {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/page/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>
@@ -149,7 +106,7 @@
             {{-- /Actions --}}
         </div>
         {{-- /Portlet Title --}}
-        
+
         {{-- Portlet Body --}}
         <div class="portlet-body profile">
 
@@ -158,7 +115,7 @@
             {{-- /Error Messages --}}
 
             <div class="row profile-account">
-                
+
                 {{-- Profile Navigation --}}
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
@@ -189,11 +146,11 @@
                     </ul>
                 </div>
                 {{-- /Profile Navigation --}}
-                
+
                 {{-- Profile Content --}}
                 <div class="col-md-9">
                     <div class="tab-content">
-                        
+
                         {{-- Overview --}}
                         <div id="overview" class="tab-pane active">
                             <div class="profile-info">
@@ -211,7 +168,7 @@
                         {{-- Edit Info --}}
                         @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($page_category) ? 'page_category.page' : 'page') .'.update'))
                         <div id="edit_info" class="tab-pane form">
-                            {!! Form::open([
+                            {!! Form::model($page,[
                                 'method'    => 'PATCH',
                                 'url'       => isset($page_category) ? route('admin.page_category.page.update', [
                                     'id'                                    => $page_category->id,
@@ -238,11 +195,11 @@
                         </div>
                         @endif
                         {{-- /Edit Info --}}
-                        
+
                     </div>
                 </div>
                 {{-- /Profile Content --}}
-                
+
             </div>
         </div>
         {{-- /Portlet Body --}}

@@ -1,7 +1,7 @@
 {{-- Meta Title --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.meta_title') !!}</label>
-    {!! Form::text( 'meta_title', isset($page) ? $page->meta_title : null, [
+    {!! Form::text( 'meta_title', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
         'placeholder'   => lmcTrans('laravel-page-module/admin.fields.page.meta_title'),
         'maxlength'     => 255
@@ -13,7 +13,7 @@
 {{-- Meta Description --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.meta_description') !!}</label>
-    {!! Form::textarea( 'meta_description', isset($page) ? $page->meta_description : null, [
+    {!! Form::textarea( 'meta_description', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
         'placeholder'   => lmcTrans('laravel-page-module/admin.fields.page.meta_description'),
         'rows'          => 3,
@@ -26,7 +26,7 @@
 {{-- Meta Keywords --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.meta_keywords') !!}</label>
-    {!! Form::text( 'meta_keywords', isset($page) ? $page->meta_keywords : null, [
+    {!! Form::text( 'meta_keywords', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
         'placeholder'   => lmcTrans('laravel-page-module/admin.fields.page.meta_keywords'),
         'maxlength'     => 255

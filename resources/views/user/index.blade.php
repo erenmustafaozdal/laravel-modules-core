@@ -26,6 +26,7 @@
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var formJs = "{!! lmcElixir('assets/pages/scripts/user/user-form.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/user/index.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
@@ -36,39 +37,15 @@
 
         {{-- languages --}}
         var messagesOfRules = {
-            first_name: {
-                required: "{!! LMCValidation::getMessage('first_name','required') !!}"
-            },
-            last_name: {
-                required: "{!! LMCValidation::getMessage('last_name','required') !!}"
-            },
-            email: {
-                required: "{!! LMCValidation::getMessage('email','required') !!}",
-                email: "{!! LMCValidation::getMessage('email','email') !!}"
-            },
-            password: {
-                required: "{!! LMCValidation::getMessage('password','required') !!}",
-                minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}"
-            },
-            password_confirmation: {
-                required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}",
-                minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}",
-                equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}"
-            }
+            first_name: { required: "{!! LMCValidation::getMessage('first_name','required') !!}" },
+            last_name: { required: "{!! LMCValidation::getMessage('last_name','required') !!}" },
+            email: { required: "{!! LMCValidation::getMessage('email','required') !!}", email: "{!! LMCValidation::getMessage('email','email') !!}" },
+            password: { required: "{!! LMCValidation::getMessage('password','required') !!}", minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}" },
+            password_confirmation: { required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}", minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}", equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}" }
         };
         {{-- /languages --}}
-
-        {{-- scripts --}}
-        $script.ready('app_editor', function()
-        {
-            $script("{!! lmcElixir('assets/pages/scripts/user/index.js') !!}",'index');
-        });
-        $script.ready(['config','index'], function()
-        {
-            Index.init();
-        });
-        {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/user/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
 @endsection
 
