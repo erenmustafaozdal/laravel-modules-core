@@ -42,6 +42,9 @@
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var formJs = "{!! lmcElixir('assets/pages/scripts/page/page-form.js') !!}";
+        var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/page/index.js') !!}";
+        var indexParam = "{!! isset($page_category) ? 'category_id' : '' !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
@@ -58,37 +61,13 @@
 
         {{-- languages --}}
         var messagesOfRules = {
-            category_id: {
-                required: "{!! LMCValidation::getMessage('category_id','required') !!}"
-            },
-            title: {
-                required: "{!! LMCValidation::getMessage('title','required') !!}"
-            },
-            slug: {
-                alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}"
-            }
+            category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
+            slug: { alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}" }
         };
         {{-- /languages --}}
-
-        {{-- scripts --}}
-        $script.ready('validation', function()
-        {
-            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
-        });
-        $script.ready('app_editor', function()
-        {
-            $script("{!! lmcElixir('assets/pages/scripts/page/index.js') !!}",'index');
-        });
-        $script.ready(['config','index'], function()
-        {
-            @if(isset($page_category))
-            Index.init('category_id');
-            @else
-            Index.init();
-            @endif
-        });
-        {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/page/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
 @endsection
 

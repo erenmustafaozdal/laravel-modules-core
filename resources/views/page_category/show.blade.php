@@ -22,31 +22,17 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
+        var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
+        var showJs = "{!! lmcElixir('assets/pages/scripts/page_category/show.js') !!}";
         {{-- /js file path --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            name: {
-                required: "{!! LMCValidation::getMessage('name','required') !!}"
-            }
+            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };
         {{-- /languages --}}
-
-        {{-- scripts --}}
-        $script.ready('validation', function()
-        {
-            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
-        });
-        $script.ready('jquery', function()
-        {
-            $script("{!! lmcElixir('assets/pages/scripts/page_category/show.js') !!}",'show');
-        });
-        $script.ready(['show', 'config'], function()
-        {
-            Show.init();
-        });
-        {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/page_category/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
 @endsection
 
@@ -161,7 +147,7 @@
                         {{-- Edit Info --}}
                         @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.page_category.update'))
                         <div id="edit_info" class="tab-pane form">
-                            {!! Form::open([
+                            {!! Form::model($page_category,[
                                 'method'    => 'PATCH',
                                 'url'       => route('admin.page_category.update', ['id' => $page_category->id]),
                                 'id'        => 'page_category-edit-info'

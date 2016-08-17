@@ -26,6 +26,8 @@
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var formJs = "{!! lmcElixir('assets/pages/scripts/page_category/page_category-form.js') !!}";
+        var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/page_category/index.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
@@ -36,27 +38,11 @@
 
         {{-- languages --}}
         var messagesOfRules = {
-            name: {
-                required: "{!! LMCValidation::getMessage('name','required') !!}"
-            }
+            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };
         {{-- /languages --}}
-
-        {{-- scripts --}}
-        $script.ready('validation', function()
-        {
-            $script("{!! lmcElixir('assets/app/validationMethods.js') !!}");
-        });
-        $script.ready('app_editor', function()
-        {
-            $script("{!! lmcElixir('assets/pages/scripts/page_category/index.js') !!}",'index');
-        });
-        $script.ready(['config','index'], function()
-        {
-            Index.init();
-        });
-        {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/page_category/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
 @endsection
 

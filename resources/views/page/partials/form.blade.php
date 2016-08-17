@@ -29,7 +29,7 @@
 {{-- Name --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.title') !!}</label>
-    {!! Form::text( 'title', isset($page) ? $page->title : null, [
+    {!! Form::text( 'title', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix',
         'placeholder'   => lmcTrans('laravel-page-module/admin.fields.page.title')
     ]) !!}
@@ -39,7 +39,7 @@
 {{-- Slug --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!}</label>
-    {!! Form::text( 'slug', isset($page) ? $page->slug : null, [
+    {!! Form::text( 'slug', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix',
         'placeholder'   => lmcTrans('laravel-page-module/admin.fields.page.slug')
     ]) !!}
@@ -60,7 +60,7 @@
 {{-- Description --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.description') !!}</label>
-    {!! Form::textarea( 'description', isset($page) ? $page->description : null, [
+    {!! Form::textarea( 'description', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
         'placeholder'   => lmcTrans('laravel-page-module/admin.fields.page.description'),
         'rows'          => 3,
@@ -73,7 +73,7 @@
 <div class="form-group last">
     <label class="control-label">{!! trans('laravel-modules-core::admin.ops.status') !!}</label>
     <div class="clearfix"></div>
-    {!! Form::checkbox( 'is_publish', 1, isset($page) ? $page->is_publish : null, [
+    {!! Form::checkbox( 'is_publish', 1, null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.publish'),
         'data-on-color' => 'success',

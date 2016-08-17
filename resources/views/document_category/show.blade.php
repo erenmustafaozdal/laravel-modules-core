@@ -41,27 +41,16 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
+        var showJs = "{!! lmcElixir('assets/pages/scripts/document_category/show.js') !!}";
         {{-- /js file path --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            name: {
-                required: "{!! LMCValidation::getMessage('name','required') !!}"
-            }
+            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };
         {{-- /languages --}}
-
-        {{-- scripts --}}
-        $script.ready(['validation'], function()
-        {
-            $script("{!! lmcElixir('assets/pages/scripts/document_category/show.js') !!}",'show');
-        });
-        $script.ready(['show', 'config'], function()
-        {
-            Show.init();
-        });
-        {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/document_category/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
 @endsection
 
@@ -138,7 +127,7 @@
                         {{-- Edit Info --}}
                         @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_document_category) ? 'document_category.document_category' : 'document_category') .'.update'))
                         <div id="edit_info" class="tab-pane form">
-                            {!! Form::open([
+                            {!! Form::model($document_category,[
                                 'method'    => 'PATCH',
                                 'url'       => isset($parent_document_category) ? route('admin.document_category.document_category.update', [ 'id' => $parent_document_category->id, config('laravel-document-module.url.document_category') => $document_category->id ]) : route('admin.document_category.update', [ 'id' => $document_category->id ]),
                                 'id'        => 'document_category-edit-info'

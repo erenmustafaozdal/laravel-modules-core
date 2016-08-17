@@ -7,7 +7,7 @@
 {{-- Name --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}</label>
-    {!! Form::text( 'name', $model ? $model->name : null, [
+    {!! Form::text( 'name', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix',
         'placeholder'   => lmcTrans('laravel-document-module/admin.fields.document_category.name')
     ]) !!}
@@ -20,7 +20,7 @@
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.has_description') !!}</label>
     <div class="clearfix"></div>
     {!! Form::hidden('has_description', 0) !!}
-    {!! Form::checkbox( 'has_description', 1, $model ? $model->has_description : null, [
+    {!! Form::checkbox( 'has_description', 1, null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
         'data-on-color' => 'success',
@@ -36,7 +36,7 @@
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.has_photo') !!}</label>
     <div class="clearfix"></div>
     {!! Form::hidden('has_photo', 0) !!}
-    {!! Form::checkbox( 'has_photo', 1, $model ? $model->has_photo : null, [
+    {!! Form::checkbox( 'has_photo', 1, null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
         'data-on-color' => 'success',
@@ -52,7 +52,7 @@
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_title') !!}</label>
     <div class="clearfix"></div>
     {!! Form::hidden('show_title', 0) !!}
-    {!! Form::checkbox( 'show_title', 1, $model ? $model->show_title : null, [
+    {!! Form::checkbox( 'show_title', 1, null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
         'data-on-color' => 'success',
@@ -68,7 +68,7 @@
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_description') !!}</label>
     <div class="clearfix"></div>
     {!! Form::hidden('show_description', 0) !!}
-    {!! Form::checkbox( 'show_description', 1, $model ? $model->show_description : null, [
+    {!! Form::checkbox( 'show_description', 1, null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
         'data-on-color' => 'success',
@@ -84,7 +84,7 @@
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_photo') !!}</label>
     <div class="clearfix"></div>
     {!! Form::hidden('show_photo', 0) !!}
-    {!! Form::checkbox( 'show_photo', 1, $model ? $model->show_photo : null, [
+    {!! Form::checkbox( 'show_photo', 1, null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
         'data-on-color' => 'success',

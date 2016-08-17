@@ -38,6 +38,9 @@
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var avatarPhotoPath = "{!! '/' . config('laravel-user-module.user.avatar_path') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
+        var showJs = "{!! lmcElixir('assets/pages/scripts/user/show.js') !!}";
+        var permissionJs = "{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}";
+        var easypiechartJs = "{!! lmcElixir('assets/app/easypiechart.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
@@ -47,61 +50,17 @@
 
         {{-- languages --}}
         var userEditInfoMessages = {
-            first_name: {
-                required: "{!! LMCValidation::getMessage('first_name','required') !!}"
-            },
-            last_name: {
-                required: "{!! LMCValidation::getMessage('last_name','required') !!}"
-            }
+            first_name: { required: "{!! LMCValidation::getMessage('first_name','required') !!}" },
+            last_name: { required: "{!! LMCValidation::getMessage('last_name','required') !!}" }
         };
         var userChangePasswordMessages = {
-            password: {
-                required: "{!! LMCValidation::getMessage('password','required') !!}",
-                minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}"
-            },
-            password_confirmation: {
-                required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}",
-                minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}",
-                equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}"
-            }
+            password: { required: "{!! LMCValidation::getMessage('password','required') !!}", minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}" },
+            password_confirmation: { required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}", minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}", equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}" }
         };
         var isAuthUser = {{ $user->id === \Cartalyst\Sentinel\Laravel\Facades\Sentinel::getUser()->id ? 'true' : 'false' }};
         {{-- /languages --}}
-
-        {{-- scripts --}}
-        $script.ready(['app_fileinput','app_jcrop','validation'], function()
-        {
-            $script("{!! lmcElixir('assets/pages/scripts/user/show.js') !!}",'show');
-            $script("{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}", 'permission');
-            $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-easypiechart/dist/jquery.easypiechart.min.js','easypiechart');
-            $script("{!! lmcElixir('assets/app/easypiechart.js') !!}", 'app_easypiechart');
-        });
-        $script.ready(['show', 'config','permission'], function()
-        {
-            Show.init();
-            Permission.init();
-        });
-        $script.ready(['config', 'easypiechart', 'app_easypiechart'], function()
-        {
-            EasyPie.init({
-                src: '.easy-pie-chart .number'
-            });
-        });
-        $script.ready(['config','app_select2'], function()
-        {
-            Select2.init({
-                variableNames: {
-                    text: 'name'
-                },
-                select2: {
-                    ajax: {
-                        url: modelsURL
-                    }
-                }
-            });
-        });
-        {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/user/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
 @endsection

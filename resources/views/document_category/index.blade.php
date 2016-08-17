@@ -38,6 +38,7 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var gtreetableJs = "{!! lmcElixir('assets/app/gTreeTable.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/document_category/index.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
@@ -63,26 +64,14 @@
         {{-- /routes --}}
 
         {{-- scripts --}}
-        $script.ready('app_gtreetable', function()
-        {
-            $script("{!! lmcElixir('assets/pages/scripts/document_category/index.js') !!}",'index');
-        });
-        $script.ready(['config','index'], function()
-        {
-            Index.init({
-                relationLinks: {
-                    category: {!! config('laravel-modules-core.options.document_category.show_relation_category_link') ? true : false !!},
-                    model: {!! config('laravel-modules-core.options.document_category.show_relation_document_link') ? true : false !!}
-                },
-                relationURLs: {
-                    category: "{!! config('laravel-modules-core.options.document_category.show_relation_category_link') ? route('admin.document_category.document_category.index', ['id' => '###id###']) : '#' !!}",
-                    model: "{!! config('laravel-modules-core.options.document_category.show_relation_document_link') ? route('admin.document_category.document.index', ['id' => '###id###']) : '#' !!}"
-                },
-                nestableLevel: {!! isset($parent_document_category) ? config('laravel-modules-core.options.document_category.nestable_level.nested_category') : config('laravel-modules-core.options.document_category.nestable_level.root') !!}
-            });
-        });
+        var relationLinksCategory = "{!! config('laravel-modules-core.options.document_category.show_relation_category_link') !!}";
+        var relationLinksModel = "{!! config('laravel-modules-core.options.document_category.show_relation_document_link') !!}";
+        var relationURLsCategory = "{!! config('laravel-modules-core.options.document_category.show_relation_category_link') ? route('admin.document_category.document_category.index', ['id' => '###id###']) : '#' !!}";
+        var relationURLsModel = "{!! config('laravel-modules-core.options.document_category.show_relation_document_link') ? route('admin.document_category.document.index', ['id' => '###id###']) : '#' !!}";
+        var nestableLevel = "{!! isset($parent_document_category) ? config('laravel-modules-core.options.document_category.nestable_level.nested_category') : config('laravel-modules-core.options.document_category.nestable_level.root') !!}";
         {{-- /scripts --}}
     </script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/document_category/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-gTreeTable.js') !!}"></script>
 @endsection
 
