@@ -74,7 +74,7 @@
         {{-- Portlet Title and Actions --}}
         <div class="portlet-title">
             {{-- Caption --}}
-            <div class="caption">
+            <div class="caption margin-right-10">
                 <i class="icon-note font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($parent_document_category))
@@ -115,8 +115,10 @@
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
                     'url'   => isset($parent_document_category) ? route('admin.document_category.document_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $parent_document_category->id,
-                        config('laravel-page-module.url.document_category') => $operation === 'edit' ? $document_category->id : null
-                    ]) : route('admin.document_category.' . ($operation === 'edit' ? 'update' : 'store')),
+                        config('laravel-document-module.url.document_category') => $operation === 'edit' ? $document_category->id : null
+                    ]) : route('admin.document_category.' . ($operation === 'edit' ? 'update' : 'store'),[
+                            'id' => $document_category->id,
+                    ]),
                     'class' => 'form'
             ];
             ?>
