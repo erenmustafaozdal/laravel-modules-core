@@ -41,6 +41,13 @@
             name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };
         {{-- /languages --}}
+
+        {{-- scripts --}}
+        var datatableIsResponsive = {!! config('laravel-modules-core.options.data_table.is_responsive') ? 'true' : 'false' !!};
+        var groupActionSupport = {!! config('laravel-modules-core.options.page_category.datatable_group_action') ? 'true' : 'false' !!};
+        var rowDetailSupport = {!! config('laravel-modules-core.options.page_category.datatable_detail') ? 'true' : 'false' !!};
+        var datatableFilterSupport = {!! config('laravel-modules-core.options.page_category.datatable_filter') ? 'true' : 'false' !!};
+        {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/page_category/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
@@ -59,9 +66,9 @@
             </div>
             @include('laravel-modules-core::partials.common.indexActions', [
                 'module' => 'page_category',
-                'fast_add'  => true,
+                'fast_add'  => config('laravel-modules-core.options.page_category.datatable_fast_add'),
                 'add'       => true,
-                'tools'     => true
+                'tools'     => config('laravel-modules-core.options.page_category.datatable_tools')
             ])
         </div>
         {{-- /Table Portlet Title and Actions --}}
@@ -84,16 +91,39 @@
                 <table class="table table-striped table-bordered table-hover table-checkable lmcDataTable">
                     <thead>
                         <tr role="row" class="heading">
-                            <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
-                            <th class="all" width="2%"></th>
+                            {{-- Datatable Group Action Column --}}
+                            @if(config('laravel-modules-core.options.page_category.datatable_group_action'))
+                                <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
+                            @endif
+                            {{-- /Datatable Group Action Column --}}
+
+                            {{-- Datatable Row Detail Column --}}
+                            @if(config('laravel-modules-core.options.page_category.datatable_detail'))
+                                <th class="all" width="2%"></th>
+                            @endif
+                            {{-- /Datatable Row Detail Column --}}
+
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!} </th>
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
                         </tr>
+
+                        {{-- Datatable Filter --}}
+                        @if(config('laravel-modules-core.options.page_category.datatable_filter'))
                         <tr role="row" class="filter">
-                            <td></td>
-                            <td></td>
+                            {{-- Datatable Group Action Column --}}
+                            @if(config('laravel-modules-core.options.page_category.datatable_group_action'))
+                                <td></td>
+                            @endif
+                            {{-- /Datatable Group Action Column --}}
+
+                            {{-- Datatable Row Detail Column --}}
+                            @if(config('laravel-modules-core.options.page_category.datatable_detail'))
+                                <td></td>
+                            @endif
+                            {{-- /Datatable Row Detail Column --}}
+
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
                             </td>
@@ -107,6 +137,9 @@
                                 @include('laravel-modules-core::partials.common.datatables.filterActions')
                             </td>
                         </tr>
+                        @endif
+                        {{-- /Datatable Filter --}}
+
                     </thead>
                     <tbody>
                     </tbody>

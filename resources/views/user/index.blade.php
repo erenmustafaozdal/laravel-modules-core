@@ -44,6 +44,13 @@
             password_confirmation: { required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}", minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}", equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}" }
         };
         {{-- /languages --}}
+
+        {{-- scripts --}}
+        var datatableIsResponsive = {!! config('laravel-modules-core.options.data_table.is_responsive') ? 'true' : 'false' !!};
+        var groupActionSupport = {!! config('laravel-modules-core.options.user.datatable_group_action') ? 'true' : 'false' !!};
+        var rowDetailSupport = {!! config('laravel-modules-core.options.user.datatable_detail') ? 'true' : 'false' !!};
+        var datatableFilterSupport = {!! config('laravel-modules-core.options.user.datatable_filter') ? 'true' : 'false' !!};
+        {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/user/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
@@ -62,9 +69,9 @@
             </div>
             @include('laravel-modules-core::partials.common.indexActions', [
                 'module' => 'user',
-                'fast_add'  => true,
+                'fast_add'  => config('laravel-modules-core.options.user.datatable_fast_add'),
                 'add'       => true,
-                'tools'     => true
+                'tools'     => config('laravel-modules-core.options.user.datatable_tools')
             ])
         </div>
         {{-- /Table Portlet Title and Actions --}}
@@ -78,17 +85,29 @@
 
             <div class="table-container">
                 {{-- Table Actions --}}
-                @include('laravel-modules-core::partials.common.indexTableActions', [
-                    'actions'   => ['activate','not_activate','destroy']
-                ])
+                @if(config('laravel-modules-core.options.user.datatable_group_action'))
+                    @include('laravel-modules-core::partials.common.indexTableActions', [
+                        'actions'   => ['activate','not_activate','destroy']
+                    ])
+                @endif
                 {{-- /Table Actions --}}
 
                 {{-- DataTable --}}
                 <table class="table table-striped table-bordered table-hover table-checkable lmcDataTable">
                     <thead>
                         <tr role="row" class="heading">
-                            <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
-                            <th class="all" width="2%"></th>
+                            {{-- Datatable Group Action Column --}}
+                            @if(config('laravel-modules-core.options.user.datatable_group_action'))
+                                <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
+                            @endif
+                            {{-- /Datatable Group Action Column --}}
+
+                            {{-- Datatable Row Detail Column --}}
+                            @if(config('laravel-modules-core.options.user.datatable_detail'))
+                                <th class="all" width="2%"></th>
+                            @endif
+                            {{-- /Datatable Row Detail Column --}}
+
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
                             <th class="all" width="5%"> {!! lmcTrans('laravel-user-module/admin.fields.user.photo') !!} </th>
                             <th class="all" width="100"> {!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} </th>
@@ -96,30 +115,46 @@
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
                         </tr>
-                        <tr role="row" class="filter">
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
-                            </td>
-                            <td> </td>
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="first_name" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} - {!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}">
-                            </td>
-                            <td>
-                                <select name="status" class="form-control form-filter input-sm">
-                                    <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
-                                    <option value="1">{!! trans('laravel-modules-core::admin.ops.active') !!}</option>
-                                    <option value="0">{!! trans('laravel-modules-core::admin.ops.not_active') !!}</option>
-                                </select>
-                            </td>
-                            <td>
-                                @include('laravel-modules-core::partials.common.datatables.filterDate')
-                            </td>
-                            <td>
-                                @include('laravel-modules-core::partials.common.datatables.filterActions')
-                            </td>
-                        </tr>
+
+                        {{-- Datatable Filter --}}
+                        @if(config('laravel-modules-core.options.user.datatable_filter'))
+                            <tr role="row" class="filter">
+                                {{-- Datatable Group Action Column --}}
+                                @if(config('laravel-modules-core.options.user.datatable_group_action'))
+                                    <td></td>
+                                @endif
+                                {{-- /Datatable Group Action Column --}}
+
+                                {{-- Datatable Row Detail Column --}}
+                                @if(config('laravel-modules-core.options.user.datatable_detail'))
+                                    <td></td>
+                                @endif
+                                {{-- /Datatable Row Detail Column --}}
+
+                                <td>
+                                    <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
+                                </td>
+                                <td> </td>
+                                <td>
+                                    <input type="text" class="form-control form-filter input-sm" name="first_name" placeholder="{!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!} - {!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}">
+                                </td>
+                                <td>
+                                    <select name="status" class="form-control form-filter input-sm">
+                                        <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
+                                        <option value="1">{!! trans('laravel-modules-core::admin.ops.active') !!}</option>
+                                        <option value="0">{!! trans('laravel-modules-core::admin.ops.not_active') !!}</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    @include('laravel-modules-core::partials.common.datatables.filterDate')
+                                </td>
+                                <td>
+                                    @include('laravel-modules-core::partials.common.datatables.filterActions')
+                                </td>
+                            </tr>
+                        @endif
+                        {{-- /Datatable Filter --}}
+
                     </thead>
                     <tbody>
                     </tbody>

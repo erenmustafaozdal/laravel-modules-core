@@ -65,10 +65,10 @@
 
         {{-- scripts --}}
         var relationLinksCategory = "{!! config('laravel-modules-core.options.document_category.show_relation_category_link') !!}";
-        var relationLinksModel = "{!! config('laravel-modules-core.options.document_category.show_relation_document_link') !!}";
+        var relationLinksModel = "{!! config('laravel-modules-core.options.document_category.show_relation_model_link') !!}";
         var relationURLsCategory = "{!! config('laravel-modules-core.options.document_category.show_relation_category_link') ? route('admin.document_category.document_category.index', ['id' => '###id###']) : '#' !!}";
-        var relationURLsModel = "{!! config('laravel-modules-core.options.document_category.show_relation_document_link') ? route('admin.document_category.document.index', ['id' => '###id###']) : '#' !!}";
-        var nestableLevel = "{!! isset($parent_document_category) ? config('laravel-modules-core.options.document_category.nestable_level.nested_category') : config('laravel-modules-core.options.document_category.nestable_level.root') !!}";
+        var relationURLsModel = "{!! config('laravel-modules-core.options.document_category.show_relation_model_link') ? route('admin.document_category.document.index', ['id' => '###id###']) : '#' !!}";
+        var nestableLevel = "{!! isset($parent_document_category) ? config('laravel-modules-core.options.document_category.nestable_level_nested') : config('laravel-modules-core.options.document_category.nestable_level_root') !!}";
         {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/document_category/index.js') !!}"></script>

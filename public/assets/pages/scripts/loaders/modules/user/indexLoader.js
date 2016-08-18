@@ -6,6 +6,13 @@
     });
     $script.ready(['config','index'], function()
     {
-        Index.init();
+        Index.init({
+            DataTable: {
+                datatableIsResponsive: datatableIsResponsive,
+                groupActionSupport: groupActionSupport,
+                rowDetailSupport: rowDetailSupport,
+                datatableFilterSupport: datatableFilterSupport
+            }
+        });
     });
 })();
