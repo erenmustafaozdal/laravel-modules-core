@@ -35,6 +35,11 @@ var DataTable = {
     ajaxParams: {},
 
     /**
+     * exporting index
+     */
+    exportIndex: 0,
+
+    /**
      * init function
      * @param options
      */
@@ -62,6 +67,20 @@ var DataTable = {
         $.fn.dataTableExt.oStdClasses.sFilterInput = "form-control input-xs input-sm input-inline";
         $.fn.dataTableExt.oStdClasses.sLengthSelect = "form-control input-xs input-sm input-inline";
 
+        // ##### some relative changes
+        // if relation table; make some changes on the table
+        if (theDataTable.tableOptions.isRelationTable) {
+            theDataTable.tableOptions.changeRelationTable();
+        }
+        // set columns
+        theDataTable.setColumns();
+        // set datatable dom pattern
+        theDataTable.setTableDom();
+        // set export options
+        theDataTable.setExportOptions();
+        // set data table default order
+        theDataTable.setOrder();
+
         // initialize a datatable
         theDataTable.dataTable = theDataTable.table.DataTable(theDataTable.tableOptions.dataTable);
 
@@ -74,42 +93,47 @@ var DataTable = {
         theDataTable.tableWrapper = theDataTable.table.parents('.dataTables_wrapper');
 
         // build table group actions panel
-        if ($('.table-actions-wrapper', theDataTable.tableContainer).size() === 1) {
+        if (theDataTable.tableOptions.groupActionSupport && $('.table-actions-wrapper', theDataTable.tableContainer).size() === 1) {
             $('.table-group-actions', theDataTable.tableWrapper).html($('.table-actions-wrapper', theDataTable.tableContainer).html()); // place the panel inside the wrapper
             $('.table-actions-wrapper', theDataTable.tableContainer).remove(); // remove the template container
         }
 
         // handle group checkboxes check/uncheck
-        $('.group-checkable', theDataTable.table).change(function()
-        {
-            var set = theDataTable.table.find('tbody > tr > td:nth-child(1) input[type="checkbox"]');
-            var checked = $(this).prop("checked");
-            $(set).each(function() {
-                $(this).prop("checked", checked);
+        if (theDataTable.tableOptions.groupActionSupport) {
+            $('.group-checkable', theDataTable.table).change(function () {
+                var set = theDataTable.table.find('tbody > tr > td:nth-child(1) input[type="checkbox"]');
+                var checked = $(this).prop("checked");
+                $(set).each(function () {
+                    $(this).prop("checked", checked);
+                });
+                $.uniform.update(set);
+                theDataTable.countSelectedRecords();
             });
-            $.uniform.update(set);
-            theDataTable.countSelectedRecords();
-        });
+        }
+
 
         // handle row's checkbox click
-        theDataTable.table.on('change', 'tbody > tr > td:nth-child(1) input[type="checkbox"]', function()
-        {
-            theDataTable.countSelectedRecords();
-        });
+        if (theDataTable.tableOptions.groupActionSupport) {
+            theDataTable.table.on('change', 'tbody > tr > td:nth-child(1) input[type="checkbox"]', function () {
+                theDataTable.countSelectedRecords();
+            });
+        }
 
         // handle filter submit button click
-        theDataTable.table.on('click', '.filter-submit', function(e)
-        {
-            e.preventDefault();
-            theDataTable.submitFilter();
-        });
+        if (theDataTable.tableOptions.datatableFilterSupport) {
+            theDataTable.table.on('click', '.filter-submit', function (e) {
+                e.preventDefault();
+                theDataTable.submitFilter();
+            });
+        }
 
         // handle filter cancel button click
-        theDataTable.table.on('click', '.filter-cancel', function(e)
-        {
-            e.preventDefault();
-            theDataTable.resetFilter();
-        });
+        if (theDataTable.tableOptions.datatableFilterSupport) {
+            theDataTable.table.on('click', '.filter-cancel', function (e) {
+                e.preventDefault();
+                theDataTable.resetFilter();
+            });
+        }
 
         // handle datatable custom tools
         $('#lmcDataTableTools > li > a.tool-action').on('click', function()
@@ -119,25 +143,25 @@ var DataTable = {
         });
 
         // add event listener for opening and closing details
-        $(theDataTable.tableOptions.src + ' tbody').on('click','tr td.control',function()
-        {
-            var tr = $(this).closest('tr');
-            var row = theDataTable.getDataTable().row(tr);
-            if (row.child.isShown()) {
-                row.child.hide();
-                tr.removeClass('parent');
-            } else {
-                $.ajax({
-                    url: row.data().urls.details,
-                    type: 'GET',
-                    success: function(data)
-                    {
-                        row.child( theDataTable.tableOptions.getDetailTableFormat( data.data[0] ) ).show();
-                        tr.addClass('parent').next().addClass('child').children('td').addClass('child');
-                    }
-                });
-            }
-        });
+        if (theDataTable.tableOptions.rowDetailSupport) {
+            $(theDataTable.tableOptions.src + ' tbody').on('click', 'tr td.control', function () {
+                var tr = $(this).closest('tr');
+                var row = theDataTable.getDataTable().row(tr);
+                if (row.child.isShown()) {
+                    row.child.hide();
+                    tr.removeClass('parent');
+                } else {
+                    $.ajax({
+                        url: row.data().urls.details,
+                        type: 'GET',
+                        success: function (data) {
+                            row.child(theDataTable.tableOptions.getDetailTableFormat(data.data[0])).show();
+                            tr.addClass('parent').next().addClass('child').children('td').addClass('child');
+                        }
+                    });
+                }
+            });
+        }
 
         // destroy api
         $(theDataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-destroy',function()
@@ -184,62 +208,167 @@ var DataTable = {
         });
 
         // handle group action submit button click
-        theDataTable.getTableWrapper().on('click', '.table-group-action-submit', function(e)
-        {
-            e.preventDefault();
-            var input = $(".table-group-action-input", theDataTable.getTableWrapper());
-            var action = input;
-            // eğer action seçilmemişse
-            if (action.val() == '') {
-                LMCApp.getNoty({
-                    title: LMCApp.lang.admin.flash.not_select_action.title,
-                    message: LMCApp.lang.admin.flash.not_select_action.message,
-                    type: 'error'
-                });
-                return;
-            }
-            // eğer satır seçilmediyse
-            if (theDataTable.getSelectedRowsCount() === 0) {
-                LMCApp.getNoty({
-                    title: LMCApp.lang.admin.flash.not_select_rows.title,
-                    message: LMCApp.lang.admin.flash.not_select_rows.message,
-                    type: 'error'
-                });
-                return;
-            }
-            // seçilen satır sayısı 0'dan büyük ve action seçilmiş ise
-            theDataTable.setAjaxParam('action', action.val());
-            theDataTable.setAjaxParam('id', theDataTable.getSelectedRows());
-            $.ajax({
-                url: apiGroupAction,
-                data: theDataTable.ajaxParams,
-                success: function(data)
-                {
-                    if (data.result === 'success') {
-                        LMCApp.getNoty({
-                            title: LMCApp.lang.admin.flash.group_action_success.title,
-                            message: LMCApp.lang.admin.flash.group_action_success.message,
-                            type: 'success'
-                        });
-                        return;
-                    }
-
+        if (theDataTable.tableOptions.groupActionSupport) {
+            theDataTable.getTableWrapper().on('click', '.table-group-action-submit', function (e) {
+                e.preventDefault();
+                var input = $(".table-group-action-input", theDataTable.getTableWrapper());
+                var action = input;
+                // eğer action seçilmemişse
+                if (action.val() == '') {
                     LMCApp.getNoty({
-                        title: LMCApp.lang.admin.flash.group_action_error.title,
-                        message: LMCApp.lang.admin.flash.group_action_error.message,
+                        title: LMCApp.lang.admin.flash.not_select_action.title,
+                        message: LMCApp.lang.admin.flash.not_select_action.message,
                         type: 'error'
                     });
+                    return;
                 }
-            }).done(function( data ) {
-                if ( data.result === 'success' ) {
-                    LMCApp.hasTransaction = false;
-                    theDataTable.dataTable.ajax.reload();
-                    theDataTable.clearAjaxParams();
+                // eğer satır seçilmediyse
+                if (theDataTable.getSelectedRowsCount() === 0) {
+                    LMCApp.getNoty({
+                        title: LMCApp.lang.admin.flash.not_select_rows.title,
+                        message: LMCApp.lang.admin.flash.not_select_rows.message,
+                        type: 'error'
+                    });
+                    return;
                 }
-            });
+                // seçilen satır sayısı 0'dan büyük ve action seçilmiş ise
+                theDataTable.setAjaxParam('action', action.val());
+                theDataTable.setAjaxParam('id', theDataTable.getSelectedRows());
+                $.ajax({
+                    url: apiGroupAction,
+                    data: theDataTable.ajaxParams,
+                    success: function (data) {
+                        if (data.result === 'success') {
+                            LMCApp.getNoty({
+                                title: LMCApp.lang.admin.flash.group_action_success.title,
+                                message: LMCApp.lang.admin.flash.group_action_success.message,
+                                type: 'success'
+                            });
+                            return;
+                        }
 
-            // seçim sıfırlanır
-            input.val('');
+                        LMCApp.getNoty({
+                            title: LMCApp.lang.admin.flash.group_action_error.title,
+                            message: LMCApp.lang.admin.flash.group_action_error.message,
+                            type: 'error'
+                        });
+                    }
+                }).done(function (data) {
+                    if (data.result === 'success') {
+                        LMCApp.hasTransaction = false;
+                        theDataTable.dataTable.ajax.reload();
+                        theDataTable.clearAjaxParams();
+                    }
+                });
+
+                // seçim sıfırlanır
+                input.val('');
+            });
+        }
+    },
+
+    /**
+     * set data table order column
+     */
+    setOrder: function()
+    {
+        this.tableOptions.dataTable['order'] = [
+            [
+                this.tableOptions.dataTable.order[0][0]+this.exportIndex, // column index
+                this.tableOptions.dataTable.order[0][1] // type
+            ]
+        ];
+    },
+
+    /**
+     * set export options
+     */
+    setExportOptions: function()
+    {
+        var index = this.exportIndex;
+        for (var i = 0; i < this.tableOptions.exportColumnSize; i++, index++) {
+            this.options.exportOptions.columns.push(index);
+        }
+        if (this.tableOptions.exportOptionsFormat != null) {
+            this.options.exportOptions.format = this.tableOptions.exportOptionsFormat;
+        }
+    },
+
+    /**
+     * set data table dom pattern
+     */
+    setTableDom: function()
+    {
+        var col = this.tableOptions.groupActionSupport ? 'col-md-8 col-sm-12' : 'col-md-12';
+        var responsive = this.tableOptions.datatableIsResponsive ? '-responsive' : '';
+
+        var dom = "<'row'<'" + col +"'pli>";
+        if (this.tableOptions.groupActionSupport) {
+            dom += "<'col-md-4 col-sm-12'<'table-group-actions pull-right'>>";
+        }
+        dom += "r><'table" + responsive + "'t><'row'<'col-md-12'pli>r>";
+        this.tableOptions.dataTable['dom'] = dom;
+    },
+
+    /**
+     * add row detail column
+     */
+    addRowDetailColumn: function()
+    {
+        // column eklenir
+        this.tableOptions.dataTable.columns.push({
+            className: 'control',
+            searchable: false,
+            orderable: false,
+            data: null,
+            defaultContent: ''
+        });
+
+        // responsive detay özelliği belirlenir
+        this.tableOptions.dataTable.responsive = {
+            details: {
+                type: 'column',
+                target: 1
+            }
+        };
+
+        this.exportIndex++;
+    },
+
+    /**
+     * add group action column
+     */
+    addGroupActionColumn: function()
+    {
+        this.tableOptions.dataTable.columns.push({
+            data : "check_id", name: "check_id", searchable: false, orderable: false,
+            render: function ( data, type, full, meta )
+            {
+                return '<input type="checkbox" name="id[]" value="'+data+'">';
+            }
+        });
+        this.exportIndex++;
+    },
+
+    /**
+     * set data table columns
+     */
+    setColumns: function()
+    {
+        var defaultColumns = this.tableOptions.dataTable.columns;
+        this.tableOptions.dataTable['columns'] = [];
+        // if support group action
+        if (this.tableOptions.groupActionSupport) {
+            this.addGroupActionColumn();
+        }
+        // if support row detail
+        if (this.tableOptions.rowDetailSupport) {
+            this.addRowDetailColumn();
+        }
+        // set defaults columns
+        $.each(defaultColumns, function(index,value)
+        {
+            theDataTable.tableOptions.dataTable.columns.push(value);
         });
     },
 
@@ -467,14 +596,27 @@ var DataTable = {
             filterApplyAction: "filter",
             filterCancelAction: "filter_cancel",
             loadingMessage: 'Yükleniyor...',
+            datatableIsResponsive: true,
+            groupActionSupport: true,
+            rowDetailSupport: true,
+            datatableFilterSupport: true,
+            exportColumnSize: 0,
+            exportOptionsFormat: null,
+            isRelationTable: false,
+            changeRelationTable: function()
+            {
+                //
+            },
+
+            /**
+             * export data table options for columns
+             */
+            exportOptions: {
+                columns: []
+            },
             dataTable: {
                 dom: "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r><'table-responsive't><'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>", // datatable layout
-                responsive: {
-                    details: {
-                        type: 'column',
-                        target: 1
-                    }
-                },
+                responsive: {},
                 buttons: [
                     { extend: 'print',key: { key: 'p', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
                     { extend: 'copy',key: { key: 'c', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
@@ -529,9 +671,7 @@ var DataTable = {
                 },
 
                 orderCellsTop: true,
-                columnDefs: [{
-                    orderable: false, searchable: false, targets: [0,1,-1]
-                }],
+                columnDefs: [],
                 bStateSave: true, // save datatable state(pagination, sort, etc) in cookie.
 
                 lengthMenu: [
@@ -539,7 +679,7 @@ var DataTable = {
                     [10, 20, 50, 100, 150, "Hepsi"] // change per page values here
                 ],
                 order: [
-                    [2, "desc"]
+                    [0, 'desc']
                 ], // set first column as a default sort by asc
 
                 pagingType: "bootstrap_extended", // pagination type(bootstrap, bootstrap_full_number or bootstrap_extended)

@@ -44,18 +44,67 @@ return [
     |--------------------------------------------------------------------------
     | Modules Options
     |--------------------------------------------------------------------------
+    |
+    | ## Options
+    |
+    | - is_responsive                   : data table is responsive or not
+    | - datatable_filter                : open or close data table filter
+    | - datatable_tools                 : open or close data table exporting tools
+    | - datatable_fast_add              : open or close data table fast adding modal support
+    | - datatable_group_action          : open or close data table group action support
+    | - datatable_detail                : open or close data table show row detail support
+    |
+    | - show_relation_category_link     : show or not nested categories link on table
+    | - show_relation_model_link        : show or not nested models link on table
+    |
+    | ### nestable_level is : 0 (unlimited), 1 (only root level) or any integer > 1
+    | - nestable_level_root             : nestable level on root of model category index
+    | - nestable_level_nested           : nestable level on nested category of model category index
+    |--------------------------------------------------------------------------
     */
     'options' => [
-        // document category
-        'document_category' => [
-            'show_relation_category_link'=> true, // is show document category nested category link on table
-            'show_relation_document_link'=> true, // is show document category relation document link on table
+        // dataTable
+        'data_table' => [
+            'is_responsive'                 => true,
+        ],
+        // user module
+        'role' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
+        'user' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
 
-            // nestable level type : 0 (unlimited), 1 (only root level) or any integer > 1
-            'nestable_level' => [
-                'root'                  => 0, // nestable level on root of document category index
-                'nested_category'       => 1  // nestable level on nested category of document category index
-            ]
+        // page module
+        'page_category' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
+        'page' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
+
+        // document module
+        'document_category' => [
+            'show_relation_category_link'   => true,
+            'show_relation_model_link'      => true,
+            'nestable_level_root'           => 0,
+            'nestable_level_nested'         => 1
         ]
     ],
 
