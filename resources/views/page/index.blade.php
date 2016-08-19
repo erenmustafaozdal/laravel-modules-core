@@ -31,6 +31,11 @@
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/datatables.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
+
+    {{-- Select2 --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
+    {{-- /Select2 --}}
 @endsection
 
 @section('script')
@@ -41,6 +46,7 @@
         var datatableJs = "{!! lmcElixir('assets/app/datatable.js') !!}";
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
+        var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var formJs = "{!! lmcElixir('assets/pages/scripts/page/page-form.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var indexJs = "{!! lmcElixir('assets/pages/scripts/page/index.js') !!}";
@@ -49,6 +55,7 @@
         {{-- routes --}}
         @if(isset($page_category))
         var ajaxURL = "{!! route('api.page_category.page.index', ['id' => $page_category->id]) !!}";
+        var modelsURL = "{!! route('api.document_category.models', ['id' => $page_category->id]) !!}";
         @else
         var ajaxURL = "{!! route('api.page.index') !!}";
         var categoryURL = "{!! route('admin.page_category.show', ['id' => '###id###']) !!}";
@@ -77,6 +84,7 @@
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/page/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
 @endsection
 
 @section('content')

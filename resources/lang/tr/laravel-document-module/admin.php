@@ -75,7 +75,7 @@ return [
         ],
         'document' => [
             'title'                 => 'Belge Başlığı',
-            'file_name'             => 'Dosya Adı',
+            'document'              => 'Belge',
             'description'           => 'Açıklama',
             'photo'                 => 'Fotoğraf',
         ]

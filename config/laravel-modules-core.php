@@ -105,6 +105,13 @@ return [
             'show_relation_model_link'      => true,
             'nestable_level_root'           => 0,
             'nestable_level_nested'         => 1
+        ],
+        'document' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
         ]
     ],
 
