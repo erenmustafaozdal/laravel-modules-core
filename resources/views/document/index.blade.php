@@ -41,9 +41,9 @@
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.css') !!}
     {{-- /Bootstrap Touch Spin Css --}}
 
-    {{-- jCrop Image Crop Extension --}}
+    {{-- File Input Css --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
-    {{-- /jCrop Image Crop Extension --}}
+    {{-- /File Input Css --}}
 
     {{-- Select2 --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}

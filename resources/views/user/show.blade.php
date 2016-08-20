@@ -348,7 +348,9 @@
                                 'id'        => 'change-avatar-form'
                             ]) !!}
 
-                            @include('laravel-modules-core::user.partials.change_avatar_form')
+                            @include('laravel-modules-core::partials.form.photo_crop_form', [
+                                'label'         => lmcTrans('laravel-user-module/admin.fields.user.photo')
+                            ])
 
                             {!! Form::close() !!}
                         </div>

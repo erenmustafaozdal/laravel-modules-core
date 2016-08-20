@@ -93,7 +93,9 @@ return [
         ],
         'document' => [
             'category_id_help'      => 'Belgenin kategorisini seç. Bu alan <em class="label label-warning">zorunludur</em>.',
-            'is_publish_help'       => 'Belgenin yayında olması, ziyaretçilerin belge bilgilerini görebilmesini sağlar. Yayında olmayan belgeler ziyaretçilere açık değildir.'
+            'is_publish_help'       => 'Belgenin yayında olması, ziyaretçilerin belge bilgilerini görebilmesini sağlar. Yayında olmayan belgeler ziyaretçilere açık değildir.',
+            'description'           => 'Belgeyi açıklayan bir yaz yaz.',
+            'photo'                 => 'Belgeyle ilişkili bir fotoğraf ekle. İstersen bu fotoğrafı ekledikten sonra kırpabilirsin.'
         ]
     ],
 

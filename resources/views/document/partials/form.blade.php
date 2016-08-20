@@ -2,8 +2,10 @@
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}</label>
     <select class="form-control form-control-solid placeholder-no-fix select2" name="category_id" style="width: 100%">
-        @if(isset($document))
+        @if($isRelation)
             <option value="{{ $document->category->id }}" selected>{{ $document->category->name }}</option>
+        @elseif(isset($document))
+            <option value="{{ $document_category->id }}" selected>{{ $document_category->name }}</option>
         @endif
     </select>
 
@@ -38,6 +40,7 @@
 <div class="form-group last">
     <label class="control-label">{!! trans('laravel-modules-core::admin.ops.status') !!}</label>
     <div class="clearfix"></div>
+    {!! Form::hidden('is_publish', 0) !!}
     {!! Form::checkbox( 'is_publish', 1, null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.publish'),

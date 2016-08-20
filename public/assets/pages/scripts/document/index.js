@@ -64,7 +64,7 @@ var Index = {
 
     /**
      * init function
-     * @param options
+     * @param options"
      */
     init: function (options)
     {

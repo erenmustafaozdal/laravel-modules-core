@@ -166,7 +166,6 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="info">
                         @include('laravel-modules-core::page.partials.form', [
-                            'select2'       => true,
                             'isRelation'    => isset($page_category) ? true : false
                         ])
                     </div>

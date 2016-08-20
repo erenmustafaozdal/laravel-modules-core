@@ -143,7 +143,9 @@
                             @include('laravel-modules-core::user.partials.change_password_form')
                         </div>
                         <div class="tab-pane" id="avatar">
-                            @include('laravel-modules-core::user.partials.change_avatar_form')
+                            @include('laravel-modules-core::partials.form.photo_crop_form', [
+                                'label'         => lmcTrans('laravel-user-module/admin.fields.user.photo')
+                            ])
                         </div>
                         <div class="tab-pane" id="permission">
                             @include('laravel-modules-core::partials.laravel-user-module.permissions', [

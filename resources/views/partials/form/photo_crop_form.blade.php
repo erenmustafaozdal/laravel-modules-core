@@ -1,4 +1,4 @@
-<label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.photo') !!}</label>
+<label class="control-label">{!! $label !!}</label>
 {{-- template photo preview before crop --}}
 <div class="note note-info margin-bottom-25 hidden" id="jcrop-preview">
     <div class="row">

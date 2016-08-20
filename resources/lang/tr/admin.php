@@ -116,6 +116,7 @@ return [
         'edit_info'                         => 'Bilgileri Düzenle',
         'content_info'                      => 'İçerik Bilgisi',
         'seo'                               => 'SEO Bilgileri',
+        'detail'                            => 'Detaylar',
 
         'file_manager'                      => 'Dosya Yöneticisi',
         'size'                              => 'Boyut'
