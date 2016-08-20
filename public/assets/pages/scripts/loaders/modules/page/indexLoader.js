@@ -20,4 +20,18 @@
             }
         });
     });
+
+    $script.ready(['config','app_select2'], function()
+    {
+        Select2.init({
+            variableNames: {
+                text: 'name'
+            },
+            select2: {
+                ajax: {
+                    url: modelsURL
+                }
+            }
+        });
+    });
 })();

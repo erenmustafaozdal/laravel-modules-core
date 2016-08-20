@@ -80,6 +80,8 @@ return [
         // description
         'date_from'                         => 'Tarihinden',
         'date_to'                           => 'Tarihine',
+        'size_from'                         => 'Boyutundan',
+        'size_to'                           => 'Boyutuna',
         // tools
         'tools'                             => 'Araçlar',
         'print'                             => 'Yazdır',
@@ -116,6 +118,7 @@ return [
         'seo'                               => 'SEO Bilgileri',
 
         'file_manager'                      => 'Dosya Yöneticisi',
+        'size'                              => 'Boyut'
     ],
 
     // permissions

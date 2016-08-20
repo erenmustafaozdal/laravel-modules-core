@@ -7,6 +7,62 @@ var Index = {
     options : {},
 
     /**
+     * file input options
+     */
+    fileinputOptions: {
+        allowedFileExtensions: validExtension.split(','),
+        allowedFileTypes: null,
+        previewFileType: 'any',
+        showUpload: false,
+        showCancel: false,
+        fileActionSettings: {
+            showUpload: false,
+            showZoom: false
+        },
+        uploadExtraData: function (previewId, index) {
+            var form = $('.form');
+            return {
+                category_id: form.find('select[name="category_id"]').val(),
+                title: form.find('input[name="title"]').val(),
+                is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state')
+            };
+        },
+        ajaxSettings: {
+            success: function(data)
+            {
+                var message_success, title_success, message_error, title_error;
+                if (Editor.actionType === 'fast-add') {
+                    message_success = LMCApp.lang.admin.flash.store_success.message;
+                    title_success = LMCApp.lang.admin.flash.store_success.title;
+                    message_error = LMCApp.lang.admin.flash.store_error.message;
+                    title_error = LMCApp.lang.admin.flash.store_error.title;
+                } else {
+                    message_success = LMCApp.lang.admin.flash.update_success.message;
+                    title_success = LMCApp.lang.admin.flash.update_success.title;
+                    message_error = LMCApp.lang.admin.flash.update_error.message;
+                    title_error = LMCApp.lang.admin.flash.update_error.title;
+                }
+                if (data.result === 'success') {
+                    LMCApp.getNoty({
+                        message: message_success,
+                        title: title_success,
+                        type: 'success'
+                    });
+                    Editor.modal.modal('hide');
+                    LMCApp.hasTransaction = false;
+                    DataTable.dataTable.ajax.reload();
+                    return;
+                }
+                LMCApp.getNoty({
+                    message: message_error,
+                    title: title_error,
+                    type: 'error'
+                });
+            }
+        }
+    },
+
+    /**
      * init function
      * @param options
      */
@@ -22,6 +78,27 @@ var Index = {
 
         DataTable.init(this.options.DataTable);
         Editor.init(this.options.Editor);
+
+        // LMCFileinput app is init
+        LMCFileinput.init(this.options.Fileinput);
+
+        // bootstrap touch spins init
+        LMCApp.initTouchSpin({
+            src:'#size_from',
+            touchspin: {
+                max: maxSize,
+                step: 10,
+                postfix: 'Bayt'
+            }
+        });
+        LMCApp.initTouchSpin({
+            src:'#size_to',
+            touchspin: {
+                max: maxSize,
+                step: 10,
+                postfix: 'Bayt'
+            }
+        });
 
         // publish model
         $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-publish',function()
@@ -96,12 +173,12 @@ var Index = {
         return {
             DataTable: {
                 src: ".lmcDataTable",
-                exportTitle: 'Sayfalar',
+                exportTitle: 'Belgeler',
                 datatableIsResponsive: true,
                 groupActionSupport: true,
                 rowDetailSupport: true,
                 datatableFilterSupport: true,
-                exportColumnSize: 6,
+                exportColumnSize: 7,
                 exportOptionsFormat: {
                     body: function (data, column, row) {
                         return LMCApp.stripTags(data);
@@ -110,8 +187,8 @@ var Index = {
                 isRelationTable: false,
                 changeRelationTable: function()
                 {
-                    theDataTable.tableOptions['exportColumnSize'] = 5;
-                    theDataTable.tableOptions.dataTable.columns.splice(3, 1);
+                    theDataTable.tableOptions['exportColumnSize'] = 6;
+                    theDataTable.tableOptions.dataTable.columns.splice(4, 1);
                 },
                 onSuccess: function(grid, response)
                 {
@@ -145,28 +222,32 @@ var Index = {
                             '</tr>';
                     }
                     return detail + '<tr>' +
-                        '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
-                        '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
+                            '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                        '<td style="width:150px; text-align:right;"> <strong>Tanımlama:</strong> </td>' +
-                        '<td class="text-left">' + ( data.slug == null ? '' : data.slug ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Belge:</strong> </td>' +
+                            '<td class="text-left">' + ( data.document == null ? '' : data.document ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                        '<td style="width:150px; text-align:right;"> <strong>Açıklama:</strong> </td>' +
-                        '<td class="text-left">' + ( data.description == null ? '' : data.description ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Boyut:</strong> </td>' +
+                            '<td class="text-left">' + ( data.size == null ? '' : data.size.display +' <span class="text-muted">(' + data.size.number + ' bayt)</span>' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                        '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
-                        '<td class="text-left">' + data.created_at.display + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Açıklama:</strong> </td>' +
+                            '<td class="text-left">' + ( data.description == null ? '' : data.description.description ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                        '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
-                        '<td class="text-left">' + data.updated_at.display + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
+                            '<td class="text-left">' + ( data.photo == null ? '' : data.photo.photo ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                        '<td style="width:150px; text-align:right;"> <strong>İçerik:</strong> </td>' +
-                        '<td class="text-left">' + ( data.content == null ? '' : data.content ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
+                            '<td class="text-left">' + data.created_at.display + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
+                            '<td class="text-left">' + data.updated_at.display + '</td>' +
                         '</tr>' +
                         '</tbody>' +
                         '</table>';
@@ -185,8 +266,10 @@ var Index = {
                         { data: "id", name: "id", className: 'text-center' },
                         // title
                         { data: "title", name: "title" },
-                        // slug
-                        { data: "slug", name: "slug" },
+                        // document
+                        { data: "document", name: "document" },
+                        // size
+                        { data: { _: 'size.display', sort: 'size.number' }, name: "size", className: 'text-center' },
                         // category
                         {
                             data: "category", name: "category",
@@ -260,11 +343,21 @@ var Index = {
             Editor: {
                 modalShowCallback: function(Editor)
                 {
-                    //
+                    if (Editor.actionType === 'fast-edit') {
+                        $('#document').fileinput('disable');
+                    } else {
+                        $('#document').fileinput('enable');
+                    }
                 },
                 actionButtonCallback: function(Editor)
                 {
-                    var url = Editor.actionType === 'fast-add' ? apiStoreURL : Editor.row.data().urls.edit ;
+                    var element = $('#document');
+                    if (Editor.actionType === 'fast-add') {
+                        element.fileinput('refresh', ModelIndex.fileinputOptions);
+                        element.on('fileuploaded', ModelIndex.fileUploaded);
+                        element.on('fileuploaderror', ModelIndex.fileUploadError);
+                    }
+
                     // validation ve user form dosyaları yüklenir
                     $script(formLoaderJs, 'formLoader');
                     $script.ready(['formLoader','validation'], function()
@@ -277,60 +370,52 @@ var Index = {
                             isAjax: true,
                             submitAjax: function(validation)
                             {
-                                var category = theDataTable.tableOptions.isRelationTable ? validation.form.find('input[name="category_id"]').val() : validation.form.find('select[name="category_id"]').val();
-                                var datas = {
-                                    category_id: category,
-                                    title: validation.form.find('input[name="title"]').val(),
-                                    slug: validation.form.find('input[name="slug"]').val(),
-                                    description: validation.form.find('textarea[name="description"]').val(),
-                                    is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
-                                };
                                 if (Editor.actionType === 'fast-add') {
-                                    var type =  'POST';
-                                    var message_success = LMCApp.lang.admin.flash.store_success.message;
-                                    var title_success = LMCApp.lang.admin.flash.store_success.title;
-                                    var message_error = LMCApp.lang.admin.flash.store_error.message;
-                                    var title_error = LMCApp.lang.admin.flash.store_error.title;
+                                    $('#document').fileinput('upload');
                                 } else {
-                                    var type =  'PATCH';
-                                    var message_success = LMCApp.lang.admin.flash.update_success.message;
-                                    var title_success = LMCApp.lang.admin.flash.update_success.title;
-                                    var message_error = LMCApp.lang.admin.flash.update_error.message;
-                                    var title_error = LMCApp.lang.admin.flash.update_error.title;
-                                }
-                                $.ajax({
-                                    url: url,
-                                    data: datas,
-                                    type: type,
-                                    success: function(data)
-                                    {
-                                        if (data.result === 'success') {
+                                    var datas = {
+                                        category_id: validation.form.find('select[name="category_id"]').val(),
+                                        title: validation.form.find('input[name="title"]').val(),
+                                        is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
+                                    };
+                                    $.ajax({
+                                        url: Editor.row.data().urls.edit,
+                                        data: datas,
+                                        type: 'PATCH',
+                                        success: function(data)
+                                        {
+                                            if (data.result === 'success') {
+                                                LMCApp.getNoty({
+                                                    message: LMCApp.lang.admin.flash.update_success.message,
+                                                    title: LMCApp.lang.admin.flash.update_success.title,
+                                                    type: 'success'
+                                                });
+                                                Editor.modal.modal('hide');
+                                                return;
+                                            }
                                             LMCApp.getNoty({
-                                                message: message_success,
-                                                title: title_success,
-                                                type: 'success'
+                                                message: LMCApp.lang.admin.flash.update_error.message,
+                                                title: LMCApp.lang.admin.flash.update_error.title,
+                                                type: 'error'
                                             });
-                                            Editor.modal.modal('hide');
-                                            return;
                                         }
-                                        LMCApp.getNoty({
-                                            message: message_error,
-                                            title: title_error,
-                                            type: 'error'
-                                        });
-                                    }
-                                }).done(function( data ) {
-                                    if ( data.result === 'success' ) {
-                                        LMCApp.hasTransaction = false;
-                                        DataTable.dataTable.ajax.reload();
-                                    }
-                                });
+                                    }).done(function( data ) {
+                                        if ( data.result === 'success' ) {
+                                            LMCApp.hasTransaction = false;
+                                            DataTable.dataTable.ajax.reload();
+                                        }
+                                    });
+                                }
                             }
                         });
                         // form is submit
                         $(Editor.editorOptions.formSrc).submit();
                     });
                 }
+            },
+            Fileinput: {
+                src: '#document',
+                fileinput: ModelIndex.fileinputOptions
             }
         }
     }

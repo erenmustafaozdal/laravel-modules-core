@@ -37,3 +37,8 @@ div.mce-fullscreen {
 .lmcDataTable .table-light > tbody > tr > td {
     vertical-align: top !important;
 }
+
+/* Bootstrap Touch Spin */
+div.bootstrap-touchspin button.btn-outline {
+    z-index: 3 !important;
+}
