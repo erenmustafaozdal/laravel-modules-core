@@ -117,7 +117,7 @@
                         'id' => $parent_document_category->id,
                         config('laravel-document-module.url.document_category') => $operation === 'edit' ? $document_category->id : null
                     ]) : route('admin.document_category.' . ($operation === 'edit' ? 'update' : 'store'),[
-                            'id' => $document_category->id,
+                            'id' => $operation === 'edit' ? $document_category->id : null,
                     ]),
                     'class' => 'form'
             ];

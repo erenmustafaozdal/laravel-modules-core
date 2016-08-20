@@ -99,7 +99,7 @@ var Operation = {
                 {
                     // jcrop init
                     theLMCJcrop.jcropPreInit(reader.result)
-                        .init(UserOperation.getJcropInitOptions());
+                        .init(ModelOperation.getJcropInitOptions());
                 });
                 // image crop cancel button click
                 theLMCJcrop.imgCropCancelBtn.on('click', function(event)
@@ -114,6 +114,22 @@ var Operation = {
             filereset: function(event)
             {
                 theLMCJcrop.jcropReset();
+            }
+        };
+    },
+
+    /**
+     * get jquery crop init options
+     */
+    getJcropInitOptions: function()
+    {
+        return {
+            jcrop: {
+                aspectRatio: aspectRatio,
+                onRelease: function()
+                {
+                    ModelOperation.form.find('input[type="hidden"]').val('');
+                }
             }
         };
     }

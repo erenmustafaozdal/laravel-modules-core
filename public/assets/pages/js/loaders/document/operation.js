@@ -8,7 +8,7 @@
     {
         $script(operationJs,'operation');
     });
-    $script.ready(['config','operation'], function()
+    $script.ready(['config','operation','app_fileinput','app_jcrop'], function()
     {
         Operation.init();
     });

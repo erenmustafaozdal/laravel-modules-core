@@ -36,7 +36,8 @@
     || ! isset($document)
 )
 @include('laravel-modules-core::partials.form.photo_crop_form', [
-    'label'         => lmcTrans('laravel-document-module/admin.fields.document.photo')
+    'label'         => lmcTrans('laravel-document-module/admin.fields.document.photo'),
+    'ratio'         => config('laravel-document-module.document.uploads.aspect_ratio')
 ])
 <span class="help-block">
     {!! lmcTrans('laravel-document-module/admin.helpers.document.photo') !!}

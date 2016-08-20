@@ -84,6 +84,7 @@
         };
         var validExtension = "{!! config('laravel-document-module.document.uploads.mimes') !!}";
         var maxSize = "{!! config('laravel-document-module.document.uploads.max_size') !!}";
+        var aspectRatio = '{!! config('laravel-document-module.document.uploads.aspect_ratio') !!}';
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/document/operation.js') !!}"></script>

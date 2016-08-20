@@ -8,7 +8,7 @@
         </div>
         <div class="col-md-4 responsive-1024" id="preview-pane-wrapper">
             <div id="preview-pane">
-                <div class="preview-container">
+                <div class="preview-container" {!! isset($ratio) ? 'style="width:150px; height:' . 150/$ratio . 'px"': '' !!}>
                     <img class="jcrop-preview" src="" id="img-jcrop-preview">
                 </div>
             </div>
