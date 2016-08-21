@@ -74,7 +74,7 @@
         @else
             var modelsURL = "{!! route('api.document_category.models') !!}";
         @endif
-        var tinymceURL = "{!! route('elfinder.tinymce4') !!}";
+        var categoryDetailURL = "{!! route('api.document_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -85,6 +85,8 @@
         var validExtension = "{!! config('laravel-document-module.document.uploads.mimes') !!}";
         var maxSize = "{!! config('laravel-document-module.document.uploads.max_size') !!}";
         var aspectRatio = '{!! config('laravel-document-module.document.uploads.aspect_ratio') !!}';
+        var hasDescription = {{ ( isset($document) && $document->category->has_description ) || ( isset($document_category) && $document_category->has_description ) || ! isset($document) }};
+        var hasPhoto = {{ ( isset($document) && $document->category->has_photo ) || ( isset($document_category) && $document_category->has_photo ) || ! isset($document) }};
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/document/operation.js') !!}"></script>
@@ -126,24 +128,11 @@
                         {!! trans('laravel-modules-core::admin.fields.overview') !!}
                     </a>
                 </li>
-                @if(
-                    // Document Edit && Category Documents Edit
-                    ( isset($document) && $document->category->has_description )
-                    || ( isset($document) && $document->category->has_photo )
-
-                    // Category Documents Create
-                    || ( isset($document_category) && $document_category->has_description )
-                    || ( isset($document_category) && $document_category->has_photo )
-
-                    // Document Create
-                    || ! isset($document)
-                )
-                <li>
+                <li id="detail_tab">
                     <a href="#detail" data-toggle="tab" aria-expanded="true">
                         {!! trans('laravel-modules-core::admin.fields.detail') !!}
                     </a>
                 </li>
-                @endif
             </ul>
             {{-- /Nav Tabs --}}
         </div>
@@ -166,7 +155,8 @@
                     ]) : route('admin.document.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $document->id : null
                     ]),
-                    'class' => 'form'
+                    'class' => 'form',
+                    'files' => true
                 ];
             ?>
             @if($operation === 'edit')
@@ -187,23 +177,9 @@
                             'isRelation'    => isset($document_category) ? true : false
                         ])
                     </div>
-
-                    @if(
-                        // Document Edit && Category Documents Edit
-                        ( isset($document) && $document->category->has_description )
-                        || ( isset($document) && $document->category->has_photo )
-
-                        // Category Documents Create
-                        || ( isset($document_category) && $document_category->has_description )
-                        || ( isset($document_category) && $document_category->has_photo )
-
-                        // Document Create
-                        || ! isset($document)
-                    )
                     <div class="tab-pane" id="detail">
                         @include('laravel-modules-core::document.partials.detail_form')
                     </div>
-                    @endif
                 </div>
                 {{-- /Tab Contents --}}
 
