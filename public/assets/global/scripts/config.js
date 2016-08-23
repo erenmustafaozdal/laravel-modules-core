@@ -105,7 +105,8 @@ var LMCApp = {
                 select: 'Seç',
                 write_here: 'Buraya yaz...',
                 relations: 'İlişkili Veriler',
-                relation_categories: 'İlişkili Kategoriler'
+                relation_categories: 'İlişkili Kategoriler',
+                file_manager: 'Dosya Yöneticisinden'
             },
             flash: {
                 store_success: {

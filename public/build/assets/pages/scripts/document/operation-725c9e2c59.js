@@ -37,8 +37,8 @@ var Operation = {
         });
 
         // LMCFileinput app is init
-        LMCFileinput.init(this.getDocumentFileinputOptions());
         LMCFileinput.init(this.getPhotoFileinputOptions());
+        LMCFileinput.init(this.getDocumentFileinputOptions());
 
         // LMCJcrop app element is setup
         LMCJcrop.setupElements();
@@ -54,15 +54,13 @@ var Operation = {
             src: '#document',
             formSrc:  'form.form',
             fileinput: {
-                uploadUrl: ModelOperation.form.prop('action'),
                 allowedFileExtensions: validExtension.split(','),
                 allowedFileTypes: null,
                 previewFileType: 'any',
                 showUpload: false,
                 showCancel: false,
                 fileActionSettings: {
-                    showUpload: false,
-                    showZoom: false
+                    showUpload: false
                 }
             }
         };
@@ -77,11 +75,10 @@ var Operation = {
             src: '#photo',
             formSrc:  'form.form',
             fileinput: {
-                uploadUrl: ModelOperation.form.prop('action'),
                 showUpload: false,
                 showCancel: false,
                 fileActionSettings: {
-                    showUpload: false,
+                    showUpload: false
                 },
                 otherActionButtons: '<button type="button" id="image-crop-action" class="btn btn-xs yellow btn-outline tooltips" data-toggle="modal" title="' + LMCApp.lang.admin.ops.crop + '"><i class="icon-crop"></i> </button>'
             },

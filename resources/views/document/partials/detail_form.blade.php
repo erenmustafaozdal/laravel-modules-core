@@ -16,9 +16,13 @@
 
 {{-- Document Photo --}}
 <div id="photo_wrapper">
-    @include('laravel-modules-core::partials.form.photo_crop_form', [
+    @include('laravel-modules-core::partials.form.fileinput_form', [
         'label'         => lmcTrans('laravel-document-module/admin.fields.document.photo'),
-        'ratio'         => config('laravel-document-module.document.uploads.photo.aspect_ratio')
+        'input_name'    => 'photo',
+        'input_id'      => 'photo',
+        'jcrop'         => true,
+        'ratio'         => config('laravel-document-module.document.uploads.photo.aspect_ratio'),
+        'elfinder_id'   => 'elfinder-photo'
     ])
     <span class="help-block">
         {!! lmcTrans('laravel-document-module/admin.helpers.document.photo') !!}

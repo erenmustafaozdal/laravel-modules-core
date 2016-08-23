@@ -30,10 +30,14 @@
 {{-- /Title --}}
 
 {{-- Document --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document.document') !!}</label>
-    {!! Form::file('document', ['id' => 'document']) !!}
-</div>
+@include('laravel-modules-core::partials.form.fileinput_form', [
+    'label'         => lmcTrans('laravel-document-module/admin.fields.document.document'),
+    'input_name'    => 'document',
+    'input_id'      => 'document',
+    'jcrop'         => false,
+    'ratio'         => false,
+    'elfinder_id'   => 'elfinder-document'
+])
 {{-- /Document --}}
 
 {{-- Status --}}

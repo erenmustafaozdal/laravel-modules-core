@@ -43,7 +43,7 @@ var Tinymce = {
         tinymce.activeEditor.windowManager.open({
             file: theTinymce.route,// use an absolute path!
             title: 'Dosya Yöneticisi',
-            width: 900,
+            width: 1000,
             height: 450,
             resizable: 'yes'
         }, {
