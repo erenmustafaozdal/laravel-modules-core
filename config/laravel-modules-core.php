@@ -47,7 +47,9 @@ return [
     |
     | ## Options
     |
+    | --- data_table                    : data table options for all models
     | - is_responsive                   : data table is responsive or not
+
     | - datatable_filter                : open or close data table filter
     | - datatable_tools                 : open or close data table exporting tools
     | - datatable_fast_add              : open or close data table fast adding modal support
@@ -126,17 +128,17 @@ return [
         // route    => string|array route name
         // icon     => icon class -> font awesome, simple line etc.
         'action' => [
-            // add user
-            [
-                'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.user.add',
-                'route'             => 'admin.user.create',
-                'icon'              => 'icon-user-follow'
-            ],
             // add role
             [
                 'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.role.add',
                 'route'             => 'admin.role.create',
                 'icon'              => 'icon-users'
+            ],
+            // add user
+            [
+                'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.user.add',
+                'route'             => 'admin.user.create',
+                'icon'              => 'icon-user-follow'
             ],
             // add page category
             [
@@ -174,29 +176,6 @@ return [
         'side' => [
             // laravel user module
             [
-                'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.user.root',
-                'route'             => 'javascript:;',
-                'icon'              => 'icon-user',
-                'access'            => ['admin.user.index', 'admin.user.create'],
-                'active'            => 'admin.user',
-                'child' => [
-                    [
-                        'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.user.all',
-                        'route'             => 'admin.user.index',
-                        'icon'              => 'icon-list',
-                        'access'            => 'admin.user.index',
-                        'active'            => 'admin.user.index'
-                    ],
-                    [
-                        'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.user.add',
-                        'route'             => 'admin.user.create',
-                        'icon'              => 'icon-plus',
-                        'access'            => 'admin.user.create',
-                        'active'            => 'admin.user.create'
-                    ]
-                ] // end of child
-            ], // end of part
-            [
                 'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.role.root',
                 'route'             => 'javascript:;',
                 'icon'              => 'icon-users',
@@ -216,6 +195,29 @@ return [
                         'icon'              => 'icon-plus',
                         'access'            => 'admin.role.create',
                         'active'            => 'admin.role.create'
+                    ]
+                ] // end of child
+            ], // end of part
+            [
+                'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.user.root',
+                'route'             => 'javascript:;',
+                'icon'              => 'icon-user',
+                'access'            => ['admin.user.index', 'admin.user.create'],
+                'active'            => 'admin.user',
+                'child' => [
+                    [
+                        'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.user.all',
+                        'route'             => 'admin.user.index',
+                        'icon'              => 'icon-list',
+                        'access'            => 'admin.user.index',
+                        'active'            => 'admin.user.index'
+                    ],
+                    [
+                        'trans'             => 'laravel-modules-core::laravel-user-module/admin.menu.user.add',
+                        'route'             => 'admin.user.create',
+                        'icon'              => 'icon-plus',
+                        'access'            => 'admin.user.create',
+                        'active'            => 'admin.user.create'
                     ]
                 ] // end of child
             ], // end of part

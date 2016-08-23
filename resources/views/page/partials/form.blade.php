@@ -68,7 +68,9 @@
 <div class="form-group last">
     <label class="control-label">{!! trans('laravel-modules-core::admin.ops.status') !!}</label>
     <div class="clearfix"></div>
-    {!! Form::hidden('is_publish', 0) !!}
+    @if ( ! isset($helpBlockAfter) )
+        {!! Form::hidden('is_publish', 0) !!}
+    @endif
     {!! Form::checkbox( 'is_publish', 1, null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.publish'),

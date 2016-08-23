@@ -34,28 +34,9 @@ class BreadcrumbService
     public function __construct()
     {
         $route_action = Route::currentRouteAction();
-        $this->module_name = $this->getModule($route_action);
+        $this->module_name = 'laravel-modules-core::'.getModule($route_action).'/';
         $this->route_name = Route::currentRouteName();
         $this->index_route_name = substr($this->route_name, 0, strrpos($this->route_name, '.') + 1) . 'index';
-    }
-
-    /**
-     * get module name from route action
-     *
-     * @param       string      $action
-     * @return       string
-     */
-    public function getModule($action)
-    {
-        $path_args = explode('\\', $action);
-        if ($path_args[0] !== 'ErenMustafaOzdal') {
-            $path_args = explode('@', $action);
-            $parent_action = get_parent_class( new $path_args[0]() );
-            $path_args = explode('\\', $parent_action);
-        }
-
-        $module = snake_case($path_args[1]);
-        return 'laravel-modules-core::'.str_replace('_','-',$module).'/';
     }
 
     /**

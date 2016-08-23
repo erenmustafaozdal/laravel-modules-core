@@ -55,6 +55,9 @@
 <div class="form-group last">
     <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.status') !!}</label>
     <div class="clearfix"></div>
+    @if ( ! isset($helpBlockAfter) )
+        {!! Form::hidden('is_active', 0) !!}
+    @endif
     {!! Form::checkbox( 'is_active', 1, isset($user) ? $user->is_active : null, [
         'class'         => 'make-switch',
         'data-on-text'  => lmcTrans('laravel-user-module/admin.fields.user.active'),

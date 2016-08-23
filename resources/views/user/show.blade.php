@@ -36,7 +36,7 @@
         var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
         var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var avatarPhotoPath = "{!! '/' . config('laravel-user-module.user.avatar_path') !!}";
+        var avatarPhotoPath = "{!! '/' . config('laravel-user-module.user.default_img_path') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var showJs = "{!! lmcElixir('assets/pages/scripts/user/show.js') !!}";
         var permissionJs = "{!! lmcElixir('assets/pages/scripts/role/permission.js') !!}";

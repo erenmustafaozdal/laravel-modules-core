@@ -40,8 +40,8 @@
             first_name: { required: "{!! LMCValidation::getMessage('first_name','required') !!}" },
             last_name: { required: "{!! LMCValidation::getMessage('last_name','required') !!}" },
             email: { required: "{!! LMCValidation::getMessage('email','required') !!}", email: "{!! LMCValidation::getMessage('email','email') !!}" },
-            password: { required: "{!! LMCValidation::getMessage('password','required') !!}", minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}" },
-            password_confirmation: { required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}", minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}", equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}" }
+            password: { required: "{!! LMCValidation::getMessage('password','required') !!}", minlength: "{!! LMCValidation::getMessage('password','min.string', ['min' => 6]) !!}" },
+            password_confirmation: { required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}", minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', ['min' => 6]) !!}", equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}" }
         };
         {{-- /languages --}}
 

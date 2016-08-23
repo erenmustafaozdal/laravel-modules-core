@@ -54,7 +54,7 @@ var Operation = {
             src: '#document',
             formSrc:  'form.form',
             fileinput: {
-                uploadUrl: ModelOperation.form.prop('action'),
+                uploadUrl: null,
                 allowedFileExtensions: validExtension.split(','),
                 allowedFileTypes: null,
                 previewFileType: 'any',
@@ -77,7 +77,7 @@ var Operation = {
             src: '#photo',
             formSrc:  'form.form',
             fileinput: {
-                uploadUrl: ModelOperation.form.prop('action'),
+                uploadUrl: null,
                 showUpload: false,
                 showCancel: false,
                 fileActionSettings: {

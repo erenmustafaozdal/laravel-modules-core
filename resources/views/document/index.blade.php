@@ -85,8 +85,8 @@
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
             title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
         };
-        var validExtension = "{!! config('laravel-document-module.document.uploads.mimes') !!}";
-        var maxSize = "{!! config('laravel-document-module.document.uploads.max_size') !!}";
+        var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
+        var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
         {{-- /languages --}}
 
         {{-- scripts --}}
@@ -124,7 +124,7 @@
                 ])
             @else
                 @include('laravel-modules-core::partials.common.indexActions', [
-                    'module' => 'page',
+                    'module' => 'document',
                     'fast_add'  => config('laravel-modules-core.options.document.datatable_fast_add'),
                     'add'       => true,
                     'tools'     => config('laravel-modules-core.options.document.datatable_tools')
@@ -241,7 +241,8 @@
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
             'document.partials.form'        => [
-                'helpBlockAfter'    => true
+                'helpBlockAfter'    => true,
+                'isRelation'        => isset($document_category) ? true : false
             ]
         ]
     ])

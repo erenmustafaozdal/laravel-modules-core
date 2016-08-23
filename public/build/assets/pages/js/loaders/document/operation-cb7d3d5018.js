@@ -4,28 +4,14 @@
     {
         $script(validationMethodsJs);
     });
-    $script.ready('app_editor', function()
+    $script.ready('jquery', function()
     {
-        $script(indexJs,'index');
+        $script(operationJs,'operation');
     });
-    $script.ready('bootstrap', function()
+    $script.ready(['config','operation','app_fileinput','app_jcrop'], function()
     {
-        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js','touchspin');
+        Operation.init();
     });
-
-    $script.ready(['config','index','touchspin'], function()
-    {
-        Index.init({
-            DataTable: {
-                datatableIsResponsive: datatableIsResponsive,
-                groupActionSupport: groupActionSupport,
-                rowDetailSupport: rowDetailSupport,
-                datatableFilterSupport: datatableFilterSupport,
-                isRelationTable: isRelationTable
-            }
-        });
-    });
-
     $script.ready(['config','app_select2'], function()
     {
         Select2.init({

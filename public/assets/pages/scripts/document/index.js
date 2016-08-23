@@ -10,6 +10,7 @@ var Index = {
      * file input options
      */
     fileinputOptions: {
+        uploadUrl: apiStoreURL,
         allowedFileExtensions: validExtension.split(','),
         allowedFileTypes: null,
         previewFileType: 'any',
@@ -239,7 +240,7 @@ var Index = {
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
-                            '<td class="text-left">' + ( data.photo == null ? '' : data.photo.photo ) + '</td>' +
+                            '<td class="text-left">' + ( data.photo == null ? '' : '<img class="img-responsive" src="' + data.photo.photo + '">' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
@@ -354,8 +355,6 @@ var Index = {
                     var element = $('#document');
                     if (Editor.actionType === 'fast-add') {
                         element.fileinput('refresh', ModelIndex.fileinputOptions);
-                        element.on('fileuploaded', ModelIndex.fileUploaded);
-                        element.on('fileuploaderror', ModelIndex.fileUploadError);
                     }
 
                     // validation ve user form dosyaları yüklenir

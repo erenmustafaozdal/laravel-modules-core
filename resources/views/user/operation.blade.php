@@ -52,8 +52,8 @@
             first_name: { required: "{!! LMCValidation::getMessage('first_name','required') !!}" },
             last_name: { required: "{!! LMCValidation::getMessage('last_name','required') !!}" },
             email: { required: "{!! LMCValidation::getMessage('email','required') !!}", email: "{!! LMCValidation::getMessage('email','email') !!}" },
-            password: { required: "{!! LMCValidation::getMessage('password','required') !!}", minlength: "{!! LMCValidation::getMessage('password','min.string', [':min' => 6]) !!}" },
-            password_confirmation: { required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}", minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', [':min' => 6]) !!}", equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}" }
+            password: { required: "{!! LMCValidation::getMessage('password','required') !!}", minlength: "{!! LMCValidation::getMessage('password','min.string', ['min' => 6]) !!}" },
+            password_confirmation: { required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}", minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', ['min' => 6]) !!}", equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}" }
         };
         {{-- /languages --}}
     </script>
@@ -116,19 +116,15 @@
             {{-- Operation Form --}}
             <?php
             $form = [
-                    'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => route('admin.user.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'method'    => $operation === 'edit' ? 'PATCH' : 'POST',
+                    'url'       => route('admin.user.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $user->id : null
                     ]),
-                    'class' => 'form'
+                    'class'     => 'form',
+                    'files'     => true
             ];
             ?>
-            {!! Form::open([
-                'method'    => 'PATCH',
-                'url'       => route('admin.user.update', ['id' => $operation === 'edit' ? $user->id : null]),
-                'class'     => 'form',
-                'files'     => true
-            ]) !!}
+            {!! Form::open($form) !!}
 
             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 

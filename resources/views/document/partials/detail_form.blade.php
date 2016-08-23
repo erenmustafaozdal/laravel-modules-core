@@ -1,7 +1,7 @@
 {{-- Document Description --}}
 <div class="form-group" id="description_wrapper">
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document.title') !!}</label>
-    {!! Form::textarea( 'title', null, [
+    {!! Form::textarea( 'description', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
         'placeholder'   => lmcTrans('laravel-document-module/admin.fields.document.description'),
         'rows'          => 3,
@@ -18,7 +18,7 @@
 <div id="photo_wrapper">
     @include('laravel-modules-core::partials.form.photo_crop_form', [
         'label'         => lmcTrans('laravel-document-module/admin.fields.document.photo'),
-        'ratio'         => config('laravel-document-module.document.uploads.aspect_ratio')
+        'ratio'         => config('laravel-document-module.document.uploads.photo.aspect_ratio')
     ])
     <span class="help-block">
         {!! lmcTrans('laravel-document-module/admin.helpers.document.photo') !!}

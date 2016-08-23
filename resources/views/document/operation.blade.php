@@ -82,9 +82,9 @@
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
             title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
         };
-        var validExtension = "{!! config('laravel-document-module.document.uploads.mimes') !!}";
-        var maxSize = "{!! config('laravel-document-module.document.uploads.max_size') !!}";
-        var aspectRatio = '{!! config('laravel-document-module.document.uploads.aspect_ratio') !!}';
+        var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
+        var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
+        var aspectRatio = '{!! config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}';
         var hasDescription = {{ ( isset($document) && $document->category->has_description ) || ( isset($document_category) && $document_category->has_description ) || ! isset($document) }};
         var hasPhoto = {{ ( isset($document) && $document->category->has_photo ) || ( isset($document_category) && $document_category->has_photo ) || ! isset($document) }};
         {{-- /languages --}}
