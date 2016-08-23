@@ -42,7 +42,6 @@ var Validation = {
         // when press enter
         this.form.find('input').keypress(function(e) {
             if (e.which == 13) {
-                e.preventDefault();
                 if (theValidation.form.validate().form()) {
                     theValidation.form.submit();
                 }
@@ -104,8 +103,6 @@ var Validation = {
                     error.insertAfter(element);
                 },
                 submitHandler: function(form) {
-                    e.preventDefault();
-
                     if ( ! theValidation.options.isAjax) {
                         form.submit();
                         return;
@@ -113,7 +110,6 @@ var Validation = {
                     if (theValidation.options.submitAjax) {
                         theValidation.options.submitAjax.call(undefined, theValidation);
                     }
-                    return false;
                 }
             }
         };
