@@ -10,6 +10,7 @@ var Index = {
      * file input options
      */
     fileinputOptions: {
+        uploadUrl: apiStoreURL,
         allowedFileExtensions: validExtension.split(','),
         allowedFileTypes: null,
         previewFileType: 'any',

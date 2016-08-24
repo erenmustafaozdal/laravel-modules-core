@@ -56,13 +56,13 @@ var LMCFileinput = {
                 // text iptal edilir
                 textInput.val('').prop('disabled',true);
                 // fileinput aktif edilir
-                fileinput.fileinput('enable');
+                fileinput.fileinput('enable').fileinput('refresh');
                 return;
             }
             // text alanı aktif edilir
             textInput.prop('disabled',false);
             // fileinput iptal edilir
-            fileinput.fileinput('disable').fileinput('reset');
+            fileinput.fileinput('disable').fileinput('clear').fileinput('reset');
         });
 
     },
