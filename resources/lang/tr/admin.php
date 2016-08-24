@@ -121,7 +121,8 @@ return [
 
         'file_manager'                      => 'Dosya Yöneticisi',
         'from_file_manager'                 => 'Dosya Yöneticisinden Ekle',
-        'size'                              => 'Boyut'
+        'size'                              => 'Boyut',
+        'byte'                              => 'Bayt'
     ],
 
     // helpers

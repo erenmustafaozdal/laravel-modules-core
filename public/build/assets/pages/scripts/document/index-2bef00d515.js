@@ -345,9 +345,9 @@ var Index = {
                 {
                     var element = $('#document');
                     if (Editor.actionType === 'fast-edit') {
-                        element.fileinput('disable');
+                        LMCFileinput.disable(element);
                     } else {
-                        element.fileinput('enable');
+                        LMCFileinput.enable(element);
                     }
                 },
                 actionButtonCallback: function(Editor)
