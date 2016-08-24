@@ -8,6 +8,7 @@ return [
     */
     'app_name'                      => 'Laravel Modules',       // on some places
     'copyright_year'                => '2016',
+    'logo'                          => 'vendor/laravel-modules-core/assets/global/img/logo-dark.png',
 
     /*
     |--------------------------------------------------------------------------

@@ -122,7 +122,9 @@ return [
         'file_manager'                      => 'Dosya Yöneticisi',
         'from_file_manager'                 => 'Dosya Yöneticisinden Ekle',
         'size'                              => 'Boyut',
-        'byte'                              => 'Bayt'
+        'byte'                              => 'Bayt',
+
+        'current_photo'                     => 'Geçerli Fotoğraf'
     ],
 
     // helpers

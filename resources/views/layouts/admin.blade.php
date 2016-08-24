@@ -64,7 +64,7 @@
                 <div class="page-logo">
                     <a href="index.html">
                         {!! HTML::image(
-                            'vendor/laravel-modules-core/assets/global/img/logo-dark.png',
+                            config('laravel-modules-core.logo'),
                             config('laravel-modules-core.app_name'),
                             ['class' => 'logo-default']
                         ) !!}
