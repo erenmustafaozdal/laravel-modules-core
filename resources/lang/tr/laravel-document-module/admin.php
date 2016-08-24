@@ -19,22 +19,22 @@ return [
         'document_category' => [
             'index'                 => ':parent_document_category Alt Kategoriler',
             'index_description'     => 'Bütün :parent_document_category alt kategorileri',
-            'edit'                  => ':parent_document_category Alt Kategori Düzenle',
+            'edit'                  => ':parent_document_category Alt Kategorisi Düzenle',
             'edit_description'      => ':parent_document_category alt kategorilerden :document_category kategorisi bilgilerini düzenle',
-            'create'                => ':parent_document_category Alt Kategori Ekle',
+            'create'                => ':parent_document_category Alt Kategorisi Ekle',
             'create_description'    => 'Yeni bir :parent_document_category alt kategorisi ekle',
-            'show'                  => ':parent_document_category Alt Kategori Bilgileri',
+            'show'                  => ':parent_document_category Alt Kategorisi Bilgileri',
             'show_description'      => ':parent_document_category alt kategorilerinden :document_category kategorisi hakkında bilgiler'
         ],
         'document' => [
-            'index'                 => ':document_category Belgeler',
-            'index_description'     => 'Bütün :document_category belgeler',
-            'edit'                  => ':document_category Belge Düzenle',
+            'index'                 => ':document_category Belgeleri',
+            'index_description'     => 'Bütün :document_category belgeleri',
+            'edit'                  => ':document_category Belgesi Düzenle',
             'edit_description'      => ':document_category belgelerden :document belgesi bilgilerini düzenle',
-            'create'                => ':document_category Belge Ekle',
-            'create_description'    => 'Yeni bir :document_category belge ekle',
+            'create'                => ':document_category Belgesi Ekle',
+            'create_description'    => 'Yeni bir :document_category belgesi ekle',
             'show'                  => ':document_category Belge Bilgileri',
-            'show_description'      => ':document_category belge :document belgesi hakkında bilgiler'
+            'show_description'      => ':document_category belgelerinden :document belgesi hakkında bilgiler'
         ]
     ],
     'document' => [

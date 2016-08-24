@@ -1,27 +1,23 @@
 {{-- Document Category --}}
-@if($isRelation)
-    {!! Form::hidden('category_id', $document_category->id) !!}
-@else
-    <div class="form-group">
-        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}</label>
-        <select class="form-control form-control-solid placeholder-no-fix select2" name="category_id" style="width: 100%">
-            @if($isRelation && isset($document))
-                <option value="{{ $document->category->id }}" selected>{{ $document->category->name }}</option>
-            @elseif(isset($document_category))
-                <option value="{{ $document_category->id }}" selected>{{ $document_category->name }}</option>
-            @elseif(isset($document))
-                <option value="{{ $document->category->id }}" selected>{{ $document->category->name }}</option>
-            @endif
-        </select>
-
-        @if ( ! isset($helpBlockAfter) )
-            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document.category_id_help') !!} </span>
+<div class="form-group">
+    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}</label>
+    <select class="form-control form-control-solid placeholder-no-fix select2" name="category_id" style="width: 100%">
+        @if($isRelation && isset($document))
+            <option value="{{ $document->category->id }}" selected>{{ $document->category->name }}</option>
+        @elseif($isRelation)
+            <option value="{{ $document_category->id }}" selected>{{ $document_category->name }}</option>
+        @elseif(isset($document))
+            <option value="{{ $document->category->id }}" selected>{{ $document->category->name }}</option>
         @endif
+    </select>
 
-    </div>
-    @if ( isset($helpBlockAfter) )
+    @if ( ! isset($helpBlockAfter) )
         <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document.category_id_help') !!} </span>
     @endif
+
+</div>
+@if ( isset($helpBlockAfter) )
+    <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document.category_id_help') !!} </span>
 @endif
 {{-- /Document Category --}}
 
