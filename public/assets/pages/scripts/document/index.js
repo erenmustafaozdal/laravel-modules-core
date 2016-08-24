@@ -10,14 +10,14 @@ var Index = {
      * file input options
      */
     fileinputOptions: {
+        uploadUrl: apiStoreURL,
         allowedFileExtensions: validExtension.split(','),
         allowedFileTypes: null,
         previewFileType: 'any',
         showUpload: false,
         showCancel: false,
         fileActionSettings: {
-            showUpload: false,
-            showZoom: false
+            showUpload: false
         },
         uploadExtraData: function (previewId, index) {
             var form = $('.form');
@@ -239,7 +239,7 @@ var Index = {
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
-                            '<td class="text-left">' + ( data.photo == null ? '' : data.photo.photo ) + '</td>' +
+                            '<td class="text-left">' + ( data.photo == null ? '' : '<img src="' +data.photo.photo + '">' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
@@ -364,42 +364,54 @@ var Index = {
                             isAjax: true,
                             submitAjax: function(validation)
                             {
-                                if (Editor.actionType === 'fast-add') {
-                                    $('#document').fileinput('upload');
-                                } else {
-                                    var datas = {
-                                        category_id: validation.form.find('select[name="category_id"]').val(),
-                                        title: validation.form.find('input[name="title"]').val(),
-                                        is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
-                                    };
-                                    $.ajax({
-                                        url: Editor.row.data().urls.edit,
-                                        data: datas,
-                                        type: 'PATCH',
-                                        success: function(data)
-                                        {
-                                            if (data.result === 'success') {
-                                                LMCApp.getNoty({
-                                                    message: LMCApp.lang.admin.flash.update_success.message,
-                                                    title: LMCApp.lang.admin.flash.update_success.title,
-                                                    type: 'success'
-                                                });
-                                                Editor.modal.modal('hide');
-                                                return;
-                                            }
-                                            LMCApp.getNoty({
-                                                message: LMCApp.lang.admin.flash.update_error.message,
-                                                title: LMCApp.lang.admin.flash.update_error.title,
-                                                type: 'error'
-                                            });
-                                        }
-                                    }).done(function( data ) {
-                                        if ( data.result === 'success' ) {
-                                            LMCApp.hasTransaction = false;
-                                            DataTable.dataTable.ajax.reload();
-                                        }
-                                    });
+                                var element = $('#document');
+                                var isEnable = LMCFileinputs['#document']['isEnable'];
+                                if (Editor.actionType === 'fast-add' && isEnable) {
+                                    element.fileinput('upload');
+                                    return;
                                 }
+
+                                var url, type, datas = {
+                                    category_id: validation.form.find('select[name="category_id"]').val(),
+                                    title: validation.form.find('input[name="title"]').val(),
+                                    is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
+                                };
+                                if (Editor.actionType === 'fast-add') {
+                                    type = 'POST';
+                                    url = apiStoreURL;
+                                    datas['document'] = validation.form.find('input.elfinder[name="document"]').val()
+                                } else {
+                                    type = 'PATCH';
+                                    url = Editor.row.data().urls.edit;
+                                }
+
+                                $.ajax({
+                                    url: url,
+                                    data: datas,
+                                    type: type,
+                                    success: function(data)
+                                    {
+                                        if (data.result === 'success') {
+                                            LMCApp.getNoty({
+                                                message: LMCApp.lang.admin.flash.update_success.message,
+                                                title: LMCApp.lang.admin.flash.update_success.title,
+                                                type: 'success'
+                                            });
+                                            Editor.modal.modal('hide');
+                                            return;
+                                        }
+                                        LMCApp.getNoty({
+                                            message: LMCApp.lang.admin.flash.update_error.message,
+                                            title: LMCApp.lang.admin.flash.update_error.title,
+                                            type: 'error'
+                                        });
+                                    }
+                                }).done(function( data ) {
+                                    if ( data.result === 'success' ) {
+                                        LMCApp.hasTransaction = false;
+                                        DataTable.dataTable.ajax.reload();
+                                    }
+                                });
                             }
                         });
                         // form is submit

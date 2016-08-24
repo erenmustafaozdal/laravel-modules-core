@@ -400,7 +400,7 @@ return [
         |
         */
 
-        'options' => array(),
+        'options' => [],
 
         /*
         |--------------------------------------------------------------------------
@@ -411,7 +411,7 @@ return [
         | See https://github.com/Studio-42/elFinder/wiki/Connector-configuration-options-2.1#root-options
         |
         */
-        'root_options' => array(
+        'root_options' => [
             'uploadAllow'   => [
                 'image/gif',
                 'image/jpeg',
@@ -460,7 +460,7 @@ return [
             ],
             'uploadDeny'    => ['all'],
             'uploadMaxSize' => '5M',
-        ),
+        ],
     ]
 
 ];

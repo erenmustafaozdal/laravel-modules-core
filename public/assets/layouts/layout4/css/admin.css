@@ -1902,3 +1902,8 @@ div.mce-fullscreen {
 div.bootstrap-touchspin button.btn-outline {
     z-index: 3 !important;
 }
+
+/* colorbox */
+#colorbox, #cboxOverlay {
+    z-index: 10052 !important;
+}

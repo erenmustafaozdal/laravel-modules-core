@@ -1,4 +1,5 @@
 ;var theLMCFileinput;
+var LMCFileinputs = {};
 var LMCFileinput = {
 
     /**
@@ -29,6 +30,7 @@ var LMCFileinput = {
         this.fileElement = $(this.options.src);
 
         this.fileElement.fileinput(this.options.fileinput);
+        LMCFileinputs[this.options.src] = { isEnable : true };
 
         // file input events
         this.fileElement.on('filebrowse', this.options.filebrowse);
@@ -38,6 +40,31 @@ var LMCFileinput = {
         this.fileElement.on('fileuploaded', this.options.fileuploaded);
         this.fileElement.on('filebatchuploadsuccess', this.options.filebatchuploadsuccess);
         this.fileElement.on('fileuploaderror', this.options.fileuploaderror);
+        this.fileElement.on('filedisabled', this.options.filedisabled);
+        this.fileElement.on('fileenabled', this.options.fileenabled);
+
+        // fileinput ve elfinder yönetimi
+        $('.fileinput-tabs').on('click',function(e)
+        {
+            var element = $(this);
+            var action = element.data('action');
+            var actionId = element.data('action-id');
+            var textInput = element.parents('.tabbable-line').find('input.elfinder[type="text"]');
+            var fileinput = $('#' + actionId);
+
+            if (action == 'fileinput') {
+                // text iptal edilir
+                textInput.val('').prop('disabled',true);
+                // fileinput aktif edilir
+                fileinput.fileinput('enable').fileinput('refresh');
+                return;
+            }
+            // text alanı aktif edilir
+            textInput.prop('disabled',false);
+            // fileinput iptal edilir
+            fileinput.fileinput('disable').fileinput('clear').fileinput('reset');
+        });
+
     },
 
     /**
@@ -76,6 +103,7 @@ var LMCFileinput = {
                 browseOnZoneClick: true,
                 uploadAsync: false, // when upload multiple files
                 captionClass: 'form-control form-control-solid',
+                browseLabel: LMCApp.lang.admin.ops.browse,
                 browseIcon: '<i class="icon-folder-alt"></i> ',
                 browseClass: 'btn blue btn-outline',
                 removeIcon: '<i class="icon-trash"></i> ',
@@ -125,6 +153,14 @@ var LMCFileinput = {
             },
             fileuploaderror: function(event, data, msg) {
                 //
+            },
+            filedisabled: function(event) {
+                var id = $(this).prop('id');
+                LMCFileinputs['#' + id]['isEnable'] = false;
+            },
+            fileenabled: function(event) {
+                var id = $(this).prop('id');
+                LMCFileinputs['#' + id]['isEnable'] = true;
             }
         };
     }

@@ -13,7 +13,7 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js','touchspin');
     });
 
-    $script.ready(['config','index','touchspin'], function()
+    $script.ready(['config','index','touchspin','app_fileinput','app_jcrop'], function()
     {
         Index.init({
             DataTable: {

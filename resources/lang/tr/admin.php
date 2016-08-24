@@ -52,6 +52,7 @@ return [
         // actions
         'action'                            => 'Eylem',
         'select'                            => 'Seç...',
+        'browse'                            => 'Bilgisayardan Yükle',
         'status'                            => 'Durum',
         'yes'                               => 'Evet',
         'no'                                => 'Hayır',
@@ -119,7 +120,14 @@ return [
         'detail'                            => 'Detaylar',
 
         'file_manager'                      => 'Dosya Yöneticisi',
+        'from_file_manager'                 => 'Dosya Yöneticisinden Ekle',
         'size'                              => 'Boyut'
+    ],
+
+    // helpers
+    'helpers' => [
+        'fileinput'     => 'Dosyayı bilgisayarından yükle. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
+        'elfinder'      => 'Dosyayı <em class="label label-info">Dosya Yöneticisi</em>\'ni kullanarak ekle. Bu seçenek ile eklenecek dosyaların üzerinde her hangi bir değişiklik (kırpma vb) yapılamaz. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>'
     ],
 
     // permissions
