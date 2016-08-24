@@ -26,6 +26,7 @@
 <form class="form-horizontal" role="form" action="#">
 
     {{-- Category --}}
+    @if( ! isset($document_category))
     <div class="form-group">
         <label class="col-sm-2 control-label">
             {!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}
@@ -34,6 +35,7 @@
             <p class="form-control-static"> {{ $document->category->name }} </p>
         </div>
     </div>
+    @endif
     {{-- /Category --}}
 
     {{-- Title --}}

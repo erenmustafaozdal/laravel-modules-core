@@ -159,11 +159,7 @@
                     'files' => true
                 ];
             ?>
-            @if($operation === 'edit')
-                {!! Form::model($document,$form) !!}
-            @else
-                {!! Form::open($form) !!}
-            @endif
+            {!! Form::open($form) !!}
 
             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
