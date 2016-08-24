@@ -56,13 +56,13 @@ var LMCFileinput = {
                 // text iptal edilir
                 textInput.val('').prop('disabled',true);
                 // fileinput aktif edilir
-                fileinput.fileinput('enable').fileinput('refresh');
+                LMCFileinput.enable(fileinput);
                 return;
             }
             // text alanı aktif edilir
             textInput.prop('disabled',false);
             // fileinput iptal edilir
-            fileinput.fileinput('disable').fileinput('clear').fileinput('reset');
+            LMCFileinput.disable(fileinput);
         });
 
     },
@@ -73,6 +73,26 @@ var LMCFileinput = {
     clear: function()
     {
         this.fileElement.fileinput('clear');
+    },
+
+    /**
+     * file input disable
+     *
+     * @param element
+     */
+    disable: function(element)
+    {
+        element.fileinput('disable').fileinput('clear').fileinput('reset');
+    },
+
+    /**
+     * file input enable
+     *
+     * @param element
+     */
+    enable: function(element)
+    {
+        element.fileinput('enable').fileinput('refresh');
     },
 
     /**

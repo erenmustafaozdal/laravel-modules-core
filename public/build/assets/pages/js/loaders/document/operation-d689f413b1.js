@@ -12,9 +12,32 @@
     {
         Operation.init();
     });
-    $script.ready(['config','app_select2'], function()
+    $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
     {
+        var hasDescriptionObject = {
+            column : 'has_description',
+            input : '#description',
+            wrapper : '#description_wrapper'
+        };
+        var hasPhotoObject = {
+            column : 'has_photo',
+            input : '#photo',
+            wrapper : '#photo_wrapper',
+            isFileinput : true,
+            elfinder: '#elfinder-photo'
+        };
+        var contentObject = {
+            tab: '#detail_tab',
+            content: '#detail'
+        };
+
         Select2.init({
+            isDetailChange: true,
+            detailContent: contentObject,
+            detailDatas: [
+                hasDescriptionObject,
+                hasPhotoObject
+            ],
             select2: {
                 templateResult: function(data)
                 {
@@ -48,5 +71,13 @@
                 }
             }
         });
+
+        // init select2 change
+        var descriptionType = hasDescription ? 'show' : 'hide';
+        var photoType = hasPhoto ? 'show' : 'hide';
+        var contentType = hasDescription || hasPhoto ? 'show' : 'hide';
+        theSelect2.setInputDisplay(hasDescriptionObject, descriptionType);
+        theSelect2.setInputDisplay(hasPhotoObject, photoType);
+        theSelect2.setContentDisplay(contentObject, contentType);
     });
 })();

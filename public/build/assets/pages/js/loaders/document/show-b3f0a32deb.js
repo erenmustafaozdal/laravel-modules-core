@@ -6,11 +6,11 @@
     });
     $script.ready('jquery', function()
     {
-        $script(operationJs,'operation');
+        $script(showJs,'show');
     });
-    $script.ready(['config','operation','app_fileinput','app_jcrop'], function()
+    $script.ready(['show', 'config','app_fileinput','app_jcrop'], function()
     {
-        Operation.init();
+        Show.init();
     });
     $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
     {
@@ -27,7 +27,6 @@
             elfinder: '#elfinder-photo'
         };
         var contentObject = {
-            tab: '#detail_tab',
             content: '#detail'
         };
 
