@@ -1,8 +1,8 @@
-<div class="tabbable-line margin-bottom-40">
+<div class="tabbable-line margin-bottom-10">
 
     {{-- Tabs --}}
     <ul class="nav nav-tabs tabs-reversed">
-        <li>
+        <li class="elfinder_wrapper">
             <a href="#elfinder-content-{!! $input_name !!}"
                data-toggle="tab"
                class="fileinput-tabs"
@@ -37,7 +37,7 @@
             </span>
 
             {{-- template photo preview before crop --}}
-            @if($jcrop)
+            @if(isset($jcrop) && $jcrop)
                 <div class="note note-info margin-bottom-25 hidden" id="jcrop-preview">
                     <div class="row">
                         <div class="col-md-8 responsive-1024">
@@ -63,11 +63,14 @@
             {{-- /template photo preview before crop --}}
 
             {{-- Fileinput file element --}}
-            {!! Form::file($input_name, ['id' => $input_id]) !!}
+            {!! Form::file($input_name, [
+                'id'        => $input_id,
+                'multiple'  => isset($multiple) ? $multiple : false
+            ]) !!}
             {{-- /Fileinput file element --}}
 
             {{-- Jcrop Form Elements --}}
-            @if($jcrop)
+            @if(isset($jcrop) && $jcrop)
                 {!! Form::hidden('x', null, ['id' => 'x']) !!}
                 {!! Form::hidden('y', null, ['id' => 'y']) !!}
                 {!! Form::hidden('width', null, ['id' => 'width']) !!}
@@ -79,7 +82,7 @@
         {{-- /Fileinput Content --}}
 
         {{-- Elfinder Content --}}
-        <div class="tab-pane" id="elfinder-content-{!! $input_name !!}">
+        <div class="tab-pane elfinder_wrapper {!! isset($elfinder) && $elfinder ? '' : 'hidden' !!}" id="elfinder-content-{!! $input_name !!}">
 
             <label class="control-label">{!! $label !!}</label>
             <span class="help-block">
@@ -96,7 +99,7 @@
                 <div class="input-group-btn">
                     {{-- File Manager --}}
                     <a href="{!! route('elfinder.popup',[ 'input_id' => 'fileinput']) !!}"
-                       class="tooltips btn green btn-outline popup_selector"
+                       class="tooltips btn blue btn-outline popup_selector"
                        data-original-title="{!! trans('laravel-modules-core::admin.fields.from_file_manager') !!}"
                        data-container="body"
                        data-placement="bottom"

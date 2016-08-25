@@ -108,7 +108,7 @@ var Select2 = {
                         var contentDisplayType = 'hide';
                         $.each(theSelect2.options.detailDatas, function(key, value)
                         {
-                            if ( ! data[value.column] ) {
+                            if ( ! data[value.column] || (value.reverseValue && data[value.column]) ) {
                                 theSelect2.setInputDisplay(value, 'hide');
                                 return true;
                             }

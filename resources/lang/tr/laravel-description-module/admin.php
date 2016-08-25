@@ -101,7 +101,7 @@ return [
             'category_id_help'      => 'Kategori seç. Bu alan <em class="label label-warning">zorunludur</em>.',
             'is_publish_help'       => 'Yayında olması, ziyaretçilerin bilgileri görebilmesini sağlar. Yayında olmayan veriler ziyaretçilere açık değildir.',
             'description'           => 'Açıklayıcı bir yazı yaz.',
-            'photo'                 => 'İlişkili fotoğraf ekle. İstersen bu fotoğrafı ekledikten sonra kırpabilirsin. | Fotoğraflar Ekle'
+            'photo'                 => '{0} İlişkili fotoğraf ekle. İstersen bu fotoğrafı ekledikten sonra kırpabilirsin. |[1,Inf] Fotoğraflar Ekle'
         ]
     ],
 
