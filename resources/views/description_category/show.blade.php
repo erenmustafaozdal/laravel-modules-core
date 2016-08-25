@@ -1,31 +1,43 @@
-@extends(config('laravel-document-module.views.document_category.layout'))
+@extends(config('laravel-description-module.views.description_category.layout'))
 
 @section('title')
-    @if(isset($parent_document_category))
-        {!! lmcTrans('laravel-document-module/admin.document_category.document_category.show', ['parent_document_category' => $parent_document_category->name]) !!}
+    @if(isset($parent_description_category))
+        {!! lmcTrans('laravel-description-module/admin.description_category.description_category.show', [
+            'parent_description_category' => $parent_description_category->name
+        ]) !!}
     @else
-        {!! lmcTrans('laravel-document-module/admin.document_category.show') !!}
+        {!! lmcTrans('laravel-description-module/admin.description_category.show') !!}
     @endif
 @endsection
 
 @section('page-title')
-    @if(isset($parent_document_category))
-        <h1>{!! lmcTrans('laravel-document-module/admin.document_category.document_category.show', ['parent_document_category' => $parent_document_category->name]) !!}
-            <small>{!! lmcTrans('laravel-document-module/admin.document_category.document_category.show_description', [
-                'parent_document_category'  => $parent_document_category->name,
-                'document_category'         => $document_category->name
-            ]) !!}</small>
+    @if(isset($parent_description_category))
+        <h1>
+            {!! lmcTrans('laravel-description-module/admin.description_category.description_category.show', [
+                'parent_description_category' => $parent_description_category->name
+            ]) !!}
+            <small>
+                {!! lmcTrans('laravel-description-module/admin.description_category.description_category.show_description', [
+                    'parent_description_category'  => $parent_description_category->name,
+                    'description_category'         => $description_category->name
+                ]) !!}
+            </small>
         </h1>
     @else
-        <h1>{!! lmcTrans('laravel-document-module/admin.document_category.show') !!}
-            <small>{!! lmcTrans('laravel-document-module/admin.document_category.show_description', [ 'document_category' => $document_category->name ]) !!}</small>
+        <h1>
+            {!! lmcTrans('laravel-description-module/admin.description_category.show') !!}
+            <small>
+                {!! lmcTrans('laravel-description-module/admin.description_category.show_description', [
+                    'description_category' => $description_category->name
+                ]) !!}
+            </small>
         </h1>
     @endif
 @endsection
 
-@if(isset($parent_document_category))
+@if(isset($parent_description_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($parent_document_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb($parent_description_category, 'name') !!}
 @endsection
 @endif
 
@@ -41,7 +53,7 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var showJs = "{!! lmcElixir('assets/pages/scripts/document_category/show.js') !!}";
+        var showJs = "{!! lmcElixir('assets/pages/scripts/description_category/show.js') !!}";
         {{-- /js file path --}}
 
         {{-- languages --}}
@@ -50,7 +62,7 @@
         };
         {{-- /languages --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/document_category/show.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/description_category/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
 @endsection
 
@@ -63,17 +75,17 @@
             <div class="caption margin-right-10">
                 <i class="icon-note font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-document-module/admin.document_category.show') !!}
+                    {!! lmcTrans('laravel-description-module/admin.description_category.show') !!}
                 </span>
             </div>
             {{-- /Caption --}}
 
             {{-- Actions --}}
             <div class="actions pull-left">
-                @if(isset($parent_document_category))
-                    {!! getOps($document_category, 'show', false, $parent_document_category, config('laravel-document-module.url.document_category')) !!}
+                @if(isset($parent_description_category))
+                    {!! getOps($description_category, 'show', false, $parent_description_category, config('laravel-description-module.url.description_category')) !!}
                 @else
-                    {!! getOps($document_category, 'show', false) !!}
+                    {!! getOps($description_category, 'show', false) !!}
                 @endif
             </div>
             {{-- /Actions --}}
@@ -100,7 +112,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_document_category) ? 'document_category.document_category' : 'document_category') .'.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_description_category) ? 'description_category.description_category' : 'description_category') .'.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -119,27 +131,32 @@
                         {{-- Overview --}}
                         <div id="overview" class="tab-pane active">
                             <div class="profile-info">
-                                @include('laravel-modules-core::document_category.partials.overview')
+                                @include('laravel-modules-core::description_category.partials.overview')
                             </div>
                         </div>
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_document_category) ? 'document_category.document_category' : 'document_category') .'.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_description_category) ? 'description_category.description_category' : 'description_category') .'.update'))
                         <div id="edit_info" class="tab-pane form">
-                            {!! Form::model($document_category,[
+                            {!! Form::model($description_category,[
                                 'method'    => 'PATCH',
-                                'url'       => isset($parent_document_category) ? route('admin.document_category.document_category.update', [ 'id' => $parent_document_category->id, config('laravel-document-module.url.document_category') => $document_category->id ]) : route('admin.document_category.update', [ 'id' => $document_category->id ]),
-                                'id'        => 'document_category-edit-info'
+                                'url'       => isset($parent_description_category)
+                                    ? route('admin.description_category.description_category.update', [
+                                        'id' => $parent_description_category->id,
+                                        config('laravel-description-module.url.description_category') => $description_category->id
+                                    ])
+                                    : route('admin.description_category.update', [ 'id' => $description_category->id ]),
+                                'id'        => 'description_category-edit-info'
                             ]) !!}
 
                             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
                             {{-- Form Body --}}
                             <div class="form-body">
-                                @include('laravel-modules-core::document_category.partials.form', [
-                                    'parent'    => isset($parent_document_category) ? $parent_document_category : false,
-                                    'model'     => $document_category
+                                @include('laravel-modules-core::description_category.partials.form', [
+                                    'parent'    => isset($parent_description_category) ? $parent_description_category : false,
+                                    'model'     => $description_category
                                 ])
                             </div>
                             {{-- /Form Body --}}
