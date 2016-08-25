@@ -94,7 +94,7 @@ return [
         'document' => [
             'category_id_help'      => 'Belgenin kategorisini seç. Bu alan <em class="label label-warning">zorunludur</em>.',
             'is_publish_help'       => 'Belgenin yayında olması, ziyaretçilerin belge bilgilerini görebilmesini sağlar. Yayında olmayan belgeler ziyaretçilere açık değildir.',
-            'description'           => 'Belgeyi açıklayan bir yaz yaz.',
+            'description'           => 'Belgeyi açıklayan bir yazı yaz.',
             'photo'                 => 'Belgeyle ilişkili bir fotoğraf ekle. İstersen bu fotoğrafı ekledikten sonra kırpabilirsin.'
         ]
     ],
@@ -119,6 +119,20 @@ return [
             'document_category_update_desc'     => 'Bu izne sahip olanlar belge kategorisi bilgilerini düzenleyebilir',
             'document_category_destroy'         => 'Silme',
             'document_category_destroy_desc'    => 'Bu izne sahip olanlar belge kategorisi silebilir',
+            'document_category_document_category_index'       => 'Kategori Alt Kategoiler Sayfası',
+            'document_category_document_category_index_desc'  => 'Bu izne sahip olanlar belge alt kategorilerinin listelendiği sayfaya gidebilir',
+            'document_category_document_category_create'      => 'Ekle Sayfası',
+            'document_category_document_category_create_desc' => 'Bu izne sahip olanlar belge alt kategorisi ekleme sayfasına gidebilir',
+            'document_category_document_category_store'       => 'Ekleme',
+            'document_category_document_category_store_desc'  => 'Bu izne sahip olanlar belge alt kategorisi ekleyebilir',
+            'document_category_document_category_show'        => 'Bilgiler Sayfası',
+            'document_category_document_category_show_desc'   => 'Bu izne sahip olanlar belge alt kategorisi bilgilerini görüntüleyebilir',
+            'document_category_document_category_edit'        => 'Düzenleme Sayfası',
+            'document_category_document_category_edit_desc'   => 'Bu izne sahip olanlar belge alt kategorisi bilgilerini düzenleme sayfasına gidebilir',
+            'document_category_document_category_update'      => 'Düzenleme',
+            'document_category_document_category_update_desc' => 'Bu izne sahip olanlar belge alt kategorisi bilgilerini düzenleyebilir',
+            'document_category_document_category_destroy'     => 'Silme',
+            'document_category_document_category_destroy_desc'=> 'Bu izne sahip olanlar belge alt kategorisi silebilir',
         ],
         'DocumentCategoryApiController' => [
             'icon'                              => 'fa fa-files-o',
@@ -126,6 +140,8 @@ return [
             // routes
             'document_category_models'          => 'Kategorileri Listeleme',
             'document_category_models_desc'     => 'Bu izne sahip olanlar belge kategorilerini bazı seçim kutularında listeleyebilir',
+            'document_category_move'            => 'Kategorileri Taşıma',
+            'document_category_move_desc'       => 'Bu izne sahip olanlar belge kategorilerini taşıyarak konumunu değiştirebilir',
             'document_category_group'           => 'Toplu İşlem',
             'document_category_group_desc'      => 'Bu izne sahip olanlar belge kategorilerinin listelendiği sayfada toplu işlem yapabilir',
             'document_category_detail'          => 'Detaylar',
@@ -140,6 +156,8 @@ return [
             'document_category_update_desc'     => 'Bu izne sahip olanlar belge kategorilerinin listelendiği sayfada kategori bilgisini hızlı şekilde düzenleyebilir',
             'document_category_destroy'         => 'Silme',
             'document_category_destroy_desc'    => 'Bu izne sahip olanlar belge kategorisi silebilir',
+            'document_category_document_category_index'=> 'Kategori Alt Kategorileri',
+            'document_category_document_category_index_desc'=> 'Bu izne sahip olanlar kategorilerin altında bulunan kategorileri listeleyebilir',
         ],
         'DocumentController' => [
             'icon'                              => 'fa fa-file-pdf-o',

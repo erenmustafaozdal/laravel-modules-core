@@ -143,5 +143,52 @@ return [
                 ]
             ] // end of child
         ], // end of part
+        // laravel description module
+        [
+            'trans'             => 'laravel-modules-core::laravel-description-module/admin.menu.description_category.root',
+            'route'             => 'javascript:;',
+            'icon'              => 'icon-layers',
+            'access'            => ['admin.description_category.index', 'admin.description_category.create'],
+            'active'            => 'admin.description_category',
+            'child' => [
+                [
+                    'trans'             => 'laravel-modules-core::laravel-description-module/admin.menu.description_category.all',
+                    'route'             => 'admin.description_category.index',
+                    'icon'              => 'icon-list',
+                    'access'            => 'admin.description_category.index',
+                    'active'            => 'admin.description_category.index'
+                ],
+                [
+                    'trans'             => 'laravel-modules-core::laravel-description-module/admin.menu.description_category.add',
+                    'route'             => 'admin.description_category.create',
+                    'icon'              => 'icon-plus',
+                    'access'            => 'admin.description_category.create',
+                    'active'            => 'admin.description_category.create'
+                ]
+            ] // end of child
+        ], // end of part
+        [
+            'trans'             => 'laravel-modules-core::laravel-description-module/admin.menu.description.root',
+            'route'             => 'javascript:;',
+            'icon'              => 'icon-layers',
+            'access'            => ['admin.description.index', 'admin.description.create'],
+            'active'            => 'admin.description.',
+            'child' => [
+                [
+                    'trans'             => 'laravel-modules-core::laravel-description-module/admin.menu.description.all',
+                    'route'             => 'admin.description.index',
+                    'icon'              => 'icon-list',
+                    'access'            => 'admin.description.index',
+                    'active'            => 'admin.description.index'
+                ],
+                [
+                    'trans'             => 'laravel-modules-core::laravel-description-module/admin.menu.description.add',
+                    'route'             => 'admin.description.create',
+                    'icon'              => 'icon-plus',
+                    'access'            => 'admin.description.create',
+                    'active'            => 'admin.description.create'
+                ]
+            ] // end of child
+        ], // end of part
     ]
 ];

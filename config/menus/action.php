@@ -49,6 +49,22 @@ return [
             'icon'              => 'icon-doc',
             'access'            => 'admin.document.create',
             'active'            => 'admin.document.create'
+        ],
+        // add description category
+        [
+            'trans'             => 'laravel-modules-core::laravel-description-module/admin.menu.description_category.add',
+            'route'             => 'admin.description_category.create',
+            'icon'              => 'icon-layers',
+            'access'            => 'admin.description_category.create',
+            'active'            => 'admin.description_category.create'
+        ],
+        // add description
+        [
+            'trans'             => 'laravel-modules-core::laravel-description-module/admin.menu.description.add',
+            'route'             => 'admin.description.create',
+            'icon'              => 'icon-layers',
+            'access'            => 'admin.description.create',
+            'active'            => 'admin.description.create'
         ]
     ]
 ];
