@@ -1,28 +1,40 @@
-@extends(config('laravel-document-module.views.document.layout'))
+@extends(config('laravel-description-module.views.description.layout'))
 
 @section('title')
-    @if(isset($document_category))
-        {!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name]) !!}
+    @if(isset($description_category))
+        {!! lmcTrans('laravel-description-module/admin.description_category.description.index', [
+            'description_category' => $description_category->name
+        ]) !!}
     @else
-        {!! lmcTrans('laravel-document-module/admin.document.index') !!}
+        {!! lmcTrans('laravel-description-module/admin.description.index') !!}
     @endif
 @endsection
 
 @section('page-title')
-    @if(isset($document_category))
-        <h1>{!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name]) !!}
-            <small>{!! lmcTrans('laravel-document-module/admin.document_category.document.index_description', ['document_category' => $document_category->name]) !!}</small>
+    @if(isset($description_category))
+        <h1>
+            {!! lmcTrans('laravel-description-module/admin.description_category.description.index', [
+                'description_category' => $description_category->name
+            ]) !!}
+            <small>
+                {!! lmcTrans('laravel-description-module/admin.description_category.description.index_description', [
+                    'description_category' => $description_category->name
+                ]) !!}
+            </small>
         </h1>
     @else
-        <h1>{!! lmcTrans('laravel-document-module/admin.document.index') !!}
-            <small>{!! lmcTrans('laravel-document-module/admin.document.index_description') !!}</small>
+        <h1>
+            {!! lmcTrans('laravel-description-module/admin.description.index') !!}
+            <small>
+                {!! lmcTrans('laravel-description-module/admin.description.index_description') !!}
+            </small>
         </h1>
     @endif
 @endsection
 
-@if(isset($document_category))
+@if(isset($description_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($document_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb($description_category, 'name') !!}
 @endsection
 @endif
 
@@ -37,14 +49,6 @@
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
     {{-- /Bootstrap Datepicker Css --}}
 
-    {{-- Bootstrap Touch Spin Css --}}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.css') !!}
-    {{-- /Bootstrap Touch Spin Css --}}
-
-    {{-- File Input Css --}}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
-    {{-- /File Input Css --}}
-
     {{-- Select2 --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
@@ -56,28 +60,26 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var formLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
-        var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
-        var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var datatableJs = "{!! lmcElixir('assets/app/datatable.js') !!}";
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
-        var formJs = "{!! lmcElixir('assets/pages/scripts/document/document-form.js') !!}";
+        var formJs = "{!! lmcElixir('assets/pages/scripts/description/description-form.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
-        var indexJs = "{!! lmcElixir('assets/pages/scripts/document/index.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/description/index.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        @if(isset($document_category))
-        var ajaxURL = "{!! route('api.document_category.document.index', ['id' => $document_category->id]) !!}";
-        var modelsURL = "{!! route('api.document_category.models', ['id' => $document_category->id]) !!}";
+        @if(isset($description_category))
+        var ajaxURL = "{!! route('api.description_category.description.index', ['id' => $description_category->id]) !!}";
+        var modelsURL = "{!! route('api.description_category.models', ['id' => $description_category->id]) !!}";
         @else
-        var ajaxURL = "{!! route('api.document.index') !!}";
-        var categoryURL = "{!! route('admin.document_category.show', ['id' => '###id###']) !!}";
-        var modelsURL = "{!! route('api.document_category.models') !!}";
+        var ajaxURL = "{!! route('api.description.index') !!}";
+        var categoryURL = "{!! route('admin.description_category.show', ['id' => '###id###']) !!}";
+        var modelsURL = "{!! route('api.description_category.models') !!}";
         @endif
-        var apiStoreURL = "{!! route('api.document.store') !!}";
-        var apiGroupAction = "{!! route('api.document.group') !!}";
+        var apiStoreURL = "{!! route('api.description.store') !!}";
+        var apiGroupAction = "{!! route('api.description.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -85,23 +87,20 @@
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
             title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
         };
-        var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
-        var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
         {{-- /languages --}}
 
         {{-- scripts --}}
         var datatableIsResponsive = {!! config('laravel-modules-core.options.data_table.is_responsive') ? 'true' : 'false' !!};
-        var groupActionSupport = {!! config('laravel-modules-core.options.document.datatable_group_action') ? 'true' : 'false' !!};
-        var rowDetailSupport = {!! config('laravel-modules-core.options.document.datatable_detail') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.document.datatable_filter') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.document.datatable_filter') ? 'true' : 'false' !!};
-        var isRelationTable = {!! isset($document_category) ? 'true' : 'false' !!}
+        var groupActionSupport = {!! config('laravel-modules-core.options.description.datatable_group_action') ? 'true' : 'false' !!};
+        var rowDetailSupport = {!! config('laravel-modules-core.options.description.datatable_detail') ? 'true' : 'false' !!};
+        var datatableFilterSupport = {!! config('laravel-modules-core.options.description.datatable_filter') ? 'true' : 'false' !!};
+        var datatableFilterSupport = {!! config('laravel-modules-core.options.description.datatable_filter') ? 'true' : 'false' !!};
+        var isRelationTable = {!! isset($description_category) ? 'true' : 'false' !!}
         {{-- /scripts --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/document/index.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/description/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -112,22 +111,22 @@
             <div class="caption">
                 <i class="icon-note font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-document-module/admin.document.index') !!}
+                    {!! lmcTrans('laravel-description-module/admin.description.index') !!}
                 </span>
             </div>
-            @if(isset($document_category))
+            @if(isset($description_category))
                 @include('laravel-modules-core::partials.common.indexActions', [
-                    'module' => [ 'id' =>  $document_category->id, 'route' => 'document_category.document'],
-                    'fast_add'  => config('laravel-modules-core.options.document.datatable_fast_add'),
+                    'module' => [ 'id' =>  $description_category->id, 'route' => 'description_category.description'],
+                    'fast_add'  => config('laravel-modules-core.options.description.datatable_fast_add'),
                     'add'       => true,
-                    'tools'     => config('laravel-modules-core.options.document.datatable_tools')
+                    'tools'     => config('laravel-modules-core.options.description.datatable_tools')
                 ])
             @else
                 @include('laravel-modules-core::partials.common.indexActions', [
-                    'module' => 'document',
-                    'fast_add'  => config('laravel-modules-core.options.document.datatable_fast_add'),
+                    'module' => 'description',
+                    'fast_add'  => config('laravel-modules-core.options.description.datatable_fast_add'),
                     'add'       => true,
-                    'tools'     => config('laravel-modules-core.options.document.datatable_tools')
+                    'tools'     => config('laravel-modules-core.options.description.datatable_tools')
                 ])
             @endif
         </div>
@@ -142,7 +141,7 @@
 
             <div class="table-container">
                 {{-- Table Actions --}}
-                @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                @if(config('laravel-modules-core.options.description.datatable_group_action'))
                     @include('laravel-modules-core::partials.common.indexTableActions', [
                         'actions'   => ['publish','not_publish','destroy']
                     ])
@@ -154,23 +153,21 @@
                     <thead>
                         <tr role="row" class="heading">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                            @if(config('laravel-modules-core.options.description.datatable_group_action'))
                                 <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_detail'))
+                            @if(config('laravel-modules-core.options.description.datatable_detail'))
                                 <th class="all" width="2%"></th>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
 
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-document-module/admin.fields.document.title') !!} </th>
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-document-module/admin.fields.document.document') !!} </th>
-                            <th class="all" width="%5"> {!! trans('laravel-modules-core::admin.fields.size') !!} </th>
-                            @if( ! isset($document_category))
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-description-module/admin.fields.description.title') !!} </th>
+                            @if( ! isset($description_category))
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-description-module/admin.fields.description_category.name') !!} </th>
                             @endif
                             <th class="all" width="%30"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
@@ -178,16 +175,16 @@
                         </tr>
 
                         {{-- Datatable Filter --}}
-                        @if(config('laravel-modules-core.options.document.datatable_filter'))
+                        @if(config('laravel-modules-core.options.description.datatable_filter'))
                         <tr role="row" class="filter">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                            @if(config('laravel-modules-core.options.description.datatable_group_action'))
                                 <td></td>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_detail'))
+                            @if(config('laravel-modules-core.options.description.datatable_detail'))
                                 <td></td>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
@@ -196,17 +193,11 @@
                                 <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="title" placeholder="{!! lmcTrans('laravel-document-module/admin.fields.document.title') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="title" placeholder="{!! lmcTrans('laravel-description-module/admin.fields.description.title') !!}">
                             </td>
+                            @if( ! isset($description_category))
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="document" placeholder="{!! lmcTrans('laravel-document-module/admin.fields.document.document') !!}">
-                            </td>
-                            <td>
-                                @include('laravel-modules-core::partials.common.datatables.filterSize')
-                            </td>
-                            @if( ! isset($document_category))
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-description-module/admin.fields.description_category.name') !!}">
                             </td>
                             @endif
                             <td>
@@ -240,9 +231,9 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'document.partials.form'        => [
+            'description.partials.form'        => [
                 'helpBlockAfter'    => true,
-                'isRelation'        => isset($document_category) ? true : false
+                'isRelation'        => isset($description_category) ? true : false
             ]
         ]
     ])
