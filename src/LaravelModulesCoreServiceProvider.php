@@ -25,7 +25,9 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
         ]);
 
         $this->publishes([
-            __DIR__.'/../config/laravel-modules-core.php' => config_path('laravel-modules-core.php')
+            __DIR__.'/../config/laravel-modules-core.php'   => config_path('laravel-modules-core.php'),
+            __DIR__.'/../config/menus/action.php'           => config_path('menus/action.php'),
+            __DIR__.'/../config/menus/sidebar.php'          => config_path('menus/sidebar.php')
         ], 'config');
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'laravel-modules-core');
@@ -51,6 +53,12 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(
             __DIR__.'/../config/laravel-modules-core.php', 'laravel-modules-core'
+        );
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/menus/action.php', 'menus.action'
+        );
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/menus/sidebar.php', 'menus.sidebar'
         );
 
         $router = $this->app['router'];

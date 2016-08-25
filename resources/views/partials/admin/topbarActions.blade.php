@@ -6,7 +6,7 @@
     </button>
     <ul class="dropdown-menu pull-right" role="menu">
         @foreach($menu_actions->roots() as $item)
-            <li>
+            <li {!! $item->isActive() ? 'class="active"' : '' !!}>
                 <a href="{!! $item->url() !!}">
                     <i class="{{ $item->attribute('data-icon') }}"></i>
                     <span>{!! $item->title !!}</span>

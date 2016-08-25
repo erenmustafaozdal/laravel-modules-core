@@ -16,12 +16,20 @@ class MenuMiddleware
     private $user;
 
     /**
+     * action menu
+     *
+     * @var \Caffeinated\Menus\Menu
+     */
+    private $actionMenu;
+
+    /**
      * menu middleware construct metod
      */
     public function __construct()
     {
         $this->user = Sentinel::getUser();
     }
+
     /**
      * Run the request filter.
      *
@@ -43,16 +51,23 @@ class MenuMiddleware
     /**
      * Admin Actions Menu
      */
-    public function actionsMenu()
+    private function actionsMenu()
     {
         Menu::make('actions', function ($menu)
         {
-            foreach( config('laravel-modules-core.menus.action') as $action ) {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($action['route']) ) {
-                    $menu->add(trans($action['trans']),['route' => $action['route']] )
-                        ->attribute('data-icon', $action['icon']);
-                }
+            foreach( config('menus.action.menu') as $action ) {
+                $active = is_array($action['active'])
+                    ? route($action['active'][0], $action['active']['id'])
+                    : route($action['active']);
+                $access = is_array($action['access']) ? $action['access'] : [$action['access']];
+
+                $menu->add(trans($action['trans']),['route' => $action['route']] )
+                    ->attribute('data-icon', $action['icon'])
+                    ->data('permissions', $access)
+                    ->active($active);
             }
+        })->filter(function($item) {
+            return Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess($item->data('permissions')) ?: false;
         });
     }
 
@@ -63,7 +78,7 @@ class MenuMiddleware
     {
         Menu::make('sidebar', function ($menu)
         {
-            $this->sideMenuDetect($menu,config('laravel-modules-core.menus.side'));
+            $this->sideMenuDetect($menu,config('menus.sidebar.menu'));
         });
     }
 
