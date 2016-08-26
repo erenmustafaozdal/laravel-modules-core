@@ -245,7 +245,7 @@ var Index = {
                         detail += '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
                             '<td class="text-left">';
-                        if (data.photo !== null && data.photo.photo !== null) {
+                        if (data.photo !== null && data.photo.photo !== '') {
                             detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5">' +
                                 '<div class="mt-element-overlay">' +
                                     '<div class="mt-overlay-2">' +

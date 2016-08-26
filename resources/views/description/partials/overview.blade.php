@@ -1,16 +1,16 @@
 {{-- Summary --}}
-<h1 class="font-blue sbold uppercase">{{ $document->title }}</h1>
+<h1 class="font-blue sbold uppercase">{{ $description->title }}</h1>
 <ul class="list-inline">
     <li>
         <i class="fa fa-calendar"></i>
-        {{ trans('laravel-modules-core::admin.fields.created_at_description', [ 'date' => $document->created_at_for_humans ]) }}
+        {{ trans('laravel-modules-core::admin.fields.created_at_description', [ 'date' => $description->created_at_for_humans ]) }}
     </li>
     <li>
         <i class="fa fa-calendar"></i>
-        {{ trans('laravel-modules-core::admin.fields.updated_at_description', [ 'date' => $document->updated_at_for_humans ]) }}
+        {{ trans('laravel-modules-core::admin.fields.updated_at_description', [ 'date' => $description->updated_at_for_humans ]) }}
     </li>
     <li>
-        @if ($document->is_publish)
+        @if ($description->is_publish)
             <i class="fa fa-check font-green"></i>
             {!! trans('laravel-modules-core::admin.ops.published') !!}
         @else
@@ -26,13 +26,13 @@
 <form class="form-horizontal" role="form" action="#">
 
     {{-- Category --}}
-    @if( ! isset($document_category))
+    @if( ! isset($description_category))
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}
+            {!! lmcTrans('laravel-description-module/admin.fields.description_category.name') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document->category->name }} </p>
+            <p class="form-control-static"> {{ $description->category->name }} </p>
         </div>
     </div>
     @endif
@@ -41,38 +41,13 @@
     {{-- Title --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document.title') !!}
+            {!! lmcTrans('laravel-description-module/admin.fields.description.title') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document->title }} </p>
+            <p class="form-control-static"> {{ $description->title }} </p>
         </div>
     </div>
     {{-- /Title --}}
-
-    {{-- Document --}}
-    <div class="form-group">
-        <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document.document') !!}
-        </label>
-        <div class="col-sm-10">
-            <p class="form-control-static"> {!! $document->getDocument(['target' => '_blank']) !!} </p>
-        </div>
-    </div>
-    {{-- /Document --}}
-
-    {{-- Size --}}
-    <div class="form-group">
-        <label class="col-sm-2 control-label">
-            {!! trans('laravel-modules-core::admin.fields.size') !!}
-        </label>
-        <div class="col-sm-10">
-            <p class="form-control-static">
-                {{ $document->size_for_humans }}
-                ({{ $document->size }} {!! trans('laravel-modules-core::admin.fields.byte') !!})
-            </p>
-        </div>
-    </div>
-    {{-- /Size --}}
 
     {{-- Created At --}}
     <div class="form-group">
@@ -80,7 +55,7 @@
             {!! trans('laravel-modules-core::admin.fields.created_at') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document->created_at }} </p>
+            <p class="form-control-static"> {{ $description->created_at }} </p>
         </div>
     </div>
     {{-- /Created At --}}
@@ -91,7 +66,7 @@
             {!! trans('laravel-modules-core::admin.fields.updated_at') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document->updated_at }} </p>
+            <p class="form-control-static"> {{ $description->updated_at }} </p>
         </div>
     </div>
     {{-- /Updated At --}}
@@ -103,7 +78,7 @@
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @if ($document->is_publish)
+                @if ($description->is_publish)
                     <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.published') !!} </span>
                 @else
                     <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.not_published') !!} </span>
@@ -113,37 +88,47 @@
     </div>
     {{-- /Status --}}
 
-    @if($document->category->has_description || $document->category->has_photo)
+    @if($description->category->has_description || $description->category->has_photo)
         <h4>{!! trans('laravel-modules-core::admin.fields.detail') !!}</h4>
 
         {{-- Description --}}
-        @if($document->category->has_description)
+        @if($description->category->has_description)
             <div class="form-group">
                 <label class="col-sm-2 control-label">
-                    {!! lmcTrans('laravel-document-module/admin.fields.document.description') !!}
+                    {!! lmcTrans('laravel-description-module/admin.fields.description.description') !!}
                 </label>
                 <div class="col-sm-10">
-                    <p class="form-control-static"> {{ $document->description->description or '' }} </p>
+                    <p class="form-control-static"> {{ $description->description->description or '' }} </p>
                 </div>
             </div>
         @endif
         {{-- /Description --}}
 
-        {{-- Photo --}}
-        @if($document->category->has_photo)
+        {{-- Link --}}
+        @if($description->category->has_link)
             <div class="form-group">
                 <label class="col-sm-2 control-label">
-                    {!! lmcTrans('laravel-document-module/admin.fields.document.photo') !!}
+                    {!! lmcTrans('laravel-description-module/admin.fields.description.link') !!}
                 </label>
                 <div class="col-sm-10">
                     <p class="form-control-static">
-                        @if(! is_null($document->photo) && ! is_null($document->photo->photo))
-                            <a href="{{ $document->photo->getPhoto([],'normal',true,'document','document') }}" class="thumbnail" target="_blank">
-                                {!! $document->photo->getPhoto([],'normal',false,'document','document') !!}
-                            </a>
-                        @endif
+                        {!! $description->html_link !!}
                     </p>
                 </div>
+            </div>
+        @endif
+        {{-- /Link --}}
+
+        {{-- Photo --}}
+        @if($description->category->has_photo)
+            <div class="form-group">
+                @include('laravel-modules-core::partials.common.current_photos', [
+                    'model'             => $description,
+                    'relation'          => 'multiplePhoto',
+                    'relationType'      => 'hasMany',
+                    'modelSlug'         => 'description',   // for ModelDataTrait->getPhoto() function
+                    'parentRelation'    => 'description'    // for ModelDataTrait->getPhoto() function
+                ])
             </div>
         @endif
         {{-- /Photo --}}

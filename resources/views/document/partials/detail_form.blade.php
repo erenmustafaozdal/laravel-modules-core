@@ -30,13 +30,15 @@
     </span>
 
     {{-- Current Photo/Photos --}}
-    @include('laravel-modules-core::partials.common.current_photos', [
-        'model'             => $document,
-        'relation'          => 'photo',
-        'relationType'      => 'hasOne',
-        'modelSlug'         => 'document',   // for ModelDataTrait->getPhoto() function
-        'parentRelation'    => 'document'    // for ModelDataTrait->getPhoto() function
-    ])
+    @if(isset($currentPhoto) && $currentPhoto)
+        @include('laravel-modules-core::partials.common.current_photos', [
+            'model'             => $document,
+            'relation'          => 'photo',
+            'relationType'      => 'hasOne',
+            'modelSlug'         => 'document',   // for ModelDataTrait->getPhoto() function
+            'parentRelation'    => 'document'    // for ModelDataTrait->getPhoto() function
+        ])
+    @endif
     {{-- /Current Photo/Photos --}}
 
 </div>

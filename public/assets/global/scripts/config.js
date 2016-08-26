@@ -576,7 +576,7 @@ var LMCApp = {
         bootbox.confirm(LMCApp.lang.admin.ops.destroy_confirm,function(result)
         {
             if ( ! result ) {
-                return false;
+                return;
             }
 
             $.ajax({
