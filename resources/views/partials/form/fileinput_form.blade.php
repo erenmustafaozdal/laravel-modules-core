@@ -2,7 +2,7 @@
 
     {{-- Tabs --}}
     <ul class="nav nav-tabs tabs-reversed">
-        <li class="elfinder_wrapper">
+        <li class="elfinder_wrapper {!! isset($elfinder) && $elfinder ? '' : 'hidden' !!}">
             <a href="#elfinder-content-{!! $input_name !!}"
                data-toggle="tab"
                class="fileinput-tabs"
@@ -63,10 +63,11 @@
             {{-- /template photo preview before crop --}}
 
             {{-- Fileinput file element --}}
-            {!! Form::file($input_name, [
-                'id'        => $input_id,
-                'multiple'  => isset($multiple) ? $multiple : false
-            ]) !!}
+            <input type="file"
+                   name="{!! $input_name !!}[]"
+                   id="{!! $input_id !!}"
+                   {!! isset($multiple) &&  $multiple ? 'multiple' : '' !!}
+            >
             {{-- /Fileinput file element --}}
 
             {{-- Jcrop Form Elements --}}

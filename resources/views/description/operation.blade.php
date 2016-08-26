@@ -81,11 +81,11 @@
         var messagesOfRules = {
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
             title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
-            link: { url: "{!! LMCValidation::getMessage('title','url') !!}" }
+            link: { url: "{!! LMCValidation::getMessage('link','url') !!}" }
         };
         var validExtension = "{!! config('laravel-description-module.description.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('laravel-description-module.description.uploads.photo.max_size') !!}";
-        var maxFile = "{!! config('laravel-description-module.description.uploads.photo.max_file') !!}";
+        var maxFile = "{!! config('laravel-description-module.description.uploads.multiple_photo.max_file') !!}";
         var aspectRatio = '{!! config('laravel-description-module.description.uploads.photo.aspect_ratio') !!}';
         var hasDescription = {{ ( isset($description) && $description->category->has_description ) || ( isset($description_category) && $description_category->has_description ) || ! isset($description) ? 'true' : 'false' }};
         var hasPhoto = {{ ( isset($description) && $description->category->has_photo ) || ( isset($description_category) && $description_category->has_photo ) || ! isset($description) ? 'true' : 'false' }};

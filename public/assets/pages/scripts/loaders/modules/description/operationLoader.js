@@ -35,7 +35,13 @@
             column : 'is_multiple_photo',
             input : '#elfinder-photo',
             wrapper : '.elfinder_wrapper',
-            reverseValue: true
+            reverseValue: true,
+            changeAttr: {
+                element: '#photo',
+                attr: 'multiple',
+                trueValue: true,
+                falseValue: false
+            }
         };
         var contentObject = {
             tab: '#detail_tab',

@@ -22,6 +22,7 @@
         'input_id'      => 'photo',
         'jcrop'         => true,
         'ratio'         => config('laravel-document-module.document.uploads.photo.aspect_ratio'),
+        'elfinder'      => true,
         'elfinder_id'   => 'elfinder-photo'
     ])
     <span class="help-block">

@@ -86,6 +86,33 @@ var Index = {
                 }
             });
         });
+
+        // remove photo
+        $(DataTable.tableOptions.src + ' tbody').on('click', 'a.remove-element', function()
+        {
+            var element = $(this);
+            $.ajax({
+                url: removePhotoURL.replace('###id###',element.data('parent-id')),
+                data: {id: element.data('element-id')},
+                success: function (data)
+                {
+                    if (data.result === 'success') {
+                        LMCApp.getNoty({
+                            message: LMCApp.lang.admin.flash.destroy_success.message,
+                            title: LMCApp.lang.admin.flash.destroy_success.title,
+                            type: 'success'
+                        });
+                        element.closest('.element-wrapper').fadeOut().remove();
+                        return;
+                    }
+                    LMCApp.getNoty({
+                        message: LMCApp.lang.admin.flash.destroy_error.message,
+                        title: LMCApp.lang.admin.flash.destroy_error.title,
+                        type: 'error'
+                    });
+                }
+            });
+        });
     },
 
     /**
@@ -161,13 +188,32 @@ var Index = {
                             '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
                             '<td class="text-left">';
                         // çoklu fotoğraf ise çoklu ekle
-                        if ($.isArray(data.photo)) {
-                            $.each(data.photo, function(key,value)
+                        if (data.photo != null && $.isArray(data.photo.photo)) {
+                            $.each(data.photo.photo, function(key,value)
                             {
-                                detail += value.photo == '' ? '' : '<a href="javascript:;" class="thumbnail"><img src="' + value.photo + '"></a>';
+                                detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5 element-wrapper">' +
+                                    '<div class="mt-element-overlay">' +
+                                        '<div class="mt-overlay-2">' +
+                                            '<img src="' + value.photo +'">' +
+                                            '<div class="mt-overlay">' +
+                                                '<a href="javascript:;" class="mt-info btn default btn-outline remove-element" data-element-id="' + value.id + '" data-parent-id="' + data.id + '"> ' +
+                                                    LMCApp.lang.admin.ops.destroy +
+                                                '</a>' +
+                                            '</div>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>';
                             });
                         } else {
-                            detail += data.photo == null || data.photo.photo == null ? '' : '<a href="javascript:;" class="thumbnail"><img src="' + data.photo.photo + '"></a>';
+                            if (data.photo !== null && data.photo.photo !== null) {
+                                detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5">' +
+                                    '<div class="mt-element-overlay">' +
+                                        '<div class="mt-overlay-2">' +
+                                            '<img src="' + data.photo.photo +'">' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>';
+                            }
                         }
                          detail += '</td>' +
                         '</tr>';

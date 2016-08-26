@@ -46,5 +46,8 @@
         'placeholder'   => lmcTrans('laravel-description-module/admin.fields.description.link'),
         'id'            => 'link'
     ]) !!}
+    <span class="help-block">
+        {!! lmcTrans('laravel-description-module/admin.helpers.description.link') !!}
+    </span>
 </div>
 {{-- /Title --}}

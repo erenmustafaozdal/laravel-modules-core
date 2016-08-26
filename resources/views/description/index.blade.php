@@ -80,6 +80,7 @@
         @endif
         var apiStoreURL = "{!! route('api.description.store') !!}";
         var apiGroupAction = "{!! route('api.description.group') !!}";
+        var removePhotoURL = "{!! route('api.description.removePhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
