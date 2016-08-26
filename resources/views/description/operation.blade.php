@@ -75,6 +75,7 @@
             var modelsURL = "{!! route('api.description_category.models') !!}";
         @endif
         var categoryDetailURL = "{!! route('api.description_category.detail', ['id' => '###id###']) !!}";
+        var removePhotoURL = "{!! route('api.description.removePhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -177,7 +178,9 @@
                         ])
                     </div>
                     <div class="tab-pane" id="detail">
-                        @include('laravel-modules-core::description.partials.detail_form')
+                        @include('laravel-modules-core::description.partials.detail_form', [
+                            'currentPhoto'  => true
+                        ])
                     </div>
                 </div>
                 {{-- /Tab Contents --}}

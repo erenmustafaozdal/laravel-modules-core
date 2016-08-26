@@ -42,6 +42,22 @@ var Operation = {
         // LMCFileinput app is init
         LMCFileinput.init(this.getPhotoFileinputOptions());
 
+        // remove photo
+        $('a.remove-element').on('click', function()
+        {
+            var el = $(this);
+            LMCApp.removeElement({
+                element: el,
+                removeElement: {
+                    src: '.element-wrapper'
+                },
+                ajax: {
+                    url: removePhotoURL.replace('###id###',el.data('parent-id')),
+                    data: {id: el.data('element-id')}
+                }
+            });
+        });
+
     },
 
     /**
@@ -54,6 +70,7 @@ var Operation = {
             formSrc:  'form.form',
             fileinput: {
                 maxFileCount: maxFile,
+                maxFileSize: maxSize,
                 showUpload: false,
                 showCancel: false,
                 fileActionSettings: {

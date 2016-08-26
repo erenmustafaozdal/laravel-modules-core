@@ -22,19 +22,27 @@
         'input_id'      => 'photo',
         'jcrop'         => false,
         'ratio'         => config('laravel-description-module.description.uploads.photo.aspect_ratio'),
-        'elfinder'      => ( isset($description) && $description->category->is_multiple_photo ) || ( isset($description_category) && $description_category->is_multiple_photo ) || ! isset($description) ? 'false' : 'true',
+        'elfinder'      => ( isset($description) && $description->category->is_multiple_photo ) || ( isset($description_category) && $description_category->is_multiple_photo ) || ! isset($description) ? false : true,
         'elfinder_id'   => 'elfinder-photo',
         'multiple'      => isset($description_category) ? $description_category->is_multiple_photo : isset($description) ? $description->category->is_multiple_photo : false
     ])
+
     <span class="help-block">
         {!! lmcTrans('laravel-description-module/admin.helpers.description.photo',[],1) !!}
     </span>
-    @if(isset($description) && ! is_null($description->photo) && ! is_null($description->photo->photo))
-        <label class="control-label">{!! trans('laravel-modules-core::admin.fields.current_photo') !!}</label>
-        <a href="{{ $description->photo->getPhoto([],'normal',true,'description','description') }}" class="thumbnail" target="_blank">
-            {!! $description->photo->getPhoto([],'normal',false,'description','description') !!}
-        </a>
+
+    {{-- Current Photo/Photos --}}
+    @if(isset($currentPhoto) && $currentPhoto)
+        @include('laravel-modules-core::partials.common.current_photos', [
+            'model'             => $description,
+            'relation'          => 'multiplePhoto',
+            'relationType'      => 'hasMany',
+            'modelSlug'         => 'description',   // for ModelDataTrait->getPhoto() function
+            'parentRelation'    => 'description'    // for ModelDataTrait->getPhoto() function
+        ])
     @endif
+    {{-- /Current Photo/Photos --}}
+
 </div>
 {{-- /Document Photo --}}
 

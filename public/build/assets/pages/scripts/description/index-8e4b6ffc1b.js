@@ -90,26 +90,15 @@ var Index = {
         // remove photo
         $(DataTable.tableOptions.src + ' tbody').on('click', 'a.remove-element', function()
         {
-            var element = $(this);
-            $.ajax({
-                url: removePhotoURL.replace('###id###',element.data('parent-id')),
-                data: {id: element.data('element-id')},
-                success: function (data)
-                {
-                    if (data.result === 'success') {
-                        LMCApp.getNoty({
-                            message: LMCApp.lang.admin.flash.destroy_success.message,
-                            title: LMCApp.lang.admin.flash.destroy_success.title,
-                            type: 'success'
-                        });
-                        element.closest('.element-wrapper').fadeOut().remove();
-                        return;
-                    }
-                    LMCApp.getNoty({
-                        message: LMCApp.lang.admin.flash.destroy_error.message,
-                        title: LMCApp.lang.admin.flash.destroy_error.title,
-                        type: 'error'
-                    });
+            var el = $(this);
+            LMCApp.removeElement({
+                element: el,
+                removeElement: {
+                    src: '.element-wrapper'
+                },
+                ajax: {
+                    url: removePhotoURL.replace('###id###',el.data('parent-id')),
+                    data: {id: el.data('element-id')}
                 }
             });
         });
@@ -196,7 +185,7 @@ var Index = {
                                         '<div class="mt-overlay-2">' +
                                             '<img src="' + value.photo +'">' +
                                             '<div class="mt-overlay">' +
-                                                '<a href="javascript:;" class="mt-info btn default btn-outline remove-element" data-element-id="' + value.id + '" data-parent-id="' + data.id + '"> ' +
+                                                '<a href="javascript:;" class="mt-info btn red btn-outline remove-element" data-element-id="' + value.id + '" data-parent-id="' + data.id + '"> ' +
                                                     LMCApp.lang.admin.ops.destroy +
                                                 '</a>' +
                                             '</div>' +
@@ -206,7 +195,7 @@ var Index = {
                             });
                         } else {
                             if (data.photo !== null && data.photo.photo !== null) {
-                                detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5">' +
+                                detail += '<div class="col-md-12">' +
                                     '<div class="mt-element-overlay">' +
                                         '<div class="mt-overlay-2">' +
                                             '<img src="' + data.photo.photo +'">' +

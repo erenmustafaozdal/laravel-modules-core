@@ -552,5 +552,62 @@ var LMCApp = {
     stripTags: function(html)
     {
         return html.replace(/(<([^>]+)>)/ig,"");
+    },
+
+    /**
+     * remove element
+     *
+     * @param options
+     */
+    removeElement: function(options)
+    {
+        var opt = $.extend(true, {
+            element: null,          // jquery element
+            removeElement: {
+                type: 'closest',    // where is remove element (jquery function) [closest|other]
+                src: ''
+            },
+            ajax: {
+                url: '',            // ajax url
+                data: {}            // ajax data
+            }
+        }, options);
+
+        bootbox.confirm(LMCApp.lang.admin.ops.destroy_confirm,function(result)
+        {
+            if ( ! result ) {
+                return false;
+            }
+
+            $.ajax({
+                url: opt.ajax.url,
+                data: opt.ajax.data,
+                success: function (data)
+                {
+                    if (data.result !== 'success') {
+                        LMCApp.getNoty({
+                            message: LMCApp.lang.admin.flash.destroy_error.message,
+                            title: LMCApp.lang.admin.flash.destroy_error.title,
+                            type: 'error'
+                        });
+                        return;
+                    }
+                    LMCApp.getNoty({
+                        message: LMCApp.lang.admin.flash.destroy_success.message,
+                        title: LMCApp.lang.admin.flash.destroy_success.title,
+                        type: 'success'
+                    });
+                    // remove element
+                    switch (opt.removeElement.type) {
+                        case 'closest':
+                            opt.element.closest('.element-wrapper').fadeOut().remove();
+                            break;
+                        default:
+                            $('.element-wrapper').fadeOut().remove();
+                            break;
+                    }
+                }
+            });
+        });
     }
 };
