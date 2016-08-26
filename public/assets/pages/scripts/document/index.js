@@ -244,9 +244,17 @@ var Index = {
                     if (data.category.has_photo) {
                         detail += '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
-                            '<td class="text-left">' +
-                                ( data.photo == null || data.photo.photo == '' ? '' : '<a href="javascript:;" class="thumbnail"><img src="' + data.photo.photo + '"></a>' ) +
-                            '</td>' +
+                            '<td class="text-left">';
+                        if (data.photo !== null && data.photo.photo !== null) {
+                            detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5">' +
+                                '<div class="mt-element-overlay">' +
+                                    '<div class="mt-overlay-2">' +
+                                        '<img src="' + data.photo.photo +'">' +
+                                    '</div>' +
+                                '</div>' +
+                            '</div>';
+                        }
+                        detail += '</td>' +
                         '</tr>';
                     }
 

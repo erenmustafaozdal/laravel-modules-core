@@ -42,10 +42,14 @@ if (! function_exists('lmcTrans')) {
      *
      * @param string $id
      * @param array $parameters
+     * @param integer|null $count
      * @return string
      */
-    function lmcTrans($id, $parameters = [])
+    function lmcTrans($id, $parameters = [], $count = null)
     {
+        if (is_integer($count)) {
+            return trans_choice('laravel-modules-core::'.$id, $count, $parameters);
+        }
         return trans('laravel-modules-core::'.$id, $parameters);
     }
 }

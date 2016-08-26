@@ -108,7 +108,7 @@ var Select2 = {
                         var contentDisplayType = 'hide';
                         $.each(theSelect2.options.detailDatas, function(key, value)
                         {
-                            if ( ! data[value.column] ) {
+                            if ( ( ! value.reverseValue && ! data[value.column]) || (value.reverseValue && data[value.column]) ) {
                                 theSelect2.setInputDisplay(value, 'hide');
                                 return true;
                             }
@@ -141,6 +141,9 @@ var Select2 = {
                     $(value.elfinder).prop('disabled','disabled').val('');
                     LMCFileinput.disable(el);
                 }
+                if(value.changeAttr) {
+                    $(value.changeAttr.element).attr(value.changeAttr.attr,value.changeAttr.trueValue);
+                }
                 break;
             case 'show':
                 el_wrap.removeClass('hidden');
@@ -148,6 +151,9 @@ var Select2 = {
                 if (value.isFileinput) {
                     $(value.elfinder).prop('disabled',false);
                     LMCFileinput.enable(el);
+                }
+                if(value.changeAttr) {
+                    $(value.changeAttr.element).attr(value.changeAttr.attr,value.changeAttr.falseValue);
                 }
                 break;
         }

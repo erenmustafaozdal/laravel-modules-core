@@ -124,7 +124,7 @@ return [
         'size'                              => 'Boyut',
         'byte'                              => 'Bayt',
 
-        'current_photo'                     => 'Geçerli Fotoğraf'
+        'current_photo'                     => '[0,1] Geçerli Fotoğraf |[2,Inf] Geçerli Fotoğraflar'
     ],
 
     // helpers

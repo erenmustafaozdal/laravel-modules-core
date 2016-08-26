@@ -101,7 +101,8 @@ return [
             'category_id_help'      => 'Kategori seç. Bu alan <em class="label label-warning">zorunludur</em>.',
             'is_publish_help'       => 'Yayında olması, ziyaretçilerin bilgileri görebilmesini sağlar. Yayında olmayan veriler ziyaretçilere açık değildir.',
             'description'           => 'Açıklayıcı bir yazı yaz.',
-            'photo'                 => 'İlişkili fotoğraf ekle. İstersen bu fotoğrafı ekledikten sonra kırpabilirsin. | Fotoğraflar Ekle'
+            'photo'                 => '{0} İlişkili fotoğraf ekle. İstersen bu fotoğrafı ekledikten sonra kırpabilirsin. |[1,Inf] Fotoğraflar Ekle',
+            'link'                  => 'Bilgiler ile alakalı bir internet adresi ekle. Bu alan zorunlu <em class="label label-warning">değildir</em>. Lütfen yazdığın internet adresinin başına <em class="label label-info">http://</em> veya <em class="label label-info">https://</em> eklemeyi unutma. <small class="text-muted">( Ör: http://siteadresi.com )</small> ',
         ]
     ],
 
@@ -221,6 +222,8 @@ return [
             'description_publish_desc'             => 'Bu izne sahip olanlar verilerin listelendiği sayfada hızlı şekilde veri yayınlayabilir',
             'description_notPublish'               => 'Hızlı Yayından Kaldırma',
             'description_notPublish_desc'          => 'Bu izne sahip olanlar verilerin listelendiği sayfada hızlı şekilde veri yayından kaldırabilir',
+            'description_removePhoto'              => 'Fotoğraf Silme',
+            'description_removePhoto_desc'         => 'Bu izne sahip olanlar verilere ait fotoğrafları silebilir',
             'description_index'                    => 'Listeleme',
             'description_index_desc'               => 'Bu izne sahip olanlar verileri listeleyebilir',
             'description_category_description_index'  => 'Listeleme',
