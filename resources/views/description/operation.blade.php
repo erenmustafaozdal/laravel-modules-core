@@ -88,9 +88,9 @@
         var maxSize = "{!! config('laravel-description-module.description.uploads.photo.max_size') !!}";
         var maxFile = "{!! config('laravel-description-module.description.uploads.multiple_photo.max_file') !!}";
         var aspectRatio = '{!! config('laravel-description-module.description.uploads.photo.aspect_ratio') !!}';
-        var hasDescription = {{ ( isset($description) && $description->category->has_description ) || ( isset($description_category) && $description_category->has_description ) || ! isset($description) ? 'true' : 'false' }};
-        var hasPhoto = {{ ( isset($description) && $description->category->has_photo ) || ( isset($description_category) && $description_category->has_photo ) || ! isset($description) ? 'true' : 'false' }};
-        var hasLink = {{ ( isset($description) && $description->category->has_link ) || ( isset($description_category) && $description_category->has_link ) || ! isset($description) ? 'true' : 'false' }};
+        var hasDescription = {{ ( isset($description) && $description->category->has_description ) || ( isset($description_category) && $description_category->has_description ) || (! isset($description) && ! isset($description_category)) ? 'true' : 'false' }};
+        var hasPhoto = {{ ( isset($description) && $description->category->has_photo ) || ( isset($description_category) && $description_category->has_photo ) || (! isset($description) && ! isset($description_category)) ? 'true' : 'false' }};
+        var hasLink = {{ ( isset($description) && $description->category->has_link ) || ( isset($description_category) && $description_category->has_link ) || (! isset($description) && ! isset($description_category)) ? 'true' : 'false' }};
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/description/operation.js') !!}"></script>

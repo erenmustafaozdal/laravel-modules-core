@@ -85,8 +85,8 @@
         var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
         var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
         var aspectRatio = '{!! config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}';
-        var hasDescription = {{ ( isset($document) && $document->category->has_description ) || ( isset($document_category) && $document_category->has_description ) || ! isset($document) ? 'true' : 'false' }};
-        var hasPhoto = {{ ( isset($document) && $document->category->has_photo ) || ( isset($document_category) && $document_category->has_photo ) || ! isset($document) ? 'true' : 'false' }};
+        var hasDescription = {{ ( isset($document) && $document->category->has_description ) || ( isset($document_category) && $document_category->has_description ) || (! isset($document) && ! isset($document_category)) ? 'true' : 'false' }};
+        var hasPhoto = {{ ( isset($document) && $document->category->has_photo ) || ( isset($document_category) && $document_category->has_photo ) || (! isset($document) && ! isset($document_category)) ? 'true' : 'false' }};
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/document/operation.js') !!}"></script>
