@@ -1,5 +1,5 @@
-@if( isset($model) && $model->$relation->count() > 0 )
-    <label class="control-label">{!! lmcTrans('admin.fields.current_photo',[],$relationType === 'hasMany' ? $model->$relation->count() : 1) !!}</label>
+@if( isset($model) && ! is_null($model->$relation) )
+    <h4>{!! lmcTrans('admin.fields.current_photo',[],$relationType === 'hasMany' ? $model->$relation->count() : 1) !!}</h4>
     <div class="row">
 
         @foreach( ($relationType === 'hasMany' ? $model->$relation : [$model->$relation]) as $photo )

@@ -1,43 +1,43 @@
-@extends(config('laravel-document-module.views.document.layout'))
+@extends(config('laravel-description-module.views.description.layout'))
 
 @section('title')
-    @if(isset($document_category))
-        {!! lmcTrans('laravel-document-module/admin.document_category.document.show', [
-            'document_category' => $document_category->name
+    @if(isset($description_category))
+        {!! lmcTrans('laravel-description-module/admin.description_category.description.show', [
+            'description_category' => $description_category->name
         ]) !!}
     @else
-        {!! lmcTrans('laravel-document-module/admin.document.show') !!}
+        {!! lmcTrans('laravel-description-module/admin.description.show') !!}
     @endif
 @endsection
 
 @section('page-title')
     @if(isset($page_category))
         <h1>
-            {!! lmcTrans('laravel-document-module/admin.document_category.document.show', [
-                'document_category' => $document_category->name
+            {!! lmcTrans('laravel-description-module/admin.description_category.description.show', [
+                'description_category' => $description_category->name
             ]) !!}
             <small>
-                {!! lmcTrans('laravel-document-module/admin.document_category.document.show_description', [
-                    'document_category' => $document_category->name,
-                    'document'          => $document->title
+                {!! lmcTrans('laravel-description-module/admin.description_category.description.show_description', [
+                    'description_category' => $description_category->name,
+                    'description'          => $description->title
                 ]) !!}
             </small>
         </h1>
     @else
         <h1>
-            {!! lmcTrans('laravel-document-module/admin.document.show') !!}
+            {!! lmcTrans('laravel-description-module/admin.description.show') !!}
             <small>
-                {!! lmcTrans('laravel-document-module/admin.document.show_description', [
-                    'document' => $document->title
+                {!! lmcTrans('laravel-description-module/admin.description.show_description', [
+                    'description' => $description->title
                 ]) !!}
             </small>
         </h1>
     @endif
 @endsection
 
-@if(isset($document_category))
+@if(isset($description_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($document_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb($description_category, 'name') !!}
 @endsection
 @endif
 
@@ -69,31 +69,35 @@
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
-        var showJs = "{!! lmcElixir('assets/pages/scripts/document/show.js') !!}";
+        var showJs = "{!! lmcElixir('assets/pages/scripts/description/show.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        @if(isset($document_category))
-            var modelsURL = "{!! route('api.document_category.models', ['id' => $document_category]) !!}";
+        @if(isset($description_category))
+            var modelsURL = "{!! route('api.description_category.models', ['id' => $description_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.document_category.models') !!}";
+            var modelsURL = "{!! route('api.description_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.document_category.detail', ['id' => '###id###']) !!}";
+        var categoryDetailURL = "{!! route('api.description_category.detail', ['id' => '###id###']) !!}";
+        var removePhotoURL = "{!! route('api.description.removePhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
+            link: { url: "{!! LMCValidation::getMessage('link','url') !!}" }
         };
-        var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
-        var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
-        var aspectRatio = '{!! config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}';
-        var hasDescription = {{ ( isset($document) && $document->category->has_description ) || ( isset($document_category) && $document_category->has_description ) || ! isset($document) ? 'true' : 'false' }};
-        var hasPhoto = {{ ( isset($document) && $document->category->has_photo ) || ( isset($document_category) && $document_category->has_photo ) || ! isset($document) ? 'true' : 'false' }};
+        var validExtension = "{!! config('laravel-description-module.description.uploads.file.mimes') !!}";
+        var maxSize = "{!! config('laravel-description-module.description.uploads.file.max_size') !!}";
+        var maxFile = "{!! config('laravel-description-module.description.uploads.multiple_photo.max_file') !!}";
+        var aspectRatio = '{!! config('laravel-description-module.description.uploads.photo.aspect_ratio') !!}';
+        var hasDescription = {{ ( isset($description) && $description->category->has_description ) || ( isset($description_category) && $description_category->has_description ) || ! isset($description) ? 'true' : 'false' }};
+        var hasPhoto = {{ ( isset($description) && $description->category->has_photo ) || ( isset($description_category) && $description_category->has_photo ) || ! isset($description) ? 'true' : 'false' }};
+        var hasLink = {{ ( isset($description) && $description->category->has_link ) || ( isset($description_category) && $description_category->has_link ) || ! isset($description) ? 'true' : 'false' }};
         {{-- /languages --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/document/show.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/description/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
@@ -102,9 +106,9 @@
 @section('content')
     {{-- Portlet --}}
     <div class="portlet light bordered mt-element-ribbon portlet-fit">
-        <div class="ribbon ribbon-right ribbon-clip ribbon-shadow ribbon-border-dash-hor ribbon-color-{{ $document->is_publish ? 'success' : 'danger' }} uppercase">
+        <div class="ribbon ribbon-right ribbon-clip ribbon-shadow ribbon-border-dash-hor ribbon-color-{{ $description->is_publish ? 'success' : 'danger' }} uppercase">
             <div class="ribbon-sub ribbon-clip ribbon-right"></div>
-            {{ $document->is_publish ? trans('laravel-modules-core::admin.ops.published') : trans('laravel-modules-core::admin.ops.not_published') }}
+            {{ $description->is_publish ? trans('laravel-modules-core::admin.ops.published') : trans('laravel-modules-core::admin.ops.not_published') }}
         </div>
         {{-- Portlet Title --}}
         <div class="portlet-title">
@@ -112,17 +116,17 @@
             <div class="caption margin-right-10">
                 <i class="icon-note font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-document-module/admin.document.show') !!}
+                    {!! lmcTrans('laravel-description-module/admin.description.show') !!}
                 </span>
             </div>
             {{-- /Caption --}}
 
             {{-- Actions --}}
             <div class="actions pull-left">
-                @if(isset($document_category))
-                    {!! getOps($document, 'show', true, $document_category, config('laravel-document-module.url.document')) !!}
+                @if(isset($description_category))
+                    {!! getOps($description, 'show', true, $description_category, config('laravel-description-module.url.description')) !!}
                 @else
-                    {!! getOps($document, 'show', true) !!}
+                    {!! getOps($description, 'show', true) !!}
                 @endif
             </div>
             {{-- /Actions --}}
@@ -149,7 +153,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($document_category) ? 'document_category.document' : 'document') .'.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($description_category) ? 'description_category.description' : 'description') .'.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -168,21 +172,21 @@
                         {{-- Overview --}}
                         <div id="overview" class="tab-pane active">
                             <div class="profile-info">
-                                @include('laravel-modules-core::document.partials.overview')
+                                @include('laravel-modules-core::description.partials.overview')
                             </div>
                         </div>
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($document_category) ? 'document_category.document' : 'document') .'.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($description_category) ? 'description_category.description' : 'description') .'.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => isset($document_category) ? route('admin.document_category.document.update', [
-                                    'id'                                    => $document_category->id,
-                                    config('laravel-document-module.url.document')  => $document->id
-                                ]) : route('admin.document.update', [ 'id' => $document->id ]),
-                                'id'        => 'document-edit-info',
+                                'url'       => isset($description_category) ? route('admin.description_category.description.update', [
+                                    'id'                                    => $description_category->id,
+                                    config('laravel-description-module.url.description')  => $description->id
+                                ]) : route('admin.description.update', [ 'id' => $description->id ]),
+                                'id'        => 'description-edit-info',
                                 'files'     => true
                             ]) !!}
 
@@ -190,11 +194,13 @@
 
                             {{-- Form Body --}}
                             <div class="form-body">
-                                @include('laravel-modules-core::document.partials.form', [
+                                @include('laravel-modules-core::description.partials.form', [
                                     'isRelation'    => isset($page_category) ? true : false
                                 ])
                                 <div id="detail">
-                                    @include('laravel-modules-core::document.partials.detail_form')
+                                    @include('laravel-modules-core::description.partials.detail_form', [
+                                        'currentPhoto'  => false
+                                    ])
                                 </div>
                             </div>
                             {{-- /Form Body --}}

@@ -174,7 +174,9 @@
                         ])
                     </div>
                     <div class="tab-pane" id="detail">
-                        @include('laravel-modules-core::document.partials.detail_form')
+                        @include('laravel-modules-core::document.partials.detail_form', [
+                            'currentPhoto'  => isset($document)
+                        ])
                     </div>
                 </div>
                 {{-- /Tab Contents --}}

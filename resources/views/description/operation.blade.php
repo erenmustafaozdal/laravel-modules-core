@@ -179,7 +179,7 @@
                     </div>
                     <div class="tab-pane" id="detail">
                         @include('laravel-modules-core::description.partials.detail_form', [
-                            'currentPhoto'  => true
+                            'currentPhoto'  => isset($description)
                         ])
                     </div>
                 </div>
