@@ -42,7 +42,7 @@ var Show = {
         $('#destroy-avatar').on('click', function(event)
         {
             var top_photo = avatarPhotoPath + '/small.jpg',
-                nav_photo = avatarPhotoPath + '/biggest.jpg';
+                nav_photo = avatarPhotoPath + '/big.jpg';
 
             UserShow.changeAvatar('remove', top_photo, nav_photo);
             LMCApp.startDestroyTimer(function()
@@ -151,7 +151,7 @@ var Show = {
             return;
         }
         // profil fotoğrafları yerleştirilir
-        this.changeAvatar('add', data.photos.thumbnails.small, data.photos.thumbnails.biggest);
+        this.changeAvatar('add', data.photos[0].thumbnails.small, data.photos[0].thumbnails.big);
         // file input sıfırlanır
         LMCFileinput.clear();
 
