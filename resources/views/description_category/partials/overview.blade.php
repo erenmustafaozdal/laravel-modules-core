@@ -1,5 +1,5 @@
 {{-- Summary --}}
-<h1 class="font-blue sbold uppercase">{{ $description_category->name }}</h1>
+<h1 class="font-blue sbold uppercase">{{ $description_category->name_uc_first }}</h1>
 {{-- /Summary --}}
 
 {{-- Information on Form --}}
@@ -10,7 +10,7 @@
             {!! lmcTrans('laravel-description-module/admin.fields.description_category.name') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $description_category->name }} </p>
+            <p class="form-control-static"> {{ $description_category->name_uc_first }} </p>
         </div>
     </div>
     {{-- /Name --}}

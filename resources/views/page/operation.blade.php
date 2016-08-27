@@ -3,7 +3,7 @@
 @section('title')
     @if(isset($page_category))
         {!! lmcTrans("laravel-page-module/admin.page_category.page.{$operation}", [
-            'page_category' => $page_category->name
+            'page_category' => $page_category->name_uc_first
         ]) !!}
     @else
         {!! lmcTrans("laravel-page-module/admin.page.{$operation}") !!}
@@ -14,12 +14,12 @@
     @if(isset($page_category))
         <h1>
             {!! lmcTrans("laravel-page-module/admin.page_category.page.{$operation}", [
-                'page_category' => $page_category->name
+                'page_category' => $page_category->name_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans("laravel-page-module/admin.page_category.page.{$operation}_description", [
-                    'page_category' => $page_category->name,
-                    'page'          => $operation === 'edit' ? $page->title : null
+                    'page_category' => $page_category->name_uc_first,
+                    'page'          => $operation === 'edit' ? $page->title_uc_first : null
                 ]) !!}
             </small>
         </h1>
@@ -28,7 +28,7 @@
             {!! lmcTrans("laravel-page-module/admin.page.{$operation}") !!}
             <small>
                 {!! lmcTrans("laravel-page-module/admin.page.{$operation}_description", [
-                    'page' => $operation === 'edit' ? $page->title : null
+                    'page' => $operation === 'edit' ? $page->title_uc_first : null
                 ]) !!}
             </small>
         </h1>
@@ -94,7 +94,7 @@
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($page_category))
                         {!! lmcTrans("laravel-page-module/admin.page_category.page.{$operation}", [
-                            'page_category' => $page_category->name
+                            'page_category' => $page_category->name_uc_first
                         ]) !!}
                     @else
                         {!! lmcTrans("laravel-page-module/admin.page.{$operation}") !!}

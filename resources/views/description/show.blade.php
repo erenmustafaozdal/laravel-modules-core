@@ -3,8 +3,8 @@
 @section('title')
     @if(isset($description_category))
         {!! lmcTrans('laravel-description-module/admin.description_category.description.show', [
-            'description_category' => $description_category->name,
-            'description'          => $description->title
+            'description_category' => $description_category->name_uc_first,
+            'description'          => $description->title_uc_first
         ]) !!}
     @else
         {!! lmcTrans('laravel-description-module/admin.description.show') !!}
@@ -15,13 +15,13 @@
     @if(isset($description_category))
         <h1>
             {!! lmcTrans('laravel-description-module/admin.description_category.description.show', [
-                'description_category' => $description_category->name,
-                'description'          => $description->title
+                'description_category' => $description_category->name_uc_first,
+                'description'          => $description->title_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans('laravel-description-module/admin.description_category.description.show_description', [
-                    'description_category' => $description_category->name,
-                    'description'          => $description->title
+                    'description_category' => $description_category->name_uc_first,
+                    'description'          => $description->title_uc_first
                 ]) !!}
             </small>
         </h1>
@@ -30,7 +30,7 @@
             {!! lmcTrans('laravel-description-module/admin.description.show') !!}
             <small>
                 {!! lmcTrans('laravel-description-module/admin.description.show_description', [
-                    'description' => $description->title
+                    'description' => $description->title_uc_first
                 ]) !!}
             </small>
         </h1>
@@ -120,8 +120,8 @@
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($description_category))
                         {!! lmcTrans('laravel-description-module/admin.description_category.description.show', [
-                            'description_category' => $description_category->name,
-                            'description'          => $description->title
+                            'description_category' => $description_category->name_uc_first,
+                            'description'          => $description->title_uc_first
                         ]) !!}
                     @else
                         {!! lmcTrans('laravel-description-module/admin.description.show') !!}

@@ -6,7 +6,7 @@
 
 @section('page-title')
     <h1>{!! lmcTrans('laravel-page-module/admin.page_category.show') !!}
-        <small>{!! lmcTrans('laravel-page-module/admin.page_category.show_description',[ 'page_category' => $page_category->name ])  !!}</small>
+        <small>{!! lmcTrans('laravel-page-module/admin.page_category.show_description',[ 'page_category' => $page_category-->name_uc_first ])  !!}</small>
     </h1>
 @endsection
 
@@ -100,7 +100,7 @@
                             <div class="profile-info">
 
                                 {{-- Summary --}}
-                                <h1 class="font-blue sbold uppercase">{{ $page_category->name }}</h1>
+                                <h1 class="font-blue sbold uppercase">{{ $page_category-->name_uc_first }}</h1>
                                 {{-- /Summary --}}
 
                                 {{-- Information on Form --}}
@@ -111,7 +111,7 @@
                                             {!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!}
                                         </label>
                                         <div class="col-sm-10">
-                                            <p class="form-control-static"> {{ $page_category->name }} </p>
+                                            <p class="form-control-static"> {{ $page_category-->name_uc_first }} </p>
                                         </div>
                                     </div>
                                     {{-- /Name --}}

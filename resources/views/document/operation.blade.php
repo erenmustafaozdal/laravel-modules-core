@@ -3,7 +3,7 @@
 @section('title')
     @if(isset($document_category))
         {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}", [
-            'document_category' => $document_category->name
+            'document_category' => $document_category->name_uc_first
         ]) !!}
     @else
         {!! lmcTrans("laravel-document-module/admin.document.{$operation}") !!}
@@ -14,12 +14,12 @@
     @if(isset($document_category))
         <h1>
             {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}", [
-                'document_category' => $document_category->name
+                'document_category' => $document_category->name_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}_description", [
-                    'document_category' => $document_category->name,
-                    'document'          => $operation === 'edit' ? $document->title : null
+                    'document_category' => $document_category->name_uc_first,
+                    'document'          => $operation === 'edit' ? $document->title_uc_first : null
                 ]) !!}
             </small>
         </h1>
@@ -28,7 +28,7 @@
             {!! lmcTrans("laravel-document-module/admin.document.{$operation}") !!}
             <small>
                 {!! lmcTrans("laravel-document-module/admin.document.{$operation}_description", [
-                    'document' => $operation === 'edit' ? $document->title : null
+                    'document' => $operation === 'edit' ? $document->title_uc_first : null
                 ]) !!}
             </small>
         </h1>
@@ -106,7 +106,7 @@
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($document_category))
                         {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}", [
-                            'document_category' => $document_category->name
+                            'document_category' => $document_category->name_uc_first
                         ]) !!}
                     @else
                         {!! lmcTrans("laravel-document-module/admin.document.{$operation}") !!}

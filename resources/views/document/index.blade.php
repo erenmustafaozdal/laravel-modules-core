@@ -2,7 +2,7 @@
 
 @section('title')
     @if(isset($document_category))
-        {!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name]) !!}
+        {!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name_uc_first]) !!}
     @else
         {!! lmcTrans('laravel-document-module/admin.document.index') !!}
     @endif
@@ -10,8 +10,8 @@
 
 @section('page-title')
     @if(isset($document_category))
-        <h1>{!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name]) !!}
-            <small>{!! lmcTrans('laravel-document-module/admin.document_category.document.index_description', ['document_category' => $document_category->name]) !!}</small>
+        <h1>{!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name_uc_first]) !!}
+            <small>{!! lmcTrans('laravel-document-module/admin.document_category.document.index_description', ['document_category' => $document_category->name_uc_first]) !!}</small>
         </h1>
     @else
         <h1>{!! lmcTrans('laravel-document-module/admin.document.index') !!}
@@ -113,7 +113,7 @@
                 <i class="{!! config('laravel-document-module.icons.document') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($document_category))
-                        {!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name]) !!}
+                        {!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name_uc_first]) !!}
                     @else
                         {!! lmcTrans('laravel-document-module/admin.document.index') !!}
                     @endif

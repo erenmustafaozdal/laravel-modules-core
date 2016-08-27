@@ -3,7 +3,7 @@
 @section('title')
     @if(isset($parent_description_category))
         {!! lmcTrans('laravel-description-module/admin.description_category.description_category.show', [
-            'parent_description_category' => $parent_description_category->name
+            'parent_description_category' => $parent_description_category->name_uc_first
         ]) !!}
     @else
         {!! lmcTrans('laravel-description-module/admin.description_category.show') !!}
@@ -14,12 +14,12 @@
     @if(isset($parent_description_category))
         <h1>
             {!! lmcTrans('laravel-description-module/admin.description_category.description_category.show', [
-                'parent_description_category' => $parent_description_category->name
+                'parent_description_category' => $parent_description_category->name_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans('laravel-description-module/admin.description_category.description_category.show_description', [
-                    'parent_description_category'  => $parent_description_category->name,
-                    'description_category'         => $description_category->name
+                    'parent_description_category'  => $parent_description_category->name_uc_first,
+                    'description_category'         => $description_category->name_uc_first
                 ]) !!}
             </small>
         </h1>
@@ -28,7 +28,7 @@
             {!! lmcTrans('laravel-description-module/admin.description_category.show') !!}
             <small>
                 {!! lmcTrans('laravel-description-module/admin.description_category.show_description', [
-                    'description_category' => $description_category->name
+                    'description_category' => $description_category->name_uc_first
                 ]) !!}
             </small>
         </h1>

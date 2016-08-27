@@ -3,8 +3,8 @@
 @section('title')
     @if(isset($page_category))
         {!! lmcTrans('laravel-page-module/admin.page_category.page.show', [
-            'page_category' => $page_category->name,
-            'page'          => $page->title
+            'page_category' => $page_category->name_uc_first,
+            'page'          => $page->title_uc_first
         ]) !!}
     @else
         {!! lmcTrans('laravel-page-module/admin.page.show') !!}
@@ -15,19 +15,19 @@
     @if(isset($page_category))
         <h1>
             {!! lmcTrans('laravel-page-module/admin.page_category.page.show', [
-                'page_category' => $page_category->name,
-                'page'          => $page->title
+                'page_category' => $page_category->name_uc_first,
+                'page'          => $page->title_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans('laravel-page-module/admin.page_category.page.show_description', [
-                    'page_category' => $page_category->name,
-                    'page'          => $page->title
+                    'page_category' => $page_category->name_uc_first,
+                    'page'          => $page->title_uc_first
                 ]) !!}
             </small>
         </h1>
     @else
         <h1>{!! lmcTrans('laravel-page-module/admin.page.show') !!}
-            <small>{!! lmcTrans('laravel-page-module/admin.page.show_description', [ 'page' => $page->title ]) !!}</small>
+            <small>{!! lmcTrans('laravel-page-module/admin.page.show_description', [ 'page' => $page->title_uc_first ]) !!}</small>
         </h1>
     @endif
 @endsection
@@ -101,12 +101,12 @@
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($page_category))
                         {!! lmcTrans('laravel-page-module/admin.page_category.page.show', [
-                            'page_category' => $page_category->name,
-                            'page'          => $page->title
+                            'page_category' => $page_category->name_uc_first,
+                            'page'          => $page->title_uc_first
                         ]) !!}
                     @else
                         {!! lmcTrans('laravel-page-module/admin.page.show', [
-                            'page'      => $page->title
+                            'page'      => $page->title_uc_first
                         ]) !!}
                     @endif
                 </span>

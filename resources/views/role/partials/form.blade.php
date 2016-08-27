@@ -1,7 +1,7 @@
 {{-- Name --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.role.name') !!}</label>
-    {!! Form::text( 'name', isset($role) ? $role->name : null, [
+    {!! Form::text( 'name', isset($role) ? $role->name_uc_first : null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix',
         'placeholder'   => lmcTrans('laravel-user-module/admin.fields.role.name')
     ]) !!}

@@ -1,5 +1,5 @@
 {{-- Summary --}}
-<h1 class="font-blue sbold uppercase">{{ $description->title }}</h1>
+<h1 class="font-blue sbold uppercase">{{ $description->title_uc_first }}</h1>
 <ul class="list-inline">
     <li>
         <i class="fa fa-calendar"></i>
@@ -32,7 +32,7 @@
             {!! lmcTrans('laravel-description-module/admin.fields.description_category.name') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $description->category->name }} </p>
+            <p class="form-control-static"> {{ $description->category->name_uc_first }} </p>
         </div>
     </div>
     @endif
@@ -44,7 +44,7 @@
             {!! lmcTrans('laravel-description-module/admin.fields.description.title') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $description->title }} </p>
+            <p class="form-control-static"> {{ $description->title_uc_first }} </p>
         </div>
     </div>
     {{-- /Title --}}

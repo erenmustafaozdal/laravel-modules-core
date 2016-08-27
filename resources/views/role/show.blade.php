@@ -6,7 +6,7 @@
 
 @section('page-title')
     <h1>{!! lmcTrans('laravel-user-module/admin.user.show') !!}
-        <small>{!! lmcTrans('laravel-user-module/admin.role.show_description', [ 'role'  => $role->name ])  !!}</small>
+        <small>{!! lmcTrans('laravel-user-module/admin.role.show_description', [ 'role'  => $role->name_uc_first ])  !!}</small>
     </h1>
 @endsection
 
@@ -116,7 +116,7 @@
                             <div class="profile-info">
 
                                 {{-- Summary --}}
-                                <h1 class="font-blue sbold uppercase">{{ $role->name }}</h1>
+                                <h1 class="font-blue sbold uppercase">{{ $role->name_uc_first }}</h1>
                                 {{-- /Summary --}}
 
                                 {{-- Information on Form --}}
@@ -127,7 +127,7 @@
                                             {!! lmcTrans('laravel-user-module/admin.fields.role.name') !!}
                                         </label>
                                         <div class="col-sm-10">
-                                            <p class="form-control-static"> {{ $role->name }} </p>
+                                            <p class="form-control-static"> {{ $role->name_uc_first }} </p>
                                         </div>
                                     </div>
                                     {{-- /Name --}}

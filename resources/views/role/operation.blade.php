@@ -9,7 +9,7 @@
         {!! lmcTrans("laravel-user-module/admin.role.{$operation}") !!}
         <small>
             {!! lmcTrans("laravel-user-module/admin.role.{$operation}_description", [
-                'role' => $operation === 'edit' ? $role->name : null
+                'role' => $operation === 'edit' ? $role->name_uc_first : null
             ])  !!}</small>
     </h1>
 @endsection

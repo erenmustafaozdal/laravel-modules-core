@@ -1,5 +1,5 @@
 {{-- Summary --}}
-<h1 class="font-blue sbold uppercase">{{ $document->title }}</h1>
+<h1 class="font-blue sbold uppercase">{{ $document->title_uc_first }}</h1>
 <ul class="list-inline">
     <li>
         <i class="fa fa-calendar"></i>
@@ -32,7 +32,7 @@
             {!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document->category->name }} </p>
+            <p class="form-control-static"> {{ $document->category->name_uc_first }} </p>
         </div>
     </div>
     @endif
@@ -44,7 +44,7 @@
             {!! lmcTrans('laravel-document-module/admin.fields.document.title') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document->title }} </p>
+            <p class="form-control-static"> {{ $document->title_uc_first }} </p>
         </div>
     </div>
     {{-- /Title --}}

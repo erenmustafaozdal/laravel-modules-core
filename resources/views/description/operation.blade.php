@@ -3,7 +3,7 @@
 @section('title')
     @if(isset($description_category))
         {!! lmcTrans("laravel-description-module/admin.description_category.description.{$operation}", [
-            'description_category' => $description_category->name
+            'description_category' => $description_category->name_uc_first
         ]) !!}
     @else
         {!! lmcTrans("laravel-description-module/admin.description.{$operation}") !!}
@@ -14,12 +14,12 @@
     @if(isset($description_category))
         <h1>
             {!! lmcTrans("laravel-description-module/admin.description_category.description.{$operation}", [
-                'description_category' => $description_category->name
+                'description_category' => $description_category->name_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans("laravel-description-module/admin.description_category.description.{$operation}_description", [
-                    'description_category' => $description_category->name,
-                    'description'          => $operation === 'edit' ? $description->title : null
+                    'description_category' => $description_category->name_uc_first,
+                    'description'          => $operation === 'edit' ? $description->title_uc_first : null
                 ]) !!}
             </small>
         </h1>
@@ -28,7 +28,7 @@
             {!! lmcTrans("laravel-description-module/admin.description.{$operation}") !!}
             <small>
                 {!! lmcTrans("laravel-description-module/admin.description.{$operation}_description", [
-                    'description' => $operation === 'edit' ? $description->title : null
+                    'description' => $operation === 'edit' ? $description->title_uc_first : null
                 ]) !!}
             </small>
         </h1>
@@ -110,7 +110,7 @@
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($description_category))
                         {!! lmcTrans("laravel-description-module/admin.description_category.description.{$operation}", [
-                            'description_category' => $description_category->name
+                            'description_category' => $description_category->name_uc_first
                         ]) !!}
                     @else
                         {!! lmcTrans("laravel-description-module/admin.description.{$operation}") !!}
