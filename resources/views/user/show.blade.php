@@ -111,7 +111,7 @@
                                 'class' => 'img-responsive pic-bordered',
                                 'alt'   => $user->fullname,
                                 'id'    => 'nav-profile-photo'
-                            ], 'biggest') !!}
+                            ], last(array_keys(config('laravel-user-module.user.uploads.photo.thumbnails')))) !!}
                         </li>
                         {{-- Eğer profil fotoğrafı kayıtlı ise; sil butonu --}}
                         @if (Sentinel::getUser()->is_super_admin || $user->id === Sentinel::getUser()->id || Sentinel::hasAccess('api.user.destroyAvatar'))
