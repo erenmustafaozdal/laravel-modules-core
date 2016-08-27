@@ -92,7 +92,9 @@ if (! function_exists('getOps')) {
             if ( Sentinel::getUser()->is_super_admin || ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$routeName}.edit") ) {
                 $ops .= '<a href="' . route("admin.{$routeName}.edit", $routeParams) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
                 $ops .= '<i class="fa fa-pencil"></i>';
+                $ops .= '<span class="hidden-xs">';
                 $ops .= trans('laravel-modules-core::admin.ops.edit');
+                $ops .= '</span>';
                 $ops .= '</a>';
             }
         }
@@ -102,7 +104,9 @@ if (! function_exists('getOps')) {
             if ( Sentinel::getUser()->is_super_admin || ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$routeName}.show") ) {
                 $ops .= '<a href="' . route("admin.{$routeName}.show", $routeParams) . '" class="btn btn-sm btn-outline green margin-right-10">';
                 $ops .= '<i class="fa fa-search"></i>';
+                $ops .= '<span class="hidden-xs">';
                 $ops .= trans('laravel-modules-core::admin.ops.show');
+                $ops .= '</span>';
                 $ops .= '</a>';
             }
         }
@@ -112,7 +116,9 @@ if (! function_exists('getOps')) {
             if ( $routeName !== 'user' || $model->id !== Sentinel::getUser()->id ) {
                 $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline margin-right-10">';
                 $ops .= '<i class="fa fa-trash"></i>';
+                $ops .= '<span class="hidden-xs">';
                 $ops .= trans('laravel-modules-core::admin.ops.destroy');
+                $ops .= '</span>';
                 $ops .= '</button>';
             }
         }
@@ -124,7 +130,9 @@ if (! function_exists('getOps')) {
                 if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.notPublish") ) {
                     $ops .= '<a href="' . route("admin.{$routeName}.notPublish", $routeParams) . '" class="btn btn-sm btn-outline purple margin-right-10">';
                     $ops .= '<i class="fa fa-times"></i>';
+                    $ops .= '<span class="hidden-xs">';
                     $ops .= trans('laravel-modules-core::admin.ops.not_publish');
+                    $ops .= '</span>';
                     $ops .= '</a>';
                 }
             }
@@ -133,7 +141,9 @@ if (! function_exists('getOps')) {
                 if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.notPublish") ) {
                     $ops .= '<a href="' . route("admin.{$routeName}.publish", $routeParams) . '" class="btn btn-sm btn-outline blue margin-right-10">';
                     $ops .= '<i class="fa fa-bullhorn"></i>';
+                    $ops .= '<span class="hidden-xs">';
                     $ops .= trans('laravel-modules-core::admin.ops.publish');
+                    $ops .= '</span>';
                     $ops .= '</a>';
                 }
             }

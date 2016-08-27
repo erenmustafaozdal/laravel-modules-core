@@ -9,5 +9,7 @@
 
     </select>
     <button class="btn btn-sm green btn-outline table-group-action-submit">
-        <i class="fa fa-check"></i> {!! trans('laravel-modules-core::admin.ops.submit') !!}</button>
+        <i class="fa fa-paper-plane"></i>
+        <span class="hidden-xs"> {!! trans('laravel-modules-core::admin.ops.submit') !!} </span>
+    </button>
 </div>

@@ -2,15 +2,15 @@
 
     @if ($fast_add)
     <a class="btn green btn-outline" data-toggle="modal" href="#editor-modal" data-action="fast-add">
-        {!! trans('laravel-modules-core::admin.ops.fast_add') !!}
         <i class="fa fa-plus"></i>
+        <span class="hidden-xs"> {!! trans('laravel-modules-core::admin.ops.fast_add') !!} </span>
     </a>
     @endif
 
     @if ($add)
     <a class="btn green btn-outline" href="{!! is_array($module) ? route("admin.{$module['route']}.create", ['id' => $module['id']]) : route("admin.{$module}.create") !!}">
-        {!! trans('laravel-modules-core::admin.ops.add') !!}
-        <i class="fa fa-plus"></i>
+        <i class="fa fa-plus-square"></i>
+        <span class="hidden-xs"> {!! trans('laravel-modules-core::admin.ops.add') !!} </span>
     </a>
     @endif
 
