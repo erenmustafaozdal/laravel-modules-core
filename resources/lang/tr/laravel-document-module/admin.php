@@ -17,7 +17,7 @@ return [
         'show'                      => 'Belge Kategorisi Bilgileri',
         'show_description'          => ':document_category hakkında bilgiler',
         'document_category' => [
-            'index'                 => ':parent_document_category Alt Kategoriler',
+            'index'                 => ':parent_document_category Alt Kategorileri',
             'index_description'     => 'Bütün :parent_document_category alt kategorileri',
             'edit'                  => ':parent_document_category Alt Kategorisi Düzenle',
             'edit_description'      => ':parent_document_category alt kategorilerden :document_category kategorisi bilgilerini düzenle',

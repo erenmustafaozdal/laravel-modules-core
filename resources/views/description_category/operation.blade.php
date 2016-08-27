@@ -37,7 +37,7 @@
 
 @if(isset($parent_description_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($parent_description_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$parent_description_category], ['name']) !!}
 @endsection
 @endif
 
@@ -74,7 +74,7 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-note font-red"></i>
+                <i class="{!! config('laravel-description-module.icons.description_category') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($parent_description_category))
                         {!! lmcTrans("laravel-description-module/admin.description_category.description_category.{$operation}", [

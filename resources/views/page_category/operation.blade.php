@@ -45,7 +45,7 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-note font-red"></i>
+                <i class="{!! config('laravel-page-module.icons.page_category') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     {!! lmcTrans("laravel-page-module/admin.page_category.{$operation}") !!}
                 </span>

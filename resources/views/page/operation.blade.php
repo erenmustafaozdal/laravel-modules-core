@@ -37,7 +37,7 @@
 
 @if(isset($page_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($page_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$page_category], ['name']) !!}
 @endsection
 @endif
 
@@ -90,9 +90,15 @@
         <div class="portlet-title tabbable-line">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-note font-red"></i>
+                <i class="{!! config('laravel-page-module.icons.page') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans("laravel-page-module/admin.page.{$operation}") !!}
+                    @if(isset($page_category))
+                        {!! lmcTrans("laravel-page-module/admin.page_category.page.{$operation}", [
+                            'page_category' => $page_category->name
+                        ]) !!}
+                    @else
+                        {!! lmcTrans("laravel-page-module/admin.page.{$operation}") !!}
+                    @endif
                 </span>
             </div>
             {{-- /Caption --}}

@@ -42,21 +42,15 @@ class BreadcrumbService
     /**
      * get theme breadcrumb
      *
-     * @param \Illuminate\Support\Collection|null $model
-     * @param string|null $column
+     * @param array $models
+     * @param array $columns
      * @return  string
      */
-    public function getBreadcrumb($model = null, $column = null)
+    public function getBreadcrumb($models = [], $columns = [])
     {
-        $module_name = is_null($model) ? '' : snake_case( substr( strrchr( get_class($model), '\\' ), 1 ) );
-
-        // eğer route_name ikinci ve üçüncü parametresi aynı ise; module_name önüne parent_ ekle
-        // çünkü ikisi aynı model ve iç içe ilişkisi var => admin.document_category.document_category.show gibi
-        $route_name_parts = explode('.', $this->route_name);
-        $module_name = !is_null($model) && $route_name_parts[1] === $route_name_parts[2] ? 'parent_' . $module_name : $module_name;
-
-        $modelTrans = is_null($model) ? [] : [ $module_name => $model->$column ];
-        $modelRoute = is_null($model) ? [] : [ 'id' => $model->id ];
+        $transAndRoute = $this->getTransRouteParam($models,$columns);
+        $modelTrans = $transAndRoute['trans'];
+        $modelRoute = $transAndRoute['route'];
 
         $breadcrumbs  = '<ul class="page-breadcrumb breadcrumb">';
         // admin dashboard
@@ -89,6 +83,38 @@ class BreadcrumbService
 
         $breadcrumbs .= '</ul>';
         return $breadcrumbs;
+    }
+
+    /**
+     * get trans and routes params
+     *
+     * @param array $models
+     * @param array $columns
+     * @return array
+     */
+    private function getTransRouteParam($models, $columns)
+    {
+        $result = [ 'trans'     => [], 'route'     => [] ];
+        if (empty($models) && empty($columns)) {
+            return $result;
+        }
+
+        for( $i = 0; $i < count($models); $i++ ) {
+            $module_name = getModelSlug($models[$i]);
+            // eğer route_name ikinci ve üçüncü parametresi aynı ise; module_name önüne parent_ ekle
+            // çünkü ikisi aynı model ve iç içe ilişkisi var => admin.document_category.document_category.show gibi
+            $route_name_parts = explode('.', $this->route_name);
+            $module_name = !is_null($models[$i]) && $route_name_parts[1] === $route_name_parts[2]
+                ? 'parent_' . $module_name
+                : $module_name;
+
+            $result['trans'][$module_name] = $models[$i]->$columns[$i];
+            // sadece birinci için id eklenir
+            if ($i === 0) {
+                $result['route']['id'] = $models[$i]->id;
+            }
+        }
+        return $result;
     }
 
     /**

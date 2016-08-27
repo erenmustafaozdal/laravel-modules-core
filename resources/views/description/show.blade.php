@@ -3,7 +3,8 @@
 @section('title')
     @if(isset($description_category))
         {!! lmcTrans('laravel-description-module/admin.description_category.description.show', [
-            'description_category' => $description_category->name
+            'description_category' => $description_category->name,
+            'description'          => $description->title
         ]) !!}
     @else
         {!! lmcTrans('laravel-description-module/admin.description.show') !!}
@@ -11,10 +12,11 @@
 @endsection
 
 @section('page-title')
-    @if(isset($page_category))
+    @if(isset($description_category))
         <h1>
             {!! lmcTrans('laravel-description-module/admin.description_category.description.show', [
-                'description_category' => $description_category->name
+                'description_category' => $description_category->name,
+                'description'          => $description->title
             ]) !!}
             <small>
                 {!! lmcTrans('laravel-description-module/admin.description_category.description.show_description', [
@@ -37,7 +39,7 @@
 
 @if(isset($description_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($description_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$description_category,$description], ['name','title']) !!}
 @endsection
 @endif
 
@@ -114,9 +116,16 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-note font-red"></i>
+                <i class="{!! config('laravel-description-module.icons.description') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-description-module/admin.description.show') !!}
+                    @if(isset($description_category))
+                        {!! lmcTrans('laravel-description-module/admin.description_category.description.show', [
+                            'description_category' => $description_category->name,
+                            'description'          => $description->title
+                        ]) !!}
+                    @else
+                        {!! lmcTrans('laravel-description-module/admin.description.show') !!}
+                    @endif
                 </span>
             </div>
             {{-- /Caption --}}
@@ -195,7 +204,7 @@
                             {{-- Form Body --}}
                             <div class="form-body">
                                 @include('laravel-modules-core::description.partials.form', [
-                                    'isRelation'    => isset($page_category) ? true : false
+                                    'isRelation'    => isset($description_category) ? true : false
                                 ])
                                 <div id="detail">
                                     @include('laravel-modules-core::description.partials.detail_form', [

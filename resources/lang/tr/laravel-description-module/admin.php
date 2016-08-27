@@ -17,7 +17,7 @@ return [
         'show'                      => 'Açıklama Kategorisi Bilgileri',
         'show_description'          => ':description_category hakkında bilgiler',
         'description_category' => [
-            'index'                 => ':parent_description_category Alt Kategoriler',
+            'index'                 => ':parent_description_category Alt Kategorileri',
             'index_description'     => 'Bütün :parent_description_category alt kategorileri',
             'edit'                  => ':parent_description_category Alt Kategorisi Düzenle',
             'edit_description'      => ':parent_description_category alt kategorilerden :description_category kategorisi bilgilerini düzenle',
@@ -29,11 +29,11 @@ return [
         'description' => [
             'index'                 => ':description_category Verileri',
             'index_description'     => 'Bütün :description_category verileri',
-            'edit'                  => ':description_category verisi Düzenle',
+            'edit'                  => ':description_category Düzenle',
             'edit_description'      => ':description_category verilerinden :description bilgilerini düzenle',
-            'create'                => ':description_category Verisi Ekle',
-            'create_description'    => 'Yeni bir :description_category verisi ekle',
-            'show'                  => ':description_category Bilgileri',
+            'create'                => ':description_category Ekle',
+            'create_description'    => 'Yeni bir :description_category ekle',
+            'show'                  => ':description_category/:description Bilgileri',
             'show_description'      => ':description_category verilerinden :description hakkında bilgiler'
         ]
     ],

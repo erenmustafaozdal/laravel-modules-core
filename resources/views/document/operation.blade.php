@@ -37,7 +37,7 @@
 
 @if(isset($document_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($document_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$document_category], ['name']) !!}
 @endsection
 @endif
 
@@ -102,9 +102,15 @@
         <div class="portlet-title tabbable-line">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-note font-red"></i>
+                <i class="{!! config('laravel-document-module.icons.document') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans("laravel-document-module/admin.document.{$operation}") !!}
+                    @if(isset($document_category))
+                        {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}", [
+                            'document_category' => $document_category->name
+                        ]) !!}
+                    @else
+                        {!! lmcTrans("laravel-document-module/admin.document.{$operation}") !!}
+                    @endif
                 </span>
             </div>
             {{-- /Caption --}}

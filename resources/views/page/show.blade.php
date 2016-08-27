@@ -2,7 +2,10 @@
 
 @section('title')
     @if(isset($page_category))
-        {!! lmcTrans('laravel-page-module/admin.page_category.page.show', ['page_category' => $page_category->name]) !!}
+        {!! lmcTrans('laravel-page-module/admin.page_category.page.show', [
+            'page_category' => $page_category->name,
+            'page'          => $page->title
+        ]) !!}
     @else
         {!! lmcTrans('laravel-page-module/admin.page.show') !!}
     @endif
@@ -10,11 +13,17 @@
 
 @section('page-title')
     @if(isset($page_category))
-        <h1>{!! lmcTrans('laravel-page-module/admin.page_category.page.show', ['page_category' => $page_category->name]) !!}
-            <small>{!! lmcTrans('laravel-page-module/admin.page_category.page.show_description', [
+        <h1>
+            {!! lmcTrans('laravel-page-module/admin.page_category.page.show', [
                 'page_category' => $page_category->name,
                 'page'          => $page->title
-            ]) !!}</small>
+            ]) !!}
+            <small>
+                {!! lmcTrans('laravel-page-module/admin.page_category.page.show_description', [
+                    'page_category' => $page_category->name,
+                    'page'          => $page->title
+                ]) !!}
+            </small>
         </h1>
     @else
         <h1>{!! lmcTrans('laravel-page-module/admin.page.show') !!}
@@ -25,7 +34,7 @@
 
 @if(isset($page_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($page_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$page_category,$page], ['name','title']) !!}
 @endsection
 @endif
 
@@ -88,9 +97,18 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-note font-red"></i>
+                <i class="{!! config('laravel-page-module.icons.page') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-page-module/admin.page.show') !!}
+                    @if(isset($page_category))
+                        {!! lmcTrans('laravel-page-module/admin.page_category.page.show', [
+                            'page_category' => $page_category->name,
+                            'page'          => $page->title
+                        ]) !!}
+                    @else
+                        {!! lmcTrans('laravel-page-module/admin.page.show', [
+                            'page'      => $page->title
+                        ]) !!}
+                    @endif
                 </span>
             </div>
             {{-- /Caption --}}
