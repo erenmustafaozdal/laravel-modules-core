@@ -3,11 +3,11 @@
     <label class="control-label">{!! lmcTrans('laravel-description-module/admin.fields.description_category.name') !!}</label>
     <select class="form-control form-control-solid placeholder-no-fix select2" name="category_id" style="width: 100%">
         @if($isRelation && isset($description))
-            <option value="{{ $description->category->id }}" selected>{{ $description->category->name }}</option>
+            <option value="{{ $description->category->id }}" selected>{{ $description->category->name_uc_first }}</option>
         @elseif($isRelation)
-            <option value="{{ $description_category->id }}" selected>{{ $description_category->name }}</option>
+            <option value="{{ $description_category->id }}" selected>{{ $description_category->name_uc_first }}</option>
         @elseif(isset($description))
-            <option value="{{ $description->category->id }}" selected>{{ $description->category->name }}</option>
+            <option value="{{ $description->category->id }}" selected>{{ $description->category->name_uc_first }}</option>
         @endif
     </select>
 
@@ -24,7 +24,7 @@
 {{-- Title --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-description-module/admin.fields.description.title') !!}</label>
-    {!! Form::text( 'title', isset($description) ? $description->title : null, [
+    {!! Form::text( 'title', isset($description) ? $description->title_uc_first : null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix',
         'placeholder'   => lmcTrans('laravel-description-module/admin.fields.description.title')
     ]) !!}

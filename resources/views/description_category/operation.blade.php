@@ -3,7 +3,7 @@
 @section('title')
     @if(isset($parent_description_category))
         {!! lmcTrans("laravel-description-module/admin.description_category.description_category.{$operation}", [
-            'parent_description_category' => $parent_description_category->name
+            'parent_description_category' => $parent_description_category->name_uc_first
         ]) !!}
     @else
         {!! lmcTrans("laravel-description-module/admin.description_category.{$operation}") !!}
@@ -14,12 +14,12 @@
     @if(isset($parent_description_category))
         <h1>
             {!! lmcTrans("laravel-description-module/admin.description_category.description_category.{$operation}", [
-                'parent_description_category'  => $parent_description_category->name
+                'parent_description_category'  => $parent_description_category->name_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans("laravel-description-module/admin.description_category.description_category.{$operation}_description", [
-                    'parent_description_category'  => $parent_description_category->name,
-                    'description_category'         => $operation === 'edit' ? $description_category->name : null
+                    'parent_description_category'  => $parent_description_category->name_uc_first,
+                    'description_category'         => $operation === 'edit' ? $description_category->name_uc_first : null
                 ]) !!}
             </small>
         </h1>
@@ -28,7 +28,7 @@
             {!! lmcTrans("laravel-description-module/admin.description_category.{$operation}") !!}
             <small>
                 {!! lmcTrans("laravel-description-module/admin.description_category.{$operation}_description", [
-                    'description_category'     => $operation === 'edit' ? $description_category->name : null
+                    'description_category'     => $operation === 'edit' ? $description_category->name_uc_first : null
                 ]) !!}
             </small>
         </h1>
@@ -78,7 +78,7 @@
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($parent_description_category))
                         {!! lmcTrans("laravel-description-module/admin.description_category.description_category.{$operation}", [
-                            'parent_description_category' => $parent_description_category->name
+                            'parent_description_category' => $parent_description_category->name_uc_first
                         ]) !!}
                     @else
                         {!! lmcTrans("laravel-description-module/admin.description_category.{$operation}") !!}

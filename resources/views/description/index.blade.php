@@ -3,7 +3,7 @@
 @section('title')
     @if(isset($description_category))
         {!! lmcTrans('laravel-description-module/admin.description_category.description.index', [
-            'description_category' => $description_category->name
+            'description_category' => $description_category->name_uc_first
         ]) !!}
     @else
         {!! lmcTrans('laravel-description-module/admin.description.index') !!}
@@ -14,11 +14,11 @@
     @if(isset($description_category))
         <h1>
             {!! lmcTrans('laravel-description-module/admin.description_category.description.index', [
-                'description_category' => $description_category->name
+                'description_category' => $description_category->name_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans('laravel-description-module/admin.description_category.description.index_description', [
-                    'description_category' => $description_category->name
+                    'description_category' => $description_category->name_uc_first
                 ]) !!}
             </small>
         </h1>
@@ -114,7 +114,7 @@
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($description_category))
                         {!! lmcTrans('laravel-description-module/admin.description_category.description.index', [
-                            'description_category' => $description_category->name
+                            'description_category' => $description_category->name_uc_first
                         ]) !!}
                     @else
                         {!! lmcTrans('laravel-description-module/admin.description.index') !!}

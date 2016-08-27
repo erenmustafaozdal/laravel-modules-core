@@ -2,7 +2,7 @@
 
 @section('title')
     @if(isset($parent_description_category))
-        {!! lmcTrans('laravel-description-module/admin.description_category.description_category.index', ['parent_description_category' => $parent_description_category->name]) !!}
+        {!! lmcTrans('laravel-description-module/admin.description_category.description_category.index', ['parent_description_category' => $parent_description_category->name_uc_first]) !!}
     @else
         {!! lmcTrans('laravel-description-module/admin.description_category.index') !!}
     @endif
@@ -12,11 +12,11 @@
     @if(isset($parent_description_category))
         <h1>
             {!! lmcTrans('laravel-description-module/admin.description_category.description_category.index', [
-                'parent_description_category' => $parent_description_category->name
+                'parent_description_category' => $parent_description_category->name_uc_first
             ]) !!}
             <small>
                 {!! lmcTrans('laravel-description-module/admin.description_category.description_category.index_description', [
-                    'parent_description_category' => $parent_description_category->name
+                    'parent_description_category' => $parent_description_category->name_uc_first
                 ]) !!}
             </small>
         </h1>
@@ -96,7 +96,7 @@
                 <i class="{!! config('laravel-description-module.icons.description_category') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     @if(isset($parent_description_category))
-                        {!! lmcTrans('laravel-description-module/admin.description_category.description_category.index', ['parent_description_category' => $parent_description_category->name]) !!}
+                        {!! lmcTrans('laravel-description-module/admin.description_category.description_category.index', ['parent_description_category' => $parent_description_category->name_uc_first]) !!}
                     @else
                         {!! lmcTrans('laravel-description-module/admin.description_category.index') !!}
                     @endif

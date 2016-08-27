@@ -9,7 +9,7 @@
         {!! lmcTrans("laravel-page-module/admin.page_category.{$operation}") !!}
         <small>
             {!! lmcTrans("laravel-page-module/admin.page_category.{$operation}_description", [
-                'page_category' => $operation === 'edit' ? $page_category->name : null
+                'page_category' => $operation === 'edit' ? $page_category->name_uc_first : null
             ]) !!}
         </small>
     </h1>

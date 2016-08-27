@@ -1,5 +1,5 @@
 {{-- Summary --}}
-<h1 class="font-blue sbold uppercase">{{ $page->title }}</h1>
+<h1 class="font-blue sbold uppercase">{{ $page->title_uc_first }}</h1>
 <ul class="list-inline">
     <li>
         <i class="fa fa-calendar"></i>
@@ -31,7 +31,7 @@
             {!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $page->category->name }} </p>
+            <p class="form-control-static"> {{ $page->category->name_uc_first }} </p>
         </div>
     </div>
     {{-- /Category --}}
@@ -42,7 +42,7 @@
             {!! lmcTrans('laravel-page-module/admin.fields.page.title') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $page->title }} </p>
+            <p class="form-control-static"> {{ $page->title_uc_first }} </p>
         </div>
     </div>
     {{-- /Title --}}
