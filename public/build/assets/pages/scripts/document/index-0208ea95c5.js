@@ -222,16 +222,16 @@ var Index = {
                             '</tr>';
                     }
                     detail += '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
+                        '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
+                        '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Belge:</strong> </td>' +
-                            '<td class="text-left">' + ( data.document == null ? '' : data.document ) + '</td>' +
+                        '<td style="width:150px; text-align:right;"> <strong>Belge:</strong> </td>' +
+                        '<td class="text-left">' + ( data.document == null ? '' : data.document ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Boyut:</strong> </td>' +
-                            '<td class="text-left">' + ( data.size == null ? '' : data.size.display +' <span class="text-muted">(' + data.size.number + ' bayt)</span>' ) + '</td>' +
+                        '<td style="width:150px; text-align:right;"> <strong>Boyut:</strong> </td>' +
+                        '<td class="text-left">' + ( data.size == null ? '' : data.size.display +' <span class="text-muted">(' + data.size.number + ' bayt)</span>' ) + '</td>' +
                         '</tr>';
 
                     if (data.category.has_description) {
@@ -248,23 +248,23 @@ var Index = {
                         if (data.photo !== null && data.photo.photo !== '') {
                             detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5">' +
                                 '<div class="mt-element-overlay">' +
-                                    '<div class="mt-overlay-2">' +
-                                        '<img src="' + data.photo.photo +'">' +
-                                    '</div>' +
+                                '<div class="mt-overlay-2">' +
+                                '<img src="' + data.photo.photo +'">' +
                                 '</div>' +
-                            '</div>';
+                                '</div>' +
+                                '</div>';
                         }
                         detail += '</td>' +
-                        '</tr>';
+                            '</tr>';
                     }
 
                     return detail + '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
-                            '<td class="text-left">' + data.created_at.display + '</td>' +
+                        '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
+                        '<td class="text-left">' + data.created_at.display + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
-                            '<td class="text-left">' + data.updated_at.display + '</td>' +
+                        '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
+                        '<td class="text-left">' + data.updated_at.display + '</td>' +
                         '</tr>' +
                         '</tbody>' +
                         '</table>';
