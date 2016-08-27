@@ -25,7 +25,7 @@
 
 @if(isset($parent_document_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($parent_document_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$parent_document_category], ['name']) !!}
 @endsection
 @endif
 
@@ -61,9 +61,13 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-note font-red"></i>
+                <i class="{!! config('laravel-document-module.icons.document_category') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-document-module/admin.document_category.show') !!}
+                    @if(isset($parent_document_category))
+                        {!! lmcTrans('laravel-document-module/admin.document_category.document_category.show', ['parent_document_category' => $parent_document_category->name]) !!}
+                    @else
+                        {!! lmcTrans('laravel-document-module/admin.document_category.show') !!}
+                    @endif
                 </span>
             </div>
             {{-- /Caption --}}

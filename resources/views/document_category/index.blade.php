@@ -22,7 +22,7 @@
 
 @if(isset($parent_document_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb($parent_document_category, 'name') !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$parent_document_category], ['name']) !!}
 @endsection
 @endif
 
@@ -81,9 +81,13 @@
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">
-                <i class="icon-doc font-red"></i>
+                <i class="{!! config('laravel-document-module.icons.document_category') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    {!! lmcTrans('laravel-document-module/admin.document_category.index') !!}
+                    @if(isset($parent_document_category))
+                        {!! lmcTrans('laravel-document-module/admin.document_category.document_category.index', ['parent_document_category' => $parent_document_category->name]) !!}
+                    @else
+                        {!! lmcTrans('laravel-document-module/admin.document_category.index') !!}
+                    @endif
                 </span>
             </div>
             @if(isset($parent_document_category))

@@ -19,11 +19,11 @@ return [
         'page' => [
             'index'                             => ':page_category Sayfalar',
             'index_description'                 => 'Bütün :page_category sayfalar',
-            'edit'                              => ':page_category Sayfası Düzenle',
-            'edit_description'                  => ':page_category sayfalardan :page sayfası bilgilerini düzenle',
-            'create'                            => ':page_category Sayfası Ekle',
-            'create_description'                => 'Yeni bir :page_category sayfası ekle',
-            'show'                              => ':page_category Sayfa Bilgileri',
+            'edit'                              => ':page_category Sayfa Düzenle',
+            'edit_description'                  => ':page_category sayfalarından :page sayfası bilgilerini düzenle',
+            'create'                            => ':page_category Sayfa Ekle',
+            'create_description'                => 'Yeni bir :page_category sayfa ekle',
+            'show'                              => ':page_category/:page Sayfa Bilgileri',
             'show_description'                  => ':page_category sayfalarından :page sayfası hakkında bilgiler'
         ]
     ],
@@ -34,7 +34,7 @@ return [
         'edit_description'                  => ':page sayfası bilgilerini düzenle',
         'create'                            => 'Sayfa Ekle',
         'create_description'                => 'Yeni bir sayfa ekle',
-        'show'                              => 'Sayfa Bilgileri',
+        'show'                              => ':page Sayfa Bilgileri',
         'show_description'                  => ':page sayfası hakkında bilgiler'
     ],
 
