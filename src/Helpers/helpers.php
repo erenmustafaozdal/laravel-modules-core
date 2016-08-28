@@ -167,45 +167,22 @@ if (! function_exists('sidebarDetect')) {
      *
      * @param array $elements
      * @param boolean $isChildren
-     * @return Caffeinated\Menus\Menu $menu
+     * @return mixed
      */
     function sidebarDetect($elements, $isChildren = false)
     {
         $sidebar = $isChildren ? '<ul class="sub-menu">' : '';
         foreach($elements as $element) {
-            // set is current?
-            $isCurrent = false;
-            if (is_string($element->attribute('active'))) {
-                $isCurrent = strpos(Route::currentRouteName(),$element->attribute('active')) !== false;
-            } else {
-                if (is_string($element->attribute('active')[0])) {
-                    //$isCurrent = strpos(Request::url(),route($element->attribute('active')[0], $element->attribute('active')[1])) !== false;
-                    $isCurrent = Request::url() === route($element->attribute('active')[0], $element->attribute('active')[1]);
-                } else {
-                    foreach($element->attribute('active') as $active) {
-                        if ($isCurrent) {
-                            continue;
-                        }
-                        if (is_string($element->attribute('active'))) {
-                            $isCurrent = strpos(Route::currentRouteName(),$active) !== false;
-                        } else {
-                            //$isCurrent = strpos(Request::url(), route($active[0], $active[1])) !== false;
-                            $isCurrent = Request::url() === route($active[0], $active[1]);
-                        }
-                    }
-                }
-            }
-
-
             // menu item
-            $sidebar .= '<li class="nav-item';
-            $sidebar .=  $isCurrent && $element->hasChildren() ? ' active open">' : $isCurrent ? ' active">' : '">';
+            $active = $element->isActive() ? ' active' : '';
+            $open = $active && $element->hasChildren() ? ' open' : '';
+            $sidebar .= "<li class='nav-item{$active}{$open}'>";
 
             // menu a link
             $sidebar .= '<a href="'. $element->url() .'" class="nav-link';
             $sidebar .= $element->hasChildren() ? ' nav-toogle">' : '">';
             $sidebar .= '<i class="'. $element->attribute('data-icon') .'"></i>';
-            $sidebar .= '<span class="title">'. $element->title .'</span>';
+            $sidebar .= ' <span class="title">'. $element->title .'</span> ';
             $sidebar .= $element->hasChildren() ? '<span class="arrow"></span>' : '';
             $sidebar .= '</a>';
 
@@ -216,5 +193,23 @@ if (! function_exists('sidebarDetect')) {
             $sidebar .= '</li>';
         }
         return $isChildren ? $sidebar . '</ul>' : $sidebar;
+    }
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| remove domain on url
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('removeDomain')) {
+    /**
+     * @param string $url
+     * @return string
+     */
+    function removeDomain($url)
+    {
+        return str_replace( URL::to('/') . '/', '', $url );
     }
 }

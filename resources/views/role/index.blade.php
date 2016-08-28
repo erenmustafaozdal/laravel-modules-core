@@ -60,7 +60,7 @@
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">
-                <i class="icon-users font-red"></i>
+                <i class="{!! config('laravel-user-module.icons.role') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     {!! lmcTrans('laravel-user-module/admin.role.index') !!}
                 </span>

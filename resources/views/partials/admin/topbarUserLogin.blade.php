@@ -6,7 +6,7 @@
     ], 'small') !!}
 </a>
 <ul class="dropdown-menu dropdown-menu-default">
-    @foreach($menu_topbarUserLogin->roots() as $item)
+    @foreach($menu_user->roots() as $item)
         <li>
             <a href="{{ $item->url() }}">
                 <i class="{{ $item->attribute('data-icon') }}"></i>
