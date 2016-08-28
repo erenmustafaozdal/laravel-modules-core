@@ -191,6 +191,7 @@
     <script type="text/javascript">
         var themeJs = "{!! lmcElixir('assets/layouts/layout4/scripts/theme.js') !!}";
         var configJs = "{!! lmcElixir('assets/global/scripts/config.js') !!}";
+        var elfinderJs = "{!! lmcElixir('assets/app/elfinder.js') !!}";
         var themeLayoutChangeApiUrl = "{!! route('api.themeLayout.change') !!}";
         var themeColorChangeApiUrl = "{!! route('api.themeColor.change') !!}";
     </script>

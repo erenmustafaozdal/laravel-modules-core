@@ -38,6 +38,7 @@
     // file manager
     $script.ready('colorbox', function() {
         $script('/vendor/laravel-modules-core/assets/global/plugins/colorbox/i18n/jquery.colorbox-tr.js');
-        $script('/packages/barryvdh/elfinder/js/standalonepopup.min.js');
+        $script(elfinderJs);
+        //$script('/packages/barryvdh/elfinder/js/standalonepopup.min.js');
     });
 })();
