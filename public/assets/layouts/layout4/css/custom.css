@@ -7,27 +7,6 @@
     z-index: 10000;
 }
 
-/* summernote */
-.modal-dialog .modal-body .checkbox > label {
-    padding-left: 20px !important;
-}
-div.note-editor .note-popover .popover-content .note-para .dropdown-menu, .panel-heading.note-toolbar .note-para .dropdown-menu {
-    min-width: 225px !important;
-}
-div.note-editor .note-popover .popover-content .note-color .dropdown-menu, .panel-heading.note-toolbar .note-color .dropdown-menu {
-    min-width: 170px !important;
-}
-.modal-open .modal {
-    z-index: 10050 !important;
-}
-.note-popover.popover {
-    z-index: 10050 !important;
-}
-/* Google Map search dropbox */
-.pac-container {
-    z-index: 10051 !important;
-}
-
 /* tinymce */
 div.mce-fullscreen {
     z-index: 9995 !important;
@@ -46,4 +25,11 @@ div.bootstrap-touchspin button.btn-outline {
 /* colorbox */
 #colorbox, #cboxOverlay {
     z-index: 10052 !important;
+}
+
+/* bootstrap dropdown scroll */
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }

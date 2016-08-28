@@ -11,7 +11,7 @@
     });
     $script.ready(['config','operation','permission'], function()
     {
-        Create.init();
+        Operation.init();
         Permission.init();
     });
 })();

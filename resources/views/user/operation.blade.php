@@ -69,7 +69,7 @@
         <div class="portlet-title tabbable-line">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="icon-user-follow font-red"></i>
+                <i class="{!! config('laravel-user-module.icons.user') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
                     {!! lmcTrans("laravel-user-module/admin.user.{$operation}") !!}
                 </span>
