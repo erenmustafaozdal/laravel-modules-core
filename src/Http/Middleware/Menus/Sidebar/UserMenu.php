@@ -39,11 +39,11 @@ class UserMenu
             ->data( 'permissions', self::$rolePermissions )
             ->active( removeDomain(route('admin.role.index')) . '/*');
         $role->add(lmcTrans('laravel-user-module/admin.menu.role.all'), [ 'route' => ['admin.role.index'] ])
-            ->attribute( 'data-icon', config('laravel-user-module.icons.role') )
+            ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$rolePermissions[0] )
             ->active( removeDomain(route('admin.role.index')) );
         $role->add(lmcTrans('laravel-user-module/admin.menu.role.add'), [ 'route' => ['admin.role.create'] ])
-            ->attribute( 'data-icon', config('laravel-user-module.icons.role') )
+            ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$rolePermissions[1] )
             ->active( removeDomain(route('admin.role.create')) );
 
@@ -53,11 +53,11 @@ class UserMenu
             ->data( 'permissions', self::$userPermissions )
             ->active( removeDomain(route('admin.user.index')) . '/*');
         $user->add(lmcTrans('laravel-user-module/admin.menu.user.all'), [ 'route' => ['admin.user.index'] ])
-            ->attribute( 'data-icon', config('laravel-user-module.icons.user') )
+            ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$userPermissions[0] )
             ->active( removeDomain(route('admin.user.index')) );
         $user->add(lmcTrans('laravel-user-module/admin.menu.user.add'), [ 'route' => ['admin.user.create'] ])
-            ->attribute( 'data-icon', config('laravel-user-module.icons.user') )
+            ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$userPermissions[1] )
             ->active( removeDomain(route('admin.user.create')) );
     }
