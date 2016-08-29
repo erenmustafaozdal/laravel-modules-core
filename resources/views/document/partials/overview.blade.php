@@ -132,18 +132,13 @@
         {{-- Photo --}}
         @if($document->category->has_photo)
             <div class="form-group">
-                <label class="col-sm-2 control-label">
-                    {!! lmcTrans('laravel-document-module/admin.fields.document.photo') !!}
-                </label>
-                <div class="col-sm-10">
-                    <p class="form-control-static">
-                        @if(! is_null($document->photo) && ! is_null($document->photo->photo))
-                            <a href="{{ $document->photo->getPhoto([],'normal',true,'document','document') }}" class="thumbnail" target="_blank">
-                                {!! $document->photo->getPhoto([],'normal',false,'document','document') !!}
-                            </a>
-                        @endif
-                    </p>
-                </div>
+                @include('laravel-modules-core::partials.common.current_photos', [
+                    'model'             => $document,
+                    'relation'          => 'photo',
+                    'relationType'      => 'hasOne',
+                    'modelSlug'         => 'document',   // for ModelDataTrait->getPhoto() function
+                    'parentRelation'    => 'document'    // for ModelDataTrait->getPhoto() function
+                ])
             </div>
         @endif
         {{-- /Photo --}}
