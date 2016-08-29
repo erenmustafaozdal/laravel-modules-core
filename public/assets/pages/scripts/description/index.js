@@ -195,7 +195,7 @@ var Index = {
                             });
                         } else {
                             if (data.photo !== null && data.photo.photo !== null) {
-                                detail += '<div class="col-md-12">' +
+                                detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">' +
                                     '<div class="mt-element-overlay">' +
                                         '<div class="mt-overlay-2">' +
                                             '<img src="' + data.photo.photo +'">' +
