@@ -119,7 +119,7 @@ return [
             'document_category_update_desc'     => 'Bu izne sahip olanlar belge kategorisi bilgilerini düzenleyebilir',
             'document_category_destroy'         => 'Silme',
             'document_category_destroy_desc'    => 'Bu izne sahip olanlar belge kategorisi silebilir',
-            'document_category_document_category_index'       => 'Kategori Alt Kategoiler Sayfası',
+            'document_category_document_category_index'       => 'Kategori Alt Kategoriler Sayfası',
             'document_category_document_category_index_desc'  => 'Bu izne sahip olanlar belge alt kategorilerinin listelendiği sayfaya gidebilir',
             'document_category_document_category_create'      => 'Ekle Sayfası',
             'document_category_document_category_create_desc' => 'Bu izne sahip olanlar belge alt kategorisi ekleme sayfasına gidebilir',

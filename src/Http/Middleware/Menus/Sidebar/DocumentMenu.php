@@ -39,11 +39,11 @@ class DocumentMenu
             ->data( 'permissions', self::$documentCategoryPermissions )
             ->active( removeDomain(route('admin.document_category.index')) . '/*');
         $document_category->add(lmcTrans('laravel-document-module/admin.menu.document_category.all'), [ 'route' => ['admin.document_category.index'] ])
-            ->attribute( 'data-icon', config('laravel-document-module.icons.document_category') )
+            ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$documentCategoryPermissions[0] )
             ->active( removeDomain(route('admin.document_category.index')) );
         $document_category->add(lmcTrans('laravel-document-module/admin.menu.document_category.add'), [ 'route' => ['admin.document_category.create'] ])
-            ->attribute( 'data-icon', config('laravel-document-module.icons.document_category') )
+            ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$documentCategoryPermissions[1] )
             ->active( removeDomain(route('admin.document_category.create')) );
 
@@ -53,11 +53,11 @@ class DocumentMenu
             ->data( 'permissions', self::$documentPermissions )
             ->active( removeDomain(route('admin.document.index')) . '/*');
         $document->add(lmcTrans('laravel-document-module/admin.menu.document.all'), [ 'route' => ['admin.document.index'] ])
-            ->attribute( 'data-icon', config('laravel-document-module.icons.document') )
+            ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$documentPermissions[0] )
             ->active( removeDomain(route('admin.document.index')) );
         $document->add(lmcTrans('laravel-document-module/admin.menu.document.add'), [ 'route' => ['admin.document.create'] ])
-            ->attribute( 'data-icon', config('laravel-document-module.icons.document') )
+            ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$documentPermissions[1] )
             ->active( removeDomain(route('admin.document.create')) );
     }
