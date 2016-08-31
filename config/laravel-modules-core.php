@@ -39,6 +39,8 @@ return [
         'laravel-user-module'       => \ErenMustafaOzdal\LaravelUserModule\LaravelUserModuleServiceProvider::class,
         'laravel-page-module'       => \ErenMustafaOzdal\LaravelPageModule\LaravelPageModuleServiceProvider::class,
         'laravel-document-module'   => \ErenMustafaOzdal\LaravelDocumentModule\LaravelDocumentModuleServiceProvider::class,
+        'laravel-description-module'=> \ErenMustafaOzdal\LaravelDescriptionModule\LaravelDescriptionModuleServiceProvider::class,
+        'laravel-media-module'      => \ErenMustafaOzdal\LaravelMediaModule\LaravelMediaModuleServiceProvider::class,
     ],
 
     /*
@@ -130,7 +132,22 @@ return [
             'datatable_fast_add'            => true,
             'datatable_group_action'        => true,
             'datatable_detail'              => true
-        ]
+        ],
+
+        // media module
+        'media_category' => [
+            'show_relation_category_link'   => true,
+            'show_relation_model_link'      => true,
+            'nestable_level_root'           => 0,
+            'nestable_level_nested'         => 1
+        ],
+        'media' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
     ],
 
 

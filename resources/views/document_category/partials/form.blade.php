@@ -14,83 +14,92 @@
 </div>
 {{-- /Name --}}
 
-<h3>{!! lmcTrans('laravel-document-module/admin.fields.document_category.documents_setting') !!}</h3>
-{{-- Has Description --}}
-<div class="form-group last">
-    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.has_description') !!}</label>
-    <div class="clearfix"></div>
-    {!! Form::hidden('has_description', 0) !!}
-    {!! Form::checkbox( 'has_description', 1, null, [
-        'class'         => 'make-switch',
-        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-        'data-on-color' => 'success',
-        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-        'data-off-color'=> 'danger',
-    ]) !!}
-        <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.has_description') !!} </span>
-</div>
-{{-- /Has Description --}}
 
-{{-- Has Photo --}}
-<div class="form-group last">
-    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.has_photo') !!}</label>
-    <div class="clearfix"></div>
-    {!! Form::hidden('has_photo', 0) !!}
-    {!! Form::checkbox( 'has_photo', 1, null, [
-        'class'         => 'make-switch',
-        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-        'data-on-color' => 'success',
-        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-        'data-off-color'=> 'danger',
-    ]) !!}
-        <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.has_photo') !!} </span>
-</div>
-{{-- /Has Photo --}}
+@if($parent || isset($document_category))
+    {!! Form::hidden('has_description', $parent ? $parent->has_description : $document_category->has_description) !!}
+    {!! Form::hidden('has_photo', $parent ? $parent->has_photo : $document_category->has_photo) !!}
+    {!! Form::hidden('show_title', $parent ? $parent->show_title : $document_category->show_title) !!}
+    {!! Form::hidden('show_description', $parent ? $parent->show_description : $document_category->show_description) !!}
+    {!! Form::hidden('show_photo', $parent ? $parent->show_photo : $document_category->show_photo) !!}
+@else
+    <h3>{!! lmcTrans('laravel-document-module/admin.fields.document_category.documents_setting') !!}</h3>
+    {{-- Has Description --}}
+    <div class="form-group last">
+        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.has_description') !!}</label>
+        <div class="clearfix"></div>
+        {!! Form::hidden('has_description', 0) !!}
+        {!! Form::checkbox( 'has_description', 1, null, [
+            'class'         => 'make-switch',
+            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+            'data-on-color' => 'success',
+            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+            'data-off-color'=> 'danger',
+        ]) !!}
+            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.has_description') !!} </span>
+    </div>
+    {{-- /Has Description --}}
 
-{{-- Show Title --}}
-<div class="form-group last">
-    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_title') !!}</label>
-    <div class="clearfix"></div>
-    {!! Form::hidden('show_title', 0) !!}
-    {!! Form::checkbox( 'show_title', 1, null, [
-        'class'         => 'make-switch',
-        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-        'data-on-color' => 'success',
-        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-        'data-off-color'=> 'danger',
-    ]) !!}
-        <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_title') !!} </span>
-</div>
-{{-- /Has Title --}}
+    {{-- Has Photo --}}
+    <div class="form-group last">
+        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.has_photo') !!}</label>
+        <div class="clearfix"></div>
+        {!! Form::hidden('has_photo', 0) !!}
+        {!! Form::checkbox( 'has_photo', 1, null, [
+            'class'         => 'make-switch',
+            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+            'data-on-color' => 'success',
+            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+            'data-off-color'=> 'danger',
+        ]) !!}
+            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.has_photo') !!} </span>
+    </div>
+    {{-- /Has Photo --}}
 
-{{-- Show Description --}}
-<div class="form-group last">
-    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_description') !!}</label>
-    <div class="clearfix"></div>
-    {!! Form::hidden('show_description', 0) !!}
-    {!! Form::checkbox( 'show_description', 1, null, [
-        'class'         => 'make-switch',
-        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-        'data-on-color' => 'success',
-        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-        'data-off-color'=> 'danger',
-    ]) !!}
-        <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_description') !!} </span>
-</div>
-{{-- /Has Description --}}
+    {{-- Show Title --}}
+    <div class="form-group last">
+        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_title') !!}</label>
+        <div class="clearfix"></div>
+        {!! Form::hidden('show_title', 0) !!}
+        {!! Form::checkbox( 'show_title', 1, null, [
+            'class'         => 'make-switch',
+            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+            'data-on-color' => 'success',
+            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+            'data-off-color'=> 'danger',
+        ]) !!}
+            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_title') !!} </span>
+    </div>
+    {{-- /Has Title --}}
 
-{{-- Show Photo --}}
-<div class="form-group last">
-    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_photo') !!}</label>
-    <div class="clearfix"></div>
-    {!! Form::hidden('show_photo', 0) !!}
-    {!! Form::checkbox( 'show_photo', 1, null, [
-        'class'         => 'make-switch',
-        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-        'data-on-color' => 'success',
-        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-        'data-off-color'=> 'danger',
-    ]) !!}
-        <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_photo') !!} </span>
-</div>
-{{-- /Has Photo --}}
+    {{-- Show Description --}}
+    <div class="form-group last">
+        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_description') !!}</label>
+        <div class="clearfix"></div>
+        {!! Form::hidden('show_description', 0) !!}
+        {!! Form::checkbox( 'show_description', 1, null, [
+            'class'         => 'make-switch',
+            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+            'data-on-color' => 'success',
+            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+            'data-off-color'=> 'danger',
+        ]) !!}
+            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_description') !!} </span>
+    </div>
+    {{-- /Has Description --}}
+
+    {{-- Show Photo --}}
+    <div class="form-group last">
+        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_photo') !!}</label>
+        <div class="clearfix"></div>
+        {!! Form::hidden('show_photo', 0) !!}
+        {!! Form::checkbox( 'show_photo', 1, null, [
+            'class'         => 'make-switch',
+            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+            'data-on-color' => 'success',
+            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+            'data-off-color'=> 'danger',
+        ]) !!}
+            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_photo') !!} </span>
+    </div>
+    {{-- /Has Photo --}}
+@endif

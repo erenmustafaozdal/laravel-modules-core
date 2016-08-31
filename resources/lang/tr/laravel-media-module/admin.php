@@ -66,7 +66,11 @@ return [
     'fields' => [
         'media_category' => [
             'name'                  => 'Albüm Adı',
-            'type'                  => 'Albüm Tipi'
+            'type'                  => 'Albüm Tipi',
+            'photos'                => 'Fotoğraflar',
+            'photo'                 => 'Fotoğraf Albümü',
+            'videos'                => 'Videolar',
+            'video'                 => 'Video Albümü',
         ],
         'media' => [
             'title'                 => 'Medya Başlığı',

@@ -78,6 +78,8 @@ return [
         'upload'                            => 'Yükle',
         'crop_image'                        => 'Fotoğrafı Kırp',
         'destroy_image'                     => 'Fotoğrafı Sil',
+        'all'                               => 'Hepsi',
+        'view_large'                        => 'Büyük Göster',
         // description
         'date_from'                         => 'Tarihinden',
         'date_to'                           => 'Tarihine',

@@ -101,7 +101,11 @@ var Validation = {
                     label.remove();
                 },
                 errorPlacement: function(error, element) {
-                    error.insertAfter(element);
+                    if (element.hasClass('select2')) {
+                        error.insertAfter(element.next('span.select2'))
+                    } else {
+                        error.insertAfter(element);
+                    }
                 },
                 submitHandler: function(form) {
                     e.preventDefault();

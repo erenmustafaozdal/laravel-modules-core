@@ -1,28 +1,38 @@
-@extends(config('laravel-document-module.views.document.layout'))
+@extends(config('laravel-media-module.views.media.layout'))
 
 @section('title')
-    @if(isset($document_category))
-        {!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name_uc_first]) !!}
+    @if(isset($media_category))
+        {!! lmcTrans('laravel-media-module/admin.media_category.media.index', ['media_category' => $media_category->name_uc_first]) !!}
     @else
-        {!! lmcTrans('laravel-document-module/admin.document.index') !!}
+        {!! lmcTrans('laravel-media-module/admin.media.index') !!}
     @endif
 @endsection
 
 @section('page-title')
-    @if(isset($document_category))
-        <h1>{!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name_uc_first]) !!}
-            <small>{!! lmcTrans('laravel-document-module/admin.document_category.document.index_description', ['document_category' => $document_category->name_uc_first]) !!}</small>
+    @if(isset($media_category))
+        <h1>
+            {!! lmcTrans('laravel-media-module/admin.media_category.media.index', [
+                'media_category' => $media_category->name_uc_first
+            ]) !!}
+            <small>
+                {!! lmcTrans('laravel-media-module/admin.media_category.media.index_description', [
+                    'media_category' => $media_category->name_uc_first
+                ]) !!}
+            </small>
         </h1>
     @else
-        <h1>{!! lmcTrans('laravel-document-module/admin.document.index') !!}
-            <small>{!! lmcTrans('laravel-document-module/admin.document.index_description') !!}</small>
+        <h1>
+            {!! lmcTrans('laravel-media-module/admin.media.index') !!}
+            <small>
+                {!! lmcTrans('laravel-media-module/admin.media.index_description') !!}
+            </small>
         </h1>
     @endif
 @endsection
 
-@if(isset($document_category))
+@if(isset($media_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb([$document_category], ['name']) !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$media_category], ['name']) !!}
 @endsection
 @endif
 
@@ -62,22 +72,22 @@
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
-        var formJs = "{!! lmcElixir('assets/pages/scripts/document/document-form.js') !!}";
+        var formJs = "{!! lmcElixir('assets/pages/scripts/media/media-form.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
-        var indexJs = "{!! lmcElixir('assets/pages/scripts/document/index.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/media/index.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        @if(isset($document_category))
-        var ajaxURL = "{!! route('api.document_category.document.index', ['id' => $document_category->id]) !!}";
-        var modelsURL = "{!! route('api.document_category.models', ['id' => $document_category->id]) !!}";
+        @if(isset($media_category))
+        var ajaxURL = "{!! route('api.media_category.media.index', ['id' => $media_category->id]) !!}";
+        var modelsURL = "{!! route('api.media_category.models', ['id' => $media_category->id]) !!}";
         @else
-        var ajaxURL = "{!! route('api.document.index') !!}";
-        var categoryURL = "{!! route('admin.document_category.show', ['id' => '###id###']) !!}";
-        var modelsURL = "{!! route('api.document_category.models') !!}";
+        var ajaxURL = "{!! route('api.media.index') !!}";
+        var categoryURL = "{!! route('admin.media_category.show', ['id' => '###id###']) !!}";
+        var modelsURL = "{!! route('api.media_category.models') !!}";
         @endif
-        var apiStoreURL = "{!! route('api.document.store') !!}";
-        var apiGroupAction = "{!! route('api.document.group') !!}";
+        var apiStoreURL = "{!! route('api.media.store') !!}";
+        var apiGroupAction = "{!! route('api.media.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -85,20 +95,20 @@
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
             title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
         };
-        var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
-        var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
+        var validExtension = "{!! config('laravel-media-module.media.uploads.file.mimes') !!}";
+        var maxSize = "{!! config('laravel-media-module.media.uploads.file.max_size') !!}";
         {{-- /languages --}}
 
         {{-- scripts --}}
         var datatableIsResponsive = {!! config('laravel-modules-core.options.data_table.is_responsive') ? 'true' : 'false' !!};
-        var groupActionSupport = {!! config('laravel-modules-core.options.document.datatable_group_action') ? 'true' : 'false' !!};
-        var rowDetailSupport = {!! config('laravel-modules-core.options.document.datatable_detail') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.document.datatable_filter') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.document.datatable_filter') ? 'true' : 'false' !!};
-        var isRelationTable = {!! isset($document_category) ? 'true' : 'false' !!}
+        var groupActionSupport = {!! config('laravel-modules-core.options.media.datatable_group_action') ? 'true' : 'false' !!};
+        var rowDetailSupport = {!! config('laravel-modules-core.options.media.datatable_detail') ? 'true' : 'false' !!};
+        var datatableFilterSupport = {!! config('laravel-modules-core.options.media.datatable_filter') ? 'true' : 'false' !!};
+        var datatableFilterSupport = {!! config('laravel-modules-core.options.media.datatable_filter') ? 'true' : 'false' !!};
+        var isRelationTable = {!! isset($media_category) ? 'true' : 'false' !!}
         {{-- /scripts --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/document/index.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/media/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
@@ -110,28 +120,28 @@
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">
-                <i class="{!! config('laravel-document-module.icons.document') !!} font-red"></i>
+                <i class="{!! config('laravel-media-module.icons.media') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    @if(isset($document_category))
-                        {!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name_uc_first]) !!}
+                    @if(isset($media_category))
+                        {!! lmcTrans('laravel-media-module/admin.media_category.media.index', ['media_category' => $media_category->name_uc_first]) !!}
                     @else
-                        {!! lmcTrans('laravel-document-module/admin.document.index') !!}
+                        {!! lmcTrans('laravel-media-module/admin.media.index') !!}
                     @endif
                 </span>
             </div>
-            @if(isset($document_category))
+            @if(isset($media_category))
                 @include('laravel-modules-core::partials.common.indexActions', [
-                    'module' => [ 'id' =>  $document_category->id, 'route' => 'document_category.document'],
-                    'fast_add'  => config('laravel-modules-core.options.document.datatable_fast_add'),
+                    'module' => [ 'id' =>  $media_category->id, 'route' => 'media_category.media'],
+                    'fast_add'  => config('laravel-modules-core.options.media.datatable_fast_add'),
                     'add'       => true,
-                    'tools'     => config('laravel-modules-core.options.document.datatable_tools')
+                    'tools'     => config('laravel-modules-core.options.media.datatable_tools')
                 ])
             @else
                 @include('laravel-modules-core::partials.common.indexActions', [
-                    'module' => 'document',
-                    'fast_add'  => config('laravel-modules-core.options.document.datatable_fast_add'),
+                    'module' => 'media',
+                    'fast_add'  => config('laravel-modules-core.options.media.datatable_fast_add'),
                     'add'       => true,
-                    'tools'     => config('laravel-modules-core.options.document.datatable_tools')
+                    'tools'     => config('laravel-modules-core.options.media.datatable_tools')
                 ])
             @endif
         </div>
@@ -146,7 +156,7 @@
 
             <div class="table-container">
                 {{-- Table Actions --}}
-                @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                @if(config('laravel-modules-core.options.media.datatable_group_action'))
                     @include('laravel-modules-core::partials.common.indexTableActions', [
                         'actions'   => ['publish','not_publish','destroy']
                     ])
@@ -158,23 +168,23 @@
                     <thead>
                         <tr role="row" class="heading">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                            @if(config('laravel-modules-core.options.media.datatable_group_action'))
                                 <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_detail'))
+                            @if(config('laravel-modules-core.options.media.datatable_detail'))
                                 <th class="all" width="2%"></th>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
 
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-document-module/admin.fields.document.title') !!} </th>
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-document-module/admin.fields.document.document') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-media-module/admin.fields.media.title') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-media-module/admin.fields.media.media') !!} </th>
                             <th class="all" width="%5"> {!! trans('laravel-modules-core::admin.fields.size') !!} </th>
-                            @if( ! isset($document_category))
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!} </th>
+                            @if( ! isset($media_category))
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-media-module/admin.fields.media_category.name') !!} </th>
                             @endif
                             <th class="all" width="%30"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
@@ -182,16 +192,16 @@
                         </tr>
 
                         {{-- Datatable Filter --}}
-                        @if(config('laravel-modules-core.options.document.datatable_filter'))
+                        @if(config('laravel-modules-core.options.media.datatable_filter'))
                         <tr role="row" class="filter">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                            @if(config('laravel-modules-core.options.media.datatable_group_action'))
                                 <td></td>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_detail'))
+                            @if(config('laravel-modules-core.options.media.datatable_detail'))
                                 <td></td>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
@@ -200,17 +210,17 @@
                                 <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="title" placeholder="{!! lmcTrans('laravel-document-module/admin.fields.document.title') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="title" placeholder="{!! lmcTrans('laravel-media-module/admin.fields.media.title') !!}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="document" placeholder="{!! lmcTrans('laravel-document-module/admin.fields.document.document') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="media" placeholder="{!! lmcTrans('laravel-media-module/admin.fields.media.media') !!}">
                             </td>
                             <td>
                                 @include('laravel-modules-core::partials.common.datatables.filterSize')
                             </td>
-                            @if( ! isset($document_category))
+                            @if( ! isset($media_category))
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-media-module/admin.fields.media_category.name') !!}">
                             </td>
                             @endif
                             <td>
@@ -244,9 +254,9 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'document.partials.form'        => [
+            'media.partials.form'        => [
                 'helpBlockAfter'    => true,
-                'isRelation'        => isset($document_category) ? true : false
+                'isRelation'        => isset($media_category) ? true : false
             ]
         ]
     ])

@@ -1,44 +1,44 @@
-@extends(config('laravel-document-module.views.document_category.layout'))
+@extends(config('laravel-media-module.views.media_category.layout'))
 
 @section('title')
-    @if(isset($parent_document_category))
-        {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}", [
-            'parent_document_category' => $parent_document_category->name
+    @if(isset($parent_media_category))
+        {!! lmcTrans("laravel-media-module/admin.media_category.media_category.{$operation}", [
+            'parent_media_category' => $parent_media_category->name
         ]) !!}
     @else
-        {!! lmcTrans("laravel-document-module/admin.document_category.{$operation}") !!}
+        {!! lmcTrans("laravel-media-module/admin.media_category.{$operation}") !!}
     @endif
 @endsection
 
 @section('page-title')
-    @if(isset($parent_document_category))
+    @if(isset($parent_media_category))
         <h1>
-            {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}", [
-                'parent_document_category'  => $parent_document_category->name
+            {!! lmcTrans("laravel-media-module/admin.media_category.media_category.{$operation}", [
+                'parent_media_category'  => $parent_media_category->name
             ]) !!}
             <small>
-                {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}_description", [
-                    'parent_document_category'  => $parent_document_category->name,
-                    'document_category'         => $operation === 'edit' ? $document_category->name : null
+                {!! lmcTrans("laravel-media-module/admin.media_category.media_category.{$operation}_description", [
+                    'parent_media_category'  => $parent_media_category->name,
+                    'media_category'         => $operation === 'edit' ? $media_category->name : null
                 ]) !!}
             </small>
         </h1>
     @else
         <h1>
-            {!! lmcTrans("laravel-document-module/admin.document_category.{$operation}") !!}
+            {!! lmcTrans("laravel-media-module/admin.media_category.{$operation}") !!}
             <small>
-                {!! lmcTrans("laravel-document-module/admin.document_category.{$operation}_description",
+                {!! lmcTrans("laravel-media-module/admin.media_category.{$operation}_description",
                 [
-                    'document_category'     => $operation === 'edit' ? $document_category->name : null
+                    'media_category'     => $operation === 'edit' ? $media_category->name : null
                 ]) !!}
             </small>
         </h1>
     @endif
 @endsection
 
-@if(isset($parent_document_category))
+@if(isset($parent_media_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb([$parent_document_category], ['name']) !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$parent_media_category], ['name']) !!}
 @endsection
 @endif
 
@@ -55,16 +55,19 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var operationJs = "{!! lmcElixir('assets/pages/scripts/document_category/operation.js') !!}";
+        var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
+        var operationJs = "{!! lmcElixir('assets/pages/scripts/media_category/operation.js') !!}";
         {{-- /js file path --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
+            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
+            type: { required: "{!! LMCValidation::getMessage('type','required') !!}" }
         };
         {{-- /languages --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/document_category/operation.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/media_category/operation.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
 @endsection
 
@@ -75,14 +78,14 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="{!! config('laravel-document-module.icons.document_category') !!} font-red"></i>
+                <i class="{!! config('laravel-media-module.icons.media_category') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    @if(isset($parent_document_category))
-                        {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}", [
-                            'parent_document_category' => $parent_document_category->name
+                    @if(isset($parent_media_category))
+                        {!! lmcTrans("laravel-media-module/admin.media_category.media_category.{$operation}", [
+                            'parent_media_category' => $parent_media_category->name
                         ]) !!}
                     @else
-                        {!! lmcTrans("laravel-document-module/admin.document_category.{$operation}") !!}
+                        {!! lmcTrans("laravel-media-module/admin.media_category.{$operation}") !!}
                     @endif
                 </span>
             </div>
@@ -91,10 +94,10 @@
             {{-- Actions --}}
             @if($operation === 'edit')
                 <div class="actions pull-left">
-                    @if(isset($parent_document_category))
-                        {!! getOps($document_category, 'edit', false, $parent_document_category, config('laravel-page-module.url.document_category')) !!}
+                    @if(isset($parent_media_category))
+                        {!! getOps($media_category, 'edit', false, $parent_media_category, config('laravel-page-module.url.media_category')) !!}
                     @else
-                        {!! getOps($document_category, 'edit', false) !!}
+                        {!! getOps($media_category, 'edit', false) !!}
                     @endif
                 </div>
             @endif
@@ -113,17 +116,17 @@
             <?php
             $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($parent_document_category) ? route('admin.document_category.document_category.' . ($operation === 'edit' ? 'update' : 'store'), [
-                        'id' => $parent_document_category->id,
-                        config('laravel-document-module.url.document_category') => $operation === 'edit' ? $document_category->id : null
-                    ]) : route('admin.document_category.' . ($operation === 'edit' ? 'update' : 'store'),[
-                            'id' => $operation === 'edit' ? $document_category->id : null,
+                    'url'   => isset($parent_media_category) ? route('admin.media_category.media_category.' . ($operation === 'edit' ? 'update' : 'store'), [
+                        'id' => $parent_media_category->id,
+                        config('laravel-media-module.url.media_category') => $operation === 'edit' ? $media_category->id : null
+                    ]) : route('admin.media_category.' . ($operation === 'edit' ? 'update' : 'store'),[
+                            'id' => $operation === 'edit' ? $media_category->id : null,
                     ]),
                     'class' => 'form'
             ];
             ?>
             @if($operation === 'edit')
-                {!! Form::model($document_category,$form) !!}
+                {!! Form::model($media_category,$form) !!}
             @else
                 {!! Form::open($form) !!}
             @endif
@@ -132,8 +135,8 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::document_category.partials.form', [
-                    'parent'    => isset($parent_document_category) ? $parent_document_category : false
+                @include('laravel-modules-core::media_category.partials.form', [
+                    'parent'    => isset($parent_media_category) ? $parent_media_category : false
                 ])
             </div>
             {{-- /Form Body --}}
