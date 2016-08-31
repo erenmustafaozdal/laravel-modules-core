@@ -73,7 +73,7 @@ return [
             'video'                 => 'Video Albümü',
         ],
         'media' => [
-            'title'                 => 'Medya Başlığı',
+            'title'                 => 'Başlık',
             'description'           => 'Açıklama',
             'photo'                 => 'Fotoğraf',
             'video'                 => 'Video',
@@ -87,7 +87,7 @@ return [
             'type'              => 'Albümün içeriğinde neler olacak? Eğer <em class="label label-info">Fotoğraf</em> veya <em class="label label-info">Video</em> seçeneklerinden birini seçmelisin!',
         ],
         'media' => [
-            'category_id_help'  => 'Medyanın albümünü seç. Bu alan <em class="label label-warning">zorunludur</em>.',
+            'category_id_help'  => 'Medyanın gösterileceği bir albüm seçebilirsin. Bunun için önce albüm oluşturmalısın.',
             'is_publish_help'   => 'Medyanın yayında olması, ziyaretçilerin medyayı görebilmesini sağlar. Yayında olmayan medyalar ziyaretçilere açık değildir.',
             'description'       => 'Medyayı açıklayan bir yazı yaz.'
         ]

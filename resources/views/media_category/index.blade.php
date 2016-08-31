@@ -133,7 +133,7 @@
 
                 {{-- DataTable --}}
                 {{-- if is not have child show info, if have child show table --}}
-                @if( (isset($parent_media_category) && $parent_media_category->isLeaf()) || App\DocumentCategory::all()->count() == 0 )
+                @if( (isset($parent_media_category) && $parent_media_category->isLeaf()) || App\MediaCategory::all()->count() == 0 )
                     <div class="well well-lg">
                         {!! lmcTrans('laravel-media-module/admin.helpers.media_category.not_have_child') !!}
                     </div>

@@ -94,7 +94,6 @@
         var groupActionSupport = {!! config('laravel-modules-core.options.document.datatable_group_action') ? 'true' : 'false' !!};
         var rowDetailSupport = {!! config('laravel-modules-core.options.document.datatable_detail') ? 'true' : 'false' !!};
         var datatableFilterSupport = {!! config('laravel-modules-core.options.document.datatable_filter') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.document.datatable_filter') ? 'true' : 'false' !!};
         var isRelationTable = {!! isset($document_category) ? 'true' : 'false' !!}
         {{-- /scripts --}}
     </script>

@@ -47,11 +47,9 @@
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
     {{-- /Bootstrap Datepicker Css --}}
 
-    {{-- Bootstrap Touch Spin Css --}}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.css') !!}
-    {{-- /Bootstrap Touch Spin Css --}}
-
     {{-- File Input Css --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jcrop/css/jquery.Jcrop.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
     {{-- /File Input Css --}}
 
@@ -92,11 +90,11 @@
 
         {{-- languages --}}
         var messagesOfRules = {
-            category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
+            photo: { required: "{!! LMCValidation::getMessage('photo','required') !!}" },
+            video: { required: "{!! LMCValidation::getMessage('video','required') !!}" }
         };
-        var validExtension = "{!! config('laravel-media-module.media.uploads.file.mimes') !!}";
-        var maxSize = "{!! config('laravel-media-module.media.uploads.file.max_size') !!}";
+        var validExtension = "{!! config('laravel-media-module.media.uploads.photo.mimes') !!}";
         {{-- /languages --}}
 
         {{-- scripts --}}
@@ -104,8 +102,6 @@
         var groupActionSupport = {!! config('laravel-modules-core.options.media.datatable_group_action') ? 'true' : 'false' !!};
         var rowDetailSupport = {!! config('laravel-modules-core.options.media.datatable_detail') ? 'true' : 'false' !!};
         var datatableFilterSupport = {!! config('laravel-modules-core.options.media.datatable_filter') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.media.datatable_filter') ? 'true' : 'false' !!};
-        var isRelationTable = {!! isset($media_category) ? 'true' : 'false' !!}
         {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/media/index.js') !!}"></script>
@@ -181,11 +177,7 @@
 
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-media-module/admin.fields.media.title') !!} </th>
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-media-module/admin.fields.media.media') !!} </th>
-                            <th class="all" width="%5"> {!! trans('laravel-modules-core::admin.fields.size') !!} </th>
-                            @if( ! isset($media_category))
                             <th class="all" width="%30"> {!! lmcTrans('laravel-media-module/admin.fields.media_category.name') !!} </th>
-                            @endif
                             <th class="all" width="%30"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
                             <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
@@ -213,16 +205,8 @@
                                 <input type="text" class="form-control form-filter input-sm" name="title" placeholder="{!! lmcTrans('laravel-media-module/admin.fields.media.title') !!}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="media" placeholder="{!! lmcTrans('laravel-media-module/admin.fields.media.media') !!}">
-                            </td>
-                            <td>
-                                @include('laravel-modules-core::partials.common.datatables.filterSize')
-                            </td>
-                            @if( ! isset($media_category))
-                            <td>
                                 <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-media-module/admin.fields.media_category.name') !!}">
                             </td>
-                            @endif
                             <td>
                                 <select name="status" class="form-control form-filter input-sm">
                                     <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
@@ -255,8 +239,7 @@
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
             'media.partials.form'        => [
-                'helpBlockAfter'    => true,
-                'isRelation'        => isset($media_category) ? true : false
+                'helpBlockAfter'    => true
             ]
         ]
     ])

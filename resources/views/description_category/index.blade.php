@@ -131,7 +131,7 @@
 
                 {{-- GTreeTable --}}
                 {{-- if is not have child show info, if have child show table --}}
-                @if( (isset($parent_description_category) && $parent_description_category->isLeaf()) || App\DocumentCategory::all()->count() == 0 )
+                @if( (isset($parent_description_category) && $parent_description_category->isLeaf()) || App\DescriptionCategory::all()->count() == 0 )
                     <div class="well well-lg">
                         {!! lmcTrans('laravel-description-module/admin.helpers.description_category.not_have_child') !!}
                     </div>
