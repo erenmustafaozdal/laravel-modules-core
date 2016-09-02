@@ -79,9 +79,14 @@
         @if(isset($media_category))
         var ajaxURL = "{!! route('api.media_category.media.index', ['id' => $media_category->id]) !!}";
         var modelsURL = "{!! route('api.media_category.models', ['id' => $media_category->id]) !!}";
+        var categoryCreateUrl = "{!! route('admin.media_category.media_category.create', [
+            'id'        => $media_category->id,
+            '_token'    => csrf_token()
+        ]) !!}";
         @else
         var ajaxURL = "{!! route('api.media.index') !!}";
         var categoryURL = "{!! route('admin.media_category.show', ['id' => '###id###']) !!}";
+        var categoryCreateUrl = "{!! route('admin.media_category.create', ['_token' => csrf_token()]) !!}";
         var modelsURL = "{!! route('api.media_category.models') !!}";
         @endif
         var apiStoreURL = "{!! route('api.media.store') !!}";
@@ -98,6 +103,7 @@
         {{-- /languages --}}
 
         {{-- scripts --}}
+        var aspectRatio = '{!! config('laravel-media-module.media.uploads.photo.aspect_ratio') !!}';
         var datatableIsResponsive = {!! config('laravel-modules-core.options.data_table.is_responsive') ? 'true' : 'false' !!};
         var groupActionSupport = {!! config('laravel-modules-core.options.media.datatable_group_action') ? 'true' : 'false' !!};
         var rowDetailSupport = {!! config('laravel-modules-core.options.media.datatable_detail') ? 'true' : 'false' !!};
@@ -154,7 +160,7 @@
                 {{-- Table Actions --}}
                 @if(config('laravel-modules-core.options.media.datatable_group_action'))
                     @include('laravel-modules-core::partials.common.indexTableActions', [
-                        'actions'   => ['publish','not_publish','destroy']
+                        'actions'   => ['publish','not_publish','destroy','create_album']
                     ])
                 @endif
                 {{-- /Table Actions --}}
@@ -176,6 +182,7 @@
                             {{-- /Datatable Row Detail Column --}}
 
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
+                            <th class="all" width="20%"> {!! lmcTrans('laravel-media-module/admin.fields.media.media') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-media-module/admin.fields.media.title') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-media-module/admin.fields.media_category.name') !!} </th>
                             <th class="all" width="%30"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
@@ -201,6 +208,7 @@
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
                             </td>
+                            <td> </td>
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="title" placeholder="{!! lmcTrans('laravel-media-module/admin.fields.media.title') !!}">
                             </td>

@@ -336,6 +336,32 @@ var LMCApp = {
         $(ops.src).TouchSpin(ops.touchspin);
     },
 
+    /**
+     * init jquery input mask
+     *
+     * @param options
+     */
+    initInputMask: function(options)
+    {
+        var mask;
+        var ops = $.extend(true, {
+            src: '',
+            type: '',
+            inputmask: {
+                placeholder: ' '
+            }
+        }, options);
+
+        switch (ops.type) {
+            case 'youtube':
+                mask = "\\http\\s://www.\\youtube.co\\m/w\\atc\\h?v=*{1,20}";
+                break;
+        }
+        ops.inputmask.mask = mask;
+
+        $(ops.src).inputmask(ops.inputmask);
+    },
+
 
 
     /*

@@ -36,5 +36,11 @@ var Operation = {
             }
         });
 
+        // remove media element
+        $('.element-wrapper').on('click','.remove-element', function(e)
+        {
+            $(this).closest('.element-wrapper').remove();
+        });
+
     }
 };

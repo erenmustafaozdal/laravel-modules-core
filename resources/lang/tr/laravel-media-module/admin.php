@@ -65,18 +65,24 @@ return [
     // fields
     'fields' => [
         'media_category' => [
-            'name'                  => 'Albüm Adı',
+            'name'                  => 'Albümler',
             'type'                  => 'Albüm Tipi',
             'photos'                => 'Fotoğraflar',
             'photo'                 => 'Fotoğraf Albümü',
             'videos'                => 'Videolar',
             'video'                 => 'Video Albümü',
+            'mixed'                 => 'Karışık',
+            'mixeds'                => 'Karışık Albüm',
+            'medias'                => 'Medyalar'
         ],
         'media' => [
             'title'                 => 'Başlık',
             'description'           => 'Açıklama',
+            'media'                 => 'Medya',
             'photo'                 => 'Fotoğraf',
             'video'                 => 'Video',
+            'add_photo'             => 'Fotoğraf Ekle',
+            'add_video'             => 'Video Ekle',
         ]
     ],
 
@@ -84,12 +90,13 @@ return [
     'helpers' => [
         'media_category' => [
             'not_have_child'    => '<h3>Gösterilecek albüm yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni albüm eklemek için sağ üst tarafta bulunan <a class="btn green btn-outline" href="javascript:;"> Yeni Ekle <i class="fa fa-plus"></i> </a> tuşa tıkla.</p>',
-            'type'              => 'Albümün içeriğinde neler olacak? Eğer <em class="label label-info">Fotoğraf</em> veya <em class="label label-info">Video</em> seçeneklerinden birini seçmelisin!',
+            'type'              => 'Albümün içeriğinde neler olacak? Eğer <em class="label label-info">Fotoğraf</em>,  <em class="label label-info">Video</em> veya <em class="label label-info">Karışık</em> seçeneklerinden birini seçmelisin!',
         ],
         'media' => [
-            'category_id_help'  => 'Medyanın gösterileceği bir albüm seçebilirsin. Bunun için önce albüm oluşturmalısın.',
+            'category_id_help'  => 'Medyanın gösterileceği bir ya da daha fazla albüm seçebilirsin. Bunun için önce albüm oluşturmalısın.',
             'is_publish_help'   => 'Medyanın yayında olması, ziyaretçilerin medyayı görebilmesini sağlar. Yayında olmayan medyalar ziyaretçilere açık değildir.',
-            'description'       => 'Medyayı açıklayan bir yazı yaz.'
+            'description'       => 'Medyayı açıklayan bir yazı yaz.',
+            'video'             => 'Youtube video adresinin sonunda yer alan kodu yapıştır. <small class="text-muted">(Ör: https://www.youtube.com/watch?v=<em class="label label-info">video_kodu</em>)</small>'
         ]
     ],
 
@@ -221,4 +228,9 @@ return [
             'media_destroy_desc'             => 'Bu izne sahip olanlar medyayı silebilir',
         ]
     ],
+
+    // flash messages
+    'flash' => [
+        'media_incompatible'        => 'Medyalar olması gereken uygunlukta değil! Bu bölümde yeni bir albüm oluşturmak için lütfen sadece :type türünde medyalar seçin.'
+    ]
 ];

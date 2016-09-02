@@ -8,8 +8,12 @@
     {
         $script(indexJs,'index');
     });
+    $script.ready('jquery', function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
+    });
 
-    $script.ready(['config','index'], function()
+    $script.ready(['config','index','inputmask'], function()
     {
         Index.init({
             DataTable: {
@@ -30,7 +34,8 @@
                     if (data.loading) return data.text;
 
                     var markup = data.parents == '' ? '' : '<small class="text-muted">' + data.parents + '</small> ';
-                    return markup + data.text;
+                    var type = data.type == '' ? '' : (data.type == 'video' ? ' <small class="text-muted">(Video Galeri)</small>' : ' <small class="text-muted">(Foto Galeri)</small>');
+                    return markup + data.text + type;
                 },
                 escapeMarkup: function(markup)
                 {
@@ -49,7 +54,8 @@
                                 return {
                                     text: item.name,
                                     id: item.id,
-                                    parents: item.parents
+                                    parents: item.parents,
+                                    type: item.type
                                 }
                             })
                         };

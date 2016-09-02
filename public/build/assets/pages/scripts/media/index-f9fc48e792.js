@@ -19,13 +19,18 @@ var Index = {
         fileActionSettings: {
             showUpload: false
         },
+        otherActionButtons: '<button type="button" id="image-crop-action" class="btn btn-xs yellow btn-outline tooltips" data-toggle="modal" title="' + LMCApp.lang.admin.ops.crop + '"><i class="icon-crop"></i> </button>',
         uploadExtraData: function (previewId, index) {
             var form = $('.form');
             return {
-                category_id: form.find('select[name="category_id"]').val(),
+                category_id: form.find('select[name="category_id[]"]').val(),
                 title: form.find('input[name="title"]').val(),
-                description: form.find('input[name="description"]').val(),
-                is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state')
+                description: form.find('textarea[name="description"]').val(),
+                is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state'),
+                x: form.find('input#x[name="x"]').val(),
+                y: form.find('input#y[name="y"]').val(),
+                width: form.find('input#width[name="width"]').val(),
+                height: form.find('input#height[name="height"]').val()
             };
         },
         ajaxSettings: {
@@ -82,6 +87,9 @@ var Index = {
 
         // LMCFileinput app is init
         LMCFileinput.init(this.options.Fileinput);
+
+        // LMCJcrop app element is setup
+        LMCJcrop.setupElements();
 
         // publish model
         $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-publish',function()
@@ -146,6 +154,49 @@ var Index = {
                 }
             });
         });
+
+        // video ve photo yönetimi
+        var fileManagement = 'fileinput';
+        $('#media_accordion a.accordion-toggle').on('click', function(e)
+        {
+            var element = $(this);
+            var href = element.prop('href');
+            href = href.split('#');
+            href = href[1];
+            var elfinder = $('#elfinder-photo');
+            var fileinput = $('#photo');
+            var video = $('#video');
+
+            // eğer kapandı ise geri dön
+            if ( $('#' + href).hasClass('in') ) {
+                return true;
+            }
+
+            if (href === 'photo_accordion') {
+                // video alanı disabled
+                video.val('').prop('disabled',true);
+                // en son hangisi açıksa onu aç diğerini kapat
+                if (fileManagement === 'fileinput') {
+                    LMCFileinput.enable(fileinput);
+                    elfinder.val('').prop('disabled',true);
+                } else {
+                    LMCFileinput.disable(fileinput);
+                    elfinder.prop('disabled',false);
+                }
+                return true;
+            }
+
+            // açık olan file management elemanını kaydet, file management elemanlarını kapat, video elemanını aç
+            fileManagement = elfinder.prop('disabled') ? 'fileinput' : 'elfinder';
+            LMCFileinput.disable(fileinput);
+            elfinder.val('').prop('disabled',true);
+            video.val('').prop('disabled',false);
+        });
+
+        LMCApp.initInputMask({
+            src: '.inputmask-youtube',
+            type: 'youtube'
+        });
     },
 
     /**
@@ -161,17 +212,19 @@ var Index = {
                 groupActionSupport: true,
                 rowDetailSupport: true,
                 datatableFilterSupport: true,
-                exportColumnSize: 5,
+                exportColumnSize: 6,
                 exportOptionsFormat: {
                     body: function (data, column, row) {
+                        if (column === 1) {
+                            return data;
+                        }
                         return LMCApp.stripTags(data);
                     }
                 },
                 isRelationTable: false,
                 changeRelationTable: function()
                 {
-                    //theDataTable.tableOptions['exportColumnSize'] = 4;
-                    //theDataTable.tableOptions.dataTable.columns.splice(2, 1);
+                    //
                 },
                 onSuccess: function(grid, response)
                 {
@@ -189,6 +242,19 @@ var Index = {
                 {
                     // on delete error function
                 },
+                onGroupBeforeAjax: function(ajaxParams)
+                {
+                    var actionType = ajaxParams.action;
+                    if (actionType !== 'create_album') {
+                        return true;
+                    }
+                    var ids = ajaxParams.id.join(',');
+                    var url = categoryCreateUrl + '&media_ids=' + ids;
+                    console.log(ids);
+                    console.log(url);
+                    window.location.href = url;
+                    return false;
+                },
 
                 /**
                  * get detail child row table format
@@ -199,8 +265,18 @@ var Index = {
                     var detail =  '<table class="table table-hover table-light">' +
                         '<tbody>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Kategori:</strong> </td>' +
-                            '<td class="text-left">' + ( data.category.name == null ? '' : data.category.name ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Albümler:</strong> </td>' +
+                            '<td class="text-left">';
+
+                    var cats = '';
+                    $.each(data.categories,function(index, item)
+                    {
+                        cats += item.name + ', '
+                    });
+                    cats = cats.substring(0, cats.length - 2);
+                    detail += cats;
+
+                    detail += '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
@@ -208,18 +284,18 @@ var Index = {
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Açıklama:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description == null ? '' : data.description.description ) + '</td>' +
+                            '<td class="text-left">' + ( data.description == null ? '' : data.description ) + '</td>' +
                         '</tr>';
 
                     // fotoğrafsa eklenir
-                    if (data.photo != 'undefined' && data.photo.photo != null) {
+                    if (data.photo.photo != '') {
                         detail += '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
                             '<td class="text-left">' +
-                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">' +
+                                '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">' +
                                     '<div class="mt-element-overlay">' +
                                         '<div class="mt-overlay-2">' +
-                                            '<img src="' + data.photo.url +'">' +
+                                            '<img src="' + data.photo.photo +'">' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>' +
@@ -228,13 +304,13 @@ var Index = {
                     }
 
                     // videoysa eklenir
-                    if (data.video != 'undefined' && data.video.video != null) {
+                    if (data.video.video != '') {
                         detail += '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Video:</strong> </td>' +
                             '<td class="text-left">' +
-                                '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">' +
+                                '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">' +
                                     '<div class="embed-responsive embed-responsive-16by9">' +
-                                        '<iframe class="embed-responsive-item" src="' + video.embed_url + '"></iframe>' +
+                                        '<iframe class="embed-responsive-item" src="' + data.video.video + '"></iframe>' +
                                     '</div>' +
                                 '</div>' +
                             '</td>' +
@@ -264,11 +340,13 @@ var Index = {
                     columns: [
                         // id
                         { data: "id", name: "id", className: 'text-center' },
+                        // media
+                        { data: "media", name: "media", searchable: false, orderable: false, className: 'text-center'},
                         // title
                         { data: "title", name: "title" },
                         // categories
                         {
-                            data: "categories", name: "categories",
+                            data: "categories", name: "categories", orderable: false,
                             render: function ( data, type, full, meta )
                             {
                                 var cats = '';
@@ -346,10 +424,19 @@ var Index = {
                 modalShowCallback: function(Editor)
                 {
                     var element = $('#photo');
+                    var elfinder = $('#elfinder-photo');
+                    var video = $('#video');
+                    var wrapper = $('#media_accordion');
                     if (Editor.actionType === 'fast-edit') {
                         LMCFileinput.disable(element);
+                        elfinder.prop('disabled', true);
+                        video.prop('disabled', true);
+                        wrapper.hide();
                     } else {
                         LMCFileinput.enable(element);
+                        elfinder.prop('disabled', false);
+                        video.prop('disabled', false);
+                        wrapper.show();
                     }
                 },
                 actionButtonCallback: function(Editor)
@@ -374,11 +461,12 @@ var Index = {
                                 }
 
                                 var url, type, message_success, title_success, message_error, title_error, datas = {
-                                    category_id: validation.form.find('select[name="category_id"]').val(),
+                                    category_id: validation.form.find('select[name="category_id[]"]').val(),
                                     title: validation.form.find('input[name="title"]').val(),
-                                    description: validation.form.find('input[name="description"]').val(),
+                                    description: validation.form.find('textarea[name="description"]').val(),
                                     is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
                                 };
+
                                 if (Editor.actionType === 'fast-add') {
                                     type = 'POST';
                                     url = apiStoreURL;
@@ -386,6 +474,12 @@ var Index = {
                                     title_success = LMCApp.lang.admin.flash.store_success.title;
                                     message_error = LMCApp.lang.admin.flash.store_error.message;
                                     title_error = LMCApp.lang.admin.flash.store_error.title;
+                                    // duruma göre video veya elfinder eklenir
+                                    if ($('#video').prop('disabled')) {
+                                        datas.photo = $('#elfinder-photo').val();
+                                    } else {
+                                        datas.video = $('#video').val();
+                                    }
                                 } else {
                                     type = 'PATCH';
                                     url = Editor.row.data().urls.edit;
@@ -428,8 +522,58 @@ var Index = {
                         $(Editor.editorOptions.formSrc).submit();
                     });
                 }
+            },
+            Fileinput: {
+                src: '#photo',
+                fileinput: ModelIndex.fileinputOptions,
+                // events
+                filebrowse: function(event)
+                {
+                    theLMCJcrop.jcropReset();
+                },
+                fileloaded: function(event, file, previewId, index, reader)
+                {
+                    // init tooltips
+                    LMCApp.initTooltips();
+                    // image crop action button click
+                    $('#image-crop-action').on('click', function(event)
+                    {
+                        // jcrop init
+                        theLMCJcrop.jcropPreInit(reader.result)
+                            .init(ModelIndex.getJcropInitOptions());
+                    });
+                    // image crop cancel button click
+                    theLMCJcrop.imgCropCancelBtn.on('click', function(event)
+                    {
+                        theLMCJcrop.jcropReset();
+                    });
+                },
+                filecleared: function(event)
+                {
+                    theLMCJcrop.jcropReset();
+                },
+                filereset: function(event)
+                {
+                    theLMCJcrop.jcropReset();
+                }
             }
         }
+    },
+
+    /**
+     * get jquery crop init options
+     */
+    getJcropInitOptions: function()
+    {
+        return {
+            jcrop: {
+                aspectRatio: aspectRatio,
+                onRelease: function()
+                {
+                    $('form.form').form.find('input[type="hidden"]').val('');
+                }
+            }
+        };
     }
 
 };

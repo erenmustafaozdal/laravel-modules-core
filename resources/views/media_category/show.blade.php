@@ -122,7 +122,7 @@
                         </li>
                         <li>
                             <a data-toggle="tab" href="#medias">
-                                <i class="fa fa-{{ $media_category->type === 'photo' ? 'camera' : 'video-camera' }}"></i>
+                                <i class="fa fa-{{ $media_category->type === 'photo' ? 'camera' : ($media_category->type === 'video' ? 'video-camera' : 'camera-retro') }}"></i>
                                 {!! lmcTrans("laravel-media-module/admin.fields.media_category.{$media_category->type}s") !!}
                             </a>
                             <span class="after"> </span>

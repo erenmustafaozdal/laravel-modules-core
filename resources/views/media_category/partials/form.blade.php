@@ -15,8 +15,15 @@
 {{-- /Name --}}
 
 {{-- Type --}}
-@if($parent || isset($media_category))
-    {!! Form::hidden('type', $parent ? $parent->type : $media_category->type) !!}
+@if($parent || isset($media_category) || isset($medias))
+    {!! Form::hidden('type', $parent
+    ? $parent->type
+    : (
+        isset($media_category) ? $media_category->type
+        : (
+            $medias->groupBy('type')->count() > 1 ? 'mixed' : $medias->groupBy('type')->keys()->all()[0]
+        ))
+    ) !!}
 @else
     <div class="form-group">
         <label class="control-label">{!! lmcTrans('laravel-media-module/admin.fields.media_category.type') !!}</label>

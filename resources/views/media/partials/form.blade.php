@@ -29,10 +29,58 @@
 </div>
 {{-- /Title --}}
 
+{{-- Media [Photo,Video] --}}
+@if( ! isset($media) && ! isset($media_category) )
+    <div class="panel-group accordion" id="media_accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle accordion-toggle-styled"
+                       data-toggle="collapse"
+                       data-parent="#media_accordion"
+                       href="#photo_accordion"
+                    > {!! lmcTrans('laravel-media-module/admin.fields.media.add_photo') !!} </a>
+                </h4>
+            </div>
+            <div id="photo_accordion" class="panel-collapse in">
+                <div class="panel-body">
+                    @include('laravel-modules-core::media.partials.form_elements.photo', [
+                        'fileinputDisable'      => false,
+                        'elfinderDisable'       => true
+                    ])
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle accordion-toggle-styled collapsed"
+                       data-toggle="collapse"
+                       data-parent="#media_accordion"
+                       href="#video_accordion"
+                    > {!! lmcTrans('laravel-media-module/admin.fields.media.add_video') !!} </a>
+                </h4>
+            </div>
+            <div id="video_accordion" class="panel-collapse collapse">
+                <div class="panel-body">
+                    @include('laravel-modules-core::media.partials.form_elements.video', [
+                        'isDisable'     => true
+                    ])
+                </div>
+            </div>
+        </div>
+    </div>
+@elseif(! isset($media) && $media_category->type === 'video')
+    @include('laravel-modules-core::media.partials.form_elements.video')
+@elseif(! isset($media) && $media_category->type === 'photo')
+    @include('laravel-modules-core::media.partials.form_elements.photo')
+@endif
+{{-- /Media [Photo,Video] --}}
+
 {{-- Description --}}
 <div class="form-group" id="description_wrapper">
     <label class="control-label">{!! lmcTrans('laravel-media-module/admin.fields.media.description') !!}</label>
-    {!! Form::textarea( 'description', isset($media) && ! is_null($media->description) ? $media->description->description : null, [
+    {!! Form::textarea( 'description', isset($media) ? $media->description : null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
         'placeholder'   => lmcTrans('laravel-media-module/admin.fields.media.description'),
         'rows'          => 3,

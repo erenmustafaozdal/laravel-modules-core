@@ -80,6 +80,7 @@ return [
         'destroy_image'                     => 'Fotoğrafı Sil',
         'all'                               => 'Hepsi',
         'view_large'                        => 'Büyük Göster',
+        'create_album'                      => 'Albüm Oluştur',
         // description
         'date_from'                         => 'Tarihinden',
         'date_to'                           => 'Tarihine',

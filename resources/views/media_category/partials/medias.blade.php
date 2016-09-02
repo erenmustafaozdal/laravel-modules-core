@@ -37,7 +37,7 @@
                 <div class="cbp-item filter{{ $category->id }} {{ $media->is_publish ? 'published' : 'not_published' }}">
                     <div class="cbp-caption">
                         <div class="cbp-caption-defaultWrap">
-                            {!! $media->{$media_category->type}->html !!}
+                            {!! $media->{$media->type}->html !!}
                         </div>
                         <div class="cbp-caption-activeWrap">
                             <div class="cbp-l-caption-alignCenter">
@@ -77,7 +77,7 @@
                                     {{-- /Publish or Not Publish Button --}}
 
                                     {{-- View Large Button --}}
-                                    <a href="{!! $media->{$media_category->type}->url !!}?autoplay=0"
+                                    <a href="{!! $media->{$media->type}->url !!}?autoplay=0"
                                        class="cbp-lightbox btn grey btn-outline tooltips"
                                        data-container="body"
                                        title="{!! lmcTrans('admin.ops.view_large') !!}"

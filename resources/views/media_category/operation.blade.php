@@ -138,6 +138,10 @@
                 @include('laravel-modules-core::media_category.partials.form', [
                     'parent'    => isset($parent_media_category) ? $parent_media_category : false
                 ])
+
+                @if(isset($medias))
+                    @include('laravel-modules-core::media_category.partials.medias_list')
+                @endif
             </div>
             {{-- /Form Body --}}
 

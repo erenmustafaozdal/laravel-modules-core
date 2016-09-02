@@ -94,7 +94,7 @@ var Validation = {
                     });
                 },
                 highlight: function(element) { // hightlight error inputs
-                    $(element).closest('.form-group').addClass('has-error'); // set error class to the control group
+                    $(element).closest('.form-group').addClass('has-error');
                 },
                 success: function(label) {
                     label.closest('.form-group').removeClass('has-error');
@@ -103,12 +103,13 @@ var Validation = {
                 errorPlacement: function(error, element) {
                     if (element.hasClass('select2')) {
                         error.insertAfter(element.next('span.select2'))
+                    } else if (element.prop('type') === 'file' || $(element).prop('id') === 'elfinder-photo') {
+                        error.insertAfter(element.closest('div.input-group'));
                     } else {
                         error.insertAfter(element);
                     }
                 },
                 submitHandler: function(form) {
-                    e.preventDefault();
 
                     if ( ! theValidation.options.isAjax) {
                         form.submit();

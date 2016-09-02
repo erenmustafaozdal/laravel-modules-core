@@ -63,11 +63,14 @@
             {{-- /template photo preview before crop --}}
 
             {{-- Fileinput file element --}}
-            <input type="file"
-                   name="{!! $input_name !!}[]"
-                   id="{!! $input_id !!}"
-                   {!! isset($multiple) &&  $multiple ? 'multiple' : '' !!}
-            >
+            <div class="form-group">
+                <input type="file"
+                       name="{!! $input_name !!}{!! isset($multiple) &&  $multiple ? '[]' : '' !!}"
+                       id="{!! $input_id !!}"
+                       {!! isset($multiple) &&  $multiple ? 'multiple' : '' !!}
+                       {!! isset($fileinputDisable) &&  $fileinputDisable ? 'disabled' : '' !!}
+                >
+            </div>
             {{-- /Fileinput file element --}}
 
             {{-- Jcrop Form Elements --}}
@@ -90,26 +93,29 @@
                 {!! trans('laravel-modules-core::admin.helpers.elfinder') !!}
             </span>
 
-            <div class="input-group">
-                {!! Form::text($input_name, null, [
-                    'id'            => $elfinder_id,
-                    'class'         => 'form-control form-control-solid placeholder-no-fix elfinder',
-                    'readonly'      => true,
-                    'placeholder'   => trans('laravel-modules-core::admin.fields.from_file_manager')
-                ]) !!}
-                <div class="input-group-btn">
-                    {{-- File Manager --}}
-                    <a href="{!! route('elfinder.popup',[ 'input_id' => 'fileinput']) !!}"
-                       class="tooltips btn blue btn-outline popup_selector"
-                       data-original-title="{!! trans('laravel-modules-core::admin.fields.from_file_manager') !!}"
-                       data-container="body"
-                       data-placement="bottom"
-                       data-inputid="{!! $elfinder_id !!}"
-                    >
-                        <i class="fa fa-folder-open"></i>
-                        <span class="hidden-xs">{!! trans('laravel-modules-core::admin.fields.file_manager') !!}</span>
-                    </a>
-                    {{-- /File Manager --}}
+            <div class="form-group">
+                <div class="input-group">
+                    {!! Form::text($input_name, null, [
+                        'id'            => $elfinder_id,
+                        'class'         => 'form-control form-control-solid placeholder-no-fix elfinder',
+                        'readonly'      => true,
+                        'placeholder'   => trans('laravel-modules-core::admin.fields.from_file_manager'),
+                        'disabled'      => isset($elfinderDisable) &&  $elfinderDisable ? true : false
+                    ]) !!}
+                    <div class="input-group-btn">
+                        {{-- File Manager --}}
+                        <a href="{!! route('elfinder.popup',[ 'input_id' => 'fileinput']) !!}"
+                           class="tooltips btn blue btn-outline popup_selector"
+                           data-original-title="{!! trans('laravel-modules-core::admin.fields.from_file_manager') !!}"
+                           data-container="body"
+                           data-placement="bottom"
+                           data-inputid="{!! $elfinder_id !!}"
+                        >
+                            <i class="fa fa-folder-open"></i>
+                            <span class="hidden-xs">{!! trans('laravel-modules-core::admin.fields.file_manager') !!}</span>
+                        </a>
+                        {{-- /File Manager --}}
+                    </div>
                 </div>
             </div>
 

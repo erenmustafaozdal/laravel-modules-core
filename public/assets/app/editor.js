@@ -97,6 +97,8 @@ var Editor = {
             {
                 $.each(data, function(key, value)
                 {
+                    key = key === 'categories' ? 'category_id[]' : key;
+
                     $('textarea[name="' + key + '"], select[name="' + key + '"], input[name="' + key + '"]', theEditor.form).each(function()
                     {
                         $(this).val(value);
@@ -112,6 +114,15 @@ var Editor = {
                     $('select.select2[name="' + key + '_id"]', theEditor.form).each(function()
                     {
                         theSelect2.element.append('<option value="' + value.id +'" selected>' + value.name + '</option>').trigger('change');
+                    });
+
+                    // categories gelince
+                    $('select.select2[name="' + key + '"]', theEditor.form).each(function()
+                    {
+                        $.each(value, function(index,item)
+                        {
+                            theSelect2.element.append('<option value="' + item.id +'" selected>' + item.name + '</option>').trigger('change');
+                        });
                     });
                 });
             }

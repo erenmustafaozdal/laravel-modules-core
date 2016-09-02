@@ -234,6 +234,13 @@ var DataTable = {
                 // seçilen satır sayısı 0'dan büyük ve action seçilmiş ise
                 theDataTable.setAjaxParam('action', action.val());
                 theDataTable.setAjaxParam('id', theDataTable.getSelectedRows());
+
+                // group action ajax before fonksiyonu çağrılır
+                var result = theDataTable.tableOptions.onGroupBeforeAjax.call(undefined, theDataTable.ajaxParams);
+                if ( ! result ) {
+                    return false;
+                }
+
                 $.ajax({
                     url: apiGroupAction,
                     data: theDataTable.ajaxParams,
@@ -244,6 +251,7 @@ var DataTable = {
                                 message: LMCApp.lang.admin.flash.group_action_success.message,
                                 type: 'success'
                             });
+                            theDataTable.tableOptions.onGroupAfterAjax.call(undefined, theDataTable.ajaxParams, data);
                             return;
                         }
 
@@ -252,6 +260,8 @@ var DataTable = {
                             message: LMCApp.lang.admin.flash.group_action_error.message,
                             type: 'error'
                         });
+
+                        theDataTable.tableOptions.onGroupAfterAjax.call(undefined, theDataTable.ajaxParams, data);
                     }
                 }).done(function (data) {
                     if (data.result === 'success') {
@@ -607,6 +617,14 @@ var DataTable = {
             changeRelationTable: function()
             {
                 //
+            },
+            onGroupBeforeAjax: function(actionType, rows, ajaxParams)
+            {
+                return true;
+            },
+            onGroupAfterAjax: function(actionType, rows, ajaxParams, responseData)
+            {
+                // on error function
             },
 
             /**

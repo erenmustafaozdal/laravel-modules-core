@@ -104,6 +104,9 @@ var Index = {
                 exportColumnSize: 5,
                 exportOptionsFormat: {
                     body: function (data, column, row) {
+                        if (column === 1) {
+                            return data;
+                        }
                         return LMCApp.stripTags(data);
                     }
                 },
