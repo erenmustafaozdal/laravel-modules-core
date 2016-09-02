@@ -71,7 +71,7 @@ return [
             'photo'                 => 'Fotoğraf Albümü',
             'videos'                => 'Videolar',
             'video'                 => 'Video Albümü',
-            'mixed'                 => 'Karışık',
+            'mixed'                 => 'Karışık Albüm',
             'mixeds'                => 'Karışık Albüm',
             'medias'                => 'Medyalar'
         ],
