@@ -44,7 +44,7 @@ var Operation = {
         });
 
         // LMCFileinput app is init
-        LMCFileinput.init(this.getDocumentFileinputOptions());
+        LMCFileinput.init(this.getPhotoFileinputOptions());
 
         // LMCJcrop app element is setup
         LMCJcrop.setupElements();

@@ -4,29 +4,19 @@
     {
         $script(validationMethodsJs);
     });
-    $script.ready('app_editor', function()
-    {
-        $script(indexJs,'index');
-    });
     $script.ready('jquery', function()
     {
+        $script(operationJs,'operation');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
     });
-
-    $script.ready(['config','index','inputmask'], function()
+    $script.ready(['config','operation','app_fileinput','app_jcrop'], function()
     {
-        Index.init({
-            DataTable: {
-                datatableIsResponsive: datatableIsResponsive,
-                groupActionSupport: groupActionSupport,
-                rowDetailSupport: rowDetailSupport,
-                datatableFilterSupport: datatableFilterSupport
-            }
-        });
+        Operation.init();
+        $script(videoPhotoJs);
     });
-
-    $script.ready(['config','app_select2'], function()
+    $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
     {
+
         Select2.init({
             select2: {
                 templateResult: function(data)

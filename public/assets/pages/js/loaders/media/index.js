@@ -23,6 +23,7 @@
                 datatableFilterSupport: datatableFilterSupport
             }
         });
+        $script(videoPhotoJs);
     });
 
     $script.ready(['config','app_select2'], function()

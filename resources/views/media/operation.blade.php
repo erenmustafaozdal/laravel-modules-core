@@ -68,6 +68,7 @@
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var operationJs = "{!! lmcElixir('assets/pages/scripts/media/operation.js') !!}";
+        var videoPhotoJs = "{!! lmcElixir('assets/pages/scripts/media/video_photo.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}

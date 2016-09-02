@@ -73,6 +73,7 @@
         var formJs = "{!! lmcElixir('assets/pages/scripts/media/media-form.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var indexJs = "{!! lmcElixir('assets/pages/scripts/media/index.js') !!}";
+        var videoPhotoJs = "{!! lmcElixir('assets/pages/scripts/media/video_photo.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
