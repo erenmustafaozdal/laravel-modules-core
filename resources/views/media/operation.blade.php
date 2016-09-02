@@ -1,43 +1,45 @@
-@extends(config('laravel-document-module.views.document.layout'))
+@extends(config('laravel-media-module.views.media.layout'))
 
 @section('title')
-    @if(isset($document_category))
-        {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}", [
-            'document_category' => $document_category->name_uc_first
+    @if(isset($media_category))
+        {!! lmcTrans("laravel-media-module/admin.media_category.media.{$operation}", [
+            'media_category' => $media_category->name_uc_first,
+            'media'          => $operation === 'edit' ? $media->title_uc_first : null
         ]) !!}
     @else
-        {!! lmcTrans("laravel-document-module/admin.document.{$operation}") !!}
+        {!! lmcTrans("laravel-media-module/admin.media.{$operation}") !!}
     @endif
 @endsection
 
 @section('page-title')
-    @if(isset($document_category))
+    @if(isset($media_category))
         <h1>
-            {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}", [
-                'document_category' => $document_category->name_uc_first
+            {!! lmcTrans("laravel-media-module/admin.media_category.media.{$operation}", [
+                'media_category' => $media_category->name_uc_first,
+                'media'          => $operation === 'edit' ? $media->title_uc_first : null
             ]) !!}
             <small>
-                {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}_description", [
-                    'document_category' => $document_category->name_uc_first,
-                    'document'          => $operation === 'edit' ? $document->title_uc_first : null
+                {!! lmcTrans("laravel-media-module/admin.media_category.media.{$operation}_description", [
+                    'media_category' => $media_category->name_uc_first,
+                    'media'          => $operation === 'edit' ? $media->title_uc_first : null
                 ]) !!}
             </small>
         </h1>
     @else
         <h1>
-            {!! lmcTrans("laravel-document-module/admin.document.{$operation}") !!}
+            {!! lmcTrans("laravel-media-module/admin.media.{$operation}") !!}
             <small>
-                {!! lmcTrans("laravel-document-module/admin.document.{$operation}_description", [
-                    'document' => $operation === 'edit' ? $document->title_uc_first : null
+                {!! lmcTrans("laravel-media-module/admin.media.{$operation}_description", [
+                    'media' => $operation === 'edit' ? $media->title_uc_first : null
                 ]) !!}
             </small>
         </h1>
     @endif
 @endsection
 
-@if(isset($document_category))
+@if(isset($media_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb([$document_category], ['name']) !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$media_category], ['name']) !!}
 @endsection
 @endif
 
@@ -65,31 +67,29 @@
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
-        var operationJs = "{!! lmcElixir('assets/pages/scripts/document/operation.js') !!}";
+        var operationJs = "{!! lmcElixir('assets/pages/scripts/media/operation.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        @if(isset($document_category))
-            var modelsURL = "{!! route('api.document_category.models', ['id' => $document_category]) !!}";
+        @if(isset($media_category))
+            var modelsURL = "{!! route('api.media_category.models', ['id' => $media_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.document_category.models') !!}";
+            var modelsURL = "{!! route('api.media_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.document_category.detail', ['id' => '###id###']) !!}";
+        var categoryDetailURL = "{!! route('api.media_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
+            photo: { required: "{!! LMCValidation::getMessage('photo','required') !!}" },
+            video: { required: "{!! LMCValidation::getMessage('video','required') !!}" }
         };
-        var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
-        var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
-        var aspectRatio = '{!! config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}';
-        var hasDescription = {{ ( isset($document) && $document->category->has_description ) || ( isset($document_category) && $document_category->has_description ) || (! isset($document) && ! isset($document_category)) ? 'true' : 'false' }};
-        var hasPhoto = {{ ( isset($document) && $document->category->has_photo ) || ( isset($document_category) && $document_category->has_photo ) || (! isset($document) && ! isset($document_category)) ? 'true' : 'false' }};
+        var validExtension = "{!! config('laravel-media-module.media.uploads.photo.mimes') !!}";
+        var aspectRatio = '{!! config('laravel-media-module.media.uploads.photo.aspect_ratio') !!}';
         {{-- /languages --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/document/operation.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/media/operation.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
@@ -102,14 +102,15 @@
         <div class="portlet-title tabbable-line">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="{!! config('laravel-document-module.icons.document') !!} font-red"></i>
+                <i class="{!! config('laravel-media-module.icons.media') !!} font-red"></i>
                 <span class="caption-subject font-red sbold uppercase">
-                    @if(isset($document_category))
-                        {!! lmcTrans("laravel-document-module/admin.document_category.document.{$operation}", [
-                            'document_category' => $document_category->name_uc_first
+                    @if(isset($media_category))
+                        {!! lmcTrans("laravel-media-module/admin.media_category.media.{$operation}", [
+                            'media_category' => $media_category->name_uc_first,
+                            'media'          => $operation === 'edit' ? $media->title_uc_first : null
                         ]) !!}
                     @else
-                        {!! lmcTrans("laravel-document-module/admin.document.{$operation}") !!}
+                        {!! lmcTrans("laravel-media-module/admin.media.{$operation}") !!}
                     @endif
                 </span>
             </div>
@@ -118,29 +119,14 @@
             {{-- Actions --}}
             @if($operation === 'edit')
             <div class="actions pull-left">
-                @if(isset($document_category))
-                    {!! getOps($document, 'edit', true, $document_category, config('laravel-document-module.url.document')) !!}
+                @if(isset($media_category))
+                    {!! getOps($media, 'edit', true, $media_category, config('laravel-media-module.url.media')) !!}
                 @else
-                    {!! getOps($document, 'edit', true) !!}
+                    {!! getOps($media, 'edit', true) !!}
                 @endif
             </div>
             @endif
             {{-- /Actions --}}
-
-            {{-- Nav Tabs --}}
-            <ul class="nav nav-tabs nav-tabs-lg">
-                <li class="active">
-                    <a href="#info" data-toggle="tab" aria-expanded="true">
-                        {!! trans('laravel-modules-core::admin.fields.overview') !!}
-                    </a>
-                </li>
-                <li id="detail_tab">
-                    <a href="#detail" data-toggle="tab" aria-expanded="true">
-                        {!! trans('laravel-modules-core::admin.fields.detail') !!}
-                    </a>
-                </li>
-            </ul>
-            {{-- /Nav Tabs --}}
         </div>
         {{-- /Portlet Title and Actions --}}
 
@@ -155,11 +141,11 @@
             <?php
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($document_category) ? route('admin.document_category.document.' . ($operation === 'edit' ? 'update' : 'store'), [
-                        'id'                                    => $document_category->id,
-                        config('laravel-document-module.url.document')  => $operation === 'edit' ? $document->id : null
-                    ]) : route('admin.document.' . ($operation === 'edit' ? 'update' : 'store'), [
-                            'id' => $operation === 'edit' ? $document->id : null
+                    'url'   => isset($media_category) ? route('admin.media_category.media.' . ($operation === 'edit' ? 'update' : 'store'), [
+                        'id'                                    => $media_category->id,
+                        config('laravel-media-module.url.media')  => $operation === 'edit' ? $media->id : null
+                    ]) : route('admin.media.' . ($operation === 'edit' ? 'update' : 'store'), [
+                            'id' => $operation === 'edit' ? $media->id : null
                     ]),
                     'class' => 'form',
                     'files' => true
@@ -171,22 +157,7 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-
-                {{-- Tab Contents --}}
-                <div class="tab-content">
-                    <div class="tab-pane active" id="info">
-                        @include('laravel-modules-core::document.partials.form', [
-                            'isRelation'    => isset($document_category) ? true : false
-                        ])
-                    </div>
-                    <div class="tab-pane" id="detail">
-                        @include('laravel-modules-core::document.partials.detail_form', [
-                            'currentPhoto'  => isset($document)
-                        ])
-                    </div>
-                </div>
-                {{-- /Tab Contents --}}
-
+                @include('laravel-modules-core::media.partials.form')
             </div>
             {{-- /Form Body --}}
 

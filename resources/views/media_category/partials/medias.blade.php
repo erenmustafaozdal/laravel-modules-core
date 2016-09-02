@@ -37,7 +37,9 @@
                 <div class="cbp-item filter{{ $category->id }} {{ $media->is_publish ? 'published' : 'not_published' }}">
                     <div class="cbp-caption">
                         <div class="cbp-caption-defaultWrap">
-                            {!! $media->{$media->type}->html !!}
+                            <a href="#" title="{{ $media->title }}">
+                                {!! $media->{$media->type}->html !!}
+                            </a>
                         </div>
                         <div class="cbp-caption-activeWrap">
                             <div class="cbp-l-caption-alignCenter">
