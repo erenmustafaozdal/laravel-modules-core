@@ -62,7 +62,7 @@
             {!! lmcTrans('laravel-media-module/admin.fields.media.' . $media->type) !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {!! $media->html !!} </p>
+            <p class="form-control-static"> {!! $media->html or '' !!} </p>
         </div>
     </div>
     {{-- /Media --}}

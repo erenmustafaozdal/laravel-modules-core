@@ -6,6 +6,6 @@
     'ratio'             => config('laravel-media-module.media.uploads.photo.aspect_ratio'),
     'elfinder'          => true,
     'elfinder_id'       => 'elfinder-photo',
-    'fileinputDisable'  => $fileinputDisable,
-    'elfinderDisable'   => $elfinderDisable
+    'fileinputDisable'  => isset($fileinputDisable) ? $fileinputDisable : false,
+    'elfinderDisable'   => isset($elfinderDisable) ? $elfinderDisable : true
 ])

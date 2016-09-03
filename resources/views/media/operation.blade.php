@@ -39,7 +39,11 @@
 
 @if(isset($media_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb([$media_category], ['name']) !!}
+    @if ($operation === 'edit')
+        {!! LMCBreadcrumb::getBreadcrumb([$media_category,$media], ['name','title']) !!}
+    @else
+        {!! LMCBreadcrumb::getBreadcrumb([$media_category], ['name']) !!}
+    @endif
 @endsection
 @endif
 

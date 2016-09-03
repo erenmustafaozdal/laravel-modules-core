@@ -384,16 +384,19 @@ var Index = {
                     var elfinder = $('#elfinder-photo');
                     var video = $('#video');
                     var wrapper = $('#media_accordion');
+                    var fileWrapper = $('#file-upload-management');
                     if (Editor.actionType === 'fast-edit') {
                         LMCFileinput.disable(element);
                         elfinder.prop('disabled', true);
                         video.prop('disabled', true);
                         wrapper.hide();
+                        fileWrapper.hide();
                     } else {
                         LMCFileinput.enable(element);
                         elfinder.prop('disabled', false);
                         video.prop('disabled', false);
                         wrapper.show();
+                        fileWrapper.show();
                     }
                 },
                 actionButtonCallback: function(Editor)

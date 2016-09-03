@@ -35,8 +35,8 @@
                     if (data.loading) return data.text;
 
                     var markup = data.parents == '' ? '' : '<small class="text-muted">' + data.parents + '</small> ';
-                    var type = data.type == '' ? '' : (data.type == 'video' ? ' <small class="text-muted">(Video Galeri)</small>' : ' <small class="text-muted">(Foto Galeri)</small>');
-                    return markup + data.text + type;
+                    var type = data.type == '' ? '' : (data.type == 'video' ? 'Video Albümü' : ( data.type == 'photo' ? 'Fotoğraf Albümü' : 'Karışık Albüm'));
+                    return markup + data.text + ' <small class="text-muted">(' + type + ')</small>';
                 },
                 escapeMarkup: function(markup)
                 {

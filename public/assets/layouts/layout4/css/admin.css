@@ -1898,3 +1898,8 @@ div.bootstrap-touchspin button.btn-outline {
 .cbp-popup-singlePage-open, .cbp-popup-wrap {
     z-index: 10105!important;
 }
+
+/* Bootstrap Modal */
+body.modal-open {
+    overflow: hidden !important;
+}

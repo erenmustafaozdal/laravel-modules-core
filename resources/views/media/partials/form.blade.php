@@ -4,7 +4,9 @@
     <select class="form-control form-control-solid placeholder-no-fix select2" multiple name="category_id[]" style="width: 100%">
         @if(isset($media))
             @foreach($media->categories as $category)
-                <option value="{{ $category->id }}" selected>{{ $category->name_uc_first }}</option>
+                @if( ! isset($media_category) || $media_category->id !== $category->id)
+                    <option value="{{ $category->id }}" selected>{{ $category->name_uc_first }}</option>
+                @endif
             @endforeach
         @endif
     </select>

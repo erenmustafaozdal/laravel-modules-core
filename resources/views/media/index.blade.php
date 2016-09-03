@@ -79,6 +79,7 @@
         {{-- routes --}}
         @if(isset($media_category))
         var ajaxURL = "{!! route('api.media_category.media.index', ['id' => $media_category->id]) !!}";
+        var categoryURL = "{!! route('admin.media_category.show', ['id' => $media_category->id]) !!}";
         var modelsURL = "{!! route('api.media_category.models', ['id' => $media_category->id]) !!}";
         var categoryCreateUrl = "{!! route('admin.media_category.media_category.create', [
             'id'        => $media_category->id,

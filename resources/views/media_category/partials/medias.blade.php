@@ -8,12 +8,12 @@
             <div class="cbp-filter-counter"></div>
         </div>
 
-        <div data-filter=".published" class="cbp-filter-item-active cbp-filter-item">
+        <div data-filter=".published" class="cbp-filter-item">
             {!! lmcTrans('admin.ops.published') !!}
             <div class="cbp-filter-counter"></div>
         </div>
 
-        <div data-filter=".not_published" class="cbp-filter-item-active cbp-filter-item">
+        <div data-filter=".not_published" class="cbp-filter-item">
             {!! lmcTrans('admin.ops.not_published') !!}
             <div class="cbp-filter-counter"></div>
         </div>
@@ -38,7 +38,7 @@
                     <div class="cbp-caption">
                         <div class="cbp-caption-defaultWrap">
                             <a href="#" title="{{ $media->title }}">
-                                {!! $media->{$media->type}->html !!}
+                                {!! $media->{$media->type}->html or '' !!}
                             </a>
                         </div>
                         <div class="cbp-caption-activeWrap">
@@ -46,7 +46,7 @@
                                 <div class="cbp-l-caption-body">
                                     {{-- Show Button --}}
                                     @if(Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.show"))
-                                    <a href="{!! route('admin.media_category.media.show', ['id'=> $media_category->id,config('laravel-media-module.url.media')  => $media->id]) !!}"
+                                    <a href="{!! route('admin.media_category.media.show', ['id'=> $category->id,config('laravel-media-module.url.media')  => $media->id]) !!}"
                                         class="tooltips btn green btn-outline"
                                         data-container="body"
                                         data-original-title="{!! lmcTrans('admin.ops.show') !!}"
@@ -59,7 +59,7 @@
 
                                     {{-- Publish or Not Publish Button --}}
                                     @if( ! $media->is_publish && ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.publish") ) )
-                                    <a href="{!! route('admin.media_category.media.publish', ['id'=> $media_category->id,config('laravel-media-module.url.media')  => $media->id]) !!}"
+                                    <a href="{!! route('admin.media_category.media.publish', ['id'=> $category->id,config('laravel-media-module.url.media')  => $media->id]) !!}"
                                        class="tooltips btn blue btn-outline"
                                        data-container="body"
                                        data-original-title="{!! lmcTrans('admin.ops.publish') !!}">
@@ -68,7 +68,7 @@
 
                                    @endif
                                     @if( $media->is_publish && ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.publish") ) )
-                                    <a href="{!! route('admin.media_category.media.notPublish', ['id'=> $media_category->id,config('laravel-media-module.url.media')  => $media->id]) !!}"
+                                    <a href="{!! route('admin.media_category.media.notPublish', ['id'=> $category->id,config('laravel-media-module.url.media')  => $media->id]) !!}"
                                        class="tooltips btn purple btn-outline"
                                        data-container="body"
                                        data-original-title="{!! lmcTrans('admin.ops.not_publish') !!}">
@@ -79,7 +79,7 @@
                                     {{-- /Publish or Not Publish Button --}}
 
                                     {{-- View Large Button --}}
-                                    <a href="{!! $media->{$media->type}->url !!}?autoplay=0"
+                                    <a href="{!! $media->{$media->type}->url or '#' !!}?autoplay=0"
                                        class="cbp-lightbox btn grey btn-outline tooltips"
                                        data-container="body"
                                        title="{!! lmcTrans('admin.ops.view_large') !!}"

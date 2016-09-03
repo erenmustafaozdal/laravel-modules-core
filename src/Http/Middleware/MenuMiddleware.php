@@ -72,7 +72,6 @@ class MenuMiddleware
             $this->menuInit('action');
             $this->menuInit('sidebar');
             $this->menuInit('user');
-            //$this->topbarUserLoginMenu();
         }
         return $next($request);
     }

@@ -1,4 +1,4 @@
-<div class="tabbable-line margin-bottom-10">
+<div class="tabbable-line margin-bottom-10" id="file-upload-management">
 
     {{-- Tabs --}}
     <ul class="nav nav-tabs tabs-reversed">
