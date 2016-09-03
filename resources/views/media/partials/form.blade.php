@@ -1,6 +1,7 @@
 {{-- Category --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-media-module/admin.fields.media_category.name') !!}</label>
+    {!! Form::hidden('category_id[]',0) !!}
     <select class="form-control form-control-solid placeholder-no-fix select2" multiple name="category_id[]" style="width: 100%">
         @if(isset($media))
             @foreach($media->categories as $category)

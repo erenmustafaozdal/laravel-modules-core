@@ -120,13 +120,6 @@
                             </a>
                             <span class="after"> </span>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#medias">
-                                <i class="fa fa-{{ $media_category->type === 'photo' ? 'camera' : ($media_category->type === 'video' ? 'video-camera' : 'camera-retro') }}"></i>
-                                {!! lmcTrans("laravel-media-module/admin.fields.media_category.{$media_category->type}s") !!}
-                            </a>
-                            <span class="after"> </span>
-                        </li>
 
                         @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_media_category) ? 'media_category.media_category' : 'media_category') .'.update'))
                         <li>
@@ -148,15 +141,12 @@
                         <div id="overview" class="tab-pane active">
                             <div class="profile-info">
                                 @include('laravel-modules-core::media_category.partials.overview')
+
+                                <h4>{!! lmcTrans("laravel-media-module/admin.fields.media_category.{$media_category->type}s") !!}</h4>
+                                @include('laravel-modules-core::media_category.partials.medias')
                             </div>
                         </div>
                         {{-- /Overview --}}
-
-                        {{-- Media --}}
-                        <div id="medias" class="tab-pane">
-                            @include('laravel-modules-core::media_category.partials.medias')
-                        </div>
-                        {{-- /Media --}}
 
                         {{-- Edit Info --}}
                         @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_media_category) ? 'media_category.media_category' : 'media_category') .'.update'))
