@@ -127,7 +127,7 @@
                     'relation'          => 'multiplePhoto',
                     'relationType'      => 'hasMany',
                     'modelSlug'         => 'description',   // for ModelDataTrait->getPhoto() function
-                    'parentRelation'    => 'description'    // for ModelDataTrait->getPhoto() function
+                    'parentRelation'    => 'description_id' // for ModelDataTrait->getPhoto() function
                 ])
             </div>
         @endif

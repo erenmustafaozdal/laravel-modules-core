@@ -137,7 +137,7 @@
                     'relation'          => 'photo',
                     'relationType'      => 'hasOne',
                     'modelSlug'         => 'document',   // for ModelDataTrait->getPhoto() function
-                    'parentRelation'    => 'document'    // for ModelDataTrait->getPhoto() function
+                    'parentRelation'    => 'document_id' // for ModelDataTrait->getPhoto() function
                 ])
             </div>
         @endif

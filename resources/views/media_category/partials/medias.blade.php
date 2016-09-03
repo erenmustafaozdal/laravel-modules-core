@@ -31,7 +31,7 @@
     {{-- Medias --}}
     <div id="js-grid-juicy-projects" class="cbp">
 
-        @foreach($media_category->descendantsAndSelf()->allMedias($media_category->type)->get() as $category)
+        @foreach($media_category->descendantsAndSelf()->allMedias()->get() as $category)
 
             @foreach($category->medias as $media)
                 <div class="cbp-item filter{{ $category->id }} {{ $media->is_publish ? 'published' : 'not_published' }}">
@@ -65,8 +65,8 @@
                                        data-original-title="{!! lmcTrans('admin.ops.publish') !!}">
                                         <i class="fa fa-bullhorn"></i>
                                     </a>
-
                                    @endif
+
                                     @if( $media->is_publish && ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.publish") ) )
                                     <a href="{!! route('admin.media_category.media.notPublish', ['id'=> $category->id,config('laravel-media-module.url.media')  => $media->id]) !!}"
                                        class="tooltips btn purple btn-outline"
@@ -74,7 +74,6 @@
                                        data-original-title="{!! lmcTrans('admin.ops.not_publish') !!}">
                                         <i class="fa fa-times"></i>
                                     </a>
-
                                    @endif
                                     {{-- /Publish or Not Publish Button --}}
 
