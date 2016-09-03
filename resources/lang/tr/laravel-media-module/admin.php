@@ -8,23 +8,23 @@ return [
     */
     // Titles of the medias, naming is made with each routes' name
     'media_category' => [
-        'index'                     => 'Medya Albümleri',
-        'index_description'         => 'Sistem içindeki bütün medya albümleri',
-        'edit'                      => 'Medya Albümü Düzenle',
-        'edit_description'          => ':media_category adlı medya albümünün bilgilerini düzenle',
-        'create'                    => 'Medya Albümü Ekle',
-        'create_description'        => 'Yeni bir medya albümü ekle',
-        'show'                      => 'Medya Albümü Bilgileri',
+        'index'                     => 'Medya Galerileri',
+        'index_description'         => 'Sistem içindeki bütün medya galerileri',
+        'edit'                      => 'Medya Galerisini Düzenle',
+        'edit_description'          => ':media_category adlı medya galerisinin bilgilerini düzenle',
+        'create'                    => 'Medya Galeri Ekle',
+        'create_description'        => 'Yeni bir medya galerisi ekle',
+        'show'                      => 'Medya Galerisi Bilgileri',
         'show_description'          => ':media_category hakkında bilgiler',
         'media_category' => [
-            'index'                 => ':parent_media_category Albümleri',
-            'index_description'     => 'Bütün :parent_media_category albümleri',
-            'edit'                  => ':parent_media_category Albümü Düzenle',
-            'edit_description'      => ':parent_media_category albümlerden :media_category albümü bilgilerini düzenle',
-            'create'                => ':parent_media_category Albümü Ekle',
-            'create_description'    => 'Yeni bir :parent_media_category albümü ekle',
-            'show'                  => ':parent_media_category Albümü Bilgileri',
-            'show_description'      => ':parent_media_category albümlerden :media_category albümü hakkında bilgiler'
+            'index'                 => ':parent_media_category Galerileri',
+            'index_description'     => 'Bütün :parent_media_category galerileri',
+            'edit'                  => ':parent_media_category Galerisi Düzenle',
+            'edit_description'      => ':parent_media_category galerilerinden :media_category galerisi bilgilerini düzenle',
+            'create'                => ':parent_media_category Galerisi Ekle',
+            'create_description'    => 'Yeni bir :parent_media_category galerisi ekle',
+            'show'                  => ':parent_media_category Galerisi Bilgileri',
+            'show_description'      => ':parent_media_category galerilerinden :media_category galerisi hakkında bilgiler'
         ],
         'media' => [
             'index'                 => ':media_category Medyaları',
@@ -51,9 +51,9 @@ return [
     // menu
     'menu' => [
         'media_category' => [
-            'root'                  => 'Medya Albümleri',
-            'all'                   => 'Tüm Medya Albümleri',
-            'add'                   => 'Medya Albümü Ekle'
+            'root'                  => 'Medya Galerileri',
+            'all'                   => 'Tüm Medya Galerileri',
+            'add'                   => 'Medya Galerisi Ekle'
         ],
         'media' => [
             'root'                  => 'Medyalar',
@@ -65,14 +65,14 @@ return [
     // fields
     'fields' => [
         'media_category' => [
-            'name'                  => 'Albümler',
-            'type'                  => 'Albüm Tipi',
+            'name'                  => 'Galeri',
+            'type'                  => 'Galeri Tipi',
             'photos'                => 'Fotoğraflar',
-            'photo'                 => 'Fotoğraf Albümü',
+            'photo'                 => 'Fotoğraf Galerisi',
             'videos'                => 'Videolar',
-            'video'                 => 'Video Albümü',
-            'mixed'                 => 'Karışık Albüm',
-            'mixeds'                => 'Karışık Albüm',
+            'video'                 => 'Video Galerisi',
+            'mixed'                 => 'Karışık Galeri',
+            'mixeds'                => 'Karışık Galeri',
             'medias'                => 'Medyalar'
         ],
         'media' => [
@@ -89,11 +89,11 @@ return [
     // helpers
     'helpers' => [
         'media_category' => [
-            'not_have_child'    => '<h3>Gösterilecek albüm yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni albüm eklemek için sağ üst tarafta bulunan <a class="btn green btn-outline" href="javascript:;"> Yeni Ekle <i class="fa fa-plus"></i> </a> tuşa tıkla.</p>',
-            'type'              => 'Albümün içeriğinde neler olacak? Eğer <em class="label label-info">Fotoğraf</em>,  <em class="label label-info">Video</em> veya <em class="label label-info">Karışık</em> seçeneklerinden birini seçmelisin!',
+            'not_have_child'    => '<h3>Gösterilecek galeri yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni galeri eklemek için sağ üst tarafta bulunan <a class="btn green btn-outline" href="javascript:;"> Yeni Ekle <i class="fa fa-plus"></i> </a> tuşa tıkla.</p>',
+            'type'              => 'Galerinin içeriğinde neler olacak? Eğer <em class="label label-info">Fotoğraf</em>,  <em class="label label-info">Video</em> veya <em class="label label-info">Karışık</em> seçeneklerinden birini seçmelisin!',
         ],
         'media' => [
-            'category_id_help'  => 'Medyanın gösterileceği bir ya da daha fazla albüm seçebilirsin. Bunun için önce albüm oluşturmalısın.',
+            'category_id_help'  => 'Medyanın gösterileceği bir ya da daha fazla galeri seçebilirsin. Bunun için önce galeri oluşturmalısın.',
             'is_publish_help'   => 'Medyanın yayında olması, ziyaretçilerin medyayı görebilmesini sağlar. Yayında olmayan medyalar ziyaretçilere açık değildir.',
             'description'       => 'Medyayı açıklayan bir yazı yaz.',
             'video'             => 'Youtube video adresinin sonunda yer alan kodu yapıştır. <small class="text-muted">(Ör: https://www.youtube.com/watch?v=<em class="label label-info">video_kodu</em>)</small>'
@@ -104,61 +104,61 @@ return [
     'permission' => [
         'MediaCategoryController' => [
             'icon'                              => 'fa fa-picture-o',
-            'title'                             => 'Medya Albümleri İşlemleri',
+            'title'                             => 'Medya Galerileri İşlemleri',
             // routes
-            'media_category_index'           => 'Albümler Sayfası',
-            'media_category_index_desc'      => 'Bu izne sahip olanlar medya albümlerinin listelendiği sayfaya gidebilir',
+            'media_category_index'           => 'Galeriler Sayfası',
+            'media_category_index_desc'      => 'Bu izne sahip olanlar medya galerilerinin listelendiği sayfaya gidebilir',
             'media_category_create'          => 'Ekle Sayfası',
-            'media_category_create_desc'     => 'Bu izne sahip olanlar medya albümü ekleme sayfasına gidebilir',
+            'media_category_create_desc'     => 'Bu izne sahip olanlar medya galerisi ekleme sayfasına gidebilir',
             'media_category_store'           => 'Ekleme',
-            'media_category_store_desc'      => 'Bu izne sahip olanlar medya albümü ekleyebilir',
+            'media_category_store_desc'      => 'Bu izne sahip olanlar medya galerisi ekleyebilir',
             'media_category_show'            => 'Bilgiler Sayfası',
-            'media_category_show_desc'       => 'Bu izne sahip olanlar medya albümü bilgilerini görüntüleyebilir',
+            'media_category_show_desc'       => 'Bu izne sahip olanlar medya galerisi bilgilerini görüntüleyebilir',
             'media_category_edit'            => 'Düzenleme Sayfası',
-            'media_category_edit_desc'       => 'Bu izne sahip olanlar medya albümü bilgilerini düzenleme sayfasına gidebilir',
+            'media_category_edit_desc'       => 'Bu izne sahip olanlar medya galerisi bilgilerini düzenleme sayfasına gidebilir',
             'media_category_update'          => 'Düzenleme',
-            'media_category_update_desc'     => 'Bu izne sahip olanlar medya albümü bilgilerini düzenleyebilir',
+            'media_category_update_desc'     => 'Bu izne sahip olanlar medya galerisi bilgilerini düzenleyebilir',
             'media_category_destroy'         => 'Silme',
-            'media_category_destroy_desc'    => 'Bu izne sahip olanlar medya albümü silebilir',
-            'media_category_media_category_index'       => 'Alt Albümler Sayfası',
-            'media_category_media_category_index_desc'  => 'Bu izne sahip olanlar medya alt albümlerinin listelendiği sayfaya gidebilir',
+            'media_category_destroy_desc'    => 'Bu izne sahip olanlar medya galerisi silebilir',
+            'media_category_media_category_index'       => 'Alt Galeriler Sayfası',
+            'media_category_media_category_index_desc'  => 'Bu izne sahip olanlar medya alt galerilerinin listelendiği sayfaya gidebilir',
             'media_category_media_category_create'      => 'Ekle Sayfası',
-            'media_category_media_category_create_desc' => 'Bu izne sahip olanlar medya alt albümü ekleme sayfasına gidebilir',
+            'media_category_media_category_create_desc' => 'Bu izne sahip olanlar medya alt galerisi ekleme sayfasına gidebilir',
             'media_category_media_category_store'       => 'Ekleme',
-            'media_category_media_category_store_desc'  => 'Bu izne sahip olanlar medya alt albümü ekleyebilir',
+            'media_category_media_category_store_desc'  => 'Bu izne sahip olanlar medya alt galerisi ekleyebilir',
             'media_category_media_category_show'        => 'Bilgiler Sayfası',
-            'media_category_media_category_show_desc'   => 'Bu izne sahip olanlar medya alt albümü bilgilerini görüntüleyebilir',
+            'media_category_media_category_show_desc'   => 'Bu izne sahip olanlar medya alt galerisi bilgilerini görüntüleyebilir',
             'media_category_media_category_edit'        => 'Düzenleme Sayfası',
-            'media_category_media_category_edit_desc'   => 'Bu izne sahip olanlar medya alt albümü bilgilerini düzenleme sayfasına gidebilir',
+            'media_category_media_category_edit_desc'   => 'Bu izne sahip olanlar medya alt galerisi bilgilerini düzenleme sayfasına gidebilir',
             'media_category_media_category_update'      => 'Düzenleme',
-            'media_category_media_category_update_desc' => 'Bu izne sahip olanlar medya alt albümü bilgilerini düzenleyebilir',
+            'media_category_media_category_update_desc' => 'Bu izne sahip olanlar medya alt galerisi bilgilerini düzenleyebilir',
             'media_category_media_category_destroy'     => 'Silme',
-            'media_category_media_category_destroy_desc'=> 'Bu izne sahip olanlar medya alt albümü silebilir',
+            'media_category_media_category_destroy_desc'=> 'Bu izne sahip olanlar medya alt galerisi silebilir',
         ],
         'MediaCategoryApiController' => [
             'icon'                              => 'fa fa-picture-o',
-            'title'                             => 'Medya Albümü Uzak Bağlantı İşlemleri',
+            'title'                             => 'Medya Galerisi Uzak Bağlantı İşlemleri',
             // routes
-            'media_category_models'          => 'Albümleri Listeleme',
-            'media_category_models_desc'     => 'Bu izne sahip olanlar medya albümlerini bazı seçim kutularında listeleyebilir',
-            'media_category_move'            => 'Albümleri Taşıma',
-            'media_category_move_desc'       => 'Bu izne sahip olanlar medya albümlerini taşıyarak konumunu değiştirebilir',
+            'media_category_models'          => 'Galerileri Listeleme',
+            'media_category_models_desc'     => 'Bu izne sahip olanlar medya galerilerini bazı seçim kutularında listeleyebilir',
+            'media_category_move'            => 'Galerileri Taşıma',
+            'media_category_move_desc'       => 'Bu izne sahip olanlar medya galerilerini taşıyarak konumunu değiştirebilir',
             'media_category_group'           => 'Toplu İşlem',
-            'media_category_group_desc'      => 'Bu izne sahip olanlar medya albümlerinin listelendiği sayfada toplu işlem yapabilir',
+            'media_category_group_desc'      => 'Bu izne sahip olanlar medya galerilerinin listelendiği sayfada toplu işlem yapabilir',
             'media_category_detail'          => 'Detaylar',
-            'media_category_detail_desc'     => 'Bu izne sahip olanlar medya albümlerinin listelendiği sayfada albüm detayını görebilir',
+            'media_category_detail_desc'     => 'Bu izne sahip olanlar medya galerilerinin listelendiği sayfada galeri detayını görebilir',
             'media_category_fastEdit'        => 'Hızlı Düzenleme Bilgileri',
-            'media_category_fastEdit_desc'   => 'Bu izne sahip olanlar medya albümlerinin listelendiği sayfada hızlı düzenlemek amacıyla albüm bilgilerini sayfaya getirebilir',
+            'media_category_fastEdit_desc'   => 'Bu izne sahip olanlar medya galerilerinin listelendiği sayfada hızlı düzenlemek amacıyla galeri bilgilerini sayfaya getirebilir',
             'media_category_index'           => 'Listeleme',
-            'media_category_index_desc'      => 'Bu izne sahip olanlar medya albümlerini listeleyebilir',
+            'media_category_index_desc'      => 'Bu izne sahip olanlar medya galerilerini listeleyebilir',
             'media_category_store'           => 'Hızlı Ekleme',
-            'media_category_store_desc'      => 'Bu izne sahip olanlar medya albümlerinin listelendiği sayfada hızlı şekilde albüm ekleyebilir',
+            'media_category_store_desc'      => 'Bu izne sahip olanlar medya galerilerinin listelendiği sayfada hızlı şekilde galeri ekleyebilir',
             'media_category_update'          => 'Hızlı Düzenleme',
-            'media_category_update_desc'     => 'Bu izne sahip olanlar medya albümlerinin listelendiği sayfada albüm bilgisini hızlı şekilde düzenleyebilir',
+            'media_category_update_desc'     => 'Bu izne sahip olanlar medya galerilerinin listelendiği sayfada galeri bilgisini hızlı şekilde düzenleyebilir',
             'media_category_destroy'         => 'Silme',
-            'media_category_destroy_desc'    => 'Bu izne sahip olanlar medya albümü silebilir',
-            'media_category_media_category_index'=> 'Alt Albümler',
-            'media_category_media_category_index_desc'=> 'Bu izne sahip olanlar albümlerin altında bulunan albümleri listeleyebilir',
+            'media_category_destroy_desc'    => 'Bu izne sahip olanlar medya galerisi silebilir',
+            'media_category_media_category_index'=> 'Alt Galeriler',
+            'media_category_media_category_index_desc'=> 'Bu izne sahip olanlar galerilerin altında bulunan galerileri listeleyebilir',
         ],
         'MediaController' => [
             'icon'                              => 'fa fa-camera',
@@ -183,23 +183,23 @@ return [
             'media_destroy'                  => 'Silme',
             'media_destroy_desc'             => 'Bu izne sahip olanlar medyayı silebilir',
             'media_category_media_publish'=> 'Medya Yayınlama',
-            'media_category_media_publish_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medyayı yayınlayabilir',
+            'media_category_media_publish_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medyayı yayınlayabilir',
             'media_category_media_notPublish'=> 'Medya Yayından Kaldırma',
-            'media_category_media_notPublish_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medyayı yayından kaldırabilir',
+            'media_category_media_notPublish_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medyayı yayından kaldırabilir',
             'media_category_media_index'  => 'Medyalar Sayfası',
-            'media_category_media_index_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medyaların listelendiği sayfaya gidebilir',
+            'media_category_media_index_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medyaların listelendiği sayfaya gidebilir',
             'media_category_media_create' => 'Ekle Sayfası',
-            'media_category_media_create_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medya ekleme sayfasına gidebilir',
+            'media_category_media_create_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medya ekleme sayfasına gidebilir',
             'media_category_media_store'  => 'Ekleme',
-            'media_category_media_store_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medya ekleyebilir',
+            'media_category_media_store_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medya ekleyebilir',
             'media_category_media_show'   => 'Bilgiler Sayfası',
-            'media_category_media_show_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medya bilgilerini görüntüleyebilir',
+            'media_category_media_show_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medya bilgilerini görüntüleyebilir',
             'media_category_media_edit'   => 'Düzenleme Sayfası',
-            'media_category_media_edit_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medya bilgilerini düzenleme sayfasına gidebilir',
+            'media_category_media_edit_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medya bilgilerini düzenleme sayfasına gidebilir',
             'media_category_media_update' => 'Düzenleme',
-            'media_category_media_update_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medya bilgilerini düzenleyebilir',
+            'media_category_media_update_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medya bilgilerini düzenleyebilir',
             'media_category_media_destroy'=> 'Silme',
-            'media_category_media_destroy_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medyayı silebilir',
+            'media_category_media_destroy_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medyayı silebilir',
         ]
         ,
         'MediaApiController' => [
@@ -219,7 +219,7 @@ return [
             'media_index'                    => 'Listeleme',
             'media_index_desc'               => 'Bu izne sahip olanlar medyaları listeleyebilir',
             'media_category_media_index'  => 'Listeleme',
-            'media_category_media_index_desc'=> 'Bu izne sahip olanlar belirli bir albüme ait medyaları listeleyebilir',
+            'media_category_media_index_desc'=> 'Bu izne sahip olanlar belirli bir galeriye ait medyaları listeleyebilir',
             'media_store'                    => 'Hızlı Ekleme',
             'media_store_desc'               => 'Bu izne sahip olanlar medyaların listelendiği sayfada hızlı şekilde medya ekleyebilir',
             'media_update'                   => 'Hızlı Düzenleme',
@@ -231,6 +231,6 @@ return [
 
     // flash messages
     'flash' => [
-        'media_incompatible'        => 'Medyalar olması gereken uygunlukta değil! Bu bölümde yeni bir albüm oluşturmak için lütfen sadece :type türünde medyalar seçin.'
+        'media_incompatible'        => 'Medyalar olması gereken uygunlukta değil! Bu bölümde yeni bir galeri oluşturmak için lütfen sadece :type türünde medyalar seçin.'
     ]
 ];
