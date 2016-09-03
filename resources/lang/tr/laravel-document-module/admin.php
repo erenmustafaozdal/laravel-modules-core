@@ -84,7 +84,7 @@ return [
     // helpers
     'helpers' => [
         'document_category' => [
-            'not_have_child'        => '<h3>Gösterilecek kategori yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni kategori eklemek için sağ üst tarafta bulunan <a class="btn green btn-outline" href="javascript:;"> Yeni Ekle <i class="fa fa-plus"></i> </a> tuşa tıkla.</p>',
+            'not_have_child'        => '<h3>Gösterilecek kategori yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni kategori eklemek için sağ üst tarafta bulunan <a class="btn green btn-sm btn-outline" href="javascript:;"> <i class="fa fa-plus-square"></i> Yeni Ekle </a> tuşuna tıkla.</p>',
             'has_description'       => 'Bu kategoride bulunan belgelerin açıklamaları olacak mı? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategori ile belge eklerken açıklama alanı olmayacak!',
             'has_photo'             => 'Bu kategoride bulunan belgelerin fotoğrafları olacak mı? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategori ile belge eklerken fotoğraf alanı olmayacak!',
             'show_title'            => 'Bu kategoride bulunan belgelerin başlıkları ziyaretçilere gösterilsin mi? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategorideki belgelerin başlıkları ziyaretçilere görünmeyecek!',

@@ -89,7 +89,7 @@ return [
     // helpers
     'helpers' => [
         'media_category' => [
-            'not_have_child'    => '<h3>Gösterilecek galeri yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni galeri eklemek için sağ üst tarafta bulunan <a class="btn green btn-outline" href="javascript:;"> Yeni Ekle <i class="fa fa-plus"></i> </a> tuşa tıkla.</p>',
+            'not_have_child'    => '<h3>Gösterilecek galeri yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni galeri eklemek için sağ üst tarafta bulunan <a class="btn green btn-sm btn-outline" href="javascript:;"> <i class="fa fa-plus-square"></i> Yeni Ekle </a> tuşuna tıkla.</p>',
             'type'              => 'Galerinin içeriğinde neler olacak? Eğer <em class="label label-info">Fotoğraf</em>,  <em class="label label-info">Video</em> veya <em class="label label-info">Karışık</em> seçeneklerinden birini seçmelisin!',
         ],
         'media' => [

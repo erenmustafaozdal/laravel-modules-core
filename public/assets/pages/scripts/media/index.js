@@ -23,7 +23,7 @@ var Index = {
         uploadExtraData: function (previewId, index) {
             var form = $('.form');
             return {
-                category_id: form.find('select[name="category_id[]"]').val(),
+                category_id: form.find('select[name="category_id[]"]').val() == null ? form.find('input[name="category_id[]"]').val() : form.find('select[name="category_id[]"]').val(),
                 title: form.find('input[name="title"]').val(),
                 description: form.find('textarea[name="description"]').val(),
                 is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state'),
@@ -421,7 +421,7 @@ var Index = {
                                 }
 
                                 var url, type, message_success, title_success, message_error, title_error, datas = {
-                                    category_id: validation.form.find('select[name="category_id[]"]').val(),
+                                    category_id: validation.form.find('select[name="category_id[]"]').val() == null ? validation.form.find('input[name="category_id[]"]').val() : validation.form.find('select[name="category_id[]"]').val(),
                                     title: validation.form.find('input[name="title"]').val(),
                                     description: validation.form.find('textarea[name="description"]').val(),
                                     is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
@@ -530,7 +530,7 @@ var Index = {
                 aspectRatio: aspectRatio,
                 onRelease: function()
                 {
-                    $('form.form').form.find('input[type="hidden"]').val('');
+                    $('form.form').find('input[type="hidden"]').val('');
                 }
             }
         };
