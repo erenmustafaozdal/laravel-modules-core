@@ -96,7 +96,7 @@ return [
             'category_id_help'  => 'Medyanın gösterileceği bir ya da daha fazla galeri seçebilirsin. Bunun için önce galeri oluşturmalısın.',
             'is_publish_help'   => 'Medyanın yayında olması, ziyaretçilerin medyayı görebilmesini sağlar. Yayında olmayan medyalar ziyaretçilere açık değildir.',
             'description'       => 'Medyayı açıklayan bir yazı yaz.',
-            'video'             => 'Youtube video adresinin sonunda yer alan kodu yapıştır. <small class="text-muted">(Ör: https://www.youtube.com/watch?v=<em class="label label-info">video_kodu</em>)</small>'
+            'video'             => 'Youtube video adresinin sonunda yer alan; <em class="label label-danger">v=</em> ile başlayan ve ilk <em class="label label-danger">&</em> karakterine kadar olan kodu yapıştır. <small class="text-muted">(Ör: https://www.youtube.com/watch?v=<em class="label label-info">video_kodu</em>&t=3103s)</small>'
         ]
     ],
 

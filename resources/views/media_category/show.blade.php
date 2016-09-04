@@ -142,8 +142,10 @@
                             <div class="profile-info">
                                 @include('laravel-modules-core::media_category.partials.overview')
 
-                                <h4>{!! lmcTrans("laravel-media-module/admin.fields.media_category.{$media_category->type}s") !!}</h4>
-                                @include('laravel-modules-core::media_category.partials.medias')
+                                @if($media_category->medias->count() > 0)
+                                    <h4>{!! lmcTrans("laravel-media-module/admin.fields.media_category.{$media_category->type}s") !!}</h4>
+                                    @include('laravel-modules-core::media_category.partials.medias')
+                                @endif
                             </div>
                         </div>
                         {{-- /Overview --}}

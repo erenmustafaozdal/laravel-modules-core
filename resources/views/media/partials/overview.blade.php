@@ -32,7 +32,14 @@
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @foreach(\LMBCollection::relationRender($media->categories->toHierarchy(), 'children', '/', ['name_uc_first', 'type']) as $category)
+                @foreach(\LMBCollection::relationRender(
+                    $media->categories()
+                        ->where( 'id', '!=', (isset($media_category) ? $media_category->id : 0) )
+                        ->get()->toHierarchy(),
+                    'children',
+                    '/',
+                    ['name_uc_first', 'type']
+                ) as $category)
                     {!! $category['parents'] === '' ? '' : '<span class="text-muted">' . $category['parents'] . '</span>' !!}
                     {!! $category['name_uc_first'] !!}
                     <span class="text-muted">

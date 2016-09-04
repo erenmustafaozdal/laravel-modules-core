@@ -15,7 +15,7 @@
 {{-- /Name --}}
 
 {{-- Type --}}
-@if($parent || isset($media_category) || isset($medias))
+@if($parent || isset($media_category) || $medias->count() > 0)
     {!! Form::hidden('type', $parent
     ? $parent->type
     : (

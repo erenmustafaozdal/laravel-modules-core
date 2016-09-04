@@ -139,7 +139,7 @@
                     'parent'    => isset($parent_media_category) ? $parent_media_category : false
                 ])
 
-                @if($medias->count() > 0)
+                @if(isset($medias) && $medias->count() > 0)
                     @include('laravel-modules-core::media_category.partials.medias_list')
                 @endif
             </div>

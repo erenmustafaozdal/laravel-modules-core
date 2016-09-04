@@ -4,7 +4,7 @@
     <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 margin-bottom-5 element-wrapper margin-bottom-40">
         <div class="mt-element-overlay">
             <div class="mt-overlay-3 mt-overlay-3-icons">
-                {!! $media->img !!}
+                {!! $media->html !!}
                 {!! Form::hidden('media_id[]',$media->id) !!}
 
                 <div class="mt-overlay">

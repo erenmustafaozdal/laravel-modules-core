@@ -30,12 +30,14 @@ var Operation = {
                     },
                     photo: {
                         required: function(element){
-                            return $("#video").prop('disabled') === true;
+                            var video = $("#video");
+                            return ! video.length || video.prop('disabled') === true;
                         }
                     },
                     video: {
                         required: function(element){
-                            return $("#photo").prop('disabled') === true;
+                            var photo = $("#photo");
+                            return ! photo.length || photo.prop('disabled') === true;
                         }
                     }
                 },

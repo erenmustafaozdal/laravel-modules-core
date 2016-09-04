@@ -415,7 +415,7 @@ var Index = {
                             {
                                 var element = $('#photo');
                                 var isEnable = LMCFileinputs['#photo']['isEnable'];
-                                if (Editor.actionType === 'fast-add' && isEnable) {
+                                if (element.length && Editor.actionType === 'fast-add' && isEnable) {
                                     element.fileinput('upload');
                                     return;
                                 }
@@ -426,6 +426,7 @@ var Index = {
                                     description: validation.form.find('textarea[name="description"]').val(),
                                     is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
                                 };
+                                var video = $('#video');
 
                                 if (Editor.actionType === 'fast-add') {
                                     type = 'POST';
@@ -435,10 +436,10 @@ var Index = {
                                     message_error = LMCApp.lang.admin.flash.store_error.message;
                                     title_error = LMCApp.lang.admin.flash.store_error.title;
                                     // duruma göre video veya elfinder eklenir
-                                    if ($('#video').prop('disabled')) {
+                                    if (video.prop('disabled')) {
                                         datas.photo = $('#elfinder-photo').val();
                                     } else {
-                                        datas.video = $('#video').val();
+                                        datas.video = video.val();
                                     }
                                 } else {
                                     type = 'PATCH';
