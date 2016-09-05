@@ -19,6 +19,7 @@ class MenuMiddleware
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\DocumentMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\DescriptionMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\MediaMenu::class,
+        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\DealerMenu::class,
     ];
 
     /**
@@ -32,6 +33,7 @@ class MenuMiddleware
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\DocumentMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\DescriptionMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\MediaMenu::class,
+        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\DealerMenu::class,
     ];
 
     /**
