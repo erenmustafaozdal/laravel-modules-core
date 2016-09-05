@@ -32,14 +32,14 @@ body {
     /* Language */
     /* Dark version */ }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle:hover {
-      background-color: #3f4457; }
+      background-color: #7ac41a; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle > i {
-      color: #737a99; }
+      color: #C0CDDC; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-toggle .badge.badge-default {
       background-color: #5b9bd1;
       color: #5b617d; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown.open .dropdown-toggle {
-      background-color: #3f4457; }
+      background-color: #7ac41a; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown .dropdown-menu:before {
       border-bottom-color: #dce1ec; }
     .page-header.navbar .top-menu .navbar-nav > li.separator {
@@ -78,7 +78,7 @@ body {
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-tasks .dropdown-menu .dropdown-menu-list .progress {
       background-color: #dfe2e9; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-user > .dropdown-toggle > .username {
-      color: #aeb2c4; }
+      color: #fff; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-user > .dropdown-toggle > i {
       color: #aeb2c4; }
     .page-header.navbar .top-menu .navbar-nav > li.dropdown-user > .dropdown-menu {

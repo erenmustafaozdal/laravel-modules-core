@@ -125,13 +125,16 @@ var Theme = function () {
                     el.addClass("active");
 
                     var action_btn = $('.page-actions .btn-group button.btn');
+                    var user_font = $('li.dropdown-user span.username');
                     switch (color)
                     {
                         case 'light':
                             action_btn.removeClass('white').addClass('red-haze');
+                            user_font.removeClass('font-white');
                             break;
                         default:
                             action_btn.removeClass('red-haze').addClass('white');
+                            user_font.addClass('font-white');
                             break;
                     }
                 }
