@@ -20,6 +20,7 @@ return [
             'title'                         => 'Tema',
             'dark_header'                   => 'Koyu renk başlık',
             'light_header'                  => 'Açık renk başlık',
+            'green_header'                  => 'Yeşil renk başlık',
         ],
         'layout' => [
             'title'                         => 'Düzen',

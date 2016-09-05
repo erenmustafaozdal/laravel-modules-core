@@ -8,7 +8,12 @@ return [
     */
     'app_name'                      => 'Laravel Modules',       // on some places
     'copyright_year'                => '2016',
-    'logo'                          => 'vendor/laravel-modules-core/assets/global/img/logo-dark.png',
+    'logos' => [
+        'default'                   => 'vendor/laravel-modules-core/assets/global/img/logo-light.png',
+        'light'                     => 'vendor/laravel-modules-core/assets/global/img/logo-dark.png',
+        'green'                     => 'vendor/laravel-modules-core/assets/global/img/logo-light.png',
+    ],
+    'custom_css'                    => 'vendor/laravel-modules-core/assets/layouts/layout4/css/personal_custom.css',
 
     /*
     |--------------------------------------------------------------------------

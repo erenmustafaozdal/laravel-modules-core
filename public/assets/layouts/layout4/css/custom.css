@@ -1,3 +1,8 @@
+/* Theme Change and Theme Panel */
+.theme-panel .theme-colors>li.theme-color-green .theme-color-view {
+    background: #76BE1E;
+}
+
 /* Pace scroll edit */
 .pace .pace-progress {
     top: 0;

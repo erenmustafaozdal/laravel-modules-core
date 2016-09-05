@@ -124,10 +124,15 @@ var Theme = function () {
                     $('ul > li', panel).removeClass("active");
                     el.addClass("active");
 
-                    if (color === 'dark') {
-                        $('.page-actions .btn').removeClass('red-haze').addClass('btn-default btn-transparent');
-                    } else {
-                        $('.page-actions .btn').removeClass('btn-default btn-transparent').addClass('red-haze');
+                    var action_btn = $('.page-actions .btn-group button.btn');
+                    switch (color)
+                    {
+                        case 'light':
+                            action_btn.removeClass('white').addClass('red-haze');
+                            break;
+                        default:
+                            action_btn.removeClass('red-haze').addClass('white');
+                            break;
                     }
                 }
             });
@@ -272,6 +277,7 @@ var Theme = function () {
 
     var handleSetColor = function (color) {
         $('#style_color').attr("href", '/vendor/laravel-modules-core/assets/layouts/layout4/css/themes/' + color + "-theme.css");
+        $('.logo-default').prop('src', '/' + logos[color]);
     };
 
     return {

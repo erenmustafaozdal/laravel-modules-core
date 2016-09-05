@@ -42,7 +42,7 @@
 
         {{-- Theme Layout Styles --}}
         <link href="{!! lmcElixir('assets/layouts/layout4/css/admin.css') !!}" rel="stylesheet" type="text/css" />
-        {!! Html::style('vendor/laravel-modules-core/assets/layouts/layout4/css/themes/'. Cache::get('theme_color')['color'] .'-theme.css', [
+        {!! Html::style('vendor/laravel-modules-core/assets/layouts/layout4/css/themes/'. (Cache::get('theme_color')['color'] == '' ? 'light' : Cache::get('theme_color')['color']) .'-theme.css', [
             'id'    => 'style_color'
         ]) !!}
         {{-- /Theme Layout Styles --}}
@@ -50,6 +50,12 @@
         {{-- File Manager --}}
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/colorbox/example5/colorbox.css') !!}
         {{-- /File Manager --}}
+
+        {{-- Custom Css --}}
+        @if(config('laravel-modules-core.custom_css'))
+            {!! Html::style(config('laravel-modules-core.custom_css')) !!}
+        @endif
+        {{-- /Custom Css --}}
 
         <link rel="shortcut icon" href="/favicon.ico" />
 
@@ -64,7 +70,7 @@
                 <div class="page-logo">
                     <a href="index.html">
                         {!! HTML::image(
-                            config('laravel-modules-core.logo'),
+                            config('laravel-modules-core.logos.' . (Cache::get('theme_color')['color'] == '' ? 'light' : Cache::get('theme_color')['color'])),
                             config('laravel-modules-core.app_name'),
                             ['class' => 'logo-default']
                         ) !!}
@@ -194,6 +200,7 @@
         var elfinderJs = "{!! lmcElixir('assets/app/elfinder.js') !!}";
         var themeLayoutChangeApiUrl = "{!! route('api.themeLayout.change') !!}";
         var themeColorChangeApiUrl = "{!! route('api.themeColor.change') !!}";
+        var logos = {!! json_encode(config('laravel-modules-core.logos')) !!};
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin.js') !!}"></script>
     <script type="text/javascript">

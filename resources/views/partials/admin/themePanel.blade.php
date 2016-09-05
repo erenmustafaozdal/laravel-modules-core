@@ -22,6 +22,10 @@
                             <span class="theme-color-view"></span>
                             <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.light_header') !!}</span>
                         </li>
+                        <li class="theme-color theme-color-green {!! Cache::get('theme_color')['color'] === 'green' ? 'active' : '' !!}" data-theme="green">
+                            <span class="theme-color-view"></span>
+                            <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.green_header') !!}</span>
+                        </li>
                     </ul>
                 </div>
             @endif

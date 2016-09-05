@@ -1,6 +1,6 @@
 <div class="btn-group">
     {{-- Action Menu --}}
-    <button type="button" class="btn red-haze btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"  data-close-others="true">
+    <button type="button" class="btn {!! (Cache::get('theme_color')['color'] == '' || Cache::get('theme_color')['color'] == 'light' ? 'red-haze' : 'white') !!} btn-sm btn-outline dropdown-toggle" data-toggle="dropdown"  data-close-others="true">
         <span class="hidden-sm hidden-xs">{!! trans('laravel-modules-core::admin.actions') !!}</span>
         <i class="fa fa-angle-down"></i>
     </button>
