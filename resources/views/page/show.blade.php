@@ -7,7 +7,9 @@
             'page'          => $page->title_uc_first
         ]) !!}
     @else
-        {!! lmcTrans('laravel-page-module/admin.page.show') !!}
+        {!! lmcTrans('laravel-page-module/admin.page.show', [
+            'page'          => $page->title_uc_first
+        ]) !!}
     @endif
 @endsection
 
@@ -26,16 +28,25 @@
             </small>
         </h1>
     @else
-        <h1>{!! lmcTrans('laravel-page-module/admin.page.show') !!}
-            <small>{!! lmcTrans('laravel-page-module/admin.page.show_description', [ 'page' => $page->title_uc_first ]) !!}</small>
+        <h1>
+            {!! lmcTrans('laravel-page-module/admin.page.show', [
+                'page'          => $page->title_uc_first
+            ]) !!}
+            <small>
+                {!! lmcTrans('laravel-page-module/admin.page.show_description', [ 'page' => $page->title_uc_first ]) !!}
+            </small>
         </h1>
     @endif
 @endsection
 
 @if(isset($page_category))
-@section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb([$page_category,$page], ['name','title']) !!}
-@endsection
+    @section('breadcrumb')
+        {!! LMCBreadcrumb::getBreadcrumb([$page_category,$page], ['name','title']) !!}
+    @endsection
+@else
+    @section('breadcrumb')
+        {!! LMCBreadcrumb::getBreadcrumb([$page], ['title']) !!}
+    @endsection
 @endif
 
 @section('css')
