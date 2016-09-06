@@ -43,10 +43,6 @@
     @section('breadcrumb')
         {!! LMCBreadcrumb::getBreadcrumb([$page_category,$page], ['name','title']) !!}
     @endsection
-@else
-    @section('breadcrumb')
-        {!! LMCBreadcrumb::getBreadcrumb([$page], ['title']) !!}
-    @endsection
 @endif
 
 @section('css')

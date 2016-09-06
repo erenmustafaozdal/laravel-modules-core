@@ -34,7 +34,7 @@ return [
         'edit_description'                  => ':page sayfası bilgilerini düzenle',
         'create'                            => 'Sayfa Ekle',
         'create_description'                => 'Yeni bir sayfa ekle',
-        'show'                              => ':page Sayfa Bilgileri',
+        'show'                              => 'Sayfa Bilgileri',
         'show_description'                  => ':page sayfası hakkında bilgiler'
     ],
 

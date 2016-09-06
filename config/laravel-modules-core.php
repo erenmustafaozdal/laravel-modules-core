@@ -9,11 +9,11 @@ return [
     'app_name'                      => 'Laravel Modules',       // on some places
     'copyright_year'                => '2016',
     'logos' => [
-        'default'                   => 'vendor/laravel-modules-core/assets/global/img/ezelnet-light.png', //'vendor/laravel-modules-core/assets/global/img/logo-light.png',
-        'light'                     => 'vendor/laravel-modules-core/assets/global/img/ezelnet-dark.png', //'vendor/laravel-modules-core/assets/global/img/logo-dark.png',
-        'green'                     => 'vendor/laravel-modules-core/assets/global/img/ezelnet-light.png', //'vendor/laravel-modules-core/assets/global/img/logo-light.png',
+        'default'                   => 'vendor/laravel-modules-core/assets/global/img/logo-light.png',
+        'light'                     => 'vendor/laravel-modules-core/assets/global/img/logo-dark.png',
+        'green'                     => 'vendor/laravel-modules-core/assets/global/img/logo-light.png',
     ],
-    'custom_css'                    => 'vendor/laravel-modules-core/assets/layouts/layout4/css/personal_custom.css',
+    'custom_css'                    => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,6 +46,7 @@ return [
         'laravel-document-module'   => \ErenMustafaOzdal\LaravelDocumentModule\LaravelDocumentModuleServiceProvider::class,
         'laravel-description-module'=> \ErenMustafaOzdal\LaravelDescriptionModule\LaravelDescriptionModuleServiceProvider::class,
         'laravel-media-module'      => \ErenMustafaOzdal\LaravelMediaModule\LaravelMediaModuleServiceProvider::class,
+        'laravel-dealer-module'     => \ErenMustafaOzdal\LaravelDealerModule\LaravelDealerModuleServiceProvider::class,
     ],
 
     /*

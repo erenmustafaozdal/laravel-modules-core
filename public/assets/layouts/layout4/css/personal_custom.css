@@ -152,14 +152,13 @@ fieldset[disabled] .btn.green:not(.btn-outline).focus {
     color: #fff !important;
 }
 .mt-element-ribbon .ribbon.ribbon-color-success:after {
-    border-color: #76be1e !important;
+    border-color: #3d630e !important;
 }
 .mt-element-ribbon .ribbon.ribbon-color-success > .ribbon-sub {
     background-color: #76be1e !important;
     color: #020808!important;
 }
 .mt-element-ribbon .ribbon.ribbon-color-success > .ribbon-sub:after {
-    border-color: #3d630e !important;
     border-left-color: #76be1e !important;
     border-right-color: #76be1e !important;
 }
@@ -284,22 +283,6 @@ fieldset[disabled] .btn.green:not(.btn-outline).focus {
     background-color: #a3ba84 !important;
     border-color: #dbf2aa !important;
     box-shadow: 5px 5px rgba(46, 240, 10, 0.2);
-}
-.mt-element-ribbon .ribbon.ribbon-color-success {
-    background-color: #76be1e !important;
-    color: #fff !important;
-}
-.mt-element-ribbon .ribbon.ribbon-color-success:after {
-    border-color: #76be1e !important;
-}
-.mt-element-ribbon .ribbon.ribbon-color-success > .ribbon-sub {
-    background-color: #76be1e !important;
-    color: #020808 !important;
-}
-.mt-element-ribbon .ribbon.ribbon-color-success > .ribbon-sub:after {
-    border-color: #3d630e !important;
-    border-left-color: #76be1e;
-    border-right-color: #76be1e;
 }
 
 
