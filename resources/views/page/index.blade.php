@@ -93,7 +93,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="{!! config('laravel-page-module.icons.page') !!} font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
+                <span class="caption-subject font-red">
                     @if(isset($page_category))
                         {!! lmcTrans('laravel-page-module/admin.page_category.page.index', ['page_category' => $page_category->name_uc_first]) !!}
                     @else

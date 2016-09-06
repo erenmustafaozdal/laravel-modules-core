@@ -72,7 +72,7 @@
             {{-- Caption --}}
             <div class="caption margin-right-10">
                 <i class="{!! config('laravel-document-module.icons.document_category') !!} font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
+                <span class="caption-subject font-red">
                     @if(isset($parent_document_category))
                         {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}", [
                             'parent_document_category' => $parent_document_category->name

@@ -41,7 +41,7 @@ var Select2 = {
     getDefaultOptions: function()
     {
         return {
-            src: '.select2',
+            src: '.select2me',
             variableNames: {
                 id: 'id',
                 text: 'text'

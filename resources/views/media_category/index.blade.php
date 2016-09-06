@@ -96,7 +96,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="{!! config('laravel-media-module.icons.media_category') !!} font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
+                <span class="caption-subject font-red">
                     @if(isset($parent_media_category))
                         {!! lmcTrans('laravel-media-module/admin.media_category.media_category.index', ['parent_media_category' => $parent_media_category->name_uc_first]) !!}
                     @else

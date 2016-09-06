@@ -47,7 +47,7 @@
             {{-- Caption --}}
             <div class="caption margin-right-10">
                 <i class="{!! config('laravel-user-module.icons.role') !!}  font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
+                <span class="caption-subject font-red">
                     {!! lmcTrans("laravel-user-module/admin.role.{$operation}") !!}
                 </span>
             </div>

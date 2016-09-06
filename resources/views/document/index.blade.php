@@ -110,7 +110,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="{!! config('laravel-document-module.icons.document') !!} font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
+                <span class="caption-subject font-red">
                     @if(isset($document_category))
                         {!! lmcTrans('laravel-document-module/admin.document_category.document.index', ['document_category' => $document_category->name_uc_first]) !!}
                     @else

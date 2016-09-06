@@ -154,6 +154,21 @@ return [
             'datatable_group_action'        => true,
             'datatable_detail'              => true
         ],
+
+        // dealer module
+        'dealer_category' => [
+            'show_relation_category_link'   => true,
+            'show_relation_model_link'      => true,
+            'nestable_level_root'           => 0,
+            'nestable_level_nested'         => 1
+        ],
+        'dealer' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
     ],
 
 

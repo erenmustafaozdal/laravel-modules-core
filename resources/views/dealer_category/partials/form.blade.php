@@ -6,100 +6,157 @@
 
 {{-- Name --}}
 <div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}</label>
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.name') !!}</label>
     {!! Form::text( 'name', null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix',
-        'placeholder'   => lmcTrans('laravel-document-module/admin.fields.document_category.name')
+        'placeholder'   => lmcTrans('laravel-dealer-module/admin.fields.dealer_category.name')
     ]) !!}
 </div>
 {{-- /Name --}}
 
 
-@if($parent || isset($document_category))
-    {!! Form::hidden('has_description', $parent ? $parent->has_description : $document_category->has_description) !!}
-    {!! Form::hidden('has_photo', $parent ? $parent->has_photo : $document_category->has_photo) !!}
-    {!! Form::hidden('show_title', $parent ? $parent->show_title : $document_category->show_title) !!}
-    {!! Form::hidden('show_description', $parent ? $parent->show_description : $document_category->show_description) !!}
-    {!! Form::hidden('show_photo', $parent ? $parent->show_photo : $document_category->show_photo) !!}
-@else
-    <h3>{!! lmcTrans('laravel-document-module/admin.fields.document_category.documents_setting') !!}</h3>
-    {{-- Has Description --}}
-    <div class="form-group last">
-        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.has_description') !!}</label>
-        <div class="clearfix"></div>
-        {!! Form::hidden('has_description', 0) !!}
-        {!! Form::checkbox( 'has_description', 1, null, [
-            'class'         => 'make-switch',
-            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-            'data-on-color' => 'success',
-            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-            'data-off-color'=> 'danger',
-        ]) !!}
-            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.has_description') !!} </span>
-    </div>
-    {{-- /Has Description --}}
 
-    {{-- Has Photo --}}
-    <div class="form-group last">
-        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.has_photo') !!}</label>
-        <div class="clearfix"></div>
-        {!! Form::hidden('has_photo', 0) !!}
-        {!! Form::checkbox( 'has_photo', 1, null, [
-            'class'         => 'make-switch',
-            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-            'data-on-color' => 'success',
-            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-            'data-off-color'=> 'danger',
-        ]) !!}
-            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.has_photo') !!} </span>
-    </div>
-    {{-- /Has Photo --}}
+<h3>{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.dealers_setting') !!}</h3>
+{{-- Show Address --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_address') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_address', 0) !!}
+    {!! Form::checkbox( 'show_address', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_address') !!} </span>
+</div>
+{{-- /Show Address --}}
 
-    {{-- Show Title --}}
-    <div class="form-group last">
-        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_title') !!}</label>
-        <div class="clearfix"></div>
-        {!! Form::hidden('show_title', 0) !!}
-        {!! Form::checkbox( 'show_title', 1, null, [
-            'class'         => 'make-switch',
-            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-            'data-on-color' => 'success',
-            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-            'data-off-color'=> 'danger',
-        ]) !!}
-            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_title') !!} </span>
-    </div>
-    {{-- /Has Title --}}
+{{-- Show Province --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_province') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_province', 0) !!}
+    {!! Form::checkbox( 'show_province', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_province') !!} </span>
+</div>
+{{-- /Show Province --}}
 
-    {{-- Show Description --}}
-    <div class="form-group last">
-        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_description') !!}</label>
-        <div class="clearfix"></div>
-        {!! Form::hidden('show_description', 0) !!}
-        {!! Form::checkbox( 'show_description', 1, null, [
-            'class'         => 'make-switch',
-            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-            'data-on-color' => 'success',
-            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-            'data-off-color'=> 'danger',
-        ]) !!}
-            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_description') !!} </span>
-    </div>
-    {{-- /Has Description --}}
+{{-- Show County --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_county') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_county', 0) !!}
+    {!! Form::checkbox( 'show_county', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_county') !!} </span>
+</div>
+{{-- /Has County --}}
 
-    {{-- Show Photo --}}
-    <div class="form-group last">
-        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_photo') !!}</label>
-        <div class="clearfix"></div>
-        {!! Form::hidden('show_photo', 0) !!}
-        {!! Form::checkbox( 'show_photo', 1, null, [
-            'class'         => 'make-switch',
-            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-            'data-on-color' => 'success',
-            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-            'data-off-color'=> 'danger',
-        ]) !!}
-            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_photo') !!} </span>
-    </div>
-    {{-- /Has Photo --}}
-@endif
+{{-- Show District --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_district') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_district', 0) !!}
+    {!! Form::checkbox( 'show_district', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_district') !!} </span>
+</div>
+{{-- /Has District --}}
+
+{{-- Show Neighborhood --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_neighborhood') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_neighborhood', 0) !!}
+    {!! Form::checkbox( 'show_neighborhood', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_neighborhood') !!} </span>
+</div>
+{{-- /Has Neighborhood --}}
+
+{{-- Show Postal Code --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_postal_code') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_postal_code', 0) !!}
+    {!! Form::checkbox( 'show_postal_code', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_postal_code') !!} </span>
+</div>
+{{-- /Has Postal Code --}}
+
+{{-- Show Land Phone --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_land_phone') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_land_phone', 0) !!}
+    {!! Form::checkbox( 'show_land_phone', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_land_phone') !!} </span>
+</div>
+{{-- /Has Land Phone --}}
+
+{{-- Show Mobile Phone --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_mobile_phone') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_mobile_phone', 0) !!}
+    {!! Form::checkbox( 'show_mobile_phone', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_mobile_phone') !!} </span>
+</div>
+{{-- /Has Mobile Phone --}}
+
+{{-- Show Url --}}
+<div class="form-group last">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_url') !!}</label>
+    <div class="clearfix"></div>
+    {!! Form::hidden('show_url', 0) !!}
+    {!! Form::checkbox( 'show_url', 1, null, [
+        'class'         => 'make-switch',
+        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+        'data-on-color' => 'success',
+        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+        'data-off-color'=> 'danger',
+    ]) !!}
+        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.show_url') !!} </span>
+</div>
+{{-- /Has Url --}}

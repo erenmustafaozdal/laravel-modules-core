@@ -1,44 +1,44 @@
-@extends(config('laravel-document-module.views.document_category.layout'))
+@extends(config('laravel-dealer-module.views.dealer_category.layout'))
 
 @section('title')
-    @if(isset($parent_document_category))
-        {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}", [
-            'parent_document_category' => $parent_document_category->name
+    @if(isset($parent_dealer_category))
+        {!! lmcTrans("laravel-dealer-module/admin.dealer_category.dealer_category.{$operation}", [
+            'parent_dealer_category' => $parent_dealer_category->name
         ]) !!}
     @else
-        {!! lmcTrans("laravel-document-module/admin.document_category.{$operation}") !!}
+        {!! lmcTrans("laravel-dealer-module/admin.dealer_category.{$operation}") !!}
     @endif
 @endsection
 
 @section('page-title')
-    @if(isset($parent_document_category))
+    @if(isset($parent_dealer_category))
         <h1>
-            {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}", [
-                'parent_document_category'  => $parent_document_category->name
+            {!! lmcTrans("laravel-dealer-module/admin.dealer_category.dealer_category.{$operation}", [
+                'parent_dealer_category'  => $parent_dealer_category->name
             ]) !!}
             <small>
-                {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}_description", [
-                    'parent_document_category'  => $parent_document_category->name,
-                    'document_category'         => $operation === 'edit' ? $document_category->name : null
+                {!! lmcTrans("laravel-dealer-module/admin.dealer_category.dealer_category.{$operation}_description", [
+                    'parent_dealer_category'  => $parent_dealer_category->name,
+                    'dealer_category'         => $operation === 'edit' ? $dealer_category->name : null
                 ]) !!}
             </small>
         </h1>
     @else
         <h1>
-            {!! lmcTrans("laravel-document-module/admin.document_category.{$operation}") !!}
+            {!! lmcTrans("laravel-dealer-module/admin.dealer_category.{$operation}") !!}
             <small>
-                {!! lmcTrans("laravel-document-module/admin.document_category.{$operation}_description",
+                {!! lmcTrans("laravel-dealer-module/admin.dealer_category.{$operation}_description",
                 [
-                    'document_category'     => $operation === 'edit' ? $document_category->name : null
+                    'dealer_category'     => $operation === 'edit' ? $dealer_category->name : null
                 ]) !!}
             </small>
         </h1>
     @endif
 @endsection
 
-@if(isset($parent_document_category))
+@if(isset($parent_dealer_category))
 @section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb([$parent_document_category], ['name']) !!}
+    {!! LMCBreadcrumb::getBreadcrumb([$parent_dealer_category], ['name']) !!}
 @endsection
 @endif
 
@@ -51,7 +51,7 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var operationJs = "{!! lmcElixir('assets/pages/scripts/document_category/operation.js') !!}";
+        var operationJs = "{!! lmcElixir('assets/pages/scripts/dealer_category/operation.js') !!}";
         {{-- /js file path --}}
 
         {{-- languages --}}
@@ -60,7 +60,7 @@
         };
         {{-- /languages --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/document_category/operation.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/dealer_category/operation.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
 @endsection
 
@@ -71,14 +71,14 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="{!! config('laravel-document-module.icons.document_category') !!} font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
-                    @if(isset($parent_document_category))
-                        {!! lmcTrans("laravel-document-module/admin.document_category.document_category.{$operation}", [
-                            'parent_document_category' => $parent_document_category->name
+                <i class="{!! config('laravel-dealer-module.icons.dealer_category') !!} font-red"></i>
+                <span class="caption-subject font-red">
+                    @if(isset($parent_dealer_category))
+                        {!! lmcTrans("laravel-dealer-module/admin.dealer_category.dealer_category.{$operation}", [
+                            'parent_dealer_category' => $parent_dealer_category->name
                         ]) !!}
                     @else
-                        {!! lmcTrans("laravel-document-module/admin.document_category.{$operation}") !!}
+                        {!! lmcTrans("laravel-dealer-module/admin.dealer_category.{$operation}") !!}
                     @endif
                 </span>
             </div>
@@ -87,10 +87,10 @@
             {{-- Actions --}}
             @if($operation === 'edit')
                 <div class="actions pull-left">
-                    @if(isset($parent_document_category))
-                        {!! getOps($document_category, 'edit', false, $parent_document_category, config('laravel-page-module.url.document_category')) !!}
+                    @if(isset($parent_dealer_category))
+                        {!! getOps($dealer_category, 'edit', false, $parent_dealer_category, config('laravel-page-module.url.dealer_category')) !!}
                     @else
-                        {!! getOps($document_category, 'edit', false) !!}
+                        {!! getOps($dealer_category, 'edit', false) !!}
                     @endif
                 </div>
             @endif
@@ -109,17 +109,17 @@
             <?php
             $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($parent_document_category) ? route('admin.document_category.document_category.' . ($operation === 'edit' ? 'update' : 'store'), [
-                        'id' => $parent_document_category->id,
-                        config('laravel-document-module.url.document_category') => $operation === 'edit' ? $document_category->id : null
-                    ]) : route('admin.document_category.' . ($operation === 'edit' ? 'update' : 'store'),[
-                            'id' => $operation === 'edit' ? $document_category->id : null,
+                    'url'   => isset($parent_dealer_category) ? route('admin.dealer_category.dealer_category.' . ($operation === 'edit' ? 'update' : 'store'), [
+                        'id' => $parent_dealer_category->id,
+                        config('laravel-dealer-module.url.dealer_category') => $operation === 'edit' ? $dealer_category->id : null
+                    ]) : route('admin.dealer_category.' . ($operation === 'edit' ? 'update' : 'store'),[
+                            'id' => $operation === 'edit' ? $dealer_category->id : null,
                     ]),
                     'class' => 'form'
             ];
             ?>
             @if($operation === 'edit')
-                {!! Form::model($document_category,$form) !!}
+                {!! Form::model($dealer_category,$form) !!}
             @else
                 {!! Form::open($form) !!}
             @endif
@@ -128,8 +128,8 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::document_category.partials.form', [
-                    'parent'    => isset($parent_document_category) ? $parent_document_category : false
+                @include('laravel-modules-core::dealer_category.partials.form', [
+                    'parent'    => isset($parent_dealer_category) ? $parent_dealer_category : false
                 ])
             </div>
             {{-- /Form Body --}}

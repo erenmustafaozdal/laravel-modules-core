@@ -102,7 +102,7 @@ var Validation = {
                 },
                 errorPlacement: function(error, element) {
                     if (element.hasClass('select2')) {
-                        error.insertAfter(element.next('span.select2'))
+                        error.insertAfter(element.next('span.select2me'))
                     } else if (element.prop('type') === 'file' || $(element).prop('id') === 'elfinder-photo') {
                         error.insertAfter(element.closest('div.input-group'));
                     } else {

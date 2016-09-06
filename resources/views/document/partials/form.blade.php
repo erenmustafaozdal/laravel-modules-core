@@ -1,7 +1,7 @@
 {{-- Document Category --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}</label>
-    <select class="form-control form-control-solid placeholder-no-fix select2" name="category_id" style="width: 100%">
+    <select class="form-control form-control-solid placeholder-no-fix select2me" name="category_id" style="width: 100%">
         @if($isRelation && isset($document))
             <option value="{{ $document->category->id }}" selected>{{ $document->category->name_uc_first }}</option>
         @elseif($isRelation)

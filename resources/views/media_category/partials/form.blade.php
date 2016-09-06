@@ -27,7 +27,7 @@
 @else
     <div class="form-group">
         <label class="control-label">{!! lmcTrans('laravel-media-module/admin.fields.media_category.type') !!}</label>
-        <select class="form-control form-control-solid placeholder-no-fix select2" name="type" style="width: 100%">
+        <select class="form-control form-control-solid placeholder-no-fix select2me" name="type" style="width: 100%">
             <option value="">{!! lmcTrans('admin.ops.select') !!}</option>
             @foreach(config('laravel-media-module.media_types') as $type)
                 <option value="{!! $type !!}">{!! lmcTrans('laravel-media-module/admin.fields.media_category.' . $type) !!}</option>

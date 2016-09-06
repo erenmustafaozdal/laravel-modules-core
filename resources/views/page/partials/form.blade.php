@@ -4,7 +4,7 @@
 @else
     <div class="form-group">
         <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!}</label>
-        <select class="form-control form-control-solid placeholder-no-fix select2" name="category_id" style="width: 100%">
+        <select class="form-control form-control-solid placeholder-no-fix select2me" name="category_id" style="width: 100%">
             @if(isset($page))
                 <option value="{{ $page->category->id }}" selected>{{ $page->category->name_uc_first }}</option>
             @endif

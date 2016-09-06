@@ -94,7 +94,7 @@
         <div class="portlet-title">
             <div class="caption">
                 <i class="{!! config('laravel-description-module.icons.description_category') !!} font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
+                <span class="caption-subject font-red">
                     @if(isset($parent_description_category))
                         {!! lmcTrans('laravel-description-module/admin.description_category.description_category.index', ['parent_description_category' => $parent_description_category->name_uc_first]) !!}
                     @else

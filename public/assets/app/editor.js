@@ -111,13 +111,13 @@ var Editor = {
                         }
                         $(this).bootstrapSwitch('state', value, true);
                     });
-                    $('select.select2[name="' + key + '_id"]', theEditor.form).each(function()
+                    $('select.select2me[name="' + key + '_id"]', theEditor.form).each(function()
                     {
                         theSelect2.element.append('<option value="' + value.id +'" selected>' + value.name + '</option>').trigger('change');
                     });
 
                     // categories gelince
-                    $('select.select2[name="' + key + '"]', theEditor.form).each(function()
+                    $('select.select2me[name="' + key + '"]', theEditor.form).each(function()
                     {
                         $.each(value, function(index,item)
                         {

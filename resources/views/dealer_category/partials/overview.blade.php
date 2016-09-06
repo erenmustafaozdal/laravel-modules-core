@@ -1,5 +1,5 @@
 {{-- Summary --}}
-<h1 class="font-blue sbold uppercase">{{ $document_category->name_uc_first }}</h1>
+<h1 class="font-blue sbold uppercase">{{ $dealer_category->name_uc_first }}</h1>
 {{-- /Summary --}}
 
 {{-- Information on Form --}}
@@ -7,10 +7,10 @@
     {{-- Name --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document_category.name') !!}
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.name') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document_category->name_uc_first }} </p>
+            <p class="form-control-static"> {{ $dealer_category->name_uc_first }} </p>
         </div>
     </div>
     {{-- /Name --}}
@@ -21,7 +21,7 @@
             {!! trans('laravel-modules-core::admin.fields.created_at') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document_category->created_at }} </p>
+            <p class="form-control-static"> {{ $dealer_category->created_at }} </p>
         </div>
     </div>
     {{-- /Created At --}}
@@ -32,19 +32,19 @@
             {!! trans('laravel-modules-core::admin.fields.updated_at') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $document_category->updated_at }} </p>
+            <p class="form-control-static"> {{ $dealer_category->updated_at }} </p>
         </div>
     </div>
     {{-- /Updated At --}}
 
-    {{-- Has Description --}}
+    {{-- Show Address --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document_category.has_description') !!}
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_address') !!}
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @if ($document_category->has_description)
+                @if ($dealer_category->show_address)
                     <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
                 @else
                     <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
@@ -52,16 +52,16 @@
             </p>
         </div>
     </div>
-    {{-- /Has Description --}}
+    {{-- /Show Address --}}
 
-    {{-- Has Photo --}}
+    {{-- Show Province --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document_category.has_photo') !!}
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_province') !!}
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @if ($document_category->has_photo)
+                @if ($dealer_category->show_province)
                     <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
                 @else
                     <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
@@ -69,16 +69,16 @@
             </p>
         </div>
     </div>
-    {{-- /Has Photo --}}
+    {{-- /Show Province --}}
 
-    {{-- Show Title --}}
+    {{-- Show County --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document_category.show_title') !!}
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_county') !!}
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @if ($document_category->show_title)
+                @if ($dealer_category->show_county)
                     <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
                 @else
                     <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
@@ -86,16 +86,16 @@
             </p>
         </div>
     </div>
-    {{-- /Show Title --}}
+    {{-- /Show County --}}
 
-    {{-- Show Description --}}
+    {{-- Show District --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document_category.show_description') !!}
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_district') !!}
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @if ($document_category->show_description)
+                @if ($dealer_category->show_district)
                     <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
                 @else
                     <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
@@ -103,16 +103,16 @@
             </p>
         </div>
     </div>
-    {{-- /Show Description --}}
+    {{-- /Show District --}}
 
-    {{-- Show Photo --}}
+    {{-- Show Neighborhood --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-document-module/admin.fields.document_category.show_photo') !!}
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_neighborhood') !!}
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @if ($document_category->show_photo)
+                @if ($dealer_category->show_neighborhood)
                     <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
                 @else
                     <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
@@ -120,6 +120,74 @@
             </p>
         </div>
     </div>
-    {{-- /Show Photo --}}
+    {{-- /Show Neighborhood --}}
+
+    {{-- Show Postal Code --}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_postal_code') !!}
+        </label>
+        <div class="col-sm-10">
+            <p class="form-control-static">
+                @if ($dealer_category->show_postal_code)
+                    <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
+                @else
+                    <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
+                @endif
+            </p>
+        </div>
+    </div>
+    {{-- /Show Postal Code --}}
+
+    {{-- Show Land Phone --}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_land_phone') !!}
+        </label>
+        <div class="col-sm-10">
+            <p class="form-control-static">
+                @if ($dealer_category->show_land_phone)
+                    <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
+                @else
+                    <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
+                @endif
+            </p>
+        </div>
+    </div>
+    {{-- /Show Land Phone --}}
+
+    {{-- Show Mobile Phone --}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_mobile_phone') !!}
+        </label>
+        <div class="col-sm-10">
+            <p class="form-control-static">
+                @if ($dealer_category->show_mobile_phone)
+                    <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
+                @else
+                    <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
+                @endif
+            </p>
+        </div>
+    </div>
+    {{-- /Show Mobile Phone --}}
+
+    {{-- Show Url --}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            {!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.show_url') !!}
+        </label>
+        <div class="col-sm-10">
+            <p class="form-control-static">
+                @if ($dealer_category->show_url)
+                    <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
+                @else
+                    <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
+                @endif
+            </p>
+        </div>
+    </div>
+    {{-- /Show Url --}}
 </form>
 {{-- /Information on Form --}}

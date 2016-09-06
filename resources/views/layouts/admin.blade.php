@@ -201,6 +201,13 @@
         var themeLayoutChangeApiUrl = "{!! route('api.themeLayout.change') !!}";
         var themeColorChangeApiUrl = "{!! route('api.themeColor.change') !!}";
         var logos = {!! json_encode(config('laravel-modules-core.logos')) !!};
+
+        // select2 address routes
+        var provinceURL = "{!! route('address.provinces') !!}";
+        var countyURL = "{!! route('address.counties', ['id' => '###id###']) !!}";
+        var districtURL = "{!! route('address.districts', ['id' => '###id###']) !!}";
+        var neighborhoodURL = "{!! route('address.neighborhoods', ['id' => '###id###']) !!}";
+        var postalCodeURL = "{!! route('address.postalCode', ['id' => '###id###']) !!}";
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin.js') !!}"></script>
     <script type="text/javascript">

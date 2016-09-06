@@ -79,7 +79,7 @@
             {{-- Caption --}}
             <div class="caption margin-right-10">
                 <i class="{!! config('laravel-media-module.icons.media_category') !!} font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
+                <span class="caption-subject font-red">
                     @if(isset($parent_media_category))
                         {!! lmcTrans("laravel-media-module/admin.media_category.media_category.{$operation}", [
                             'parent_media_category' => $parent_media_category->name

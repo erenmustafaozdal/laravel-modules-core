@@ -44,7 +44,7 @@
             {{-- Caption --}}
             <div class="caption margin-right-10">
                 <i class="{!! config('laravel-page-module.icons.page_category') !!} font-red"></i>
-                <span class="caption-subject font-red sbold uppercase">
+                <span class="caption-subject font-red">
                     {!! lmcTrans('laravel-page-module/admin.page_category.show') !!}
                 </span>
             </div>
