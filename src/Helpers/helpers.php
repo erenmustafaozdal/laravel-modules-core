@@ -173,24 +173,33 @@ if (! function_exists('sidebarDetect')) {
     {
         $sidebar = $isChildren ? '<ul class="sub-menu">' : '';
         foreach($elements as $element) {
+
+            if (! is_null($element->attribute('is-header')) && $element->attribute('is-header')) {
+                $sidebar .= '<li class="heading">';
+                $sidebar .= "<h3 class='uppercase'>{$element->title}</h3>";
+                $sidebar .= '</li>';
+                continue;
+            }
+
             // menu item
             $active = $element->isActive() ? ' active' : '';
             $open = $active && $element->hasChildren() ? ' open' : '';
             $sidebar .= "<li class='nav-item{$active}{$open}'>";
 
             // menu a link
-            $sidebar .= '<a href="'. $element->url() .'" class="nav-link';
+            $sidebar .= '<a href="' . $element->url() . '" class="nav-link';
             $sidebar .= $element->hasChildren() ? ' nav-toogle">' : '">';
-            $sidebar .= '<i class="'. $element->attribute('data-icon') .'"></i>';
-            $sidebar .= ' <span class="title">'. $element->title .'</span> ';
+            $sidebar .= '<i class="' . $element->attribute('data-icon') . '"></i>';
+            $sidebar .= ' <span class="title">' . $element->title . '</span> ';
             $sidebar .= $element->hasChildren() ? '<span class="arrow"></span>' : '';
             $sidebar .= '</a>';
 
-            if($element->hasChildren()) {
+            if ($element->hasChildren()) {
                 $sidebar .= sidebarDetect($element->children(), true);
             }
 
             $sidebar .= '</li>';
+
         }
         return $isChildren ? $sidebar . '</ul>' : $sidebar;
     }

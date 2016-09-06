@@ -7,7 +7,7 @@
     <ul class="dropdown-menu pull-right scrollable-menu" role="menu">
         @foreach($menu_action->roots() as $item)
 
-                @if( !is_null($item->attribute('is-header')) && $item->attribute('is-header'))
+                @if( ! is_null($item->attribute('is-header')) && $item->attribute('is-header'))
                     <li class="dropdown-header">{!! $item->title !!}</li>
                 @else
                     <li {!! $item->isActive() ? 'class="active"' : '' !!}>
