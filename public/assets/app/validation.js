@@ -101,8 +101,8 @@ var Validation = {
                     label.remove();
                 },
                 errorPlacement: function(error, element) {
-                    if (element.hasClass('select2')) {
-                        error.insertAfter(element.next('span.select2me'))
+                    if (element.hasClass('select2me') || element.hasClass('addresses')) {
+                        error.insertAfter(element.next('span.select2'))
                     } else if (element.prop('type') === 'file' || $(element).prop('id') === 'elfinder-photo') {
                         error.insertAfter(element.closest('div.input-group'));
                     } else {

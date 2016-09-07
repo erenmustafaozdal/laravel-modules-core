@@ -1,4 +1,5 @@
 ;var theSelect2;
+var LMCSelect2s = {};
 var Select2 = {
 
     /**
@@ -29,6 +30,7 @@ var Select2 = {
 
         // select2 init
         this.element.select2(this.options.select2);
+        LMCSelect2s[this.options.src] = theSelect2;
 
         // on change event listener
         this.element.on('change',this.options.onChange);

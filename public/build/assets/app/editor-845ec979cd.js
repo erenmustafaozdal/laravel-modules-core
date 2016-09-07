@@ -113,16 +113,26 @@ var Editor = {
                     });
                     $('select.select2me[name="' + key + '_id"]', theEditor.form).each(function()
                     {
-                        theSelect2.element.append('<option value="' + value.id +'" selected>' + value.name + '</option>').trigger('change');
+                        if (value != null) {
+                            $(this).append('<option value="' + value.id + '" selected>' + value.name + '</option>').trigger('change');
+                        }
                     });
 
                     // categories gelince
-                    $('select.select2me[name="' + key + '"]', theEditor.form).each(function()
-                    {
-                        $.each(value, function(index,item)
-                        {
-                            theSelect2.element.append('<option value="' + item.id +'" selected>' + item.name + '</option>').trigger('change');
+                    if (value != null && typeof value == 'object') {
+                        $('select.select2me[name="' + key + '"]', theEditor.form).each(function () {
+                            $.each(value, function (index, item) {
+                                $(this).append('<option value="' + item.id + '" selected>' + item.name + '</option>').trigger('change');
+                            });
                         });
+                    }
+
+                    // addresses
+                    $('select.addresses[name="' + key + '_id"]', theEditor.form).each(function()
+                    {
+                        if (value != null) {
+                            $(this).prop('disabled', false).append('<option value="' + value.id + '" selected>' + value[key] + '</option>');
+                        }
                     });
                 });
             }

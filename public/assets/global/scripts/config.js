@@ -530,9 +530,20 @@ var LMCApp = {
         }
 
         // select2 reset
-        if (typeof theSelect2 == 'object') {
-            theSelect2.element.select2(theSelect2.options.select2);
-            $('.select2-selection__clear').remove();
+        if ($('select.select2me', target).length) {
+            $('select.select2me', target).each(function()
+            {
+                $(this).select2(LMCSelect2s['.select2me'].options.select2);
+                $(this).find('.select2-selection__clear').remove();
+            });
+        }
+        if ($('select.addresses', target).length) {
+            $('select.addresses', target).each(function()
+            {
+                var id = $(this).prop('id');
+                $(this).prop('disabled',true).select2(LMCSelect2s['#' + id].options.select2);
+                $(this).find('.select2-selection__clear').remove();
+            });
         }
     },
 

@@ -190,13 +190,11 @@
             $('.addresses').each(function(i,el)
             {
                 el = $(el);
-                console.log(clean);
                 if (clean) {
                     el.find('option:selected').prop('selected', false).val('');
                     if (remove == true) {
                         el.empty().prop('disabled',true);
                     }
-                    console.log(el);
                 }
                 if (el.prop('id') === id) { clean = true; }
             });

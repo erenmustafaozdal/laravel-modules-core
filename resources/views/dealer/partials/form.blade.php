@@ -1,6 +1,7 @@
 {{-- Dealer Category --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.name') !!}</label>
+    {!! Form::hidden('category_id',0) !!}
     <select class="form-control form-control-solid placeholder-no-fix select2me" name="category_id" style="width: 100%">
         @if(isset($dealer))
             <option value="{{ $dealer->category->id }}" selected>{{ $dealer->category->name_uc_first }}</option>
@@ -16,6 +17,16 @@
     <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.category_id_help') !!} </span>
 @endif
 {{-- /Dealer Category --}}
+
+{{-- Name --}}
+<div class="form-group">
+    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.name') !!}</label>
+    {!! Form::text( 'name', isset($dealer) ? $dealer->name_uc_first : null, [
+        'class'         => 'form-control form-control-solid placeholder-no-fix',
+        'placeholder'   => lmcTrans('laravel-dealer-module/admin.fields.dealer.name')
+    ]) !!}
+</div>
+{{-- /Name --}}
 
 {{-- Province --}}
 <div class="form-group">

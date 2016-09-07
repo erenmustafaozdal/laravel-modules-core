@@ -139,7 +139,7 @@ var Index = {
                         '<tbody>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Kategori:</strong> </td>' +
-                            '<td class="text-left">' + ( data.category.name == null ? '' : data.category.name ) + '</td>' +
+                            '<td class="text-left">' + ( data.category == null ? '' : data.category.name ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Ad:</strong> </td>' +
@@ -191,7 +191,10 @@ var Index = {
                             data: "category", name: "category",
                             render: function ( data, type, full, meta )
                             {
-                                return '<a href="' + categoryURL.replace("###id###", data.id) + '"> ' + data.name + ' </a>';
+                                if (data != null ) {
+                                    return '<a href="' + categoryURL.replace("###id###", data.id) + '"> ' + data.name + ' </a>';
+                                }
+                                return '';
                             }
                         },
                         // status
