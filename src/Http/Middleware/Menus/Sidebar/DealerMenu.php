@@ -33,6 +33,8 @@ class DealerMenu
      */
     public static function addMenu($menu)
     {
+        $menu->add(lmcTrans('laravel-dealer-module/admin.menu.dealer.root'), 'javascript:;')
+            ->attribute('is-header',true);
         // dealer_category
         $dealer_category = $menu->add(lmcTrans('laravel-dealer-module/admin.menu.dealer_category.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-dealer-module.icons.dealer_category') )

@@ -33,6 +33,8 @@ class DescriptionMenu
      */
     public static function addMenu($menu)
     {
+        $menu->add(lmcTrans('laravel-description-module/admin.menu.description.root'), 'javascript:;')
+            ->attribute('is-header',true);
         // description_category
         $description_category = $menu->add(lmcTrans('laravel-description-module/admin.menu.description_category.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-description-module.icons.description_category') )

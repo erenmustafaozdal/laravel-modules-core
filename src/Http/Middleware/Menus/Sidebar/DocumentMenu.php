@@ -33,6 +33,8 @@ class DocumentMenu
      */
     public static function addMenu($menu)
     {
+        $menu->add(lmcTrans('laravel-document-module/admin.menu.document.root'), 'javascript:;')
+            ->attribute('is-header',true);
         // document_category
         $document_category = $menu->add(lmcTrans('laravel-document-module/admin.menu.document_category.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-document-module.icons.document_category') )

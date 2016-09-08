@@ -33,6 +33,8 @@ class PageMenu
      */
     public static function addMenu($menu)
     {
+        $menu->add(lmcTrans('laravel-page-module/admin.menu.page.root'), 'javascript:;')
+            ->attribute('is-header',true);
         // page_category
         $page_category = $menu->add(lmcTrans('laravel-page-module/admin.menu.page_category.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-page-module.icons.page_category') )

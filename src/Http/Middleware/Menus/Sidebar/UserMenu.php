@@ -33,7 +33,9 @@ class UserMenu
      */
     public static function addMenu($menu)
     {
-        // role
+        $menu->add(lmcTrans('laravel-user-module/admin.menu.user.root'), 'javascript:;')
+            ->attribute('is-header',true);
+
         $role = $menu->add(lmcTrans('laravel-user-module/admin.menu.role.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-user-module.icons.role') )
             ->data( 'permissions', self::$rolePermissions )

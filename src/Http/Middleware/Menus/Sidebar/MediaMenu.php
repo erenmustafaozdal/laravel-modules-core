@@ -33,6 +33,8 @@ class MediaMenu
      */
     public static function addMenu($menu)
     {
+        $menu->add(lmcTrans('laravel-media-module/admin.menu.media.root'), 'javascript:;')
+            ->attribute('is-header',true);
         // media_category
         $media_category = $menu->add(lmcTrans('laravel-media-module/admin.menu.media_category.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-media-module.icons.media_category') )
