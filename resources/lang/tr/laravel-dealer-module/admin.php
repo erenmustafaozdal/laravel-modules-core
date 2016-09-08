@@ -115,7 +115,7 @@ return [
             'postal_code_id'    => 'Bayinin bulunduğu mekanın posta kodu. <em class="label label-warning">Bu alan mahalleyi seçtiğinde otomatik doldurulacaktır. Her hangi bir işlem yapmana gerek yok.</em>',
             'land_phone'        => 'Bayinin sabit telefon numarası. <small class="text-muted">(Ör: 0(216) 999 99 99)</small>',
             'mobile_phone'      => 'Bayinin cep telefon numarası. <small class="text-muted">(Ör: 0(506) 999 99 99)</small>',
-            'web'               => 'Bayinin internet adresi. <small class="text-muted">(Ör: http://www.siteadi.com veya http://www.siteadi.com/sitenin-her-hangi-bir-sayfasi vb.)</small>',
+            'url'               => 'Bayinin internet adresi. <small class="text-muted">(Ör: http://www.siteadi.com veya http://www.siteadi.com/sitenin-her-hangi-bir-sayfasi vb.)</small>',
         ]
     ],
 

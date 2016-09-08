@@ -356,6 +356,9 @@ var LMCApp = {
             case 'youtube':
                 mask = "\\http\\s://www.\\youtube.co\\m/w\\atc\\h?v=*{1,20}";
                 break;
+            case 'phone':
+                mask = "0(999) 999 99 99";
+                break;
         }
         ops.inputmask.mask = mask;
 

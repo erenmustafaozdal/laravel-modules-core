@@ -148,7 +148,7 @@
             <div class="form-body">
 
                 @include('laravel-modules-core::dealer.partials.form')
-                @include('laravel-modules-core::dealer.partials.deatil_form')
+                @include('laravel-modules-core::dealer.partials.detail_form')
 
             </div>
             {{-- /Form Body --}}
