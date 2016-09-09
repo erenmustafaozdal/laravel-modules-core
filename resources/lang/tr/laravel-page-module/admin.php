@@ -62,9 +62,9 @@ return [
             'slug'                          => 'Tanımlama',
             'description'                   => 'Açıklama',
             'content'                       => 'İçerik',
-            'meta_title'                    => 'META Başlık',
-            'meta_description'              => 'META Açıklama',
-            'meta_keywords'                 => 'META Anahtar Kelimeler',
+            'meta_title'                    => 'SEO Başlık',
+            'meta_description'              => 'SEO Açıklama',
+            'meta_keywords'                 => 'SEO Anahtar Kelimeler',
         ]
     ],
 
