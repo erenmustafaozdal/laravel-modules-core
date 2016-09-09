@@ -1,52 +1,22 @@
-@extends(config('laravel-dealer-module.views.dealer.layout'))
+@extends(config('laravel-product-module.views.product_showcase.layout'))
 
 @section('title')
-    @if(isset($dealer_category))
-        {!! lmcTrans("laravel-dealer-module/admin.dealer_category.dealer.{$operation}", [
-            'dealer_category' => $dealer_category->name_uc_first
-        ]) !!}
-    @else
-        {!! lmcTrans("laravel-dealer-module/admin.dealer.{$operation}") !!}
-    @endif
+    {!! lmcTrans("laravel-product-module/admin.product_showcase.{$operation}") !!}
 @endsection
 
 @section('page-title')
-    @if(isset($dealer_category))
-        <h1>
-            {!! lmcTrans("laravel-dealer-module/admin.dealer_category.dealer.{$operation}", [
-                'dealer_category' => $dealer_category->name_uc_first
+    <h1>
+        {!! lmcTrans("laravel-product-module/admin.product_showcase.{$operation}") !!}
+        <small>
+            {!! lmcTrans("laravel-product-module/admin.product_showcase.{$operation}_description", [
+                'product' => $operation === 'edit' ? $product_showcase->name_uc_first : null
             ]) !!}
-            <small>
-                {!! lmcTrans("laravel-dealer-module/admin.dealer_category.dealer.{$operation}_description", [
-                    'dealer_category' => $dealer_category->name_uc_first,
-                    'dealer'          => $operation === 'edit' ? $dealer->title_uc_first : null
-                ]) !!}
-            </small>
-        </h1>
-    @else
-        <h1>
-            {!! lmcTrans("laravel-dealer-module/admin.dealer.{$operation}") !!}
-            <small>
-                {!! lmcTrans("laravel-dealer-module/admin.dealer.{$operation}_description", [
-                    'dealer' => $operation === 'edit' ? $dealer->title_uc_first : null
-                ]) !!}
-            </small>
-        </h1>
-    @endif
+        </small>
+    </h1>
 @endsection
-
-@if(isset($dealer_category))
-@section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb([$dealer_category], ['name']) !!}
-@endsection
-@endif
 
 @section('css')
     @parent
-    {{-- Select2 --}}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
-    {{-- /Select2 --}}
 @endsection
 
 @section('script')
@@ -57,32 +27,17 @@
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
-        var operationJs = "{!! lmcElixir('assets/pages/scripts/dealer/operation.js') !!}";
+        var operationJs = "{!! lmcElixir('assets/pages/scripts/product_showcase/operation.js') !!}";
         {{-- /js file path --}}
-
-        {{-- routes --}}
-        @if(isset($dealer_category))
-            var modelsURL = "{!! route('api.dealer_category.models', ['id' => $dealer_category]) !!}";
-        @else
-            var modelsURL = "{!! route('api.dealer_category.models') !!}";
-        @endif
-        var categoryDetailURL = "{!! route('api.dealer_category.detail', ['id' => '###id###']) !!}";
-        {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
-            province_id: { required: "{!! LMCValidation::getMessage('province_id','required') !!}" },
-            county_id: { required: "{!! LMCValidation::getMessage('county_id','required') !!}" },
-            land_phone: { phone_tr: "{!! LMCValidation::getMessage('land_phone','phone_tr') !!}" },
-            mobile_phone: { phone_tr: "{!! LMCValidation::getMessage('mobile_phone','phone_tr') !!}" },
-            url: { url: "{!! LMCValidation::getMessage('url','url') !!}" }
+            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };
         {{-- /languages --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/dealer/operation.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/product_showcase/operation.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -92,28 +47,18 @@
         <div class="portlet-title tabbable-line">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="{!! config('laravel-dealer-module.icons.dealer') !!} font-red"></i>
+                <i class="{!! config('laravel-product-module.icons.product_showcase') !!} font-red"></i>
                 <span class="caption-subject font-red">
-                    @if(isset($dealer_category))
-                        {!! lmcTrans("laravel-dealer-module/admin.dealer_category.dealer.{$operation}", [
-                            'dealer_category' => $dealer_category->name_uc_first
-                        ]) !!}
-                    @else
-                        {!! lmcTrans("laravel-dealer-module/admin.dealer.{$operation}") !!}
-                    @endif
+                    {!! lmcTrans("laravel-product-module/admin.product_showcase.{$operation}") !!}
                 </span>
             </div>
             {{-- /Caption --}}
 
             {{-- Actions --}}
             @if($operation === 'edit')
-            <div class="actions pull-left">
-                @if(isset($dealer_category))
-                    {!! getOps($dealer, 'edit', true, $dealer_category, config('laravel-dealer-module.url.dealer')) !!}
-                @else
-                    {!! getOps($dealer, 'edit', true) !!}
-                @endif
-            </div>
+                <div class="actions pull-left">
+                    {!! getOps($product_showcase, 'edit', false) !!}
+                </div>
             @endif
             {{-- /Actions --}}
         </div>
@@ -127,28 +72,21 @@
             {{-- /Error Messages --}}
 
             {{-- Operation Form --}}
-            <?php
-                $form = [
-                    'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($dealer_category) ? route('admin.dealer_category.dealer.' . ($operation === 'edit' ? 'update' : 'store'), [
-                        'id'                                    => $dealer_category->id,
-                        config('laravel-dealer-module.url.dealer')  => $operation === 'edit' ? $dealer->id : null
-                    ]) : route('admin.dealer.' . ($operation === 'edit' ? 'update' : 'store'), [
-                            'id' => $operation === 'edit' ? $dealer->id : null
-                    ]),
-                    'class' => 'form',
-                    'files' => true
-                ];
-            ?>
-            {!! Form::open($form) !!}
+            {!! Form::open([
+                'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
+                'url'   => route('admin.product_showcase.' . ($operation === 'edit' ? 'update' : 'store'), [
+                        'id' => $operation === 'edit' ? $product_showcase->id : null
+                ]),
+                'class' => 'form',
+                'files' => true
+            ]) !!}
 
             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
             {{-- Form Body --}}
             <div class="form-body">
 
-                @include('laravel-modules-core::dealer.partials.form')
-                @include('laravel-modules-core::dealer.partials.detail_form')
+                @include('laravel-modules-core::product_showcase.partials.form')
 
             </div>
             {{-- /Form Body --}}
