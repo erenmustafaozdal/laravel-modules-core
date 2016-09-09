@@ -1,40 +1,19 @@
-@extends(config('laravel-dealer-module.views.dealer_category.layout'))
+@extends(config('laravel-product-module.views.product_category.layout'))
 
 @section('title')
-    @if(isset($parent_dealer_category))
-        {!! lmcTrans('laravel-dealer-module/admin.dealer_category.dealer_category.show', [
-            'parent_dealer_category' => $parent_dealer_category->name
-        ]) !!}
-    @else
-        {!! lmcTrans('laravel-dealer-module/admin.dealer_category.show') !!}
-    @endif
+    {!! lmcTrans('laravel-product-module/admin.product_category.show') !!}
 @endsection
 
 @section('page-title')
-    @if(isset($parent_dealer_category))
-        <h1>
-            {!! lmcTrans('laravel-dealer-module/admin.dealer_category.dealer_category.show', [
-                'parent_dealer_category' => $parent_dealer_category->name
+    <h1>
+        {!! lmcTrans('laravel-product-module/admin.product_category.show') !!}
+        <small>
+            {!! lmcTrans('laravel-product-module/admin.product_category.show_description', [
+                'product_category' => $product_category->name
             ]) !!}
-            <small>
-                {!! lmcTrans('laravel-dealer-module/admin.dealer_category.dealer_category.show_description', [
-                    'parent_dealer_category'  => $parent_dealer_category->name,
-                    'dealer_category'         => $dealer_category->name
-                ]) !!}
-            </small>
-        </h1>
-    @else
-        <h1>{!! lmcTrans('laravel-dealer-module/admin.dealer_category.show') !!}
-            <small>{!! lmcTrans('laravel-dealer-module/admin.dealer_category.show_description', [ 'dealer_category' => $dealer_category->name ]) !!}</small>
-        </h1>
-    @endif
+        </small>
+    </h1>
 @endsection
-
-@if(isset($parent_dealer_category))
-@section('breadcrumb')
-    {!! LMCBreadcrumb::getBreadcrumb([$parent_dealer_category], ['name']) !!}
-@endsection
-@endif
 
 @section('css')
     @parent
@@ -48,7 +27,7 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var showJs = "{!! lmcElixir('assets/pages/scripts/dealer_category/show.js') !!}";
+        var showJs = "{!! lmcElixir('assets/pages/scripts/product_category/show.js') !!}";
         {{-- /js file path --}}
 
         {{-- languages --}}
@@ -57,7 +36,7 @@
         };
         {{-- /languages --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/dealer_category/show.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/product_category/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
 @endsection
 
@@ -68,26 +47,16 @@
         <div class="portlet-title">
             {{-- Caption --}}
             <div class="caption margin-right-10">
-                <i class="{!! config('laravel-dealer-module.icons.dealer_category') !!} font-red"></i>
+                <i class="{!! config('laravel-product-module.icons.product_category') !!} font-red"></i>
                 <span class="caption-subject font-red">
-                    @if(isset($parent_dealer_category))
-                        {!! lmcTrans('laravel-dealer-module/admin.dealer_category.dealer_category.show', [
-                            'parent_dealer_category' => $parent_dealer_category->name
-                        ]) !!}
-                    @else
-                        {!! lmcTrans('laravel-dealer-module/admin.dealer_category.show') !!}
-                    @endif
+                    {!! lmcTrans('laravel-product-module/admin.product_category.show') !!}
                 </span>
             </div>
             {{-- /Caption --}}
 
             {{-- Actions --}}
             <div class="actions pull-left">
-                @if(isset($parent_dealer_category))
-                    {!! getOps($dealer_category, 'show', false, $parent_dealer_category, config('laravel-dealer-module.url.dealer_category')) !!}
-                @else
-                    {!! getOps($dealer_category, 'show', false) !!}
-                @endif
+                {!! getOps($product_category, 'show', false) !!}
             </div>
             {{-- /Actions --}}
         </div>
@@ -113,7 +82,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_dealer_category) ? 'dealer_category.dealer_category' : 'dealer_category') .'.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.product_category.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -132,28 +101,25 @@
                         {{-- Overview --}}
                         <div id="overview" class="tab-pane active">
                             <div class="profile-info">
-                                @include('laravel-modules-core::dealer_category.partials.overview')
+                                @include('laravel-modules-core::product_category.partials.overview')
                             </div>
                         </div>
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_dealer_category) ? 'dealer_category.dealer_category' : 'dealer_category') .'.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.product_category.update'))
                         <div id="edit_info" class="tab-pane form">
-                            {!! Form::model($dealer_category,[
+                            {!! Form::model($product_category,[
                                 'method'    => 'PATCH',
-                                'url'       => isset($parent_dealer_category) ? route('admin.dealer_category.dealer_category.update', [ 'id' => $parent_dealer_category->id, config('laravel-dealer-module.url.dealer_category') => $dealer_category->id ]) : route('admin.dealer_category.update', [ 'id' => $dealer_category->id ]),
-                                'id'        => 'dealer_category-edit-info'
+                                'url'       => route('admin.product_category.update', [ 'id' => $product_category->id ]),
+                                'id'        => 'product_category-edit-info'
                             ]) !!}
 
                             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
                             {{-- Form Body --}}
                             <div class="form-body">
-                                @include('laravel-modules-core::dealer_category.partials.form', [
-                                    'parent'    => isset($parent_dealer_category) ? $parent_dealer_category : false,
-                                    'model'     => $dealer_category
-                                ])
+                                @include('laravel-modules-core::product_category.partials.form')
                             </div>
                             {{-- /Form Body --}}
 
