@@ -47,6 +47,7 @@ return [
         'laravel-description-module'=> \ErenMustafaOzdal\LaravelDescriptionModule\LaravelDescriptionModuleServiceProvider::class,
         'laravel-media-module'      => \ErenMustafaOzdal\LaravelMediaModule\LaravelMediaModuleServiceProvider::class,
         'laravel-dealer-module'     => \ErenMustafaOzdal\LaravelDealerModule\LaravelDealerModuleServiceProvider::class,
+        'laravel-product-module'    => \ErenMustafaOzdal\LaravelProductModule\LaravelProductModuleServiceProvider::class,
     ],
 
     /*
@@ -163,6 +164,35 @@ return [
             'nestable_level_nested'         => 1
         ],
         'dealer' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
+
+        // product module
+        'product_category' => [
+            'show_relation_category_link'   => true,
+            'show_relation_model_link'      => true,
+            'nestable_level_root'           => 0,
+            'nestable_level_nested'         => 1
+        ],
+        'product_brand' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
+        'product_showcase' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
+        'product' => [
             'datatable_filter'              => true,
             'datatable_tools'               => true,
             'datatable_fast_add'            => true,
