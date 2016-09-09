@@ -30,7 +30,6 @@
         var datatableJs = "{!! lmcElixir('assets/app/datatable.js') !!}";
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var formJs = "{!! lmcElixir('assets/pages/scripts/product_brand/product_brand-form.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var indexJs = "{!! lmcElixir('assets/pages/scripts/product_brand/index.js') !!}";
@@ -57,7 +56,6 @@
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/product_brand/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -72,7 +70,7 @@
                 </span>
             </div>
             @include('laravel-modules-core::partials.common.indexActions', [
-                'module' => 'product',
+                'module' => 'product_brand',
                 'fast_add'  => config('laravel-modules-core.options.product_brand.datatable_fast_add'),
                 'add'       => true,
                 'tools'     => config('laravel-modules-core.options.product_brand.datatable_tools')

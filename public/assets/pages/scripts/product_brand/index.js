@@ -134,8 +134,7 @@ var Index = {
                                                 href: 'javascript:;',
                                                 class: 'fast-destroy'
                                             }
-                                        },
-                                        'divider'
+                                        }
                                     ]
                                 };
                                 return theDataTable.getActionMenu(options);
