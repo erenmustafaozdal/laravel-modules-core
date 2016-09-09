@@ -17,6 +17,26 @@ return [
         'show'                      => 'Ürün Kategorisi Bilgileri',
         'show_description'          => ':product_category hakkında bilgiler'
     ],
+    'product_brand' => [
+        'index'                     => 'Markalar',
+        'index_description'         => 'Sistem içindeki bütün markalar',
+        'edit'                      => 'Markayı Düzenle',
+        'edit_description'          => ':product_brand adlı markanın bilgilerini düzenle',
+        'create'                    => 'Marka Ekle',
+        'create_description'        => 'Yeni bir marka ekle',
+        'show'                      => 'Marka Bilgileri',
+        'show_description'          => ':product_brand hakkında bilgiler'
+    ],
+    'product_showcase' => [
+        'index'                     => 'Vitrinler',
+        'index_description'         => 'Sistem içindeki bütün vitrinler',
+        'edit'                      => 'Vitrini Düzenle',
+        'edit_description'          => ':product_showcase adlı vitrinin bilgilerini düzenle',
+        'create'                    => 'Vitrin Ekle',
+        'create_description'        => 'Yeni bir vitrin ekle',
+        'show'                      => 'Vitrin Bilgileri',
+        'show_description'          => ':product_showcase hakkında bilgiler'
+    ],
     'product' => [
         'index'                     => 'Ürünler',
         'index_description'         => 'Sistemde bulunan bütün ürünler',
