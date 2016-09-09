@@ -173,10 +173,7 @@ return [
 
         // product module
         'product_category' => [
-            'show_relation_category_link'   => true,
-            'show_relation_model_link'      => true,
             'nestable_level_root'           => 0,
-            'nestable_level_nested'         => 1
         ],
         'product_brand' => [
             'datatable_filter'              => true,

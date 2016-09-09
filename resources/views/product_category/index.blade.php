@@ -51,28 +51,15 @@
             <div class="caption">
                 <i class="{!! config('laravel-product-module.icons.product_category') !!} font-red"></i>
                 <span class="caption-subject font-red">
-                    @if(isset($parent_product_category))
-                        {!! lmcTrans('laravel-product-module/admin.product_category.product_category.index', ['parent_product_category' => $parent_product_category->name_uc_first]) !!}
-                    @else
-                        {!! lmcTrans('laravel-product-module/admin.product_category.index') !!}
-                    @endif
+                    {!! lmcTrans('laravel-product-module/admin.product_category.index') !!}
                 </span>
             </div>
-            @if(isset($parent_product_category))
-                @include('laravel-modules-core::partials.common.indexActions', [
-                    'module'    => [ 'id' =>  $parent_product_category->id, 'route' => 'product_category.product_category'],
-                    'fast_add'  => false,
-                    'add'       => true,
-                    'tools'     => false
-                ])
-            @else
-                @include('laravel-modules-core::partials.common.indexActions', [
-                    'module'    => 'product_category',
-                    'fast_add'  => false,
-                    'add'       => true,
-                    'tools'     => false
-                ])
-            @endif
+            @include('laravel-modules-core::partials.common.indexActions', [
+                'module'    => 'product_category',
+                'fast_add'  => false,
+                'add'       => true,
+                'tools'     => false
+            ])
         </div>
         {{-- /Table Portlet Title and Actions --}}
 
