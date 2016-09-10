@@ -1,132 +1,87 @@
-{{-- Dealer Category --}}
+{{-- Category --}}
 <div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer_category.name') !!}</label>
-    {!! Form::hidden('category_id',0) !!}
-    <select class="form-control form-control-solid placeholder-no-fix select2me" name="category_id" style="width: 100%">
-        @if(isset($dealer) && ! is_null($dealer->category))
-            <option value="{{ $dealer->category->id }}" selected>{{ $dealer->category->name_uc_first }}</option>
+    <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product_category.name') !!}</label>
+    <select class="form-control form-control-solid placeholder-no-fix select2category select2me" name="category_id" style="width: 100%">
+        @if(isset($product) && ! is_null($product->category))
+            <option value="{{ $product->category->id }}" selected>{{ $product->category->name_uc_first }}</option>
         @endif
     </select>
 
     @if ( ! isset($helpBlockAfter) )
-        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.category_id_help') !!} </span>
+        <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.category_id_help') !!} </span>
     @endif
 
 </div>
 @if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.category_id_help') !!} </span>
+    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.category_id_help') !!} </span>
 @endif
-{{-- /Dealer Category --}}
+{{-- /Category --}}
+
+{{-- Brand --}}
+<div class="form-group">
+    <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product_brand.name') !!}</label>
+    <select class="form-control form-control-solid placeholder-no-fix select2brand select2me" name="brand_id" style="width: 100%">
+        @if(isset($product) && ! is_null($product->brand))
+            <option value="{{ $product->brand->id }}" selected>{{ $product->brand->name_uc_first }}</option>
+        @endif
+    </select>
+
+    @if ( ! isset($helpBlockAfter) )
+        <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.brand_id_help') !!} </span>
+    @endif
+
+</div>
+@if ( isset($helpBlockAfter) )
+    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.brand_id_help') !!} </span>
+@endif
+{{-- /Brand --}}
 
 {{-- Name --}}
 <div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.name') !!}</label>
-    {!! Form::text( 'name', isset($dealer) ? $dealer->name_uc_first : null, [
+    <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product.name') !!}</label>
+    {!! Form::text( 'name', isset($product) ? $product->name_uc_first : null, [
         'class'         => 'form-control form-control-solid placeholder-no-fix',
-        'placeholder'   => lmcTrans('laravel-dealer-module/admin.fields.dealer.name')
+        'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.name')
     ]) !!}
 </div>
 {{-- /Name --}}
 
-{{-- Province --}}
+{{-- Amount --}}
 <div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.province_id') !!}</label>
-    {!! Form::hidden('province_id',0) !!}
-    <select id="province_id" class="form-control form-control-solid placeholder-no-fix addresses" name="province_id" style="width: 100%">
-        @if(isset($dealer) && ! is_null($dealer->province))
-            <option value="{{ $dealer->province->id }}" selected>{{ $dealer->province->province }}</option>
-        @endif
-    </select>
+    <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product.amount') !!}</label>
+    {!! Form::text( 'amount', isset($product) ? $product->amount : null, [
+        'class'         => 'form-control form-control-solid placeholder-no-fix touchspinme',
+        'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.amount'),
+        'id'            => 'amount'
+    ]) !!}
 
     @if ( ! isset($helpBlockAfter) )
-        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.province_id') !!} </span>
+        <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.amount') !!} </span>
     @endif
-
 </div>
-@if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.province_id') !!} </span>
-@endif
-{{-- /Province --}}
 
-{{-- County --}}
+@if ( isset($helpBlockAfter) )
+    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.amount') !!} </span>
+@endif
+{{-- /Amount --}}
+
+{{-- Code --}}
 <div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.county_id') !!}</label>
-    {!! Form::hidden('county_id',0) !!}
-    <select id="county_id" class="form-control form-control-solid placeholder-no-fix addresses" name="county_id" {{ ! isset($dealer) || ( is_null($dealer->county) || is_null($dealer->county->county) ) ? 'disabled' : '' }} style="width: 100%">
-        @if(isset($dealer) && ! is_null($dealer->county))
-            <option value="{{ $dealer->county->id }}" selected>{{ $dealer->county->county }}</option>
-        @endif
-    </select>
+    <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product.code') !!}</label>
+    {!! Form::text( 'code', isset($product) ? $product->code : null, [
+        'class'         => 'form-control form-control-solid placeholder-no-fix',
+        'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.code')
+    ]) !!}
 
     @if ( ! isset($helpBlockAfter) )
-        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.county_id') !!} </span>
+        <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.code') !!} </span>
     @endif
-
 </div>
+
 @if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.county_id') !!} </span>
+    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.code') !!} </span>
 @endif
-{{-- /County --}}
-
-{{-- District --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.district_id') !!}</label>
-    {!! Form::hidden('district_id',0) !!}
-    <select id="district_id" class="form-control form-control-solid placeholder-no-fix addresses" name="district_id" {{ ! isset($dealer) || ( is_null($dealer->district) || is_null($dealer->district->district) ) ? 'disabled' : '' }} style="width: 100%">
-        @if(isset($dealer) && ! is_null($dealer->district))
-            <option value="{{ $dealer->district->id }}" selected>{{ $dealer->district->district }}</option>
-        @endif
-    </select>
-
-    @if ( ! isset($helpBlockAfter) )
-        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.district_id') !!} </span>
-    @endif
-
-</div>
-@if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.district_id') !!} </span>
-@endif
-{{-- /District --}}
-
-{{-- Neighborhood --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.neighborhood_id') !!}</label>
-    {!! Form::hidden('neighborhood_id',0) !!}
-    <select id="neighborhood_id" class="form-control form-control-solid placeholder-no-fix addresses" name="neighborhood_id" {{ ! isset($dealer) || ( is_null($dealer->neighborhood) || is_null($dealer->neighborhood->neighborhood) ) ? 'disabled' : '' }} style="width: 100%">
-        @if(isset($dealer) && ! is_null($dealer->neighborhood))
-            <option value="{{ $dealer->neighborhood->id }}" selected>{{ $dealer->neighborhood->neighborhood }}</option>
-        @endif
-    </select>
-
-    @if ( ! isset($helpBlockAfter) )
-        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.neighborhood_id') !!} </span>
-    @endif
-
-</div>
-@if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.neighborhood_id') !!} </span>
-@endif
-{{-- /Neighborhood --}}
-
-{{-- Postal Code --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.postal_code_id') !!}</label>
-    {!! Form::hidden('postal_code_id',0) !!}
-    <select id="postal_code_id" class="form-control form-control-solid placeholder-no-fix addresses" name="postal_code_id" {{ ! isset($dealer) || ( is_null($dealer->postalCode) || is_null($dealer->postalCode->postal_code) ) ? 'disabled' : '' }} style="width: 100%" readonly="readonly">
-        @if(isset($dealer) && ! is_null($dealer->postalCode))
-            <option value="{{ $dealer->postalCode->id }}" selected>{{ $dealer->postalCode->postal_code }}</option>
-        @endif
-    </select>
-
-    @if ( ! isset($helpBlockAfter) )
-        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.postal_code_id') !!} </span>
-    @endif
-
-</div>
-@if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.postal_code_id') !!} </span>
-@endif
-{{-- /Postal Code --}}
+{{-- /Code --}}
 
 {{-- Status --}}
 <div class="form-group last">
@@ -135,7 +90,7 @@
     @if ( ! isset($helpBlockAfter) )
         {!! Form::hidden('is_publish', 0) !!}
     @endif
-    {!! Form::checkbox( 'is_publish', 1, isset($dealer) ? $dealer->is_publish : null, [
+    {!! Form::checkbox( 'is_publish', 1, isset($product) ? $product->is_publish : null, [
         'class'         => 'make-switch',
         'data-on-text'  => trans('laravel-modules-core::admin.ops.publish'),
         'data-on-color' => 'success',
@@ -143,10 +98,10 @@
         'data-off-color'=> 'danger',
     ]) !!}
     @if ( ! isset($helpBlockAfter) )
-        <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.is_publish_help') !!} </span>
+        <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.is_publish_help') !!} </span>
     @endif
 </div>
 @if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer.is_publish_help') !!} </span>
+    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.is_publish_help') !!} </span>
 @endif
 {{-- /Status --}}

@@ -637,13 +637,38 @@ var DataTable = {
                 dom: "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r><'table-responsive't><'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>", // datatable layout
                 responsive: {},
                 buttons: [
-                    { extend: 'print',key: { key: 'p', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
-                    { extend: 'copyHtml5',key: { key: 'c', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions },
-                    { extend: 'pdfHtml5',key: { key: 'd', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions, title: this.options.exportTitle },
-                    { extend: 'excelHtml5',key: { key: 'e', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions, title: this.options.exportTitle },
-                    { extend: 'csvHtml5',key: { key: 'v', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions, title: this.options.exportTitle },
                     {
-                        text: 'Reload', key: { key: 'r', altKey: true, shiftKey: true }, exportOptions: this.options.exportOptions,
+                        extend: 'print',
+                        key: { key: 'p', altKey: true, shiftKey: true },
+                        exportOptions: this.options.exportOptions
+                    },
+                    {
+                        extend: 'copyHtml5',
+                        key: { key: 'c', altKey: true, shiftKey: true },
+                        exportOptions: this.options.exportOptions
+                    },
+                    {
+                        extend: 'pdfHtml5',
+                        key: { key: 'd', altKey: true, shiftKey: true },
+                        exportOptions: this.options.exportOptions,
+                        title: this.options.exportTitle
+                    },
+                    {
+                        extend: 'excelHtml5',
+                        key: { key: 'e', altKey: true, shiftKey: true },
+                        exportOptions: this.options.exportOptions,
+                        title: this.options.exportTitle
+                    },
+                    {
+                        extend: 'csvHtml5',
+                        key: { key: 'v', altKey: true, shiftKey: true },
+                        exportOptions: this.options.exportOptions,
+                        title: this.options.exportTitle
+                    },
+                    {
+                        text: 'Reload',
+                        key: { key: 'r', altKey: true, shiftKey: true },
+                        exportOptions: this.options.exportOptions,
                         action: function ( e, dt, node, config ) {
                             dt.ajax.reload();
                         }

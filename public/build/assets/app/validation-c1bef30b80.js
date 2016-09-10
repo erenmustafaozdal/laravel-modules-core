@@ -101,9 +101,16 @@ var Validation = {
                     label.remove();
                 },
                 errorPlacement: function(error, element) {
-                    if (element.hasClass('select2me') || element.hasClass('addresses')) {
+                    if (
+                        element.hasClass('select2me')
+                        || element.hasClass('addresses')
+                    ) {
                         error.insertAfter(element.next('span.select2'))
-                    } else if (element.prop('type') === 'file' || $(element).prop('id') === 'elfinder-photo') {
+                    } else if (
+                        element.prop('type') === 'file'
+                        || $(element).prop('id') === 'elfinder-photo'
+                        || element.hasClass('touchspinme')
+                    ) {
                         error.insertAfter(element.closest('div.input-group'));
                     } else {
                         error.insertAfter(element);

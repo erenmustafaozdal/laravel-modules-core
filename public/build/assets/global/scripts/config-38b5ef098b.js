@@ -359,6 +359,9 @@ var LMCApp = {
             case 'phone':
                 mask = "0(999) 999 99 99";
                 break;
+            case 'amount':
+                mask = "99.999,99";
+                break;
         }
         ops.inputmask.mask = mask;
 
@@ -536,7 +539,13 @@ var LMCApp = {
         if ($('select.select2me', target).length) {
             $('select.select2me', target).each(function()
             {
-                $(this).select2(LMCSelect2s['.select2me'].options.select2);
+                var options = LMCSelect2s['.select2me'] != undefined
+                    ? LMCSelect2s['.select2me'].options
+                    : ($(this).hasClass('select2category')
+                        ? LMCSelect2s['.select2category'].options
+                        : LMCSelect2s['.select2brand'].options
+                    );
+                $(this).select2(options.select2);
                 $(this).find('.select2-selection__clear').remove();
             });
         }
@@ -591,6 +600,7 @@ var LMCApp = {
      */
     stripTags: function(html)
     {
+        if (html == null) { return html;}
         return html.replace(/(<([^>]+)>)/ig,"");
     },
 

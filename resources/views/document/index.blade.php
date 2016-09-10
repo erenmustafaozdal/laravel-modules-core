@@ -205,7 +205,7 @@
                                 <input type="text" class="form-control form-filter input-sm" name="document" placeholder="{!! lmcTrans('laravel-document-module/admin.fields.document.document') !!}">
                             </td>
                             <td>
-                                @include('laravel-modules-core::partials.common.datatables.filterSize')
+                                @include('laravel-modules-core::partials.common.datatables.filterTouchSpin', ['id' => 'size'])
                             </td>
                             @if( ! isset($document_category))
                             <td>

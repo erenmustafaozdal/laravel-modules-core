@@ -87,6 +87,8 @@ return [
         'date_to'                           => 'Tarihine',
         'size_from'                         => 'Boyutundan',
         'size_to'                           => 'Boyutuna',
+        'amount_from'                       => 'Fiyatından',
+        'amount_to'                         => 'Fiyatına',
         // tools
         'tools'                             => 'Araçlar',
         'print'                             => 'Yazdır',

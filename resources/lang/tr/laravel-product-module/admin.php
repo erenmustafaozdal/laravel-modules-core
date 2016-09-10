@@ -92,6 +92,7 @@ return [
             'meta_title'            => 'SEO Başlık',
             'meta_description'      => 'SEO Açıklama',
             'meta_keywords'         => 'SEO Anahtar Kelimeler',
+            'main_photo'            => 'Ana Fotoğraf'
         ]
     ],
 
