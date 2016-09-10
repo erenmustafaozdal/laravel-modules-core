@@ -158,19 +158,28 @@ var Index = {
                             '<td style="width:150px; text-align:right;"> <strong>Kategori:</strong> </td>' +
                             '<td class="text-left">';
 
-                    var categoryLength = data.category.length;
-                    var i = 1;
-                    $.each(data.category, function(key,value)
+                    var categoriesLength = data.categories.length;
+                    var k = 1;
+                    $.each(data.categories, function(key, category)
                     {
-                        detail += '<a href="' + categoryURL.replace("###id###", value.id) + '"';
-                        if (i < categoryLength) {
-                            detail += ' class="text-muted"';
+                        var categoryLength = category.length;
+                        var i = 1;
+                        $.each(category, function(key,value)
+                        {
+                            detail += '<a href="' + categoryURL.replace("###id###", value.id) + '"';
+                            if (i < categoryLength) {
+                                detail += ' class="text-muted"';
+                            }
+                            detail += '> ' + value.name + ' </a>';
+                            if (i < categoryLength) {
+                                detail += '<span class="text-muted">/</span>'
+                            }
+                            i++;
+                        });
+                        if (k < categoriesLength) {
+                            detail += ', ';
                         }
-                        detail += '> ' + value.name + ' </a>';
-                        if (i < categoryLength) {
-                            detail += '<span class="text-muted">/</span>'
-                        }
-                        i++;
+                        k++;
                     });
 
                     detail += '</td>' +
@@ -277,27 +286,36 @@ var Index = {
                         { data: "name", name: "name" },
                         // code
                         { data: "code", name: "code", className: 'text-center' },
-                        // category
+                        // categories
                         {
-                            data: "category", name: "category",
+                            data: "categories", name: "categories",
                             render: function ( data, type, full, meta )
                             {
-                                var category = '';
-                                var categoryLength = data.length;
-                                var i = 1;
-                                $.each(data, function(key,value)
+                                var categories = '';
+                                var categoriesLength = data.length;
+                                var k = 1;
+                                $.each(data, function(key, category)
                                 {
-                                    category += '<a href="' + categoryURL.replace("###id###", value.id) + '"';
-                                    if (i < categoryLength) {
-                                        category += ' class="text-muted"';
+                                    var categoryLength = category.length;
+                                    var i = 1;
+                                    $.each(category, function(key,value)
+                                    {
+                                        categories += '<a href="' + categoryURL.replace("###id###", value.id) + '"';
+                                        if (i < categoryLength) {
+                                            categories += ' class="text-muted"';
+                                        }
+                                        categories += '> ' + value.name + ' </a>';
+                                        if (i < categoryLength) {
+                                            categories += '<span class="text-muted">/</span>'
+                                        }
+                                        i++;
+                                    });
+                                    if (k < categoriesLength) {
+                                        categories += ', ';
                                     }
-                                    category += '> ' + value.name + ' </a>';
-                                    if (i < categoryLength) {
-                                        category += '<span class="text-muted">/</span>'
-                                    }
-                                    i++;
+                                    k++;
                                 });
-                                return category;
+                                return categories;
                             }
                         },
                         // brand
