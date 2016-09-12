@@ -166,11 +166,9 @@ var Index = {
                         var i = 1;
                         $.each(category, function(key,value)
                         {
-                            detail += '<a href="' + categoryURL.replace("###id###", value.id) + '"';
-                            if (i < categoryLength) {
-                                detail += ' class="text-muted"';
-                            }
-                            detail += '> ' + value.name + ' </a>';
+                            detail += '<span';
+                            detail += i < categoryLength ? ' class="text-muted"' : ' class="text-info"';
+                            detail += '> ' + value.name + ' </span>';
                             if (i < categoryLength) {
                                 detail += '<span class="text-muted">/</span>'
                             }
@@ -304,7 +302,7 @@ var Index = {
                                         if (i < categoryLength) {
                                             categories += ' class="text-muted"';
                                         }
-                                        categories += '> ' + value.name + ' </a>';
+                                        categories += '>' + value.name + '</a>';
                                         if (i < categoryLength) {
                                             categories += '<span class="text-muted">/</span>'
                                         }
@@ -413,7 +411,7 @@ var Index = {
                             submitAjax: function(validation)
                             {
                                 var url, type, message_success, title_success, message_error, title_error, datas = {
-                                    category_id: validation.form.find('select[name="category_id"]').val(),
+                                    category_id: validation.form.find('select[name="category_id[]"]').val(),
                                     brand_id: validation.form.find('select[name="brand_id"]').val(),
                                     name: validation.form.find('input[name="name"]').val(),
                                     amount: validation.form.find('input[name="amount"]').val(),

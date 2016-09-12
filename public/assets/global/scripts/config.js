@@ -539,12 +539,15 @@ var LMCApp = {
         if ($('select.select2me', target).length) {
             $('select.select2me', target).each(function()
             {
-                var options = LMCSelect2s['.select2me'] != undefined
-                    ? LMCSelect2s['.select2me'].options
-                    : ($(this).hasClass('select2category')
-                        ? LMCSelect2s['.select2category'].options
-                        : LMCSelect2s['.select2brand'].options
-                    );
+                var options;
+                if ( LMCSelect2s['.select2me'] != undefined ) {
+                    options = LMCSelect2s['.select2me'];
+                } else if ( $(this).hasClass('select2category') ) {
+                    options = LMCSelect2s['.select2category'];
+                } else {
+                    options = LMCSelect2s['.select2brand'];
+                }
+
                 $(this).select2(options.select2);
                 $(this).find('.select2-selection__clear').remove();
             });

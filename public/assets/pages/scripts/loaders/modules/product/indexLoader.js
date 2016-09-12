@@ -27,17 +27,6 @@
 
         // bootstrap touch spins init
         LMCApp.initTouchSpin({
-            src:'#amount',
-            touchspin: {
-                max: 99999,
-                decimals: 2,
-                step: 10,
-                postfix: '₺',
-                buttondown_class: "btn red btn-outline",
-                buttonup_class: "btn green btn-outline"
-            }
-        });
-        LMCApp.initTouchSpin({
             src:'#amount_from',
             touchspin: {
                 max: 99999,
@@ -55,7 +44,7 @@
                 postfix: '₺'
             }
         });
-        $('input[name="amount"], input[name="amount_from"],input[name="amount_to"]').on('change',function(e)
+        $('input[name="amount_from"],input[name="amount_to"]').on('change',function(e)
         {
             var val = $(this).val();
             $(this).val(val.replace('.', ','));

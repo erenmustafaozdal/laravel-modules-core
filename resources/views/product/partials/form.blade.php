@@ -1,9 +1,11 @@
 {{-- Category --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product_category.name') !!}</label>
-    <select class="form-control form-control-solid placeholder-no-fix select2category select2me" name="category_id" style="width: 100%">
-        @if(isset($product) && ! is_null($product->category))
-            <option value="{{ $product->category->id }}" selected>{{ $product->category->name_uc_first }}</option>
+    <select class="form-control form-control-solid placeholder-no-fix select2category select2me" multiple name="category_id[]" style="width: 100%">
+        @if(isset($product))
+            @foreach($product->categories as $category)
+                <option value="{{ $category->id }}" selected>{{ $category->name_uc_first }}</option>
+            @endforeach
         @endif
     </select>
 
@@ -49,11 +51,16 @@
 {{-- Amount --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product.amount') !!}</label>
-    {!! Form::text( 'amount', isset($product) ? $product->amount : null, [
-        'class'         => 'form-control form-control-solid placeholder-no-fix touchspinme',
-        'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.amount'),
-        'id'            => 'amount'
-    ]) !!}
+    <div class="input-group">
+        {!! Form::text( 'amount', isset($product) ? $product->amount : null, [
+            'class'         => 'form-control form-control-solid placeholder-no-fix input-group-element',
+            'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.amount'),
+            'id'            => 'amount'
+        ]) !!}
+        <span class="input-group-addon">
+            <i class="fa fa-try font-dark"></i>
+        </span>
+    </div>
 
     @if ( ! isset($helpBlockAfter) )
         <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.amount') !!} </span>

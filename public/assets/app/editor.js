@@ -120,9 +120,13 @@ var Editor = {
 
                     // categories gelince
                     if (value != null && typeof value == 'object') {
-                        $('select.select2me[name="' + key + '"]', theEditor.form).each(function () {
+                        var className = LMCSelect2s['.select2me'] != undefined ? 'select2me' : 'select2category';
+
+                        $('select.' + className +'[name="' + key + '"]', theEditor.form).each(function () {
+                            var element = $(this);
                             $.each(value, function (index, item) {
-                                $(this).append('<option value="' + item.id + '" selected>' + item.name + '</option>').trigger('change');
+
+                                element.append('<option value="' + item.id + '" selected>' + item.name + '</option>').trigger('change');
                             });
                         });
                     }

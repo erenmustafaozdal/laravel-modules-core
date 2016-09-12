@@ -110,6 +110,7 @@ var Validation = {
                         element.prop('type') === 'file'
                         || $(element).prop('id') === 'elfinder-photo'
                         || element.hasClass('touchspinme')
+                        || element.hasClass('input-group-element')
                     ) {
                         error.insertAfter(element.closest('div.input-group'));
                     } else {
