@@ -66,7 +66,6 @@
         @else
             var modelsURL = "{!! route('api.dealer_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.dealer_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

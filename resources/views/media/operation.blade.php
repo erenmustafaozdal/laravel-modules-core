@@ -81,7 +81,6 @@
         @else
             var modelsURL = "{!! route('api.media_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.media_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
