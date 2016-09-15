@@ -82,17 +82,26 @@ return [
         ],
         'product_showcase' => [
             'name'                  => 'Vitrin Adı',
+            'order'                 => 'Vitrin Sırası',
+            'first'                 => 'İlk',
+            'first_ten'             => 'İlk On',
+            'first_hundred'         => 'İlk Yüz',
+            'random'                => 'Rastgele',
+            'last'                  => 'Son',
+            'clear'                 => 'Net Sıra',
         ],
         'product' => [
             'name'                  => 'Ad',
             'amount'                => 'Fiyat',
             'code'                  => 'Kod',
+            'photo'                 => 'Ürün Fotoğrafları',
             'short_description'     => 'Kısa Açıklama',
             'description'           => 'Açıklama',
             'meta_title'            => 'SEO Başlık',
             'meta_description'      => 'SEO Açıklama',
             'meta_keywords'         => 'SEO Anahtar Kelimeler',
-            'main_photo'            => 'Ana Fotoğraf'
+            'main_photo'            => 'Ana Fotoğraf',
+            'product_detail'        => 'Ürün Detayları'
         ]
     ],
 
@@ -112,6 +121,16 @@ return [
             'meta_title_help'               => 'Arama motorlarını bilgilendirmek amacıyla içerik başlığı yazın.',
             'meta_description_help'         => 'Arama motorlarını bilgilendirmek amacıyla içerik açıklaması yazın.',
             'meta_keywords_help'            => 'Arama motorlarını bilgilendirmek amacıyla içerik ile ilgili anahtar kelimeler yazın. Anahtar kelimeler arasına <em class="label label-info">virgül (,)</em> koyun.',
+        ],
+        'product_showcase' => [
+            'type'              => '<h4>Ürünü Vitrinlere Ekle</h4>' .
+                '<p class="margin-bottom-10">Ürünü aşağıda bulunan vitrinlere ekle ve sıralamasını belirle. Sıralama belirleme yöntemleri:</p>',
+            'first'             => 'Bu seçenek ürünü ilgili vitrinde <span class="label label-info">ilk sıraya</span> yerleştirir. Bu durumda daha önce ilk sıraya yerleştirilmiş olan ürün ve sonrasındaki ürünler birer kaydırılır.',
+            'first_ten'         => 'Bu seçenek ürünü ilgili vitrinde rastgele <span class="label label-info">ilk on sırada</span> her hangi bir yere yerleştirir. Ürünün yerleştirildiği sırada daha önce bulunan ürün ve sonrasındaki ürünler birer kaydırılır.',
+            'first_hundred'     => 'Bu seçenek ürünü ilgili vitrinde rastgele <span class="label label-info">ilk yüz sırada</span> her hangi bir yere yerleştirir. Ürünün yerleştirildiği sırada daha önce bulunan ürün ve sonrasındaki ürünler birer kaydırılır.',
+            'random'            => 'Bu seçenek ürünü ilgili vitrinde rastgele her hangi bir yere yerleştirir. Ürünün yerleştirildiği sırada daha önce bulunan ürün ve sonrasındaki ürünler birer kaydırılır.',
+            'last'              => 'Bu seçenek ürünü ilgili vitrinde <span class="label label-info">en son sıraya</span> yerleştirir.',
+            'clear'             => 'Bu seçenekte ürünün ilgili vitrindeki sırasını yan tarafında bulunan alanda sayı vererek belirle. Bu durumda ürünün yerleştirildiği sırada daha önce bulunan ürün ve sonrasındaki ürünler birer kaydırılır. Bu seçenekte belirteceğin <span class="label label-info">1</span>, <span class="label label-info">İlk</span> sıraya yerleştir yöntemi ile aynı anlama gelmektedir.',
         ]
     ],
 

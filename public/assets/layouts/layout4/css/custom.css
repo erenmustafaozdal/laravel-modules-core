@@ -48,3 +48,8 @@ div.bootstrap-touchspin button.btn-outline {
 body.modal-open {
     overflow: hidden !important;
 }
+
+/* Bootstrap Fileinput */
+.file-preview-frame {
+    width: 46% !important;
+}

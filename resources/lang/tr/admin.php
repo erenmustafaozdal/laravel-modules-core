@@ -60,7 +60,7 @@ return [
         'activate'                          => 'Aktifleştir',
         'not_activate'                      => 'Aktifliği kaldır',
         'active'                            => 'Aktif',
-        'not_active'                        => 'Aktif Değil',
+        'not_active'                        => 'Pasif',
         'publish'                           => 'Yayınla',
         'not_publish'                       => 'Yayından kaldır',
         'published'                         => 'Yayında',
@@ -123,6 +123,7 @@ return [
         'edit_info'                         => 'Bilgileri Düzenle',
         'content_info'                      => 'İçerik Bilgisi',
         'seo'                               => 'SEO Bilgileri',
+        'showcase'                          => 'Vitrin Bilgileri',
         'detail'                            => 'Detaylar',
 
         'file_manager'                      => 'Dosya Yöneticisi',
