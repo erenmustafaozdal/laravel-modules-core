@@ -37,8 +37,6 @@
         'label'         => lmcTrans('laravel-document-module/admin.fields.document.document'),
         'input_name'    => 'document',
         'input_id'      => 'document',
-        'jcrop'         => false,
-        'ratio'         => false,
         'elfinder'      => true,
         'elfinder_id'   => 'elfinder-document'
     ])

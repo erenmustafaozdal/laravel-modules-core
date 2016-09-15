@@ -20,8 +20,6 @@
         'label'         => lmcTrans('laravel-description-module/admin.fields.description.photo'),
         'input_name'    => 'photo',
         'input_id'      => 'photo',
-        'jcrop'         => false,
-        'ratio'         => config('laravel-description-module.description.uploads.photo.aspect_ratio'),
         'elfinder'      => ( isset($description) && $description->category->is_multiple_photo ) || ( isset($description_category) && $description_category->is_multiple_photo ) || (! isset($description_category) && ! isset($description) ) ? false : true,
         'elfinder_id'   => 'elfinder-photo',
         'multiple'      => isset($description) ? $description->category->is_multiple_photo : ( isset($description_category) ? $description_category->is_multiple_photo : false )

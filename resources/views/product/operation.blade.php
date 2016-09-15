@@ -175,6 +175,15 @@
                         formSrc: '',
                         fileinput: {
                             uploadUrl: '',
+                            uploadExtraData: function (previewId, index)
+                            {
+                                return {
+                                    x: $("input[name='x[]']").map(function(){return $(this).val();}).get(),
+                                    y: $("input[name='y[]']").map(function(){return $(this).val();}).get(),
+                                    width: $("input[name='width[]']").map(function(){return $(this).val();}).get(),
+                                    height: $("input[name='height[]']").map(function(){return $(this).val();}).get(),
+                                };
+                            },
                             language: 'tr',
                             allowedFileExtensions: ['jpg', 'jpeg', 'png'],
                             allowedFileTypes: ['image'],
@@ -231,19 +240,21 @@
                         // events
                         filebrowse: function(event)
                         {
-                            //
+                            theLMCJcrop.jcropReset();
                         },
                         fileloaded: function(event, file, previewId, index, reader)
                         {
-                            //
+                            // init tooltips
+                            LMCApp.initTooltips();
+                            LMCJcrop.init();
                         },
                         filecleared: function(event)
                         {
-                            //
+                            theLMCJcrop.jcropReset();
                         },
                         filereset: function(event)
                         {
-                            //
+                            theLMCJcrop.jcropReset();
                         },
                         fileuploaded: function(event, data, previewId, index)
                         {
@@ -277,36 +288,24 @@
                  * @var object
                  */
                 elementsSrc: {
-                    jcropWrapperSrc: '#jcrop-preview',
-                    imgJcropSrc: '#img-jcrop',
-                    imgJcropPreviewSrc: '#img-jcrop-preview',
-                    imgJcropPreviewPaneWrapperSrc: '#preview-pane-wrapper',
-                    imgJcropPreviewPaneSrc: '#preview-pane',
-                    imgJcropPreviewContainerSrc: '#preview-pane .preview-container',
-                    imgCropCancelBtnSrc: '#image-crop-cancel'
+                    imgJcropSrc: '.jcrop-item'
                 },
 
                 /**
                  * jcrop jquery elements
                  */
-                jcropWrapper: null,
                 imgJcrop: null,
-                imgJcropPreview: null,
-                imgJcropPreviewPaneWrapper: null,
-                imgJcropPreviewPane: null,
-                imgJcropPreviewContainer: null,
-                imgCropCancelBtn: null,
 
                 /**
                  * jcrop options
                  * @var object
                  */
-                options: {},
+                options: [],
 
                 /**
                  * jcrop jquery elements
                  */
-                element: null,
+                elements: [],
 
                 /**
                  * original image
@@ -334,9 +333,8 @@
 
                 /**
                  * jcrop init function
-                 * @param options
                  */
-                init: function(options)
+                init: function()
                 {
                     // if element is not setup; setup it
                     if ( ! theLMCJcrop) {
@@ -349,7 +347,7 @@
                     }
 
                     // default settings
-                    this.options = $.extend(true, this.getDefaultOptions(), options);
+                    this.options = this.getDefaultOptions();
 
                     // jquery crop jquery elements
                     this.element = $(this.options.src);
@@ -539,6 +537,13 @@
                                         {width: theLMCJcrop.boundx, height: theLMCJcrop.boundy},
                                         false
                                 ));
+                            },
+                            onRelease: function()
+                            {
+                                $('input[name="x[]"]').val(0);
+                                $('input[name="y[]"]').val(0);
+                                $('input[name="width[]"]').val(0);
+                                $('input[name="height[]"]').val(0);
                             }
                         }
                     };

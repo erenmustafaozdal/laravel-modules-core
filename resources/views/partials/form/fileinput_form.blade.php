@@ -36,32 +36,6 @@
                 {!! trans('laravel-modules-core::admin.helpers.fileinput') !!}
             </span>
 
-            {{-- template photo preview before crop --}}
-            @if(isset($jcrop) && $jcrop)
-                <div class="note note-info margin-bottom-25 hidden" id="jcrop-preview">
-                    <div class="row">
-                        <div class="col-md-8 responsive-1024">
-                            <h4>{!! trans('laravel-modules-core::admin.ops.crop_image') !!}</h4>
-                            <img class="img-responsive" src="" id="img-jcrop">
-                        </div>
-                        <div class="col-md-4 responsive-1024" id="preview-pane-wrapper">
-                            <div id="preview-pane">
-                                <div class="preview-container" {!! isset($ratio) ? 'style="width:150px; height:' . 150/$ratio . 'px"': '' !!}>
-                                    <img class="jcrop-preview" src="" id="img-jcrop-preview">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-12 margin-top-10">
-                            <button type="button" class="btn red btn-outline" id="image-crop-cancel">
-                                <i class="fa fa-times"></i>
-                                {!! trans('laravel-modules-core::admin.ops.cancel') !!}
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            @endif
-            {{-- /template photo preview before crop --}}
-
             {{-- Fileinput file element --}}
             <div class="form-group">
                 <input type="file"
@@ -72,15 +46,6 @@
                 >
             </div>
             {{-- /Fileinput file element --}}
-
-            {{-- Jcrop Form Elements --}}
-            @if(isset($jcrop) && $jcrop)
-                {!! Form::hidden('x', null, ['id' => 'x']) !!}
-                {!! Form::hidden('y', null, ['id' => 'y']) !!}
-                {!! Form::hidden('width', null, ['id' => 'width']) !!}
-                {!! Form::hidden('height', null, ['id' => 'height']) !!}
-            @endif
-            {{-- /Jcrop Form Elements --}}
 
         </div>
         {{-- /Fileinput Content --}}

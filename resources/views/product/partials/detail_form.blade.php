@@ -28,8 +28,6 @@
     'label'         => lmcTrans('laravel-product-module/admin.fields.product.photo'),
     'input_name'    => 'photo',
     'input_id'      => 'photo',
-    'jcrop'         => true,
-    'ratio'         => config('laravel-product-module.product.uploads.photo.aspect_ratio'),
     'elfinder'      => true,
     'elfinder_id'   => 'elfinder-photo',
     'multiple'      => true
