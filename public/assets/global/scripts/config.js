@@ -106,7 +106,8 @@ var LMCApp = {
                 write_here: 'Buraya yaz...',
                 relations: 'İlişkili Veriler',
                 relation_categories: 'İlişkili Kategoriler',
-                file_manager: 'Dosya Yöneticisinden'
+                file_manager: 'Dosya Yöneticisinden',
+                set_main_photo: 'Ana Fotoğraf Yap'
             },
             flash: {
                 store_success: {

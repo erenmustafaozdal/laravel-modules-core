@@ -102,6 +102,41 @@ var Index = {
                 }
             });
         });
+
+        // set main photo
+        $(DataTable.tableOptions.src + ' tbody').on('click', 'a.set-main-photo', function () {
+            var el = $(this);
+            $.ajax({
+                url: setMainPhotoURL.replace('###id###',el.data('parent-id')),
+                data: {id: el.data('element-id')},
+                success: function (data)
+                {
+                    if (data.result !== 'success') {
+                        LMCApp.getNoty({
+                            message: LMCApp.lang.admin.flash.update_error.message,
+                            title: LMCApp.lang.admin.flash.update_error.title,
+                            type: 'error'
+                        });
+                        return;
+                    }
+                    LMCApp.getNoty({
+                        message: LMCApp.lang.admin.flash.update_success.message,
+                        title: LMCApp.lang.admin.flash.update_success.title,
+                        type: 'success'
+                    });
+
+                    var ribbon = el.closest('td').find('.ribbon');
+                    var oldMain = ribbon.next().find('a.remove-element');
+                    var elementId = oldMain.data('element-id');
+                    var parentId = oldMain.data('parent-id');
+                    ribbon.prependTo(el.closest('.mt-element-overlay'));
+                    oldMain.closest('ul.mt-info').append('<li></li>');
+                    el.data('element-id', elementId).attr('data-element-id', elementId)
+                        .data('parent-id',parentId).attr('data-parent-id',parentId)
+                        .appendTo(oldMain.closest('ul.mt-info').find('li').last());
+                }
+            });
+        });
     },
 
     /**
@@ -220,7 +255,31 @@ var Index = {
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Vitrinler:</strong> </td>' +
-                            '<td class="text-left">' + ( data.showcases == null ? '' : data.showcases ) + '</td>' +
+                            '<td class="text-left">';
+
+                    if (data.showcases.length > 0) {
+                        detail += '<table class="child-table table table-striped table-bordered table-advance table-hover">' +
+                            '<thead>' +
+                                '<tr>' +
+                                    '<th> Vitrin Adı </th>' +
+                                    '<th> Ürün Sıralaması </th>' +
+                                '</tr>' +
+                            '</thead>' +
+                            '<tbody>';
+
+                        $.each(data.showcases, function(key,value)
+                        {
+                            detail += '<tr>' +
+                                '<td class="highlight"> <div class="warning"> </div> ' + value.name + '</td>' +
+                                '<td>' + value.pivot.order + '</td>' +
+                            '</tr>';
+                        });
+
+                        detail += '</tbody>' +
+                        '</table>';
+                    }
+
+                    detail += '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
@@ -237,22 +296,35 @@ var Index = {
                             '<td class="text-left">';
                         $.each(data.photos, function(key,value)
                         {
-                            detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5 element-wrapper">' +
-                                '<div class="mt-element-overlay mt-element-ribbon">';
+                            detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5 element-wrapper  mt-element-ribbon photo-ribbon">' +
+                                '<div class="mt-element-overlay">';
 
                             if (value.id == data.photo_id) {
-                                detail += '<div class="ribbon ribbon-vertical-left ribbon-border-dash-vert ribbon-color-danger uppercase">' +
+                                detail += '<div class="ribbon ribbon-left ribbon-vertical-left ribbon-shadow ribbon-border-dash-vert ribbon-color-primary uppercase tooltips" data-container="body" data-original-title="Ana Fotoğraf">' +
                                         '<div class="ribbon-sub ribbon-bookmark"></div>' +
-                                        '<i class="fa fa-heart"></i>' +
+                                        '<i class="fa fa-star"></i>' +
                                     '</div>';
                             }
 
-                            detail += '<div class="mt-overlay-2">' +
+                            detail += '<div class="mt-overlay-2 mt-overlay-2-icons">' +
                                         '<img src="' + value.photo +'">' +
                                         '<div class="mt-overlay">' +
-                                            '<a href="javascript:;" class="mt-info btn red btn-outline remove-element" data-element-id="' + value.id + '" data-parent-id="' + data.id + '"> ' +
-                                                LMCApp.lang.admin.ops.destroy +
-                                            '</a>' +
+                                            '<ul class="mt-info">' +
+                                                '<li>' +
+                                                    '<a href="javascript:;" class="btn red btn-outline remove-element tooltips" data-element-id="' + value.id + '" data-parent-id="' + data.id + '" data-container="body" data-original-title="' + LMCApp.lang.admin.ops.destroy + '"> ' +
+                                                        '<i class="fa fa-trash"></i>' +
+                                                    '</a>' +
+                                                '</li>';
+
+                            if (value.id != data.photo_id) {
+                                detail += '<li>' +
+                                        '<a href="javascript:;" class="btn blue btn-outline set-main-photo tooltips" data-element-id="' + value.id + '" data-parent-id="' + data.id + '" data-container="body" data-original-title="' + LMCApp.lang.admin.ops.set_main_photo + '"> ' +
+                                            '<i class="fa fa-share"></i>' +
+                                        '</a>' +
+                                    '</li>';
+                            }
+
+                            detail += '</ul>' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>' +
@@ -279,7 +351,17 @@ var Index = {
                         // id
                         { data: "id", name: "id", className: 'text-center' },
                         // mainPhoto
-                        { data: "main_photo", name: "main_photo", searchable: false, orderable: false, className: 'text-center'},
+                        {
+                            data: "main_photo", name: "main_photo",
+                            searchable: false, orderable: false, className: 'text-center',
+                            render: function ( data, type, full, meta )
+                            {
+                                if (data != null ) {
+                                    return '<img src="' + data + '" width="100">';
+                                }
+                                return '';
+                            }
+                        },
                         // name
                         { data: "name", name: "name" },
                         // code

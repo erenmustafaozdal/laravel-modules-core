@@ -8,7 +8,7 @@
     <h1>
         {!! lmcTrans("laravel-product-module/admin.product.{$operation}") !!}
         <small>
-            {!! lmcTrans("laravel-product-module/admin.product.{$operation}_description", [
+            {!! lmcTrans("laravel-product-module/admin.product.{$operation}_product", [
                 'product' => $operation === 'edit' ? $product->title_uc_first : null
             ]) !!}
         </small>
@@ -50,7 +50,7 @@
         @endif
         var categoriesURL = "{!! route('api.product_category.models') !!}";
         var brandsURL = "{!! route('api.product_brand.models') !!}";
-        var removePhotoURL = "{!! route('api.description.removePhoto', ['id' => '###id###']) !!}";
+        var removePhotoURL = "{!! route('api.product.removePhoto', ['id' => '###id###']) !!}";
         var tinymceURL = "{!! route('elfinder.tinymce4') !!}";
         {{-- /routes --}}
 
@@ -61,10 +61,10 @@
             name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
             amount: { required: "{!! LMCValidation::getMessage('amount','required') !!}" }
         };
-        var validExtension = "{!! config('laravel-description-module.description.uploads.photo.mimes') !!}";
-        var maxSize = "{!! config('laravel-description-module.description.uploads.photo.max_size') !!}";
-        var maxFile = "{!! config('laravel-description-module.description.uploads.multiple_photo.max_file') !!}";
-        var aspectRatio = "{!! config('laravel-description-module.description.uploads.photo.aspect_ratio') !!}";
+        var validExtension = "{!! config('laravel-product-module.product.uploads.photo.mimes') !!}";
+        var maxSize = "{!! config('laravel-product-module.product.uploads.photo.max_size') !!}";
+        var maxFile = "{!! config('laravel-product-module.product.uploads.multiple_photo.max_file') !!}";
+        var aspectRatio = "{!! config('laravel-product-module.product.uploads.photo.aspect_ratio') !!}";
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/product/operation.js') !!}"></script>

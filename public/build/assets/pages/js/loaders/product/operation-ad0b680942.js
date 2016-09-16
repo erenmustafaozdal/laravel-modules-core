@@ -28,19 +28,14 @@
                 greedy: false
             }
         });
-        // showcase touchspin
-        LMCApp.initTouchSpin({
-            src:'.showcase-order',
-            touchspin: {
-                max: 99999,
-                step: 10,
-                buttondown_class: "btn red btn-outline",
-                buttonup_class: "btn green btn-outline"
-            }
-        });
     });
     $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
     {
+        Select2.init({
+            select2: {
+                ajax: null
+            }
+        });
         Select2.init({
             src: '.select2category',
             select2: {
@@ -85,11 +80,6 @@
                 ajax: {
                     url: brandsURL
                 }
-            }
-        });
-        Select2.init({
-            select2: {
-                ajax: null
             }
         });
     });

@@ -158,6 +158,8 @@ var DataTable = {
                             row.child(theDataTable.tableOptions.getDetailTableFormat(data.data[0])).show();
                             tr.addClass('parent').next().addClass('child').children('td').addClass('child');
                         }
+                    }).done(function (data) {
+                        LMCApp.initTooltips();
                     });
                 }
             });

@@ -1881,6 +1881,14 @@ div.mce-fullscreen {
 .lmcDataTable .table-light > tbody > tr > td {
     vertical-align: top !important;
 }
+.child-table tr > td:first-child, .child-table tr > th:first-child {
+    text-align: left !important;
+    padding-left: 10px !important;
+}
+.table-advance td.highlight div.warning {
+    position: relative !important;
+    margin-right: 5px !important;
+}
 
 /* Bootstrap Touch Spin */
 div.bootstrap-touchspin button.btn-outline {
@@ -1912,4 +1920,10 @@ body.modal-open {
 /* Bootstrap Fileinput */
 .file-preview-frame {
     width: 46% !important;
+}
+
+/* mt ribbon with photo */
+.photo-ribbon .ribbon {
+    margin: -2px 0 0 10px !important;
+    position: absolute !important;
 }

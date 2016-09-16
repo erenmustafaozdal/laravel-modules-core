@@ -65,6 +65,9 @@ var LMCFileinput = {
             LMCFileinput.disable(fileinput);
         });
 
+        // jcrop init
+        LMCJcrop.init();
+
     },
 
     /**
@@ -105,6 +108,15 @@ var LMCFileinput = {
             formSrc: '',
             fileinput: {
                 uploadUrl: '',
+                uploadExtraData: function (previewId, index)
+                {
+                    return {
+                        x: $("input[name='x[]']").map(function(){return $(this).val();}).get(),
+                        y: $("input[name='y[]']").map(function(){return $(this).val();}).get(),
+                        width: $("input[name='width[]']").map(function(){return $(this).val();}).get(),
+                        height: $("input[name='height[]']").map(function(){return $(this).val();}).get()
+                    };
+                },
                 language: 'tr',
                 allowedFileExtensions: ['jpg', 'jpeg', 'png'],
                 allowedFileTypes: ['image'],
@@ -144,24 +156,38 @@ var LMCFileinput = {
                     zoomIcon: '<i class="icon-magnifier-add"></i> ',
                     zoomClass: 'btn btn-xs purple btn-outline tooltips'
                 },
-                showAjaxErrorDetails: false
+                showAjaxErrorDetails: false,
+                previewTemplates: {
+                    image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                    '   <div class="kv-file-content">' +
+                    '       <img id="img-{previewId}" src="{data}" class="kv-preview-data file-preview-image jcrop-item" title="{caption}" alt="{caption}">\n' +
+                    '   </div>\n' +
+                    '   {footer}\n' +
+                    '   <input type="hidden" class="crop-x" name="x[]" value="0">\n' +
+                    '   <input type="hidden" class="crop-y" name="y[]" value="0">\n' +
+                    '   <input type="hidden" class="crop-width" name="width[]" value="0">\n' +
+                    '   <input type="hidden" class="crop-height" name="height[]" value="0">\n' +
+                    '</div>\n',
+                }
             },
             // events
             filebrowse: function(event)
             {
-                //
+                theLMCJcrop.jcropReset();
             },
             fileloaded: function(event, file, previewId, index, reader)
             {
-                //
+                // init tooltips
+                LMCApp.initTooltips();
+                theLMCJcrop.setupElement(previewId);
             },
             filecleared: function(event)
             {
-                //
+                theLMCJcrop.jcropReset();
             },
             filereset: function(event)
             {
-                //
+                theLMCJcrop.jcropReset();
             },
             fileuploaded: function(event, data, previewId, index)
             {

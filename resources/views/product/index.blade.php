@@ -50,6 +50,7 @@
         var apiStoreURL = "{!! route('api.product.store') !!}";
         var apiGroupAction = "{!! route('api.product.group') !!}";
         var removePhotoURL = "{!! route('api.product.removePhoto', ['id' => '###id###']) !!}";
+        var setMainPhotoURL = "{!! route('api.product.setMainPhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

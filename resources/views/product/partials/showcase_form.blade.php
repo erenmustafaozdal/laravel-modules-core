@@ -29,13 +29,13 @@
                     <input type="checkbox" class="showcase-checkbox">
                 </span>
                 <select class="form-control form-control-solid placeholder-no-fix select2me showcase-type"
-                        name="showcase[{{ $showcase->id }}]"
+                        name="showcase_id[{{ $showcase->id }}][type]"
                         style="width: 100%"
                         disabled
                 >
                     <option></option>
                     @foreach(config('laravel-product-module.product_showcase.type') as $type)
-                        <option name="showcase[{{ $showcase->id }}]['type']" value="{!! $type !!}">
+                        <option value="{!! $type !!}">
                             {!! lmcTrans("laravel-product-module/admin.fields.product_showcase.{$type}") !!}
                         </option>
                     @endforeach
@@ -46,7 +46,7 @@
 
         {{-- Showcase Order --}}
         <div class="col-md-6">
-            {!! Form::text( "showcase[{$showcase->id}][order]", null, [
+            {!! Form::text( "showcase_id[{$showcase->id}][order]", null, [
                 'class'         => 'form-control form-control-solid placeholder-no-fix showcase-order',
                 'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product_showcase.order'),
                 'disabled'      => true
