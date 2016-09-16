@@ -19,7 +19,6 @@ var Index = {
         fileActionSettings: {
             showUpload: false
         },
-        otherActionButtons: '<button type="button" id="image-crop-action" class="btn btn-xs yellow btn-outline tooltips" data-toggle="modal" title="' + LMCApp.lang.admin.ops.crop + '"><i class="icon-crop"></i> </button>',
         uploadExtraData: function (previewId, index) {
             var form = $('.form');
             return {
@@ -27,10 +26,10 @@ var Index = {
                 title: form.find('input[name="title"]').val(),
                 description: form.find('textarea[name="description"]').val(),
                 is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state'),
-                x: form.find('input#x[name="x"]').val(),
-                y: form.find('input#y[name="y"]').val(),
-                width: form.find('input#width[name="width"]').val(),
-                height: form.find('input#height[name="height"]').val()
+                x: $("input[name='x[]']").map(function(){return $(this).val();}).get(),
+                y: $("input[name='y[]']").map(function(){return $(this).val();}).get(),
+                width: $("input[name='width[]']").map(function(){return $(this).val();}).get(),
+                height: $("input[name='height[]']").map(function(){return $(this).val();}).get()
             };
         },
         ajaxSettings: {
@@ -87,9 +86,6 @@ var Index = {
 
         // LMCFileinput app is init
         LMCFileinput.init(this.options.Fileinput);
-
-        // LMCJcrop app element is setup
-        LMCJcrop.setupElements();
 
         // publish model
         $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-publish',function()
@@ -486,55 +482,9 @@ var Index = {
             },
             Fileinput: {
                 src: '#photo',
-                fileinput: ModelIndex.fileinputOptions,
-                // events
-                filebrowse: function(event)
-                {
-                    theLMCJcrop.jcropReset();
-                },
-                fileloaded: function(event, file, previewId, index, reader)
-                {
-                    // init tooltips
-                    LMCApp.initTooltips();
-                    // image crop action button click
-                    $('#image-crop-action').on('click', function(event)
-                    {
-                        // jcrop init
-                        theLMCJcrop.jcropPreInit(reader.result)
-                            .init(ModelIndex.getJcropInitOptions());
-                    });
-                    // image crop cancel button click
-                    theLMCJcrop.imgCropCancelBtn.on('click', function(event)
-                    {
-                        theLMCJcrop.jcropReset();
-                    });
-                },
-                filecleared: function(event)
-                {
-                    theLMCJcrop.jcropReset();
-                },
-                filereset: function(event)
-                {
-                    theLMCJcrop.jcropReset();
-                }
+                fileinput: ModelIndex.fileinputOptions
             }
         }
-    },
-
-    /**
-     * get jquery crop init options
-     */
-    getJcropInitOptions: function()
-    {
-        return {
-            jcrop: {
-                aspectRatio: aspectRatio,
-                onRelease: function()
-                {
-                    $('form.form').find('input[type="hidden"]').val('');
-                }
-            }
-        };
     }
 
 };

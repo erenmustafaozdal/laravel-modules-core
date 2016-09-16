@@ -43,7 +43,7 @@ var Operation = {
         });
 
         // LMCFileinput app is init
-        //LMCFileinput.init(this.getPhotoFileinputOptions());
+        LMCFileinput.init(this.getPhotoFileinputOptions());
 
         // remove photo
         $('a.remove-element').on('click', function()
