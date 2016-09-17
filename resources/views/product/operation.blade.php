@@ -8,8 +8,8 @@
     <h1>
         {!! lmcTrans("laravel-product-module/admin.product.{$operation}") !!}
         <small>
-            {!! lmcTrans("laravel-product-module/admin.product.{$operation}_product", [
-                'product' => $operation === 'edit' ? $product->title_uc_first : null
+            {!! lmcTrans("laravel-product-module/admin.product.{$operation}_description", [
+                'product' => $operation === 'edit' ? $product->name_uc_first : null
             ]) !!}
         </small>
     </h1> @endsection
@@ -43,14 +43,11 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        @if(isset($product_category))
-            var modelsURL = "{!! route('api.product_category.models', ['id' => $product_category]) !!}";
-        @else
-            var modelsURL = "{!! route('api.product_category.models') !!}";
-        @endif
+        var modelsURL = "{!! route('api.product_category.models') !!}";
         var categoriesURL = "{!! route('api.product_category.models') !!}";
         var brandsURL = "{!! route('api.product_brand.models') !!}";
         var removePhotoURL = "{!! route('api.product.removePhoto', ['id' => '###id###']) !!}";
+        var setMainPhotoURL = "{!! route('api.product.setMainPhoto', ['id' => '###id###']) !!}";
         var tinymceURL = "{!! route('elfinder.tinymce4') !!}";
         {{-- /routes --}}
 
@@ -163,7 +160,9 @@
                                 </div>
                                 <div id="detail_accordion" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        @include('laravel-modules-core::product.partials.detail_form')
+                                        @include('laravel-modules-core::product.partials.detail_form', [
+                                            'currentPhoto'  => isset($product)
+                                        ])
                                     </div>
                                 </div>
                             </div>

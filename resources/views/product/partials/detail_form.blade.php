@@ -33,3 +33,17 @@
     'multiple'      => true
 ])
 {{-- /Photo --}}
+
+{{-- Current Photo/Photos --}}
+@if(isset($currentPhoto) && $currentPhoto)
+    @include('laravel-modules-core::partials.common.current_photos', [
+        'model'             => $product,
+        'relation'          => 'photos',
+        'relationType'      => 'hasMany',
+        'modelSlug'         => 'product',   // for ModelDataTrait->getPhoto() function
+        'parentRelation'    => 'product_id',// for ModelDataTrait->getPhoto() function
+        'hasRibbon'         => true,
+        'hasSetMainPhoto'   => true
+    ])
+@endif
+{{-- /Current Photo/Photos --}}

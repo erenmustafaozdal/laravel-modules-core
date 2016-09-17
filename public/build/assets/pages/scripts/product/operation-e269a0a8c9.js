@@ -61,6 +61,41 @@ var Operation = {
             });
         });
 
+        // set main photo
+        $('a.set-main-photo').on('click', function () {
+            var el = $(this);
+            $.ajax({
+                url: setMainPhotoURL.replace('###id###',el.data('parent-id')),
+                data: {id: el.data('element-id')},
+                success: function (data)
+                {
+                    if (data.result !== 'success') {
+                        LMCApp.getNoty({
+                            message: LMCApp.lang.admin.flash.update_error.message,
+                            title: LMCApp.lang.admin.flash.update_error.title,
+                            type: 'error'
+                        });
+                        return;
+                    }
+                    LMCApp.getNoty({
+                        message: LMCApp.lang.admin.flash.update_success.message,
+                        title: LMCApp.lang.admin.flash.update_success.title,
+                        type: 'success'
+                    });
+
+                    var ribbon = el.closest('div.row').find('.ribbon');
+                    var oldMain = ribbon.next().find('a.remove-element');
+                    var elementId = oldMain.data('element-id');
+                    var parentId = oldMain.data('parent-id');
+                    ribbon.prependTo(el.closest('.mt-element-overlay'));
+                    oldMain.closest('ul.mt-info').append('<li></li>');
+                    el.data('element-id', elementId).attr('data-element-id', elementId)
+                        .data('parent-id',parentId).attr('data-parent-id',parentId)
+                        .appendTo(oldMain.closest('ul.mt-info').find('li').last());
+                }
+            });
+        });
+
         // showcase form
         $(".showcase-checkbox:checkbox").on("click", function() {
             $(this).closest('.row').find('select,input[type="text"]').prop('disabled', !this.checked);

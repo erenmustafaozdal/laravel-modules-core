@@ -125,7 +125,7 @@ var Index = {
                         type: 'success'
                     });
 
-                    var ribbon = el.closest('td').find('.ribbon');
+                    var ribbon = el.closest('div.row').find('.ribbon');
                     var oldMain = ribbon.next().find('a.remove-element');
                     var elementId = oldMain.data('element-id');
                     var parentId = oldMain.data('parent-id');
@@ -293,7 +293,8 @@ var Index = {
                     if (data.photos != null) {
                         detail += '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
-                            '<td class="text-left">';
+                            '<td class="text-left">' +
+                                '<div class="row">';
                         $.each(data.photos, function(key,value)
                         {
                             detail += '<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5 element-wrapper  mt-element-ribbon photo-ribbon">' +
@@ -330,7 +331,8 @@ var Index = {
                                 '</div>' +
                                 '</div>';
                         });
-                        detail += '</td>' +
+                        detail += '</div>' +
+                            '</td>' +
                             '</tr>';
                     }
 

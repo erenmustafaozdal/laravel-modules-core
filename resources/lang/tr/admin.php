@@ -82,6 +82,7 @@ return [
         'all'                               => 'Hepsi',
         'view_large'                        => 'Büyük Göster',
         'create_album'                      => 'Albüm Oluştur',
+        'set_main_photo'                    => 'Ana Fotoğraf Yap',
         // description
         'date_from'                         => 'Tarihinden',
         'date_to'                           => 'Tarihine',
@@ -131,7 +132,8 @@ return [
         'size'                              => 'Boyut',
         'byte'                              => 'Bayt',
 
-        'current_photo'                     => '[0,1] Geçerli Fotoğraf |[2,Inf] Geçerli Fotoğraflar'
+        'current_photo'                     => '[0,1] Geçerli Fotoğraf |[2,Inf] Geçerli Fotoğraflar',
+        'main_photo'                        => 'Ana Fotoğraf',
     ],
 
     // helpers

@@ -26,12 +26,12 @@
         <div class="col-md-6">
             <div class="input-group select2-bootstrap-prepend">
                 <span class="input-group-addon">
-                    <input type="checkbox" class="showcase-checkbox">
+                    <input type="checkbox" class="showcase-checkbox" {{ isset($product) && $showcase->getProduct($product->id) ? 'checked' : '' }}>
                 </span>
                 <select class="form-control form-control-solid placeholder-no-fix select2me showcase-type"
                         name="showcase_id[{{ $showcase->id }}][type]"
-                        style="width: 100%"
-                        disabled
+                        style="width: 100%;"
+                        {{ isset($product) && $showcase->getProduct($product->id) ? '' : 'disabled' }}
                 >
                     <option></option>
                     @foreach(config('laravel-product-module.product_showcase.type') as $type)
@@ -46,11 +46,13 @@
 
         {{-- Showcase Order --}}
         <div class="col-md-6">
-            {!! Form::text( "showcase_id[{$showcase->id}][order]", null, [
-                'class'         => 'form-control form-control-solid placeholder-no-fix showcase-order',
-                'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product_showcase.order'),
-                'disabled'      => true
-            ]) !!}
+            <input type="text"
+                   name="showcase_id[{{ $showcase->id }}][order]"
+                   class="form-control form-control-solid placeholder-no-fix showcase-order"
+                   placeholder="{!! lmcTrans('laravel-product-module/admin.fields.product_showcase.order') !!}"
+                   {{ isset($product) && $showcase->getProduct($product->id) ? '' : 'disabled' }}
+                    value="{{ isset($product) && $showcase->getProduct($product->id) ? $showcase->getProduct($product->id)->pivot->order : null }}"
+            >
         </div>
         {{-- /Showcase Order --}}
 
