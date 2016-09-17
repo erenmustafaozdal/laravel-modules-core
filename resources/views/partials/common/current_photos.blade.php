@@ -41,7 +41,7 @@
                                     {{-- /Destroy Button --}}
                                     
                                     {{-- Set Main Photo Button --}}
-                                    @if(isset($hasSetMainPhoto) && $hasSetMainPhoto)
+                                    @if(isset($hasSetMainPhoto) && $hasSetMainPhoto && $photo->id != $model->photo_id)
                                     <li>
                                         <a href="javascript:;"
                                            class="btn blue btn-outline set-main-photo tooltips"

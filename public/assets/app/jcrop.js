@@ -145,6 +145,9 @@ var LMCJcrop = {
 
         var rx = bx / el.width();
         var ry = by / el.height();
+        console.log('width: ' + Math.round( rx * coordinates.w ));
+        console.log('height: ' + Math.round( ry * coordinates.h ));
+        console.log('new height: ' + Math.round( rx * coordinates.w / aspectRatio ));
         return {
             width: Math.round( rx * coordinates.w ),
             height: Math.round( ry * coordinates.h ),
