@@ -55,6 +55,7 @@
             password: { required: "{!! LMCValidation::getMessage('password','required') !!}", minlength: "{!! LMCValidation::getMessage('password','min.string', ['min' => 6]) !!}" },
             password_confirmation: { required: "{!! LMCValidation::getMessage('password_confirmation','required') !!}", minlength: "{!! LMCValidation::getMessage('password_confirmation','min.string', ['min' => 6]) !!}", equalTo: "{!! LMCValidation::getMessage('password','confirmed') !!}" }
         };
+        var aspectRatio = "{!! config('laravel-user-module.user.uploads.photo.aspect_ratio') !!}";
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/user/operation.js') !!}"></script>

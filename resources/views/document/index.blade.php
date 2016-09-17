@@ -38,6 +38,8 @@
     {{-- /Bootstrap Datepicker Css --}}
 
     {{-- Bootstrap Touch Spin Css --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jcrop/css/jquery.Jcrop.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.css') !!}
     {{-- /Bootstrap Touch Spin Css --}}
 
@@ -87,6 +89,7 @@
         };
         var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
         var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
+        var aspectRatio = "{!! config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}";
         {{-- /languages --}}
 
         {{-- scripts --}}
