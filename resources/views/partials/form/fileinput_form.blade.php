@@ -39,7 +39,7 @@
             {{-- Fileinput file element --}}
             <div class="form-group">
                 <input type="file"
-                       name="{!! $input_name !!}{!! isset($multiple) &&  $multiple ? '[]' : '' !!}"
+                       name="{!! $input_name !!}[]"
                        id="{!! $input_id !!}"
                        {!! isset($multiple) &&  $multiple ? 'multiple' : '' !!}
                        {!! isset($fileinputDisable) &&  $fileinputDisable ? 'disabled' : '' !!}
