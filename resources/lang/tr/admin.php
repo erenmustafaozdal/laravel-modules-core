@@ -117,11 +117,13 @@ return [
         'updated_at'                        => 'Güncelleme Tarihi',
         'updated_at_description'            => ':date güncellendi',
 
-        'change_avatar'                     => 'Fotoğrafı Değiştir',
-        'change_password'                   => 'Şifreyi Değiştir',
+        'change_avatar'                     => 'Fotoğrafı Güncelle',
+        'change_password'                   => 'Şifreyi Güncelle',
+        'edit_info'                         => 'Bilgileri Güncelle',
+        'change_seo'                        => 'SEO Güncelle',
+        'change_showcase'                   => 'Vitrinleri Güncelle',
 
         'overview'                          => 'Genel Bilgiler',
-        'edit_info'                         => 'Bilgileri Düzenle',
         'content_info'                      => 'İçerik Bilgisi',
         'seo'                               => 'SEO Bilgileri',
         'showcase'                          => 'Vitrin Bilgileri',

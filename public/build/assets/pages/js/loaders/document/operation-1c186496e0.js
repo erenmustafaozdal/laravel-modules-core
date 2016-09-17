@@ -6,11 +6,11 @@
     });
     $script.ready('jquery', function()
     {
-        $script(showJs,'show');
+        $script(operationJs,'operation');
     });
-    $script.ready(['show', 'config','app_fileinput','app_jcrop'], function()
+    $script.ready(['config','operation','app_fileinput','app_jcrop'], function()
     {
-        Show.init();
+        Operation.init();
     });
     $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
     {
@@ -27,6 +27,7 @@
             elfinder: '#elfinder-photo'
         };
         var contentObject = {
+            tab: '#detail_tab',
             content: '#detail'
         };
 
@@ -60,9 +61,9 @@
                         return {
                             results: $.map(data, function (item) {
                                 return {
-                                    text: item.name,
+                                    text: item.name_uc_first,
                                     id: item.id,
-                                    parents: item.parents
+                                    parents: item.parent_name_uc_first
                                 }
                             })
                         };

@@ -1,6 +1,11 @@
 @if( isset($model) && ! is_null($model->$relation) )
-    <h4>{!! lmcTrans('admin.fields.current_photo',[],$relationType === 'hasMany' ? $model->$relation->count() : 1) !!}</h4>
-    <div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">
+                {!! lmcTrans('admin.fields.current_photo',[],$relationType === 'hasMany' ? $model->$relation->count() : 1) !!}
+            </h3>
+        </div>
+        <div class="panel-body row">
 
         @foreach( ($relationType === 'hasMany' ? $model->$relation : [$model->$relation]) as $photo )
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5 element-wrapper  mt-element-ribbon photo-ribbon">
@@ -66,5 +71,6 @@
             </div>
         @endforeach
 
+        </div>
     </div>
 @endif

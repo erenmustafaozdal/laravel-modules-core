@@ -1,16 +1,16 @@
 {{-- Summary --}}
-<h1 class="font-blue sbold uppercase">{{ $media->title_uc_first }}</h1>
+<h1 class="font-blue sbold uppercase">{{ $product->name_uc_first }}</h1>
 <ul class="list-inline">
     <li>
         <i class="fa fa-calendar"></i>
-        {{ trans('laravel-modules-core::admin.fields.created_at_description', [ 'date' => $media->created_at_for_humans ]) }}
+        {{ trans('laravel-modules-core::admin.fields.created_at_description', [ 'date' => $product->created_at_for_humans ]) }}
     </li>
     <li>
         <i class="fa fa-calendar"></i>
-        {{ trans('laravel-modules-core::admin.fields.updated_at_description', [ 'date' => $media->updated_at_for_humans ]) }}
+        {{ trans('laravel-modules-core::admin.fields.updated_at_description', [ 'date' => $product->updated_at_for_humans ]) }}
     </li>
     <li>
-        @if ($media->is_publish)
+        @if ($product->is_publish)
             <i class="fa fa-check font-green"></i>
             {!! trans('laravel-modules-core::admin.ops.published') !!}
         @else
@@ -28,17 +28,14 @@
     {{-- Category --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-media-module/admin.fields.media_category.name') !!}
+            {!! lmcTrans('laravel-product-module/admin.fields.product_category.name') !!}
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @foreach(\LMBCollection::renderAncestorsAndSelf($media->categories,'/',['name_uc_first','type']) as $category)
+                @foreach(\LMBCollection::renderAncestorsAndSelf($product->categories,'/',['name_uc_first']) as $category)
                     {!! $category['parent_name_uc_first'] === ''
                         ? $category['name_uc_first']
                         : '<span class="text-muted">' . $category['parent_name_uc_first'] . '/</span>' . $category['name_uc_first'] !!}
-                    <span class="text-muted">
-                        ({!! lmcTrans('laravel-media-module/admin.fields.media_category.' . $category['type']) !!})
-                    </span>
                     <br>
                 @endforeach
             </p>
@@ -46,38 +43,49 @@
     </div>
     {{-- /Category --}}
 
-    {{-- Title --}}
+    {{-- Brand --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-media-module/admin.fields.media.title') !!}
+            {!! lmcTrans('laravel-product-module/admin.fields.product_brand.name') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $media->title_uc_first }} </p>
+            <p class="form-control-static"> {{ $product->brand->name_uc_first or '' }} </p>
         </div>
     </div>
-    {{-- /Title --}}
+    {{-- /Brand --}}
 
-    {{-- Media --}}
+    {{-- Name --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-media-module/admin.fields.media.' . $media->type) !!}
+            {!! lmcTrans('laravel-product-module/admin.fields.product.name') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {!! $media->html or '' !!} </p>
+            <p class="form-control-static"> {{ $product->name_uc_first }} </p>
         </div>
     </div>
-    {{-- /Media --}}
+    {{-- /Name --}}
 
-    {{-- Description --}}
+    {{-- Amount --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-media-module/admin.fields.media.description') !!}
+            {!! lmcTrans('laravel-product-module/admin.fields.product.amount') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {!! $media->description !!} </p>
+            <p class="form-control-static"> {!! $product->amount_turkish !!} </p>
         </div>
     </div>
-    {{-- /Description --}}
+    {{-- /Amount --}}
+
+    {{-- Code --}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            {!! lmcTrans('laravel-product-module/admin.fields.product.code') !!}
+        </label>
+        <div class="col-sm-10">
+            <p class="form-control-static"> {!! $product->code_uc !!} </p>
+        </div>
+    </div>
+    {{-- /Code --}}
 
     {{-- Created At --}}
     <div class="form-group">
@@ -85,7 +93,7 @@
             {!! trans('laravel-modules-core::admin.fields.created_at') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $media->created_at }} </p>
+            <p class="form-control-static"> {{ $product->created_at }} </p>
         </div>
     </div>
     {{-- /Created At --}}
@@ -96,7 +104,7 @@
             {!! trans('laravel-modules-core::admin.fields.updated_at') !!}
         </label>
         <div class="col-sm-10">
-            <p class="form-control-static"> {{ $media->updated_at }} </p>
+            <p class="form-control-static"> {{ $product->updated_at }} </p>
         </div>
     </div>
     {{-- /Updated At --}}
@@ -108,7 +116,7 @@
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @if ($media->is_publish)
+                @if ($product->is_publish)
                     <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.published') !!} </span>
                 @else
                     <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.not_published') !!} </span>

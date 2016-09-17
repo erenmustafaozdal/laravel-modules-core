@@ -6,12 +6,12 @@
     });
     $script.ready('jquery', function()
     {
-        $script(operationJs,'operation');
+        $script(showJs,'show');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
     });
-    $script.ready(['config','operation','inputmask','app_fileinput','app_jcrop'], function()
+    $script.ready(['show','config','inputmask','app_fileinput','app_jcrop'], function()
     {
-        Operation.init();
+        Show.init();
 
         // amount
         LMCApp.initInputMask({

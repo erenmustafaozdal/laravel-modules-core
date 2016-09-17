@@ -262,7 +262,7 @@ var Index = {
                             '<thead>' +
                                 '<tr>' +
                                     '<th> Vitrin Adı </th>' +
-                                    '<th> Ürün Sıralaması </th>' +
+                                    '<th> Ürün Sırası </th>' +
                                 '</tr>' +
                             '</thead>' +
                             '<tbody>';

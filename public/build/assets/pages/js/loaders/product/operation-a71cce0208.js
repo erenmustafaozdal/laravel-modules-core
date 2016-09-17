@@ -6,33 +6,34 @@
     });
     $script.ready('jquery', function()
     {
-        $script(showJs,'show');
+        $script(operationJs,'operation');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
     });
-    $script.ready(['show', 'config'], function()
+    $script.ready(['config','operation','inputmask','app_fileinput','app_jcrop'], function()
     {
-        Show.init();
+        Operation.init();
 
-        // land phone
+        // amount
         LMCApp.initInputMask({
-            src: '.inputmask-land-phone',
-            type: 'phone',
+            src: '#amount',
+            type: 'amount',
             inputmask: {
-                placeholder: '_'
-            }
-        });
-        // mobile phone
-        LMCApp.initInputMask({
-            src: '.inputmask-mobile-phone',
-            type: 'phone',
-            inputmask: {
-                placeholder: '_'
+                placeholder: '_',
+                numericInput: true,
+                rightAlignNumerics: false,
+                greedy: false
             }
         });
     });
-    $script.ready(['config','app_select2'], function()
+    $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
     {
         Select2.init({
+            select2: {
+                ajax: null
+            }
+        });
+        Select2.init({
+            src: '.select2category',
             select2: {
                 templateResult: function(data)
                 {
@@ -50,21 +51,38 @@
                     return data.text;
                 },
                 ajax: {
-                    url: modelsURL, //end of data
+                    url: categoriesURL, //end of data
                     processResults: function (data)
                     {
                         return {
                             results: $.map(data, function (item) {
                                 return {
-                                    text: item.name,
+                                    text: item.name_uc_first,
                                     id: item.id,
-                                    parents: item.parents
+                                    parents: item.parent_name_uc_first
                                 }
                             })
                         };
                     }
                 }
             }
+        });
+        Select2.init({
+            src: '.select2brand',
+            variableNames: {
+                text: 'name'
+            },
+            select2: {
+                ajax: {
+                    url: brandsURL
+                }
+            }
+        });
+    });
+    $script.ready(['config','app_tinymce'], function()
+    {
+        Tinymce.init({
+            route: tinymceURL
         });
     });
 })();

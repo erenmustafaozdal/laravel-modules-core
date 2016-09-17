@@ -1,12 +1,12 @@
-;var ModelOperation;
-var Operation = {
+;var ModuleShow;
+var Show = {
 
     /**
-     * user create options
+     * user show options
      * @var object
      */
     options: {
-        formSrc: 'form.form'
+        formSrc: '.product-form'
     },
 
     /**
@@ -15,11 +15,11 @@ var Operation = {
     form: null,
 
     init: function () {
-        ModelOperation = this;
+        ModuleShow = this;
 
         this.form = $(this.options.formSrc);
 
-        // create form validation
+        // edit info form validation
         Validation.init({
             src: this.options.formSrc,
             isAjax: false,
@@ -108,7 +108,7 @@ var Operation = {
             } else {
                 $(this).closest('.row').find('input[type="text"]').val('').prop('disabled', true);
             }
-        })
+        });
 
     },
 

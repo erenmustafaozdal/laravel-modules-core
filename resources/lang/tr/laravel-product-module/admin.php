@@ -82,7 +82,7 @@ return [
         ],
         'product_showcase' => [
             'name'                  => 'Vitrin Adı',
-            'order'                 => 'Vitrin Sırası',
+            'order'                 => 'Ürün Sırası',
             'first'                 => 'İlk',
             'first_ten'             => 'İlk On',
             'first_hundred'         => 'İlk Yüz',
@@ -101,7 +101,8 @@ return [
             'meta_description'      => 'SEO Açıklama',
             'meta_keywords'         => 'SEO Anahtar Kelimeler',
             'main_photo'            => 'Ana Fotoğraf',
-            'product_detail'        => 'Ürün Detayları'
+            'product_detail'        => 'Ürün Detayları',
+            'showcases'             => 'Vitrinler'
         ]
     ],
 

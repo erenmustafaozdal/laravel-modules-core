@@ -6,16 +6,12 @@
     });
     $script.ready('jquery', function()
     {
-        $script(operationJs,'operation');
+        $script(showJs,'show');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
     });
-    $script.ready('bootstrap', function()
+    $script.ready(['show','config','inputmask','app_fileinput','app_jcrop'], function()
     {
-        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js','touchspin');
-    });
-    $script.ready(['config','operation','inputmask','app_fileinput','app_jcrop','touchspin'], function()
-    {
-        Operation.init();
+        Show.init();
 
         // amount
         LMCApp.initInputMask({
@@ -61,9 +57,9 @@
                         return {
                             results: $.map(data, function (item) {
                                 return {
-                                    text: item.name,
+                                    text: item.name_uc_first,
                                     id: item.id,
-                                    parents: item.parents
+                                    parents: item.parent_name_uc_first
                                 }
                             })
                         };

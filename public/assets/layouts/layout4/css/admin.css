@@ -1927,3 +1927,17 @@ body.modal-open {
     margin: -2px 0 0 10px !important;
     position: absolute !important;
 }
+
+/* Profile Icons */
+.panel li a.red i {
+    color: #e7505a !important;
+}
+.panel li a.red:hover i {
+    color: #ffffff !important;
+}
+.panel li a.blue i {
+    color: #3598dc !important;
+}
+.panel li a.blue:hover i {
+    color: #ffffff !important;
+}
