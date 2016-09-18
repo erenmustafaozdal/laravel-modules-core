@@ -109,10 +109,10 @@
             <?php
             $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($parent_dealer_category) ? route('admin.dealer_category.dealer_category.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($parent_dealer_category) ? lmbRoute('admin.dealer_category.dealer_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $parent_dealer_category->id,
                         config('laravel-dealer-module.url.dealer_category') => $operation === 'edit' ? $dealer_category->id : null
-                    ]) : route('admin.dealer_category.' . ($operation === 'edit' ? 'update' : 'store'),[
+                    ]) : lmbRoute('admin.dealer_category.' . ($operation === 'edit' ? 'update' : 'store'),[
                             'id' => $operation === 'edit' ? $dealer_category->id : null,
                     ]),
                     'class' => 'form'

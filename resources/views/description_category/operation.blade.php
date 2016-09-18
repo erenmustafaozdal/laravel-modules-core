@@ -108,10 +108,10 @@
             <?php
             $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($parent_description_category) ? route('admin.description_category.description_category.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($parent_description_category) ? lmbRoute('admin.description_category.description_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $parent_description_category->id,
                         config('laravel-description-module.url.description_category') => $operation === 'edit' ? $description_category->id : null
-                    ]) : route('admin.description_category.' . ($operation === 'edit' ? 'update' : 'store'),[
+                    ]) : lmbRoute('admin.description_category.' . ($operation === 'edit' ? 'update' : 'store'),[
                             'id' => $operation === 'edit' ? $description_category->id : null,
                     ]),
                     'class' => 'form'

@@ -44,7 +44,7 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var modelsURL = "{!! route('api.role.models') !!}";
+        var modelsURL = "{!! lmbRoute('api.role.models') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -118,7 +118,7 @@
             <?php
             $form = [
                     'method'    => $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'       => route('admin.user.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'       => lmbRoute('admin.user.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $user->id : null
                     ]),
                     'class'     => 'form',

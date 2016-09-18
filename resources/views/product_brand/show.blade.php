@@ -111,7 +111,7 @@
                             <div id="edit_info" class="tab-pane form">
                                 {!! Form::model($product_brand,[
                                     'method'    => 'PATCH',
-                                    'url'       => route('admin.product_brand.update', [ 'id' => $product_brand->id ]),
+                                    'url'       => lmbRoute('admin.product_brand.update', [ 'id' => $product_brand->id ]),
                                     'id'        => 'product_brand-edit-info'
                                 ]) !!}
 

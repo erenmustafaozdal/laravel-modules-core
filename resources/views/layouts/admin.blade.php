@@ -139,7 +139,7 @@
                         {{-- Page Toolbar --}}
                         <div class="page-toolbar">
                             {{-- File Manager --}}
-                            <a href="{!! route('elfinder.popup',[ 'input_id' => 'filemanager']) !!}"
+                            <a href="{!! lmbRoute('elfinder.popup',[ 'input_id' => 'filemanager']) !!}"
                                class="pull-right tooltips btn btn-fit-height green btn-outline popup_selector"
                                data-original-title="{!! trans('laravel-modules-core::admin.fields.file_manager') !!}"
                                data-container="body"
@@ -187,6 +187,10 @@
             </div>
         </div>
         {{-- /Footer --}}
+    
+        {{-- Modals --}}
+        @include('laravel-modules-core::partials.admin.notPermissionModal')
+        {{-- /Modals --}}
 
     </body>
 
@@ -198,16 +202,16 @@
         var themeJs = "{!! lmcElixir('assets/layouts/layout4/scripts/theme.js') !!}";
         var configJs = "{!! lmcElixir('assets/global/scripts/config.js') !!}";
         var elfinderJs = "{!! lmcElixir('assets/app/elfinder.js') !!}";
-        var themeLayoutChangeApiUrl = "{!! route('api.themeLayout.change') !!}";
-        var themeColorChangeApiUrl = "{!! route('api.themeColor.change') !!}";
+        var themeLayoutChangeApiUrl = "{!! lmbRoute('api.themeLayout.change') !!}";
+        var themeColorChangeApiUrl = "{!! lmbRoute('api.themeColor.change') !!}";
         var logos = {!! json_encode(config('laravel-modules-core.logos')) !!};
 
         // select2 address routes
-        var provinceURL = "{!! route('address.provinces') !!}";
-        var countyURL = "{!! route('address.counties', ['id' => '###id###']) !!}";
-        var districtURL = "{!! route('address.districts', ['id' => '###id###']) !!}";
-        var neighborhoodURL = "{!! route('address.neighborhoods', ['id' => '###id###']) !!}";
-        var postalCodeURL = "{!! route('address.postalCode', ['id' => '###id###']) !!}";
+        var provinceURL = "{!! lmbRoute('address.provinces') !!}";
+        var countyURL = "{!! lmbRoute('address.counties', ['id' => '###id###']) !!}";
+        var districtURL = "{!! lmbRoute('address.districts', ['id' => '###id###']) !!}";
+        var neighborhoodURL = "{!! lmbRoute('address.neighborhoods', ['id' => '###id###']) !!}";
+        var postalCodeURL = "{!! lmbRoute('address.postalCode', ['id' => '###id###']) !!}";
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin.js') !!}"></script>
     <script type="text/javascript">

@@ -39,28 +39,28 @@ class MediaMenu
         $media_category = $menu->add(lmcTrans('laravel-media-module/admin.menu.media_category.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-media-module.icons.media_category') )
             ->data( 'permissions', self::$mediaCategoryPermissions )
-            ->active( removeDomain(route('admin.media_category.index')) . '/*');
+            ->active( removeDomain(lmbRoute('admin.media_category.index')) . '/*');
         $media_category->add(lmcTrans('laravel-media-module/admin.menu.media_category.all'), [ 'route' => ['admin.media_category.index'] ])
             ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$mediaCategoryPermissions[0] )
-            ->active( removeDomain(route('admin.media_category.index')) );
+            ->active( removeDomain(lmbRoute('admin.media_category.index')) );
         $media_category->add(lmcTrans('laravel-media-module/admin.menu.media_category.add'), [ 'route' => ['admin.media_category.create'] ])
             ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$mediaCategoryPermissions[1] )
-            ->active( removeDomain(route('admin.media_category.create')) );
+            ->active( removeDomain(lmbRoute('admin.media_category.create')) );
 
         // media
         $media = $menu->add(lmcTrans('laravel-media-module/admin.menu.media.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-media-module.icons.media') )
             ->data( 'permissions', self::$mediaPermissions )
-            ->active( removeDomain(route('admin.media.index')) . '/*');
+            ->active( removeDomain(lmbRoute('admin.media.index')) . '/*');
         $media->add(lmcTrans('laravel-media-module/admin.menu.media.all'), [ 'route' => ['admin.media.index'] ])
             ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$mediaPermissions[0] )
-            ->active( removeDomain(route('admin.media.index')) );
+            ->active( removeDomain(lmbRoute('admin.media.index')) );
         $media->add(lmcTrans('laravel-media-module/admin.menu.media.add'), [ 'route' => ['admin.media.create'] ])
             ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$mediaPermissions[1] )
-            ->active( removeDomain(route('admin.media.create')) );
+            ->active( removeDomain(lmbRoute('admin.media.create')) );
     }
 }

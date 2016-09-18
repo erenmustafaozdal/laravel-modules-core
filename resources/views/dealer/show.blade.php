@@ -66,12 +66,12 @@
 
         {{-- routes --}}
         @if(isset($dealer_category))
-            var modelsURL = "{!! route('api.dealer_category.models', ['id' => $dealer_category]) !!}";
+            var modelsURL = "{!! lmbRoute('api.dealer_category.models', ['id' => $dealer_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.dealer_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.dealer_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.dealer_category.detail', ['id' => '###id###']) !!}";
-        {{-- /routes --}}
+        var categoryDetailURL = "{!! lmbRoute('api.dealer_category.detail', ['id' => '###id###']) !!}";
+        {{-- /lmbRoutes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
@@ -174,10 +174,10 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => isset($dealer_category) ? route('admin.dealer_category.dealer.update', [
+                                'url'       => isset($dealer_category) ? lmbRoute('admin.dealer_category.dealer.update', [
                                     'id'                                    => $dealer_category->id,
                                     config('laravel-dealer-module.url.dealer')  => $dealer->id
-                                ]) : route('admin.dealer.update', [ 'id' => $dealer->id ]),
+                                ]) : lmbRoute('admin.dealer.update', [ 'id' => $dealer->id ]),
                                 'id'        => 'dealer-edit-info',
                                 'files'     => true
                             ]) !!}

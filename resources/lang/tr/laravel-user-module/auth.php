@@ -45,7 +45,7 @@ return [
         'submit'                        => 'Gönder',
         'login'                         => 'Giriş Yap!',
         'mail_subject'                  => 'Şifreni Sıfırla',
-        'mail_content'                  => 'Merhaba :name! Şifreni sıfırla: <a href="'.route('getResetPassword',['token'=> ':token']).'">'.route('getResetPassword',['token'=> ':token']).'</a>',
+        'mail_content'                  => 'Merhaba :name! Şifreni sıfırla: <a href="'.lmbRoute('getResetPassword',['token'=> ':token']).'">'.lmbRoute('getResetPassword',['token'=> ':token']).'</a>',
     ],
 
 

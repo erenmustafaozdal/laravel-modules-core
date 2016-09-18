@@ -19,7 +19,7 @@ class ProductMenu
         )
             ->attribute( 'data-icon', config('laravel-product-module.icons.product_category') )
             ->data( 'permissions', 'admin.product_category.create' )
-            ->active( removeDomain(route('admin.product_category.create')) );
+            ->active( removeDomain(lmbRoute('admin.product_category.create')) );
         // marka ekle
         $menu->add(
             lmcTrans('laravel-product-module/admin.menu.product_brand.add'),
@@ -27,7 +27,7 @@ class ProductMenu
         )
             ->attribute( 'data-icon', config('laravel-product-module.icons.product_brand') )
             ->data( 'permissions', 'admin.product_brand.create' )
-            ->active( removeDomain(route('admin.product_brand.create')) );
+            ->active( removeDomain(lmbRoute('admin.product_brand.create')) );
         // vitrin ekle
         $menu->add(
             lmcTrans('laravel-product-module/admin.menu.product_showcase.add'),
@@ -35,7 +35,7 @@ class ProductMenu
         )
             ->attribute( 'data-icon', config('laravel-product-module.icons.product_showcase') )
             ->data( 'permissions', 'admin.product_showcase.create' )
-            ->active( removeDomain(route('admin.product_showcase.create')) );
+            ->active( removeDomain(lmbRoute('admin.product_showcase.create')) );
         // ürün ekle
         $menu->add(
             lmcTrans('laravel-product-module/admin.menu.product.add'),
@@ -43,6 +43,6 @@ class ProductMenu
         )
             ->attribute( 'data-icon', config('laravel-product-module.icons.product') )
             ->data( 'permissions', 'admin.product.create' )
-            ->active( removeDomain(route('admin.product.create')) );
+            ->active( removeDomain(lmbRoute('admin.product.create')) );
     }
 }

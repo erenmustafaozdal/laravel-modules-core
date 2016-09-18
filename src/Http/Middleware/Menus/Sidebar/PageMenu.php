@@ -39,28 +39,28 @@ class PageMenu
         $page_category = $menu->add(lmcTrans('laravel-page-module/admin.menu.page_category.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-page-module.icons.page_category') )
             ->data( 'permissions', self::$pageCategoryPermissions )
-            ->active( removeDomain(route('admin.page_category.index')) . '/*');
+            ->active( removeDomain(lmbRoute('admin.page_category.index')) . '/*');
         $page_category->add(lmcTrans('laravel-page-module/admin.menu.page_category.all'), [ 'route' => ['admin.page_category.index'] ])
             ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$pageCategoryPermissions[0] )
-            ->active( removeDomain(route('admin.page_category.index')) );
+            ->active( removeDomain(lmbRoute('admin.page_category.index')) );
         $page_category->add(lmcTrans('laravel-page-module/admin.menu.page_category.add'), [ 'route' => ['admin.page_category.create'] ])
             ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$pageCategoryPermissions[1] )
-            ->active( removeDomain(route('admin.page_category.create')) );
+            ->active( removeDomain(lmbRoute('admin.page_category.create')) );
 
         // page
         $page = $menu->add(lmcTrans('laravel-page-module/admin.menu.page.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-page-module.icons.page') )
             ->data( 'permissions', self::$pagePermissions )
-            ->active( removeDomain(route('admin.page.index')) . '/*');
+            ->active( removeDomain(lmbRoute('admin.page.index')) . '/*');
         $page->add(lmcTrans('laravel-page-module/admin.menu.page.all'), [ 'route' => ['admin.page.index'] ])
             ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$pagePermissions[0] )
-            ->active( removeDomain(route('admin.page.index')) );
+            ->active( removeDomain(lmbRoute('admin.page.index')) );
         $page->add(lmcTrans('laravel-page-module/admin.menu.page.add'), [ 'route' => ['admin.page.create'] ])
             ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$pagePermissions[1] )
-            ->active( removeDomain(route('admin.page.create')) );
+            ->active( removeDomain(lmbRoute('admin.page.create')) );
     }
 }

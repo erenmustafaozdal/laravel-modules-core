@@ -68,11 +68,11 @@
 
         {{-- routes --}}
         @if(isset($media_category))
-            var modelsURL = "{!! route('api.media_category.models', ['id' => $media_category]) !!}";
+            var modelsURL = "{!! lmbRoute('api.media_category.models', ['id' => $media_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.media_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.media_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.media_category.detail', ['id' => '###id###']) !!}";
+        var categoryDetailURL = "{!! lmbRoute('api.media_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -172,10 +172,10 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => isset($media_category) ? route('admin.media_category.media.update', [
+                                'url'       => isset($media_category) ? lmbRoute('admin.media_category.media.update', [
                                     'id'                                    => $media_category->id,
                                     config('laravel-media-module.url.media')  => $media->id
-                                ]) : route('admin.media.update', [ 'id' => $media->id ]),
+                                ]) : lmbRoute('admin.media.update', [ 'id' => $media->id ]),
                                 'id'        => 'media-edit-info',
                                 'files'     => true
                             ]) !!}

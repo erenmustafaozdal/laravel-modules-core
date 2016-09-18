@@ -19,7 +19,7 @@ class DescriptionMenu
         )
             ->attribute( 'data-icon', config('laravel-description-module.icons.description_category') )
             ->data( 'permissions', 'admin.description_category.create' )
-            ->active( removeDomain(route('admin.description_category.create')) );
+            ->active( removeDomain(lmbRoute('admin.description_category.create')) );
         // yönetici ekle
         $menu->add(
             lmcTrans('laravel-description-module/admin.menu.description.add'),
@@ -27,6 +27,6 @@ class DescriptionMenu
         )
             ->attribute( 'data-icon', config('laravel-description-module.icons.description') )
             ->data( 'permissions', 'admin.description.create' )
-            ->active( removeDomain(route('admin.description.create')) );
+            ->active( removeDomain(lmbRoute('admin.description.create')) );
     }
 }

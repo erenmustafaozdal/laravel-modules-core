@@ -74,7 +74,7 @@
             {{-- Operation Form --}}
             {!! Form::open([
                 'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                'url'   => route('admin.product_showcase.' . ($operation === 'edit' ? 'update' : 'store'), [
+                'url'   => lmbRoute('admin.product_showcase.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $operation === 'edit' ? $product_showcase->id : null
                 ]),
                 'class' => 'form',

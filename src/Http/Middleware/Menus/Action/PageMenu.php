@@ -19,7 +19,7 @@ class PageMenu
         )
             ->attribute( 'data-icon', config('laravel-page-module.icons.page_category') )
             ->data( 'permissions', 'admin.page_category.create' )
-            ->active( removeDomain(route('admin.page_category.create')) );
+            ->active( removeDomain(lmbRoute('admin.page_category.create')) );
         // yönetici ekle
         $menu->add(
             lmcTrans('laravel-page-module/admin.menu.page.add'),
@@ -27,6 +27,6 @@ class PageMenu
         )
             ->attribute( 'data-icon', config('laravel-page-module.icons.page') )
             ->data( 'permissions', 'admin.page.create' )
-            ->active( removeDomain(route('admin.page.create')) );
+            ->active( removeDomain(lmbRoute('admin.page.create')) );
     }
 }

@@ -116,10 +116,10 @@
             <?php
             $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($parent_media_category) ? route('admin.media_category.media_category.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($parent_media_category) ? lmbRoute('admin.media_category.media_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $parent_media_category->id,
                         config('laravel-media-module.url.media_category') => $operation === 'edit' ? $media_category->id : null
-                    ]) : route('admin.media_category.' . ($operation === 'edit' ? 'update' : 'store'),[
+                    ]) : lmbRoute('admin.media_category.' . ($operation === 'edit' ? 'update' : 'store'),[
                             'id' => $operation === 'edit' ? $media_category->id : null,
                     ]),
                     'class' => 'form'

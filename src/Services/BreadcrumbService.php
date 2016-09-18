@@ -71,7 +71,7 @@ class BreadcrumbService
         if ( strpos($this->route_name, 'index')  !== false ) {
             $breadcrumbs  .= $parent_text;
         } else {
-            $route = Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($this->index_route_name) ? route($this->index_route_name, $modelRoute) : 'javascript:;';
+            $route = Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($this->index_route_name) ? lmbRoute($this->index_route_name, $modelRoute) : 'javascript:;';
             $breadcrumbs  .= '<a href="'. $route .'">'.$parent_text.'</a><i class="fa fa-circle"></i>';
         }
 
@@ -128,7 +128,7 @@ class BreadcrumbService
             return '';
         }
         $breadcrumbs  = '<li>';
-        $breadcrumbs .= '<a href="'.route('admin.dashboard.index').'">';
+        $breadcrumbs .= '<a href="'.lmbRoute('admin.dashboard.index').'">';
         $breadcrumbs .= trans('laravel-modules-core::laravel-dashboard-module/admin.dashboard.index');
         $breadcrumbs .= '</a>';
         $breadcrumbs .= '<i class="fa fa-circle"></i>';

@@ -47,11 +47,11 @@
                                     {{-- Show Button --}}
                                     @if(Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.show"))
                                     <a href="{!! isset($parent_media_category)
-                                            ? route('admin.media_category.media.show', [
+                                            ? lmbRoute('admin.media_category.media.show', [
                                                 'id'=> $category->id,
                                                 config('laravel-media-module.url.media')  => $media->id
                                             ])
-                                            : route('admin.media.show', ['id'=> $media->id])
+                                            : lmbRoute('admin.media.show', ['id'=> $media->id])
                                         !!}"
                                         class="tooltips btn green btn-outline"
                                         data-container="body"
@@ -66,11 +66,11 @@
                                     {{-- Publish or Not Publish Button --}}
                                     @if( ! $media->is_publish && ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.publish") ) )
                                         <a href="{!! isset($parent_media_category)
-                                            ? route('admin.media_category.media.publish', [
+                                            ? lmbRoute('admin.media_category.media.publish', [
                                                 'id'=> $category->id,
                                                 config('laravel-media-module.url.media')  => $media->id
                                             ])
-                                            : route('admin.media.publish', ['id'=> $media->id])
+                                            : lmbRoute('admin.media.publish', ['id'=> $media->id])
                                         !!}"
                                        class="tooltips btn blue btn-outline"
                                        data-container="body"
@@ -81,11 +81,11 @@
 
                                     @if( $media->is_publish && ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.publish") ) )
                                         <a href="{!! isset($parent_media_category)
-                                            ? route('admin.media_category.media.notPublish', [
+                                            ? lmbRoute('admin.media_category.media.notPublish', [
                                                 'id'=> $category->id,
                                                 config('laravel-media-module.url.media')  => $media->id
                                             ])
-                                            : route('admin.media.notPublish', ['id'=> $media->id])
+                                            : lmbRoute('admin.media.notPublish', ['id'=> $media->id])
                                         !!}"
                                        class="tooltips btn purple btn-outline"
                                        data-container="body"

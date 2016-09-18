@@ -26,13 +26,13 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.product_category.index') !!}";
-        var showURL = "{!! route('admin.product_category.show', ['id' => '###id###']) !!}";
-        var editURL = "{!! route('admin.product_category.edit', ['id' => '###id###']) !!}";
-        var apiStoreURL = "{!! route('api.product_category.store') !!}";
-        var apiUpdateURL = "{!! route('api.product_category.update', ['id' => '###id###']) !!}";
-        var apiDestroyURL = "{!! route('api.product_category.destroy', ['id' => '###id###']) !!}";
-        var apiMoveURL = "{!! route('api.product_category.move', ['id' => '###id###']) !!}";
+        var ajaxURL = "{!! lmbRoute('api.product_category.index') !!}";
+        var showURL = "{!! lmbRoute('admin.product_category.show', ['id' => '###id###']) !!}";
+        var editURL = "{!! lmbRoute('admin.product_category.edit', ['id' => '###id###']) !!}";
+        var apiStoreURL = "{!! lmbRoute('api.product_category.store') !!}";
+        var apiUpdateURL = "{!! lmbRoute('api.product_category.update', ['id' => '###id###']) !!}";
+        var apiDestroyURL = "{!! lmbRoute('api.product_category.destroy', ['id' => '###id###']) !!}";
+        var apiMoveURL = "{!! lmbRoute('api.product_category.move', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- scripts --}}

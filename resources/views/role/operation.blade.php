@@ -89,7 +89,7 @@
             <?php
             $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => route('admin.role.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => lmbRoute('admin.role.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $role->id : null
                     ]),
                     'class' => 'form'

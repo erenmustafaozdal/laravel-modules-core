@@ -22,7 +22,7 @@
 @section('content')
     {!! Form::open([
         'method'    => 'POST',
-        'url'       => route('postForgetPassword'),
+        'url'       => lmbRoute('postForgetPassword'),
         'class'     => 'forget-password-form'
     ]) !!}
         <h3 class="form-title font-green">{!! lmcTrans('laravel-user-module/auth.forget_password.title') !!}</h3>
@@ -44,7 +44,7 @@
             ]) !!}
         </div>
         <div class="form-actions">
-            <a href="{!! route('getLogin') !!}" class="btn btn-default">
+            <a href="{!! lmbRoute('getLogin') !!}" class="btn btn-default">
                 <span>{!! lmcTrans('laravel-user-module/auth.forget_password.login') !!}</span>
             </a>
             {!! Form::button( lmcTrans('laravel-user-module/auth.forget_password.submit'), [

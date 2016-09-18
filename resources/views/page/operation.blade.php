@@ -64,9 +64,9 @@
         @if(isset($page_category))
             var modelsURL = '';
         @else
-            var modelsURL = "{!! route('api.page_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.page_category.models') !!}";
         @endif
-        var tinymceURL = "{!! route('elfinder.tinymce4') !!}";
+        var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -148,10 +148,10 @@
             <?php
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($page_category) ? route('admin.page_category.page.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($page_category) ? lmbRoute('admin.page_category.page.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id'                                    => $page_category->id,
                         config('laravel-page-module.url.page')  => $operation === 'edit' ? $page->id : null
-                    ]) : route('admin.page.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    ]) : lmbRoute('admin.page.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $page->id : null
                     ]),
                     'class' => 'form'

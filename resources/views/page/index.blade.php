@@ -54,15 +54,15 @@
 
         {{-- routes --}}
         @if(isset($page_category))
-        var ajaxURL = "{!! route('api.page_category.page.index', ['id' => $page_category->id]) !!}";
-        var modelsURL = "{!! route('api.document_category.models', ['id' => $page_category->id]) !!}";
+        var ajaxURL = "{!! lmbRoute('api.page_category.page.index', ['id' => $page_category->id]) !!}";
+        var modelsURL = "{!! lmbRoute('api.document_category.models', ['id' => $page_category->id]) !!}";
         @else
-        var ajaxURL = "{!! route('api.page.index') !!}";
-        var categoryURL = "{!! route('admin.page_category.show', ['id' => '###id###']) !!}";
-        var modelsURL = "{!! route('api.page_category.models') !!}";
+        var ajaxURL = "{!! lmbRoute('api.page.index') !!}";
+        var categoryURL = "{!! lmbRoute('admin.page_category.show', ['id' => '###id###']) !!}";
+        var modelsURL = "{!! lmbRoute('api.page_category.models') !!}";
         @endif
-        var apiStoreURL = "{!! route('api.page.store') !!}";
-        var apiGroupAction = "{!! route('api.page.group') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.page.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.page.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

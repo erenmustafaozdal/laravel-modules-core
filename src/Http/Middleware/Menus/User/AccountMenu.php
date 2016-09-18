@@ -29,7 +29,7 @@ class AccountMenu
         )
             ->attribute( 'data-icon', config('laravel-user-module.icons.user') )
             ->data( 'permissions', self::$userPermissions )
-            ->active( removeDomain(route('admin.user.show', ['id' => Sentinel::getUser()->id])) . '/*' );
+            ->active( removeDomain(lmbRoute('admin.user.show', ['id' => Sentinel::getUser()->id])) . '/*' );
         $menu->add( lmcTrans('admin.logout'), ['route' => 'getLogout'] )
             ->attribute( 'data-icon', 'icon-logout' );
     }

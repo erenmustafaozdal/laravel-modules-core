@@ -30,9 +30,9 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.user.index') !!}";
-        var apiStoreURL = "{!! route('api.user.store') !!}";
-        var apiGroupAction = "{!! route('api.user.group') !!}";
+        var ajaxURL = "{!! lmbRoute('api.user.index') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.user.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.user.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

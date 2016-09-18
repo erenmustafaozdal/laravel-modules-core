@@ -68,19 +68,19 @@
 
         {{-- routes --}}
         @if(isset($dealer_category))
-        var ajaxURL = "{!! route('api.dealer_category.dealer.index', ['id' => $dealer_category->id]) !!}";
-        var modelsURL = "{!! route('api.dealer_category.models', ['id' => $dealer_category->id]) !!}";
-        var categoryURL = "{!! route('admin.dealer_category.dealer_category.show', [
+        var ajaxURL = "{!! lmbRoute('api.dealer_category.dealer.index', ['id' => $dealer_category->id]) !!}";
+        var modelsURL = "{!! lmbRoute('api.dealer_category.models', ['id' => $dealer_category->id]) !!}";
+        var categoryURL = "{!! lmbRoute('admin.dealer_category.dealer_category.show', [
             'id' => $dealer_category->id,
             config('laravel-dealer-module.url.dealer_category') => '###id###'
         ]) !!}";
         @else
-        var ajaxURL = "{!! route('api.dealer.index') !!}";
-        var categoryURL = "{!! route('admin.dealer_category.show', ['id' => '###id###']) !!}";
-        var modelsURL = "{!! route('api.dealer_category.models') !!}";
+        var ajaxURL = "{!! lmbRoute('api.dealer.index') !!}";
+        var categoryURL = "{!! lmbRoute('admin.dealer_category.show', ['id' => '###id###']) !!}";
+        var modelsURL = "{!! lmbRoute('api.dealer_category.models') !!}";
         @endif
-        var apiStoreURL = "{!! route('api.dealer.store') !!}";
-        var apiGroupAction = "{!! route('api.dealer.group') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.dealer.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.dealer.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

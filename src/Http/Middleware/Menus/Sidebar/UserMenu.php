@@ -39,28 +39,28 @@ class UserMenu
         $role = $menu->add(lmcTrans('laravel-user-module/admin.menu.role.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-user-module.icons.role') )
             ->data( 'permissions', self::$rolePermissions )
-            ->active( removeDomain(route('admin.role.index')) . '/*');
+            ->active( removeDomain(lmbRoute('admin.role.index')) . '/*');
         $role->add(lmcTrans('laravel-user-module/admin.menu.role.all'), [ 'route' => ['admin.role.index'] ])
             ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$rolePermissions[0] )
-            ->active( removeDomain(route('admin.role.index')) );
+            ->active( removeDomain(lmbRoute('admin.role.index')) );
         $role->add(lmcTrans('laravel-user-module/admin.menu.role.add'), [ 'route' => ['admin.role.create'] ])
             ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$rolePermissions[1] )
-            ->active( removeDomain(route('admin.role.create')) );
+            ->active( removeDomain(lmbRoute('admin.role.create')) );
 
         // user
         $user = $menu->add(lmcTrans('laravel-user-module/admin.menu.user.root'), 'javascript:;')
             ->attribute( 'data-icon', config('laravel-user-module.icons.user') )
             ->data( 'permissions', self::$userPermissions )
-            ->active( removeDomain(route('admin.user.index')) . '/*');
+            ->active( removeDomain(lmbRoute('admin.user.index')) . '/*');
         $user->add(lmcTrans('laravel-user-module/admin.menu.user.all'), [ 'route' => ['admin.user.index'] ])
             ->attribute( 'data-icon', 'icon-list' )
             ->data( 'permissions', self::$userPermissions[0] )
-            ->active( removeDomain(route('admin.user.index')) );
+            ->active( removeDomain(lmbRoute('admin.user.index')) );
         $user->add(lmcTrans('laravel-user-module/admin.menu.user.add'), [ 'route' => ['admin.user.create'] ])
             ->attribute( 'data-icon', 'icon-plus' )
             ->data( 'permissions', self::$userPermissions[1] )
-            ->active( removeDomain(route('admin.user.create')) );
+            ->active( removeDomain(lmbRoute('admin.user.create')) );
     }
 }

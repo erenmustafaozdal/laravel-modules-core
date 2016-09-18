@@ -159,6 +159,14 @@
         $script(elfinderJs);
     });
 
+    // not permission modal
+    $script.ready(['jquery', 'bootstrap'], function() {
+        $('a[href="#not-permission"]').on('click', function()
+        {
+            $('#not-permission').modal();
+            return false;
+        });
+    });
 
     // select2 addresses
     $script.ready(['config','app_select2'], function()

@@ -73,7 +73,7 @@
             <?php
             $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => route('admin.page_category.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => lmbRoute('admin.page_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $page_category->id : null
                     ]),
                     'class' => 'form'

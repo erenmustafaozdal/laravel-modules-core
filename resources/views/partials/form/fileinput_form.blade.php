@@ -69,7 +69,7 @@
                     ]) !!}
                     <div class="input-group-btn">
                         {{-- File Manager --}}
-                        <a href="{!! route('elfinder.popup',[ 'input_id' => 'fileinput']) !!}"
+                        <a href="{!! lmbRoute('elfinder.popup',[ 'input_id' => 'fileinput']) !!}"
                            class="tooltips btn blue btn-outline popup_selector"
                            data-original-title="{!! trans('laravel-modules-core::admin.fields.from_file_manager') !!}"
                            data-container="body"

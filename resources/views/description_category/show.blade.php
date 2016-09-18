@@ -142,11 +142,11 @@
                             {!! Form::model($description_category,[
                                 'method'    => 'PATCH',
                                 'url'       => isset($parent_description_category)
-                                    ? route('admin.description_category.description_category.update', [
+                                    ? lmbRoute('admin.description_category.description_category.update', [
                                         'id' => $parent_description_category->id,
                                         config('laravel-description-module.url.description_category') => $description_category->id
                                     ])
-                                    : route('admin.description_category.update', [ 'id' => $description_category->id ]),
+                                    : lmbRoute('admin.description_category.update', [ 'id' => $description_category->id ]),
                                 'id'        => 'description_category-edit-info'
                             ]) !!}
 

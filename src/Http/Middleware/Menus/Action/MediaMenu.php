@@ -19,7 +19,7 @@ class MediaMenu
         )
             ->attribute( 'data-icon', config('laravel-media-module.icons.media_category') )
             ->data( 'permissions', 'admin.media_category.create' )
-            ->active( removeDomain(route('admin.media_category.create')) );
+            ->active( removeDomain(lmbRoute('admin.media_category.create')) );
         // yönetici ekle
         $menu->add(
             lmcTrans('laravel-media-module/admin.menu.media.add'),
@@ -27,6 +27,6 @@ class MediaMenu
         )
             ->attribute( 'data-icon', config('laravel-media-module.icons.media') )
             ->data( 'permissions', 'admin.media.create' )
-            ->active( removeDomain(route('admin.media.create')) );
+            ->active( removeDomain(lmbRoute('admin.media.create')) );
     }
 }

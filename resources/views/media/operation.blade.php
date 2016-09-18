@@ -77,9 +77,9 @@
 
         {{-- routes --}}
         @if(isset($media_category))
-            var modelsURL = "{!! route('api.media_category.models', ['id' => $media_category]) !!}";
+            var modelsURL = "{!! lmbRoute('api.media_category.models', ['id' => $media_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.media_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.media_category.models') !!}";
         @endif
         {{-- /routes --}}
 
@@ -145,10 +145,10 @@
             <?php
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($media_category) ? route('admin.media_category.media.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($media_category) ? lmbRoute('admin.media_category.media.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id'                                    => $media_category->id,
                         config('laravel-media-module.url.media')  => $operation === 'edit' ? $media->id : null
-                    ]) : route('admin.media.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    ]) : lmbRoute('admin.media.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $media->id : null
                     ]),
                     'class' => 'form',

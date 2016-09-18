@@ -19,7 +19,7 @@ class DocumentMenu
         )
             ->attribute( 'data-icon', config('laravel-document-module.icons.document_category') )
             ->data( 'permissions', 'admin.document_category.create' )
-            ->active( removeDomain(route('admin.document_category.create')) );
+            ->active( removeDomain(lmbRoute('admin.document_category.create')) );
         // yönetici ekle
         $menu->add(
             lmcTrans('laravel-document-module/admin.menu.document.add'),
@@ -27,6 +27,6 @@ class DocumentMenu
         )
             ->attribute( 'data-icon', config('laravel-document-module.icons.document') )
             ->data( 'permissions', 'admin.document.create' )
-            ->active( removeDomain(route('admin.document.create')) );
+            ->active( removeDomain(lmbRoute('admin.document.create')) );
     }
 }

@@ -176,7 +176,7 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('admin.role.update', ['id' => $role->id]),
+                                'url'       => lmbRoute('admin.role.update', ['id' => $role->id]),
                                 'id'        => 'role-edit-info'
                             ]) !!}
 
@@ -200,7 +200,7 @@
                         <div id="edit_permission" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('admin.role.update', ['id' => $role->id]),
+                                'url'       => lmbRoute('admin.role.update', ['id' => $role->id]),
                                 'id'        => 'edit-permission'
                             ]) !!}
 

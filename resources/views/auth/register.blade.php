@@ -40,7 +40,7 @@
 @section('content')
     {!! Form::open([
         'method'    => 'POST',
-        'url'       => route('postRegister'),
+        'url'       => lmbRoute('postRegister'),
         'class'     => 'register-account-form'
     ]) !!}
         <h3 class="form-title font-green">{!! lmcTrans('laravel-user-module/auth.register.title') !!}</h3>
@@ -107,7 +107,7 @@
             <div id="register_tnc_error"> </div>
         </div>
         <div class="form-actions">
-            <a href="{!! route('getLogin') !!}" class="btn btn-default">
+            <a href="{!! lmbRoute('getLogin') !!}" class="btn btn-default">
                 <span>{!! lmcTrans('laravel-user-module/auth.register.login') !!}</span>
             </a>
             {!! Form::button( lmcTrans('laravel-user-module/auth.register.submit'), [

@@ -31,9 +31,9 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.role.index') !!}";
-        var apiStoreURL = "{!! route('api.role.store') !!}";
-        var apiGroupAction = "{!! route('api.role.group') !!}";
+        var ajaxURL = "{!! lmbRoute('api.role.index') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.role.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.role.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

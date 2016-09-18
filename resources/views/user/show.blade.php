@@ -44,8 +44,8 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var destroyAvatarURL = "{!! route('api.user.destroyAvatar', ['id' => $user->id]) !!}";
-        var modelsURL = "{!! route('api.role.models') !!}";
+        var destroyAvatarURL = "{!! lmbRoute('api.user.destroyAvatar', ['id' => $user->id]) !!}";
+        var modelsURL = "{!! lmbRoute('api.role.models') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -320,7 +320,7 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('admin.user.update', ['id' => $user->id]),
+                                'url'       => lmbRoute('admin.user.update', ['id' => $user->id]),
                                 'id'        => 'user-edit-info'
                             ]) !!}
 
@@ -345,7 +345,7 @@
                         <div id="change_avatar" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('api.user.avatarPhoto', ['id' => $user->id]),
+                                'url'       => lmbRoute('api.user.avatarPhoto', ['id' => $user->id]),
                                 'id'        => 'change-avatar-form'
                             ]) !!}
 
@@ -363,7 +363,7 @@
                         <div id="change_password" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'POST',
-                                'url'       => route('admin.user.changePassword', ['id' => $user->id]),
+                                'url'       => lmbRoute('admin.user.changePassword', ['id' => $user->id]),
                                 'id'        => 'user-change-password'
                             ]) !!}
 
@@ -387,7 +387,7 @@
                         <div id="permission" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'POST',
-                                'url'       => route('admin.user.permission', ['id' => $user->id])
+                                'url'       => lmbRoute('admin.user.permission', ['id' => $user->id])
                             ]) !!}
 
                             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])

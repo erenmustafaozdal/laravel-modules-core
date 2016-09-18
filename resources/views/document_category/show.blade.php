@@ -133,7 +133,7 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($document_category,[
                                 'method'    => 'PATCH',
-                                'url'       => isset($parent_document_category) ? route('admin.document_category.document_category.update', [ 'id' => $parent_document_category->id, config('laravel-document-module.url.document_category') => $document_category->id ]) : route('admin.document_category.update', [ 'id' => $document_category->id ]),
+                                'url'       => isset($parent_document_category) ? lmbRoute('admin.document_category.document_category.update', [ 'id' => $parent_document_category->id, config('laravel-document-module.url.document_category') => $document_category->id ]) : lmbRoute('admin.document_category.update', [ 'id' => $document_category->id ]),
                                 'id'        => 'document_category-edit-info'
                             ]) !!}
 

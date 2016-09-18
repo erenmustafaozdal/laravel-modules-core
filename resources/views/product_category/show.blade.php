@@ -111,7 +111,7 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($product_category,[
                                 'method'    => 'PATCH',
-                                'url'       => route('admin.product_category.update', [ 'id' => $product_category->id ]),
+                                'url'       => lmbRoute('admin.product_category.update', [ 'id' => $product_category->id ]),
                                 'id'        => 'product_category-edit-info'
                             ]) !!}
 

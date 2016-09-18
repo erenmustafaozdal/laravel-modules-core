@@ -76,12 +76,12 @@
 
         {{-- routes --}}
         @if(isset($description_category))
-            var modelsURL = "{!! route('api.description_category.models', ['id' => $description_category]) !!}";
+            var modelsURL = "{!! lmbRoute('api.description_category.models', ['id' => $description_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.description_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.description_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.description_category.detail', ['id' => '###id###']) !!}";
-        var removePhotoURL = "{!! route('api.description.removePhoto', ['id' => '###id###']) !!}";
+        var categoryDetailURL = "{!! lmbRoute('api.description_category.detail', ['id' => '###id###']) !!}";
+        var removePhotoURL = "{!! lmbRoute('api.description.removePhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -191,10 +191,10 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => isset($description_category) ? route('admin.description_category.description.update', [
+                                'url'       => isset($description_category) ? lmbRoute('admin.description_category.description.update', [
                                     'id'                                    => $description_category->id,
                                     config('laravel-description-module.url.description')  => $description->id
-                                ]) : route('admin.description.update', [ 'id' => $description->id ]),
+                                ]) : lmbRoute('admin.description.update', [ 'id' => $description->id ]),
                                 'id'        => 'description-edit-info',
                                 'files'     => true
                             ]) !!}

@@ -74,7 +74,7 @@
             {{-- Operation Form --}}
             {!! Form::open([
                 'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                'url'   => route('admin.product_brand.' . ($operation === 'edit' ? 'update' : 'store'), [
+                'url'   => lmbRoute('admin.product_brand.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $operation === 'edit' ? $product_brand->id : null
                 ]),
                 'class' => 'form',

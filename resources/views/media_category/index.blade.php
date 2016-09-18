@@ -55,33 +55,33 @@
 
         {{-- routes --}}
         @if(isset($parent_media_category))
-        var ajaxURL = "{!! route('api.media_category.media_category.index', [
+        var ajaxURL = "{!! lmbRoute('api.media_category.media_category.index', [
             'id' => $parent_media_category->id
         ]) !!}";
-        var showURL = "{!! route('admin.media_category.media_category.show', [
+        var showURL = "{!! lmbRoute('admin.media_category.media_category.show', [
             'id' => $parent_media_category->id,
             config('laravel-media-module.url.media_category') => '###id###'
         ]) !!}";
-        var editURL = "{!! route('admin.media_category.media_category.edit', [
+        var editURL = "{!! lmbRoute('admin.media_category.media_category.edit', [
             'id' => $parent_media_category->id,
             config('laravel-media-module.url.media_category') => '###id###'
         ]) !!}";
         @else
-        var ajaxURL = "{!! route('api.media_category.index') !!}";
-        var showURL = "{!! route('admin.media_category.show', ['id' => '###id###']) !!}";
-        var editURL = "{!! route('admin.media_category.edit', ['id' => '###id###']) !!}";
+        var ajaxURL = "{!! lmbRoute('api.media_category.index') !!}";
+        var showURL = "{!! lmbRoute('admin.media_category.show', ['id' => '###id###']) !!}";
+        var editURL = "{!! lmbRoute('admin.media_category.edit', ['id' => '###id###']) !!}";
         @endif
-        var apiStoreURL = "{!! route('api.media_category.store') !!}";
-        var apiUpdateURL = "{!! route('api.media_category.update', ['id' => '###id###']) !!}";
-        var apiDestroyURL = "{!! route('api.media_category.destroy', ['id' => '###id###']) !!}";
-        var apiMoveURL = "{!! route('api.media_category.move', ['id' => '###id###']) !!}";
+        var apiStoreURL = "{!! lmbRoute('api.media_category.store') !!}";
+        var apiUpdateURL = "{!! lmbRoute('api.media_category.update', ['id' => '###id###']) !!}";
+        var apiDestroyURL = "{!! lmbRoute('api.media_category.destroy', ['id' => '###id###']) !!}";
+        var apiMoveURL = "{!! lmbRoute('api.media_category.move', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- scripts --}}
         var relationLinksCategory = "{!! config('laravel-modules-core.options.media_category.show_relation_category_link') !!}";
         var relationLinksModel = "{!! config('laravel-modules-core.options.media_category.show_relation_model_link') !!}";
-        var relationURLsCategory = "{!! config('laravel-modules-core.options.media_category.show_relation_category_link') ? route('admin.media_category.media_category.index', ['id' => '###id###']) : '#' !!}";
-        var relationURLsModel = "{!! config('laravel-modules-core.options.media_category.show_relation_model_link') ? route('admin.media_category.media.index', ['id' => '###id###']) : '#' !!}";
+        var relationURLsCategory = "{!! config('laravel-modules-core.options.media_category.show_relation_category_link') ? lmbRoute('admin.media_category.media_category.index', ['id' => '###id###']) : '#' !!}";
+        var relationURLsModel = "{!! config('laravel-modules-core.options.media_category.show_relation_model_link') ? lmbRoute('admin.media_category.media.index', ['id' => '###id###']) : '#' !!}";
         var nestableLevel = "{!! isset($parent_media_category) ? config('laravel-modules-core.options.media_category.nestable_level_nested') : config('laravel-modules-core.options.media_category.nestable_level_root') !!}";
         {{-- /scripts --}}
     </script>

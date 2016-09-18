@@ -70,11 +70,11 @@
 
         {{-- routes --}}
         @if(isset($document_category))
-            var modelsURL = "{!! route('api.document_category.models', ['id' => $document_category]) !!}";
+            var modelsURL = "{!! lmbRoute('api.document_category.models', ['id' => $document_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.document_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.document_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.document_category.detail', ['id' => '###id###']) !!}";
+        var categoryDetailURL = "{!! lmbRoute('api.document_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -155,10 +155,10 @@
             <?php
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($document_category) ? route('admin.document_category.document.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($document_category) ? lmbRoute('admin.document_category.document.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id'                                    => $document_category->id,
                         config('laravel-document-module.url.document')  => $operation === 'edit' ? $document->id : null
-                    ]) : route('admin.document.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    ]) : lmbRoute('admin.document.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $document->id : null
                     ]),
                     'class' => 'form',

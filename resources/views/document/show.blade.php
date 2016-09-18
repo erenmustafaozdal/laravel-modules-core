@@ -74,11 +74,11 @@
 
         {{-- routes --}}
         @if(isset($document_category))
-            var modelsURL = "{!! route('api.document_category.models', ['id' => $document_category]) !!}";
+            var modelsURL = "{!! lmbRoute('api.document_category.models', ['id' => $document_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.document_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.document_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.document_category.detail', ['id' => '###id###']) !!}";
+        var categoryDetailURL = "{!! lmbRoute('api.document_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -184,10 +184,10 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => isset($document_category) ? route('admin.document_category.document.update', [
+                                'url'       => isset($document_category) ? lmbRoute('admin.document_category.document.update', [
                                     'id'                                    => $document_category->id,
                                     config('laravel-document-module.url.document')  => $document->id
-                                ]) : route('admin.document.update', [ 'id' => $document->id ]),
+                                ]) : lmbRoute('admin.document.update', [ 'id' => $document->id ]),
                                 'id'        => 'document-edit-info',
                                 'files'     => true
                             ]) !!}

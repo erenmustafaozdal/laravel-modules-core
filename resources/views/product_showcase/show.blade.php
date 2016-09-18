@@ -111,7 +111,7 @@
                             <div id="edit_info" class="tab-pane form">
                                 {!! Form::model($product_showcase,[
                                     'method'    => 'PATCH',
-                                    'url'       => route('admin.product_showcase.update', [ 'id' => $product_showcase->id ]),
+                                    'url'       => lmbRoute('admin.product_showcase.update', [ 'id' => $product_showcase->id ]),
                                     'id'        => 'product_showcase-edit-info'
                                 ]) !!}
 

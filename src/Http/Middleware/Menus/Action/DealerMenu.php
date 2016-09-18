@@ -19,7 +19,7 @@ class DealerMenu
         )
             ->attribute( 'data-icon', config('laravel-dealer-module.icons.dealer_category') )
             ->data( 'permissions', 'admin.dealer_category.create' )
-            ->active( removeDomain(route('admin.dealer_category.create')) );
+            ->active( removeDomain(lmbRoute('admin.dealer_category.create')) );
         // bayi ekle
         $menu->add(
             lmcTrans('laravel-dealer-module/admin.menu.dealer.add'),
@@ -27,6 +27,6 @@ class DealerMenu
         )
             ->attribute( 'data-icon', config('laravel-dealer-module.icons.dealer') )
             ->data( 'permissions', 'admin.dealer.create' )
-            ->active( removeDomain(route('admin.dealer.create')) );
+            ->active( removeDomain(lmbRoute('admin.dealer.create')) );
     }
 }

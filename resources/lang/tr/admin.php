@@ -51,6 +51,7 @@ return [
     // operations
     'ops' => [
         // actions
+        'ok'                                => 'Tamam',
         'action'                            => 'Eylem',
         'select'                            => 'Seç...',
         'browse'                            => 'Bilgisayardan Yükle',
@@ -111,6 +112,8 @@ return [
 
     // fields
     'fields' => [
+        'not_permission'                    => 'Yetkin Yok',
+
         'id'                                => 'ID',
         'created_at'                        => 'Kayıt Tarihi',
         'created_at_description'            => ':date kaydedildi',
@@ -141,7 +144,8 @@ return [
     // helpers
     'helpers' => [
         'fileinput'     => 'Dosyayı bilgisayarından yükle. İstersen fotoğrafların kırpılmasını istediğin kısmını seç. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
-        'elfinder'      => 'Dosyayı <em class="label label-info">Dosya Yöneticisi</em>\'ni kullanarak ekle. Bu seçenek ile eklenecek dosyaların üzerinde her hangi bir değişiklik (kırpma vb) yapılamaz. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>'
+        'elfinder'      => 'Dosyayı <em class="label label-info">Dosya Yöneticisi</em>\'ni kullanarak ekle. Bu seçenek ile eklenecek dosyaların üzerinde her hangi bir değişiklik (kırpma vb) yapılamaz. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
+        'not_permission'=> 'Bu bağlantıyı kullanmaya yetkin yok!',
     ],
 
     // permissions

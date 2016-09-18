@@ -78,24 +78,24 @@
 
         {{-- routes --}}
         @if(isset($media_category))
-        var ajaxURL = "{!! route('api.media_category.media.index', ['id' => $media_category->id]) !!}";
-        var categoryURL = "{!! route('admin.media_category.media_category.show', [
+        var ajaxURL = "{!! lmbRoute('api.media_category.media.index', ['id' => $media_category->id]) !!}";
+        var categoryURL = "{!! lmbRoute('admin.media_category.media_category.show', [
             'id' => $media_category->id,
             config('laravel-media-module.url.media_category') => '###id###'
         ]) !!}";
-        var modelsURL = "{!! route('api.media_category.models', ['id' => $media_category->id]) !!}";
-        var categoryCreateUrl = "{!! route('admin.media_category.media_category.create', [
+        var modelsURL = "{!! lmbRoute('api.media_category.models', ['id' => $media_category->id]) !!}";
+        var categoryCreateUrl = "{!! lmbRoute('admin.media_category.media_category.create', [
             'id'        => $media_category->id,
             '_token'    => csrf_token()
         ]) !!}";
         @else
-        var ajaxURL = "{!! route('api.media.index') !!}";
-        var categoryURL = "{!! route('admin.media_category.show', ['id' => '###id###']) !!}";
-        var categoryCreateUrl = "{!! route('admin.media_category.create', ['_token' => csrf_token()]) !!}";
-        var modelsURL = "{!! route('api.media_category.models') !!}";
+        var ajaxURL = "{!! lmbRoute('api.media.index') !!}";
+        var categoryURL = "{!! lmbRoute('admin.media_category.show', ['id' => '###id###']) !!}";
+        var categoryCreateUrl = "{!! lmbRoute('admin.media_category.create', ['_token' => csrf_token()]) !!}";
+        var modelsURL = "{!! lmbRoute('api.media_category.models') !!}";
         @endif
-        var apiStoreURL = "{!! route('api.media.store') !!}";
-        var apiGroupAction = "{!! route('api.media.group') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.media.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.media.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

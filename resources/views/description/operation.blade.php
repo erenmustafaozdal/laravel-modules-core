@@ -70,12 +70,12 @@
 
         {{-- routes --}}
         @if(isset($description_category))
-            var modelsURL = "{!! route('api.description_category.models', ['id' => $description_category]) !!}";
+            var modelsURL = "{!! lmbRoute('api.description_category.models', ['id' => $description_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.description_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.description_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! route('api.description_category.detail', ['id' => '###id###']) !!}";
-        var removePhotoURL = "{!! route('api.description.removePhoto', ['id' => '###id###']) !!}";
+        var categoryDetailURL = "{!! lmbRoute('api.description_category.detail', ['id' => '###id###']) !!}";
+        var removePhotoURL = "{!! lmbRoute('api.description.removePhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -159,10 +159,10 @@
             <?php
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($description_category) ? route('admin.description_category.description.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($description_category) ? lmbRoute('admin.description_category.description.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id'                                    => $description_category->id,
                         config('laravel-description-module.url.description')  => $operation === 'edit' ? $description->id : null
-                    ]) : route('admin.description.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    ]) : lmbRoute('admin.description.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $description->id : null
                     ]),
                     'class' => 'form',

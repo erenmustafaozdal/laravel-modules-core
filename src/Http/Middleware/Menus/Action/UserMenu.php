@@ -19,7 +19,7 @@ class UserMenu
         )
             ->attribute( 'data-icon', config('laravel-user-module.icons.role') )
             ->data( 'permissions', 'admin.role.create' )
-            ->active( removeDomain(route('admin.role.create')) );
+            ->active( removeDomain(lmbRoute('admin.role.create')) );
         // yönetici ekle
         $menu->add(
             lmcTrans('laravel-user-module/admin.menu.user.add'),
@@ -27,6 +27,6 @@ class UserMenu
         )
             ->attribute( 'data-icon', 'icon-user-follow' )
             ->data( 'permissions', 'admin.user.create' )
-            ->active( removeDomain(route('admin.user.create')) );
+            ->active( removeDomain(lmbRoute('admin.user.create')) );
     }
 }

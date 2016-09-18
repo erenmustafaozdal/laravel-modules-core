@@ -50,31 +50,31 @@
 
         {{-- routes --}}
         @if(isset($parent_dealer_category))
-        var ajaxURL = "{!! route('api.dealer_category.dealer_category.index', ['id' => $parent_dealer_category->id]) !!}";
-        var showURL = "{!! route('admin.dealer_category.dealer_category.show', [
+        var ajaxURL = "{!! lmbRoute('api.dealer_category.dealer_category.index', ['id' => $parent_dealer_category->id]) !!}";
+        var showURL = "{!! lmbRoute('admin.dealer_category.dealer_category.show', [
             'id' => $parent_dealer_category->id,
             config('laravel-dealer-module.url.dealer_category') => '###id###'
         ]) !!}";
-        var editURL = "{!! route('admin.dealer_category.dealer_category.edit', [
+        var editURL = "{!! lmbRoute('admin.dealer_category.dealer_category.edit', [
             'id' => $parent_dealer_category->id,
             config('laravel-dealer-module.url.dealer_category') => '###id###'
         ]) !!}";
         @else
-        var ajaxURL = "{!! route('api.dealer_category.index') !!}";
-        var showURL = "{!! route('admin.dealer_category.show', ['id' => '###id###']) !!}";
-        var editURL = "{!! route('admin.dealer_category.edit', ['id' => '###id###']) !!}";
+        var ajaxURL = "{!! lmbRoute('api.dealer_category.index') !!}";
+        var showURL = "{!! lmbRoute('admin.dealer_category.show', ['id' => '###id###']) !!}";
+        var editURL = "{!! lmbRoute('admin.dealer_category.edit', ['id' => '###id###']) !!}";
         @endif
-        var apiStoreURL = "{!! route('api.dealer_category.store') !!}";
-        var apiUpdateURL = "{!! route('api.dealer_category.update', ['id' => '###id###']) !!}";
-        var apiDestroyURL = "{!! route('api.dealer_category.destroy', ['id' => '###id###']) !!}";
-        var apiMoveURL = "{!! route('api.dealer_category.move', ['id' => '###id###']) !!}";
+        var apiStoreURL = "{!! lmbRoute('api.dealer_category.store') !!}";
+        var apiUpdateURL = "{!! lmbRoute('api.dealer_category.update', ['id' => '###id###']) !!}";
+        var apiDestroyURL = "{!! lmbRoute('api.dealer_category.destroy', ['id' => '###id###']) !!}";
+        var apiMoveURL = "{!! lmbRoute('api.dealer_category.move', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- scripts --}}
         var relationLinksCategory = "{!! config('laravel-modules-core.options.dealer_category.show_relation_category_link') !!}";
         var relationLinksModel = "{!! config('laravel-modules-core.options.dealer_category.show_relation_model_link') !!}";
-        var relationURLsCategory = "{!! config('laravel-modules-core.options.dealer_category.show_relation_category_link') ? route('admin.dealer_category.dealer_category.index', ['id' => '###id###']) : '#' !!}";
-        var relationURLsModel = "{!! config('laravel-modules-core.options.dealer_category.show_relation_model_link') ? route('admin.dealer_category.dealer.index', ['id' => '###id###']) : '#' !!}";
+        var relationURLsCategory = "{!! config('laravel-modules-core.options.dealer_category.show_relation_category_link') ? lmbRoute('admin.dealer_category.dealer_category.index', ['id' => '###id###']) : '#' !!}";
+        var relationURLsModel = "{!! config('laravel-modules-core.options.dealer_category.show_relation_model_link') ? lmbRoute('admin.dealer_category.dealer.index', ['id' => '###id###']) : '#' !!}";
         var nestableLevel = "{!! isset($parent_dealer_category) ? config('laravel-modules-core.options.dealer_category.nestable_level_nested') : config('laravel-modules-core.options.dealer_category.nestable_level_root') !!}";
         {{-- /scripts --}}
     </script>

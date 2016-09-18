@@ -85,12 +85,12 @@ if (! function_exists('getOps')) {
             ];
         }
 
-        $ops = Form::open(['method' => 'DELETE', 'url' => route("admin.{$routeName}.destroy", $routeParams), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
+        $ops = Form::open(['method' => 'DELETE', 'url' => lmbRoute("admin.{$routeName}.destroy", $routeParams), 'style' => 'margin:0', 'id' => "destroy_form_{$model->id}"]);
 
         // edit buton
         if ( $currentPage !== 'edit' ) {
             if ( Sentinel::getUser()->is_super_admin || ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$routeName}.edit") ) {
-                $ops .= '<a href="' . route("admin.{$routeName}.edit", $routeParams) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
+                $ops .= '<a href="' . lmbRoute("admin.{$routeName}.edit", $routeParams) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
                 $ops .= '<i class="fa fa-pencil"></i>';
                 $ops .= '<span class="hidden-xs">';
                 $ops .= trans('laravel-modules-core::admin.ops.edit');
@@ -102,7 +102,7 @@ if (! function_exists('getOps')) {
         // show buton
         if ( $currentPage !== 'show' ) {
             if ( Sentinel::getUser()->is_super_admin || ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$routeName}.show") ) {
-                $ops .= '<a href="' . route("admin.{$routeName}.show", $routeParams) . '" class="btn btn-sm btn-outline green margin-right-10">';
+                $ops .= '<a href="' . lmbRoute("admin.{$routeName}.show", $routeParams) . '" class="btn btn-sm btn-outline green margin-right-10">';
                 $ops .= '<i class="fa fa-search"></i>';
                 $ops .= '<span class="hidden-xs">';
                 $ops .= trans('laravel-modules-core::admin.ops.show');
@@ -128,7 +128,7 @@ if (! function_exists('getOps')) {
             // yayından kaldırma
             if ($model->is_publish) {
                 if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.notPublish") ) {
-                    $ops .= '<a href="' . route("admin.{$routeName}.notPublish", $routeParams) . '" class="btn btn-sm btn-outline purple margin-right-10">';
+                    $ops .= '<a href="' . lmbRoute("admin.{$routeName}.notPublish", $routeParams) . '" class="btn btn-sm btn-outline purple margin-right-10">';
                     $ops .= '<i class="fa fa-times"></i>';
                     $ops .= '<span class="hidden-xs">';
                     $ops .= trans('laravel-modules-core::admin.ops.not_publish');
@@ -139,7 +139,7 @@ if (! function_exists('getOps')) {
             // yayınlama
             else {
                 if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.notPublish") ) {
-                    $ops .= '<a href="' . route("admin.{$routeName}.publish", $routeParams) . '" class="btn btn-sm btn-outline blue margin-right-10">';
+                    $ops .= '<a href="' . lmbRoute("admin.{$routeName}.publish", $routeParams) . '" class="btn btn-sm btn-outline blue margin-right-10">';
                     $ops .= '<i class="fa fa-bullhorn"></i>';
                     $ops .= '<span class="hidden-xs">';
                     $ops .= trans('laravel-modules-core::admin.ops.publish');

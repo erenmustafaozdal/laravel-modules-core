@@ -72,10 +72,10 @@
         @if(isset($page_category))
             var modelsURL = '';
         @else
-            var modelsURL = "{!! route('api.page_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.page_category.models') !!}";
         @endif
-        var tinymceURL = "{!! route('elfinder.tinymce4') !!}";
-        var tinymceSaveURL = "{!! route('api.page.contentUpdate', [ 'id' => $page->id ]) !!}";
+        var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
+        var tinymceSaveURL = "{!! lmbRoute('api.page.contentUpdate', [ 'id' => $page->id ]) !!}";
         var tinymcePermission = {!! Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.page.update') ? 'true' : 'false' !!};
         {{-- /routes --}}
 
@@ -195,10 +195,10 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($page,[
                                 'method'    => 'PATCH',
-                                'url'       => isset($page_category) ? route('admin.page_category.page.update', [
+                                'url'       => isset($page_category) ? lmbRoute('admin.page_category.page.update', [
                                     'id'                                    => $page_category->id,
                                     config('laravel-page-module.url.page')  => $page->id
-                                ]) : route('admin.page.update', [ 'id' => $page->id ]),
+                                ]) : lmbRoute('admin.page.update', [ 'id' => $page->id ]),
                                 'id'        => 'page-edit-info'
                             ]) !!}
 

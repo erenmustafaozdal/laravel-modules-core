@@ -43,12 +43,12 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var modelsURL = "{!! route('api.product_category.models') !!}";
-        var categoriesURL = "{!! route('api.product_category.models') !!}";
-        var brandsURL = "{!! route('api.product_brand.models') !!}";
-        var removePhotoURL = "{!! route('api.product.removePhoto', ['id' => '###id###']) !!}";
-        var setMainPhotoURL = "{!! route('api.product.setMainPhoto', ['id' => '###id###']) !!}";
-        var tinymceURL = "{!! route('elfinder.tinymce4') !!}";
+        var modelsURL = "{!! lmbRoute('api.product_category.models') !!}";
+        var categoriesURL = "{!! lmbRoute('api.product_category.models') !!}";
+        var brandsURL = "{!! lmbRoute('api.product_brand.models') !!}";
+        var removePhotoURL = "{!! lmbRoute('api.product.removePhoto', ['id' => '###id###']) !!}";
+        var setMainPhotoURL = "{!! lmbRoute('api.product.setMainPhoto', ['id' => '###id###']) !!}";
+        var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -126,7 +126,7 @@
             <?php
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => route('admin.product.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => lmbRoute('admin.product.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $product->id : null
                     ]),
                     'class' => 'form',

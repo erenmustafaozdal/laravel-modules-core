@@ -31,7 +31,7 @@
 @section('content')
     {!! Form::open([
         'method'    => 'POST',
-        'url'       => route('postResetPassword'),
+        'url'       => lmbRoute('postResetPassword'),
         'class'     => 'reset-password-form'
     ]) !!}
         {!! Form::hidden( 'token', $token) !!}
@@ -76,7 +76,7 @@
             ]) !!}
         </div>
         <div class="form-actions">
-            <a href="{!! route('getLogin') !!}" class="btn btn-default">
+            <a href="{!! lmbRoute('getLogin') !!}" class="btn btn-default">
                 <span>{!! lmcTrans('laravel-user-module/auth.reset_password.login') !!}</span>
             </a>
             {!! Form::button( lmcTrans('laravel-user-module/auth.reset_password.submit'), [

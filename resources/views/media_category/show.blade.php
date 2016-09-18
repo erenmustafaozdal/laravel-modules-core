@@ -155,7 +155,7 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($media_category,[
                                 'method'    => 'PATCH',
-                                'url'       => isset($parent_media_category) ? route('admin.media_category.media_category.update', [ 'id' => $parent_media_category->id, config('laravel-media-module.url.media_category') => $media_category->id ]) : route('admin.media_category.update', [ 'id' => $media_category->id ]),
+                                'url'       => isset($parent_media_category) ? lmbRoute('admin.media_category.media_category.update', [ 'id' => $parent_media_category->id, config('laravel-media-module.url.media_category') => $media_category->id ]) : lmbRoute('admin.media_category.update', [ 'id' => $media_category->id ]),
                                 'id'        => 'media_category-edit-info'
                             ]) !!}
 

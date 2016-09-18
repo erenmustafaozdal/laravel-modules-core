@@ -31,9 +31,9 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.page_category.index') !!}";
-        var apiStoreURL = "{!! route('api.page_category.store') !!}";
-        var apiGroupAction = "{!! route('api.page_category.group') !!}";
+        var ajaxURL = "{!! lmbRoute('api.page_category.index') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.page_category.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.page_category.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

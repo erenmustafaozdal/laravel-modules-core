@@ -142,7 +142,7 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($dealer_category,[
                                 'method'    => 'PATCH',
-                                'url'       => isset($parent_dealer_category) ? route('admin.dealer_category.dealer_category.update', [ 'id' => $parent_dealer_category->id, config('laravel-dealer-module.url.dealer_category') => $dealer_category->id ]) : route('admin.dealer_category.update', [ 'id' => $dealer_category->id ]),
+                                'url'       => isset($parent_dealer_category) ? lmbRoute('admin.dealer_category.dealer_category.update', [ 'id' => $parent_dealer_category->id, config('laravel-dealer-module.url.dealer_category') => $dealer_category->id ]) : lmbRoute('admin.dealer_category.update', [ 'id' => $dealer_category->id ]),
                                 'id'        => 'dealer_category-edit-info'
                             ]) !!}
 

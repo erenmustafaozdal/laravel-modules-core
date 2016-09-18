@@ -8,7 +8,7 @@
     @endif
 
     @if ($add)
-    <a class="btn green btn-outline" href="{!! is_array($module) ? route("admin.{$module['route']}.create", ['id' => $module['id']]) : route("admin.{$module}.create") !!}">
+    <a class="btn green btn-outline" href="{!! is_array($module) ? lmbRoute("admin.{$module['route']}.create", ['id' => $module['id']]) : lmbRoute("admin.{$module}.create") !!}">
         <i class="fa fa-plus-square"></i>
         <span class="hidden-xs"> {!! trans('laravel-modules-core::admin.ops.add') !!} </span>
     </a>

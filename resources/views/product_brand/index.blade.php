@@ -36,9 +36,9 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.product_brand.index') !!}";
-        var apiStoreURL = "{!! route('api.product_brand.store') !!}";
-        var apiGroupAction = "{!! route('api.product_brand.group') !!}";
+        var ajaxURL = "{!! lmbRoute('api.product_brand.index') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.product_brand.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.product_brand.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

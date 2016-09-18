@@ -42,15 +42,15 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! route('api.product.index') !!}";
-        var categoryURL = "{!! route('admin.product_category.show', ['id' => '###id###']) !!}";
-        var brandURL = "{!! route('admin.product_brand.show', ['id' => '###id###']) !!}";
-        var categoriesURL = "{!! route('api.product_category.models') !!}";
-        var brandsURL = "{!! route('api.product_brand.models') !!}";
-        var apiStoreURL = "{!! route('api.product.store') !!}";
-        var apiGroupAction = "{!! route('api.product.group') !!}";
-        var removePhotoURL = "{!! route('api.product.removePhoto', ['id' => '###id###']) !!}";
-        var setMainPhotoURL = "{!! route('api.product.setMainPhoto', ['id' => '###id###']) !!}";
+        var ajaxURL = "{!! lmbRoute('api.product.index') !!}";
+        var categoryURL = "{!! lmbRoute('admin.product_category.show', ['id' => '###id###']) !!}";
+        var brandURL = "{!! lmbRoute('admin.product_brand.show', ['id' => '###id###']) !!}";
+        var categoriesURL = "{!! lmbRoute('api.product_category.models') !!}";
+        var brandsURL = "{!! lmbRoute('api.product_brand.models') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.product.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.product.group') !!}";
+        var removePhotoURL = "{!! lmbRoute('api.product.removePhoto', ['id' => '###id###']) !!}";
+        var setMainPhotoURL = "{!! lmbRoute('api.product.setMainPhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

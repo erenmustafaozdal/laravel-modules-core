@@ -48,12 +48,12 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var modelsURL = "{!! route('api.product_category.models') !!}";
-        var categoriesURL = "{!! route('api.product_category.models') !!}";
-        var brandsURL = "{!! route('api.product_brand.models') !!}";
-        var removePhotoURL = "{!! route('api.product.removePhoto', ['id' => '###id###']) !!}";
-        var setMainPhotoURL = "{!! route('api.product.setMainPhoto', ['id' => '###id###']) !!}";
-        var tinymceURL = "{!! route('elfinder.tinymce4') !!}";
+        var modelsURL = "{!! lmbRoute('api.product_category.models') !!}";
+        var categoriesURL = "{!! lmbRoute('api.product_category.models') !!}";
+        var brandsURL = "{!! lmbRoute('api.product_brand.models') !!}";
+        var removePhotoURL = "{!! lmbRoute('api.product.removePhoto', ['id' => '###id###']) !!}";
+        var setMainPhotoURL = "{!! lmbRoute('api.product.setMainPhoto', ['id' => '###id###']) !!}";
+        var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -210,7 +210,7 @@
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('admin.product.update', [ 'id' => $product->id, 'form' => 'general' ]),
+                                'url'       => lmbRoute('admin.product.update', [ 'id' => $product->id, 'form' => 'general' ]),
                                 'class'     => 'product-form',
                                 'files'     => true
                             ]) !!}
@@ -228,7 +228,7 @@
                         <div id="change_seo" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('admin.product.update', [ 'id' => $product->id, 'form' => 'seo' ])
+                                'url'       => lmbRoute('admin.product.update', [ 'id' => $product->id, 'form' => 'seo' ])
                             ]) !!}
                                 @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
                                 <div class="form-body">
@@ -243,7 +243,7 @@
                         <div id="change_showcase" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => route('admin.product.update', [ 'id' => $product->id, 'form' => 'showcase' ])
+                                'url'       => lmbRoute('admin.product.update', [ 'id' => $product->id, 'form' => 'showcase' ])
                             ]) !!}
                                 @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
                                 <div class="form-body">

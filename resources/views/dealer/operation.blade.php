@@ -62,9 +62,9 @@
 
         {{-- routes --}}
         @if(isset($dealer_category))
-            var modelsURL = "{!! route('api.dealer_category.models', ['id' => $dealer_category]) !!}";
+            var modelsURL = "{!! lmbRoute('api.dealer_category.models', ['id' => $dealer_category]) !!}";
         @else
-            var modelsURL = "{!! route('api.dealer_category.models') !!}";
+            var modelsURL = "{!! lmbRoute('api.dealer_category.models') !!}";
         @endif
         {{-- /routes --}}
 
@@ -129,10 +129,10 @@
             <?php
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($dealer_category) ? route('admin.dealer_category.dealer.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($dealer_category) ? lmbRoute('admin.dealer_category.dealer.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id'                                    => $dealer_category->id,
                         config('laravel-dealer-module.url.dealer')  => $operation === 'edit' ? $dealer->id : null
-                    ]) : route('admin.dealer.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    ]) : lmbRoute('admin.dealer.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $dealer->id : null
                     ]),
                     'class' => 'form',

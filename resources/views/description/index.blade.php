@@ -71,16 +71,16 @@
 
         {{-- routes --}}
         @if(isset($description_category))
-        var ajaxURL = "{!! route('api.description_category.description.index', ['id' => $description_category->id]) !!}";
-        var modelsURL = "{!! route('api.description_category.models', ['id' => $description_category->id]) !!}";
+        var ajaxURL = "{!! lmbRoute('api.description_category.description.index', ['id' => $description_category->id]) !!}";
+        var modelsURL = "{!! lmbRoute('api.description_category.models', ['id' => $description_category->id]) !!}";
         @else
-        var ajaxURL = "{!! route('api.description.index') !!}";
-        var categoryURL = "{!! route('admin.description_category.show', ['id' => '###id###']) !!}";
-        var modelsURL = "{!! route('api.description_category.models') !!}";
+        var ajaxURL = "{!! lmbRoute('api.description.index') !!}";
+        var categoryURL = "{!! lmbRoute('admin.description_category.show', ['id' => '###id###']) !!}";
+        var modelsURL = "{!! lmbRoute('api.description_category.models') !!}";
         @endif
-        var apiStoreURL = "{!! route('api.description.store') !!}";
-        var apiGroupAction = "{!! route('api.description.group') !!}";
-        var removePhotoURL = "{!! route('api.description.removePhoto', ['id' => '###id###']) !!}";
+        var apiStoreURL = "{!! lmbRoute('api.description.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.description.group') !!}";
+        var removePhotoURL = "{!! lmbRoute('api.description.removePhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

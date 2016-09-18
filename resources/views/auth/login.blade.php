@@ -26,7 +26,7 @@
 @section('content')
     {!! Form::open([
         'method'    => 'POST',
-        'url'       => route('postLogin'),
+        'url'       => lmbRoute('postLogin'),
         'class'     => 'login-form'
     ]) !!}
         <h3 class="form-title font-green">{!! lmcTrans('laravel-user-module/auth.login.title') !!}</h3>
@@ -65,14 +65,14 @@
                 <input type="checkbox" name="remember" value="1" />
                 <span>{!! lmcTrans('laravel-user-module/auth.login.remember') !!}</span>
             </label>
-            <a href="{!! route('getForgetPassword') !!}" id="forget-password" class="forget-password">
+            <a href="{!! lmbRoute('getForgetPassword') !!}" id="forget-password" class="forget-password">
                 <span>{!! lmcTrans('laravel-user-module/auth.login.forget_password') !!}</span>
             </a>
         </div>
         @if(config('laravel-user-module.use_register'))
         <div class="create-account">
             <p>
-                <a href="{!! route('getRegister') !!}" id="register-btn" class="uppercase">
+                <a href="{!! lmbRoute('getRegister') !!}" id="register-btn" class="uppercase">
                     <span>{!! lmcTrans('laravel-user-module/auth.login.register') !!}</span>
                 </a>
             </p>

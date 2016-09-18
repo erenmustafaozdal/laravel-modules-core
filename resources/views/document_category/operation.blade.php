@@ -109,10 +109,10 @@
             <?php
             $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => isset($parent_document_category) ? route('admin.document_category.document_category.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => isset($parent_document_category) ? lmbRoute('admin.document_category.document_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $parent_document_category->id,
                         config('laravel-document-module.url.document_category') => $operation === 'edit' ? $document_category->id : null
-                    ]) : route('admin.document_category.' . ($operation === 'edit' ? 'update' : 'store'),[
+                    ]) : lmbRoute('admin.document_category.' . ($operation === 'edit' ? 'update' : 'store'),[
                             'id' => $operation === 'edit' ? $document_category->id : null,
                     ]),
                     'class' => 'form'
