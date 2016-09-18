@@ -28,6 +28,7 @@
     $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
     {
         Select2.init({
+            src: '.select2showcase',
             select2: {
                 ajax: null
             }

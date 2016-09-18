@@ -28,7 +28,7 @@
                 <span class="input-group-addon">
                     <input type="checkbox" class="showcase-checkbox" {{ isset($product) && $showcase->getProduct($product->id) ? 'checked' : '' }}>
                 </span>
-                <select class="form-control form-control-solid placeholder-no-fix select2me showcase-type"
+                <select class="form-control form-control-solid placeholder-no-fix select2showcase select2me showcase-type"
                         name="showcase_id[{{ $showcase->id }}][type]"
                         style="width: 100%;"
                         {{ isset($product) && $showcase->getProduct($product->id) ? '' : 'disabled' }}

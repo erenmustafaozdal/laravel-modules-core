@@ -147,26 +147,9 @@
                         @include('laravel-modules-core::product.partials.form')
 
                         {{-- Product Detail --}}
-                        <div class="panel-group accordion margin-top-40" id="product_accordion">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h4 class="panel-title">
-                                        <a class="accordion-toggle accordion-toggle-styled collapsed"
-                                           data-toggle="collapse"
-                                           data-parent="#product_accordion"
-                                           href="#detail_accordion"
-                                        > {!! lmcTrans('laravel-product-module/admin.fields.product.product_detail') !!} </a>
-                                    </h4>
-                                </div>
-                                <div id="detail_accordion" class="panel-collapse collapse">
-                                    <div class="panel-body">
-                                        @include('laravel-modules-core::product.partials.detail_form', [
-                                            'currentPhoto'  => isset($product)
-                                        ])
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @include('laravel-modules-core::product.partials.detail_form', [
+                            'currentPhoto'  => isset($product)
+                        ])
                         {{-- /Product Detail --}}
 
                     </div>
