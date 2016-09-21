@@ -181,6 +181,15 @@ return [
             'datatable_group_action'        => true,
             'datatable_detail'              => true
         ],
+
+        // contact module
+        'contact' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
     ],
 
 
