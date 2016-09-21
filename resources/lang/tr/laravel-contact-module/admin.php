@@ -40,6 +40,7 @@ return [
             'map_title'             => 'Harita İşaretçi Başlığı',
             'number'                => 'Numara',
             'email'                 => 'E-Posta',
+            'map'                   => 'Harita'
         ]
     ],
 
