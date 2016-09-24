@@ -36,6 +36,7 @@
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
+        var gmapsJs = "{!! lmcElixir('assets/app/gmaps.js') !!}";
         var formJs = "{!! lmcElixir('assets/pages/scripts/contact/contact-form.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var indexJs = "{!! lmcElixir('assets/pages/scripts/contact/index.js') !!}";
@@ -63,11 +64,14 @@
         var rowDetailSupport = {!! config('laravel-modules-core.options.contact.datatable_detail') ? 'true' : 'false' !!};
         var datatableFilterSupport = {!! config('laravel-modules-core.options.contact.datatable_filter') ? 'true' : 'false' !!};
         var isRelationTable = {!! isset($contact_category) ? 'true' : 'false' !!}
+        var markerColor = "{!! config('laravel-contact-module.map_marker_color') !!}";
+        var apiKey = "{!! config('laravel-contact-module.google_api_key') !!}";
         {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/contact/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-map.js') !!}"></script>
 @endsection
 
 @section('content')

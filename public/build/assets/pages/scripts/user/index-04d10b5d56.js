@@ -104,11 +104,12 @@ var Index = {
                 exportColumnSize: 5,
                 exportOptionsFormat: {
                     body: function (data, column, row) {
-                        if (column === 1) {
-                            return data;
-                        }
                         return LMCApp.stripTags(data);
                     }
+                },
+                changeExportColumn: function()
+                {
+                    theDataTable.options.exportOptions.columns.splice(1, 1);
                 },
                 isRelationTable: false,
                 changeRelationTable: function()

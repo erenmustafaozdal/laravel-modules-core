@@ -80,6 +80,8 @@ var DataTable = {
         theDataTable.setExportOptions();
         // set data table default order
         theDataTable.setOrder();
+        // export column change
+        theDataTable.tableOptions.changeExportColumn();
 
         // initialize a datatable
         theDataTable.dataTable = theDataTable.table.DataTable(theDataTable.tableOptions.dataTable);
@@ -615,6 +617,10 @@ var DataTable = {
             datatableFilterSupport: true,
             exportColumnSize: 0,
             exportOptionsFormat: null,
+            changeExportColumn: function()
+            {
+                //
+            },
             isRelationTable: false,
             changeRelationTable: function()
             {
@@ -653,7 +659,8 @@ var DataTable = {
                         extend: 'pdfHtml5',
                         key: { key: 'd', altKey: true, shiftKey: true },
                         exportOptions: this.options.exportOptions,
-                        title: this.options.exportTitle
+                        title: this.options.exportTitle,
+                        download: 'open'
                     },
                     {
                         extend: 'excelHtml5',

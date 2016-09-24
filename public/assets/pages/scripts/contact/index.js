@@ -107,6 +107,10 @@ var Index = {
                         return LMCApp.stripTags(data);
                     }
                 },
+                changeExportColumn: function()
+                {
+                    theDataTable.options.exportOptions.columns.splice(1, 1);
+                },
                 isRelationTable: false,
                 changeRelationTable: function()
                 {
@@ -135,7 +139,7 @@ var Index = {
                  */
                 getDetailTableFormat: function(data)
                 {
-                    return '<table class="table table-hover table-light">' +
+                    detail = '<table class="table table-hover table-light">' +
                         '<tbody>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Ad:</strong> </td>' +
@@ -146,16 +150,66 @@ var Index = {
                             '<td class="text-left">' + ( data.address == null ? '' : data.address ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Sabit Telefon:</strong> </td>' +
-                            '<td class="text-left">' + ( data.land_phone == null ? '' : data.land_phone ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Cep Telefonu:</strong> </td>' +
-                            '<td class="text-left">' + ( data.mobile_phone == null ? '' : data.mobile_phone ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>İnternet Adresi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.url == null ? '' : data.url ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Numaralar:</strong> </td>' +
+                            '<td class="text-left">';
+
+                    if (data.numbers.length > 0) {
+                        detail += '<table class="child-table table table-striped table-bordered table-advance table-hover">' +
+                            '<thead>' +
+                            '<tr>' +
+                            '<th> Başlık </th>' +
+                            '<th> Numara </th>' +
+                            '</tr>' +
+                            '</thead>' +
+                            '<tbody>';
+
+                        $.each(data.numbers, function(key,value)
+                        {
+                            detail += '<tr>' +
+                                '<td class="highlight"> <div class="warning"> </div> ' + value.title + '</td>' +
+                                '<td>' + value.number + '</td>' +
+                                '</tr>';
+                        });
+
+                        detail += '</tbody>' +
+                            '</table>';
+                    }
+
+                    detail += '</td>' +
+                        '</tr>';
+
+                    detail += '<tr>' +
+                    '<td style="width:150px; text-align:right;"> <strong>E-postalar:</strong> </td>' +
+                    '<td class="text-left">';
+
+                    if (data.emails.length > 0) {
+                        detail += '<table class="child-table table table-striped table-bordered table-advance table-hover">' +
+                            '<thead>' +
+                            '<tr>' +
+                            '<th> Başlık </th>' +
+                            '<th> E-posta </th>' +
+                            '</tr>' +
+                            '</thead>' +
+                            '<tbody>';
+
+                        $.each(data.emails, function(key,value)
+                        {
+                            detail += '<tr>' +
+                                '<td class="highlight"> <div class="warning"> </div> ' + value.title + '</td>' +
+                                '<td>' + value.email + '</td>' +
+                                '</tr>';
+                        });
+
+                        detail += '</tbody>' +
+                            '</table>';
+                    }
+
+                    detail += '</td>' +
+                        '</tr>';
+
+                    return detail + '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Harita:</strong> </td>' +
+                            '<td class="text-left">' + (data.latitude == null || data.longitude == null  || data.zoom == null ) ? '' : '<img src="' + Maps.getStaticMapUrl([800,400],data.map.latitude,data.map.longitude,data.map.zoom) + '">' + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
@@ -181,7 +235,15 @@ var Index = {
                         // id
                         { data: "id", name: "id", className: 'text-center' },
                         // map
-                        { data: "map", name: "map", searchable: false, orderable: false, className: 'text-center'},
+                        { data: "map", name: "map", searchable: false, orderable: false, className: 'text-center',
+                            render: function ( data, type, full, meta )
+                            {
+                                if (data.latitude == null || data.longitude == null  || data.zoom == null ) {
+                                    return '';
+                                }
+                                return '<img src="' + Maps.getStaticMapUrl([400,200],data.latitude,data.longitude,data.zoom) + '">';
+                            }
+                        },
                         // name
                         { data: "name", name: "name" },
                         // status

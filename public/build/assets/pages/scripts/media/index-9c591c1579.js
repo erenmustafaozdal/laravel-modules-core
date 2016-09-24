@@ -7,6 +7,67 @@ var Index = {
     options : {},
 
     /**
+     * file input options
+     */
+    fileinputOptions: {
+        uploadUrl: apiStoreURL,
+        allowedFileExtensions: validExtension.split(','),
+        allowedFileTypes: null,
+        previewFileType: 'any',
+        showUpload: false,
+        showCancel: false,
+        fileActionSettings: {
+            showUpload: false
+        },
+        uploadExtraData: function (previewId, index) {
+            var form = $('.form');
+            return {
+                category_id: form.find('select[name="category_id[]"]').val() == null ? form.find('input[name="category_id[]"]').val() : form.find('select[name="category_id[]"]').val(),
+                title: form.find('input[name="title"]').val(),
+                description: form.find('textarea[name="description"]').val(),
+                is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state'),
+                x: $("input[name='x[]']").map(function(){return $(this).val();}).get(),
+                y: $("input[name='y[]']").map(function(){return $(this).val();}).get(),
+                width: $("input[name='width[]']").map(function(){return $(this).val();}).get(),
+                height: $("input[name='height[]']").map(function(){return $(this).val();}).get()
+            };
+        },
+        ajaxSettings: {
+            success: function(data)
+            {
+                var message_success, title_success, message_error, title_error;
+                if (Editor.actionType === 'fast-add') {
+                    message_success = LMCApp.lang.admin.flash.store_success.message;
+                    title_success = LMCApp.lang.admin.flash.store_success.title;
+                    message_error = LMCApp.lang.admin.flash.store_error.message;
+                    title_error = LMCApp.lang.admin.flash.store_error.title;
+                } else {
+                    message_success = LMCApp.lang.admin.flash.update_success.message;
+                    title_success = LMCApp.lang.admin.flash.update_success.title;
+                    message_error = LMCApp.lang.admin.flash.update_error.message;
+                    title_error = LMCApp.lang.admin.flash.update_error.title;
+                }
+                if (data.result === 'success') {
+                    LMCApp.getNoty({
+                        message: message_success,
+                        title: title_success,
+                        type: 'success'
+                    });
+                    Editor.modal.modal('hide');
+                    LMCApp.hasTransaction = false;
+                    DataTable.dataTable.ajax.reload();
+                    return;
+                }
+                LMCApp.getNoty({
+                    message: message_error,
+                    title: title_error,
+                    type: 'error'
+                });
+            }
+        }
+    },
+
+    /**
      * init function
      * @param options"
      */
@@ -22,6 +83,9 @@ var Index = {
 
         DataTable.init(this.options.DataTable);
         Editor.init(this.options.Editor);
+
+        // LMCFileinput app is init
+        LMCFileinput.init(this.options.Fileinput);
 
         // publish model
         $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-publish',function()
@@ -96,16 +160,20 @@ var Index = {
         return {
             DataTable: {
                 src: ".lmcDataTable",
-                exportTitle: 'Şubeler',
+                exportTitle: 'Medyalar',
                 datatableIsResponsive: true,
                 groupActionSupport: true,
                 rowDetailSupport: true,
                 datatableFilterSupport: true,
-                exportColumnSize: 5,
+                exportColumnSize: 6,
                 exportOptionsFormat: {
                     body: function (data, column, row) {
                         return LMCApp.stripTags(data);
                     }
+                },
+                changeExportColumn: function()
+                {
+                    theDataTable.options.exportOptions.columns.splice(1, 1);
                 },
                 isRelationTable: false,
                 changeRelationTable: function()
@@ -128,6 +196,19 @@ var Index = {
                 {
                     // on delete error function
                 },
+                onGroupBeforeAjax: function(ajaxParams)
+                {
+                    var actionType = ajaxParams.action;
+                    if (actionType !== 'create_album') {
+                        return true;
+                    }
+                    var ids = ajaxParams.id.join(',');
+                    var url = categoryCreateUrl + '&media_ids=' + ids;
+                    console.log(ids);
+                    console.log(url);
+                    window.location.href = url;
+                    return false;
+                },
 
                 /**
                  * get detail child row table format
@@ -135,29 +216,62 @@ var Index = {
                  */
                 getDetailTableFormat: function(data)
                 {
-                    return '<table class="table table-hover table-light">' +
+                    var detail =  '<table class="table table-hover table-light">' +
                         '<tbody>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Ad:</strong> </td>' +
-                            '<td class="text-left">' + ( data.name == null ? '' : data.name ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Albümler:</strong> </td>' +
+                            '<td class="text-left">';
+
+                    var cats = '';
+                    $.each(data.categories,function(index, item)
+                    {
+                        cats += item.name + ', '
+                    });
+                    cats = cats.substring(0, cats.length - 2);
+                    detail += cats;
+
+                    detail += '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Adres:</strong> </td>' +
-                            '<td class="text-left">' + ( data.address == null ? '' : data.address ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
+                            '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Sabit Telefon:</strong> </td>' +
-                            '<td class="text-left">' + ( data.land_phone == null ? '' : data.land_phone ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Cep Telefonu:</strong> </td>' +
-                            '<td class="text-left">' + ( data.mobile_phone == null ? '' : data.mobile_phone ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>İnternet Adresi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.url == null ? '' : data.url ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Açıklama:</strong> </td>' +
+                            '<td class="text-left">' + ( data.description == null ? '' : data.description ) + '</td>' +
+                        '</tr>';
+
+                    // fotoğrafsa eklenir
+                    if (data.photo.photo != '') {
+                        detail += '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
+                            '<td class="text-left">' +
+                                '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">' +
+                                    '<div class="mt-element-overlay">' +
+                                        '<div class="mt-overlay-2">' +
+                                            '<img src="' + data.photo.photo +'">' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</td>' +
+                        '</tr>';
+                    }
+
+                    // videoysa eklenir
+                    if (data.video.video != '') {
+                        detail += '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Video:</strong> </td>' +
+                            '<td class="text-left">' +
+                                '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">' +
+                                    '<div class="embed-responsive embed-responsive-16by9">' +
+                                        '<iframe class="embed-responsive-item" src="' + data.video.video + '"></iframe>' +
+                                    '</div>' +
+                                '</div>' +
+                            '</td>' +
+                        '</tr>';
+                    }
+
+                    return detail + '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
                             '<td class="text-left">' + data.created_at.display + '</td>' +
                         '</tr>' +
@@ -180,10 +294,24 @@ var Index = {
                     columns: [
                         // id
                         { data: "id", name: "id", className: 'text-center' },
-                        // map
-                        { data: "map", name: "map", searchable: false, orderable: false, className: 'text-center'},
-                        // name
-                        { data: "name", name: "name" },
+                        // media
+                        { data: "media", name: "media", searchable: false, orderable: false, className: 'text-center'},
+                        // title
+                        { data: "title", name: "title" },
+                        // categories
+                        {
+                            data: "categories", name: "categories", orderable: false,
+                            render: function ( data, type, full, meta )
+                            {
+                                var cats = '';
+                                $.each(data, function(index,item)
+                                {
+                                    cats += '<a href="' + categoryURL.replace("###id###", item.id) + '"> ' + item.name + ' </a>, ';
+                                });
+                                cats = cats.substring(0, cats.length - 2);
+                                return cats;
+                            }
+                        },
                         // status
                         { data: "status", name: "is_publish", className: 'text-center',
                             render: function ( data, type, full, meta )
@@ -249,7 +377,24 @@ var Index = {
             Editor: {
                 modalShowCallback: function(Editor)
                 {
-                    //
+                    var element = $('#photo');
+                    var elfinder = $('#elfinder-photo');
+                    var video = $('#video');
+                    var wrapper = $('#media_accordion');
+                    var fileWrapper = $('#file-upload-management');
+                    if (Editor.actionType === 'fast-edit') {
+                        LMCFileinput.disable(element);
+                        elfinder.prop('disabled', true);
+                        video.prop('disabled', true);
+                        wrapper.hide();
+                        fileWrapper.hide();
+                    } else {
+                        LMCFileinput.enable(element);
+                        elfinder.prop('disabled', false);
+                        video.prop('disabled', false);
+                        wrapper.show();
+                        fileWrapper.show();
+                    }
                 },
                 actionButtonCallback: function(Editor)
                 {
@@ -265,15 +410,21 @@ var Index = {
                             isAjax: true,
                             submitAjax: function(validation)
                             {
+                                var element = $('#photo');
+                                var isEnable = LMCFileinputs['#photo']['isEnable'];
+                                if (element.length && Editor.actionType === 'fast-add' && isEnable) {
+                                    element.fileinput('upload');
+                                    return;
+                                }
+
                                 var url, type, message_success, title_success, message_error, title_error, datas = {
-                                    name: validation.form.find('input[name="name"]').val(),
-                                    province_id: validation.form.find('select[name="province_id"]').val(),
-                                    county_id: validation.form.find('select[name="county_id"]').val(),
-                                    district_id: validation.form.find('select[name="district_id"]').val(),
-                                    neighborhood_id: validation.form.find('select[name="neighborhood_id"]').val(),
-                                    postal_code_id: validation.form.find('select[name="postal_code_id"]').val(),
+                                    category_id: validation.form.find('select[name="category_id[]"]').val() == null ? validation.form.find('input[name="category_id[]"]').val() : validation.form.find('select[name="category_id[]"]').val(),
+                                    title: validation.form.find('input[name="title"]').val(),
+                                    description: validation.form.find('textarea[name="description"]').val(),
                                     is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
                                 };
+                                var video = $('#video');
+
                                 if (Editor.actionType === 'fast-add') {
                                     type = 'POST';
                                     url = apiStoreURL;
@@ -281,6 +432,12 @@ var Index = {
                                     title_success = LMCApp.lang.admin.flash.store_success.title;
                                     message_error = LMCApp.lang.admin.flash.store_error.message;
                                     title_error = LMCApp.lang.admin.flash.store_error.title;
+                                    // duruma göre video veya elfinder eklenir
+                                    if (video.prop('disabled')) {
+                                        datas.photo = $('#elfinder-photo').val();
+                                    } else {
+                                        datas.video = video.val();
+                                    }
                                 } else {
                                     type = 'PATCH';
                                     url = Editor.row.data().urls.edit;
@@ -323,6 +480,10 @@ var Index = {
                         $(Editor.editorOptions.formSrc).submit();
                     });
                 }
+            },
+            Fileinput: {
+                src: '#photo',
+                fileinput: ModelIndex.fileinputOptions
             }
         }
     }

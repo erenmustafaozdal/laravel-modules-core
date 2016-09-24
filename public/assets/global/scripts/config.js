@@ -107,7 +107,11 @@ var LMCApp = {
                 relations: 'İlişkili Veriler',
                 relation_categories: 'İlişkili Kategoriler',
                 file_manager: 'Dosya Yöneticisinden',
-                set_main_photo: 'Ana Fotoğraf Yap'
+                set_main_photo: 'Ana Fotoğraf Yap',
+                add_marker: 'İşaretçi Ekle',
+                center_here: 'Merkez Yap',
+                latitude: 'Enlem',
+                longitude: 'Boylam'
             },
             flash: {
                 store_success: {
@@ -193,6 +197,18 @@ var LMCApp = {
                 nestable_level_error: {
                     title: 'Alt Öğe Ekleyemezsin',
                     message: 'İzin verilen alt öğe sınırı aşıldı! Bu öğeyi daha üst seviyeye eklemelisin.'
+                },
+                geolocate_success: {
+                    title: 'Konumun Alındı',
+                    message: 'Tarayıcın üzerinden konumunu aldık.'
+                },
+                geolocate_error: {
+                    title: 'Konum Bulunamadı',
+                    message: 'Tarayıcın üzerinden konum bulma işlemi gerçekleşmedi.'
+                },
+                geolocate_not_support_error: {
+                    title: 'Desteklenmiyor',
+                    message: 'Tarayıcın konum almamızı desteklemiyor.'
                 }
             }
         }
@@ -549,7 +565,7 @@ var LMCApp = {
                     options = LMCSelect2s['.select2brand'];
                 }
 
-                $(this).select2(options.select2);
+                $(this).empty().select2(options.select2);
                 $(this).find('.select2-selection__clear').remove();
             });
         }
@@ -557,7 +573,10 @@ var LMCApp = {
             $('select.addresses', target).each(function()
             {
                 var id = $(this).prop('id');
-                $(this).prop('disabled',true).select2(LMCSelect2s['#' + id].options.select2);
+                if (id !== 'province_id') {
+                    $(this).prop('disabled',true);
+                }
+                $(this).empty().select2(LMCSelect2s['#' + id].select2);
                 $(this).find('.select2-selection__clear').remove();
             });
         }

@@ -11,7 +11,6 @@
 {{-- Province --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.province_id') !!}</label>
-    {!! Form::hidden('province_id',0) !!}
     <select id="province_id" class="form-control form-control-solid placeholder-no-fix addresses" name="province_id" style="width: 100%">
         @if(isset($dealer) && ! is_null($dealer->province))
             <option value="{{ $dealer->province->id }}" selected>{{ $dealer->province->province }}</option>
@@ -31,7 +30,6 @@
 {{-- County --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-dealer-module/admin.fields.dealer.county_id') !!}</label>
-    {!! Form::hidden('county_id',0) !!}
     <select id="county_id" class="form-control form-control-solid placeholder-no-fix addresses" name="county_id" {{ ! isset($dealer) || ( is_null($dealer->county) || is_null($dealer->county->county) ) ? 'disabled' : '' }} style="width: 100%">
         @if(isset($dealer) && ! is_null($dealer->county))
             <option value="{{ $dealer->county->id }}" selected>{{ $dealer->county->county }}</option>

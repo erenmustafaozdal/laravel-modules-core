@@ -75,6 +75,7 @@ var Editor = {
             modal.find('.modal-title').text(LMCApp.lang.admin.ops.fast_edit);
             $(theEditor.editorOptions.actionSrc, modal).text(LMCApp.lang.admin.ops.fast_edit);
             var tr = button.closest('tr');
+            LMCApp.resetAllFormFields(theEditor.form);
             theEditor.row = theDataTable.getDataTable().row(tr);
             theEditor.getEditDataToForm();
         });
