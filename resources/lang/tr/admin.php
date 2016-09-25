@@ -131,6 +131,7 @@ return [
         'seo'                               => 'SEO Bilgileri',
         'showcase'                          => 'Vitrin Bilgileri',
         'detail'                            => 'Detaylar',
+        'location'                          => 'Konum Bilgileri',
 
         'file_manager'                      => 'Dosya Yöneticisi',
         'from_file_manager'                 => 'Dosya Yöneticisinden Ekle',
@@ -139,6 +140,12 @@ return [
 
         'current_photo'                     => '[0,1] Geçerli Fotoğraf |[2,Inf] Geçerli Fotoğraflar',
         'main_photo'                        => 'Ana Fotoğraf',
+
+        'province_id'                       => 'İl',
+        'county_id'                         => 'İlçe',
+        'district_id'                       => 'Semt',
+        'neighborhood_id'                   => 'Mahalle',
+        'postal_code_id'                    => 'Posta Kodu',
     ],
 
     // helpers

@@ -37,6 +37,30 @@ var Maps = {
 
         LMCMaps[this.src] = new GMaps(options.gmaps);
         LMCMapOptions[this.src] = options.gmaps;
+
+        // eğer varsayılan değerler varsa ekle
+        if (defaultLatitude && defaultLongitude && defaultZoom) {
+            this.addMarker(defaultLatitude,defaultLongitude,defaultZoom,defaultMapTitle);
+        }
+
+        if ( ! options.isInit ) {
+            $(options.tab).on('click', function (e) {
+                if (options.isInit) {
+                    return true;
+                }
+                var map = LMCMaps[options.src];
+                var lat = defaultLatitude ? defaultLatitude : 39;
+                var lng = defaultLongitude ? defaultLongitude : 35;
+                var zoom = defaultZoom ? defaultZoom : 6;
+                setTimeout(function () {
+                    map.refresh();
+                    map.setCenter(lat, lng, function () {
+                        map.setZoom(zoom);
+                    });
+                }, 500);
+                options.isInit = true;
+            });
+        }
         return this;
     },
 
@@ -67,12 +91,22 @@ var Maps = {
         if(zoom != undefined) {
             map.setZoom(zoom);
         }
-        title = title != undefined ? title : 'Konum';
+
+        if ( ! title) {
+            var map_title = $('input[name="map_title"]').val();
+            var name = $('input[name="name"]').val();
+            title = map_title != '' ? map_title : (name != '' ? name : 'Konum');
+        }
         content = this.window.replace(/:title/g, title)
             .replace(/:latitude/g, lat)
             .replace(/:longitude/g, lng);
 
         map.addMarker({
+            icon: {
+                size: new google.maps.Size(40, 37),
+                url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + markerColor
+            },
+            animation: google.maps.Animation.DROP,
             lat: lat,
             lng: lng,
             draggable: true,
@@ -80,6 +114,8 @@ var Maps = {
                 content: content
             }
         });
+        $('input[type="hidden"][name="latitude"]').val(lat);
+        $('input[type="hidden"][name="longitude"]').val(lng);
         return this;
     },
 
@@ -101,7 +137,7 @@ var Maps = {
             markers: [
                 {
                     size: 'normal',
-                    color: markerColor,
+                    color: '#' + markerColor,
                     lat: lat,
                     lng: lng
                 }
@@ -160,20 +196,22 @@ var Maps = {
     /**
      * set context menu on the map
      *
+     * @param removeAll
      */
-    setContextMenu: function()
+    setContextMenu: function(removeAll)
     {
         var map = LMCMaps[this.src];
+        var object = this;
         map.setContextMenu({
             control: 'map',
             options: [{
                 title: LMCApp.lang.admin.ops.add_marker,
                 name: 'add_marker',
                 action: function(e) {
-                    this.addMarker({
-                        lat: e.latLng.lat(),
-                        lng: e.latLng.lng()
-                    });
+                    if (removeAll) {
+                        object.removeMarkers();
+                    }
+                    object.addMarker(e.latLng.lat(),e.latLng.lng(),8);
                 }
             }, {
                 title: LMCApp.lang.admin.ops.center_here,
@@ -213,6 +251,59 @@ var Maps = {
     },
 
     /**
+     * add search select2 box
+     */
+    addSearch: function()
+    {
+        var object = this;
+        Select2.init({
+            src: '#search_location',
+            select2: {
+                minimumInputLength: 5,
+                placeholder: LMCApp.lang.admin.ops.search_location,
+                query: function (query) {
+                    GMaps.geocode({
+                        address: query.term,
+                        callback: function(results, status) {
+                            var data = {results: []};
+                            if (status == 'OK') {
+                                $.each(results, function(index,value)
+                                {
+                                    var latlng = value.geometry.location;
+                                    data.results.push({
+                                        id: latlng.lat()+'_'+latlng.lng(),
+                                        text: value.formatted_address
+                                    });
+                                });
+                            } else {
+                                data.results.push({
+                                    id: '',
+                                    text: 'Adres bulunamadı'
+                                });
+                            }
+
+                            query.callback(data);
+                        }
+                    });
+                }
+            }
+        });
+        $('#search_location').on('change', function(e) {
+            var value = $(this).val();
+
+            // eğer değer boş ise döndürülür
+            if (value=='') {
+                return false;
+            }
+            value = value.split('_');
+            var lat = value[0];
+            var lng = value[1];
+
+            object.addMarker(lat,lng,8);
+        });
+    },
+
+    /**
      * get default options
      *
      * @returns object
@@ -221,6 +312,8 @@ var Maps = {
     {
         return {
             src: '#map',
+            tab: 'a[href="#location"]',
+            isInit: false,
             gmaps: {
                 div: '#map',
                 lat: 39,
@@ -255,7 +348,7 @@ var Maps = {
                 },
                 zoom_changed: function(e)
                 {
-                    //console.log(this.getZoom());
+                    $('input[type="hidden"][name="zoom"]').val(e.zoom);
                 }
             }
         };

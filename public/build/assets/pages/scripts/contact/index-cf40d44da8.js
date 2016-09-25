@@ -139,7 +139,7 @@ var Index = {
                  */
                 getDetailTableFormat: function(data)
                 {
-                    detail = '<table class="table table-hover table-light">' +
+                    var detail = '<table class="table table-hover table-light">' +
                         '<tbody>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Ad:</strong> </td>' +
@@ -156,10 +156,10 @@ var Index = {
                     if (data.numbers.length > 0) {
                         detail += '<table class="child-table table table-striped table-bordered table-advance table-hover">' +
                             '<thead>' +
-                            '<tr>' +
-                            '<th> Başlık </th>' +
-                            '<th> Numara </th>' +
-                            '</tr>' +
+                                '<tr>' +
+                                    '<th> Başlık </th>' +
+                                    '<th> Numara </th>' +
+                                '</tr>' +
                             '</thead>' +
                             '<tbody>';
 
@@ -207,9 +207,9 @@ var Index = {
                     detail += '</td>' +
                         '</tr>';
 
-                    return detail + '<tr>' +
+                    detail += '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Harita:</strong> </td>' +
-                            '<td class="text-left">' + (data.latitude == null || data.longitude == null  || data.zoom == null ) ? '' : '<img src="' + Maps.getStaticMapUrl([800,400],data.map.latitude,data.map.longitude,data.map.zoom) + '">' + '</td>' +
+                            '<td class="text-left">' + ( data.map.latitude == '' || data.map.longitude == ''  || data.map.zoom == '' ? '' : '<img src="' + Maps.getStaticMapUrl([800,400],data.map.latitude,data.map.longitude,data.map.zoom) ) + '">' + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
@@ -221,6 +221,8 @@ var Index = {
                         '</tr>' +
                         '</tbody>' +
                         '</table>';
+
+                    return detail;
                 },
 
                 /**

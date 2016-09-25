@@ -80,11 +80,6 @@ return [
         'dealer' => [
             'name'                  => 'Ad',
             'address'               => 'Adres',
-            'province_id'           => 'İl',
-            'county_id'             => 'İlçe',
-            'district_id'           => 'Semt',
-            'neighborhood_id'       => 'Mahalle',
-            'postal_code_id'        => 'Posta Kodu',
             'land_phone'            => 'Sabit Telefon',
             'mobile_phone'          => 'Cep Telefonu',
             'url'                   => 'İnternet Adresi',

@@ -111,7 +111,8 @@ var LMCApp = {
                 add_marker: 'İşaretçi Ekle',
                 center_here: 'Merkez Yap',
                 latitude: 'Enlem',
-                longitude: 'Boylam'
+                longitude: 'Boylam',
+                search_location: 'Konum Ara',
             },
             flash: {
                 store_success: {

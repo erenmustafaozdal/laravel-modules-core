@@ -135,8 +135,7 @@
                     ]) : lmbRoute('admin.dealer.' . ($operation === 'edit' ? 'update' : 'store'), [
                             'id' => $operation === 'edit' ? $dealer->id : null
                     ]),
-                    'class' => 'form',
-                    'files' => true
+                    'class' => 'form'
                 ];
             ?>
             {!! Form::open($form) !!}

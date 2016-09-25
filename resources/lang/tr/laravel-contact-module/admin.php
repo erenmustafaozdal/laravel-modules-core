@@ -32,15 +32,15 @@ return [
         'contact' => [
             'name'                  => 'Ad',
             'address'               => 'Adres',
-            'province_id'           => 'İl',
-            'county_id'             => 'İlçe',
-            'district_id'           => 'Semt',
-            'neighborhood_id'       => 'Mahalle',
-            'postal_code_id'        => 'Posta Kodu',
             'map_title'             => 'Harita İşaretçi Başlığı',
+            'map'                   => 'Harita',
+            'search_location'       => 'Konum Ara',
+            'number_title'          => 'Numara Başlığı',
             'number'                => 'Numara',
+            'add_number'            => 'Yeni Numara Ekle',
+            'email_title'           => 'E-posta Başlığı',
             'email'                 => 'E-Posta',
-            'map'                   => 'Harita'
+            'add_email'             => 'Yeni E-posta Ekle',
         ]
     ],
 
@@ -53,11 +53,22 @@ return [
             'district_id'       => 'Şubenin bulunduğu semti seçin. <em class="label label-warning">Bu alan ilçe seçildiğinde aktif olacaktır.</em>',
             'neighborhood_id'   => 'Şubenin bulunduğu mahalleyi seçin. <em class="label label-warning">Bu alan semt seçildiğinde aktif olacaktır.</em>',
             'postal_code_id'    => 'Şubenin bulunduğu mekanın posta kodu. <em class="label label-warning">Bu alan mahalleyi seçtiğinde otomatik doldurulacaktır. Her hangi bir işlem yapmana gerek yok.</em>',
+            'number'            => 'Şubeye ait sabit telefon, cep telefonu veya fax numarası. <small class="text-muted">(Ör: 0(506) 999 99 99)</small>',
+            'email'             => 'Şubenin e-posta adresi.',
+            'location'          => '<h4>Şubenin Konum Bilgilerini Belirle</h4>' .
+                '<p><em class="label label-info">Harita İşaretçi Başlığı</em> alanı ile haritaya eklediğin konumun penceresindeki başlığı belirtebilirsin.</p>' .
+                '<p class="margin-top-10">' .
+                    'Konumu harita üzerinde işaretlemek için iki yöntem var:' .
+                    '<ol>' .
+                        '<li>Haritanın üzerinde bulunan <em class="label label-info">Konum Ara</em> alanı ile istediğin yeri arayıp, seçebilirsin. Sen seçim yaptığında konum harita üzerine eklenecektir.</li>' .
+                        '<li>Harita üzerinde fare yardımıyla konumunu bulabilirsin. Konumu bu şekilde bulduğunda farenin <em class="label label-danger">sağ</em> tuşunu tıklayıp, açılan menüden <em class="label label-info">İşaretçi Ekle</em> seçimini yaptığında tıkladığın yer haritaya konum olarak eklenecektir.</li>' .
+                    '</ol>' .
+                '</p>' .
+                '<p class="margin-top-10">' .
+                    'Harita ziyaretçilere senin kaydettiğin şekilde görüntülenecektir. Bu sebeple haritanın yakınlığını (zoom) dikkatli bir şekilde ayarla.' .
+                '</p>',
             'map_title'         => 'Haritadaki işaretçinin üzerine tıklandığında açılan pencerede görünmesini istediğin başlığı yaz.',
-            'number_multiple'   => '<button class="btn btn-sm blue btn-outline">Bir Tane Daha Ekle</button> tuşuna basarak birden fazla numara ekleyebilirsin.',
-            'number'            => 'Şubeye ait cep telefon numarası. <small class="text-muted">(Ör: 0(506) 999 99 99)</small>',
-            'email_multiple'    => '<button class="btn btn-sm blue btn-outline">Bir Tane Daha Ekle</button> tuşuna basarak birden fazla e-posta adresi ekleyebilirsin.',
-            'email'             => 'Şubenin internet adresi. <small class="text-muted">(Ör: http://www.siteadi.com veya http://www.siteadi.com/sitenin-her-hangi-bir-sayfasi vb.)</small>',
+            'search_location'   => 'Haritada hızlı arama yapmak için konum adı yaz. <small class="text-muted">(Ör: Ankara)</small>',
         ]
     ],
 
