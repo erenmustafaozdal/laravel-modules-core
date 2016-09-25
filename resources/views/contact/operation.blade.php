@@ -43,7 +43,6 @@
             'group-number[0][number]': { phone_tr: "{!! LMCValidation::getMessage('number','phone_tr') !!}" },
             'group-email[0][email]': { email: "{!! LMCValidation::getMessage('email','email') !!}" }
         };
-        var markerColor = "{!! config('laravel-contact-module.map_marker_color') !!}";
         var apiKey = "{!! config('laravel-contact-module.google_api_key') !!}";
         var defaultZoom = {{ isset($contact) ? $contact->zoom : 0 }};
         var defaultLatitude = "{{ isset($contact) ? $contact->latitude : '' }}";

@@ -53,6 +53,6 @@
         });
 
         // map
-        Maps.init().setContextMenu(true).addSearch();
+        Maps.init().setContextMenu().addSearch();
     });
 })();

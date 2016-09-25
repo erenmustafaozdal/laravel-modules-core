@@ -64,7 +64,6 @@
         var rowDetailSupport = {!! config('laravel-modules-core.options.contact.datatable_detail') ? 'true' : 'false' !!};
         var datatableFilterSupport = {!! config('laravel-modules-core.options.contact.datatable_filter') ? 'true' : 'false' !!};
         var isRelationTable = {!! isset($contact_category) ? 'true' : 'false' !!}
-        var markerColor = "{!! config('laravel-contact-module.map_marker_color') !!}";
         var apiKey = "{!! config('laravel-contact-module.google_api_key') !!}";
         {{-- /scripts --}}
     </script>

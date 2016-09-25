@@ -92,20 +92,13 @@ var Maps = {
             map.setZoom(zoom);
         }
 
-        if ( ! title) {
-            var map_title = $('input[name="map_title"]').val();
-            var name = $('input[name="name"]').val();
-            title = map_title != '' ? map_title : (name != '' ? name : 'Konum');
-        }
+        title = this.getTitle(title);
         content = this.window.replace(/:title/g, title)
             .replace(/:latitude/g, lat)
             .replace(/:longitude/g, lng);
 
-        map.addMarker({
-            icon: {
-                size: new google.maps.Size(40, 37),
-                url: "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + markerColor
-            },
+        this.removeMarkers();
+        var marker = map.addMarker({
             animation: google.maps.Animation.DROP,
             lat: lat,
             lng: lng,
@@ -116,7 +109,32 @@ var Maps = {
         });
         $('input[type="hidden"][name="latitude"]').val(lat);
         $('input[type="hidden"][name="longitude"]').val(lng);
+        marker.addListener('dragend', this.setMarkerPosition);
         return this;
+    },
+
+    /**
+     * get the title
+     *
+     * @param title
+     * @return string
+     */
+    getTitle: function(title)
+    {
+        if ( ! title) {
+            var map_title = $('input[name="map_title"]').val();
+            var name = $('input[name="name"]').val();
+            title = map_title != '' ? map_title : (name != '' ? name : 'Konum');
+        }
+        return title;
+    },
+
+    /**
+     * set the marker position to inputs
+     */
+    setMarkerPosition: function(e)
+    {
+        theMaps.addMarker(e.latLng.lat(),e.latLng.lng());
     },
 
     /**
@@ -136,8 +154,6 @@ var Maps = {
             lng: lng,
             markers: [
                 {
-                    size: 'normal',
-                    color: '#' + markerColor,
                     lat: lat,
                     lng: lng
                 }
@@ -162,8 +178,6 @@ var Maps = {
             success: function (position) {
                 var lat = position.coords.latitude;
                 var lng = position.coords.longitude;
-                console.log(lat);
-                console.log(lng);
                 Maps.addMarker(lat,lng);
                 LMCApp.getNoty({
                     title: LMCApp.lang.admin.flash.geolocate_success.title,
@@ -172,7 +186,6 @@ var Maps = {
                 });
             },
             error: function (error) {
-                console.log(error);
                 LMCApp.getNoty({
                     title: LMCApp.lang.admin.flash.geolocate_error.title,
                     message: LMCApp.lang.admin.flash.geolocate_error.message,
@@ -196,9 +209,8 @@ var Maps = {
     /**
      * set context menu on the map
      *
-     * @param removeAll
      */
-    setContextMenu: function(removeAll)
+    setContextMenu: function()
     {
         var map = LMCMaps[this.src];
         var object = this;
@@ -208,9 +220,6 @@ var Maps = {
                 title: LMCApp.lang.admin.ops.add_marker,
                 name: 'add_marker',
                 action: function(e) {
-                    if (removeAll) {
-                        object.removeMarkers();
-                    }
                     object.addMarker(e.latLng.lat(),e.latLng.lng(),8);
                 }
             }, {
@@ -238,7 +247,6 @@ var Maps = {
                 margin: '5px',
                 padding: '1px 6px',
                 border: 'solid 1px #717B87',
-                background: markerColor,
                 color: '#fff'
             },
             events: {
@@ -339,10 +347,6 @@ var Maps = {
                     position: google.maps.ControlPosition.BOTTOM_RIGHT
                 },
                 click: function(e)
-                {
-                    //
-                },
-                dragend: function(e)
                 {
                     //
                 },
