@@ -222,3 +222,56 @@ if (! function_exists('removeDomain')) {
         return str_replace( URL::to('/') . '/', '', $url );
     }
 }
+
+
+
+/*
+|--------------------------------------------------------------------------
+| get progress bar
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('getProgressBar')) {
+    /**
+     * @param integer $min
+     * @param integer $max
+     * @param integer $value
+     * @param string|null $text
+     * @return string
+     */
+    function getProgressBar($min, $max, $value, $text=null)
+    {
+        $percent = getPercent($max, $value);
+        $color = getPercentColor( $percent );
+        $bar  = '<div class="progress" style="text-indent:0; height: 20px; margin-bottom: 0;">';
+        $bar .=     "<div class='progress-bar {$color}' role='progressbar' aria-valuenow='{$value}' aria-valuemin='{$min}' aria-valuemax='{$max}' style='width: {$percent}%;'>";
+        $bar .=         is_null($text) ? $value : $text;
+        $bar .=     '</div>';
+        $bar .= '</div>';
+
+        return $bar;
+    }
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| get percent color
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('getPercentColor')) {
+    /**
+     * @param float $value
+     * @return string
+     */
+    function getPercentColor($value)
+    {
+        if ($value >= 70) {
+            return 'green';
+        }
+        if ($value >= 40) {
+            return 'yellow-l';
+        }
+        return 'red';
+    }
+}

@@ -9,7 +9,7 @@
         $script(showJs,'show');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
     });
-    $script.ready(['show', 'config'], function()
+    $script.ready(['show', 'config','inputmask'], function()
     {
         Show.init();
 

@@ -94,10 +94,19 @@ var Validation = {
                     });
                 },
                 highlight: function(element) { // hightlight error inputs
-                    $(element).closest('.form-group').addClass('has-error');
+                    if ( $(element).hasClass('repeater') ) {
+                        $(element).closest('.mt-repeater-item').addClass('has-error');
+                    } else {
+                        $(element).closest('.form-group').addClass('has-error');
+                    }
+
                 },
                 success: function(label) {
-                    label.closest('.form-group').removeClass('has-error');
+                    if (label.prev().hasClass('repeater')) {
+                        label.closest('.mt-repeater-item').removeClass('has-error');
+                    } else {
+                        label.closest('.form-group').removeClass('has-error');
+                    }
                     label.remove();
                 },
                 errorPlacement: function(error, element) {

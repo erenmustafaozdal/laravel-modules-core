@@ -33,12 +33,6 @@ var Operation = {
                     },
                     county_id: {
                         required: true
-                    },
-                    'group-number[0][number]': {
-                        phone_tr: true
-                    },
-                    'group-email[0][email]': {
-                        email: true
                     }
                 },
                 messages: messagesOfRules

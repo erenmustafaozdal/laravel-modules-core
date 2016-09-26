@@ -178,8 +178,7 @@
                                     'id'                                    => $dealer_category->id,
                                     config('laravel-dealer-module.url.dealer')  => $dealer->id
                                 ]) : lmbRoute('admin.dealer.update', [ 'id' => $dealer->id ]),
-                                'id'        => 'dealer-edit-info',
-                                'files'     => true
+                                'id'        => 'dealer-edit-info'
                             ]) !!}
 
                             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])

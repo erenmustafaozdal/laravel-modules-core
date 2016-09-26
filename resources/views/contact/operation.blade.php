@@ -39,9 +39,7 @@
         var messagesOfRules = {
             name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
             province_id: { required: "{!! LMCValidation::getMessage('province_id','required') !!}" },
-            county_id: { required: "{!! LMCValidation::getMessage('county_id','required') !!}" },
-            'group-number[0][number]': { phone_tr: "{!! LMCValidation::getMessage('number','phone_tr') !!}" },
-            'group-email[0][email]': { email: "{!! LMCValidation::getMessage('email','email') !!}" }
+            county_id: { required: "{!! LMCValidation::getMessage('county_id','required') !!}" }
         };
         var apiKey = "{!! config('laravel-contact-module.google_api_key') !!}";
         var defaultZoom = {{ isset($contact) ? $contact->zoom : 0 }};

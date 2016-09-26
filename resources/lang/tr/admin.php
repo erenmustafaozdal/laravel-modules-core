@@ -125,6 +125,7 @@ return [
         'edit_info'                         => 'Bilgileri Güncelle',
         'change_seo'                        => 'SEO Güncelle',
         'change_showcase'                   => 'Vitrinleri Güncelle',
+        'change_map'                        => 'Harita Güncelle',
 
         'overview'                          => 'Genel Bilgiler',
         'content_info'                      => 'İçerik Bilgisi',
@@ -146,6 +147,11 @@ return [
         'district_id'                       => 'Semt',
         'neighborhood_id'                   => 'Mahalle',
         'postal_code_id'                    => 'Posta Kodu',
+
+        'latitude'                          => 'Enlem',
+        'longitude'                         => 'Boylam',
+        'zoom'                              => 'Harita Yakınlığı',
+        'zoom_info'                         => '<small class="text-muted">(1 ile 20 arası)</small>',
     ],
 
     // helpers

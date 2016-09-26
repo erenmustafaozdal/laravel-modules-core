@@ -38,9 +38,11 @@ return [
             'number_title'          => 'Numara Başlığı',
             'number'                => 'Numara',
             'add_number'            => 'Yeni Numara Ekle',
+            'numbers'               => 'Numaralar',
             'email_title'           => 'E-posta Başlığı',
             'email'                 => 'E-Posta',
             'add_email'             => 'Yeni E-posta Ekle',
+            'emails'                => 'E-postalar',
         ]
     ],
 
