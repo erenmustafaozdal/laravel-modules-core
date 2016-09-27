@@ -68,9 +68,9 @@ class BreadcrumbService
             trans($this->module_name.$this->route_name, $modelTrans) :
             trans($this->module_name.$this->index_route_name, $modelTrans);
 
-        if ( strpos($this->route_name, 'index')  !== false ) {
+        if ( strpos($this->route_name, 'index')  !== false) {
             $breadcrumbs  .= $parent_text;
-        } else {
+        } else if (Route::has($this->index_route_name)) {
             $route = Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($this->index_route_name) ? lmbRoute($this->index_route_name, $modelRoute) : 'javascript:;';
             $breadcrumbs  .= '<a href="'. $route .'">'.$parent_text.'</a><i class="fa fa-circle"></i>';
         }
