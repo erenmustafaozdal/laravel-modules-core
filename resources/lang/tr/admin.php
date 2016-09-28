@@ -127,6 +127,8 @@ return [
         'change_showcase'                   => 'Vitrinleri Güncelle',
         'change_map'                        => 'Harita Güncelle',
 
+        'datatable_configs'                 => 'Veri Tablosu Ayarları',
+
         'overview'                          => 'Genel Bilgiler',
         'content_info'                      => 'İçerik Bilgisi',
         'seo'                               => 'SEO Bilgileri',

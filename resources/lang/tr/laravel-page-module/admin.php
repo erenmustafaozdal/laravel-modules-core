@@ -55,7 +55,12 @@ return [
     // fields
     'fields' => [
         'page_category' => [
-            'name'                          => 'Kategori Adı'
+            'name'                          => 'Kategori Adı',
+            'datatable_filter'              => 'Sayfalarda filtreleme işlemi yapılsın mı?',
+            'datatable_tools'               => 'Sayfa listeleri üzerinde çeşitli araçlar çalıştırılsın mı?',
+            'datatable_fast_add'            => 'Sayfaların listelendiği sayfada hızlı sayfa ekleme işlemi yapılsın mı?',
+            'datatable_group_action'        => 'Sayfaların listelendiği sayfada çoklu grup işlemi yapılsın mı?',
+            'datatable_detail'              => 'Sayfaların detay bilgileri veri tablosu üzerinde gösterilsin mi?',
         ],
         'page' => [
             'title'                         => 'Sayfa Başlığı',
@@ -80,7 +85,12 @@ return [
             'meta_description_help'         => 'Arama motorlarını bilgilendirmek amacıyla içerik açıklaması yazın.',
             'meta_keywords_help'            => 'Arama motorlarını bilgilendirmek amacıyla içerik ile ilgili anahtar kelimeler yazın. Anahtar kelimeler arasına <em class="label label-info">virgül (,)</em> koyun.',
             'is_publish_help'               => 'Sayfanın yayında olması, ziyaretçilerin sayfayı görebilmesini sağlar. Yayında olmayan sayfalar ziyaretçilere açık değildir.',
-            'inline_edit_help'              => '<h4>Satır İçi Düzenleme</h4><p>Düzenlemeni satır içi yap. Düzenlemeni kaydetmek istediğinde, editörün araç çubuğundaki kaydet tuşuna bas.</p><p><small class="text-muted">Bu sayfada daha basit özelliklerle düzenleme yapabilirsin. Detaylı düzenleme için <em class="label label-sm label-info">Düzenle</em> sayfasına gitmelisin.</small></p>'
+            'inline_edit_help'              => '<h4>Satır İçi Düzenleme</h4><p>Düzenlemeni satır içi yap. Düzenlemeni kaydetmek istediğinde, editörün araç çubuğundaki kaydet tuşuna bas.</p><p><small class="text-muted">Bu sayfada daha basit özelliklerle düzenleme yapabilirsin. Detaylı düzenleme için <em class="label label-sm label-info">Düzenle</em> sayfasına gitmelisin.</small></p>',
+            'datatable_filter'              => 'Bu kategoride bulunan sayfaların listelendiği sayfada, çeşitli alanlar kullanılarak arama ve filtreleme işlemi yapılsın mı?',
+            'datatable_tools'               => 'Bu kategoride bulunan sayfaların listelendiği sayfada, çeşitli araçlar <small>(yazdırma ve pdf,excel çıktı alma vb)</small> çalıştırılsın mı?',
+            'datatable_fast_add'            => 'Bu kategoride bulunan sayfaların listelendiği sayfada, açılan pencere üzerinden hızlı ekleme işlemi yapılsın mı?',
+            'datatable_group_action'        => 'Bu kategoride bulunan sayfaların listelendiği sayfada, çoklu grup işlemi <small>(toplu silme, yayınlama vb)</small> yapılsın mı?',
+            'datatable_detail'              => 'Bu kategoride bulunan sayfaların listelendiği sayfadaki tablo üzerinde sayfanın detay bilgileri hızlı bir şekilde gösterilsin mi?',
         ]
     ],
 
