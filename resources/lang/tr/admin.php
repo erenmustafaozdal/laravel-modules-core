@@ -135,6 +135,8 @@ return [
         'showcase'                          => 'Vitrin Bilgileri',
         'detail'                            => 'Detaylar',
         'location'                          => 'Konum Bilgileri',
+        'photo_configs'                     => 'Fotoğraf Ayarları',
+        'extra_columns'                     => 'Ekstra Veriler',
 
         'file_manager'                      => 'Dosya Yöneticisi',
         'from_file_manager'                 => 'Dosya Yöneticisinden Ekle',
@@ -154,6 +156,12 @@ return [
         'longitude'                         => 'Boylam',
         'zoom'                              => 'Harita Yakınlığı',
         'zoom_info'                         => '<small class="text-muted">(1 ile 20 arası)</small>',
+
+        'datatable_filter'              => 'Verilere Filtreleme işlemi yapılsın mı?',
+        'datatable_tools'               => 'Verilerin listeleri üzerinde çeşitli araçlar çalıştırılsın mı?',
+        'datatable_fast_add'            => 'Verilerin listelendiği sayfada hızlı ekleme işlemi yapılsın mı?',
+        'datatable_group_action'        => 'Verilerin listelendiği sayfada çoklu grup işlemi yapılsın mı?',
+        'datatable_detail'              => 'Verilerin detay bilgileri veri tablosu üzerinde gösterilsin mi?',
     ],
 
     // helpers
@@ -161,6 +169,11 @@ return [
         'fileinput'     => 'Dosyayı bilgisayarından yükle. İstersen fotoğrafların kırpılmasını istediğin kısmını seç. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
         'elfinder'      => 'Dosyayı <em class="label label-info">Dosya Yöneticisi</em>\'ni kullanarak ekle. Bu seçenek ile eklenecek dosyaların üzerinde her hangi bir değişiklik (kırpma vb) yapılamaz. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
         'not_permission'=> 'Bu bağlantıyı kullanmaya yetkin yok!',
+        'datatable_filter'              => 'Bu kategoride bulunan verilerin listelendiği sayfada, çeşitli alanlar kullanılarak arama ve filtreleme işlemi yapılsın mı?',
+        'datatable_tools'               => 'Bu kategoride bulunan verilerin listelendiği sayfada, çeşitli araçlar <small>(yazdırma ve pdf,excel çıktı alma vb)</small> çalıştırılsın mı?',
+        'datatable_fast_add'            => 'Bu kategoride bulunan verilerin listelendiği sayfada, açılan pencere üzerinden hızlı ekleme işlemi yapılsın mı?',
+        'datatable_group_action'        => 'Bu kategoride bulunan verilerin listelendiği sayfada, çoklu grup işlemi <small>(toplu silme, yayınlama vb)</small> yapılsın mı?',
+        'datatable_detail'              => 'Bu kategoride bulunan verilerin listelendiği sayfadaki tablo üzerinde verinin detay bilgileri hızlı bir şekilde gösterilsin mi?',
     ],
 
     // permissions

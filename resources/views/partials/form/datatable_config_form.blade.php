@@ -12,20 +12,20 @@
 
             {{-- Label --}}
             <div class="col-md-4 col-sm-4">
-                <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page_category.datatable_filter') !!}</label>
+                <label class="control-label">{!! lmcTrans('admin.fields.datatable_filter') !!}</label>
             </div>
             {{-- /Label --}}
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                <span class="help-block"> {!! lmcTrans('laravel-page-module/admin.helpers.page.datatable_filter') !!} </span>
+                <span class="help-block"> {!! lmcTrans('admin.helpers.datatable_filter') !!} </span>
             </div>
             {{-- /Help Block --}}
 
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_filter', 0) !!}
-                {!! Form::checkbox( 'datatable_filter', 1, isset($page_category) ? $page_category->datatable_filter : true, [
+                {!! Form::checkbox( 'datatable_filter', 1, ! is_null($model) ? $model->datatable_filter : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -45,20 +45,20 @@
 
             {{-- Label --}}
             <div class="col-md-4 col-sm-4">
-                <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page_category.datatable_tools') !!}</label>
+                <label class="control-label">{!! lmcTrans('admin.fields.datatable_tools') !!}</label>
             </div>
             {{-- /Label --}}
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                <span class="help-block"> {!! lmcTrans('laravel-page-module/admin.helpers.page.datatable_tools') !!} </span>
+                <span class="help-block"> {!! lmcTrans('admin.helpers.datatable_tools') !!} </span>
             </div>
             {{-- /Help Block --}}
 
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_tools', 0) !!}
-                {!! Form::checkbox( 'datatable_tools', 1, isset($page_category) ? $page_category->datatable_tools : true, [
+                {!! Form::checkbox( 'datatable_tools', 1, ! is_null($model) ? $model->datatable_tools : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -78,20 +78,20 @@
 
             {{-- Label --}}
             <div class="col-md-4 col-sm-4">
-                <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page_category.datatable_fast_add') !!}</label>
+                <label class="control-label">{!! lmcTrans('admin.fields.datatable_fast_add') !!}</label>
             </div>
             {{-- /Label --}}
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                <span class="help-block"> {!! lmcTrans('laravel-page-module/admin.helpers.page.datatable_fast_add') !!} </span>
+                <span class="help-block"> {!! lmcTrans('admin.helpers.datatable_fast_add') !!} </span>
             </div>
             {{-- /Help Block --}}
 
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_fast_add', 0) !!}
-                {!! Form::checkbox( 'datatable_fast_add', 1, isset($page_category) ? $page_category->datatable_fast_add : true, [
+                {!! Form::checkbox( 'datatable_fast_add', 1, ! is_null($model) ? $model->datatable_fast_add : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -111,20 +111,20 @@
 
             {{-- Label --}}
             <div class="col-md-4 col-sm-4">
-                <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page_category.datatable_group_action') !!}</label>
+                <label class="control-label">{!! lmcTrans('admin.fields.datatable_group_action') !!}</label>
             </div>
             {{-- /Label --}}
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                <span class="help-block"> {!! lmcTrans('laravel-page-module/admin.helpers.page.datatable_group_action') !!} </span>
+                <span class="help-block"> {!! lmcTrans('admin.helpers.datatable_group_action') !!} </span>
             </div>
             {{-- /Help Block --}}
 
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_group_action', 0) !!}
-                {!! Form::checkbox( 'datatable_group_action', 1, isset($page_category) ? $page_category->datatable_group_action : true, [
+                {!! Form::checkbox( 'datatable_group_action', 1, ! is_null($model) ? $model->datatable_group_action : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -144,20 +144,20 @@
 
             {{-- Label --}}
             <div class="col-md-4 col-sm-4">
-                <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page_category.datatable_detail') !!}</label>
+                <label class="control-label">{!! lmcTrans('admin.fields.datatable_detail') !!}</label>
             </div>
             {{-- /Label --}}
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                <span class="help-block"> {!! lmcTrans('laravel-page-module/admin.helpers.page.datatable_detail') !!} </span>
+                <span class="help-block"> {!! lmcTrans('admin.helpers.datatable_detail') !!} </span>
             </div>
             {{-- /Help Block --}}
 
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_detail', 0) !!}
-                {!! Form::checkbox( 'datatable_detail', 1, isset($page_category) ? $page_category->datatable_detail : true, [
+                {!! Form::checkbox( 'datatable_detail', 1, ! is_null($model) ? $model->datatable_detail : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',

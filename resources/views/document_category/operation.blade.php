@@ -68,7 +68,7 @@
     {{-- Portlet --}}
     <div class="portlet light bordered">
         {{-- Portlet Title and Actions --}}
-        <div class="portlet-title">
+        <div class="portlet-title tabbable-line">
             {{-- Caption --}}
             <div class="caption margin-right-10">
                 <i class="{!! config('laravel-document-module.icons.document_category') !!} font-red"></i>
@@ -95,6 +95,26 @@
                 </div>
             @endif
             {{-- /Actions --}}
+
+            {{-- Nav Tabs --}}
+            <ul class="nav nav-tabs nav-tabs-lg">
+                <li class="active">
+                    <a href="#info" data-toggle="tab" aria-expanded="true">
+                        {!! lmcTrans('admin.fields.overview') !!}
+                    </a>
+                </li>
+                <li>
+                    <a href="#photo_configs" data-toggle="tab" aria-expanded="true">
+                        {!! lmcTrans('admin.fields.photo_configs') !!}
+                    </a>
+                </li>
+                <li>
+                    <a href="#extra_columns" data-toggle="tab" aria-expanded="true">
+                        {!! lmcTrans('admin.fields.extra_columns') !!}
+                    </a>
+                </li>
+            </ul>
+            {{-- /Nav Tabs --}}
         </div>
         {{-- /Portlet Title and Actions --}}
 
@@ -128,9 +148,21 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::document_category.partials.form', [
-                    'parent'    => isset($parent_document_category) ? $parent_document_category : false
-                ])
+
+                {{-- Tab Contents --}}
+                <div class="tab-content">
+                    <div class="tab-pane active" id="info">
+                        @include('laravel-modules-core::document_category.partials.form', [
+                            'parent'    => isset($parent_document_category) ? $parent_document_category : false
+                        ])
+                    </div>
+                    <div class="tab-pane" id="photo_configs">
+                    </div>
+                    <div class="tab-pane" id="extra_columns">
+                    </div>
+                </div>
+                {{-- /Tab Contents --}}
+
             </div>
             {{-- /Form Body --}}
 

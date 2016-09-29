@@ -90,7 +90,9 @@
             {{-- Form Body --}}
             <div class="form-body">
                 @include('laravel-modules-core::page_category.partials.form')
-                @include('laravel-modules-core::page_category.partials.detail_form')
+                @include('laravel-modules-core::partials.form.datatable_config_form', [
+                    'model'     => isset($page_category) ? $page_category : null
+                ])
             </div>
             {{-- /Form Body --}}
 
