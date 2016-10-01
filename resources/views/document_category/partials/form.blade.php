@@ -28,7 +28,7 @@
 
         {{-- Title --}}
         <li class="list-group-item bg-default bg-font-default">
-            <h4>{!! lmcTrans('laravel-document-module/admin.fields.document_category.documents_setting') !!}</h4>
+            <h4>{!! lmcTrans('admin.fields.category_configs') !!}</h4>
         </li>
         {{-- /Title --}}
 

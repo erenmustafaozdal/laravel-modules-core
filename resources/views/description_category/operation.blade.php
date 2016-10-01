@@ -67,7 +67,7 @@
     {{-- Portlet --}}
     <div class="portlet light bordered">
         {{-- Portlet Title and Actions --}}
-        <div class="portlet-title">
+        <div class="portlet-title tabbable-line">
             {{-- Caption --}}
             <div class="caption margin-right-10">
                 <i class="{!! config('laravel-description-module.icons.description_category') !!} font-red"></i>
@@ -94,6 +94,28 @@
                 </div>
             @endif
             {{-- /Actions --}}
+
+            {{-- Nav Tabs --}}
+            <ul class="nav nav-tabs nav-tabs-lg">
+                <li class="active">
+                    <a href="#info" data-toggle="tab" aria-expanded="true">
+                        {!! lmcTrans('admin.fields.overview') !!}
+                    </a>
+                </li>
+                @if(! isset($parent_description_category) || ! $parent_description_category->config_propagation)
+                    <li>
+                        <a href="#photo_configs" data-toggle="tab" aria-expanded="true">
+                            {!! lmcTrans('admin.fields.photo_configs') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#extra_columns" data-toggle="tab" aria-expanded="true">
+                            {!! lmcTrans('admin.fields.extra_columns') !!}
+                        </a>
+                    </li>
+                @endif
+            </ul>
+            {{-- /Nav Tabs --}}
         </div>
         {{-- /Portlet Title and Actions --}}
 
@@ -127,9 +149,29 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::description_category.partials.form', [
-                    'parent'    => isset($parent_description_category) ? $parent_description_category : false
-                ])
+
+                {{-- Tab Contents --}}
+                <div class="tab-content">
+                    <div class="tab-pane active" id="info">
+                        @include('laravel-modules-core::description_category.partials.form', [
+                            'parent'    => isset($parent_description_category) ? $parent_description_category : false
+                        ])
+                    </div>
+                    <div class="tab-pane" id="photo_configs">
+                        @include('laravel-modules-core::partials.form.photo_config_form', [
+                            'parent'    => isset($parent_description_category) ? $parent_description_category : false,
+                            'model'     => isset($description_category) ? $description_category : false
+                        ])
+                    </div>
+                    <div class="tab-pane" id="extra_columns">
+                        @include('laravel-modules-core::partials.form.extra_column_form', [
+                            'parent'    => isset($parent_description_category) ? $parent_description_category : false,
+                            'model'     => isset($description_category) ? $description_category : false
+                        ])
+                    </div>
+                </div>
+                {{-- /Tab Contents --}}
+
             </div>
             {{-- /Form Body --}}
 

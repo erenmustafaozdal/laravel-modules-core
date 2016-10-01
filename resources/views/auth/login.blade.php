@@ -43,7 +43,8 @@
                 'class'         => 'form-control form-control-solid placeholder-no-fix',
                 'placeholder'   => lmcTrans('laravel-user-module/auth.login.email'),
                 'value'         => old('email'),
-                'autocomplete'  => 'off'
+                'autocomplete'  => 'off',
+                'tabindex'      => 1
             ]) !!}
         </div>
         <div class="form-group">
@@ -53,16 +54,18 @@
             {!! Form::password( 'password', [
                 'class'         => 'form-control form-control-solid placeholder-no-fix',
                 'placeholder'   => lmcTrans('laravel-user-module/auth.login.password'),
-                'autocomplete'  => 'off'
+                'autocomplete'  => 'off',
+                'tabindex'      => 2
             ]) !!}
         </div>
         <div class="form-actions">
             {!! Form::button( lmcTrans('laravel-user-module/auth.login.submit'), [
-                'class' => 'btn green uppercase',
-                'type' => 'submit'
+                'class'     => 'btn green uppercase',
+                'type'      => 'submit',
+                'tabindex'  => 4
             ]) !!}
             <label class="rememberme check">
-                <input type="checkbox" name="remember" value="1" />
+                <input type="checkbox" name="remember" value="1" tabindex="3" />
                 <span>{!! lmcTrans('laravel-user-module/auth.login.remember') !!}</span>
             </label>
             <a href="{!! lmbRoute('getForgetPassword') !!}" id="forget-password" class="forget-password">
