@@ -1,4 +1,13 @@
-<ul class="list-group margin-top-40">
+@if($parent && $parent->config_propagation)
+    {{-- Category Configs --}}
+    {!! Form::hidden('datatable_filter', $parent->datatable_filter) !!}
+    {!! Form::hidden('datatable_tools', $parent->datatable_tools) !!}
+    {!! Form::hidden('datatable_fast_add', $parent->datatable_fast_add) !!}
+    {!! Form::hidden('datatable_group_action', $parent->datatable_group_action) !!}
+    {!! Form::hidden('datatable_detail', $parent->datatable_detail) !!}
+    {{-- /Category Configs --}}
+@else
+    <ul class="list-group margin-top-40">
 
     {{-- Title --}}
     <li class="list-group-item bg-default bg-font-default">
@@ -25,7 +34,7 @@
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_filter', 0) !!}
-                {!! Form::checkbox( 'datatable_filter', 1, ! is_null($model) ? $model->datatable_filter : true, [
+                {!! Form::checkbox( 'datatable_filter', 1, $model ? $model->datatable_filter : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -58,7 +67,7 @@
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_tools', 0) !!}
-                {!! Form::checkbox( 'datatable_tools', 1, ! is_null($model) ? $model->datatable_tools : true, [
+                {!! Form::checkbox( 'datatable_tools', 1, $model ? $model->datatable_tools : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -91,7 +100,7 @@
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_fast_add', 0) !!}
-                {!! Form::checkbox( 'datatable_fast_add', 1, ! is_null($model) ? $model->datatable_fast_add : true, [
+                {!! Form::checkbox( 'datatable_fast_add', 1, $model ? $model->datatable_fast_add : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -124,7 +133,7 @@
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_group_action', 0) !!}
-                {!! Form::checkbox( 'datatable_group_action', 1, ! is_null($model) ? $model->datatable_group_action : true, [
+                {!! Form::checkbox( 'datatable_group_action', 1, $model ? $model->datatable_group_action : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -157,7 +166,7 @@
             {{-- Input --}}
             <div class="col-md-2 col-sm-2">
                 {!! Form::hidden('datatable_detail', 0) !!}
-                {!! Form::checkbox( 'datatable_detail', 1, ! is_null($model) ? $model->datatable_detail : true, [
+                {!! Form::checkbox( 'datatable_detail', 1, $model ? $model->datatable_detail : true, [
                     'class'         => 'make-switch',
                     'data-on-text'  => '<i class="fa fa-check"></i>',
                     'data-on-color' => 'success',
@@ -172,3 +181,4 @@
     {{-- /Data Table Detail --}}
 
 </ul>
+@endif

@@ -41,6 +41,7 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
+        var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var showJs = "{!! lmcElixir('assets/pages/scripts/document_category/show.js') !!}";
         {{-- /js file path --}}
 
@@ -108,9 +109,27 @@
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
-                                {!! trans('laravel-modules-core::admin.fields.edit_info') !!}
+                                {!! lmcTrans('admin.fields.edit_info') !!}
                             </a>
                         </li>
+                        
+                        {{-- Relations --}}
+                        @if(! isset($parent_document_category) || ! $parent_document_category->config_propagation)
+                            <li>
+                                <a data-toggle="tab" href="#photo_configs">
+                                    <i class="fa fa-picture-o"></i>
+                                    {!! lmcTrans('admin.fields.photo_configs') !!}
+                                </a>
+                            </li>
+                            <li>
+                                <a data-toggle="tab" href="#extra_columns">
+                                    <i class="fa fa-database"></i>
+                                    {!! lmcTrans('admin.fields.extra_columns') !!}
+                                </a>
+                            </li>
+                        @endif
+                        {{-- /Relations --}}
+                            
                         @endif
                     </ul>
                 </div>
@@ -130,28 +149,62 @@
 
                         {{-- Edit Info --}}
                         @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_document_category) ? 'document_category.document_category' : 'document_category') .'.update'))
+
+                        {{-- Edit Form --}}
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($document_category,[
                                 'method'    => 'PATCH',
-                                'url'       => isset($parent_document_category) ? lmbRoute('admin.document_category.document_category.update', [ 'id' => $parent_document_category->id, config('laravel-document-module.url.document_category') => $document_category->id ]) : lmbRoute('admin.document_category.update', [ 'id' => $document_category->id ]),
+                                'url'       => isset($parent_document_category) ? lmbRoute('admin.document_category.document_category.update', [ 'id' => $parent_document_category->id, config('laravel-document-module.url.document_category') => $document_category->id, 'form' => 'general' ]) : lmbRoute('admin.document_category.update', [ 'id' => $document_category->id, 'form' => 'general' ]),
                                 'id'        => 'document_category-edit-info'
                             ]) !!}
-
                             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-
-                            {{-- Form Body --}}
                             <div class="form-body">
                                 @include('laravel-modules-core::document_category.partials.form', [
                                     'parent'    => isset($parent_document_category) ? $parent_document_category : false,
                                     'model'     => $document_category
                                 ])
                             </div>
-                            {{-- /Form Body --}}
-
                             @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
-
                             {!! Form::close() !!}
                         </div>
+                        {{-- /Edit Form --}}
+
+                        {{-- Photo Form --}}
+                        <div id="photo_configs" class="tab-pane form">
+                            {!! Form::open([
+                                'method'    => 'PATCH',
+                                'url'       => isset($parent_document_category) ? lmbRoute('admin.document_category.document_category.update', [ 'id' => $parent_document_category->id, config('laravel-document-module.url.document_category') => $document_category->id ]) : lmbRoute('admin.document_category.update', [ 'id' => $document_category->id ])
+                            ]) !!}
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+                            <div class="form-body">
+                                @include('laravel-modules-core::partials.form.photo_config_form', [
+                                    'parent'    => isset($parent_document_category) ? $parent_document_category : false,
+                                    'model'     => $document_category
+                                ])
+                            </div>
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+                            {!! Form::close() !!}
+                        </div>
+                        {{-- /Photo Form --}}
+
+                        {{-- Extra Column Form --}}
+                        <div id="extra_columns" class="tab-pane form">
+                            {!! Form::open([
+                                'method'    => 'PATCH',
+                                'url'       => isset($parent_document_category) ? lmbRoute('admin.document_category.document_category.update', [ 'id' => $parent_document_category->id, config('laravel-document-module.url.document_category') => $document_category->id ]) : lmbRoute('admin.document_category.update', [ 'id' => $document_category->id ])
+                            ]) !!}
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+                            <div class="form-body">
+                                @include('laravel-modules-core::partials.form.extra_column_form', [
+                                    'parent'    => isset($parent_document_category) ? $parent_document_category : false,
+                                    'model'     => $document_category
+                                ])
+                            </div>
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+                            {!! Form::close() !!}
+                        </div>
+                        {{-- /Extra Column Form --}}
+
                         @endif
                         {{-- /Edit Info --}}
 

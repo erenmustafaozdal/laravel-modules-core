@@ -51,6 +51,7 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
+        var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var operationJs = "{!! lmcElixir('assets/pages/scripts/document_category/operation.js') !!}";
         {{-- /js file path --}}
 
@@ -103,6 +104,7 @@
                         {!! lmcTrans('admin.fields.overview') !!}
                     </a>
                 </li>
+                @if(! isset($parent_document_category) || ! $parent_document_category->config_propagation)
                 <li>
                     <a href="#photo_configs" data-toggle="tab" aria-expanded="true">
                         {!! lmcTrans('admin.fields.photo_configs') !!}
@@ -113,6 +115,7 @@
                         {!! lmcTrans('admin.fields.extra_columns') !!}
                     </a>
                 </li>
+                @endif
             </ul>
             {{-- /Nav Tabs --}}
         </div>
@@ -157,8 +160,16 @@
                         ])
                     </div>
                     <div class="tab-pane" id="photo_configs">
+                        @include('laravel-modules-core::partials.form.photo_config_form', [
+                            'parent'    => isset($parent_document_category) ? $parent_document_category : false,
+                            'model'     => isset($document_category) ? $document_category : false
+                        ])
                     </div>
                     <div class="tab-pane" id="extra_columns">
+                        @include('laravel-modules-core::partials.form.extra_column_form', [
+                            'parent'    => isset($parent_document_category) ? $parent_document_category : false,
+                            'model'     => isset($document_category) ? $document_category : false
+                        ])
                     </div>
                 </div>
                 {{-- /Tab Contents --}}

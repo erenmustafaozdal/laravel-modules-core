@@ -1,4 +1,4 @@
-@inject('permission', 'ErenMustafaOzdal\LaravelUserModule\Services\PermissionService')
+@inject('permission', 'ErenMustafaOzdal\LaravelModulesBase\Services\PermissionService')
 
 {{-- Element List For Permission --}}
 <div class="mt-element-list padding-tb-10">

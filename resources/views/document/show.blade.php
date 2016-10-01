@@ -47,6 +47,11 @@
     {!! Html::style('vendor/laravel-modules-core/assets/pages/css/profile-2.css') !!}
     {{-- /Profile CSS --}}
 
+    {{-- Date Picker --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
+    {{-- /Date Picker --}}
+
     {{-- Select2 --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
@@ -198,6 +203,10 @@
                             <div class="form-body">
                                 @include('laravel-modules-core::document.partials.form', [
                                     'isRelation'    => isset($page_category) ? true : false
+                                ])
+                                @include('laravel-modules-core::partials.form.model_extras_form', [
+                                    'category'  => isset($document_category) ? $document_category : false,
+                                    'model'     => $document
                                 ])
                                 <div id="detail">
                                     @include('laravel-modules-core::document.partials.detail_form')

@@ -43,6 +43,11 @@
 
 @section('css')
     @parent
+    {{-- Date Picker --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
+    {{-- /Date Picker --}}
+
     {{-- Select2 --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
@@ -84,7 +89,7 @@
         };
         var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
         var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
-        var aspectRatio = '{!! config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}';
+        var aspectRatio = '{!! isset($document_category) && $document_category->aspect_ratio ? $document_category->aspect_ratio : config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}';
         var hasDescription = {{ ( isset($document) && $document->category->has_description ) || ( isset($document_category) && $document_category->has_description ) || (! isset($document) && ! isset($document_category)) ? 'true' : 'false' }};
         var hasPhoto = {{ ( isset($document) && $document->category->has_photo ) || ( isset($document_category) && $document_category->has_photo ) || (! isset($document) && ! isset($document_category)) ? 'true' : 'false' }};
         {{-- /languages --}}
@@ -177,6 +182,10 @@
                     <div class="tab-pane active" id="info">
                         @include('laravel-modules-core::document.partials.form', [
                             'isRelation'    => isset($document_category) ? true : false
+                        ])
+                        @include('laravel-modules-core::partials.form.model_extras_form', [
+                            'category'  => isset($document_category) ? $document_category : false,
+                            'model'     => isset($document) ? $document : false
                         ])
                     </div>
                     <div class="tab-pane" id="detail">

@@ -6,11 +6,22 @@
     });
     $script.ready('jquery', function()
     {
-        $script(operationJs,'operation');
+        $script(showJs,'show');
     });
-    $script.ready(['config','operation','app_fileinput','app_jcrop'], function()
+    $script.ready('bootstrap', function()
     {
-        Operation.init();
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js','datepicker');
+    });
+    $script.ready('datepicker', function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.tr.min.js','datepicker_tr');
+    });
+    $script.ready(['show', 'config','app_fileinput','app_jcrop','datepicker_tr'], function()
+    {
+        Show.init();
+
+        // extra column
+        LMCApp.initDatepicker();
     });
     $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
     {
@@ -27,7 +38,6 @@
             elfinder: '#elfinder-photo'
         };
         var contentObject = {
-            tab: '#detail_tab',
             content: '#detail'
         };
 

@@ -15,12 +15,14 @@
 {{-- /Name --}}
 
 
-@if($parent || isset($document_category))
-    {!! Form::hidden('has_description', $parent ? $parent->has_description : $document_category->has_description) !!}
-    {!! Form::hidden('has_photo', $parent ? $parent->has_photo : $document_category->has_photo) !!}
-    {!! Form::hidden('show_title', $parent ? $parent->show_title : $document_category->show_title) !!}
-    {!! Form::hidden('show_description', $parent ? $parent->show_description : $document_category->show_description) !!}
-    {!! Form::hidden('show_photo', $parent ? $parent->show_photo : $document_category->show_photo) !!}
+@if($parent && $parent->config_propagation)
+    {{-- Category Configs --}}
+    {!! Form::hidden('has_description', $parent->has_description) !!}
+    {!! Form::hidden('has_photo', $parent->has_photo) !!}
+    {!! Form::hidden('show_title', $parent->show_title) !!}
+    {!! Form::hidden('show_description', $parent->show_description) !!}
+    {!! Form::hidden('show_photo', $parent->show_photo) !!}
+    {{-- /Category Configs --}}
 @else
     <ul class="list-group margin-top-40">
 
@@ -49,11 +51,11 @@
                 {{-- Input --}}
                 <div class="col-md-2 col-sm-2">
                     {!! Form::hidden('has_description', 0) !!}
-                    {!! Form::checkbox( 'has_description', 1, null, [
+                    {!! Form::checkbox( 'has_description', 1, isset($document_category) ? $document_category->has_description : null, [
                         'class'         => 'make-switch',
-                        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+                        'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+                        'data-off-text' => '<i class="fa fa-check"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -82,11 +84,11 @@
                 {{-- Input --}}
                 <div class="col-md-2 col-sm-2">
                     {!! Form::hidden('has_photo', 0) !!}
-                    {!! Form::checkbox( 'has_description', 1, null, [
+                    {!! Form::checkbox( 'has_photo', 1, isset($document_category) ? $document_category->has_photo : null, [
                         'class'         => 'make-switch',
-                        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+                        'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+                        'data-off-text' => '<i class="fa fa-check"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -115,11 +117,11 @@
                 {{-- Input --}}
                 <div class="col-md-2 col-sm-2">
                     {!! Form::hidden('show_title', 0) !!}
-                    {!! Form::checkbox( 'has_description', 1, null, [
+                    {!! Form::checkbox( 'show_title', 1, isset($document_category) ? $document_category->show_title : null, [
                         'class'         => 'make-switch',
-                        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+                        'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+                        'data-off-text' => '<i class="fa fa-check"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -148,11 +150,11 @@
                 {{-- Input --}}
                 <div class="col-md-2 col-sm-2">
                     {!! Form::hidden('show_description', 0) !!}
-                    {!! Form::checkbox( 'has_description', 1, null, [
+                    {!! Form::checkbox( 'show_description', 1, isset($document_category) ? $document_category->show_description : null, [
                         'class'         => 'make-switch',
-                        'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
+                        'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
+                        'data-off-text' => '<i class="fa fa-check"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -161,27 +163,52 @@
             </div>
         </li>
         {{-- /Show Description --}}
-    </ul>
 
-    {{-- Show Photo --}}
-    <div class="form-group last">
-        <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_photo') !!}</label>
-        <div class="clearfix"></div>
-        {!! Form::hidden('show_photo', 0) !!}
-        {!! Form::checkbox( 'show_photo', 1, null, [
-            'class'         => 'make-switch',
-            'data-on-text'  => trans('laravel-modules-core::admin.ops.yes'),
-            'data-on-color' => 'success',
-            'data-off-text' => trans('laravel-modules-core::admin.ops.no'),
-            'data-off-color'=> 'danger',
-        ]) !!}
-            <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_photo') !!} </span>
-    </div>
-    {{-- /Has Photo --}}
-    
-    {{-- Data Table Configs --}}
-    @include('laravel-modules-core::partials.form.datatable_config_form', [
-        'model'     => isset($document_category) ? $document_category : null
-    ])
-    {{-- /Data Table Configs --}}
+        {{-- Show Photo --}}
+        <li class="list-group-item">
+            <div class="row">
+
+                {{-- Label --}}
+                <div class="col-md-4 col-sm-4">
+                    <label class="control-label">{!! lmcTrans('laravel-document-module/admin.fields.document_category.show_photo') !!}</label>
+                </div>
+                {{-- /Label --}}
+
+                {{-- Help Block --}}
+                <div class="col-md-6 col-sm-6">
+                    <span class="help-block"> {!! lmcTrans('laravel-document-module/admin.helpers.document_category.show_photo') !!} </span>
+                </div>
+                {{-- /Help Block --}}
+
+                {{-- Input --}}
+                <div class="col-md-2 col-sm-2">
+                    {!! Form::hidden('show_photo', 0) !!}
+                    {!! Form::checkbox( 'show_photo', 1, isset($document_category) ? $document_category->show_photo : null, [
+                        'class'         => 'make-switch',
+                        'data-on-text'  => '<i class="fa fa-check"></i>',
+                        'data-on-color' => 'success',
+                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-color'=> 'danger',
+                    ]) !!}
+                </div>
+                {{-- /Input --}}
+
+            </div>
+        </li>
+        {{-- /Show Photo --}}
+    </ul>
 @endif
+
+{{-- Data Table Configs --}}
+@include('laravel-modules-core::partials.form.datatable_config_form', [
+    'model'     => isset($document_category) ? $document_category : null,
+    'parent'    => isset($parent_document_category) ? $parent_document_category : false
+])
+{{-- /Data Table Configs --}}
+
+{{-- Other Configs --}}
+@include('laravel-modules-core::partials.form.other_config_form', [
+    'model'     => isset($document_category) ? $document_category : null,
+    'parent'    => isset($parent_document_category) ? $parent_document_category : false
+])
+{{-- /Other Configs --}}

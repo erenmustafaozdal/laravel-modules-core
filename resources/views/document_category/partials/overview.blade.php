@@ -37,6 +37,9 @@
     </div>
     {{-- /Updated At --}}
 
+
+    <h4>{!! lmcTrans('admin.fields.category_configs') !!}</h4>
+
     {{-- Has Description --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
@@ -121,5 +124,22 @@
         </div>
     </div>
     {{-- /Show Photo --}}
+
+
+    @include('laravel-modules-core::partials.common.overview_datatable',[
+        'model' => $document_category
+    ])
+
+    @include('laravel-modules-core::partials.common.overview_other_configs',[
+        'model' => $document_category
+    ])
+
+    @include('laravel-modules-core::partials.common.overview_thumbnails',[
+        'model' => $document_category
+    ])
+
+    @include('laravel-modules-core::partials.common.overview_extras',[
+        'model' => $document_category
+    ])
 </form>
 {{-- /Information on Form --}}

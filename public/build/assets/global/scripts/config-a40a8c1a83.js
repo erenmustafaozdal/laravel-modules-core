@@ -302,22 +302,24 @@ var LMCApp = {
 
     /**
      * datepicker init
+     *
+     * @param option
      */
-    initDatepicker: function()
+    initDatepicker: function(option)
     {
         if (!$().datepicker) {
             return;
         }
-
-        $('.date-picker').datepicker({
-            orientation: "left",
+        option = $.extend(true, {
+            orientation: "auto",
             language: 'tr',
             todayHighlight: true,
             autoclose: true,
             weekStart: 1,
             todayBtn: true,
             clearBtn: true
-        });
+        },option);
+        $('.date-picker').datepicker(option);
     },
 
     /**

@@ -94,9 +94,9 @@
 
         {{-- scripts --}}
         var datatableIsResponsive = {!! config('laravel-modules-core.options.data_table.is_responsive') ? 'true' : 'false' !!};
-        var groupActionSupport = {!! config('laravel-modules-core.options.document.datatable_group_action') ? 'true' : 'false' !!};
-        var rowDetailSupport = {!! config('laravel-modules-core.options.document.datatable_detail') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.document.datatable_filter') ? 'true' : 'false' !!};
+        var groupActionSupport = {!! isset($document_category) ? $document_category->datatable_group_action_string : (config('laravel-modules-core.options.document.datatable_group_action') ? 'true' : 'false') !!};
+        var rowDetailSupport = {!! isset($document_category) ? $document_category->datatable_detail_string : (config('laravel-modules-core.options.document.datatable_detail') ? 'true' : 'false') !!};
+        var datatableFilterSupport = {!! isset($document_category) ? $document_category->datatable_filter_string : (config('laravel-modules-core.options.document.datatable_filter') ? 'true' : 'false') !!};
         var isRelationTable = {!! isset($document_category) ? 'true' : 'false' !!}
         {{-- /scripts --}}
     </script>
@@ -124,16 +124,16 @@
             @if(isset($document_category))
                 @include('laravel-modules-core::partials.common.indexActions', [
                     'module' => [ 'id' =>  $document_category->id, 'route' => 'document_category.document'],
-                    'fast_add'  => config('laravel-modules-core.options.document.datatable_fast_add'),
+                    'fast_add'  => isset($document_category) ? $document_category->datatable_fast_add : (config('laravel-modules-core.options.document.datatable_fast_add')),
                     'add'       => true,
-                    'tools'     => config('laravel-modules-core.options.document.datatable_tools')
+                    'tools'     => isset($document_category) ? $document_category->datatable_tools : (config('laravel-modules-core.options.document.datatable_tools'))
                 ])
             @else
                 @include('laravel-modules-core::partials.common.indexActions', [
                     'module' => 'document',
-                    'fast_add'  => config('laravel-modules-core.options.document.datatable_fast_add'),
+                    'fast_add'  => isset($document_category) ? $document_category->datatable_fast_add : (config('laravel-modules-core.options.document.datatable_fast_add')),
                     'add'       => true,
-                    'tools'     => config('laravel-modules-core.options.document.datatable_tools')
+                    'tools'     => isset($document_category) ? $document_category->datatable_tools : (config('laravel-modules-core.options.document.datatable_tools'))
                 ])
             @endif
         </div>
@@ -148,7 +148,10 @@
 
             <div class="table-container">
                 {{-- Table Actions --}}
-                @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                @if(
+                    (isset($document_category) && $document_category->datatable_group_action)
+                    || (! isset($document_category) && config('laravel-modules-core.options.document.datatable_group_action'))
+                )
                     @include('laravel-modules-core::partials.common.indexTableActions', [
                         'actions'   => ['publish','not_publish','destroy']
                     ])
@@ -160,13 +163,19 @@
                     <thead>
                         <tr role="row" class="heading">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                            @if(
+                                (isset($document_category) && $document_category->datatable_group_action)
+                                || (! isset($document_category) && config('laravel-modules-core.options.document.datatable_group_action'))
+                            )
                                 <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_detail'))
+                            @if(
+                                (isset($document_category) && $document_category->datatable_detail)
+                                || (! isset($document_category) && config('laravel-modules-core.options.document.datatable_detail'))
+                            )
                                 <th class="all" width="2%"></th>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
@@ -184,16 +193,25 @@
                         </tr>
 
                         {{-- Datatable Filter --}}
-                        @if(config('laravel-modules-core.options.document.datatable_filter'))
+                        @if(
+                            (isset($document_category) && $document_category->datatable_filter)
+                            || (! isset($document_category) && config('laravel-modules-core.options.document.datatable_filter'))
+                        )
                         <tr role="row" class="filter">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_group_action'))
+                            @if(
+                                (isset($document_category) && $document_category->datatable_group_action)
+                                || (! isset($document_category) && config('laravel-modules-core.options.document.datatable_group_action'))
+                            )
                                 <td></td>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.document.datatable_detail'))
+                            @if(
+                                (isset($document_category) && $document_category->datatable_detail)
+                                || (! isset($document_category) && config('laravel-modules-core.options.document.datatable_detail'))
+                            )
                                 <td></td>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
