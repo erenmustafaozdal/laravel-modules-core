@@ -8,10 +8,42 @@
     {
         $script(showJs,'show');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-repeater/jquery.repeater.min.js', 'repeater');
     });
-    $script.ready(['show','config','inputmask','app_fileinput','app_jcrop'], function()
+    $script.ready(['jquery','bootstrap'], function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js', 'bs_select');
+    });
+    $script.ready(['show','config','inputmask','app_fileinput','app_jcrop','repeater','tinymce','bs_select'], function()
     {
         Show.init();
+
+        // repeater
+        $('.mt-repeater').each(function(){
+            $(this).repeater({
+                show: function () {
+                    $(this).slideDown();
+                    LMCApp.initTooltips();
+                    Tinymce.init({
+                        route: tinymceURL
+                    });
+                },
+
+                hide: function (deleteElement) {
+                    bootbox.confirm(LMCApp.lang.admin.ops.destroy_confirm, function(result)
+                    {
+                        if (result) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    });
+                },
+
+                ready: function (setIndexes) {
+
+                }
+
+            });
+        });
 
         // amount
         LMCApp.initInputMask({

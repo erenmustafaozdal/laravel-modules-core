@@ -120,6 +120,7 @@ return [
         'updated_at'                    => 'Güncelleme Tarihi',
         'updated_at_description'        => ':date güncellendi',
         'add_value'                     => 'Yeni Ekle',
+        'remove_value'                  => 'Sil',
         'date'                          => 'Tarih',
 
         'change_avatar'                 => 'Fotoğrafı Güncelle',
@@ -128,6 +129,7 @@ return [
         'change_seo'                    => 'SEO Güncelle',
         'change_showcase'               => 'Vitrinleri Güncelle',
         'change_map'                    => 'Harita Güncelle',
+        'change_descriptions'           => 'Ek Açıklamaları Güncelle',
 
         'category_configs'              => 'Kategori Ayarları',
         'datatable_configs'             => 'Veri Tablosu Ayarları',
@@ -141,6 +143,7 @@ return [
         'showcase'                      => 'Vitrin Bilgileri',
         'detail'                        => 'Detaylar',
         'location'                      => 'Konum Bilgileri',
+        'descriptions'                  => 'Ek Açıklamalar',
 
         'file_manager'                  => 'Dosya Yöneticisi',
         'from_file_manager'             => 'Dosya Yöneticisinden Ekle',
@@ -181,22 +184,26 @@ return [
         'extra_name'                    => 'Ekstra Veri Adı',
         'extra_type'                    => 'Ekstra Veri Tipi',
 
-        'text'                          => 'Metin Alanı',
-        'date'                          => 'Tarih Alanı',
+        'text_input'                    => 'Metin Alanı',
+        'date_input'                    => 'Tarih Alanı',
+
+        'description'                   => 'Açıklama',
+        'title'                         => 'Başlık',
     ],
 
     // helpers
     'helpers' => [
-        'fileinput'     => 'Dosyayı bilgisayarından yükle. İstersen fotoğrafların kırpılmasını istediğin kısmını seç. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
-        'elfinder'      => 'Dosyayı <em class="label label-info">Dosya Yöneticisi</em>\'ni kullanarak ekle. Bu seçenek ile eklenecek dosyaların üzerinde her hangi bir değişiklik (kırpma vb) yapılamaz. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
-        'not_permission'=> 'Bu bağlantıyı kullanmaya yetkin yok!',
-        'datatable_filter'              => 'Bu kategoride bulunan verilerin listelendiği sayfada, çeşitli alanlar kullanılarak arama ve filtreleme işlemi yapılsın mı?',
-        'datatable_tools'               => 'Bu kategoride bulunan verilerin listelendiği sayfada, çeşitli araçlar <small>(yazdırma ve pdf,excel çıktı alma vb)</small> çalıştırılsın mı?',
-        'datatable_fast_add'            => 'Bu kategoride bulunan verilerin listelendiği sayfada, açılan pencere üzerinden hızlı ekleme işlemi yapılsın mı?',
-        'datatable_group_action'        => 'Bu kategoride bulunan verilerin listelendiği sayfada, çoklu grup işlemi <small>(toplu silme, yayınlama vb)</small> yapılsın mı?',
-        'datatable_detail'              => 'Bu kategoride bulunan verilerin listelendiği sayfadaki tablo üzerinde verinin detay bilgileri hızlı bir şekilde gösterilsin mi?',
-        'description_is_editor'         => 'Bu kategoride bulunan verilerin açıklamaları editör ile yazılsın mı?',
-        'config_propagation'            => 'Bu kategorinin alt kategorilerinde de bu ayarlar geçerli olsun mu?',
+        'is_publish'        => 'Açıklamanın yayında olması, ziyaretçilerin açıklamayı görebilmesini sağlar. Yayında olmayan açıklamalar ziyaretçilere açık değildir.',
+        'fileinput'         => 'Dosyayı bilgisayarından yükle. İstersen fotoğrafların kırpılmasını istediğin kısmını seç. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
+        'elfinder'          => 'Dosyayı <em class="label label-info">Dosya Yöneticisi</em>\'ni kullanarak ekle. Bu seçenek ile eklenecek dosyaların üzerinde her hangi bir değişiklik (kırpma vb) yapılamaz. <span class="text-danger">Diğer seçeneği seçtiğinde burada yaptığın değişiklikler sıfırlanacak.</span>',
+        'not_permission'    => 'Bu bağlantıyı kullanmaya yetkin yok!',
+        'datatable_filter'  => 'Bu kategoride bulunan verilerin listelendiği sayfada, çeşitli alanlar kullanılarak arama ve filtreleme işlemi yapılsın mı?',
+        'datatable_tools'   => 'Bu kategoride bulunan verilerin listelendiği sayfada, çeşitli araçlar <small>(yazdırma ve pdf,excel çıktı alma vb)</small> çalıştırılsın mı?',
+        'datatable_fast_add'=> 'Bu kategoride bulunan verilerin listelendiği sayfada, açılan pencere üzerinden hızlı ekleme işlemi yapılsın mı?',
+        'datatable_group_action'=> 'Bu kategoride bulunan verilerin listelendiği sayfada, çoklu grup işlemi <small>(toplu silme, yayınlama vb)</small> yapılsın mı?',
+        'datatable_detail'  => 'Bu kategoride bulunan verilerin listelendiği sayfadaki tablo üzerinde verinin detay bilgileri hızlı bir şekilde gösterilsin mi?',
+        'description_is_editor'=> 'Bu kategoride bulunan verilerin açıklamaları editör ile yazılsın mı?',
+        'config_propagation'=> 'Bu kategorinin alt kategorilerinde de bu ayarlar geçerli olsun mu?',
     ],
 
     // permissions

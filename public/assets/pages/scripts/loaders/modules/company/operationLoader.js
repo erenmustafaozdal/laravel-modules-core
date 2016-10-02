@@ -9,7 +9,7 @@
         $script(operationJs,'operation');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-repeater/jquery.repeater.min.js', 'repeater');
     });
-    $script.ready(['config','operation','repeater','app_fileinput','app_jcrop'], function()
+    $script.ready(['config','operation','repeater','app_fileinput','app_jcrop','tinymce'], function()
     {
         Operation.init();
 

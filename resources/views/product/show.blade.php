@@ -60,8 +60,7 @@
         var messagesOfRules = {
             'category_id[]': { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
             brand_id: { required: "{!! LMCValidation::getMessage('brand_id','required') !!}" },
-            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
-            amount: { required: "{!! LMCValidation::getMessage('amount','required') !!}" }
+            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };
         var validExtension = "{!! config('laravel-product-module.product.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('laravel-product-module.product.uploads.photo.max_size') !!}";
@@ -129,6 +128,13 @@
                             <span class="after"> </span>
                         </li>
                         <li>
+                            <a data-toggle="tab" href="#descriptions">
+                                <i class="fa fa-sticky-note"></i>
+                                {!! trans('laravel-modules-core::admin.fields.descriptions') !!}
+                            </a>
+                            <span class="after"> </span>
+                        </li>
+                        <li>
                             <a data-toggle="tab" href="#seo">
                                 <i class="fa fa-google"></i>
                                 {!! trans('laravel-modules-core::admin.fields.seo') !!}
@@ -148,6 +154,12 @@
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
                                 {!! trans('laravel-modules-core::admin.fields.edit_info') !!}
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#change_descriptions">
+                                <i class="fa fa-sticky-note-o"></i>
+                                {!! trans('laravel-modules-core::admin.fields.change_descriptions') !!}
                             </a>
                         </li>
                         <li>
@@ -187,6 +199,12 @@
                         </div>
                         {{-- /Detail --}}
 
+                        {{-- Descriptions --}}
+                        <div id="descriptions" class="tab-pane">
+                            @include('laravel-modules-core::product.partials.descriptions')
+                        </div>
+                        {{-- /Descriptions --}}
+
                         {{-- Seo --}}
                         <div id="seo" class="tab-pane">
                             <div class="profile-info">
@@ -223,6 +241,21 @@
                             {!! Form::close() !!}
                         </div>
                         {{-- /Edit Info --}}
+
+                        {{-- Change Descriptions --}}
+                        <div id="change_descriptions" class="tab-pane form">
+                            {!! Form::open([
+                                'method'    => 'PATCH',
+                                'url'       => lmbRoute('admin.product.update', [ 'id' => $product->id, 'form' => 'descriptions' ])
+                            ]) !!}
+                                @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+                                <div class="form-body">
+                                    @include('laravel-modules-core::product.partials.descriptions_form')
+                                </div>
+                                @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+                            {!! Form::close() !!}
+                        </div>
+                        {{-- /Change Descriptions --}}
 
                         {{-- Change Seo --}}
                         <div id="change_seo" class="tab-pane form">
