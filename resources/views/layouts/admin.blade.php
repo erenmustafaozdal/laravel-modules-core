@@ -30,6 +30,7 @@
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/uniform/css/uniform.default.css') !!}
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css') !!}
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-toastr/toastr.min.css') !!}
+        {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/icheck/skins/all.css') !!}
         {{-- /Global styles --}}
 
         @section('css')

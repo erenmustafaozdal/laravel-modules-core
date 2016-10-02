@@ -180,6 +180,9 @@ return [
         'thumbnail_width'               => 'Küçük Fotoğraf Genişliği',
         'thumbnail_height'              => 'Küçük Fotoğraf Yüksekliği',
         'pixel'                         => 'px <small>(piksel)</small>',
+        'square_crop'                   => 'Kare Kırp',
+        'vertical_crop'                 => 'Dikey Dikdörtgen Kırp',
+        'horizontal_crop'               => 'Yatay Dikdörtgen Kırp',
 
         'extra_name'                    => 'Ekstra Veri Adı',
         'extra_type'                    => 'Ekstra Veri Tipi',

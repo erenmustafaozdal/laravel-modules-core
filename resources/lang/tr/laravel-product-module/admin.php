@@ -76,6 +76,7 @@ return [
     'fields' => [
         'product_category' => [
             'name'                  => 'Kategori',
+            'crop_type'             => 'Fotoğraf Kırpma Tipi'
         ],
         'product_brand' => [
             'name'                  => 'Marka Adı',
