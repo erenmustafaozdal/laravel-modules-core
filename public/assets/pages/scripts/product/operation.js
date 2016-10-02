@@ -25,7 +25,7 @@ var Operation = {
             isAjax: false,
             validate: {
                 rules: {
-                    'category_id[]': {
+                    'category_id': {
                         required: true
                     },
                     brand_id: {

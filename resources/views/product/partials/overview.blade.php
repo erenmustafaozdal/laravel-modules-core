@@ -32,11 +32,10 @@
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @foreach(\LMBCollection::renderAncestorsAndSelf($product->categories,'/',['name_uc_first']) as $category)
+                @foreach(\LMBCollection::renderAncestorsAndSelf(collect($product->category),'/',['name_uc_first']) as $category)
                     {!! $category['parent_name_uc_first'] === ''
                         ? $category['name_uc_first']
                         : '<span class="text-muted">' . $category['parent_name_uc_first'] . '/</span>' . $category['name_uc_first'] !!}
-                    <br>
                 @endforeach
             </p>
         </div>

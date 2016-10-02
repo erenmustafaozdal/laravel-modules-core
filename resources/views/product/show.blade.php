@@ -58,7 +58,7 @@
 
         {{-- languages --}}
         var messagesOfRules = {
-            'category_id[]': { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
+            'category_id': { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
             brand_id: { required: "{!! LMCValidation::getMessage('brand_id','required') !!}" },
             name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };

@@ -1,11 +1,9 @@
 {{-- Category --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product_category.name') !!}</label>
-    <select class="form-control form-control-solid placeholder-no-fix select2category select2me" multiple name="category_id[]" style="width: 100%">
+    <select class="form-control form-control-solid placeholder-no-fix select2category select2me" name="category_id" style="width: 100%">
         @if(isset($product))
-            @foreach($product->categories as $category)
-                <option value="{{ $category->id }}" selected>{{ $category->name_uc_first }}</option>
-            @endforeach
+            <option value="{{ $product->category->id }}" selected>{{ $product->category->name_uc_first }}</option>
         @endif
     </select>
 

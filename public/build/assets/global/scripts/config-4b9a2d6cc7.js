@@ -636,6 +636,24 @@ var LMCApp = {
     },
 
     /**
+     * get opposite aspect ratio
+     *
+     * @param oldAspect
+     * @param type [square,vertical,horizontal]
+     */
+    getOppositeAspect: function(oldAspect, type)
+    {
+        if (type === 'square') {
+            return 1;
+        }
+
+        if ( (type === 'horizontal' && oldAspect <= 1) || (type === 'vertical' && oldAspect >= 1) ) {
+            return aspectRatio = 1 / oldAspect;
+        }
+        return oldAspect;
+    },
+
+    /**
      * strip tags function
      *
      * @param html
