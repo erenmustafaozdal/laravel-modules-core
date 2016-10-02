@@ -73,6 +73,13 @@
         var operationJs = "{!! lmcElixir('assets/pages/scripts/description/operation.js') !!}";
         {{-- /js file path --}}
 
+        {{-- Description Is Editor --}}
+        @if(isset($description_category) && $description_category->description_is_editor)
+            var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
+            var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
+        @endif
+        {{-- /Description Is Editor --}}
+
         {{-- routes --}}
         @if(isset($description_category))
             var modelsURL = "{!! lmbRoute('api.description_category.models', ['id' => $description_category]) !!}";
@@ -102,6 +109,11 @@
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
+    {{-- Description Is Editor --}}
+    @if(isset($description_category) && $description_category->description_is_editor)
+        <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>
+    @endif
+    {{-- /Description Is Editor --}}
 @endsection
 
 @section('content')

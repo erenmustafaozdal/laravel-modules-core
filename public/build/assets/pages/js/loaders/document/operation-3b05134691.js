@@ -6,7 +6,7 @@
     });
     $script.ready('jquery', function()
     {
-        $script(showJs,'show');
+        $script(operationJs,'operation');
     });
     $script.ready('bootstrap', function()
     {
@@ -16,9 +16,9 @@
     {
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.tr.min.js','datepicker_tr');
     });
-    $script.ready(['show', 'config','app_fileinput','app_jcrop','datepicker_tr'], function()
+    $script.ready(['config','operation','app_fileinput','app_jcrop','datepicker_tr'], function()
     {
-        Show.init();
+        Operation.init();
 
         // extra column
         LMCApp.initDatepicker();
@@ -37,31 +37,17 @@
             isFileinput : true,
             elfinder: '#elfinder-photo'
         };
-        var hasLinkObject = {
-            column : 'has_link',
-            input : '#link',
-            wrapper : '#link_wrapper'
-        };
-        var isMultiplePhoto = {
-            column : 'is_multiple_photo',
-            input : '#elfinder-photo',
-            wrapper : '.elfinder_wrapper',
-            reverseValue: true,
-            changeAttr: {
-                element: '#photo',
-                attr: 'multiple',
-                trueValue: true,
-                falseValue: false
-            }
+        var contentObject = {
+            tab: '#detail_tab',
+            content: '#detail'
         };
 
         Select2.init({
             isDetailChange: true,
+            detailContent: contentObject,
             detailDatas: [
                 hasDescriptionObject,
-                hasPhotoObject,
-                hasLinkObject,
-                isMultiplePhoto
+                hasPhotoObject
             ],
             select2: {
                 templateResult: function(data)
@@ -100,10 +86,15 @@
         // init select2 change
         var descriptionType = hasDescription ? 'show' : 'hide';
         var photoType = hasPhoto ? 'show' : 'hide';
-        var linkType = hasLink ? 'show' : 'hide';
         var contentType = hasDescription || hasPhoto ? 'show' : 'hide';
         theSelect2.setInputDisplay(hasDescriptionObject, descriptionType);
         theSelect2.setInputDisplay(hasPhotoObject, photoType);
-        theSelect2.setInputDisplay(hasLinkObject, linkType);
+        theSelect2.setContentDisplay(contentObject, contentType);
+    });
+    $script.ready(['config','app_tinymce'], function()
+    {
+        Tinymce.init({
+            route: tinymceURL
+        });
     });
 })();

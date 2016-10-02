@@ -8,13 +8,28 @@
     {
         $script(showJs,'show');
     });
-    $script.ready(['show', 'config'], function()
+    $script.ready('bootstrap', function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js','datepicker');
+    });
+    $script.ready('datepicker', function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.tr.min.js','datepicker_tr');
+    });
+    $script.ready(['show','config','datepicker_tr'], function()
     {
         Show.init();
+
+        // extra column
+        LMCApp.initDatepicker();
     });
     $script.ready(['config','app_select2'], function()
     {
         Select2.init({
+            isDetailChange: true,
+            detailDatas: [
+                hasDescriptionObject
+            ],
             select2: {
                 templateResult: function(data)
                 {
@@ -49,6 +64,12 @@
                     }
                 }
             }
+        });
+    });
+    $script.ready(['config','app_tinymce'], function()
+    {
+        Tinymce.init({
+            route: tinymceURL
         });
     });
 })();

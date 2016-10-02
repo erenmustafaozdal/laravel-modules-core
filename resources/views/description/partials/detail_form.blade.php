@@ -2,10 +2,9 @@
 <div class="form-group" id="description_wrapper">
     <label class="control-label">{!! lmcTrans('laravel-description-module/admin.fields.description.description') !!}</label>
     {!! Form::textarea( 'description', isset($description) && ! is_null($description->description) ? $description->description->description : null, [
-        'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
+        'class'         => 'form-control form-control-solid placeholder-no-fix tinymce',
         'placeholder'   => lmcTrans('laravel-description-module/admin.fields.description.description'),
-        'rows'          => 3,
-        'maxlength'     => 255,
+        'rows'          => 5,
         'id'            => 'description'
     ]) !!}
     <span class="help-block">

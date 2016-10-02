@@ -132,9 +132,9 @@
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
                     'url'   => isset($parent_description_category) ? lmbRoute('admin.description_category.description_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $parent_description_category->id,
-                        config('laravel-description-module.url.description_category') => $operation === 'edit' ? $description_category->id : null
+                        config('laravel-description-module.url.description_category') => $operation === 'edit' ? $description_category->id : null, 'form' => 'general'
                     ]) : lmbRoute('admin.description_category.' . ($operation === 'edit' ? 'update' : 'store'),[
-                            'id' => $operation === 'edit' ? $description_category->id : null,
+                            'id' => $operation === 'edit' ? $description_category->id : null, 'form' => 'general'
                     ]),
                     'class' => 'form'
             ];

@@ -134,9 +134,9 @@
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
                     'url'   => isset($parent_document_category) ? lmbRoute('admin.document_category.document_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $parent_document_category->id,
-                        config('laravel-document-module.url.document_category') => $operation === 'edit' ? $document_category->id : null
+                        config('laravel-document-module.url.document_category') => $operation === 'edit' ? $document_category->id : null, 'form' => 'general'
                     ]) : lmbRoute('admin.document_category.' . ($operation === 'edit' ? 'update' : 'store'),[
-                            'id' => $operation === 'edit' ? $document_category->id : null,
+                            'id' => $operation === 'edit' ? $document_category->id : null, 'form' => 'general'
                     ]),
                     'class' => 'form'
             ];

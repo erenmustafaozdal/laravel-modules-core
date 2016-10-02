@@ -90,4 +90,10 @@
         theSelect2.setInputDisplay(hasPhotoObject, photoType);
         theSelect2.setContentDisplay(contentObject, contentType);
     });
+    $script.ready(['config','app_tinymce'], function()
+    {
+        Tinymce.init({
+            route: tinymceURL
+        });
+    });
 })();

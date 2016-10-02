@@ -112,4 +112,10 @@
         theSelect2.setInputDisplay(hasLinkObject, linkType);
         theSelect2.setContentDisplay(contentObject, contentType);
     });
+    $script.ready(['config','app_tinymce'], function()
+    {
+        Tinymce.init({
+            route: tinymceURL
+        });
+    });
 })();

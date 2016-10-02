@@ -49,5 +49,42 @@
         </div>
     </div>
     {{-- /Type --}}
+
+
+    <h4>{!! lmcTrans('admin.fields.category_configs') !!}</h4>
+
+    {{-- Has Description --}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            {!! lmcTrans('laravel-media-module/admin.fields.media_category.has_description') !!}
+        </label>
+        <div class="col-sm-10">
+            <p class="form-control-static">
+                @if ($media_category->has_description)
+                    <span class="font-green"> {!! trans('laravel-modules-core::admin.ops.yes') !!} </span>
+                @else
+                    <span class="font-red"> {!! trans('laravel-modules-core::admin.ops.no') !!} </span>
+                @endif
+            </p>
+        </div>
+    </div>
+    {{-- /Has Description --}}
+
+
+    @include('laravel-modules-core::partials.common.overview_datatable',[
+        'model' => $media_category
+    ])
+
+    @include('laravel-modules-core::partials.common.overview_other_configs',[
+        'model' => $media_category
+    ])
+
+    @include('laravel-modules-core::partials.common.overview_thumbnails',[
+        'model' => $media_category
+    ])
+
+    @include('laravel-modules-core::partials.common.overview_extras',[
+        'model' => $media_category
+    ])
 </form>
 {{-- /Information on Form --}}

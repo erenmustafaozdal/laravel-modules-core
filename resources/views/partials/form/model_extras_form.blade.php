@@ -1,6 +1,6 @@
 @if($category)
 
-<?php $relation = getModelSlug($model) . 's';?>
+<?php $relation = $model ? getModelSlug($model) . 's' : '';?>
 
 @foreach($category->ancestorsAndSelf()->extrasWithValues($model)->get() as $ancestorCategory)
 

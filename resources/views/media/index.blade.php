@@ -108,11 +108,11 @@
         {{-- /languages --}}
 
         {{-- scripts --}}
-        var aspectRatio = '{!! config('laravel-media-module.media.uploads.photo.aspect_ratio') !!}';
+        var aspectRatio = '{!! isset($media_category) && $media_category->aspect_ratio ? $media_category->aspect_ratio : config('laravel-media-module.media.uploads.photo.aspect_ratio') !!}';
         var datatableIsResponsive = {!! config('laravel-modules-core.options.data_table.is_responsive') ? 'true' : 'false' !!};
-        var groupActionSupport = {!! config('laravel-modules-core.options.media.datatable_group_action') ? 'true' : 'false' !!};
-        var rowDetailSupport = {!! config('laravel-modules-core.options.media.datatable_detail') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.media.datatable_filter') ? 'true' : 'false' !!};
+        var groupActionSupport = {!! isset($media_category) ? $media_category->datatable_group_action_string : (config('laravel-modules-core.options.media.datatable_group_action') ? 'true' : 'false') !!};
+        var rowDetailSupport = {!! isset($media_category) ? $media_category->datatable_detail_string : (config('laravel-modules-core.options.media.datatable_detail') ? 'true' : 'false') !!};
+        var datatableFilterSupport = {!! isset($media_category) ? $media_category->datatable_filter_string : (config('laravel-modules-core.options.media.datatable_filter') ? 'true' : 'false') !!};
         {{-- /scripts --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/media/index.js') !!}"></script>
@@ -139,16 +139,16 @@
             @if(isset($media_category))
                 @include('laravel-modules-core::partials.common.indexActions', [
                     'module' => [ 'id' =>  $media_category->id, 'route' => 'media_category.media'],
-                    'fast_add'  => config('laravel-modules-core.options.media.datatable_fast_add'),
+                    'fast_add'  => isset($media_category) ? $media_category->datatable_fast_add : (config('laravel-modules-core.options.media.datatable_fast_add')),
                     'add'       => true,
-                    'tools'     => config('laravel-modules-core.options.media.datatable_tools')
+                    'tools'     => isset($media_category) ? $media_category->datatable_tools : (config('laravel-modules-core.options.media.datatable_tools'))
                 ])
             @else
                 @include('laravel-modules-core::partials.common.indexActions', [
                     'module' => 'media',
-                    'fast_add'  => config('laravel-modules-core.options.media.datatable_fast_add'),
+                    'fast_add'  => isset($media_category) ? $media_category->datatable_fast_add : (config('laravel-modules-core.options.media.datatable_fast_add')),
                     'add'       => true,
-                    'tools'     => config('laravel-modules-core.options.media.datatable_tools')
+                    'tools'     => isset($media_category) ? $media_category->datatable_tools : (config('laravel-modules-core.options.media.datatable_tools'))
                 ])
             @endif
         </div>
@@ -163,7 +163,10 @@
 
             <div class="table-container">
                 {{-- Table Actions --}}
-                @if(config('laravel-modules-core.options.media.datatable_group_action'))
+                @if(
+                    (isset($media_category) && $media_category->datatable_group_action)
+                    || (! isset($media_category) && config('laravel-modules-core.options.media.datatable_group_action'))
+                )
                     @include('laravel-modules-core::partials.common.indexTableActions', [
                         'actions'   => ['publish','not_publish','destroy','create_album']
                     ])
@@ -175,13 +178,19 @@
                     <thead>
                         <tr role="row" class="heading">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.media.datatable_group_action'))
+                            @if(
+                                (isset($media_category) && $media_category->datatable_group_action)
+                                || (! isset($media_category) && config('laravel-modules-core.options.media.datatable_group_action'))
+                            )
                                 <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.media.datatable_detail'))
+                            @if(
+                                (isset($media_category) && $media_category->datatable_detail)
+                                || (! isset($media_category) && config('laravel-modules-core.options.media.datatable_detail'))
+                            )
                                 <th class="all" width="2%"></th>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
@@ -196,16 +205,25 @@
                         </tr>
 
                         {{-- Datatable Filter --}}
-                        @if(config('laravel-modules-core.options.media.datatable_filter'))
+                        @if(
+                            (isset($media_category) && $media_category->datatable_filter)
+                            || (! isset($media_category) && config('laravel-modules-core.options.media.datatable_filter'))
+                        )
                         <tr role="row" class="filter">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.media.datatable_group_action'))
+                            @if(
+                                (isset($media_category) && $media_category->datatable_group_action)
+                                || (! isset($media_category) && config('laravel-modules-core.options.media.datatable_group_action'))
+                            )
                                 <td></td>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.media.datatable_detail'))
+                            @if(
+                                (isset($media_category) && $media_category->datatable_detail)
+                                || (! isset($media_category) && config('laravel-modules-core.options.media.datatable_detail'))
+                            )
                                 <td></td>
                             @endif
                             {{-- /Datatable Row Detail Column --}}

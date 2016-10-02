@@ -81,21 +81,22 @@
 {{-- /Media [Photo,Video] --}}
 
 {{-- Description --}}
-<div class="form-group" id="description_wrapper">
-    <label class="control-label">{!! lmcTrans('laravel-media-module/admin.fields.media.description') !!}</label>
-    {!! Form::textarea( 'description', isset($media) ? $media->description : null, [
-        'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
-        'placeholder'   => lmcTrans('laravel-media-module/admin.fields.media.description'),
-        'rows'          => 3,
-        'maxlength'     => 255,
-        'id'            => 'description'
-    ]) !!}
-    @if ( ! isset($helpBlockAfter) )
+@if(isset($media_category) && $media_category->has_description)
+    <div class="form-group" id="description_wrapper">
+        <label class="control-label">{!! lmcTrans('laravel-media-module/admin.fields.media.description') !!}</label>
+        {!! Form::textarea( 'description', isset($media) ? $media->description : null, [
+            'class'         => 'form-control form-control-solid placeholder-no-fix  tinymce',
+            'placeholder'   => lmcTrans('laravel-media-module/admin.fields.media.description'),
+            'rows'          => 5,
+            'id'            => 'description'
+        ]) !!}
+        @if ( ! isset($helpBlockAfter) )
+            <span class="help-block"> {!! lmcTrans('laravel-media-module/admin.helpers.media.description') !!} </span>
+        @endif
+    </div>
+    @if ( isset($helpBlockAfter) )
         <span class="help-block"> {!! lmcTrans('laravel-media-module/admin.helpers.media.description') !!} </span>
     @endif
-</div>
-@if ( isset($helpBlockAfter) )
-    <span class="help-block"> {!! lmcTrans('laravel-media-module/admin.helpers.media.description') !!} </span>
 @endif
 {{-- /Description --}}
 

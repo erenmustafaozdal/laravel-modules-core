@@ -75,7 +75,7 @@
     {{-- Portlet --}}
     <div class="portlet light bordered">
         {{-- Portlet Title and Actions --}}
-        <div class="portlet-title">
+        <div class="portlet-title tabbable-line">
             {{-- Caption --}}
             <div class="caption margin-right-10">
                 <i class="{!! config('laravel-media-module.icons.media_category') !!} font-red"></i>
@@ -102,6 +102,28 @@
                 </div>
             @endif
             {{-- /Actions --}}
+
+            {{-- Nav Tabs --}}
+            <ul class="nav nav-tabs nav-tabs-lg">
+                <li class="active">
+                    <a href="#info" data-toggle="tab" aria-expanded="true">
+                        {!! lmcTrans('admin.fields.overview') !!}
+                    </a>
+                </li>
+                @if(! isset($parent_media_category) || ! $parent_media_category->config_propagation)
+                    <li>
+                        <a href="#photo_configs" data-toggle="tab" aria-expanded="true">
+                            {!! lmcTrans('admin.fields.photo_configs') !!}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#extra_columns" data-toggle="tab" aria-expanded="true">
+                            {!! lmcTrans('admin.fields.extra_columns') !!}
+                        </a>
+                    </li>
+                @endif
+            </ul>
+            {{-- /Nav Tabs --}}
         </div>
         {{-- /Portlet Title and Actions --}}
 
@@ -118,9 +140,9 @@
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
                     'url'   => isset($parent_media_category) ? lmbRoute('admin.media_category.media_category.' . ($operation === 'edit' ? 'update' : 'store'), [
                         'id' => $parent_media_category->id,
-                        config('laravel-media-module.url.media_category') => $operation === 'edit' ? $media_category->id : null
+                        config('laravel-media-module.url.media_category') => $operation === 'edit' ? $media_category->id : null, 'form' => 'general'
                     ]) : lmbRoute('admin.media_category.' . ($operation === 'edit' ? 'update' : 'store'),[
-                            'id' => $operation === 'edit' ? $media_category->id : null,
+                            'id' => $operation === 'edit' ? $media_category->id : null, 'form' => 'general'
                     ]),
                     'class' => 'form'
             ];
@@ -135,13 +157,33 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::media_category.partials.form', [
-                    'parent'    => isset($parent_media_category) ? $parent_media_category : false
-                ])
 
-                @if(isset($medias) && $medias->count() > 0)
-                    @include('laravel-modules-core::media_category.partials.medias_list')
-                @endif
+                {{-- Tab Contents --}}
+                <div class="tab-content">
+                    <div class="tab-pane active" id="info">
+                        @include('laravel-modules-core::media_category.partials.form', [
+                            'parent'    => isset($parent_media_category) ? $parent_media_category : false
+                        ])
+
+                        @if(isset($medias) && $medias->count() > 0)
+                            @include('laravel-modules-core::media_category.partials.medias_list')
+                        @endif
+                    </div>
+                    <div class="tab-pane" id="photo_configs">
+                        @include('laravel-modules-core::partials.form.photo_config_form', [
+                            'parent'    => isset($parent_media_category) ? $parent_media_category : false,
+                            'model'     => isset($media_category) ? $media_category : false
+                        ])
+                    </div>
+                    <div class="tab-pane" id="extra_columns">
+                        @include('laravel-modules-core::partials.form.extra_column_form', [
+                            'parent'    => isset($parent_media_category) ? $parent_media_category : false,
+                            'model'     => isset($media_category) ? $media_category : false
+                        ])
+                    </div>
+                </div>
+                {{-- /Tab Contents --}}
+
             </div>
             {{-- /Form Body --}}
 

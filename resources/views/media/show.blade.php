@@ -49,6 +49,11 @@
     {!! Html::style('vendor/laravel-modules-core/assets/pages/css/profile-2.css') !!}
     {{-- /Profile CSS --}}
 
+    {{-- Date Picker --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
+    {{-- /Date Picker --}}
+
     {{-- Select2 --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
@@ -65,6 +70,13 @@
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var showJs = "{!! lmcElixir('assets/pages/scripts/media/show.js') !!}";
         {{-- /js file path --}}
+
+        {{-- Description Is Editor --}}
+        @if(isset($media_category) && $media_category->description_is_editor)
+            var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
+            var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
+        @endif
+        {{-- /Description Is Editor --}}
 
         {{-- routes --}}
         @if(isset($media_category))
@@ -84,6 +96,11 @@
     <script src="{!! lmcElixir('assets/pages/js/loaders/media/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
+    {{-- Description Is Editor --}}
+    @if(isset($media_category) && $media_category->description_is_editor)
+        <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>
+    @endif
+    {{-- /Description Is Editor --}}
 @endsection
 
 @section('content')
@@ -185,6 +202,10 @@
                             {{-- Form Body --}}
                             <div class="form-body">
                                 @include('laravel-modules-core::media.partials.form')
+                                @include('laravel-modules-core::partials.form.model_extras_form', [
+                                    'category'  => isset($media_category) ? $media_category : false,
+                                    'model'     => $media
+                                ])
                             </div>
                             {{-- /Form Body --}}
 

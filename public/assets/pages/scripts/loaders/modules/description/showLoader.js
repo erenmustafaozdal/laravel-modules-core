@@ -106,4 +106,10 @@
         theSelect2.setInputDisplay(hasPhotoObject, photoType);
         theSelect2.setInputDisplay(hasLinkObject, linkType);
     });
+    $script.ready(['config','app_tinymce'], function()
+    {
+        Tinymce.init({
+            route: tinymceURL
+        });
+    });
 })();

@@ -89,7 +89,7 @@
         };
         var validExtension = "{!! config('laravel-document-module.document.uploads.file.mimes') !!}";
         var maxSize = "{!! config('laravel-document-module.document.uploads.file.max_size') !!}";
-        var aspectRatio = "{!! config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}";
+        var aspectRatio = "{!! isset($document_category) && $document_category->aspect_ratio ? $document_category->aspect_ratio : config('laravel-document-module.document.uploads.photo.aspect_ratio') !!}";
         {{-- /languages --}}
 
         {{-- scripts --}}

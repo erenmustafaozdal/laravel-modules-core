@@ -69,6 +69,7 @@
     {{-- /Media --}}
 
     {{-- Description --}}
+    @if(isset($media_category) && $media_category->has_description)
     <div class="form-group">
         <label class="col-sm-2 control-label">
             {!! lmcTrans('laravel-media-module/admin.fields.media.description') !!}
@@ -77,7 +78,12 @@
             <p class="form-control-static"> {!! $media->description !!} </p>
         </div>
     </div>
+    @endif
     {{-- /Description --}}
+
+    {{-- Extra Column Values --}}
+    @include('laravel-modules-core::partials.common.overview_model_extras', ['model' => $media])
+    {{-- /Extra Column Values --}}
 
     {{-- Created At --}}
     <div class="form-group">

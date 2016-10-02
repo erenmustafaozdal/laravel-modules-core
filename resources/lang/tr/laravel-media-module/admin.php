@@ -67,6 +67,7 @@ return [
         'media_category' => [
             'name'                  => 'Galeri',
             'type'                  => 'Galeri Tipi',
+            'has_description'       => 'Medyaların Açıklaması Olsun mu?',
             'photos'                => 'Fotoğraflar',
             'photo'                 => 'Fotoğraf Galerisi',
             'videos'                => 'Videolar',
@@ -91,6 +92,7 @@ return [
         'media_category' => [
             'not_have_child'    => '<h3>Gösterilecek galeri yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni galeri eklemek için sağ üst tarafta bulunan <a class="btn green btn-sm btn-outline" href="javascript:;"> <i class="fa fa-plus-square"></i> Yeni Ekle </a> tuşuna tıkla.</p>',
             'type'              => 'Galerinin içeriğinde neler olacak? Eğer <em class="label label-info">Fotoğraf</em>,  <em class="label label-info">Video</em> veya <em class="label label-info">Karışık</em> seçeneklerinden birini seçmelisin!',
+            'has_description'   => 'Bu kategoride bulunan medyaların açıklamaları olacak mı? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategori ile medya eklerken açıklama alanı olmayacak!',
         ],
         'media' => [
             'category_id_help'  => 'Medyanın gösterileceği bir ya da daha fazla galeri seçebilirsin. Bunun için önce galeri oluşturmalısın.',
