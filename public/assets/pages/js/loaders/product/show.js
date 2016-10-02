@@ -98,6 +98,33 @@
                         };
                     }
                 }
+            },
+            onChange: function(e) {
+                var val = $(this).val();
+                if ( val == '' ) {
+                    return false;
+                }
+
+                var url =  categoryDetailURL.replace('###id###',val);
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                    beforeSend: function() {
+                        LMCApp.hasTransaction = false;
+                    },
+                    success: function (data) {
+                        var oldAspect = LMCAspectRatio != undefined ? LMCAspectRatio : aspectRatio;
+                        var aspect = LMCApp.getOppositeAspect(oldAspect, data.crop_type);
+                        $('.file-preview-image').each(function(key,value)
+                        {
+                            var id = $(value).prop('id');
+                            if (id != '') {
+                                var api = theLMCJcrop.apis[id];
+                                api.setOptions({aspectRatio: aspect});
+                            }
+                        });
+                    }
+                });
             }
         });
         Select2.init({

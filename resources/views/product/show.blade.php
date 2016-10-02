@@ -54,6 +54,7 @@
         var removePhotoURL = "{!! lmbRoute('api.product.removePhoto', ['id' => '###id###']) !!}";
         var setMainPhotoURL = "{!! lmbRoute('api.product.setMainPhoto', ['id' => '###id###']) !!}";
         var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
+        var categoryDetailURL = "{!! lmbRoute('api.product_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}

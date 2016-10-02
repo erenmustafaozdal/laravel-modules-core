@@ -113,7 +113,8 @@
                         LMCApp.hasTransaction = false;
                     },
                     success: function (data) {
-                        var aspect = LMCApp.getOppositeAspect(aspectRatio, data.crop_type);
+                        var oldAspect = LMCAspectRatio != undefined ? LMCAspectRatio : aspectRatio;
+                        var aspect = LMCApp.getOppositeAspect(oldAspect, data.crop_type);
                         $('.file-preview-image').each(function(key,value)
                         {
                             var id = $(value).prop('id');

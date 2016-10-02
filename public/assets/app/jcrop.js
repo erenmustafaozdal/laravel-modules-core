@@ -1,4 +1,5 @@
 ;var theLMCJcrop;
+var LMCAspectRatio;
 var LMCJcrop = {
 
     /**
@@ -58,6 +59,9 @@ var LMCJcrop = {
         this.options.jcrop['boxHeight'] = y;
 
         // init jcrop
+        if (LMCAspectRatio != undefined) {
+            this.options.jcrop['aspectRatio'] = LMCAspectRatio;
+        }
         element.Jcrop(this.options.jcrop, function()
         {
             theLMCJcrop.boundxs[newId] = element[0].naturalWidth;
