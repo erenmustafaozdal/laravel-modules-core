@@ -1,4 +1,4 @@
-@foreach($document->extras as $extra)
+@foreach($model->extras as $extra)
     <div class="form-group">
         <label class="col-sm-2 control-label"> {{ $extra->name_uc_first }} </label>
         <div class="col-sm-10">

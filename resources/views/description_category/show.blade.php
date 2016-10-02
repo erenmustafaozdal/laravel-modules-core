@@ -119,6 +119,24 @@
                                 {!! trans('laravel-modules-core::admin.fields.edit_info') !!}
                             </a>
                         </li>
+
+                            {{-- Relations --}}
+                            @if(! isset($parent_document_category) || ! $parent_document_category->config_propagation)
+                                <li>
+                                    <a data-toggle="tab" href="#photo_configs">
+                                        <i class="fa fa-picture-o"></i>
+                                        {!! lmcTrans('admin.fields.photo_configs') !!}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#extra_columns">
+                                        <i class="fa fa-database"></i>
+                                        {!! lmcTrans('admin.fields.extra_columns') !!}
+                                    </a>
+                                </li>
+                            @endif
+                            {{-- /Relations --}}
+
                         @endif
                     </ul>
                 </div>
@@ -138,33 +156,67 @@
 
                         {{-- Edit Info --}}
                         @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($parent_description_category) ? 'description_category.description_category' : 'description_category') .'.update'))
+
+                        {{-- Edit Form --}}
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($description_category,[
                                 'method'    => 'PATCH',
                                 'url'       => isset($parent_description_category)
                                     ? lmbRoute('admin.description_category.description_category.update', [
                                         'id' => $parent_description_category->id,
-                                        config('laravel-description-module.url.description_category') => $description_category->id
+                                        config('laravel-description-module.url.description_category') => $description_category->id, 'form' => 'general'
                                     ])
-                                    : lmbRoute('admin.description_category.update', [ 'id' => $description_category->id ]),
+                                    : lmbRoute('admin.description_category.update', [ 'id' => $description_category->id, 'form' => 'general']),
                                 'id'        => 'description_category-edit-info'
                             ]) !!}
-
                             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-
-                            {{-- Form Body --}}
                             <div class="form-body">
                                 @include('laravel-modules-core::description_category.partials.form', [
                                     'parent'    => isset($parent_description_category) ? $parent_description_category : false,
                                     'model'     => $description_category
                                 ])
                             </div>
-                            {{-- /Form Body --}}
-
                             @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
-
                             {!! Form::close() !!}
                         </div>
+                        {{-- /Edit Form --}}
+
+                        {{-- Photo Form --}}
+                        <div id="photo_configs" class="tab-pane form">
+                            {!! Form::open([
+                                'method'    => 'PATCH',
+                                'url'       => isset($parent_description_category) ? lmbRoute('admin.description_category.description_category.update', [ 'id' => $parent_description_category->id, config('laravel-description-module.url.description_category') => $description_category->id ]) : lmbRoute('admin.description_category.update', [ 'id' => $description_category->id ])
+                            ]) !!}
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+                            <div class="form-body">
+                                @include('laravel-modules-core::partials.form.photo_config_form', [
+                                    'parent'    => isset($parent_description_category) ? $parent_description_category : false,
+                                    'model'     => $description_category
+                                ])
+                            </div>
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+                            {!! Form::close() !!}
+                        </div>
+                        {{-- /Photo Form --}}
+
+                        {{-- Extra Column Form --}}
+                        <div id="extra_columns" class="tab-pane form">
+                            {!! Form::open([
+                                'method'    => 'PATCH',
+                                'url'       => isset($parent_description_category) ? lmbRoute('admin.description_category.description_category.update', [ 'id' => $parent_description_category->id, config('laravel-description-module.url.description_category') => $description_category->id ]) : lmbRoute('admin.description_category.update', [ 'id' => $description_category->id ])
+                            ]) !!}
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+                            <div class="form-body">
+                                @include('laravel-modules-core::partials.form.extra_column_form', [
+                                    'parent'    => isset($parent_description_category) ? $parent_description_category : false,
+                                    'model'     => $description_category
+                                ])
+                            </div>
+                            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+                            {!! Form::close() !!}
+                        </div>
+                        {{-- /Extra Column Form --}}
+
                         @endif
                         {{-- /Edit Info --}}
 

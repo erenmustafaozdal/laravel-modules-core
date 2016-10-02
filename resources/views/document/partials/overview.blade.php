@@ -75,7 +75,7 @@
     {{-- /Size --}}
 
     {{-- Extra Column Values --}}
-    @include('laravel-modules-core::partials.common.overview_model_extras')
+    @include('laravel-modules-core::partials.common.overview_model_extras', ['model' => $document])
     {{-- /Extra Column Values --}}
 
     {{-- Created At --}}

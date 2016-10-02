@@ -49,6 +49,11 @@
     {!! Html::style('vendor/laravel-modules-core/assets/pages/css/profile-2.css') !!}
     {{-- /Profile CSS --}}
 
+    {{-- Date Picker --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}
+    {{-- /Date Picker --}}
+
     {{-- Select2 --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
@@ -93,7 +98,7 @@
         var validExtension = "{!! config('laravel-description-module.description.uploads.file.mimes') !!}";
         var maxSize = "{!! config('laravel-description-module.description.uploads.file.max_size') !!}";
         var maxFile = "{!! config('laravel-description-module.description.uploads.multiple_photo.max_file') !!}";
-        var aspectRatio = '{!! config('laravel-description-module.description.uploads.photo.aspect_ratio') !!}';
+        var aspectRatio = '{!! isset($description_category) && $description_category->aspect_ratio ? $description_category->aspect_ratio : config('laravel-description-module.description.uploads.photo.aspect_ratio') !!}';
         var hasDescription = {{ ( isset($description) && $description->category->has_description ) || ( isset($description_category) && $description_category->has_description ) || ! isset($description) ? 'true' : 'false' }};
         var hasPhoto = {{ ( isset($description) && $description->category->has_photo ) || ( isset($description_category) && $description_category->has_photo ) || ! isset($description) ? 'true' : 'false' }};
         var hasLink = {{ ( isset($description) && $description->category->has_link ) || ( isset($description_category) && $description_category->has_link ) || ! isset($description) ? 'true' : 'false' }};
@@ -205,6 +210,10 @@
                             <div class="form-body">
                                 @include('laravel-modules-core::description.partials.form', [
                                     'isRelation'    => isset($description_category) ? true : false
+                                ])
+                                @include('laravel-modules-core::partials.form.model_extras_form', [
+                                    'category'  => isset($description_category) ? $description_category : false,
+                                    'model'     => $description
                                 ])
                                 <div id="detail">
                                     @include('laravel-modules-core::description.partials.detail_form', [

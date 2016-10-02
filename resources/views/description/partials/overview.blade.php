@@ -49,6 +49,10 @@
     </div>
     {{-- /Title --}}
 
+    {{-- Extra Column Values --}}
+    @include('laravel-modules-core::partials.common.overview_model_extras', ['model' => $description])
+    {{-- /Extra Column Values --}}
+
     {{-- Created At --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">
