@@ -643,19 +643,18 @@ var LMCApp = {
      */
     getOppositeAspect: function(oldAspect, type)
     {
-        var newAspect = oldAspect;
         if (type === 'square') {
-            newAspect = 1;
+            return 1;
         }
 
         if ( type === 'horizontal' && oldAspect <= 1 ) {
-            newAspect = oldAspect == 1 && aspectRatio > 1 ? aspectRatio :(oldAspect == 1 ? 1 / aspectRatio : 1 / oldAspect);
+            return horizontalRatio;
         }
 
         if ( type === 'vertical' && oldAspect >= 1 ) {
-            newAspect = oldAspect == 1 && aspectRatio < 1 ? aspectRatio :(oldAspect == 1 ? 1 / aspectRatio : 1 / oldAspect);
+            return verticalRatio;
         }
-        return LMCAspectRatio = newAspect;
+        return oldAspect;
     },
 
     /**

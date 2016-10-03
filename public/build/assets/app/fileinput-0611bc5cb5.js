@@ -67,7 +67,6 @@ var LMCFileinput = {
 
         // jcrop init
         LMCJcrop.init();
-
     },
 
     /**
@@ -157,6 +156,7 @@ var LMCFileinput = {
                     zoomClass: 'btn btn-xs purple btn-outline tooltips'
                 },
                 showAjaxErrorDetails: false,
+                initialPreviewShowDelete: false,
                 previewTemplates: {
                     image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
                     '   <div class="kv-file-content">' +
@@ -168,6 +168,14 @@ var LMCFileinput = {
                     '   <input type="hidden" class="crop-width" name="width[]" value="0">\n' +
                     '   <input type="hidden" class="crop-height" name="height[]" value="0">\n' +
                     '</div>\n',
+                    generic: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                    '   {content}\n' +
+                    '   {footer}\n' +
+                    '   <input type="hidden" class="crop-x" name="x[]" value="0">\n' +
+                    '   <input type="hidden" class="crop-y" name="y[]" value="0">\n' +
+                    '   <input type="hidden" class="crop-width" name="width[]" value="0">\n' +
+                    '   <input type="hidden" class="crop-height" name="height[]" value="0">\n' +
+                    '</div>\n'
                 }
             },
             // events

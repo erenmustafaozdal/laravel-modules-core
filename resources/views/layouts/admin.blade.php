@@ -139,17 +139,6 @@
 
                         {{-- Page Toolbar --}}
                         <div class="page-toolbar">
-                            {{-- File Manager --}}
-                            <a href="{!! lmbRoute('elfinder.popup',[ 'input_id' => 'filemanager']) !!}"
-                               class="pull-right tooltips btn btn-fit-height green btn-outline popup_selector"
-                               data-original-title="{!! trans('laravel-modules-core::admin.fields.file_manager') !!}"
-                               data-container="body"
-                               data-placement="left"
-                            >
-                                <i class="fa fa-folder-open"></i>
-                            </a>
-                            {{-- /File Manager --}}
-
                             {{-- Theme Panel --}}
                             @if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAnyAccess(['api.themeLayout.change', 'api.themeColor.change']) )
                                 @include('laravel-modules-core::partials.admin.themePanel')

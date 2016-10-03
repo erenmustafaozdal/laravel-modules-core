@@ -107,6 +107,27 @@ var Operation = {
             }
         });
 
+        // initial file input preview image
+        var accordionIsOpen = false;
+        var resizeTimer;
+        $('#detail_accordion_toggle').on('click', function () {
+            if (accordionIsOpen) {
+                return;
+            }
+            // eğer başlangıç resimleri varsa jcrop init
+            if (theLMCFileinput.options.fileinput.initialPreview != undefined && theLMCFileinput.options.fileinput.initialPreview != null) {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function () {
+                    $('.file-preview-image').each(function (key, value) {
+                        var id = $(value).prop('id').replace('img-', '');
+                        $(value).closest('.file-preview-frame').prop('id', id);
+                        theLMCJcrop.setupElement(id);
+                    });
+                }, 250);
+            }
+            accordionIsOpen = true;
+        });
+
     },
 
     /**
@@ -122,8 +143,14 @@ var Operation = {
                 maxFileSize: maxSize,
                 showUpload: false,
                 showCancel: false,
+                showRemove: false,
+                initialPreview: initialPreview,
+                initialPreviewConfig: initialPreviewConfig,
+                initialPreviewShowDelete: false,
+                initialPreviewFileType: 'image',
                 fileActionSettings: {
-                    showUpload: false
+                    showUpload: false,
+                    showRemove: false
                 }
             }
         };

@@ -9,7 +9,7 @@
         {!! lmcTrans("laravel-product-module/admin.product.{$operation}") !!}
         <small>
             {!! lmcTrans("laravel-product-module/admin.product.{$operation}_description", [
-                'product' => $operation === 'edit' ? $product->name_uc_first : null
+                'product' => $operation === 'edit' || $operation === 'copy' ? $product->name_uc_first : null
             ]) !!}
         </small>
     </h1>
@@ -66,8 +66,33 @@
         var validExtension = "{!! config('laravel-product-module.product.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('laravel-product-module.product.uploads.photo.max_size') !!}";
         var maxFile = "{!! config('laravel-product-module.product.uploads.multiple_photo.max_file') !!}";
-        var aspectRatio = "{!! config('laravel-product-module.product.uploads.photo.aspect_ratio') !!}";
+        var aspectRatio = "{!! isset($product) ? $product->category->aspect_ratio : config('laravel-product-module.product.uploads.photo.horizontal_ratio') !!}";
+        var verticalRatio = "{!! config('laravel-product-module.product.uploads.photo.vertical_ratio') !!}";
+        var horizontalRatio = "{!! config('laravel-product-module.product.uploads.photo.horizontal_ratio') !!}";
         {{-- /languages --}}
+
+        {{-- Product Copy Preview --}}
+        var initialPreview = null;
+        var initialPreviewConfig = null;
+        @if($operation === 'copy')
+            initialPreview = [
+            @foreach($product->photos as $photo)
+                '{!! $photo->getPhoto([
+                    'class'     => 'kv-preview-data file-preview-image jcrop-item img-responsive',
+                    'id'        => "img-" . time() . "-{$photo->id}"
+                ], 'original', false, 'product','product_id') !!}',
+            @endforeach
+            ];
+            initialPreviewConfig = [
+            @foreach($product->photos as $photo)
+                {
+                    caption: '{{ $photo->photo }}',
+                    size: '{{ filesize(removeDomain($photo->getPhoto([], 'original', true, 'product','product_id'))) }}'
+                },
+            @endforeach
+            ];
+        @endif
+        {{-- /Product Copy Preview --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/product/operation.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
@@ -136,7 +161,7 @@
             <?php
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
-                    'url'   => lmbRoute('admin.product.' . ($operation === 'edit' ? 'update' : 'store'), [
+                    'url'   => lmbRoute('admin.product.' . ($operation === 'edit' ? 'update' : ($operation === 'copy' ? 'storeCopy' : 'store')), [
                             'id' => $operation === 'edit' ? $product->id : null
                     ]),
                     'class' => 'form',
@@ -158,7 +183,7 @@
 
                         {{-- Product Detail --}}
                         @include('laravel-modules-core::product.partials.detail_form', [
-                            'currentPhoto'  => isset($product)
+                            'currentPhoto'  => isset($product) && $operation != 'copy'
                         ])
                         {{-- /Product Detail --}}
 

@@ -81,6 +81,7 @@ var LMCJcrop = {
             this.api.ui.holder.remove();
             this.release();
             this.api.destroy();
+            this.apis = {};
         }
     },
 

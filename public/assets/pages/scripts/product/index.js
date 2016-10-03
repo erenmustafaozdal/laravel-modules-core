@@ -193,26 +193,17 @@ var Index = {
                             '<td style="width:150px; text-align:right;"> <strong>Kategori:</strong> </td>' +
                             '<td class="text-left">';
 
-                    var categoriesLength = data.categories.length;
-                    var k = 1;
-                    $.each(data.categories, function(key, category)
+                    var categoryLength = data.category.length;
+                    var i = 1;
+                    $.each(data.category, function(key,value)
                     {
-                        var categoryLength = category.length;
-                        var i = 1;
-                        $.each(category, function(key,value)
-                        {
-                            detail += '<span';
-                            detail += i < categoryLength ? ' class="text-muted"' : ' class="text-info"';
-                            detail += '> ' + value.name + ' </span>';
-                            if (i < categoryLength) {
-                                detail += '<span class="text-muted">/</span>'
-                            }
-                            i++;
-                        });
-                        if (k < categoriesLength) {
-                            detail += ', ';
+                        detail += '<span';
+                        detail += i < categoryLength ? ' class="text-muted"' : ' class="text-info"';
+                        detail += '> ' + value.name + ' </span>';
+                        if (i < categoryLength) {
+                            detail += '<span class="text-muted">/</span>'
                         }
-                        k++;
+                        i++;
                     });
 
                     detail += '</td>' +
@@ -370,32 +361,23 @@ var Index = {
                         { data: "code", name: "code", className: 'text-center' },
                         // categories
                         {
-                            data: "categories", name: "categories",
+                            data: "category", name: "category",
                             render: function ( data, type, full, meta )
                             {
                                 var categories = '';
-                                var categoriesLength = data.length;
-                                var k = 1;
-                                $.each(data, function(key, category)
+                                var categoryLength = data.length;
+                                var i = 1;
+                                $.each(data, function(key,value)
                                 {
-                                    var categoryLength = category.length;
-                                    var i = 1;
-                                    $.each(category, function(key,value)
-                                    {
-                                        categories += '<a href="' + categoryURL.replace("###id###", value.id) + '"';
-                                        if (i < categoryLength) {
-                                            categories += ' class="text-muted"';
-                                        }
-                                        categories += '>' + value.name + '</a>';
-                                        if (i < categoryLength) {
-                                            categories += '<span class="text-muted">/</span>'
-                                        }
-                                        i++;
-                                    });
-                                    if (k < categoriesLength) {
-                                        categories += ', ';
+                                    categories += '<a href="' + categoryURL.replace("###id###", value.id) + '"';
+                                    if (i < categoryLength) {
+                                        categories += ' class="text-muted"';
                                     }
-                                    k++;
+                                    categories += '>' + value.name + '</a>';
+                                    if (i < categoryLength) {
+                                        categories += '<span class="text-muted">/</span>'
+                                    }
+                                    i++;
                                 });
                                 return categories;
                             }
@@ -447,6 +429,12 @@ var Index = {
                                             title: '<i class="fa fa-pencil"></i> ' + LMCApp.lang.admin.ops.edit,
                                             attributes: {
                                                 href: full.urls.edit_page
+                                            }
+                                        },
+                                        {
+                                            title: '<i class="fa fa-clone"></i> ' + LMCApp.lang.admin.ops.copy,
+                                            attributes: {
+                                                href: full.urls.copy_page
                                             }
                                         },
                                         {

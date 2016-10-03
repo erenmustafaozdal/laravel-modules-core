@@ -66,7 +66,7 @@
         var validExtension = "{!! config('laravel-product-module.product.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('laravel-product-module.product.uploads.photo.max_size') !!}";
         var maxFile = "{!! config('laravel-product-module.product.uploads.multiple_photo.max_file') !!}";
-        var aspectRatio = "{!! config('laravel-product-module.product.uploads.photo.aspect_ratio') !!}";
+        var aspectRatio = "{{ $product->category->aspect_ratio }}";
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/product/show.js') !!}"></script>
@@ -114,6 +114,12 @@
                 {{-- Profile Navigation --}}
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
+                        <li>
+                            {!! $product->mainPhoto->getPhoto([
+                                'class' => 'img-responsive pic-bordered',
+                                'alt'   => $product->name_uc_first,
+                            ], last(array_keys(config('laravel-product-module.product.uploads.photo.thumbnails'))),false,'product','product_id') !!}
+                        </li>
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
                                 <i class="fa fa-info"></i>

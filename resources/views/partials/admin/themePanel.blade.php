@@ -109,4 +109,16 @@
             @endif
         </div>
     </div>
+
+
+    {{-- File Manager --}}
+    <a href="{!! lmbRoute('elfinder.popup',[ 'input_id' => 'filemanager']) !!}"
+       class="tooltips btn popup_selector"
+       data-original-title="{!! trans('laravel-modules-core::admin.fields.file_manager') !!}"
+       data-container="body"
+       data-placement="left"
+    >
+        <i class="fa fa-folder-open"></i>
+    </a>
+    {{-- /File Manager --}}
 </div>

@@ -35,7 +35,7 @@
                 >
                     <option></option>
                     @foreach(config('laravel-product-module.product_showcase.type') as $type)
-                        <option value="{!! $type !!}">
+                        <option value="{!! $type !!}" {{ isset($product) && $showcase->getProduct($product->id) && $type == 'clear' ? 'selected' : '' }}>
                             {!! lmcTrans("laravel-product-module/admin.fields.product_showcase.{$type}") !!}
                         </option>
                     @endforeach

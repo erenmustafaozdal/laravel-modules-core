@@ -45,7 +45,9 @@ return [
         'create'                    => 'Ürün Ekle',
         'create_description'        => 'Yeni bir ürün ekle',
         'show'                      => 'Ürün Bilgileri',
-        'show_description'          => ':product ürünü hakkında bilgiler'
+        'show_description'          => ':product ürünü hakkında bilgiler',
+        'copy'                      => 'Ürünü Kopyala',
+        'copy_description'          => ':product ürünü bilgilerini kopyala',
     ],
 
     // menu

@@ -2,7 +2,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <h4 class="panel-title">
-                <a class="accordion-toggle accordion-toggle-styled collapsed"
+                <a id="detail_accordion_toggle" class="accordion-toggle accordion-toggle-styled collapsed"
                    data-toggle="collapse"
                    data-parent="#product_accordion"
                    href="#detail_accordion"
@@ -47,21 +47,21 @@
                 ])
                 {{-- /Photo --}}
 
-                {{-- Current Photo/Photos --}}
-                @if(isset($currentPhoto) && $currentPhoto)
-                    @include('laravel-modules-core::partials.common.current_photos', [
-                        'model'             => $product,
-                        'relation'          => 'photos',
-                        'relationType'      => 'hasMany',
-                        'modelSlug'         => 'product',   // for ModelDataTrait->getPhoto() function
-                        'parentRelation'    => 'product_id',// for ModelDataTrait->getPhoto() function
-                        'hasRibbon'         => true,
-                        'hasSetMainPhoto'   => true
-                    ])
-                @endif
-                {{-- /Current Photo/Photos --}}
-
             </div>
         </div>
     </div>
 </div>
+
+{{-- Current Photo/Photos --}}
+@if(isset($currentPhoto) && $currentPhoto)
+    @include('laravel-modules-core::partials.common.current_photos', [
+        'model'             => $product,
+        'relation'          => 'photos',
+        'relationType'      => 'hasMany',
+        'modelSlug'         => 'product',   // for ModelDataTrait->getPhoto() function
+        'parentRelation'    => 'product_id',// for ModelDataTrait->getPhoto() function
+        'hasRibbon'         => true,
+        'hasSetMainPhoto'   => true
+    ])
+@endif
+{{-- /Current Photo/Photos --}}
