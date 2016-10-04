@@ -113,16 +113,17 @@
                         LMCApp.hasTransaction = false;
                     },
                     success: function (data) {
-                        var oldAspect = LMCAspectRatio != undefined ? LMCAspectRatio : aspectRatio;
-                        var aspect = LMCApp.getOppositeAspect(oldAspect, data.crop_type);
+                        var aspect = LMCApp.getOppositeAspect(aspectRatio, data.crop_type);
                         $('.file-preview-image').each(function(key,value)
                         {
                             var id = $(value).prop('id');
-                            if (id != '') {
-                                var api = theLMCJcrop.apis[id];
+                            var api = theLMCJcrop.apis[id];
+                            if (api != undefined) {
                                 api.setOptions({aspectRatio: aspect});
                             }
                         });
+                        aspectRatio = aspect;
+                        LMCAspectRatio = aspect;
                     }
                 });
             }

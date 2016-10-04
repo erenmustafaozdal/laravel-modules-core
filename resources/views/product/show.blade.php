@@ -67,6 +67,8 @@
         var maxSize = "{!! config('laravel-product-module.product.uploads.photo.max_size') !!}";
         var maxFile = "{!! config('laravel-product-module.product.uploads.multiple_photo.max_file') !!}";
         var aspectRatio = "{{ $product->category->aspect_ratio }}";
+        var verticalRatio = "{!! config('laravel-product-module.product.uploads.photo.vertical_ratio') !!}";
+        var horizontalRatio = "{!! config('laravel-product-module.product.uploads.photo.horizontal_ratio') !!}";
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/product/show.js') !!}"></script>

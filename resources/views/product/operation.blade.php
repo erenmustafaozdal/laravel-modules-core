@@ -162,7 +162,7 @@
                 $form = [
                     'method'=> $operation === 'edit' ? 'PATCH' : 'POST',
                     'url'   => lmbRoute('admin.product.' . ($operation === 'edit' ? 'update' : ($operation === 'copy' ? 'storeCopy' : 'store')), [
-                            'id' => $operation === 'edit' ? $product->id : null
+                            'id' => $operation === 'edit' || $operation === 'copy' ? $product->id : null
                     ]),
                     'class' => 'form',
                     'files' => true

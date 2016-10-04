@@ -108,25 +108,26 @@ var Operation = {
         });
 
         // initial file input preview image
-        var accordionIsOpen = false;
-        var resizeTimer;
-        $('#detail_accordion_toggle').on('click', function () {
-            if (accordionIsOpen) {
-                return;
-            }
-            // eğer başlangıç resimleri varsa jcrop init
-            if (theLMCFileinput.options.fileinput.initialPreview != undefined && theLMCFileinput.options.fileinput.initialPreview != null) {
+        if (theLMCFileinput.options.fileinput.initialPreview != undefined && theLMCFileinput.options.fileinput.initialPreview != null) {
+            var accordionIsOpen = false;
+            var resizeTimer;
+            $('#detail_accordion_toggle').on('click', function () {
+                if (accordionIsOpen) {
+                    return;
+                }
                 clearTimeout(resizeTimer);
                 resizeTimer = setTimeout(function () {
                     $('.file-preview-image').each(function (key, value) {
                         var id = $(value).prop('id').replace('img-', '');
+                        var src = $(value).prop('src');
                         $(value).closest('.file-preview-frame').prop('id', id);
                         theLMCJcrop.setupElement(id);
+                        $(value).closest('.file-preview-frame').find('.init-photo').val(src);
                     });
                 }, 250);
-            }
-            accordionIsOpen = true;
-        });
+                accordionIsOpen = true;
+            });
+        }
 
     },
 

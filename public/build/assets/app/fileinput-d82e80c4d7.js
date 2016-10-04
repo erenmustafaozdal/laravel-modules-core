@@ -175,6 +175,7 @@ var LMCFileinput = {
                     '   <input type="hidden" class="crop-y" name="y[]" value="0">\n' +
                     '   <input type="hidden" class="crop-width" name="width[]" value="0">\n' +
                     '   <input type="hidden" class="crop-height" name="height[]" value="0">\n' +
+                    '   <input type="hidden" class="init-photo" name="photo[]" value="">\n' +
                     '</div>\n'
                 }
             },

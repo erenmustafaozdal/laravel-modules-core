@@ -120,9 +120,15 @@
                             var api = theLMCJcrop.apis[id];
                             if (api != undefined) {
                                 api.setOptions({aspectRatio: aspect});
+                                var recoords = theLMCJcrop.getCropSize(api.tellSelect(), id);
+                                theLMCJcrop.setFormElements(recoords, $('#' + id.replace('img-','')));
+                                console.log(id);
+                                console.log(api.tellSelect());
+                                console.log(recoords);
                             }
                         });
                         aspectRatio = aspect;
+                        LMCAspectRatio = aspect;
                     }
                 });
             }
