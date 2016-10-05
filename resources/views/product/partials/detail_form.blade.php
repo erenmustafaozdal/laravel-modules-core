@@ -1,3 +1,9 @@
+{{-- Category Crop Type --}}
+{!! Form::hidden('crop_type',isset($product) ? $product->category->crop_type : null, [
+    'id'    => 'crop_type'
+]) !!}
+{{-- /Category Crop Type --}}
+
 <div class="panel-group accordion margin-top-40" id="product_accordion">
     <div class="panel panel-default">
         <div class="panel-heading">

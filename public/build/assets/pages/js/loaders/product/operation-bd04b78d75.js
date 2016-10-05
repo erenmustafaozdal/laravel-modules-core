@@ -126,6 +126,7 @@
                         });
                         aspectRatio = aspect;
                         LMCAspectRatio = aspect;
+                        $('#crop_type').val(data.crop_type);
                     }
                 });
             }
