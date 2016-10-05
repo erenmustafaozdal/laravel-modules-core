@@ -120,6 +120,8 @@
                             var api = theLMCJcrop.apis[id];
                             if (api != undefined) {
                                 api.setOptions({aspectRatio: aspect});
+                                var recoords = theLMCJcrop.getCropSize(api.tellSelect(), id);
+                                theLMCJcrop.setFormElements(recoords, $('#' + id.replace('img-','')));
                             }
                         });
                         aspectRatio = aspect;

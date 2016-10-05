@@ -157,6 +157,7 @@ var LMCFileinput = {
                 },
                 showAjaxErrorDetails: false,
                 initialPreviewShowDelete: false,
+                initialPreviewThumbTags: false,
                 previewTemplates: {
                     image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
                     '   <div class="kv-file-content">' +
@@ -175,7 +176,7 @@ var LMCFileinput = {
                     '   <input type="hidden" class="crop-y" name="y[]" value="0">\n' +
                     '   <input type="hidden" class="crop-width" name="width[]" value="0">\n' +
                     '   <input type="hidden" class="crop-height" name="height[]" value="0">\n' +
-                    '   <input type="hidden" class="init-photo" name="photo[]" value="">\n' +
+                    '   <input type="hidden" class="init-photo" name="init_photo[]" value="{PHOTO_URL}">\n' +
                     '</div>\n'
                 }
             },

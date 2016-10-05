@@ -68,6 +68,7 @@ var Tinymce = {
                 language: 'tr_TR',
                 language_url: '/vendor/laravel-modules-core/assets/global/plugins/tinymce/langs/tr_TR.js',
                 browser_spellcheck: true,
+                entity_encoding : "raw",
                 relative_urls: false,
                 remove_script_host: false,
                 image_caption: true,

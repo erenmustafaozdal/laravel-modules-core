@@ -93,6 +93,7 @@ var LMCApp = {
                 fast_add: 'Hızlı Ekle',
                 show: 'Göster',
                 edit: 'Düzenle',
+                copy: 'Kopyala',
                 fast_edit: 'Hızlı Düzenle',
                 destroy_confirm: 'Kayıt silinecek! Emin misin?',
                 destroy: 'Sil',

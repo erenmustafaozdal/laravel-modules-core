@@ -119,10 +119,8 @@ var Operation = {
                 resizeTimer = setTimeout(function () {
                     $('.file-preview-image').each(function (key, value) {
                         var id = $(value).prop('id').replace('img-', '');
-                        var src = $(value).prop('src');
                         $(value).closest('.file-preview-frame').prop('id', id);
                         theLMCJcrop.setupElement(id);
-                        $(value).closest('.file-preview-frame').find('.init-photo').val(src);
                     });
                 }, 250);
                 accordionIsOpen = true;
@@ -147,6 +145,7 @@ var Operation = {
                 showRemove: false,
                 initialPreview: initialPreview,
                 initialPreviewConfig: initialPreviewConfig,
+                initialPreviewThumbTags: initialPreviewThumbTags,
                 initialPreviewShowDelete: false,
                 initialPreviewFileType: 'image',
                 fileActionSettings: {

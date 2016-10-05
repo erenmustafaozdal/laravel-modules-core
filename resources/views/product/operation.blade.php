@@ -72,8 +72,9 @@
         {{-- /languages --}}
 
         {{-- Product Copy Preview --}}
-        var initialPreview = null;
-        var initialPreviewConfig = null;
+        var initialPreview = false;
+        var initialPreviewConfig = false;
+        var initialPreviewThumbTags = false;
         @if($operation === 'copy')
             initialPreview = [
             @foreach($product->photos as $photo)
@@ -88,6 +89,13 @@
                 {
                     caption: '{{ $photo->photo }}',
                     size: '{{ filesize(removeDomain($photo->getPhoto([], 'original', true, 'product','product_id'))) }}'
+                },
+            @endforeach
+            ];
+            initialPreviewThumbTags = [
+            @foreach($product->photos as $photo)
+                {
+                    '{PHOTO_URL}': '{{ removeDomain($photo->getPhoto([], 'original', true, 'product','product_id')) }}'
                 },
             @endforeach
             ];
@@ -169,6 +177,12 @@
                 ];
             ?>
             {!! Form::open($form) !!}
+            
+            {{-- Copied Id --}}
+            @if ($operation === 'copy')
+            {!! Form::hidden('id',$product->id) !!}
+            @endif
+            {{-- /Copied Id --}}
 
             @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
