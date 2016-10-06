@@ -16,10 +16,6 @@ var Theme = function () {
     // Handle Theme Settings
     var handleTheme = function () {
 
-        //if ($('body').hasClass('page-boxed') === false) {
-        //    $('.layout-option', panel).val("fluid");
-        //}
-
         $('.sidebar-option', panel).val("default");
         $('.page-header-option', panel).val("fixed");
         $('.page-footer-option', panel).val("default");
@@ -242,13 +238,13 @@ var Theme = function () {
         if ($('body').hasClass('page-full-width') === false) {
             if (sidebar === 'fixed') {
                 $("body").addClass("page-sidebar-fixed");
-                $("page-sidebar-menu").addClass("page-sidebar-menu-fixed");
-                $("page-sidebar-menu").removeClass("page-sidebar-menu-default");
+                $('.page-sidebar-menu').addClass("page-sidebar-menu-fixed");
+                $('.page-sidebar-menu').removeClass("page-sidebar-menu-default");
                 Layout.initFixedSidebarHoverEffect();
             } else {
                 $("body").removeClass("page-sidebar-fixed");
-                $("page-sidebar-menu").addClass("page-sidebar-menu-default");
-                $("page-sidebar-menu").removeClass("page-sidebar-menu-fixed");
+                $('.page-sidebar-menu').addClass("page-sidebar-menu-default");
+                $('.page-sidebar-menu').removeClass("page-sidebar-menu-fixed");
                 $('.page-sidebar-menu').unbind('mouseenter').unbind('mouseleave');
             }
         }
@@ -291,30 +287,42 @@ var Theme = function () {
         initLayoutChange: function(layout)
         {
             handleLayoutChange(layout);
+            this.initLayout();
         },
         initHeaderChange: function(header)
         {
             handleHeaderChange(header);
+            this.initLayout();
         },
         initDropdownChange: function(dropdown)
         {
             handleDropdownChange(dropdown);
+            this.initLayout();
         },
         initSidebarChange: function(sidebar)
         {
             handleSidebarChange(sidebar);
+            this.initLayout();
         },
         initSidebarMenuChange: function(sidebarMenu)
         {
             handleSidebarMenuChange(sidebarMenu);
+            this.initLayout();
         },
         initSidebarPositionChange: function(sidebarPosition)
         {
             handleSidebarPositionChange(sidebarPosition);
+            this.initLayout();
         },
         initFooterChange: function(footer)
         {
             handleFooterChange(footer);
+            this.initLayout();
+        },
+        initLayout: function()
+        {
+            Layout.fixContentHeight(); // fix content height
+            Layout.initFixedSidebar(); // reinitialize fixed sidebar
         }
     };
 

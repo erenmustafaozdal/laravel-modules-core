@@ -37,70 +37,70 @@
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.layout_label') !!}
                         <select class="layout-option form-control input-small input-sm">
                             <option value="fluid"
-                                    {!! Cache::get('theme_layout')['layout'] === 'fluid' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['layout'] === 'fluid' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.layout_fluid') !!}</option>
                             <option value="boxed"
-                                    {!! Cache::get('theme_layout')['layout'] === 'boxed' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['layout'] === 'boxed' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.layout_boxed') !!}</option>
                         </select>
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.header_label') !!}
                         <select class="page-header-option form-control input-small input-sm">
                             <option value="fixed"
-                                    {!! Cache::get('theme_layout')['header'] === 'fixed' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['header'] === 'fixed' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.header_fixed') !!}</option>
                             <option value="default"
-                                    {!! Cache::get('theme_layout')['header'] === 'default' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['header'] === 'default' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.header_default') !!}</option>
                         </select>
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_label') !!}
                         <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
                             <option value="light"
-                                    {!! Cache::get('theme_layout')['headerTopDropdown'] === 'light' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['headerTopDropdown'] === 'light' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_light') !!}</option>
                             <option value="dark"
-                                    {!! Cache::get('theme_layout')['headerTopDropdown'] === 'dark' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['headerTopDropdown'] === 'dark' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_dark') !!}</option>
                         </select>
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_mode_label') !!}
                         <select class="sidebar-option form-control input-small input-sm">
                             <option value="fixed"
-                                    {!! Cache::get('theme_layout')['sidebar'] === 'fixed' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['sidebar'] === 'fixed' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_mode_fixed') !!}</option>
                             <option value="default"
-                                    {!! Cache::get('theme_layout')['sidebar'] === 'default' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['sidebar'] === 'default' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_mode_default') !!}</option>
                         </select>
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_menu_label') !!}
                         <select class="sidebar-menu-option form-control input-small input-sm">
                             <option value="accordion"
-                                    {!! Cache::get('theme_layout')['sidebarMenu'] === 'accordion' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['sidebarMenu'] === 'accordion' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_menu_accordion') !!}</option>
                             <option value="hover"
-                                    {!! Cache::get('theme_layout')['sidebarMenu'] === 'hover' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['sidebarMenu'] === 'hover' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_menu_hover') !!}</option>
                         </select>
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_position_label') !!}
                         <select class="sidebar-pos-option form-control input-small input-sm">
                             <option value="left"
-                                    {!! Cache::get('theme_layout')['sidebarPos'] === 'left' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['sidebarPos'] === 'left' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_position_left') !!}</option>
                             <option value="right"
-                                    {!! Cache::get('theme_layout')['sidebarPos'] === 'right' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['sidebarPos'] === 'right' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_position_right') !!}</option>
                         </select>
                     </li>
                     <li> {!! trans('laravel-modules-core::admin.toolbar.layout.footer_label') !!}
                         <select class="page-footer-option form-control input-small input-sm">
                             <option value="fixed"
-                                    {!! Cache::get('theme_layout')['footer'] === 'fixed' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['footer'] === 'fixed' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.footer_fixed') !!}</option>
                             <option value="default"
-                                    {!! Cache::get('theme_layout')['footer'] === 'default' ? 'selected="selected"' : '' !!}
+                                    {!! Cache::get('theme_layout')['footer'] === 'default' ? 'selected' : '' !!}
                             >{!! trans('laravel-modules-core::admin.toolbar.layout.footer_default') !!}</option>
                         </select>
                     </li>
