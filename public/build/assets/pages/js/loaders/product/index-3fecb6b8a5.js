@@ -7,21 +7,57 @@
     $script.ready('app_editor', function()
     {
         $script(indexJs,'index');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
     });
     $script.ready('bootstrap', function()
     {
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js','touchspin');
     });
 
-    $script.ready(['config','index','touchspin','app_fileinput','app_jcrop'], function()
+    $script.ready(['config','index','touchspin','inputmask'], function()
     {
         Index.init({
             DataTable: {
                 datatableIsResponsive: datatableIsResponsive,
                 groupActionSupport: groupActionSupport,
                 rowDetailSupport: rowDetailSupport,
-                datatableFilterSupport: datatableFilterSupport,
-                isRelationTable: isRelationTable
+                datatableFilterSupport: datatableFilterSupport
+            }
+        });
+
+        // bootstrap touch spins init
+        LMCApp.initTouchSpin({
+            src:'#amount_from',
+            touchspin: {
+                max: 99999,
+                decimals: 2,
+                step: 10,
+                postfix: '₺'
+            }
+        });
+        LMCApp.initTouchSpin({
+            src:'#amount_to',
+            touchspin: {
+                max: 99999,
+                decimals: 2,
+                step: 10,
+                postfix: '₺'
+            }
+        });
+        $('input[name="amount_from"],input[name="amount_to"]').on('change',function(e)
+        {
+            var val = $(this).val();
+            $(this).val(val.replace('.', ','));
+        });
+        // amount
+        LMCApp.initInputMask({
+            src: '#amount',
+            type: 'amount',
+            inputmask: {
+                placeholder: '_',
+                numericInput: true,
+                rightAlignNumerics: false,
+                greedy: false
             }
         });
     });
@@ -29,6 +65,7 @@
     $script.ready(['config','app_select2'], function()
     {
         Select2.init({
+            src: '.select2category',
             select2: {
                 templateResult: function(data)
                 {
@@ -46,19 +83,30 @@
                     return data.text;
                 },
                 ajax: {
-                    url: modelsURL, //end of data
+                    url: categoriesURL, //end of data
                     processResults: function (data)
                     {
                         return {
                             results: $.map(data, function (item) {
                                 return {
-                                    text: item.name,
+                                    text: item.name_uc_first,
                                     id: item.id,
-                                    parents: item.parents
+                                    parents: item.parent_name_uc_first
                                 }
                             })
                         };
                     }
+                }
+            }
+        });
+        Select2.init({
+            src: '.select2brand',
+            variableNames: {
+                text: 'name'
+            },
+            select2: {
+                ajax: {
+                    url: brandsURL
                 }
             }
         });

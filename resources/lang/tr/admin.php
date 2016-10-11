@@ -112,6 +112,7 @@ return [
 
     // fields
     'fields' => [
+        'modules'                       => 'Modüller',
         'not_permission'                => 'Yetkin Yok',
 
         'id'                            => 'ID',

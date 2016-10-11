@@ -98,7 +98,7 @@ return [
             'show_postal_code'  => 'Bu kategoride bulunan bayilerin posta kodları ziyaretçilere gösterilsin mi? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategorideki bayilerin posta kodları ziyaretçilere görünmeyecek!',
             'show_land_phone'   => 'Bu kategoride bulunan bayilerin sabit telefonları ziyaretçilere gösterilsin mi? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategorideki bayilerin sabit telefonları ziyaretçilere görünmeyecek!',
             'show_mobile_phone' => 'Bu kategoride bulunan bayilerin cep telefonları ziyaretçilere gösterilsin mi? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategorideki bayilerin cep telefonları ziyaretçilere görünmeyecek!',
-            'show_web'          => 'Bu kategoride bulunan bayilerin internet adresleri ziyaretçilere gösterilsin mi? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategorideki bayilerin internet adresleri ziyaretçilere görünmeyecek!',
+            'show_url'          => 'Bu kategoride bulunan bayilerin internet adresleri ziyaretçilere gösterilsin mi? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; bu kategorideki bayilerin internet adresleri ziyaretçilere görünmeyecek!',
         ],
         'dealer' => [
             'category_id_help'  => 'Kategori seç',

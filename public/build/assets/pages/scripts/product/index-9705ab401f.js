@@ -483,7 +483,7 @@ var Index = {
                             submitAjax: function(validation)
                             {
                                 var url, type, message_success, title_success, message_error, title_error, datas = {
-                                    category_id: validation.form.find('select[name="category_id[]"]').val(),
+                                    category_id: validation.form.find('select[name="category_id"]').val(),
                                     brand_id: validation.form.find('select[name="brand_id"]').val(),
                                     name: validation.form.find('input[name="name"]').val(),
                                     amount: validation.form.find('input[name="amount"]').val(),

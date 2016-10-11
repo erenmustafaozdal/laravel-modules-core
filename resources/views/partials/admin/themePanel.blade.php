@@ -4,7 +4,7 @@
        data-toggle="dropdown"
        data-container="body"
        data-placement="left"
-       data-original-title="{!! trans('laravel-modules-core::admin.toolbar.title') !!}"
+       data-original-title="{!! lmcTrans('admin.toolbar.title') !!}"
     >
         <i class="icon-settings"></i>
     </a>
@@ -12,19 +12,19 @@
         <div class="row">
             @if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.themeColor.change') )
                 <div class="col-md-4 col-sm-4 col-xs-12">
-                    <h3>{!! trans('laravel-modules-core::admin.toolbar.theme.title') !!}</h3>
+                    <h3>{!! lmcTrans('admin.toolbar.theme.title') !!}</h3>
                     <ul class="theme-colors">
                         <li class="theme-color theme-color-default {!! Cache::get('theme_color')['color'] === 'default' ? 'active' : '' !!}" data-theme="default">
                             <span class="theme-color-view"></span>
-                            <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.dark_header') !!}</span>
+                            <span class="theme-color-name">{!! lmcTrans('admin.toolbar.theme.dark_header') !!}</span>
                         </li>
                         <li class="theme-color theme-color-light {!! Cache::get('theme_color')['color'] === 'light' ? 'active' : '' !!}" data-theme="light">
                             <span class="theme-color-view"></span>
-                            <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.light_header') !!}</span>
+                            <span class="theme-color-name">{!! lmcTrans('admin.toolbar.theme.light_header') !!}</span>
                         </li>
                         <li class="theme-color theme-color-green {!! Cache::get('theme_color')['color'] === 'green' ? 'active' : '' !!}" data-theme="green">
                             <span class="theme-color-view"></span>
-                            <span class="theme-color-name">{!! trans('laravel-modules-core::admin.toolbar.theme.green_header') !!}</span>
+                            <span class="theme-color-name">{!! lmcTrans('admin.toolbar.theme.green_header') !!}</span>
                         </li>
                     </ul>
                 </div>
@@ -32,76 +32,76 @@
 
             @if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.themeLayout.change') )
                 <div class="col-md-8 col-sm-8 col-xs-12 seperator">
-                <h3>{!! trans('laravel-modules-core::admin.toolbar.layout.title') !!}</h3>
+                <h3>{!! lmcTrans('admin.toolbar.layout.title') !!}</h3>
                 <ul class="theme-settings">
-                    <li> {!! trans('laravel-modules-core::admin.toolbar.layout.layout_label') !!}
+                    <li> {!! lmcTrans('admin.toolbar.layout.layout_label') !!}
                         <select class="layout-option form-control input-small input-sm">
                             <option value="fluid"
                                     {!! Cache::get('theme_layout')['layout'] === 'fluid' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.layout_fluid') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.layout_fluid') !!}</option>
                             <option value="boxed"
                                     {!! Cache::get('theme_layout')['layout'] === 'boxed' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.layout_boxed') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.layout_boxed') !!}</option>
                         </select>
                     </li>
-                    <li> {!! trans('laravel-modules-core::admin.toolbar.layout.header_label') !!}
+                    <li> {!! lmcTrans('admin.toolbar.layout.header_label') !!}
                         <select class="page-header-option form-control input-small input-sm">
                             <option value="fixed"
                                     {!! Cache::get('theme_layout')['header'] === 'fixed' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.header_fixed') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.header_fixed') !!}</option>
                             <option value="default"
                                     {!! Cache::get('theme_layout')['header'] === 'default' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.header_default') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.header_default') !!}</option>
                         </select>
                     </li>
-                    <li> {!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_label') !!}
+                    <li> {!! lmcTrans('admin.toolbar.layout.dropdown_label') !!}
                         <select class="page-header-top-dropdown-style-option form-control input-small input-sm">
                             <option value="light"
                                     {!! Cache::get('theme_layout')['headerTopDropdown'] === 'light' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_light') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.dropdown_light') !!}</option>
                             <option value="dark"
                                     {!! Cache::get('theme_layout')['headerTopDropdown'] === 'dark' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.dropdown_dark') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.dropdown_dark') !!}</option>
                         </select>
                     </li>
-                    <li> {!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_mode_label') !!}
+                    <li> {!! lmcTrans('admin.toolbar.layout.sidebar_mode_label') !!}
                         <select class="sidebar-option form-control input-small input-sm">
                             <option value="fixed"
                                     {!! Cache::get('theme_layout')['sidebar'] === 'fixed' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_mode_fixed') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.sidebar_mode_fixed') !!}</option>
                             <option value="default"
                                     {!! Cache::get('theme_layout')['sidebar'] === 'default' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_mode_default') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.sidebar_mode_default') !!}</option>
                         </select>
                     </li>
-                    <li> {!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_menu_label') !!}
+                    <li> {!! lmcTrans('admin.toolbar.layout.sidebar_menu_label') !!}
                         <select class="sidebar-menu-option form-control input-small input-sm">
                             <option value="accordion"
                                     {!! Cache::get('theme_layout')['sidebarMenu'] === 'accordion' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_menu_accordion') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.sidebar_menu_accordion') !!}</option>
                             <option value="hover"
                                     {!! Cache::get('theme_layout')['sidebarMenu'] === 'hover' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_menu_hover') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.sidebar_menu_hover') !!}</option>
                         </select>
                     </li>
-                    <li> {!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_position_label') !!}
+                    <li> {!! lmcTrans('admin.toolbar.layout.sidebar_position_label') !!}
                         <select class="sidebar-pos-option form-control input-small input-sm">
                             <option value="left"
                                     {!! Cache::get('theme_layout')['sidebarPos'] === 'left' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_position_left') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.sidebar_position_left') !!}</option>
                             <option value="right"
                                     {!! Cache::get('theme_layout')['sidebarPos'] === 'right' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.sidebar_position_right') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.sidebar_position_right') !!}</option>
                         </select>
                     </li>
-                    <li> {!! trans('laravel-modules-core::admin.toolbar.layout.footer_label') !!}
+                    <li> {!! lmcTrans('admin.toolbar.layout.footer_label') !!}
                         <select class="page-footer-option form-control input-small input-sm">
                             <option value="fixed"
                                     {!! Cache::get('theme_layout')['footer'] === 'fixed' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.footer_fixed') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.footer_fixed') !!}</option>
                             <option value="default"
                                     {!! Cache::get('theme_layout')['footer'] === 'default' ? 'selected' : '' !!}
-                            >{!! trans('laravel-modules-core::admin.toolbar.layout.footer_default') !!}</option>
+                            >{!! lmcTrans('admin.toolbar.layout.footer_default') !!}</option>
                         </select>
                     </li>
                 </ul>
@@ -114,7 +114,7 @@
     {{-- File Manager --}}
     <a href="{!! lmbRoute('elfinder.popup',[ 'input_id' => 'filemanager']) !!}"
        class="tooltips btn popup_selector"
-       data-original-title="{!! trans('laravel-modules-core::admin.fields.file_manager') !!}"
+       data-original-title="{!! lmcTrans('admin.fields.file_manager') !!}"
        data-container="body"
        data-placement="left"
     >

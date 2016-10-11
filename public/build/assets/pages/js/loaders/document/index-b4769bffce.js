@@ -8,8 +8,12 @@
     {
         $script(indexJs,'index');
     });
+    $script.ready('bootstrap', function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js','touchspin');
+    });
 
-    $script.ready(['config','index'], function()
+    $script.ready(['config','index','touchspin','app_fileinput','app_jcrop'], function()
     {
         Index.init({
             DataTable: {
@@ -48,9 +52,9 @@
                         return {
                             results: $.map(data, function (item) {
                                 return {
-                                    text: item.name,
+                                    text: item.name_uc_first,
                                     id: item.id,
-                                    parents: item.parents
+                                    parents: item.parent_name_uc_first
                                 }
                             })
                         };

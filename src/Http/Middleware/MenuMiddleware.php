@@ -31,6 +31,7 @@ class MenuMiddleware
      */
     protected $sidebarMenus = [
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\CompanyMenu::class,
+        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\MenuMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\UserMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\PageMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\DocumentMenu::class,

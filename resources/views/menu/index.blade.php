@@ -1,12 +1,12 @@
-@extends(config('laravel-product-module.views.product_category.layout'))
+@extends(config('laravel-menu-module.views.menu.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-product-module/admin.product_category.index') !!}
+    {!! lmcTrans('laravel-menu-module/admin.menu.index') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-product-module/admin.product_category.index') !!}
-        <small>{!! lmcTrans('laravel-product-module/admin.product_category.index_description') !!}</small>
+    <h1>{!! lmcTrans('laravel-menu-module/admin.menu.index') !!}
+        <small>{!! lmcTrans('laravel-menu-module/admin.menu.index_description') !!}</small>
     </h1>
 @endsection
 
@@ -22,24 +22,23 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var gtreetableJs = "{!! lmcElixir('assets/app/gTreeTable.js') !!}";
-        var indexJs = "{!! lmcElixir('assets/pages/scripts/product_category/index.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/menu/index.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! lmbRoute('api.product_category.index') !!}";
-        var showURL = "{!! lmbRoute('admin.product_category.show', ['id' => '###id###']) !!}";
-        var editURL = "{!! lmbRoute('admin.product_category.edit', ['id' => '###id###']) !!}";
-        var apiStoreURL = "{!! lmbRoute('api.product_category.store') !!}";
-        var apiUpdateURL = "{!! lmbRoute('api.product_category.update', ['id' => '###id###']) !!}";
-        var apiDestroyURL = "{!! lmbRoute('api.product_category.destroy', ['id' => '###id###']) !!}";
-        var apiMoveURL = "{!! lmbRoute('api.product_category.move', ['id' => '###id###']) !!}";
+        var ajaxURL = "{!! lmbRoute('api.menu.index') !!}";
+        var editURL = "{!! lmbRoute('admin.menu.edit', ['id' => '###id###']) !!}";
+        var apiStoreURL = "{!! lmbRoute('api.menu.store') !!}";
+        var apiUpdateURL = "{!! lmbRoute('api.menu.update', ['id' => '###id###']) !!}";
+        var apiDestroyURL = "{!! lmbRoute('api.menu.destroy', ['id' => '###id###']) !!}";
+        var apiMoveURL = "{!! lmbRoute('api.menu.move', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- scripts --}}
-        var nestableLevel = "{!! config('laravel-modules-core.options.product_category.nestable_level_root') !!}";
+        var nestableLevel = "{!! config('laravel-modules-core.options.menu.nestable_level_root') !!}";
         {{-- /scripts --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/product_category/index.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/menu/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-gTreeTable.js') !!}"></script>
 @endsection
 
@@ -49,13 +48,13 @@
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">
-                <i class="{!! config('laravel-product-module.icons.product_category') !!} font-red"></i>
+                <i class="{!! config('laravel-menu-module.icons.menu') !!} font-red"></i>
                 <span class="caption-subject font-red">
-                    {!! lmcTrans('laravel-product-module/admin.product_category.index') !!}
+                    {!! lmcTrans('laravel-menu-module/admin.menu.index') !!}
                 </span>
             </div>
             @include('laravel-modules-core::partials.common.indexActions', [
-                'module'    => 'product_category',
+                'module'    => 'menu',
                 'fast_add'  => false,
                 'add'       => true,
                 'tools'     => false
@@ -74,11 +73,14 @@
 
                 {{-- DataTable --}}
                 {{-- if is not have child show info, if have child show table --}}
-                @if( (isset($parent_product_category) && $parent_product_category->isLeaf()) || App\ProductCategory::all()->count() == 0 )
+                @if( App\Menu::all()->count() == 0 )
                     <div class="well well-lg">
-                        {!! lmcTrans('laravel-product-module/admin.helpers.product_category.not_have_child') !!}
+                        {!! lmcTrans('laravel-menu-module/admin.helpers.menu.not_have_child') !!}
                     </div>
                 @else
+                    <div class="well well-sm">
+                        {!! lmcTrans('laravel-menu-module/admin.helpers.menu.menu_index') !!}
+                    </div>
                     <table class="table table-striped table-bordered table-hover gtreetable"></table>
                 @endif
                 {{-- /if is not have child show info, if have child show table --}}

@@ -260,6 +260,7 @@ var LMCApp = {
      */
     init: function()
     {
+        this.initClipboard(); // init clipboard
         this.initBootstrapSelect(); // init bootstrap select
         this.initMaxLength(); // init maxlength
         this.initTooltips(); // init tooltips
@@ -268,6 +269,16 @@ var LMCApp = {
         this.setPaceOptions(); // set pace default options
         this.setAjaxOptions();
         lmcApp = this;
+    },
+
+    /**
+     * bootstrap select init
+     */
+    initClipboard: function()
+    {
+        $('.mt-clipboard').each(function(){
+            new Clipboard(this);
+        });
     },
 
     /**

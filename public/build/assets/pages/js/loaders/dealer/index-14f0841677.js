@@ -8,22 +8,18 @@
     {
         $script(indexJs,'index');
     });
-    $script.ready('jquery', function()
-    {
-        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
-    });
 
-    $script.ready(['config','index','inputmask'], function()
+    $script.ready(['config','index'], function()
     {
         Index.init({
             DataTable: {
                 datatableIsResponsive: datatableIsResponsive,
                 groupActionSupport: groupActionSupport,
                 rowDetailSupport: rowDetailSupport,
-                datatableFilterSupport: datatableFilterSupport
+                datatableFilterSupport: datatableFilterSupport,
+                isRelationTable: isRelationTable
             }
         });
-        $script(videoPhotoJs);
     });
 
     $script.ready(['config','app_select2'], function()
@@ -35,8 +31,7 @@
                     if (data.loading) return data.text;
 
                     var markup = data.parents == '' ? '' : '<small class="text-muted">' + data.parents + '</small> ';
-                    var type = data.type == '' ? '' : (data.type == 'video' ? 'Video Albümü' : ( data.type == 'photo' ? 'Fotoğraf Albümü' : 'Karışık Albüm'));
-                    return markup + data.text + ' <small class="text-muted">(' + type + ')</small>';
+                    return markup + data.text;
                 },
                 escapeMarkup: function(markup)
                 {
@@ -53,10 +48,9 @@
                         return {
                             results: $.map(data, function (item) {
                                 return {
-                                    text: item.name,
+                                    text: item.name_uc_first,
                                     id: item.id,
-                                    parents: item.parents,
-                                    type: item.type
+                                    parents: item.parent_name_uc_first
                                 }
                             })
                         };

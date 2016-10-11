@@ -190,6 +190,11 @@ return [
             'datatable_group_action'        => true,
             'datatable_detail'              => true
         ],
+
+        // menu module
+        'menu' => [
+            'nestable_level_root'           => 3,
+        ],
     ],
 
 

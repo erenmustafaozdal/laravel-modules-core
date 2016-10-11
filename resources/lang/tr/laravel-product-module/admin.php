@@ -15,7 +15,8 @@ return [
         'create'                    => 'Ürün Kategorisi Ekle',
         'create_description'        => 'Yeni bir ürün kategorisi ekle',
         'show'                      => 'Ürün Kategorisi Bilgileri',
-        'show_description'          => ':product_category hakkında bilgiler'
+        'show_description'          => ':product_category hakkında bilgiler',
+        'products'                  => ':product_category Ürünleri'
     ],
     'product_brand' => [
         'index'                     => 'Markalar',
@@ -25,7 +26,8 @@ return [
         'create'                    => 'Marka Ekle',
         'create_description'        => 'Yeni bir marka ekle',
         'show'                      => 'Marka Bilgileri',
-        'show_description'          => ':product_brand hakkında bilgiler'
+        'show_description'          => ':product_brand hakkında bilgiler',
+        'products'                  => ':product_brand Ürünleri'
     ],
     'product_showcase' => [
         'index'                     => 'Vitrinler',

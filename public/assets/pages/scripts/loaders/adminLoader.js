@@ -3,6 +3,7 @@
     $script('/vendor/laravel-modules-core/assets/global/plugins/pace/pace.min.js');
     $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.min.js','jquery');
     $script('/vendor/laravel-modules-core/assets/global/plugins/js.cookie.min.js');
+    $script('/vendor/laravel-modules-core/assets/global/plugins/clipboardjs/clipboard.min.js');
 
     $script.ready('jquery', function() {
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap/js/bootstrap.min.js','bootstrap');
