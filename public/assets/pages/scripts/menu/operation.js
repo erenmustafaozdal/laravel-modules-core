@@ -28,9 +28,6 @@ var Operation = {
                     title: {
                         required: true
                     },
-                    link: {
-                        required: true
-                    },
                     type: {
                         required: true
                     }
