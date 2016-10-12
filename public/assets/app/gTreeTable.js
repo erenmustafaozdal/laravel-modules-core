@@ -44,6 +44,10 @@ var GTreeTable = {
             });
         }
 
+        if (options.hasOwnProperty("gtreetable") && options.gtreetable.hasOwnProperty("actions") && this.options.gtreetable.actions.length != options.gtreetable.actions.length) {
+            this.options.gtreetable['actions'] = options.gtreetable.actions;
+        }
+
         this.element = $(this.options.src);
 
         // gtreetable init
@@ -165,6 +169,7 @@ var GTreeTable = {
             nestableLevel: 0,
             gtreetable: {
                 language: 'tr',
+                cache: 1,
                 draggable: true,
                 manyroots: true,
                 selectLimit: 0,
@@ -187,8 +192,22 @@ var GTreeTable = {
                     }
                 ],
                 types: {
+                    default: 'glyphicon glyphicon-file',
                     file: 'glyphicon glyphicon-file',
                     folder: 'glyphicon glyphicon-folder-open'
+                },
+                templateParts: {
+                    draggableIcon: '<span class="node-icon-handle">&zwnj;</span><span class="node-draggable-pointer">&zwnj;</span>',
+                    indent: '<span class="node-indent">&zwnj;</span>',
+                    ecIcon: '<span class="node-icon-ce icon"></span>',
+                    selectedIcon: '<span class="node-icon-selected icon"></span>',
+                    typeIcon: '<span class="node-icon-type"></span>',
+                    name: '<span class="node-name"></span>',
+                    input: '<input type="text" name="name" value="" style="width: 60%" class="form-control form-control-solid placeholder-no-fix" />',
+                    saveButton: '<button type="button" class="btn btn-sm blue btn-outline node-save"> Kaydet </button>',
+                    cancelButton: '<button type="button" class="btn btn-sm red btn-outline node-cancel"> Vazgeç </button>',
+                    actionsButton: '<button type="button" class="btn btn-sm dark btn-outline dropdown-toggle" data-toggle="dropdown"> İşlem <span class="caret"></span></button>',
+                    actionsList: ''
                 }
             }
         };

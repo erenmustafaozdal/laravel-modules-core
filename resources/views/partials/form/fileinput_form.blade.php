@@ -60,13 +60,14 @@
 
             <div class="form-group">
                 <div class="input-group">
-                    {!! Form::text($input_name, null, [
-                        'id'            => $elfinder_id,
-                        'class'         => 'form-control form-control-solid placeholder-no-fix elfinder',
-                        'readonly'      => true,
-                        'placeholder'   => trans('laravel-modules-core::admin.fields.from_file_manager'),
-                        'disabled'      => isset($elfinderDisable) &&  $elfinderDisable ? true : false
-                    ]) !!}
+                    <input type="text"
+                           name="{!! $input_name !!}"
+                           class="form-control form-control-solid placeholder-no-fix elfinder"
+                           id="{!! $elfinder_id !!}"
+                           readonly
+                           placeholder="{!! trans('laravel-modules-core::admin.fields.from_file_manager') !!}"
+                           {!! isset($elfinderDisable) &&  $elfinderDisable ? 'disabled' : '' !!}
+                    >
                     <div class="input-group-btn">
                         {{-- File Manager --}}
                         <a href="{!! lmbRoute('elfinder.popup',[ 'input_id' => 'fileinput']) !!}"

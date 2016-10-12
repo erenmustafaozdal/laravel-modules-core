@@ -200,6 +200,26 @@ var LMCApp = {
                     title: 'Alt Öğe Ekleyemezsin',
                     message: 'İzin verilen alt öğe sınırı aşıldı! Bu öğeyi daha üst seviyeye eklemelisin.'
                 },
+                column_move_error: {
+                    title: 'Sütun Taşınamaz',
+                    message: 'Mega menülerin sütunları taşınamaz.'
+                },
+                column_update_error: {
+                    title: 'Sütun Güncellenemez',
+                    message: 'Mega menülerin sütunları güncellenemez.'
+                },
+                column_destroy_error: {
+                    title: 'Sütun Silinemez',
+                    message: 'Mega menülerin sütunları silinemez.'
+                },
+                column_near_store_error: {
+                    title: 'Sütunların Yanına Kayıt Yapılamaz',
+                    message: 'Mega menülerin sütunlarının yanına kayıt yapılamaz. Menüyü istediğin bir sütunun altına kaydetmelisin.'
+                },
+                column_near_move_error: {
+                    title: 'Sütunların Yanına Taşınamaz',
+                    message: 'Mega menülerin sütunlarının yanına menü taşınamaz. Menüyü istediğin bir sütunun altına taşımalısın.'
+                },
                 geolocate_success: {
                     title: 'Konumun Alındı',
                     message: 'Tarayıcın üzerinden konumunu aldık.'

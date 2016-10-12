@@ -28,7 +28,17 @@ return [
     // fields
     'fields' => [
         'menu' => [
-
+            'title'                 => 'Başlık',
+            'link'                  => 'Bağlantı Adresi',
+            'type'                  => 'Tip',
+            'normal_menu'           => 'Normal Menü',
+            'mega_menu'             => 'Mega Menü',
+            'color'                 => 'Renk',
+            'tooltip'               => 'İpucu',
+            'label'                 => 'Etiket',
+            'label_color'           => 'Etiket Rengi',
+            'column_number'         => 'Sütun Sayısı',
+            'photo'                 => 'Fotoğraf'
         ]
     ],
 
@@ -37,7 +47,10 @@ return [
         'menu' => [
             'not_have_child'    => '<h3>Gösterilecek menü yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni menü eklemek için sağ üst tarafta bulunan <a class="btn green btn-sm btn-outline" href="javascript:;"> <i class="fa fa-plus-square"></i> Yeni Ekle </a> tuşuna tıkla.</p>',
             'menu_index'        => 'Bu sayfada hızlı bir şekilde eklediğin menüler, sadece isim olarak eklenir. Bağlantı adresi ve diğer özellikleri düzenlemek için <span class="label label-info">Düzenleme</span> sayfasına gitmelisin.',
-            'select_module'     => 'Bağlantı adresi belirle...'
+            'link'              => 'Bağlantı adresi belirle. Yanda bulunan modüllerden bağlantı adresini kopyala ve buraya yapıştır',
+            'type'              => 'Menünün tipini belirle',
+            'tooltip'           => 'Menünün üzerinde baloncuk seklinde görünecek ipucu. En fazla <span class="label label-info">6</span> karakter olabilir.',
+            'label'             => 'Mega menü yanında tanımlayıcı bir etiket metni.',
         ],
         'page'          => 'Tek başına bir sayfanın gösterildiği bağlantı adresleri',
         'document'      => 'Bütün belgelerin gösterildiği bağlantı adresleri',
@@ -47,6 +60,11 @@ return [
         'product'       => 'Bütün ürünlerin veya yalnız bir ürünün gösterildiği bağlantı adresleri',
         'contact'       => 'İletişim sayfası bağlantı adresi',
         'company'       => 'Firma profili sayfası bağlantı adresi',
+    ],
+
+    // flash messages
+    'flash' => [
+        'column_update_error'   => 'Mega menülerin sütunları düzenlenemez!',
     ],
 
     // permissions

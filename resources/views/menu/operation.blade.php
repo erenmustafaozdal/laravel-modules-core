@@ -18,24 +18,42 @@
 
 @section('css')
     @parent
+    {{-- Bootstrap Select --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css') !!}
+    {{-- /Bootstrap Select --}}
+
+    {{-- jCrop Image Crop Extension --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jcrop/css/jquery.Jcrop.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
+    {{-- /jCrop Image Crop Extension --}}
 @endsection
 
 @section('script')
     @parent
     <script type="text/javascript">
         {{-- js file path --}}
+        var formLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
+        var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
+        var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var operationJs = "{!! lmcElixir('assets/pages/scripts/menu/operation.js') !!}";
         {{-- /js file path --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
+            link: { required: "{!! LMCValidation::getMessage('link','required') !!}" },
+            type: { required: "{!! LMCValidation::getMessage('type','required') !!}" }
         };
+        var validExtension = "{!! config('laravel-menu-module.menu.uploads.photo.mimes') !!}";
+        var maxSize = "{!! config('laravel-menu-module.menu.uploads.photo.max_size') !!}";
+        var aspectRatio = '{!! config('laravel-menu-module.menu.uploads.photo.aspect_ratio') !!}';
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/menu/operation.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -121,7 +139,8 @@
                         'url'   => lmbRoute('admin.menu.' . ($operation === 'edit' ? 'update' : 'store'),[
                                 'id' => $operation === 'edit' ? $menu->id : null,
                         ]),
-                        'class' => 'form'
+                        'class' => 'form',
+                        'files' => true
                     ];
                     ?>
                     {!! Form::open($form) !!}

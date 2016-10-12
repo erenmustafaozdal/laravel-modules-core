@@ -70,6 +70,7 @@ var Operation = {
             formSrc:  'form.form',
             fileinput: {
                 maxFileCount: maxFile,
+                allowedFileExtensions: validExtension.split(','),
                 maxFileSize: maxSize,
                 showUpload: false,
                 showCancel: false,

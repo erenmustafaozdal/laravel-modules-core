@@ -43,7 +43,7 @@
 </div>
 {{-- /Document Photo --}}
 
-{{-- Title --}}
+{{-- Link --}}
 <div id="link_wrapper" class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-description-module/admin.fields.description.link') !!}</label>
     {!! Form::text( 'link', isset($description) && ! is_null($description->link) ? $description->link->link : null, [
@@ -55,4 +55,4 @@
         {!! lmcTrans('laravel-description-module/admin.helpers.description.link') !!}
     </span>
 </div>
-{{-- /Title --}}
+{{-- /Link --}}

@@ -193,6 +193,15 @@ return [
 
         'description'                   => 'Açıklama',
         'title'                         => 'Başlık',
+
+        'default'                       => 'Varsayılan',
+        'dark_blue'                     => 'Koyu Mavi',
+        'blue'                          => 'Mavi',
+        'green'                         => 'Yeşil',
+        'yellow'                        => 'Sarı',
+        'red'                           => 'Kırmızı',
+
+        'column'                        => 'Sütun',
     ],
 
     // helpers
