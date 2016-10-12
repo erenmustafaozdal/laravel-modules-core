@@ -8,7 +8,7 @@
     {
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js', 'bs_select');
     });
-    $script.ready(['config','operation','bs_select'], function()
+    $script.ready(['config','operation','bs_select','app_fileinput','app_jcrop'], function()
     {
         Operation.init();
 

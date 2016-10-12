@@ -46,7 +46,10 @@ return [
     'helpers' => [
         'menu' => [
             'not_have_child'    => '<h3>Gösterilecek menü yok. <small>Yeni bir tane ekleyerek başlayabilirsin.</small> </h3> <p>Yeni menü eklemek için sağ üst tarafta bulunan <a class="btn green btn-sm btn-outline" href="javascript:;"> <i class="fa fa-plus-square"></i> Yeni Ekle </a> tuşuna tıkla.</p>',
-            'menu_index'        => 'Bu sayfada hızlı bir şekilde eklediğin menüler, sadece isim olarak eklenir. Bağlantı adresi ve diğer özellikleri düzenlemek için <span class="label label-info">Düzenleme</span> sayfasına gitmelisin.',
+            'menu_index'        => '<ul>' .
+                    '<li>Bu sayfada hızlı bir şekilde eklediğin menüler, sadece isim olarak eklenir. Bağlantı adresi ve diğer özellikleri düzenlemek için <span class="label label-info">Düzenleme</span> sayfasına gitmelisin.</li>' .
+                    '<li>Mega menüler başka bir menünün altına taşındığında, <span class="text-danger">içinde bulundurduğu bütün sütunları ve menüleri kaybeder</span>. Normal menü haline gelir.</li>' .
+                '</ul>',
             'link'              => 'Bağlantı adresi belirle. Yanda bulunan modüllerden bağlantı adresini kopyala ve buraya yapıştır',
             'type'              => 'Menünün tipini belirle',
             'tooltip'           => 'Menünün üzerinde baloncuk seklinde görünecek ipucu. En fazla <span class="label label-info">6</span> karakter olabilir.',
