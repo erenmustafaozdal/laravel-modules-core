@@ -230,7 +230,7 @@
                                             {!! lmcTrans('laravel-user-module/admin.fields.user.first_name') !!}
                                         </label>
                                         <div class="col-sm-10">
-                                            <p class="form-control-static"> {{ $user->first_name }} </p>
+                                            <p class="form-control-static"> {{ $user->first_name_uc_first }} </p>
                                         </div>
                                     </div>
                                     {{-- /First Name --}}
@@ -241,7 +241,7 @@
                                             {!! lmcTrans('laravel-user-module/admin.fields.user.last_name') !!}
                                         </label>
                                         <div class="col-sm-10">
-                                            <p class="form-control-static"> {{ $user->last_name }} </p>
+                                            <p class="form-control-static"> {{ $user->last_name_upper }} </p>
                                         </div>
                                     </div>
                                     {{-- /Last Name --}}

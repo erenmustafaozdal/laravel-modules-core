@@ -1,12 +1,12 @@
-@extends(config('laravel-product-module.views.product.layout'))
+@extends(config('laravel-team-module.views.team.layout'))
 
 @section('title')
-    {!! lmcTrans('laravel-product-module/admin.product.index') !!}
+    {!! lmcTrans('laravel-team-module/admin.team.index') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('laravel-product-module/admin.product.index') !!}
-        <small>{!! lmcTrans('laravel-product-module/admin.product.index_description') !!}</small>
+    <h1>{!! lmcTrans('laravel-team-module/admin.team.index') !!}
+        <small>{!! lmcTrans('laravel-team-module/admin.team.index_description') !!}</small>
     </h1>
 @endsection
 
@@ -36,39 +36,35 @@
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
-        var formJs = "{!! lmcElixir('assets/pages/scripts/product/product-form.js') !!}";
+        var formJs = "{!! lmcElixir('assets/pages/scripts/team/team-form.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
-        var indexJs = "{!! lmcElixir('assets/pages/scripts/product/index.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/team/index.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! lmbRoute('api.product.index') !!}";
-        var categoryURL = "{!! lmbRoute('admin.product_category.show', ['id' => '###id###']) !!}";
-        var brandURL = "{!! lmbRoute('admin.product_brand.show', ['id' => '###id###']) !!}";
-        var categoriesURL = "{!! lmbRoute('api.product_category.models') !!}";
-        var brandsURL = "{!! lmbRoute('api.product_brand.models') !!}";
-        var apiStoreURL = "{!! lmbRoute('api.product.store') !!}";
-        var apiGroupAction = "{!! lmbRoute('api.product.group') !!}";
-        var removePhotoURL = "{!! lmbRoute('api.product.removePhoto', ['id' => '###id###']) !!}";
-        var setMainPhotoURL = "{!! lmbRoute('api.product.setMainPhoto', ['id' => '###id###']) !!}";
+        var ajaxURL = "{!! lmbRoute('api.team.index') !!}";
+        var categoryURL = "{!! lmbRoute('admin.team_category.show', ['id' => '###id###']) !!}";
+        var categoriesURL = "{!! lmbRoute('api.team_category.models') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.team.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.team.group') !!}";
+        var modelsURL = "{!! lmbRoute('api.team_category.models') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            brand_id: { required: "{!! LMCValidation::getMessage('brand_id','required') !!}" },
-            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
+            first_name: { required: "{!! LMCValidation::getMessage('first_name','required') !!}" },
+            last_name: { required: "{!! LMCValidation::getMessage('last_name','required') !!}" }
         };
         {{-- /languages --}}
 
         {{-- scripts --}}
         var datatableIsResponsive = {!! config('laravel-modules-core.options.data_table.is_responsive') ? 'true' : 'false' !!};
-        var groupActionSupport = {!! config('laravel-modules-core.options.product.datatable_group_action') ? 'true' : 'false' !!};
-        var rowDetailSupport = {!! config('laravel-modules-core.options.product.datatable_detail') ? 'true' : 'false' !!};
-        var datatableFilterSupport = {!! config('laravel-modules-core.options.product.datatable_filter') ? 'true' : 'false' !!};
+        var groupActionSupport = {!! config('laravel-modules-core.options.team.datatable_group_action') ? 'true' : 'false' !!};
+        var rowDetailSupport = {!! config('laravel-modules-core.options.team.datatable_detail') ? 'true' : 'false' !!};
+        var datatableFilterSupport = {!! config('laravel-modules-core.options.team.datatable_filter') ? 'true' : 'false' !!};
         {{-- /scripts --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/product/index.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/team/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
 @endsection
@@ -79,16 +75,16 @@
         {{-- Table Portlet Title and Actions --}}
         <div class="portlet-title">
             <div class="caption">
-                <i class="{!! config('laravel-product-module.icons.product') !!} font-red"></i>
+                <i class="{!! config('laravel-team-module.icons.team') !!} font-red"></i>
                 <span class="caption-subject font-red">
-                    {!! lmcTrans('laravel-product-module/admin.product.index') !!}
+                    {!! lmcTrans('laravel-team-module/admin.team.index') !!}
                 </span>
             </div>
             @include('laravel-modules-core::partials.common.indexActions', [
-                'module' => 'product',
-                'fast_add'  => config('laravel-modules-core.options.product.datatable_fast_add'),
+                'module' => 'team',
+                'fast_add'  => config('laravel-modules-core.options.team.datatable_fast_add'),
                 'add'       => true,
-                'tools'     => config('laravel-modules-core.options.product.datatable_tools')
+                'tools'     => config('laravel-modules-core.options.team.datatable_tools')
             ])
         </div>
         {{-- /Table Portlet Title and Actions --}}
@@ -102,7 +98,7 @@
 
             <div class="table-container">
                 {{-- Table Actions --}}
-                @if(config('laravel-modules-core.options.product.datatable_group_action'))
+                @if(config('laravel-modules-core.options.team.datatable_group_action'))
                     @include('laravel-modules-core::partials.common.indexTableActions', [
                         'actions'   => ['publish','not_publish','destroy']
                     ])
@@ -114,40 +110,37 @@
                     <thead>
                         <tr role="row" class="heading">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.product.datatable_group_action'))
+                            @if(config('laravel-modules-core.options.team.datatable_group_action'))
                                 <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.product.datatable_detail'))
+                            @if(config('laravel-modules-core.options.team.datatable_detail'))
                                 <th class="all" width="2%"></th>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
 
-                            <th class="all" width="2%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
-                            <th class="all" width="10%"> {!! lmcTrans('laravel-product-module/admin.fields.product.main_photo') !!} </th>
-                            <th class="all" width="10%"> {!! lmcTrans('laravel-product-module/admin.fields.product.name') !!} </th>
-                            <th class="all" width="5%"> {!! lmcTrans('laravel-product-module/admin.fields.product.code') !!} </th>
-                            <th class="all" width="15%"> {!! lmcTrans('laravel-product-module/admin.fields.product_category.name') !!} </th>
-                            <th class="all" width="10%"> {!! lmcTrans('laravel-product-module/admin.fields.product_brand.name') !!} </th>
-                            <th class="all" width="15%"> {!! lmcTrans('laravel-product-module/admin.fields.product.amount') !!} </th>
+                            <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
+                            <th class="all" width="5%"> {!! lmcTrans('laravel-team-module/admin.fields.team.photo') !!} </th>
+                            <th class="all" width="100"> {!! lmcTrans('laravel-team-module/admin.fields.team.first_name') !!} </th>
+                            <th class="all" width="%30"> {!! lmcTrans('laravel-team-module/admin.fields.team_category.name') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
                             <th class="all" width="13%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
                         </tr>
 
                         {{-- Datatable Filter --}}
-                        @if(config('laravel-modules-core.options.product.datatable_filter'))
+                        @if(config('laravel-modules-core.options.team.datatable_filter'))
                         <tr role="row" class="filter">
                             {{-- Datatable Group Action Column --}}
-                            @if(config('laravel-modules-core.options.product.datatable_group_action'))
+                            @if(config('laravel-modules-core.options.team.datatable_group_action'))
                                 <td></td>
                             @endif
                             {{-- /Datatable Group Action Column --}}
 
                             {{-- Datatable Row Detail Column --}}
-                            @if(config('laravel-modules-core.options.product.datatable_detail'))
+                            @if(config('laravel-modules-core.options.team.datatable_detail'))
                                 <td></td>
                             @endif
                             {{-- /Datatable Row Detail Column --}}
@@ -157,19 +150,10 @@
                             </td>
                             <td> </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="name" placeholder="{!! lmcTrans('laravel-product-module/admin.fields.product.name') !!}">
+                                <input type="text" class="form-control form-filter input-sm" name="first_name" placeholder="{!! lmcTrans('laravel-team-module/admin.fields.team.first_name') !!} - {!! lmcTrans('laravel-team-module/admin.fields.team.last_name') !!}">
                             </td>
                             <td>
-                                <input type="text" class="form-control form-filter input-sm" name="code" placeholder="{!! lmcTrans('laravel-product-module/admin.fields.product.code') !!}">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-product-module/admin.fields.product_category.name') !!}">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="brand" placeholder="{!! lmcTrans('laravel-product-module/admin.fields.product_brand.name') !!}">
-                            </td>
-                            <td>
-                                @include('laravel-modules-core::partials.common.datatables.filterTouchSpin', ['id' => 'amount'])
+                                <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-team-module/admin.fields.team_category.name') !!}">
                             </td>
                             <td>
                                 <select name="status" class="form-control form-filter input-sm">
@@ -202,7 +186,7 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'product.partials.form'        => [
+            'team.partials.form'        => [
                 'helpBlockAfter'    => true
             ]
         ]

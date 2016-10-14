@@ -17,13 +17,10 @@ var ModelForm = {
             },
             validate: {
                 rules: {
-                    category_id: {
+                    first_name: {
                         required: true
                     },
-                    brand_id: {
-                        required: true
-                    },
-                    name: {
+                    last_name: {
                         required: true
                     }
                 },

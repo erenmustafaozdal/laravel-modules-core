@@ -25,7 +25,6 @@
         });
         $script(videoPhotoJs);
     });
-
     $script.ready(['config','app_select2'], function()
     {
         Select2.init({

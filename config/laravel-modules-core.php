@@ -195,6 +195,18 @@ return [
         'menu' => [
             'nestable_level_root'           => 3,
         ],
+
+        // product module
+        'team_category' => [
+            'nestable_level_root'           => 0,
+        ],
+        'team' => [
+            'datatable_filter'              => true,
+            'datatable_tools'               => true,
+            'datatable_fast_add'            => true,
+            'datatable_group_action'        => true,
+            'datatable_detail'              => true
+        ],
     ],
 
 

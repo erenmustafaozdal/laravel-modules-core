@@ -15,6 +15,7 @@ class MenuMiddleware
      */
     protected $actionMenus = [
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\UserMenu::class,
+        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\TeamMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\PageMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\DocumentMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\DescriptionMenu::class,
@@ -33,6 +34,7 @@ class MenuMiddleware
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\CompanyMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\MenuMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\UserMenu::class,
+        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\TeamMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\PageMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\DocumentMenu::class,
         \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Sidebar\DescriptionMenu::class,
