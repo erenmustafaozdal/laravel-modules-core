@@ -52,10 +52,12 @@ return [
             'first_name'            => 'Ad',
             'last_name'             => 'Soyad',
             'email'                 => 'E-posta',
+            'add_email'             => 'Yeni E-posta Ekle',
             'photo'                 => 'Fotoğraf',
             'description'           => 'Açıklama',
             'phone'                 => 'Telefon',
-            'url'                   => 'Adresi',
+            'add_phone'             => 'Yeni Telefon Ekle',
+            'url'                   => 'Adresi'
         ]
     ],
 
@@ -67,7 +69,7 @@ return [
         'team' => [
             'category_id_help'  => 'Departman seç',
             'is_publish_help'   => 'Personelin yayında olması, ziyaretçilerin personeli görebilmesini sağlar. Yayında olmayan personeller ziyaretçilere açık değildir.',
-            'social_account'    => 'Personelin :social_account adresi. Lütfen yazdığın adresin başına <em class="label label-info">http://</em> veya <em class="label label-info">https://</em> eklemeyi unutma. <small class="text-muted">( Ör: http://sosyalhesap.com/personel )</small> ',
+            'social_account'    => 'Personelin :social_account adresi. Lütfen yazdığın adresin başına <em class="label label-info">http://</em> veya <em class="label label-info">https://</em> eklemeyi unutma. <small class="text-muted">( Ör: http://:social_account_url.com/personel )</small> ',
         ]
     ],
 

@@ -42,40 +42,29 @@
         var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
-        var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var showJs = "{!! lmcElixir('assets/pages/scripts/team/show.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
         var modelsURL = "{!! lmbRoute('api.team_category.models') !!}";
-        var categoriesURL = "{!! lmbRoute('api.team_category.models') !!}";
-        var brandsURL = "{!! lmbRoute('api.team_brand.models') !!}";
-        var removePhotoURL = "{!! lmbRoute('api.team.removePhoto', ['id' => '###id###']) !!}";
-        var setMainPhotoURL = "{!! lmbRoute('api.team.setMainPhoto', ['id' => '###id###']) !!}";
-        var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
-        var categoryDetailURL = "{!! lmbRoute('api.team_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            'category_id': { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            brand_id: { required: "{!! LMCValidation::getMessage('brand_id','required') !!}" },
-            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
+            first_name: { required: "{!! LMCValidation::getMessage('first_name','required') !!}" },
+            last_name: { required: "{!! LMCValidation::getMessage('last_name','required') !!}" },
+            'social-account[][url]': { url: "{!! LMCValidation::getMessage('url','url') !!}" }
         };
         var validExtension = "{!! config('laravel-team-module.team.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('laravel-team-module.team.uploads.photo.max_size') !!}";
-        var maxFile = "{!! config('laravel-team-module.team.uploads.multiple_photo.max_file') !!}";
-        var aspectRatio = "{{ $team->category->aspect_ratio }}";
-        var verticalRatio = "{!! config('laravel-team-module.team.uploads.photo.vertical_ratio') !!}";
-        var horizontalRatio = "{!! config('laravel-team-module.team.uploads.photo.horizontal_ratio') !!}";
+        var aspectRatio = "{!! config('laravel-team-module.team.uploads.photo.aspect_ratio') !!}";
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/team/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -117,10 +106,10 @@
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
                         <li>
-                            {!! $team->mainPhoto->getPhoto([
+                            {!! $team->getPhoto([
                                 'class' => 'img-responsive pic-bordered',
-                                'alt'   => $team->name_uc_first,
-                            ], last(array_keys(config('laravel-team-module.team.uploads.photo.thumbnails'))),false,'team','team_id') !!}
+                                'alt'   => $team->fullname
+                            ], last(array_keys(config('laravel-team-module.team.uploads.photo.thumbnails')))) !!}
                         </li>
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
@@ -129,58 +118,12 @@
                             </a>
                             <span class="after"> </span>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#detail">
-                                <i class="fa fa-info-circle"></i>
-                                {!! trans('laravel-modules-core::admin.fields.detail') !!}
-                            </a>
-                            <span class="after"> </span>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#descriptions">
-                                <i class="fa fa-sticky-note"></i>
-                                {!! trans('laravel-modules-core::admin.fields.descriptions') !!}
-                            </a>
-                            <span class="after"> </span>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#seo">
-                                <i class="fa fa-google"></i>
-                                {!! trans('laravel-modules-core::admin.fields.seo') !!}
-                            </a>
-                            <span class="after"> </span>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#showcase">
-                                <i class="fa fa-shopping-cart"></i>
-                                {!! trans('laravel-modules-core::admin.fields.showcase') !!}
-                            </a>
-                            <span class="after"> </span>
-                        </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($team_category) ? 'team_category.team' : 'team') .'.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.team.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
                                 {!! trans('laravel-modules-core::admin.fields.edit_info') !!}
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#change_descriptions">
-                                <i class="fa fa-sticky-note-o"></i>
-                                {!! trans('laravel-modules-core::admin.fields.change_descriptions') !!}
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#change_seo">
-                                <i class="fa fa-google-plus"></i>
-                                {!! trans('laravel-modules-core::admin.fields.change_seo') !!}
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#change_showcase">
-                                <i class="fa fa-cart-plus"></i>
-                                {!! trans('laravel-modules-core::admin.fields.change_showcase') !!}
                             </a>
                         </li>
                         @endif
@@ -200,44 +143,13 @@
                         </div>
                         {{-- /Overview --}}
 
-                        {{-- Detail --}}
-                        <div id="detail" class="tab-pane">
-                            <div class="profile-info">
-                                @include('laravel-modules-core::team.partials.detail')
-                            </div>
-                        </div>
-                        {{-- /Detail --}}
-
-                        {{-- Descriptions --}}
-                        <div id="descriptions" class="tab-pane">
-                            @include('laravel-modules-core::team.partials.descriptions')
-                        </div>
-                        {{-- /Descriptions --}}
-
-                        {{-- Seo --}}
-                        <div id="seo" class="tab-pane">
-                            <div class="profile-info">
-                                @include('laravel-modules-core::team.partials.seo')
-                            </div>
-                        </div>
-                        {{-- /Seo --}}
-
-                        {{-- Showcase --}}
-                        <div id="showcase" class="tab-pane">
-                            <div class="profile-info">
-                                @include('laravel-modules-core::team.partials.showcase')
-                            </div>
-                        </div>
-                        {{-- /Showcase --}}
-
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($team_category) ? 'team_category.team' : 'team') .'.update'))
+                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.team.update'))
 
-                        {{-- Edit Info --}}
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
-                                'url'       => lmbRoute('admin.team.update', [ 'id' => $team->id, 'form' => 'general' ]),
+                                'url'       => lmbRoute('admin.team.update', [ 'id' => $team->id ]),
                                 'class'     => 'team-form',
                                 'files'     => true
                             ]) !!}
@@ -249,52 +161,6 @@
                                 @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
                             {!! Form::close() !!}
                         </div>
-                        {{-- /Edit Info --}}
-
-                        {{-- Change Descriptions --}}
-                        <div id="change_descriptions" class="tab-pane form">
-                            {!! Form::open([
-                                'method'    => 'PATCH',
-                                'url'       => lmbRoute('admin.team.update', [ 'id' => $team->id, 'form' => 'descriptions' ])
-                            ]) !!}
-                                @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-                                <div class="form-body">
-                                    @include('laravel-modules-core::team.partials.descriptions_form')
-                                </div>
-                                @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
-                            {!! Form::close() !!}
-                        </div>
-                        {{-- /Change Descriptions --}}
-
-                        {{-- Change Seo --}}
-                        <div id="change_seo" class="tab-pane form">
-                            {!! Form::open([
-                                'method'    => 'PATCH',
-                                'url'       => lmbRoute('admin.team.update', [ 'id' => $team->id, 'form' => 'seo' ])
-                            ]) !!}
-                                @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-                                <div class="form-body">
-                                    @include('laravel-modules-core::team.partials.seo_form')
-                                </div>
-                                @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
-                            {!! Form::close() !!}
-                        </div>
-                        {{-- /Change Seo --}}
-
-                        {{-- Change Showcase --}}
-                        <div id="change_showcase" class="tab-pane form">
-                            {!! Form::open([
-                                'method'    => 'PATCH',
-                                'url'       => lmbRoute('admin.team.update', [ 'id' => $team->id, 'form' => 'showcase' ])
-                            ]) !!}
-                                @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-                                <div class="form-body">
-                                    @include('laravel-modules-core::team.partials.showcase_form')
-                                </div>
-                                @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
-                            {!! Form::close() !!}
-                        </div>
-                        {{-- /Change Showcase --}}
 
                         @endif
                         {{-- /Edit Info --}}

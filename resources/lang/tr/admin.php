@@ -202,6 +202,11 @@ return [
         'red'                           => 'Kırmızı',
 
         'column'                        => 'Sütun',
+
+        'facebook'                      => 'Facebook',
+        'google'                        => 'Google',
+        'twitter'                       => 'Twitter',
+        'linkedin'                      => 'Linkedin',
     ],
 
     // helpers
