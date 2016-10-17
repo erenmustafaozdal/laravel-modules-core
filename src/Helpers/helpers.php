@@ -219,7 +219,7 @@ if (! function_exists('removeDomain')) {
      */
     function removeDomain($url)
     {
-        return str_replace( URL::to('/') . '/', '', $url );
+        return str_replace( url() . '/', '', $url );
     }
 }
 
@@ -270,8 +270,34 @@ if (! function_exists('getPercentColor')) {
             return 'green';
         }
         if ($value >= 40) {
-            return 'yellow-l';
+            return 'yellow';
         }
         return 'red';
+    }
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| get link
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('lmcLink')) {
+    /**
+     * @param  string  $url
+     * @param  string  $title
+     * @param  array   $attributes
+     * @return string
+     */
+    function lmcLink($url, $title = null, $attributes = [])
+    {
+        $localDomain = url();
+        $parseUrl = parse_url($url);
+        $urlDomain = "{$parseUrl['scheme']}://{$parseUrl['host']}";
+        if (isset($parseUrl['scheme']) && isset($parseUrl['host']) && $localDomain != $urlDomain) {
+            $attributes['target'] = '_blank';
+        }
+        return Html::link($url, $title, $attributes);
     }
 }
