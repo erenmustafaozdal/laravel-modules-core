@@ -30,6 +30,9 @@ var Show = {
                     },
                     type: {
                         required: true
+                    },
+                    gallery_type: {
+                        required: true
                     }
                 },
                 messages: messagesOfRules

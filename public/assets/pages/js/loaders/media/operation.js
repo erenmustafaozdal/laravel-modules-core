@@ -34,8 +34,12 @@
                     if (data.loading) return data.text;
 
                     var markup = data.parents == '' ? '' : '<small class="text-muted">' + data.parents + '</small> ';
-                    var type = data.type == '' ? '' : (data.type == 'video' ? 'Video Albümü' : ( data.type == 'photo' ? 'Fotoğraf Albümü' : 'Karışık Albüm'));
-                    return markup + data.text + ' <small class="text-muted">(' + type + ')</small>';
+                    var result = markup + data.text;
+                    if (data.type !== 'video') {
+                        var gallery_type = data.gallery_type == 'classical' ? 'Klasik Albüm' : ( data.gallery_type == 'modern' ? 'Modern Albüm' : 'Kategorili Albüm');
+                        result += ' <small class="text-muted">(' + gallery_type + ')</small>';
+                    }
+                    return result;
                 },
                 escapeMarkup: function(markup)
                 {
@@ -55,7 +59,8 @@
                                     text: item.name_uc_first,
                                     id: item.id,
                                     parents: item.parent_name_uc_first,
-                                    type: item.type
+                                    type: item.type,
+                                    gallery_type: item.gallery_type
                                 }
                             })
                         };

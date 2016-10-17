@@ -30,6 +30,9 @@ var Operation = {
                     },
                     type: {
                         required: true
+                    },
+                    gallery_type: {
+                        required: true
                     }
                 },
                 messages: messagesOfRules

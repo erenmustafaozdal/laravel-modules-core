@@ -62,7 +62,8 @@
         {{-- languages --}}
         var messagesOfRules = {
             name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
-            type: { required: "{!! LMCValidation::getMessage('type','required') !!}" }
+            type: { required: "{!! LMCValidation::getMessage('type','required') !!}" },
+            gallery_type: { required: "{!! LMCValidation::getMessage('gallery_type','required') !!}" }
         };
         {{-- /languages --}}
     </script>
