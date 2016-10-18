@@ -58,7 +58,7 @@
                         'class'         => 'make-switch',
                         'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-text' => '<i class="fa fa-times"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -91,7 +91,7 @@
                         'class'         => 'make-switch',
                         'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-text' => '<i class="fa fa-times"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -124,7 +124,7 @@
                         'class'         => 'make-switch',
                         'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-text' => '<i class="fa fa-times"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -157,7 +157,7 @@
                         'class'         => 'make-switch',
                         'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-text' => '<i class="fa fa-times"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -190,7 +190,7 @@
                         'class'         => 'make-switch',
                         'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-text' => '<i class="fa fa-times"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -223,7 +223,7 @@
                         'class'         => 'make-switch',
                         'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-text' => '<i class="fa fa-times"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -256,7 +256,7 @@
                         'class'         => 'make-switch',
                         'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-text' => '<i class="fa fa-times"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>
@@ -289,7 +289,7 @@
                         'class'         => 'make-switch',
                         'data-on-text'  => '<i class="fa fa-check"></i>',
                         'data-on-color' => 'success',
-                        'data-off-text' => '<i class="fa fa-check"></i>',
+                        'data-off-text' => '<i class="fa fa-times"></i>',
                         'data-off-color'=> 'danger',
                     ]) !!}
                 </div>

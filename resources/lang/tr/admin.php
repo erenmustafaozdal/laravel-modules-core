@@ -132,6 +132,7 @@ return [
         'change_map'                    => 'Harita Güncelle',
         'change_descriptions'           => 'Ek Açıklamaları Güncelle',
 
+        'configs'                       => 'Ayarları',
         'category_configs'              => 'Kategori Ayarları',
         'datatable_configs'             => 'Veri Tablosu Ayarları',
         'other_configs'                 => 'Diğer Ayarlar',
