@@ -18,7 +18,7 @@
         'is_revert_hidden'  => true,
         'is_revert'         => null,
         'order_type_hidden' => true,
-        'order_type'        => 'last',
+        'order_type'        => 'random',
         'item_type_hidden'  => false,
         'item_type'         => null,
         'items_type_hidden' => false,

@@ -37,7 +37,7 @@
         'input_name'    => 'photo',
         'input_class'   => "photo_{$model->slug}",
         'elfinder'      => true,
-        'elfinder_id'   => 'elfinder-photo',
+        'elfinder_id'   => "elfinder_{$model->slug}",
         'multiple'      => false
     ])
     {{-- /Photo --}}

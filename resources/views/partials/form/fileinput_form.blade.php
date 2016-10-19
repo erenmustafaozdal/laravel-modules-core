@@ -7,7 +7,7 @@
                data-toggle="tab"
                class="fileinput-tabs"
                data-action="elfinder"
-               data-action-id="{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}"
+               data-action-id="{!! isset($input_id) ? $input_id : $input_class !!}"
             >
                 {!! trans('laravel-modules-core::admin.fields.from_file_manager') !!}
             </a>
@@ -17,7 +17,7 @@
                data-toggle="tab"
                class="fileinput-tabs"
                data-action="fileinput"
-               data-action-id="{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}"
+               data-action-id="{!! isset($input_id) ? $input_id : $input_class !!}"
             >
                 {!! trans('laravel-modules-core::admin.ops.browse') !!}
             </a>

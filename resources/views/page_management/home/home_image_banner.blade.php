@@ -1,7 +1,7 @@
 {!! Form::open([
     'method'=> 'POST',
-    'url'   => lmbRoute('admin.page_management.homeMiniSlider'),
-    'class' => 'form'
+    'url'   => lmbRoute('admin.page_management.updateSection', ['id' => $model->id]),
+    'class' => 'form-horizontal form-bordered'
 ]) !!}
 
 {{-- Error Messages --}}

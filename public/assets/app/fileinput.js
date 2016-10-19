@@ -47,11 +47,15 @@ var LMCFileinput = {
         // fileinput ve elfinder yönetimi
         $('.fileinput-tabs').on('click',function(e)
         {
-            var element = $(this);
+            var fileinput, element = $(this);
             var action = element.data('action');
             var actionId = element.data('action-id');
             var textInput = element.parents('.tabbable-line').find('input.elfinder[type="text"]');
-            var fileinput = $('#' + actionId);
+            if (LMCFileinputs['.' + actionId] == undefined) {
+                fileinput = $('#' + actionId);
+            } else {
+                fileinput = $('.' + actionId);
+            }
 
             if (action == 'fileinput') {
                 // text iptal edilir
@@ -212,12 +216,18 @@ var LMCFileinput = {
                 //
             },
             filedisabled: function(event) {
-                var id = $(this).prop('id');
-                LMCFileinputs['#' + id]['isEnable'] = false;
+                var api = LMCFileinputs['#' + $(this).prop('id')];
+                if (api == undefined) {
+                    api = LMCFileinputs['.' + $(this).prop('class')];
+                }
+                api['isEnable'] = false;
             },
             fileenabled: function(event) {
-                var id = $(this).prop('id');
-                LMCFileinputs['#' + id]['isEnable'] = true;
+                var api = LMCFileinputs['#' + $(this).prop('id')];
+                if (api == undefined) {
+                    api = LMCFileinputs['.' + $(this).prop('class')];
+                }
+                api['isEnable'] = true;
             }
         };
     }

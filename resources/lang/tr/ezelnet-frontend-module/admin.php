@@ -28,11 +28,15 @@ return [
             'save_sortable'             => 'Sıralamayı Kaydet',
             'section_title'             => 'Bölüm Başlığı',
             'auto_play'                 => 'Slider otomatik oynatılsın mı?',
+            'is_revert'                 => 'Ürün imajı dönme efekti aktif olsun mu?',
+            'order_type'                => 'Veriler nasıl sıralansın?',
             'item_type'                 => 'Veriler nereden alınsın?',
             'items_type'                => 'Hangi veriler alınsın?',
             'link'                      => 'Bağlantı Adresi',
             'is_active'                 => 'Bölüm aktifleştirilsin mi?',
             'background_photo'          => 'Arka Plan Fotoğrafı',
+            'ad_big_image'              => 'Reklam Banner Büyük Fotoğraf',
+            'ad_small_image'            => 'Reklam Banner Küçük Fotoğraf',
         ]
     ],
 
@@ -44,6 +48,7 @@ return [
                 '<span class="hidden-xs"> Sıralamayı Kaydet </span>' .
                 '</button> tuşu ile kayıt işlemi sırasında bölümlerin <span class="label label-info">başlıkları</span>, <span class="label label-info">aktif olup olmadıkları</span> da kaydedilir.',
             'image_banner'  => 'En az <span class="label label-info">2</span>, en fazla <span class="label label-info">12</span> imaj ekleyebilirsin. İmajlara link eklemek zorunlu değildir.',
+            'advertisement_banner'=> 'Reklam Banner\'ın aktif olması için iki imajın da yüklenmesi gerekiyor.',
             'not_options'  => 'Bu bölümün ayarları bulunmamaktadır.',
         ]
     ],

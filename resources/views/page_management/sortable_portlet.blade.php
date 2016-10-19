@@ -26,7 +26,7 @@
                 {{-- Activate --}}
                 <div class="portlet-input input-inline">
                     {!! Form::checkbox( 'is_active[]', 1, $section->is_active, [
-                        'class'         => 'make-switch',
+                        'class'         => 'make-switch switch-is-active',
                         'data-on-text'  => trans('laravel-modules-core::admin.ops.active'),
                         'data-on-color' => 'success',
                         'data-off-text' => trans('laravel-modules-core::admin.ops.not_active'),

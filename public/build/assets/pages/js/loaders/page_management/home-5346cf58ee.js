@@ -82,7 +82,7 @@
         });
 
         // portlet sortable disable and enable
-        $('input.make-switch').on('switchChange.bootstrapSwitch', function(event, state)
+        $('input.switch-is-active').on('switchChange.bootstrapSwitch', function(event, state)
         {
             var element = $(this);
             if (state) {

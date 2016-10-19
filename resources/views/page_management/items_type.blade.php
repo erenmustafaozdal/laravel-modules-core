@@ -35,7 +35,7 @@
         </label>
         <div class="col-md-9">
             {!! Form::hidden('category_id', ! is_null($model->carouselOption) ? $model->carouselOption->category_id : 0) !!}
-            <select class="form-control form-control-solid placeholder-no-fix select2me item-type"
+            <select class="form-control form-control-solid placeholder-no-fix select2me items-type"
                     name="items_type"
                     style="width: 100%;"
             >

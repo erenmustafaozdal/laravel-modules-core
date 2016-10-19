@@ -7,7 +7,7 @@
             'input_name'    => 'photo',
             'input_class'   => "photo_{$model->slug}",
             'elfinder'      => true,
-            'elfinder_id'   => 'elfinder-photo',
+            'elfinder_id'   => "elfinder_{$model->slug}-{$count}",
             'multiple'      => false,
             'tab_href'      => "{$model->slug}-{$count}"
         ])
@@ -15,13 +15,15 @@
 
         {{-- Link --}}
         <div class="form-group">
-            <label class="control-label">
+            <label class="col-md-3 control-label">
                 {!! lmcTrans('ezelnet-frontend-module/admin.fields.page_management.link') !!}
             </label>
-            {!! Form::text( 'link', isset($image) ? $image->link : null, [
-                'class'         => 'form-control form-control-solid placeholder-no-fix repeater',
-                'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.link')
-            ]) !!}
+            <div class="col-md-9">
+                {!! Form::text( 'link', isset($image) ? $image->link : null, [
+                    'class'         => 'form-control form-control-solid placeholder-no-fix repeater',
+                    'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.link')
+                ]) !!}
+            </div>
         </div>
         {{-- /Link --}}
 
