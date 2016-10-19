@@ -43,8 +43,9 @@ var LMCJcrop = {
      * setup element
      *
      * @param id
+     * @param options
      */
-    setupElement: function(id)
+    setupElement: function(id, options)
     {
         // set the element
         var newId = 'img-' + id;
@@ -61,6 +62,9 @@ var LMCJcrop = {
         // init jcrop
         if (LMCAspectRatio != undefined) {
             this.options.jcrop['aspectRatio'] = LMCAspectRatio;
+        }
+        if (options.aspectRatio != undefined) {
+            this.options.jcrop['aspectRatio'] = options.aspectRatio;
         }
         element.Jcrop(this.options.jcrop, function()
         {

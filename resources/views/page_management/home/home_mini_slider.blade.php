@@ -1,8 +1,13 @@
 {!! Form::open([
     'method'=> 'POST',
-    'url'   => lmbRoute('admin.page_management.homeMiniSlider'),
+    'url'   => lmbRoute('admin.page_management.updateSection', ['id' => $model->id]),
     'class' => 'form-horizontal form-bordered'
 ]) !!}
+
+{{-- Error Messages --}}
+@include('laravel-modules-core::partials.error_message')
+{{-- /Error Messages --}}
+
 @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
 <div class="form-body">
@@ -14,7 +19,7 @@
         </label>
         <div class="col-md-9">
             {!! Form::hidden('auto_play', 0) !!}
-            {!! Form::checkbox( 'auto_play', 1, $model->auto_play, [
+            {!! Form::checkbox( 'auto_play', 1, $model->carouselOption->auto_play, [
                 'class'         => 'make-switch',
                 'data-on-text'  => '<i class="fa fa-check"></i>',
                 'data-on-color' => 'success',

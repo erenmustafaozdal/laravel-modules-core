@@ -30,7 +30,8 @@ var LMCFileinput = {
         this.fileElement = $(this.options.src);
 
         this.fileElement.fileinput(this.options.fileinput);
-        LMCFileinputs[this.options.src] = { isEnable : true };
+        this.options.isEnable = true;
+        LMCFileinputs[this.options.src] = this.options;
 
         // file input events
         this.fileElement.on('filebrowse', this.options.filebrowse);
@@ -189,7 +190,7 @@ var LMCFileinput = {
             {
                 // init tooltips
                 LMCApp.initTooltips();
-                theLMCJcrop.setupElement(previewId);
+                theLMCJcrop.setupElement(previewId, LMCFileinputs['.' + $(event.currentTarget).prop('class')]);
             },
             filecleared: function(event)
             {

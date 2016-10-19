@@ -208,6 +208,8 @@ return [
         'google'                        => 'Google',
         'twitter'                       => 'Twitter',
         'linkedin'                      => 'Linkedin',
+
+        'photo'                         => '[0,1] Fotoğraf |[2,Inf] Fotoğraflar',
     ],
 
     // helpers

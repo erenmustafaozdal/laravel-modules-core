@@ -6,18 +6,47 @@
     });
     $script.ready('jquery', function()
     {
-        //$script(operationJs,'operation');
+        $script(homeJs,'home');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-repeater/jquery.repeater.min.js', 'repeater');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-ui/jquery-ui.min.js', 'jquery_ui');
     });
-    $script.ready(['jquery_ui','config','app_select2'/*'operation','app_fileinput','app_jcrop'*/], function()
+    $script.ready(['jquery_ui','config','app_select2','repeater','home','app_fileinput','app_jcrop'], function()
     {
-        //Operation.init();
+        Home.init();
 
         // select 2 init
         Select2.init({
             select2: {
                 ajax: null
             }
+        });
+
+        // repeater
+        $('.mt-repeater').each(function(){
+            $(this).repeater({
+                show: function () {
+                    $(this).slideDown();
+                    LMCApp.initTooltips();
+                    // file input
+                    var fileEl = $(this).find('.photo_home_image_banner');
+                    fileEl.closest('.form-group').empty().append(fileEl);
+                    LMCFileinput.init(theHome.getPhotoHomeImageBannerOptions());
+                },
+
+                hide: function (deleteElement) {
+                    bootbox.confirm(LMCApp.lang.admin.ops.destroy_confirm, function(result)
+                    {
+                        if (result) {
+                            $(this).slideUp(deleteElement);
+                        }
+                    });
+                },
+
+                ready: function (setIndexes) {
+
+                }
+
+            });
         });
 
         // item type to items type
@@ -51,7 +80,7 @@
                 element.closest('.form-group').find('input[type="hidden"][name="category_id"]').val(value);
             }
         });
-        
+
         // portlet sortable disable and enable
         $('input.make-switch').on('switchChange.bootstrapSwitch', function(event, state)
         {

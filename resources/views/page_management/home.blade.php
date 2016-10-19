@@ -37,7 +37,7 @@
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
-        var operationJs = "{!! lmcElixir('assets/pages/scripts/page_management/home.js') !!}";
+        var homeJs = "{!! lmcElixir('assets/pages/scripts/page_management/home.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
@@ -50,7 +50,9 @@
         {{-- languages --}}
         var validExtension = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.max_size') !!}";
+        var aspectRatio = 1;
         var homeImageBannerAspectRatio = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.aspect_ratio.home_image_banner') !!}";
+        var homeCreativeSliderAspectRatio = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.aspect_ratio.home_creative_slider') !!}";
         var homeAdvertisementBannerBigAspectRatio = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.aspect_ratio.home_advertisement_banner_big') !!}";
         var homeAdvertisementBannerSmallAspectRatio = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.aspect_ratio.home_advertisement_banner_small') !!}";
         {{-- /languages --}}
@@ -81,6 +83,12 @@
             </button>
         </div>
         {{-- /Sortable Buttons --}}
+
+        {{-- Note --}}
+        <div class="note note-info">
+            {!! lmcTrans('ezelnet-frontend-module/admin.helpers.page_management.root') !!}
+        </div>
+        {{-- /Note --}}
         
         <div class="sortable">
 
