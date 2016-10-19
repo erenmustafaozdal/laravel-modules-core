@@ -1,14 +1,8 @@
 {!! Form::open([
     'method'=> 'POST',
-    'url'   => lmbRoute('admin.page_management.updateSection', ['id' => $model->id]),
+    'url'   => lmbRoute('admin.page_management.homeMiniSlider'),
     'class' => 'form'
 ]) !!}
-
-{{-- Note --}}
-<div class="note note-info">
-    {!! lmcTrans('ezelnet-frontend-module/admin.helpers.page_management.image_banner') !!}
-</div>
-{{-- /Note --}}
 
 {{-- Error Messages --}}
 @include('laravel-modules-core::partials.error_message')
@@ -21,11 +15,13 @@
     <div class="mt-repeater margin-bottom-40">
         <div data-repeater-list="group-{{ $model->slug }}">
 
+            <?php $k = 0; ?>
             @forelse ( $model->imageOptions as $image )
-                @include('laravel-modules-core::page_management.home.image_linker')
+                @include('laravel-modules-core::page_management.home.image_linker', ['count' => $k])
+                <?php $k++; ?>
             @empty
                 @for($i = 0; $i < 2;  $i++)
-                    @include('laravel-modules-core::page_management.home.image_linker')
+                    @include('laravel-modules-core::page_management.home.image_linker', ['count' => $i])
                 @endfor
             @endforelse
 

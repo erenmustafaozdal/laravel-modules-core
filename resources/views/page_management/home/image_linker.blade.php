@@ -8,7 +8,8 @@
             'input_class'   => "photo_{$model->slug}",
             'elfinder'      => true,
             'elfinder_id'   => 'elfinder-photo',
-            'multiple'      => false
+            'multiple'      => false,
+            'tab_href'      => "{$model->slug}-{$count}"
         ])
         {{-- /Photo --}}
 

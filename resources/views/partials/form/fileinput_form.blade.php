@@ -3,21 +3,21 @@
     {{-- Tabs --}}
     <ul class="nav nav-tabs tabs-reversed">
         <li class="elfinder_wrapper {!! isset($elfinder) && $elfinder ? '' : 'hidden' !!}">
-            <a href="#elfinder-content-{!! isset($input_id) ? $input_id : $input_class !!}"
+            <a href="#elfinder-content-{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}"
                data-toggle="tab"
                class="fileinput-tabs"
                data-action="elfinder"
-               data-action-id="{!! isset($input_id) ? $input_id : $input_class !!}"
+               data-action-id="{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}"
             >
                 {!! trans('laravel-modules-core::admin.fields.from_file_manager') !!}
             </a>
         </li>
         <li class="active">
-            <a href="#fileinput-content-{!! isset($input_id) ? $input_id : $input_class !!}"
+            <a href="#fileinput-content-{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}"
                data-toggle="tab"
                class="fileinput-tabs"
                data-action="fileinput"
-               data-action-id="{!! isset($input_id) ? $input_id : $input_class !!}"
+               data-action-id="{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}"
             >
                 {!! trans('laravel-modules-core::admin.ops.browse') !!}
             </a>
@@ -29,7 +29,7 @@
     <div class="tab-content">
 
         {{-- Fileinput Content --}}
-        <div class="tab-pane active" id="fileinput-content-{!! isset($input_id) ? $input_id : $input_class !!}">
+        <div class="tab-pane active" id="fileinput-content-{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}">
 
             <label class="control-label">{!! $label !!}</label>
             <span class="help-block">
@@ -51,7 +51,7 @@
         {{-- /Fileinput Content --}}
 
         {{-- Elfinder Content --}}
-        <div class="tab-pane elfinder_wrapper {!! isset($elfinder) && $elfinder ? '' : 'hidden' !!}" id="elfinder-content-{!! isset($input_id) ? $input_id : $input_class !!}">
+        <div class="tab-pane elfinder_wrapper {!! isset($elfinder) && $elfinder ? '' : 'hidden' !!}" id="elfinder-content-{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}">
 
             <label class="control-label">{!! $label !!}</label>
             <span class="help-block">

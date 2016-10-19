@@ -1,7 +1,7 @@
 {!! Form::open([
     'method'=> 'POST',
     'url'   => lmbRoute('admin.page_management.updateSection', ['id' => $model->id]),
-    'class' => 'form'
+    'class' => 'form-horizontal form-bordered'
 ]) !!}
 
 {{-- Note --}}
@@ -41,6 +41,13 @@
         'multiple'      => false
     ])
     {{-- /Photo --}}
+
+    @include('laravel-modules-core::page_management.items_type', [
+        'item_type_hidden'  => false,
+        'item_type'         => null,
+        'items_type_hidden' => false,
+        'items_type'        => null,
+    ])
 
 </div>
 

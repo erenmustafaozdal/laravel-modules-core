@@ -12,76 +12,18 @@
 
 <div class="form-body">
     
-    {{-- Auto Play --}}
-    <div class="form-group">
-        <label class="col-md-3 control-label">
-            {!! lmcTrans('ezelnet-frontend-module/admin.fields.page_management.auto_play') !!}
-        </label>
-        <div class="col-md-9">
-            {!! Form::hidden('auto_play', 0) !!}
-            {!! Form::checkbox( 'auto_play', 1, $model->carouselOption->auto_play, [
-                'class'         => 'make-switch',
-                'data-on-text'  => '<i class="fa fa-check"></i>',
-                'data-on-color' => 'success',
-                'data-off-text' => '<i class="fa fa-times"></i>',
-                'data-off-color'=> 'danger',
-            ]) !!}
-        </div>
-    </div>
-    {{-- /Auto Play --}}
-
-    {{-- Is Revert --}}
-    {!! Form::hidden('is_revert', 0) !!}
-    {{-- /Is Revert --}}
-
-    {{-- Order Type --}}
-    {!! Form::hidden('order_type', 'last') !!}
-    {{-- /Order Type --}}
-
-    {{-- Item Type --}}
-    <div class="form-group">
-        <label class="col-md-3 control-label">
-            {!! lmcTrans('ezelnet-frontend-module/admin.fields.page_management.item_type') !!}
-        </label>
-        <div class="col-md-9">
-            <select class="form-control form-control-solid placeholder-no-fix select2me item-type"
-                    name="item_type"
-                    style="width: 100%;"
-            >
-                <option></option>
-                <option value="Product" {{ ! is_null($model->carouselOption) && $model->carouselOption->item_type === 'Product' ? 'selected' : '' }}>
-                    {!! lmcTrans('laravel-product-module/admin.product.index') !!}
-                </option>
-                <option value="Project" {{ ! is_null($model->carouselOption) && $model->carouselOption->item_type === 'Project' ? 'selected' : '' }}>
-                    {!! trans('admin.menu.projects.root') !!}
-                </option>
-            </select>
-        </div>
-    </div>
-    {{-- /Item Type --}}
-
-    {{-- Items Type --}}
-    <div class="form-group">
-        <label class="col-md-3 control-label">
-            {!! lmcTrans('ezelnet-frontend-module/admin.fields.page_management.items_type') !!}
-        </label>
-        <div class="col-md-9">
-            {!! Form::hidden('category_id', ! is_null($model->carouselOption) ? $model->carouselOption->category_id : 0) !!}
-            <select class="form-control form-control-solid placeholder-no-fix select2me items-type"
-                    name="items_type"
-                    style="width: 100%;"
-            >
-                <option></option>
-                <option value="all" {{ ! is_null($model->carouselOption) && $model->carouselOption->items_type === 'all' ? 'selected' : '' }}>
-                    {!! lmcTrans('admin.ops.all') !!}
-                </option>
-                @if(! is_null($model->carouselOption) && $model->carouselOption->category_id > 0)
-                    <option value="{{ $model->carouselOption->category->id }}" selected>{{ $model->carouselOption->category->name_uc_first }}</option>
-                @endif
-            </select>
-        </div>
-    </div>
-    {{-- /Items Type --}}
+    @include('laravel-modules-core::page_management.showcase_form', [
+        'auto_play_hidden'  => false,
+        'auto_play'         => null,
+        'is_revert_hidden'  => true,
+        'is_revert'         => null,
+        'order_type_hidden' => true,
+        'order_type'        => 'last',
+        'item_type_hidden'  => false,
+        'item_type'         => null,
+        'items_type_hidden' => false,
+        'items_type'        => null,
+    ])
     
 </div>
 
