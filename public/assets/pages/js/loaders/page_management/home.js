@@ -104,14 +104,14 @@
         $('#enable_sortable').on('click',function(e)
         {
             $("#sortable_portlets").sortable( "enable" );
-            $('#save_sortable').removeClass('disabled');
+            $('#save_sortable').removeClass('disabled').prop('disabled',false);
             $('#disable_sortable').removeClass('hidden');
             $(this).addClass('hidden');
         });
         $('#disable_sortable').on('click',function(e)
         {
             $("#sortable_portlets").sortable( "disable" );
-            $('#save_sortable').addClass('disabled');
+            $('#save_sortable').addClass('disabled').prop('disabled',true);
             $('#enable_sortable').removeClass('hidden');
             $(this).addClass('hidden');
         });
@@ -122,8 +122,47 @@
             $(this).focus();
         });
 
+        // save sortable
+        var sortableElement = $('#sortable_portlets');
+        $('#save_sortable').on('click', function(e)
+        {
+            var datas = {}, isActiveEl = $('input.switch-is-active'),
+                titleEl = $('input[type="text"][name="section_title"]'),
+                sortable = sortableElement.sortable('toArray');
+
+            $.each(sortable, function(index, value)
+            {
+                datas[value] = {
+                    title: titleEl.eq(index).val(),
+                    is_active: isActiveEl.eq(index).bootstrapSwitch('state'),
+                    order: index + 1
+                };
+            });
+
+            $.ajax({
+                data: datas,
+                url: saveSortableURL,
+                success: function(data)
+                {
+                    if (data.result === 'success') {
+                        LMCApp.getNoty({
+                            message: LMCApp.lang.admin.flash.update_success.message,
+                            title: LMCApp.lang.admin.flash.update_success.title,
+                            type: 'success'
+                        });
+                        return;
+                    }
+                    LMCApp.getNoty({
+                        message: LMCApp.lang.admin.flash.update_error.message,
+                        title: LMCApp.lang.admin.flash.update_error.title,
+                        type: 'error'
+                    });
+                }
+            });
+        });
+
         // sortable
-        $("#sortable_portlets").sortable({
+        sortableElement.sortable({
             axis: 'y',
             disabled: true,
             connectWith: '.portlet',

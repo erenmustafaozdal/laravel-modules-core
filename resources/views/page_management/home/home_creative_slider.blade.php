@@ -10,10 +10,6 @@
 </div>
 {{-- /Note --}}
 
-{{-- Error Messages --}}
-@include('laravel-modules-core::partials.error_message')
-{{-- /Error Messages --}}
-
 @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
 <div class="form-body">

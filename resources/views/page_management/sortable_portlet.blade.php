@@ -1,4 +1,5 @@
-<div class="portlet portlet-sortable light bordered {{ ! $section->is_active ? 'bg-inverse portlet-sortable-disabled' : '' }}">
+<a name="{{ $section->slug }}"></a>
+<div id="{{ $section->id }}" class="portlet portlet-sortable light bordered {{ ! $section->is_active ? 'bg-inverse portlet-sortable-disabled' : '' }}">
 
     {{-- Title --}}
     <div class="portlet-title">
@@ -16,16 +17,16 @@
                 
                 {{-- Title --}}
                 <div class="portlet-input input-inline input-medium">
-                    {!! Form::text('title[]', $section->title,[
+                    {!! Form::text('section_title', $section->title,[
                         'class'         => 'form-control form-control-solid placeholder-no-fix section-title',
-                        'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.section_title')
+                        'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.title')
                     ]) !!}
                 </div>
                 {{-- /Title --}}
                 
                 {{-- Activate --}}
                 <div class="portlet-input input-inline">
-                    {!! Form::checkbox( 'is_active[]', 1, $section->is_active, [
+                    {!! Form::checkbox( 'section_is_active', 1, $section->is_active, [
                         'class'         => 'make-switch switch-is-active',
                         'data-on-text'  => trans('laravel-modules-core::admin.ops.active'),
                         'data-on-color' => 'success',
@@ -40,7 +41,10 @@
                     <div class="portlet-input input-inline">
                         {!! Form::open([
                             'method'=> 'POST',
-                            'url'   => lmbRoute('admin.page_management.copySection', ['id' => $section->id])
+                            'url'   => lmbRoute('admin.page_management.copySection', [
+                                'id'    => $section->id,
+                                'form'  => $section->slug
+                            ])
                         ]) !!}
                         {!! Form::button( '<i class="fa fa-clone"></i> <span class="hidden-xs">' . lmcTrans('admin.ops.copy') . '</span>', [
                             'class' => 'btn purple btn-outline',
@@ -60,6 +64,12 @@
     
     {{-- Body --}}
     <div class="portlet-body form">
+
+        {{-- Error Messages --}}
+        @if (Request::get('section') === $section->slug)
+            @include('laravel-modules-core::partials.error_message')
+        @endif
+        {{-- /Error Messages --}}
 
         @if($section->getDescendants()->count() === 0)
             @include('laravel-modules-core::page_management.section_accordion', [

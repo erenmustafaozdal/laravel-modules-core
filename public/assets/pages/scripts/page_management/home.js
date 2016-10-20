@@ -6,7 +6,7 @@ var Home = {
      * @var object
      */
     options: {
-        formSrc: 'form.form'
+        formSrc: 'form.form-horizontal'
     },
 
     /**
@@ -18,6 +18,20 @@ var Home = {
         theHome = this;
 
         this.form = $(this.options.formSrc);
+
+        // create form validation
+        Validation.init({
+            src: this.options.formSrc,
+            isAjax: false,
+            validate: {
+                rules: {
+                    link: {
+                        url: true
+                    }
+                },
+                messages: messagesOfRules
+            }
+        });
 
         // LMCFileinput app is init for home image banner
         LMCFileinput.init(this.getPhotoHomeImageBannerOptions());

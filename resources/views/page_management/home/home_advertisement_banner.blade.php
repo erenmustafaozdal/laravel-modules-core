@@ -10,10 +10,6 @@
 </div>
 {{-- /Note --}}
 
-{{-- Error Messages --}}
-@include('laravel-modules-core::partials.error_message')
-{{-- /Error Messages --}}
-
 @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
 <div class="form-body">
@@ -40,6 +36,9 @@
                 'class'         => 'form-control form-control-solid placeholder-no-fix repeater',
                 'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.link')
             ]) !!}
+            <span class="help-block">
+                {!! lmcTrans('ezelnet-frontend-module/admin.helpers.page_management.link') !!}
+            </span>
         </div>
     </div>
     {{-- /Link --}}
@@ -66,6 +65,9 @@
                 'class'         => 'form-control form-control-solid placeholder-no-fix repeater',
                 'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.link')
             ]) !!}
+            <span class="help-block">
+                {!! lmcTrans('ezelnet-frontend-module/admin.helpers.page_management.link') !!}
+            </span>
         </div>
     </div>
     {{-- /Link --}}

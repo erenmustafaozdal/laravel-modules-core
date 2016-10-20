@@ -41,6 +41,7 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
+        var saveSortableURL = "{!! lmbRoute('admin.page_management.saveSortable') !!}";
         var ProductCategoriesURL = "{!! lmbRoute('api.product_category.models') !!}";
         var ProjectCategoriesURL = "{!! lmbRoute('api.description_category.models', [
             'id' => config('ezelnet.seed.description_category.projects')
@@ -48,6 +49,9 @@
         {{-- /routes --}}
 
         {{-- languages --}}
+        var messagesOfRules = {
+            link: { url: "{!! LMCValidation::getMessage('link','url') !!}" }
+        };
         var validExtension = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.max_size') !!}";
         var aspectRatio = 1;
@@ -77,7 +81,7 @@
                 <i class="fa fa-times"></i>
                 <span class="hidden-xs"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.page_management.disable_sortable') !!}  </span>
             </button>
-            <button type="button" class="btn green btn-outline disabled" id="save_sortable">
+            <button type="button" class="btn green btn-outline disabled" id="save_sortable" disabled>
                 <i class="fa fa-floppy-o"></i>
                 <span class="hidden-xs"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.page_management.save_sortable') !!} </span>
             </button>

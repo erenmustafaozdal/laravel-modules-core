@@ -17,7 +17,7 @@
             
             {{-- Body --}}
             <div class="panel-body">
-                @include("laravel-modules-core::page_management.home.{$model->slug}")
+                @include("laravel-modules-core::page_management.home.{$model->slug_or_copied_slug}")
             </div>
             {{-- /Body --}}
             

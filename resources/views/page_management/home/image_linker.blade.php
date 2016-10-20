@@ -21,8 +21,13 @@
             <div class="col-md-9">
                 {!! Form::text( 'link', isset($image) ? $image->link : null, [
                     'class'         => 'form-control form-control-solid placeholder-no-fix repeater',
-                    'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.link')
+                    'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.link'),
+                    'data-rule-link'=> 'true',
+                    'data-msg-link' => LMCValidation::getMessage('link','url')
                 ]) !!}
+                <span class="help-block">
+                    {!! lmcTrans('ezelnet-frontend-module/admin.helpers.page_management.link') !!}
+                </span>
             </div>
         </div>
         {{-- /Link --}}
