@@ -70,6 +70,7 @@ return [
         'edit'                          => 'Düzenle',
         'show'                          => 'Göster',
         'destroy_confirmation'          => 'Kayıt silinecek! Emin misin?',
+        'copy_confirmation'             => 'Kayıt kopyalanacak! Emin misin?',
         'submit'                        => 'Gönder',
         'search'                        => 'Ara',
         'reset'                         => 'Temizle',

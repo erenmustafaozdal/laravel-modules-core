@@ -44,16 +44,39 @@
                             'url'   => lmbRoute('admin.page_management.copySection', [
                                 'id'    => $section->id,
                                 'form'  => $section->slug
-                            ])
+                            ]),
+                            'id'    => "copy_section_{$section->slug}"
                         ]) !!}
                         {!! Form::button( '<i class="fa fa-clone"></i> <span class="hidden-xs">' . lmcTrans('admin.ops.copy') . '</span>', [
                             'class' => 'btn purple btn-outline',
-                            'type' => 'submit'
+                            'type' => 'submit',
+                            'onclick'   => 'bootbox.confirm("' . lmcTrans('admin.ops.copy_confirmation') . '", function(r) { if(r) $("form#copy_section_' . $section->slug . '").submit(); }); return false;'
                         ]) !!}
                         {!! Form::close() !!}
                     </div>
                 @endif
                 {{-- /Copy --}}
+
+                {{-- Remove --}}
+                @if($section->copied_id > 0)
+                    <div class="portlet-input input-inline">
+                        {!! Form::open([
+                            'method'=> 'POST',
+                            'url'   => lmbRoute('admin.page_management.removeSection', [
+                                'id'    => $section->id,
+                                'form'  => $section->slug
+                            ]),
+                            'id'    => "destroy_section_{$section->slug}"
+                        ]) !!}
+                        {!! Form::button( '<i class="fa fa-times"></i> <span class="hidden-xs">' . lmcTrans('admin.ops.destroy') . '</span>', [
+                            'class'     => 'btn red btn-outline',
+                            'type'      => 'submit',
+                            'onclick'   => 'bootbox.confirm("' . lmcTrans('admin.ops.destroy_confirmation') . '", function(r) { if(r) $("form#destroy_section_' . $section->slug . '").submit(); }); return false;'
+                        ]) !!}
+                        {!! Form::close() !!}
+                    </div>
+                @endif
+                {{-- /Remove --}}
                 
             </div>
         </div>

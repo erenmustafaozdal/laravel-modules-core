@@ -35,7 +35,7 @@
     @include('laravel-modules-core::partials.form.fileinput_form', [
         'label'         => lmcTrans('ezelnet-frontend-module/admin.fields.page_management.background_photo'),
         'input_name'    => 'photo',
-        'input_class'   => "photo_{$model->slug}",
+        'input_class'   => "photo_{$model->slug_or_copied_slug}",
         'elfinder'      => true,
         'elfinder_id'   => "elfinder_{$model->slug}",
         'multiple'      => false
