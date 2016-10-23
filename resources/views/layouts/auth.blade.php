@@ -48,7 +48,7 @@
         <div class="logo">
             <a href="#">
                 {!! HTML::image(
-                    'vendor/laravel-modules-core/assets/global/img/logo-light.png',
+                    config('laravel-modules-core.logos.light'),
                     config('laravel-modules-core.app_name')
                 ) !!}
             </a>
