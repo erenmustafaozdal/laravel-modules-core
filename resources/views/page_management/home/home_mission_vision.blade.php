@@ -1,6 +1,9 @@
 {!! Form::open([
     'method'=> 'POST',
-    'url'   => lmbRoute('admin.page_management.updateSection', ['id' => $model->id]),
+    'url'   => lmbRoute('admin.page_management.updateSection', [
+        'id'    => $model->id,
+        'form'  => $section->slug
+    ]),
     'class' => 'form-horizontal form-bordered'
 ]) !!}
 

@@ -19,20 +19,6 @@ var Home = {
 
         this.form = $(this.options.formSrc);
 
-        // create form validation
-        Validation.init({
-            src: this.options.formSrc,
-            isAjax: false,
-            validate: {
-                rules: {
-                    link: {
-                        url: true
-                    }
-                },
-                messages: messagesOfRules
-            }
-        });
-
         // LMCFileinput app is init for home image banner
         LMCFileinput.init(this.getPhotoHomeImageBannerOptions());
 
@@ -44,6 +30,22 @@ var Home = {
 
         // LMCFileinput app is init for home advertisement banner small
         LMCFileinput.init(this.getPhotoHomeAdvertisementBannerSmallOptions());
+
+        // remove photo
+        $('a.remove-element').on('click', function()
+        {
+            var el = $(this);
+            LMCApp.removeElement({
+                element: el,
+                removeElement: {
+                    src: '.element-wrapper'
+                },
+                ajax: {
+                    url: removePhotoURL.replace('###id###',el.data('parent-id')),
+                    data: {id: el.data('element-id')}
+                }
+            });
+        });
 
     },
 
@@ -102,6 +104,18 @@ var Home = {
                 showCancel: false,
                 fileActionSettings: {
                     showUpload: false
+                },
+                previewTemplates: {
+                    image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                    '   <div class="kv-file-content">' +
+                    '       <img id="img-{previewId}" src="{data}" class="kv-preview-data file-preview-image jcrop-item" title="{caption}" alt="{caption}">\n' +
+                    '   </div>\n' +
+                    '   {footer}\n' +
+                    '   <input type="hidden" class="crop-x" name="big[x]" value="0">\n' +
+                    '   <input type="hidden" class="crop-y" name="big[y]" value="0">\n' +
+                    '   <input type="hidden" class="crop-width" name="big[width]" value="0">\n' +
+                    '   <input type="hidden" class="crop-height" name="big[height]" value="0">\n' +
+                    '</div>\n'
                 }
             }
         };
@@ -122,6 +136,18 @@ var Home = {
                 showCancel: false,
                 fileActionSettings: {
                     showUpload: false
+                },
+                previewTemplates: {
+                    image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                    '   <div class="kv-file-content">' +
+                    '       <img id="img-{previewId}" src="{data}" class="kv-preview-data file-preview-image jcrop-item" title="{caption}" alt="{caption}">\n' +
+                    '   </div>\n' +
+                    '   {footer}\n' +
+                    '   <input type="hidden" class="crop-x" name="small[x]" value="0">\n' +
+                    '   <input type="hidden" class="crop-y" name="small[y]" value="0">\n' +
+                    '   <input type="hidden" class="crop-width" name="small[width]" value="0">\n' +
+                    '   <input type="hidden" class="crop-height" name="small[height]" value="0">\n' +
+                    '</div>\n'
                 }
             }
         };

@@ -232,6 +232,14 @@ var LMCApp = {
                     title: 'Desteklenmiyor',
                     message: 'Tarayıcın konum almamızı desteklemiyor.'
                 }
+            },
+            validation: {
+                max: {
+                    array: {
+                        title: 'Çok Fazla Nesne',
+                        message: ':attribute değeri :max adedinden az nesneye sahip olmalıdır.'
+                    }
+                }
             }
         }
     },

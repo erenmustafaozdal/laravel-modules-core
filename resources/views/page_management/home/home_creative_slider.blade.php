@@ -1,7 +1,11 @@
 {!! Form::open([
     'method'=> 'POST',
-    'url'   => lmbRoute('admin.page_management.updateSection', ['id' => $model->id]),
-    'class' => 'form-horizontal form-bordered'
+    'url'   => lmbRoute('admin.page_management.updateSection', [
+        'id'    => $model->id,
+        'form'  => $model->slug
+    ]),
+    'class' => 'form-horizontal form-bordered',
+    'files' => true
 ]) !!}
 
 {{-- Note --}}
@@ -16,11 +20,11 @@
 
     {{-- Current Photo --}}
     <div class="form-group">
-        <label class="control-label">
+        <label class="col-md-3 control-label">
             {!! lmcTrans('admin.fields.current_photo', [], 1) !!}
         </label>
-        <div>
-            {!! Html::image( is_null($model->imageOption) ? config('ezelnet-frontend-module.page_management.default_img_path') . '/creative_slider_bg.jpg' : $model->imageOption->getPhoto([], 'normal', false, 'section','section_id'), null, [
+        <div class="col-md-9">
+            {!! Html::image( is_null($model->imageOption) ? config('ezelnet-frontend-module.page_management.default_img_path') . '/creative_slider_bg.jpg' : $model->imageOption->getPhoto([], 'normal', true, 'page_management','section_id'), null, [
                 'width'     => 400
             ] ) !!}
         </div>

@@ -52,9 +52,9 @@ var LMCFileinput = {
             var actionId = element.data('action-id');
             var textInput = element.parents('.tabbable-line').find('input.elfinder[type="text"]');
             if (LMCFileinputs['.' + actionId] == undefined) {
-                fileinput = $('#' + actionId);
+                fileinput = element.parents('.tabbable-line').find('#' + actionId);
             } else {
-                fileinput = $('.' + actionId);
+                fileinput = element.parents('.tabbable-line').find('.' + actionId);
             }
 
             if (action == 'fileinput') {

@@ -37,6 +37,7 @@ return [
             'background_photo'          => 'Arka Plan Fotoğrafı',
             'ad_big_image'              => 'Reklam Banner Büyük Fotoğraf',
             'ad_small_image'            => 'Reklam Banner Küçük Fotoğraf',
+            'item_visible'              => 'Neler görünsün?'
         ]
     ],
 
@@ -51,6 +52,7 @@ return [
             'advertisement_banner'=> 'Reklam Banner\'ın aktif olması için iki imajın da yüklenmesi gerekiyor.',
             'not_options'  => 'Bu bölümün ayarları bulunmamaktadır.',
             'link'          => 'Veri ile alakalı bir internet adresi ekle. Bu alan zorunlu <em class="label label-warning">değildir</em>. Lütfen yazdığın internet adresinin başına <em class="label label-info">http://</em> veya <em class="label label-info">https://</em> eklemeyi unutma. <small class="text-muted">( Ör: http://siteadresi.com )</small> ',
+            'item_visible'  => 'Görünenler <em class="label label-info">2</em> adet olmalı.'
         ]
     ],
 

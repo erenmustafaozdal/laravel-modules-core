@@ -97,10 +97,10 @@ var LMCJcrop = {
      */
     setFormElements: function(coordinates, element)
     {
-        $('input[name="x[]"]', element).val(coordinates.x1);
-        $('input[name="y[]"]', element).val(coordinates.y1);
-        $('input[name="width[]"]', element).val(coordinates.width);
-        $('input[name="height[]"]', element).val(coordinates.height);
+        $('input.crop-x[type="hidden"]', element).val(coordinates.x1);
+        $('input.crop-y[type="hidden"]', element).val(coordinates.y1);
+        $('input.crop-width[type="hidden"]', element).val(coordinates.width);
+        $('input.crop-height[type="hidden"]', element).val(coordinates.height);
     },
 
     /**
@@ -112,16 +112,16 @@ var LMCJcrop = {
     {
         var x, y, width, height;
         if (element === undefined) {
-            x = $('input[name="x[]"]');
-            y = $('input[name="y[]"]');
-            width = $('input[name="width[]"]');
-            height = $('input[name="height[]"]');
+            x = $('input.crop-x[type="hidden"]');
+            y = $('input.crop-y[type="hidden"]');
+            width = $('input.crop-width[type="hidden"]');
+            height = $('input.crop-height[type="hidden"]');
             return;
         } else {
-            x = $('input[name="x[]"]', element);
-            y = $('input[name="y[]"]', element);
-            width = $('input[name="width[]"]', element);
-            height = $('input[name="height[]"]', element);
+            x = $('input.crop-x[type="hidden"]', element);
+            y = $('input.crop-y[type="hidden"]', element);
+            width = $('input.crop-width[type="hidden"]', element);
+            height = $('input.crop-height[type="hidden"]', element);
         }
         x.val(0);
         y.val(0);

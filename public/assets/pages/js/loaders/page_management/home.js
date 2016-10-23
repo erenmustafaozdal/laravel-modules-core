@@ -22,6 +22,21 @@
         });
 
         // repeater
+        var changeRepeaterButton = function (element, length) {
+            // min 2
+            if (length <= 2) {
+                element.find('.mt-repeater-delete').addClass('disabled');
+            } else {
+                element.find('.mt-repeater-delete').removeClass('disabled');
+            }
+
+            // max 12
+            if (length < 12) {
+                element.find('.mt-repeater-add').removeClass('disabled');
+            } else {
+                element.find('.mt-repeater-add').addClass('disabled');
+            }
+        };
         $('.mt-repeater').each(function(){
             $(this).repeater({
                 show: function () {
@@ -31,13 +46,38 @@
                     var fileEl = $(this).find('.photo_home_image_banner');
                     fileEl.closest('.form-group').empty().append(fileEl);
                     LMCFileinput.init(theHome.getPhotoHomeImageBannerOptions());
+                    // tab change
+                    var elLen = $(this).closest('.mt-repeater').find('.mt-repeater-item').length;
+                    $(this).find('a.fileinput-tabs').each(function()
+                    {
+                        var aHref = $(this).prop('href');
+                        var splitHref = aHref.split('---');
+                        $(this).prop('href', splitHref[0] + '---' + (elLen-1));
+                    });
+                    $(this).find('div.tab-pane').each(function()
+                    {
+                        var divId = $(this).prop('id');
+                        var splitId = divId.split('---');
+                        $(this).prop('id', splitId[0] + '---' + (elLen-1));
+                    });
+                    // elfinder
+                    var elText = $(this).find('input.elfinder[type="text"]');
+                    var textId = elText.prop('id');
+                    var splitId = textId.split('---');
+                    var newId = splitId[0] + '---' + (elLen-1);
+                    elText.prop('id', newId).next().find('a.popup_selector').attr('data-inputid', newId);
+                    changeRepeaterButton($(this).closest('.mt-repeater'),elLen);
                 },
 
                 hide: function (deleteElement) {
+                    var element = $(this).closest('.mt-repeater');
+                    var elLen = element.find('.mt-repeater-item').length;
                     bootbox.confirm(LMCApp.lang.admin.ops.destroy_confirm, function(result)
                     {
                         if (result) {
+                            changeRepeaterButton(element,elLen - 1);
                             $(this).slideUp(deleteElement);
+
                         }
                     });
                 },
@@ -67,18 +107,8 @@
                         option = '<option value="'+val.id+'">' + val.name_uc_first + '</option>';
                         otherElement.append(option);
                     });
-                    otherElement.closest('.form-group').find('input[type="hidden"][name="category_id"]').val(0);
                 }
             });
-        });
-        // items type to category id
-        itemsType.on('change',function(e)
-        {
-            var value, element = $(this);
-            value = element.val();
-            if (value !== 'all') {
-                element.closest('.form-group').find('input[type="hidden"][name="category_id"]').val(value);
-            }
         });
 
         // portlet sortable disable and enable
@@ -182,5 +212,17 @@
                 }
             }
         }).disableSelection();
+
+        // icheck item visible control
+        $('.icheck').on('ifToggled', function(event){
+            var count = $(this).closest('.icheck-inline').find('input.icheck[type="checkbox"]:checked').length;
+            if (count === 3) {
+                LMCApp.getNoty({
+                    message: LMCApp.lang.admin.validation.max.array.message.replace(':attribute','Görünenler').replace(':max',3),
+                    title: LMCApp.lang.admin.validation.max.array.title,
+                    type: 'error'
+                });
+            }
+        });
     });
 })();

@@ -46,12 +46,10 @@
         var ProjectCategoriesURL = "{!! lmbRoute('api.description_category.models', [
             'id' => config('ezelnet.seed.description_category.projects')
         ]) !!}";
+        var removePhotoURL = "{!! lmbRoute('admin.page_management.removePhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
-        var messagesOfRules = {
-            link: { url: "{!! LMCValidation::getMessage('link','url') !!}" }
-        };
         var validExtension = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('ezelnet-frontend-module.page_management.uploads.photo.max_size') !!}";
         var aspectRatio = 1;

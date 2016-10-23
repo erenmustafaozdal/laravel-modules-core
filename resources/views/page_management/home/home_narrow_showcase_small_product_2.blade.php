@@ -1,6 +1,9 @@
 {!! Form::open([
     'method'=> 'POST',
-    'url'   => lmbRoute('admin.page_management.updateSection', ['id' => $model->id]),
+    'url'   => lmbRoute('admin.page_management.updateSection', [
+        'id'    => $model->id,
+        'form'  => $section->slug
+    ]),
     'class' => 'form-horizontal form-bordered'
 ]) !!}
 
@@ -29,10 +32,11 @@
         'is_revert'         => null,
         'order_type_hidden' => true,
         'order_type'        => 'random',
-        'item_type_hidden'  => false,
-        'item_type'         => null,
+        'item_type_hidden'  => true,
+        'item_type'         => 'Product',
         'items_type_hidden' => false,
         'items_type'        => null,
+        'options_hidden'    => false
     ])
 
 </div>

@@ -1,4 +1,6 @@
 @if( isset($model) && ! is_null($model->$relation) )
+
+    @if( ! isset($inPanel) || $inPanel)
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">
@@ -6,6 +8,7 @@
             </h3>
         </div>
         <div class="panel-body row">
+    @endif
 
         @foreach( ($relationType === 'hasMany' ? $model->$relation : [$model->$relation]) as $photo )
             <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 margin-bottom-5 element-wrapper  mt-element-ribbon photo-ribbon">
@@ -60,6 +63,25 @@
                                     </li>
                                     @endif
                                     {{-- /Set Main Photo Button --}}
+
+                                    {{-- Another Buttons --}}
+                                    @if(isset($buttons) && is_array($buttons))
+                                        @foreach($buttons as $column => $values)
+                                            @if(!is_null($photo->$column))
+                                            <li>
+                                                <a href="{!! is_null($values['href']) ? 'javascript:;' : $photo->$column !!}"
+                                                   class="btn {!! $values['color'] !!} btn-outline tooltips"
+                                                   data-container="body"
+                                                   data-original-title="{!! $values['title'] !!}"
+                                                   target="_blank"
+                                                >
+                                                    <i class="{!! $values['icon'] !!}"></i>
+                                                </a>
+                                            </li>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                    {{-- /Another Buttons --}}
                                     
                                 </ul>
                             </div>
@@ -71,6 +93,9 @@
             </div>
         @endforeach
 
+    @if( ! isset($inPanel) || $inPanel)
         </div>
     </div>
+    @endif
+
 @endif
