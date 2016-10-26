@@ -28,6 +28,9 @@ var Operation = {
                     title: {
                         required: true
                     },
+                    link: {
+                        url: true
+                    },
                     type: {
                         required: true
                     }

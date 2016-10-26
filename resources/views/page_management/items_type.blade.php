@@ -33,7 +33,6 @@
             {!! lmcTrans('ezelnet-frontend-module/admin.fields.page_management.items_type') !!}
         </label>
         <div class="col-md-9">
-            {!! Form::hidden('category_id', ! is_null($model->carouselOption) ? $model->carouselOption->category_id : 0) !!}
             <select class="form-control form-control-solid placeholder-no-fix select2me items-type"
                     name="carouselOption[items_type]"
                     style="width: 100%;"

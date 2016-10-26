@@ -63,7 +63,7 @@ var LMCJcrop = {
         if (LMCAspectRatio != undefined) {
             this.options.jcrop['aspectRatio'] = LMCAspectRatio;
         }
-        if (options.aspectRatio != undefined) {
+        if (options != undefined && options['aspectRatio'] != undefined) {
             this.options.jcrop['aspectRatio'] = options.aspectRatio;
         }
         element.Jcrop(this.options.jcrop, function()

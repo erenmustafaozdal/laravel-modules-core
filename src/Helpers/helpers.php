@@ -292,12 +292,43 @@ if (! function_exists('lmcLink')) {
      */
     function lmcLink($url, $title = null, $attributes = [])
     {
+        if ( ! $url) {
+            $attributes = linkAttributes($attributes);
+            return "<a href='javascript:;' {$attributes}>{$title}</a>";
+        }
         $localDomain = url();
         $parseUrl = parse_url($url);
-        $urlDomain = "{$parseUrl['scheme']}://{$parseUrl['host']}";
-        if (isset($parseUrl['scheme']) && isset($parseUrl['host']) && $localDomain != $urlDomain) {
+        if (isset($parseUrl['scheme']) && isset($parseUrl['host']) && $localDomain != "{$parseUrl['scheme']}://{$parseUrl['host']}") {
             $attributes['target'] = '_blank';
         }
-        return Html::link($url, $title, $attributes);
+        $attributes = linkAttributes($attributes);
+        return "<a href='{$url}' {$attributes}>{$title}</a>";
+    }
+}
+
+
+
+/*
+|--------------------------------------------------------------------------
+| get link attributes
+|--------------------------------------------------------------------------
+*/
+if (! function_exists('linkAttributes')) {
+    /**
+     * @param  array   $attributes
+     * @return string
+     */
+    function linkAttributes($attributes = [])
+    {
+        $html = array();
+        foreach ((array) $attributes as $key => $value)
+        {
+            $key = $value;
+            $element = $key.'="'.e($value).'"';
+
+            if ( ! is_null($element)) $html[] = $element;
+        }
+
+        return count($html) > 0 ? ' '.implode(' ', $html) : '';
     }
 }

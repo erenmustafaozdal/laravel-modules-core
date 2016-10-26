@@ -94,14 +94,15 @@
         @endif
         {{-- /Error Messages --}}
 
-        @if($section->getDescendants()->count() === 0)
+        @if($section->isLeaf())
             @include('laravel-modules-core::page_management.section_accordion', [
                 'model'     => $section
             ])
         @else
             <div class="row">
-                @foreach($section->getDescendants() as $subSection)
-                    <div class="col-md-{{ 12/$section->getDescendants()->count() }}">
+                <?php $descendants = $section->getDescendants(); ?>
+                @foreach($descendants as $subSection)
+                    <div class="col-md-{{ 12/$descendants->count() }}">
                         @include('laravel-modules-core::page_management.section_accordion', [
                             'model'     => $subSection
                         ])

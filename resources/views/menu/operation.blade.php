@@ -43,6 +43,7 @@
         {{-- languages --}}
         var messagesOfRules = {
             title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
+            link: { url: "{!! LMCValidation::getMessage('link','url') !!}" },
             type: { required: "{!! LMCValidation::getMessage('type','required') !!}" }
         };
         var validExtension = "{!! config('laravel-menu-module.menu.uploads.photo.mimes') !!}";

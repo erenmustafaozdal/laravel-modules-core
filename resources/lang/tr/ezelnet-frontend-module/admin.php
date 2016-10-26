@@ -11,6 +11,9 @@ return [
         'home'                      => 'Ana Sayfa Yönetimi',
         'home_description'          => 'Ana Sayfa\'yı yönet',
     ],
+    'frontend' => [
+        'home'                      => 'Ana Sayfa',
+    ],
 
     // menu
     'menu' => [
@@ -38,6 +41,11 @@ return [
             'ad_big_image'              => 'Reklam Banner Büyük Fotoğraf',
             'ad_small_image'            => 'Reklam Banner Küçük Fotoğraf',
             'item_visible'              => 'Neler görünsün?'
+        ],
+        'frontend' => [
+            'language'                  => 'Dil',
+            'menu'                      => 'Menü',
+            'phone'                     => 'Telefon',
         ]
     ],
 
