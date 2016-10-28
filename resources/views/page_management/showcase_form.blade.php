@@ -78,30 +78,48 @@
 {{-- Options --}}
 @if( ! $options_hidden)
     <input type="hidden" name="carouselOption[options][item_visible]" value="">
-    <div class="form-group">
+    <div class="form-group {{ ! is_null($model->carouselOption) && $model->carouselOption->item_type === 'Project' ? 'hidden' : '' }}">
         <label class="col-md-3 control-label">{!! lmcTrans('ezelnet-frontend-module/admin.fields.page_management.item_visible') !!}</label>
         <div class="col-md-9 input-group">
             <div class="icheck-inline">
                 <label>
-                    {!! Form::checkbox( 'carouselOption[options][item_visible][]', 'name', !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || !in_array('name',$model->carouselOption->options_array->item_visible) ? null : true, [
-                        'class'         => 'icheck',
-                        'data-checkbox' => 'icheckbox_line-grey',
-                        'data-label'    => lmcTrans('laravel-product-module/admin.fields.product.name')
-                    ]) !!}
+                    <input type="checkbox"
+                           name="carouselOption[options][item_visible][]"
+                           value="name"
+                           class="icheck"
+                           data-checkbox="icheckbox_line-grey"
+                           data-label="{!! lmcTrans('laravel-product-module/admin.fields.product.name') !!}"
+                            {{ !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || !in_array('name',$model->carouselOption->options_array->item_visible) ? '' : 'checked' }}
+                            @if(! is_null($model->carouselOption) && $model->carouselOption->item_type === 'Project')
+                            disabled
+                            @endif
+                    >
                 </label>
                 <label>
-                    {!! Form::checkbox( 'carouselOption[options][item_visible][]', 'code', !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || !in_array('code',$model->carouselOption->options_array->item_visible) ? null : true, [
-                        'class'         => 'icheck',
-                        'data-checkbox' => 'icheckbox_line-grey',
-                        'data-label'    => lmcTrans('laravel-product-module/admin.fields.product.code')
-                    ]) !!}
+                    <input type="checkbox"
+                           name="carouselOption[options][item_visible][]"
+                           value="code"
+                           class="icheck"
+                           data-checkbox="icheckbox_line-grey"
+                           data-label="{!! lmcTrans('laravel-product-module/admin.fields.product.code') !!}"
+                           {{ !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || !in_array('code',$model->carouselOption->options_array->item_visible) ? '' : 'checked' }}
+                           @if(! is_null($model->carouselOption) && $model->carouselOption->item_type === 'Project')
+                           disabled
+                            @endif
+                    >
                 </label>
                 <label>
-                    {!! Form::checkbox( 'carouselOption[options][item_visible][]', 'amount', !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || !in_array('amount',$model->carouselOption->options_array->item_visible) ? null : true, [
-                        'class'         => 'icheck',
-                        'data-checkbox' => 'icheckbox_line-grey',
-                        'data-label'    => lmcTrans('laravel-product-module/admin.fields.product.amount')
-                    ]) !!}
+                    <input type="checkbox"
+                           name="carouselOption[options][item_visible][]"
+                           value="amount"
+                           class="icheck"
+                           data-checkbox="icheckbox_line-grey"
+                           data-label="{!! lmcTrans('laravel-product-module/admin.fields.product.amount') !!}"
+                           {{ !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || !in_array('amount',$model->carouselOption->options_array->item_visible) ? '' : 'checked' }}
+                           @if(! is_null($model->carouselOption) && $model->carouselOption->item_type === 'Project')
+                           disabled
+                            @endif
+                    >
                 </label>
             </div>
             <span class="help-block">

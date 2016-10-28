@@ -42,11 +42,18 @@
     ])
     {{-- /Photo --}}
 
-    @include('laravel-modules-core::page_management.items_type', [
+    @include('laravel-modules-core::page_management.showcase_form', [
+        'auto_play_hidden'  => true,
+        'auto_play'         => null,
+        'is_revert_hidden'  => true,
+        'is_revert'         => null,
+        'order_type_hidden' => true,
+        'order_type'        => 'random',
         'item_type_hidden'  => false,
         'item_type'         => null,
         'items_type_hidden' => false,
         'items_type'        => null,
+        'options_hidden'    => false
     ])
 
 </div>

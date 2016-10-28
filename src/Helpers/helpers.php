@@ -285,21 +285,28 @@ if (! function_exists('getPercentColor')) {
 */
 if (! function_exists('lmcLink')) {
     /**
-     * @param  string  $url
-     * @param  string  $title
-     * @param  array   $attributes
-     * @return string
+     * @param string $url
+     * @param string $title
+     * @param array $attributes
+     * @param boolean $isA
+     * @return string|boolean
      */
-    function lmcLink($url, $title = null, $attributes = [])
+    function lmcLink($url, $title = null, $attributes = [], $isA = true)
     {
         if ( ! $url) {
             $attributes = linkAttributes($attributes);
-            return "<a href='javascript:;' {$attributes}>{$title}</a>";
+            return $isA ? "<a href='javascript:;' {$attributes}>{$title}</a>" : true;
         }
         $localDomain = url();
         $parseUrl = parse_url($url);
         if (isset($parseUrl['scheme']) && isset($parseUrl['host']) && $localDomain != "{$parseUrl['scheme']}://{$parseUrl['host']}") {
             $attributes['target'] = '_blank';
+            if (! $isA) {
+                return false;
+            }
+        }
+        if (! $isA) {
+            return true;
         }
         $attributes = linkAttributes($attributes);
         return "<a href='{$url}' {$attributes}>{$title}</a>";
@@ -320,13 +327,9 @@ if (! function_exists('linkAttributes')) {
      */
     function linkAttributes($attributes = [])
     {
-        $html = array();
-        foreach ((array) $attributes as $key => $value)
-        {
-            $key = $value;
-            $element = $key.'="'.e($value).'"';
-
-            if ( ! is_null($element)) $html[] = $element;
+        $html = [];
+        foreach ($attributes as $key => $value) {
+            $html[] = $key.'="'.e($value).'"';
         }
 
         return count($html) > 0 ? ' '.implode(' ', $html) : '';

@@ -46,6 +46,8 @@ return [
             'language'                  => 'Dil',
             'menu'                      => 'Menü',
             'phone'                     => 'Telefon',
+            'see_all'                   => 'Tümünü Gör',
+            'review'                    => 'İncele'
         ]
     ],
 

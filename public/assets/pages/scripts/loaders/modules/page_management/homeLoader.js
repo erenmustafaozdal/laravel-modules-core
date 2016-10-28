@@ -110,6 +110,19 @@
                 }
             });
         });
+        // item type hide visible
+        itemType.on('change',function(e)
+        {
+            var value, element = $(this);
+            value = element.val();
+            if (value === 'Project') {
+                element.closest('.form-body').find('input.icheck').iCheck('disable').closest('.form-group').addClass('hidden');
+                element.closest('.form-body').find('input[type="hidden"][name="carouselOption[options][item_visible]"]').prop('disable',true);
+            } else {
+                element.closest('.form-body').find('input.icheck').iCheck('enable').closest('.form-group').removeClass('hidden');
+                element.closest('.form-body').find('input[type="hidden"][name="carouselOption[options][item_visible]"]').prop('disable',false);
+            }
+        });
 
         // portlet sortable disable and enable
         $('input.switch-is-active').on('switchChange.bootstrapSwitch', function(event, state)

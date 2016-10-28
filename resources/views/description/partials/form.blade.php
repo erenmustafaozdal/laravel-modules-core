@@ -1,12 +1,9 @@
 {{-- Category --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-description-module/admin.fields.description_category.name') !!}</label>
+    {!! Form::hidden('category_id', $isRelation ? $description_category->id : null ) !!}
     <select class="form-control form-control-solid placeholder-no-fix select2me" name="category_id" style="width: 100%">
-        @if($isRelation && isset($description))
-            <option value="{{ $description->category->id }}" selected>{{ $description->category->name_uc_first }}</option>
-        @elseif($isRelation)
-            <option value="{{ $description_category->id }}" selected>{{ $description_category->name_uc_first }}</option>
-        @elseif(isset($description))
+        @if(isset($description))
             <option value="{{ $description->category->id }}" selected>{{ $description->category->name_uc_first }}</option>
         @endif
     </select>
