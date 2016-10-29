@@ -35,7 +35,7 @@
         <div data-repeater-list="group-{{ $model->slug }}">
 
             @for($i = 0; $i < 2;  $i++)
-                @include('laravel-modules-core::page_management.home.image_linker', ['count' => $i])
+                @include('laravel-modules-core::page_management.sections.image_linker', ['count' => $i])
             @endfor
 
         </div>

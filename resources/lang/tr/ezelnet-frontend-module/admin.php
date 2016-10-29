@@ -10,6 +10,8 @@ return [
     'page_management' => [
         'home'                      => 'Ana Sayfa Yönetimi',
         'home_description'          => 'Ana Sayfa\'yı yönet',
+        'company'                   => 'Firma Profili Yönetimi',
+        'company_description'       => 'Firma Profili\'ni yönet',
     ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
@@ -18,36 +20,40 @@ return [
     // menu
     'menu' => [
         'page_management' => [
-            'root'                      => 'Sayfa Yönetimleri',
-            'home'                      => 'Ana Sayfa Yönetimi',
+            'root'                  => 'Sayfa Yönetimleri',
+            'home'                  => 'Ana Sayfa Yönetimi',
+            'enterprise' => [
+                'root'              => 'Kurumsal',
+                'company'           => 'Firma Profili',
+            ]
         ],
     ],
 
     // fields
     'fields' => [
         'page_management' => [
-            'enable_sortable'           => 'Sıralamayı Aç',
-            'disable_sortable'          => 'Sıralamayı Kapat',
-            'save_sortable'             => 'Sıralamayı Kaydet',
-            'auto_play'                 => 'Slider otomatik oynatılsın mı?',
-            'is_revert'                 => 'Ürün imajı dönme efekti aktif olsun mu?',
-            'order_type'                => 'Veriler nasıl sıralansın?',
-            'item_type'                 => 'Veriler nereden alınsın?',
-            'items_type'                => 'Hangi veriler alınsın?',
-            'link'                      => 'Bağlantı Adresi',
-            'title'                     => 'Bölüm Başlığı',
-            'is_active'                 => 'Bölüm aktifleştirilsin mi?',
-            'background_photo'          => 'Arka Plan Fotoğrafı',
-            'ad_big_image'              => 'Reklam Banner Büyük Fotoğraf',
-            'ad_small_image'            => 'Reklam Banner Küçük Fotoğraf',
-            'item_visible'              => 'Neler görünsün?'
+            'enable_sortable'       => 'Sıralamayı Aç',
+            'disable_sortable'      => 'Sıralamayı Kapat',
+            'save_sortable'         => 'Sıralamayı Kaydet',
+            'auto_play'             => 'Slider otomatik oynatılsın mı?',
+            'is_revert'             => 'Ürün imajı dönme efekti aktif olsun mu?',
+            'order_type'            => 'Veriler nasıl sıralansın?',
+            'item_type'             => 'Veriler nereden alınsın?',
+            'items_type'            => 'Hangi veriler alınsın?',
+            'link'                  => 'Bağlantı Adresi',
+            'title'                 => 'Bölüm Başlığı',
+            'is_active'             => 'Bölüm aktifleştirilsin mi?',
+            'background_photo'      => 'Arka Plan Fotoğrafı',
+            'ad_big_image'          => 'Reklam Banner Büyük Fotoğraf',
+            'ad_small_image'        => 'Reklam Banner Küçük Fotoğraf',
+            'item_visible'          => 'Neler görünsün?'
         ],
         'frontend' => [
-            'language'                  => 'Dil',
-            'menu'                      => 'Menü',
-            'phone'                     => 'Telefon',
-            'see_all'                   => 'Tümünü Gör',
-            'review'                    => 'İncele'
+            'language'              => 'Dil',
+            'menu'                  => 'Menü',
+            'phone'                 => 'Telefon',
+            'see_all'               => 'Tümünü Gör',
+            'review'                => 'İncele'
         ]
     ],
 

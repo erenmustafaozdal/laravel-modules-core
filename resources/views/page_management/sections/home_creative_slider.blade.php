@@ -2,7 +2,8 @@
     'method'=> 'POST',
     'url'   => lmbRoute('admin.page_management.updateSection', [
         'id'    => $model->id,
-        'form'  => $model->slug
+        'form'  => $model->slug,
+        'page'  => 'home'
     ]),
     'class' => 'form-horizontal form-bordered',
     'files' => true

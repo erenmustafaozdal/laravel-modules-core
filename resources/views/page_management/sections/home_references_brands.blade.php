@@ -2,7 +2,8 @@
     'method'=> 'POST',
     'url'   => lmbRoute('admin.page_management.updateSection', [
         'id'    => $model->id,
-        'form'  => $model->slug
+        'form'  => $model->slug,
+        'page'  => 'home'
     ]),
     'class' => 'form-horizontal form-bordered'
 ]) !!}
@@ -16,7 +17,7 @@
         'auto_play'         => null,
         'is_revert_hidden'  => true,
         'is_revert'         => null,
-        'order_type_hidden' => false,
+        'order_type_hidden' => true,
         'order_type'        => null,
         'item_type_hidden'  => true,
         'item_type'         => null,
