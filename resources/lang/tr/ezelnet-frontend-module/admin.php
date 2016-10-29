@@ -15,6 +15,7 @@ return [
     ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
+        'company'                   => 'Firma Profili'
     ],
 
     // menu

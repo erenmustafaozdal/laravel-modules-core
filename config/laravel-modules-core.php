@@ -193,7 +193,7 @@ return [
 
         // menu module
         'menu' => [
-            'nestable_level_root'           => 3,
+            'nestable_level_root'           => 2,
         ],
 
         // product module

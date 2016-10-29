@@ -41,7 +41,7 @@
     <span class="help-block"> {!! lmcTrans('laravel-menu-module/admin.helpers.menu.type') !!} </span>
 </div>
 @else
-{!! Form::hidden('type','normal') !!}
+{!! Form::hidden('type', ! isset($menu) ? 'normal' : ($menu->isRoot() ? $menu->type : $menu->getRoot()->type)) !!}
 @endif
 {{-- /Type --}}
 
@@ -111,9 +111,9 @@
 @endif
 
 
-@if(isset($menu) && $menu->type === 'normal' && $menu->getRoot()->type === 'mega')
+@if(isset($menu) && ! $menu->isRoot() && $menu->getRoot()->type === 'mega')
 
-    <div id="menu-label" class="form-group row {{ isset($menu) && $menu->is_mega_menu ? '' : 'hidden' }}">
+    <div class="form-group row">
 
         {{-- Label --}}
         <div class="col-md-6">
