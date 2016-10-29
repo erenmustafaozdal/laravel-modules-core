@@ -1,7 +1,7 @@
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-media-module/admin.fields.media.video') !!}</label>
     <input type="text"
-           class="form-control form-control-solid placeholder-no-fix inputmask-youtube"
+           class="form-control form-control-solid placeholder-no-fix"
            placeholder="{!! lmcTrans('laravel-media-module/admin.fields.media.video') !!}"
            id="video"
            name="video"

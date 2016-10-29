@@ -8,10 +8,6 @@
     {
         $script(indexJs,'index');
     });
-    $script.ready('jquery', function()
-    {
-        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
-    });
 
     $script.ready(['config','index','inputmask'], function()
     {

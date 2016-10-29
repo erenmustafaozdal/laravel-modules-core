@@ -4,28 +4,24 @@
     {
         $script(validationMethodsJs);
     });
-    $script.ready('jquery', function()
+    $script.ready('app_editor', function()
     {
-        $script(operationJs,'operation');
-        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
+        $script(indexJs,'index');
     });
-    $script.ready('bootstrap', function()
-    {
-        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js','datepicker');
-    });
-    $script.ready('datepicker', function()
-    {
-        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.tr.min.js','datepicker_tr');
-    });
-    $script.ready(['config','operation','app_fileinput','app_jcrop','datepicker_tr'], function()
-    {
-        Operation.init();
 
-        // extra column
-        LMCApp.initDatepicker();
+    $script.ready(['config','index','inputmask'], function()
+    {
+        Index.init({
+            DataTable: {
+                datatableIsResponsive: datatableIsResponsive,
+                groupActionSupport: groupActionSupport,
+                rowDetailSupport: rowDetailSupport,
+                datatableFilterSupport: datatableFilterSupport
+            }
+        });
         $script(videoPhotoJs);
     });
-    $script.ready(['config','app_select2','app_fileinput','app_jcrop'], function()
+    $script.ready(['config','app_select2'], function()
     {
         Select2.init({
             select2: {
@@ -67,12 +63,6 @@
                     }
                 }
             }
-        });
-    });
-    $script.ready(['config','app_tinymce'], function()
-    {
-        Tinymce.init({
-            route: tinymceURL
         });
     });
 })();

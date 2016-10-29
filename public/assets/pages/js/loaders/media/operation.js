@@ -7,7 +7,6 @@
     $script.ready('jquery', function()
     {
         $script(operationJs,'operation');
-        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js', 'inputmask');
     });
     $script.ready('bootstrap', function()
     {
