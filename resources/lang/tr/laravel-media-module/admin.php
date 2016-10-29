@@ -103,7 +103,7 @@ return [
             'category_id_help'  => 'Medyanın gösterileceği bir ya da daha fazla galeri seçebilirsin. Bunun için önce galeri oluşturmalısın.',
             'is_publish_help'   => 'Medyanın yayında olması, ziyaretçilerin medyayı görebilmesini sağlar. Yayında olmayan medyalar ziyaretçilere açık değildir.',
             'description'       => 'Medyayı açıklayan bir yazı yaz.',
-            'video'             => 'Sadece <em class="label label-info">Youtube</em> ve <em class="label label-info">Vimeo</em> videoları destekleniyor. İlgili video sitelerinden istediğin videonun tarayıcı adres çubuğunda bulunan adresini buraya yapıştır. <small class="text-muted">(Ör: https://www.youtube.com/watch?v=video_id veya https://vimeo.com/video_id)</small>'
+            'video'             => 'Sadece <em class="label label-info">Youtube</em> ve <em class="label label-info">Vimeo</em> videoları destekleniyor. İlgili video sitelerinden istediğin videonun tarayıcı adres çubuğunda bulunan adresini buraya yapıştır. <small class="text-muted">(Ör: <em class="label label-warning">https://www.youtube.com/watch?v=video_id</em> veya <em class="label label-warning">https://www.vimeo.com/video_id</em>)</small>'
         ]
     ],
 

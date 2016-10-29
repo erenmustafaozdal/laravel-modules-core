@@ -9,7 +9,7 @@
         $script(indexJs,'index');
     });
 
-    $script.ready(['config','index','inputmask'], function()
+    $script.ready(['config','index'], function()
     {
         Index.init({
             DataTable: {

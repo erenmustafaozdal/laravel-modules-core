@@ -50,6 +50,8 @@
     </div>
     {{-- /Type --}}
 
+    @if( ! isset($parent_media_category))
+
 
     <h4>{!! lmcTrans('admin.fields.category_configs') !!}</h4>
 
@@ -86,5 +88,7 @@
     @include('laravel-modules-core::partials.common.overview_extras',[
         'model' => $media_category
     ])
+
+    @endif
 </form>
 {{-- /Information on Form --}}
