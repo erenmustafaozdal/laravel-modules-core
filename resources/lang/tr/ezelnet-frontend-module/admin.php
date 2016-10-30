@@ -13,6 +13,10 @@ return [
         'company'                   => 'Firma Profili Yönetimi',
         'company_description'       => 'Firma Profili\'ni yönet',
     ],
+    'design_management' => [
+        'logo'                      => 'Logo-Favicon Yönetimi',
+        'logo_description'          => 'Logo ve favicon düzenle',
+    ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
         'company'                   => 'Firma Profili'
@@ -28,6 +32,10 @@ return [
                 'company'           => 'Firma Profili',
             ]
         ],
+        'design_management' => [
+            'root'                  => 'Tasarım Yönetimi',
+            'logo'                  => 'Logo-Favicon Ayarları',
+        ]
     ],
 
     // fields
@@ -48,6 +56,12 @@ return [
             'ad_big_image'          => 'Reklam Banner Büyük Fotoğraf',
             'ad_small_image'        => 'Reklam Banner Küçük Fotoğraf',
             'item_visible'          => 'Neler görünsün?'
+        ],
+        'design_management' => [
+            'current_logo'          => 'Geçerli Logo',
+            'logo'                  => 'Logo',
+            'current_favicon'       => 'Geçerli Favicon',
+            'favicon'               => 'Favicon',
         ],
         'frontend' => [
             'language'              => 'Dil',

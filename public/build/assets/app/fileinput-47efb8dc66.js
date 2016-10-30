@@ -194,7 +194,11 @@ var LMCFileinput = {
             {
                 // init tooltips
                 LMCApp.initTooltips();
-                theLMCJcrop.setupElement(previewId, LMCFileinputs['.' + $(event.currentTarget).prop('class')]);
+                var options = LMCFileinputs['.' + $(event.currentTarget).prop('class')];
+                if (options == undefined) {
+                    options = LMCFileinputs['.' + $(event.currentTarget).prop('id')];
+                }
+                theLMCJcrop.setupElement(previewId, options);
             },
             filecleared: function(event)
             {

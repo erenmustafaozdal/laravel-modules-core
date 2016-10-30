@@ -57,14 +57,14 @@
 .minimized-menu .primary .navbar .nav > .parent.active > a,
 .minimized-menu .primary .navbar .nav > .parent.active:hover > a,
 .minimized-menu .primary .navbar .nav .open-sub span {
-  background-color: #c10841;
+  background-color: #76be1e;
 }
 .slider .slider-nav {
-  background-color: rgba(193,8,65,.97);
+  background-color: rgba(118,190,30,.97);
 }
 .product .limit-offer,
 .product .actions.not-rotation-actions {
-  background-color: rgba(193,8,65,.9);
+  background-color: rgba(118,190,30,.9);
 }
 .btn.btn-default:hover,
 .btn.btn-default:focus,
@@ -72,8 +72,8 @@
 .btn.btn-default.active,
 .btn.btn-default.disabled,
 .btn.btn-default[disabled] {
-  background-color: #c10841;
-  background-color: rgba(193,8,65,.8);
+  background-color: #76be1e;
+  background-color: rgba(118,190,30,.8);
 }
 #catalog .category-img .description,
 .toolbar .sort-catalog .dropdown-toggle,
@@ -86,27 +86,27 @@
 .pagination > .active > span:hover,
 .sidebar .tags a,
 .btn-group.open .btn-default.dropdown-toggle {
-  background-color: rgba(193,8,65,.7);
+  background-color: rgba(118,190,30,.7);
 }
 .sidebar .banners .banner-text {
-  background-color: rgba(193,8,65,.65);
+  background-color: rgba(118,190,30,.65);
 }
 .slider.rs-slider .tparrows,
 .product-page .add-cart-form .number .regulator a:hover,
 .progressive-slider-two .pagination a {
-  background-color: rgba(193,8,65,.5);
+  background-color: rgba(118,190,30,.5);
 }
 .pricing .bottom-box {
-  background-color: rgba(193,8,65,.05);
+  background-color: rgba(118,190,30,.05);
 }
 .pricing:before {
-  background-color: rgba(193,8,65,.06);
+  background-color: rgba(118,190,30,.06);
 }
 .btn.btn-default,
 .btn.btn-border,
 .minimized-menu .primary .navbar .nav > .parent.active > a,
 .minimized-menu .primary .navbar .nav > .parent.active:hover > a {
-  border-color: #c10841;
+  border-color: #76be1e;
 }
 .btn.btn-default:hover,
 .btn.btn-default:focus,
@@ -114,12 +114,12 @@
 .btn.btn-default.active,
 .btn.btn-default.disabled,
 .btn.btn-default[disabled] {
-  border-color: #c10841;
-  border-color: rgba(193,8,65,.8);
+  border-color: #76be1e;
+  border-color: rgba(118,190,30,.8);
 }
 .pricing .options li,
 .pricing .bottom-box {
-  border-color: rgba(193,8,65,.1);
+  border-color: rgba(118,190,30,.1);
 }
 .header .header-wrapper .cart-header .dropdown-toggle,
 #footer .newsletter input:focus + .submit,
@@ -148,13 +148,13 @@
 .btn.btn-border .caret,
 .product-remove:hover,
 .one-page .header .header-wrapper .primary .navbar .navbar-collapse .nav .active {
-  color: #c10841;
+  color: #76be1e;
 }
 .pricing .bottom-box .more {
-  color: rgba(193,8,65,.7);
+  color: rgba(118,190,30,.7);
 }
 .pricing .options li {
-  color: rgba(193,8,65,.4);
+  color: rgba(118,190,30,.4);
 }
 .phone-header a svg path,
 .search-header a svg path,
@@ -167,7 +167,7 @@
 .jslider .jslider-pointer svg path,
 .rating-box .rating svg polygon,
 .search-result .search-form .search-submit svg path {
-  fill: #c10841;
+  fill: #76be1e;
 }
 .carousel-box .pagination a.selected,
 .banner-set .pagination a.selected {
@@ -184,11 +184,11 @@
   .accordion-tab > li.active:hover > a,
   .products-tab .accordion-tab > li.active > a,
   .products-tab .accordion-tab > li.active:hover > a {
-    background-color: #c10841;
+    background-color: #76be1e;
   }
   .header .header-wrapper .primary .navbar .navbar-collapse .nav > .parent.active > a,
   .header .header-wrapper .primary .navbar .navbar-collapse .nav > .parent.active:hover > a {
-    border-color: #c10841;
+    border-color: #76be1e;
   }
 }
 .top-navbar .nav > li a,

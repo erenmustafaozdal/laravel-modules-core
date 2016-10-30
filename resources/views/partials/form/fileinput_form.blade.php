@@ -1,4 +1,15 @@
+@if(isset($columns) && $columns)
+<div class="form-group">
+    <label class="col-md-3 control-label">{!! $label !!}</label>
+@endif
+
+@if(isset($columns) && $columns)
+<div class="col-md-9">
+@endif
+
 <div class="tabbable-line margin-bottom-10" id="file-upload-management">
+
+
 
     {{-- Tabs --}}
     <ul class="nav nav-tabs tabs-reversed">
@@ -31,20 +42,27 @@
         {{-- Fileinput Content --}}
         <div class="tab-pane active" id="fileinput-content-{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}">
 
+            @if( ! isset($columns) || ! $columns)
             <label class="control-label">{!! $label !!}</label>
+            @endif
+
             <span class="help-block">
                 {!! trans('laravel-modules-core::admin.helpers.fileinput') !!}
             </span>
 
             {{-- Fileinput file element --}}
-            <div class="form-group">
+            @if( ! isset($columns) || ! $columns)
+                <div class="form-group">
+            @endif
                 <input type="file"
                        name="{!! $input_name !!}{!! isset($multiple) && ! $multiple ? '' : '[]' !!}"
                        {!! isset($input_id) ? 'id=' . $input_id : 'class=' . $input_class !!}
                        {!! isset($multiple) &&  $multiple ? 'multiple' : '' !!}
                        {!! isset($fileinputDisable) &&  $fileinputDisable ? 'disabled' : '' !!}
                 >
+            @if( ! isset($columns) || ! $columns)
             </div>
+            @endif
             {{-- /Fileinput file element --}}
 
         </div>
@@ -53,12 +71,18 @@
         {{-- Elfinder Content --}}
         <div class="tab-pane elfinder_wrapper {!! isset($elfinder) && $elfinder ? '' : 'hidden' !!}" id="elfinder-content-{!! isset($tab_href) ? $tab_href : (isset($input_id) ? $input_id : $input_class) !!}">
 
+            @if( ! isset($columns) || ! $columns)
             <label class="control-label">{!! $label !!}</label>
+            @endif
+
             <span class="help-block">
                 {!! trans('laravel-modules-core::admin.helpers.elfinder') !!}
             </span>
 
+
+            @if( ! isset($columns) || ! $columns)
             <div class="form-group">
+            @endif
                 <div class="input-group">
                     <input type="text"
                            name="{!! $input_name !!}"
@@ -83,7 +107,9 @@
                         {{-- /File Manager --}}
                     </div>
                 </div>
+            @if( ! isset($columns) || ! $columns)
             </div>
+            @endif
 
         </div>
         {{-- /Elfinder Content --}}
@@ -92,3 +118,8 @@
     {{-- /Tab Contents --}}
 
 </div>
+
+@if(isset($columns) && $columns)
+    </div>
+    </div>
+@endif
