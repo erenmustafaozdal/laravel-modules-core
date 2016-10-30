@@ -433,7 +433,7 @@ var Index = {
                                     message_error = LMCApp.lang.admin.flash.store_error.message;
                                     title_error = LMCApp.lang.admin.flash.store_error.title;
                                     // duruma göre video veya elfinder eklenir
-                                    if (video.prop('disabled')) {
+                                    if (video.prop('disabled') || video.prop('disabled') == undefined) {
                                         datas.photo = $('#elfinder-photo').val();
                                     } else {
                                         datas.video = video.val();

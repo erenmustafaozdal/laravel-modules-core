@@ -419,6 +419,9 @@ var LMCApp = {
      */
     initInputMask: function(options)
     {
+        if (!$().inputmask) {
+            return;
+        }
         var mask;
         var ops = $.extend(true, {
             src: '',
