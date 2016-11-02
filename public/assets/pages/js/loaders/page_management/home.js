@@ -10,7 +10,11 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-repeater/jquery.repeater.min.js', 'repeater');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-ui/jquery-ui.min.js', 'jquery_ui');
     });
-    $script.ready(['jquery_ui','config','app_select2','repeater','home','app_fileinput','app_jcrop'], function()
+    $script.ready('jquery_ui', function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js', 'touch_punch');
+    });
+    $script.ready(['jquery_ui','touch_punch','config','app_select2','repeater','home','app_fileinput','app_jcrop'], function()
     {
         Home.init();
 

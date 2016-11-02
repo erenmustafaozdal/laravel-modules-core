@@ -8,7 +8,11 @@
     {
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-ui/jquery-ui.min.js', 'jquery_ui');
     });
-    $script.ready(['jquery_ui','config','app_select2'], function()
+    $script.ready('jquery_ui', function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js', 'touch_punch');
+    });
+    $script.ready(['jquery_ui','touch_punch','config','app_select2'], function()
     {
         // select 2 init
         Select2.init({

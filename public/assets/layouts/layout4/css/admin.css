@@ -1941,3 +1941,11 @@ body.modal-open {
 .panel li a.blue:hover i {
     color: #ffffff !important;
 }
+
+/* Icon Btn Sortable */
+.icon-btn-sortable-placeholder {
+    height: 60px;
+    width: 80px;
+    border: 2px dashed #eee;
+    margin-bottom: 25px;
+}

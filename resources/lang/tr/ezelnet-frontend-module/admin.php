@@ -18,6 +18,9 @@ return [
         'logo_description'          => 'Logo ve favicon düzenle',
         'site_color'                => 'Site Renk Düzenlemesi',
         'site_color_description'    => 'Sitede kullanılan renkleri düzenle',
+        'menu_styles'               => 'Menü Stilleri',
+        'menu_styles_description'   => 'Menü stili belirle ve renkli bantı düzenle',
+        'top_box_order'             => 'Renkli Bant Düzeni',
     ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
@@ -38,6 +41,7 @@ return [
             'root'                  => 'Tasarım Yönetimi',
             'logo'                  => 'Logo-Favicon Ayarları',
             'site_color'            => 'Site Renk Düzenlemesi',
+            'menu_styles'           => 'Menü Stilleri',
         ]
     ],
 
@@ -61,11 +65,13 @@ return [
             'item_visible'          => 'Neler görünsün?'
         ],
         'design_management' => [
+            // logo
             'current_logo'          => 'Geçerli Logo',
             'logo'                  => 'Logo',
             'current_favicon'       => 'Geçerli Favicon',
             'favicon'               => 'Favicon',
 
+            // site color and footer color
             'site_first_color'      => 'Site Birincil Rengi',
             'site_second_color'     => 'Site İkincil Rengi',
             'site_complement_color' => 'Site Tamamlayıcı Rengi',
@@ -76,6 +82,24 @@ return [
             'footer_text_color'     => 'Footer Metin Rengi',
             'ezelnet_link_color'    => 'Ezelnet Link Rengi',
             'go_up_color'           => '<em>"Yukarı Çık"</em> Buton Rengi',
+
+            // menu styles
+            'hidden_fixed'          => 'Hidden Fixed Menü',
+            'soft_fixed'            => 'Soft Fixed Menü',
+            'double_fixed_hidden'   => 'Double Fixed Hidden Menü',
+            'double_fixed'          => 'Double Fixed Menü',
+            'double'                => 'Double Menü',
+
+            // top box
+            'components'            => 'Bileşenler',
+            'top_box_left'          => 'Renkli Bant Sol',
+            'top_box_right'         => 'Renkli Bant Sağ',
+            'phone'                 => 'Telefon',
+            'phone_icon'            => 'fa fa-phone',
+            'email'                 => 'E-posta',
+            'email_icon'            => 'fa fa-envelope',
+            'social_accounts'       => 'Sosyal Hesaplar',
+            'social_accounts_icon'  => 'fa fa-facebook',
         ],
         'frontend' => [
             'language'              => 'Dil',
@@ -100,8 +124,17 @@ return [
             'item_visible'  => 'Görünenler <em class="label label-info">2</em> adet olmalı.'
         ],
         'design_management' => [
-            'site_complement_color'=> 'Site <em class="label label-info">birincil</em> ve <em class="label label-info">ikincil</em> renklerin içinde, genelde <em class="text-info">metin rengi</em> olarak kullanılacak tamamlayıcı renk.',
-            'hover_color'=> '<em class="label label-info">Linklerde</em> ve <em class="label label-info">butonlarda</em> <em class="text-info">fare üzerine geldiğinde</em> kullanılacak renk.'
+            // site color and footer color
+            'site_complement_color' => 'Site <em class="label label-info">birincil</em> ve <em class="label label-info">ikincil</em> renklerin içinde, genelde <em class="text-info">metin rengi</em> olarak kullanılacak tamamlayıcı renk.',
+            'hover_color'   => '<em class="label label-info">Linklerde</em> ve <em class="label label-info">butonlarda</em> <em class="text-info">fare üzerine geldiğinde</em> kullanılacak renk.',
+
+            // menu styles
+            'hidden_fixed'  => 'Bu menü stilinde "Renkli Bant" ince bir şerit şeklinde durur. Fare ile üzerine gelindiğinde açılır. Sayfada aşağı inildikçe <em class="text-info">Ana Menü</em> aşağı doğru kayar.',
+            'soft_fixed'    => 'Bu menü stilinde "Renkli Bant" bulunmaz. Sayfada aşağı inildikçe <em class="text-info">Ana Menü</em> aşağı doğru kayar.',
+            'double_fixed_hidden'=> 'Bu menü stilinde "Renkli Bant", "Ana Menü"nün <em class="label label-info">altında</em> ve açıktır. Sayfada aşağı inildikçe <em class="text-info">Ana Menü</em> aşağı doğru kayar.',
+            'double_fixed'  => 'Bu menü stilinde "Renkli Bant", "Ana Menü"nün <em class="label label-info">üstünde</em> ve açıktır. Sayfada aşağı inildikçe <em class="text-info">Ana Menü</em> ve <em class="text-info">Renkli Bant</em> aşağı doğru kayar.',
+            'double'        => 'Bu menü stilinde "Renkli Bant", "Ana Menü"nün <em class="label label-info">üstünde</em> ve açıktır. Sayfada aşağı inildikçe "Ana Menü" ve "Renkli Bant" <em class="text-danger">kaymaz</em>.',
+            'top_box_components' => 'Bileşenleri sürükleyerek <em class="text-info">Renkli Bant</em>\'ın sol veya sağ bölümüne taşı. Daha sonra <button class="btn green btn-outline" type="button"><i class="fa fa-floppy-o"></i><span class="hidden-xs"> Kaydet </span></button> butonuna basarak düzeni kaydet.',
         ]
     ],
 

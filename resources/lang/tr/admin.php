@@ -86,6 +86,7 @@ return [
         'create_album'                  => 'Albüm Oluştur',
         'set_main_photo'                => 'Ana Fotoğraf Yap',
         'close'                         => 'Kapat',
+        'save'                          => 'Kaydet',
         // description
         'date_from'                     => 'Tarihinden',
         'date_to'                       => 'Tarihine',
