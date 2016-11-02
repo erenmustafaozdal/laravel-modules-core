@@ -85,7 +85,7 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::design_management.partials.form')
+                @include('laravel-modules-core::design_management.partials.logo_form')
             </div>
             {{-- /Form Body --}}
 

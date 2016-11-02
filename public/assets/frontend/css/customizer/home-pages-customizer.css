@@ -199,5 +199,5 @@
   color: #fff;
 }
 .product .product-hover ul li {
-  background-image: url("../../img/svg/check-icon-white.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/check-icon-white.svg"), none;
 }

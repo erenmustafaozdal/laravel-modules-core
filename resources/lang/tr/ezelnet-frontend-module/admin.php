@@ -16,6 +16,8 @@ return [
     'design_management' => [
         'logo'                      => 'Logo-Favicon Yönetimi',
         'logo_description'          => 'Logo ve favicon düzenle',
+        'site_color'                => 'Site Renk Düzenlemesi',
+        'site_color_description'    => 'Sitede kullanılan renkleri düzenle',
     ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
@@ -35,6 +37,7 @@ return [
         'design_management' => [
             'root'                  => 'Tasarım Yönetimi',
             'logo'                  => 'Logo-Favicon Ayarları',
+            'site_color'            => 'Site Renk Düzenlemesi',
         ]
     ],
 
@@ -62,6 +65,17 @@ return [
             'logo'                  => 'Logo',
             'current_favicon'       => 'Geçerli Favicon',
             'favicon'               => 'Favicon',
+
+            'site_first_color'      => 'Site Birincil Rengi',
+            'site_second_color'     => 'Site İkincil Rengi',
+            'site_complement_color' => 'Site Tamamlayıcı Rengi',
+            'hover_color'           => 'Hover Rengi',
+            'first_footer_color'    => 'Birinci (Üst) Footer Rengi',
+            'second_footer_color'   => 'İkinci (Alt) Footer Rengi',
+            'footer_title_color'    => 'Footer Başlık Rengi',
+            'footer_text_color'     => 'Footer Metin Rengi',
+            'ezelnet_link_color'    => 'Ezelnet Link Rengi',
+            'go_up_color'           => '<em>"Yukarı Çık"</em> Buton Rengi',
         ],
         'frontend' => [
             'language'              => 'Dil',
@@ -84,6 +98,10 @@ return [
             'not_options'  => 'Bu bölümün ayarları bulunmamaktadır.',
             'link'          => 'Veri ile alakalı bir internet adresi ekle. Bu alan zorunlu <em class="label label-warning">değildir</em>. Lütfen yazdığın internet adresinin başına <em class="label label-info">http://</em> veya <em class="label label-info">https://</em> eklemeyi unutma. <small class="text-muted">( Ör: http://siteadresi.com )</small> ',
             'item_visible'  => 'Görünenler <em class="label label-info">2</em> adet olmalı.'
+        ],
+        'design_management' => [
+            'site_complement_color'=> 'Site <em class="label label-info">birincil</em> ve <em class="label label-info">ikincil</em> renklerin içinde, genelde <em class="text-info">metin rengi</em> olarak kullanılacak tamamlayıcı renk.',
+            'hover_color'=> '<em class="label label-info">Linklerde</em> ve <em class="label label-info">butonlarda</em> <em class="text-info">fare üzerine geldiğinde</em> kullanılacak renk.'
         ]
     ],
 

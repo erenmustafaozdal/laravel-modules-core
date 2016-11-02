@@ -232,7 +232,7 @@ a.text-error:hover,
 .text-danger,
 a.text-danger:hover,
 .icon.text-danger {
-  color: #76be1e;
+  color: #c10841;
 }
 
 /* line 154, ../sass/_typography.scss */
@@ -272,7 +272,7 @@ a.text-success:hover,
 /* line 176, ../sass/_typography.scss */
 .bg-error,
 .bg-danger {
-  background: #76be1e !important;
+  background: #c10841 !important;
 }
 
 /* line 180, ../sass/_typography.scss */
@@ -298,7 +298,7 @@ a.text-success:hover,
 /* line 192, ../sass/_typography.scss */
 .border-error,
 .border-danger {
-  border-color: #76be1e !important;
+  border-color: #c10841 !important;
 }
 
 /* line 196, ../sass/_typography.scss */
@@ -505,8 +505,8 @@ hr.margin-top {
 }
 /* line 428, ../sass/_typography.scss */
 .btn.btn-border.btn-danger, .btn.btn-border.btn-danger .caret {
-  border-color: #76be1e;
-  color: #76be1e;
+  border-color: #c10841;
+  color: #c10841;
 }
 /* line 433, ../sass/_typography.scss */
 .btn.btn-border.btn-success, .btn.btn-border.btn-success .caret {
@@ -730,7 +730,7 @@ textarea.form-control {
 .has-error .radio-inline,
 .has-error .checkbox-inline,
 .has-error .form-control-feedback {
-  color: #76be1e;
+  color: #c10841;
 }
 
 /* line 624, ../sass/_typography.scss */
@@ -749,7 +749,7 @@ textarea.form-control {
 
 /* line 632, ../sass/_typography.scss */
 .has-error .form-control {
-  border-color: #76be1e;
+  border-color: #c10841;
   -webkit-transition: box-shadow linear .2s;
   transition: box-shadow linear .2s;
 }
@@ -768,7 +768,7 @@ textarea.form-control {
 
 /* line 644, ../sass/_typography.scss */
 .has-error .form-control:focus {
-  border-color: #76be1e;
+  border-color: #c10841;
   box-shadow: 0 0 10px rgba(193, 8, 65, 0.3);
 }
 
@@ -927,7 +927,7 @@ button {
 
 /* line 769, ../sass/_typography.scss */
 .selectBox-arrow {
-  background: url("../img/svg/select.svg") 50% 50% no-repeat;
+  background: url("/vendor/laravel-modules-core/assets/frontend/img/svg/select.svg") 50% 50% no-repeat;
   border-radius: 0 3px 3px 0;
   height: 100%;
   left: auto;
@@ -1332,44 +1332,44 @@ fieldset[disabled] .selectBox .selectBox-arrow,
 
 /* line 1087, ../sass/_typography.scss */
 .text-error + .tooltip .tooltip-inner {
-  background-color: #76be1e;
+  background-color: #c10841;
 }
 /* line 1091, ../sass/_typography.scss */
 .text-error + .tooltip.top .tooltip-arrow {
-  border-top-color: #76be1e;
+  border-top-color: #c10841;
 }
 /* line 1096, ../sass/_typography.scss */
 .text-error + .tooltip.bottom .tooltip-arrow {
-  border-bottom-color: #76be1e;
+  border-bottom-color: #c10841;
 }
 /* line 1101, ../sass/_typography.scss */
 .text-error + .tooltip.left .tooltip-arrow {
-  border-left-color: #76be1e;
+  border-left-color: #c10841;
 }
 /* line 1106, ../sass/_typography.scss */
 .text-error + .tooltip.right .tooltip-arrow {
-  border-right-color: #76be1e;
+  border-right-color: #c10841;
 }
 
 /* line 1087, ../sass/_typography.scss */
 .text-danger + .tooltip .tooltip-inner {
-  background-color: #76be1e;
+  background-color: #c10841;
 }
 /* line 1091, ../sass/_typography.scss */
 .text-danger + .tooltip.top .tooltip-arrow {
-  border-top-color: #76be1e;
+  border-top-color: #c10841;
 }
 /* line 1096, ../sass/_typography.scss */
 .text-danger + .tooltip.bottom .tooltip-arrow {
-  border-bottom-color: #76be1e;
+  border-bottom-color: #c10841;
 }
 /* line 1101, ../sass/_typography.scss */
 .text-danger + .tooltip.left .tooltip-arrow {
-  border-left-color: #76be1e;
+  border-left-color: #c10841;
 }
 /* line 1106, ../sass/_typography.scss */
 .text-danger + .tooltip.right .tooltip-arrow {
-  border-right-color: #76be1e;
+  border-right-color: #c10841;
 }
 
 /* line 1087, ../sass/_typography.scss */
@@ -1449,7 +1449,7 @@ a.list-group-item-warning:hover, a.list-group-item-warning:focus {
 
 /* line 1131, ../sass/_typography.scss */
 .list-group-item-danger {
-  background-color: #76be1e;
+  background-color: #c10841;
   border: 0 none;
   color: #fff;
 }
@@ -1712,7 +1712,7 @@ blockquote small {
 }
 /* line 1313, ../sass/_typography.scss */
 .progress.hover .progress-bar-danger:hover {
-  background: #76be1e;
+  background: #c10841;
 }
 
 /* line 1317, ../sass/_typography.scss */
@@ -2131,7 +2131,7 @@ blockquote small {
 }
 /* line 1682, ../sass/_typography.scss */
 .panel-group .panel.panel-danger .panel-heading > .panel-title > a {
-  background-color: #76be1e;
+  background-color: #c10841;
   color: #fff;
 }
 /* line 1686, ../sass/_typography.scss */
@@ -2247,7 +2247,7 @@ a.edit i:before {
 
 /* line 49, ../sass/_helper-classes.scss */
 .rating-box {
-  background-image: url("../img/svg/rating.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/rating.svg"), none;
   background-repeat: no-repeat;
   background-position: 0 0;
   height: 12px;
@@ -2279,7 +2279,7 @@ a.edit i:before {
 }
 /* line 75, ../sass/_helper-classes.scss */
 .pricing-error .rating-box .rating svg polygon, .pricing-danger .rating-box .rating svg polygon {
-  fill: #76be1e;
+  fill: #c10841;
 }
 
 /* line 81, ../sass/_helper-classes.scss */
@@ -2654,7 +2654,7 @@ a.edit i:before {
   line-height: 40px;
   margin-left: 4px;
   margin-right: 4px;
-  opacity: .55;
+  opacity: .35;
   filter: alpha(opacity=35);
   -webkit-transition: opacity .2s linear;
   transition: opacity .2s linear;
@@ -3006,7 +3006,7 @@ a.edit i:before {
 }
 /* line 172, ../sass/_top-bar.scss */
 #top-box .top-social.bg-social .icon-item .fa-google-plus {
-  background: #76be1e;
+  background: #d94a39;
 }
 /* line 175, ../sass/_top-bar.scss */
 #top-box .top-social.bg-social .icon-item .fa-linkedin {
@@ -3304,7 +3304,7 @@ a.edit i:before {
 }
 /* line 186, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav a .item-new {
-  background: #76be1e;
+  background: #ff0068;
   border-radius: 3px;
   color: #fff;
   font-size: 11px;
@@ -3319,7 +3319,7 @@ a.edit i:before {
 /* line 199, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav a .item-new .before, .header .header-wrapper .primary .navbar .navbar-collapse .nav a .item-new:before {
   border: 5px solid transparent;
-  border-right-color: #76be1e;
+  border-right-color: #ff0068;
   bottom: -5px;
   content: "";
   display: block;
@@ -3344,7 +3344,7 @@ a.edit i:before {
 }
 /* line 225, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav a .item-new.bg-danger .before, .header .header-wrapper .primary .navbar .navbar-collapse .nav a .item-new.bg-danger:before {
-  border-right-color: #76be1e;
+  border-right-color: #c10841;
 }
 /* line 231, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav .megamenu a .item-new {
@@ -3590,7 +3590,7 @@ a.edit i:before {
 }
 /* line 449, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.text-danger > a {
-  color: #76be1e;
+  color: #c10841;
 }
 /* line 452, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.parent.item-bg:hover > a:after {
@@ -3618,7 +3618,7 @@ a.edit i:before {
 }
 /* line 470, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger.item-inverse > a {
-  background: #76be1e;
+  background: #c10841;
 }
 /* line 473, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-inverse:hover > a {
@@ -3653,7 +3653,7 @@ a.edit i:before {
 .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger:hover > a,
 .header .header-wrapper .primary .navbar .navbar-collapse .nav .item-danger .sub,
 .header .header-wrapper .primary .navbar .navbar-collapse .nav .item-danger.megamenu > .sub .promo-block {
-  border-color: #76be1e;
+  border-color: #c10841;
 }
 /* line 502, ../sass/_header.scss */
 .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-bg:hover a,
@@ -3693,7 +3693,7 @@ a.edit i:before {
 .header .header-wrapper .primary .navbar .navbar-collapse .nav .item-danger.item-bg .sub,
 .header .header-wrapper .primary .navbar .navbar-collapse .nav .item-danger.item-bg.parent .sub,
 .header .header-wrapper .primary .navbar .navbar-collapse .nav .item-danger.item-bg.parent:hover > .sub {
-  background: #76be1e;
+  background: #c10841;
 }
 /* line 541, ../sass/_header.scss */
 .header .header-wrapper .header-icons {
@@ -4719,7 +4719,7 @@ a.edit i:before {
 }
 /* line 1421, ../sass/_header.scss */
 .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger > a {
-  border-color: #76be1e;
+  border-color: #c10841;
 }
 /* line 1424, ../sass/_header.scss */
 .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-primary.item-bg > a, .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-primary.item-bg:hover > a, .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-primary.item-inverse > a, .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-primary.item-inverse:hover > a {
@@ -4743,8 +4743,8 @@ a.edit i:before {
 }
 /* line 1452, ../sass/_header.scss */
 .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger.item-bg > a, .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger.item-bg:hover > a, .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger.item-inverse > a, .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger.item-inverse:hover > a {
-  background-color: #76be1e;
-  border-color: #76be1e;
+  background-color: #c10841;
+  border-color: #c10841;
 }
 /* line 1460, ../sass/_header.scss */
 .minimized-menu .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-bg .sub {
@@ -5333,7 +5333,7 @@ a.edit i:before {
 }
 /* line 245, ../sass/_carousels.scss */
 .carousel-box.load {
-  background-image: url("../img/svg/loader.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/loader.svg"), none;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 40px;
@@ -5727,7 +5727,7 @@ a.edit i:before {
 }
 /* line 271, ../sass/_sliders.scss */
 .slider.rs-slider.load {
-  background-image: url("../img/svg/loader.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/loader.svg"), none;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 40px;
@@ -5771,8 +5771,8 @@ a.edit i:before {
 }
 /* line 308, ../sass/_sliders.scss */
 .slider.rs-slider .btn.orang {
-  background: #76be1e;
-  border-right: #76be1e;
+  background: #ea4e16;
+  border-right: #ea4e16;
 }
 /* line 312, ../sass/_sliders.scss */
 .slider.rs-slider .btn.cherry {
@@ -5851,7 +5851,7 @@ a.edit i:before {
 .slider.rs-slider .tp-loader {
   -webkit-animation: none;
   animation: none;
-  background-image: url("../img/svg/loader.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/loader.svg"), none;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 40px;
@@ -5972,7 +5972,7 @@ a.edit i:before {
 }
 /* line 483, ../sass/_sliders.scss */
 .royal-slider.load {
-  background-image: url("../img/svg/loader.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/loader.svg"), none;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 40px;
@@ -6075,8 +6075,8 @@ a.edit i:before {
 .metro-banners {
   background: #b3768e;
   background: -webkit-gradient(linear, left top, right top, color-stop(0%, #b3768e), color-stop(100%, #54638e));
-  background: -webkit-linear-gradient(left, #375c7f 0%, #608e28 100%);
-  background: linear-gradient(to right, #375c7f 0%, #608e28 100%);
+  background: -webkit-linear-gradient(left, #b3768e 0%, #54638e 100%);
+  background: linear-gradient(to right, #b3768e 0%, #54638e 100%);
   padding: 54px 0 24px;
 }
 /* line 577, ../sass/_sliders.scss */
@@ -6141,7 +6141,7 @@ a.edit i:before {
 /* line 17, ../sass/_sidebar.scss */
 .sidebar .widget header,
 .sidebar .widget .title-block {
-  border-bottom: 1px solid #bbc5af;
+  border-bottom: 1px solid #e1e1e1;
   margin: 0 0 40px;
   padding: 0 0 15px;
   position: relative;
@@ -6726,14 +6726,14 @@ a.edit i:before {
 }
 /* line 577, ../sass/_sidebar.scss */
 .sidebar .links a {
-  color: #e9ece5;
+  color: #7f7f7f;
   text-decoration: none;
   -webkit-transition: color .2s linear;
   transition: color .2s linear;
 }
 /* line 582, ../sass/_sidebar.scss */
 .sidebar .links a:hover {
-  color: #76be1e;
+  color: #000;
   -webkit-transition: color .2s linear;
   transition: color .2s linear;
 }
@@ -6986,7 +6986,7 @@ a.edit i:before {
 /* line 89, ../sass/_shop.scss */
 .sale:before {
   color: #fff;
-  content: "Ä°ND";
+  content: "Sale";
   display: block;
   font-size: 11px;
   font-weight: bold;
@@ -7003,15 +7003,15 @@ a.edit i:before {
 }
 /* line 103, ../sass/_shop.scss */
 .sale.top:before {
-  content: "Ã–ZEL";
+  content: "Top";
 }
 /* line 107, ../sass/_shop.scss */
 .sale.new {
-  border-top: 56px solid #76be1e;
+  border-top: 56px solid #c10841;
 }
 /* line 110, ../sass/_shop.scss */
 .sale.new:before {
-  content: "YENÄ°";
+  content: "New";
 }
 /* line 114, ../sass/_shop.scss */
 .sale.best {
@@ -7019,7 +7019,7 @@ a.edit i:before {
 }
 /* line 117, ../sass/_shop.scss */
 .sale.best:before {
-  content: "VIP";
+  content: "Best";
 }
 
 /* line 123, ../sass/_shop.scss */
@@ -7336,7 +7336,7 @@ a.edit i:before {
 }
 /* line 395, ../sass/_shop.scss */
 .product .product-hover ul li {
-  background-image: url("../img/svg/check-icon.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/check-icon.svg"), none;
   background-repeat: no-repeat;
   background-position: 0 5px;
   line-height: 20px;
@@ -7411,7 +7411,7 @@ a.edit i:before {
 .product.product-danger .product-hover,
 .product.product-danger .limit-offer,
 .product.product-danger .actions.not-rotation-actions {
-  background-color: #76be1e;
+  background-color: #c10841;
 }
 /* line 478, ../sass/_shop.scss */
 .product.product-danger .limit-offer,
@@ -7420,7 +7420,7 @@ a.edit i:before {
 }
 /* line 482, ../sass/_shop.scss */
 .product.product-danger .actions a svg path {
-  fill: #76be1e;
+  fill: #c10841;
 }
 /* line 487, ../sass/_shop.scss */
 .product.product-success .product-hover,
@@ -9421,7 +9421,7 @@ div.jp-audio ul.jp-controls {
 *******************************************************************************/
 /* line 4, ../sass/_footer.scss */
 #footer {
-  color: #b7c3a8;
+  color: #7f7f7f;
   margin: 0;
   overflow-x: hidden;
 }
@@ -9447,14 +9447,14 @@ div.jp-audio ul.jp-controls {
 }
 /* line 27, ../sass/_footer.scss */
 #footer .footer-top {
-  background: #334220;
+  background: #f2f2f2;
   font-size: 12px;
   line-height: 21px;
   padding: 50px 0 13px;
 }
 /* line 33, ../sass/_footer.scss */
 #footer .footer-bottom {
-  background: #363c30;
+  background: #f7f7f7;
   border-top-width: 1px;
   font-size: 11px;
   line-height: 17px;
@@ -9487,7 +9487,7 @@ div.jp-audio ul.jp-controls {
 /* line 59, ../sass/_footer.scss */
 #footer .sidebar .widget header .title,
 #footer .sidebar .widget .title-block .title {
-  color: #76be1e;
+  color: #1e1e1e;
   font-size: 16px;
   font-weight: normal;
   line-height: 1.3;
@@ -9533,7 +9533,7 @@ div.jp-audio ul.jp-controls {
 }
 /* line 102, ../sass/_footer.scss */
 #footer .up {
-  background: #70904a;
+  background: #c6c6c6;
   border-radius: 3px;
   display: block;
   float: right;
@@ -9769,7 +9769,7 @@ div.jp-audio ul.jp-controls {
 }
 /* line 15, ../sass/_one-page.scss */
 .one-page .header .primary .navbar .nav .active {
-  color: #76be1e;
+  color: #c10841;
 }
 
 /******************************************************************************
@@ -9846,7 +9846,7 @@ div.jp-audio ul.jp-controls {
 #count-down .county-hours-wrapper,
 #count-down .county-minutes-wrapper,
 #count-down .county-seconds-wrapper {
-  background: #76be1e;
+  background: #c10841;
   background: rgba(193, 8, 65, 0.5);
   display: inline-block;
   height: 135px;
@@ -10167,7 +10167,7 @@ div.jp-audio ul.jp-controls {
 }
 /* line 162, ../sass/elements/_banner-set.scss */
 .banner-set.load .container {
-  background-image: url("../img/svg/loader.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/loader.svg"), none;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 40px;
@@ -10410,7 +10410,7 @@ div.jp-audio ul.jp-controls {
 *******************************************************************************/
 /* line 4, ../sass/elements/_blur-pages.scss */
 .blur-page {
-  background-image: url("../img/svg/loader.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/loader.svg"), none;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: 40px;
@@ -11643,12 +11643,12 @@ div.jp-audio ul.jp-controls {
 }
 /* line 162, ../sass/elements/_pricings.scss */
 .pricing.pricing-error .title a {
-  color: #76be1e;
+  color: #c10841;
 }
 /* line 165, ../sass/elements/_pricings.scss */
 .pricing.pricing-error .price-box .icon {
-  color: #76be1e;
-  border-color: #76be1e;
+  color: #c10841;
+  border-color: #c10841;
 }
 /* line 169, ../sass/elements/_pricings.scss */
 .pricing.pricing-error .options li,
@@ -11665,7 +11665,7 @@ div.jp-audio ul.jp-controls {
 .pricing.pricing-error .options li span,
 .pricing.pricing-error .bottom-box .more,
 .pricing.pricing-error .options li.active {
-  color: #76be1e;
+  color: #c10841;
 }
 /* line 159, ../sass/elements/_pricings.scss */
 .pricing.pricing-warning:before {
@@ -11703,12 +11703,12 @@ div.jp-audio ul.jp-controls {
 }
 /* line 162, ../sass/elements/_pricings.scss */
 .pricing.pricing-danger .title a {
-  color: #76be1e;
+  color: #c10841;
 }
 /* line 165, ../sass/elements/_pricings.scss */
 .pricing.pricing-danger .price-box .icon {
-  color: #76be1e;
-  border-color: #76be1e;
+  color: #c10841;
+  border-color: #c10841;
 }
 /* line 169, ../sass/elements/_pricings.scss */
 .pricing.pricing-danger .options li,
@@ -11725,7 +11725,7 @@ div.jp-audio ul.jp-controls {
 .pricing.pricing-danger .options li span,
 .pricing.pricing-danger .bottom-box .more,
 .pricing.pricing-danger .options li.active {
-  color: #76be1e;
+  color: #c10841;
 }
 /* line 159, ../sass/elements/_pricings.scss */
 .pricing.pricing-info:before {
@@ -11956,7 +11956,7 @@ div.jp-audio ul.jp-controls {
 /* line 146, ../sass/elements/_respond.scss */
 .respond .description.bg-danger:before,
 .respond .description.border-danger:before {
-  border-top-color: #76be1e;
+  border-top-color: #c10841;
 }
 /* line 151, ../sass/elements/_respond.scss */
 .respond.respond-blockquote.border .border-danger blockquote:before, .respond.respond-blockquote.border .border-danger blockquote:after {
@@ -12266,7 +12266,7 @@ a.big-icon:hover {
 *******************************************************************************/
 /* line 4, ../sass/elements/_social-feed.scss */
 .social-feed {
-  background-image: url("../img/svg/loader.svg"), none;
+  background-image: url("/vendor/laravel-modules-core/assets/frontend/img/svg/loader.svg"), none;
   background-repeat: no-repeat;
   background-position: 50% 100px;
   background-size: 40px;
@@ -12296,7 +12296,7 @@ a.big-icon:hover {
 }
 /* line 29, ../sass/elements/_social-feed.scss */
 .social-feed .post.bg-danger {
-  border-color: #76be1e;
+  border-color: #c10841;
 }
 /* line 32, ../sass/elements/_social-feed.scss */
 .social-feed .post.bg-warning {
@@ -12538,7 +12538,7 @@ a.big-icon:hover {
 
 /* line 252, ../sass/elements/_social-feed.scss */
 .social-feed .bg-danger .buttons .btn {
-  color: #76be1e;
+  color: #c10841;
 }
 
 /* line 255, ../sass/elements/_social-feed.scss */
@@ -12670,19 +12670,19 @@ a.big-icon:hover {
 }
 /* line 81, ../sass/elements/_steps.scss */
 .steps .step.border-error .step-wrapper:after {
-  border-left-color: #76be1e;
+  border-left-color: #c10841;
 }
 /* line 84, ../sass/elements/_steps.scss */
 .steps .step.bg-error .step-wrapper:before {
-  border-left-color: #76be1e;
+  border-left-color: #c10841;
 }
 /* line 81, ../sass/elements/_steps.scss */
 .steps .step.border-danger .step-wrapper:after {
-  border-left-color: #76be1e;
+  border-left-color: #c10841;
 }
 /* line 84, ../sass/elements/_steps.scss */
 .steps .step.bg-danger .step-wrapper:before {
-  border-left-color: #76be1e;
+  border-left-color: #c10841;
 }
 /* line 81, ../sass/elements/_steps.scss */
 .steps .step.border-info .step-wrapper:after {
@@ -12802,37 +12802,37 @@ a.big-icon:hover {
 }
 /* line 182, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.border-error .number {
-  color: #76be1e;
+  color: #c10841;
 }
 /* line 185, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.border-error .number:after {
-  border-top-color: #76be1e;
+  border-top-color: #c10841;
 }
 /* line 189, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.bg-error .number {
-  background: #76be1e;
+  background: #c10841;
   color: #fff;
 }
 /* line 193, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.bg-error .number:before {
-  border-top-color: #76be1e;
+  border-top-color: #c10841;
 }
 /* line 182, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.border-danger .number {
-  color: #76be1e;
+  color: #c10841;
 }
 /* line 185, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.border-danger .number:after {
-  border-top-color: #76be1e;
+  border-top-color: #c10841;
 }
 /* line 189, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.bg-danger .number {
-  background: #76be1e;
+  background: #c10841;
   color: #fff;
 }
 /* line 193, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.bg-danger .number:before {
-  border-top-color: #76be1e;
+  border-top-color: #c10841;
 }
 /* line 182, ../sass/elements/_steps.scss */
 .steps.progress-steps .step.border-info .number {
@@ -13306,17 +13306,17 @@ a.big-icon:hover {
 /* line 152, ../sass/elements/_timeline.scss */
 .timeline .post .timeline-content.bg-danger,
 .timeline .post .timeline-content.border-danger {
-  border-color: #76be1e;
+  border-color: #c10841;
 }
 /* line 156, ../sass/elements/_timeline.scss */
 .timeline .post .timeline-content.bg-danger:before,
 .timeline .post .timeline-content.border-danger:before {
-  border-left-color: #76be1e;
+  border-left-color: #c10841;
 }
 /* line 160, ../sass/elements/_timeline.scss */
 .timeline .post:nth-child(even) .timeline-content.bg-danger:before, .timeline .post:nth-child(even) .timeline-content.border-danger:before {
   border: 15px solid transparent;
-  border-right-color: #76be1e;
+  border-right-color: #c10841;
 }
 /* line 152, ../sass/elements/_timeline.scss */
 .timeline .post .timeline-content.bg-info,
@@ -14269,7 +14269,7 @@ a.big-icon:hover {
 
   /* line 488, ../sass/_responsive.scss */
   .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger > a {
-    border-color: #76be1e;
+    border-color: #c10841;
   }
 
   /* line 491, ../sass/_responsive.scss */
@@ -14313,8 +14313,8 @@ a.big-icon:hover {
   .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger.item-bg:hover > a,
   .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger.item-inverse > a,
   .header .header-wrapper .primary .navbar .navbar-collapse .nav > li.item-danger.item-inverse:hover > a {
-    background-color: #76be1e;
-    border-color: #76be1e;
+    background-color: #c10841;
+    border-color: #c10841;
   }
 
   /* line 526, ../sass/_responsive.scss */
@@ -15617,7 +15617,7 @@ a.big-icon:hover {
 
   /* line 1435, ../sass/_responsive.scss */
   .steps .step.border-error .step-wrapper:after {
-    border-top-color: #76be1e;
+    border-top-color: #c10841;
     border-left-color: transparent;
   }
 
@@ -15641,7 +15641,7 @@ a.big-icon:hover {
 
   /* line 1451, ../sass/_responsive.scss */
   .steps .step.bg-error .step-wrapper:before {
-    border-top-color: #76be1e;
+    border-top-color: #c10841;
     border-left-color: transparent;
   }
 
@@ -15772,7 +15772,7 @@ a.big-icon:hover {
   .timeline .post:nth-child(even) .timeline-content.bg-danger:before,
   .timeline .post .timeline-content.border-danger:before,
   .timeline .post:nth-child(even) .timeline-content.border-danger:before {
-    border-right-color: #76be1e;
+    border-right-color: #c10841;
   }
 
   /* line 1551, ../sass/_responsive.scss */
@@ -16065,7 +16065,7 @@ a.big-icon:hover {
 }
 /* line 1784, ../sass/_responsive.scss */
 .touch-device .panel-group .panel-danger .panel-heading > .panel-title > a:hover {
-  background-color: #76be1e;
+  background-color: #c10841;
 }
 /* line 1787, ../sass/_responsive.scss */
 .touch-device .filter-buttons a:hover {

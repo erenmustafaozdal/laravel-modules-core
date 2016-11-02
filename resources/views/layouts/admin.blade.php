@@ -58,7 +58,7 @@
         @endif
         {{-- /Custom Css --}}
 
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico" />
 
     </head>
 
@@ -69,7 +69,7 @@
             <div class="page-header-inner ">
                 {{-- Logo --}}
                 <div class="page-logo">
-                    <a href="index.html">
+                    <a href="javascript:;">
                         {!! HTML::image(
                             config('laravel-modules-core.logos.' . (Cache::get('theme_color')['color'] == '' ? 'light' : Cache::get('theme_color')['color'])),
                             config('laravel-modules-core.app_name'),

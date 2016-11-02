@@ -39,7 +39,7 @@
         {!! Html::style('vendor/laravel-modules-core/assets/pages/css/login.css') !!}
         {{-- /Page Styles --}}
 
-        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico" />
     </head>
 
     <body class=" login">

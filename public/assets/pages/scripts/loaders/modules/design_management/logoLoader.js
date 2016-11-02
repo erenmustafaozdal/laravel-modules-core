@@ -6,9 +6,9 @@
     });
     $script.ready('jquery', function()
     {
-        $script(modelJs,'home');
+        $script(modelJs,'model');
     });
-    $script.ready(['config','home','app_fileinput','app_jcrop'], function()
+    $script.ready(['config','model','app_fileinput','app_jcrop'], function()
     {
         Model.init();
     });
