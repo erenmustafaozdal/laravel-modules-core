@@ -12,5 +12,6 @@
     $script.ready(['config','model','jquery_ui','touch_punch'], function()
     {
         Model.init();
+        LMCApp.initTooltips();
     });
 })();

@@ -2680,6 +2680,9 @@ a.edit i:before {
 .social .icon-google {
   background: #d94a39;
 }
+.social .icon-instagram {
+  background: #d94a39;
+}
 /* line 420, ../sass/_helper-classes.scss */
 .social .icon-linkedin {
   background: #1b92bd;
@@ -3006,6 +3009,9 @@ a.edit i:before {
 }
 /* line 172, ../sass/_top-bar.scss */
 #top-box .top-social.bg-social .icon-item .fa-google-plus {
+  background: #d94a39;
+}
+#top-box .top-social.bg-social .icon-item .fa-instagram {
   background: #d94a39;
 }
 /* line 175, ../sass/_top-bar.scss */
@@ -8904,6 +8910,9 @@ a.edit i:before {
 .color.icon-google-plus, .color.icon-google-plus-square {
   background-color: #CF3D2E;
 }
+.color.icon-instagram, .color.icon-instagram-square {
+  background-color: #CF3D2E;
+}
 /* line 125, ../sass/_icons.scss */
 .color.icon-html5 {
   background-color: #E54D26;
@@ -12575,6 +12584,10 @@ a.big-icon:hover {
 
 /* line 275, ../sass/elements/_social-feed.scss */
 .social-feed .post.number.google {
+  background: #dd4b39;
+  border-color: #dd4b39;
+}
+.social-feed .post.number.instagram {
   background: #dd4b39;
   border-color: #dd4b39;
 }

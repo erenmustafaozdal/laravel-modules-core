@@ -1,14 +1,14 @@
 @extends(config('ezelnet-frontend-module.views.design_management.layout'))
 
 @section('title')
-    {!! lmcTrans("ezelnet-frontend-module/admin.design_management.site_color") !!}
+    {!! lmcTrans("ezelnet-frontend-module/admin.design_management.footer_color") !!}
 @endsection
 
 @section('page-title')
     <h1>
-        {!! lmcTrans("ezelnet-frontend-module/admin.design_management.site_color") !!}
+        {!! lmcTrans("ezelnet-frontend-module/admin.design_management.footer_color") !!}
         <small>
-            {!! lmcTrans("ezelnet-frontend-module/admin.design_management.site_color_description") !!}
+            {!! lmcTrans("ezelnet-frontend-module/admin.design_management.footer_color_description") !!}
         </small>
     </h1>
 @endsection
@@ -24,10 +24,10 @@
     @parent
     <script type="text/javascript">
         {{-- js file path --}}
-        var modelJs = "{!! lmcElixir('assets/pages/scripts/design_management/site_color.js') !!}";
+        var modelJs = "{!! lmcElixir('assets/pages/scripts/design_management/footer_color.js') !!}";
         {{-- /js file path --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/design_management/siteColor.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/design_management/footerColor.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -39,7 +39,7 @@
             <div class="caption margin-right-10">
                 <i class="fa fa-paint-brush font-red"></i>
                 <span class="caption-subject font-red">
-                    {!! lmcTrans("ezelnet-frontend-module/admin.design_management.site_color") !!}
+                    {!! lmcTrans("ezelnet-frontend-module/admin.design_management.footer_color") !!}
                 </span>
             </div>
             {{-- /Caption --}}
@@ -57,7 +57,7 @@
             {!! Form::open([
                 'method'=> 'POST',
                 'url'   => lmbRoute('admin.design_management.update',[
-                    'form' => 'site_color'
+                    'form' => 'footer_color'
                 ]),
                 'class' => 'form-horizontal form-bordered'
             ]) !!}
@@ -67,7 +67,7 @@
 
             {{-- Form Body --}}
             <div class="form-body">
-                @include('laravel-modules-core::design_management.partials.site_color_form')
+                @include('laravel-modules-core::design_management.partials.footer_color_form')
             </div>
             {{-- /Form Body --}}
 

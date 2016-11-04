@@ -3,16 +3,10 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Laravel Company Module language lines for admin panel
+    | Ezelnet Frontend mmodule language lines for admin panel
     |--------------------------------------------------------------------------
     */
-    // Titles of the companys, naming is made with each routes' name
-    'page_management' => [
-        'home'                      => 'Ana Sayfa Yönetimi',
-        'home_description'          => 'Ana Sayfa\'yı yönet',
-        'company'                   => 'Firma Profili Yönetimi',
-        'company_description'       => 'Firma Profili\'ni yönet',
-    ],
+    // Titles of the frontends, naming is made with each routes' name
     'design_management' => [
         'logo'                      => 'Logo-Favicon Yönetimi',
         'logo_description'          => 'Logo ve favicon düzenle',
@@ -21,6 +15,22 @@ return [
         'menu_styles'               => 'Menü Stilleri',
         'menu_styles_description'   => 'Menü stili belirle ve renkli bantı düzenle',
         'top_box_order'             => 'Renkli Bant Düzeni',
+        'footer_color'              => 'Footer Renk Ayarları',
+        'footer_color_description'  => 'Footerda kullanılan renkleri düzenle',
+        'default_design'            => 'Default Tasarım Ayarları',
+        'default_design_description'=> 'Default renklerine geri dön veya kullandığın renkleri default olarak kaydet',
+    ],
+    'general_configs' => [
+        'social_accounts'           => 'Sosyal Medya Hesapları',
+        'social_accounts_description'=> 'Sosyal medya hesaplarını düzenle',
+        'footer_edits'              => 'Footer Düzenlemeleri',
+        'footer_edits_description'  => 'Footer bölümünü düzenle',
+    ],
+    'page_management' => [
+        'home'                      => 'Ana Sayfa Yönetimi',
+        'home_description'          => 'Ana Sayfa\'yı yönet',
+        'company'                   => 'Firma Profili Yönetimi',
+        'company_description'       => 'Firma Profili\'ni yönet',
     ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
@@ -29,6 +39,19 @@ return [
 
     // menu
     'menu' => [
+        'design_management' => [
+            'root'                  => 'Tasarım Yönetimi',
+            'logo'                  => 'Logo-Favicon Ayarları',
+            'site_color'            => 'Site Renk Düzenlemesi',
+            'menu_styles'           => 'Menü Stilleri',
+            'footer_color'          => 'Footer Renk Ayarları',
+            'default_design'        => 'Default Tasarım Ayarları',
+        ],
+        'general_configs' => [
+            'root'                  => 'Genel Ayarlar',
+            'social_accounts'       => 'Sosyal Medya Hesapları',
+            'footer_edits'          => 'Footer Düzenlemeleri',
+        ],
         'page_management' => [
             'root'                  => 'Sayfa Yönetimleri',
             'home'                  => 'Ana Sayfa Yönetimi',
@@ -37,33 +60,10 @@ return [
                 'company'           => 'Firma Profili',
             ]
         ],
-        'design_management' => [
-            'root'                  => 'Tasarım Yönetimi',
-            'logo'                  => 'Logo-Favicon Ayarları',
-            'site_color'            => 'Site Renk Düzenlemesi',
-            'menu_styles'           => 'Menü Stilleri',
-        ]
     ],
 
     // fields
     'fields' => [
-        'page_management' => [
-            'enable_sortable'       => 'Sıralamayı Aç',
-            'disable_sortable'      => 'Sıralamayı Kapat',
-            'save_sortable'         => 'Sıralamayı Kaydet',
-            'auto_play'             => 'Slider otomatik oynatılsın mı?',
-            'is_revert'             => 'Ürün imajı dönme efekti aktif olsun mu?',
-            'order_type'            => 'Veriler nasıl sıralansın?',
-            'item_type'             => 'Veriler nereden alınsın?',
-            'items_type'            => 'Hangi veriler alınsın?',
-            'link'                  => 'Bağlantı Adresi',
-            'title'                 => 'Bölüm Başlığı',
-            'is_active'             => 'Bölüm aktifleştirilsin mi?',
-            'background_photo'      => 'Arka Plan Fotoğrafı',
-            'ad_big_image'          => 'Reklam Banner Büyük Fotoğraf',
-            'ad_small_image'        => 'Reklam Banner Küçük Fotoğraf',
-            'item_visible'          => 'Neler görünsün?'
-        ],
         'design_management' => [
             // logo
             'current_logo'          => 'Geçerli Logo',
@@ -100,6 +100,40 @@ return [
             'email_icon'            => 'fa fa-envelope',
             'social_accounts'       => 'Sosyal Hesaplar',
             'social_accounts_icon'  => 'fa fa-facebook',
+
+            // default design
+            'default_colors'        => 'Default Renkler',
+            'current_colors'        => 'Geçerli Renkler',
+            'save_as_default'       => 'Default Olarak Kaydet',
+            'back_to_default'       => 'Default Renklere Geri Dön',
+        ],
+        'general_configs' => [
+            // footer edits
+            'footer_title'          => 'Footer Bölüm Başlığı',
+            'is_active'             => 'Aktif mi?',
+            'has_social_media'      => 'Sosyal Medya bulunsun mu?',
+            'footer_content'        => 'Footer İçeriği',
+            'links'                 => 'Bağlantılar',
+            'description'           => 'Açıklama',
+            'link_title'            => 'Bağlantı Metni',
+            'link'                  => 'Bağlantı',
+        ],
+        'page_management' => [
+            'enable_sortable'       => 'Sıralamayı Aç',
+            'disable_sortable'      => 'Sıralamayı Kapat',
+            'save_sortable'         => 'Sıralamayı Kaydet',
+            'auto_play'             => 'Slider otomatik oynatılsın mı?',
+            'is_revert'             => 'Ürün imajı dönme efekti aktif olsun mu?',
+            'order_type'            => 'Veriler nasıl sıralansın?',
+            'item_type'             => 'Veriler nereden alınsın?',
+            'items_type'            => 'Hangi veriler alınsın?',
+            'link'                  => 'Bağlantı Adresi',
+            'title'                 => 'Bölüm Başlığı',
+            'is_active'             => 'Bölüm aktifleştirilsin mi?',
+            'background_photo'      => 'Arka Plan Fotoğrafı',
+            'ad_big_image'          => 'Reklam Banner Büyük Fotoğraf',
+            'ad_small_image'        => 'Reklam Banner Küçük Fotoğraf',
+            'item_visible'          => 'Neler görünsün?'
         ],
         'frontend' => [
             'language'              => 'Dil',
