@@ -31,8 +31,10 @@ return [
         'contact_info_description'  => 'İletişim bilgilerini düzenle',
     ],
     'page_management' => [
+        // home
         'home'                      => 'Ana Sayfa Yönetimi',
         'home_description'          => 'Ana Sayfa\'yı yönet',
+        // enterprise
         'company'                   => 'Firma Profili Yönetimi',
         'company_description'       => 'Firma Profili\'ni yönet',
         'document'                  => 'Belgelerimiz Yönetimi',
@@ -41,6 +43,43 @@ return [
         'reference_description'     => 'Referanslarımız\'ı yönet',
         'brands_dealers'            => 'Markalar/Bayilikler Yönetimi',
         'brands_dealers_description'=> 'Markalar/Bayilikler\'i yönet',
+        'team'                      => 'Ekibimiz Yönetimi',
+        'team_description'          => 'Ekibimiz\'i yönet',
+        'enterprise_photo'          => 'Kurumsal Foto Galeri Yönetimi',
+        'enterprise_photo_description'=> 'Kurumsal Foto Galeri\'yi yönet',
+        'enterprise_video'          => 'Kurumsal Video Galeri Yönetimi',
+        'enterprise_video_description'=> 'Kurumsal Video Galeri\'yi yönet',
+        // actual
+        'campaigns'                 => 'Kampanyalar Yönetimi',
+        'campaigns_description'     => 'Kampanyalar\'ı yönet',
+        'price_lists'               => 'Fiyat Listeleri Yönetimi',
+        'price_lists_description'   => 'Fiyat Listeleri\'ni yönet',
+        'catalogs'                  => 'Kataloglar Yönetimi',
+        'catalogs_description'      => 'Kataloglar\'ı yönet',
+        'info_bank'                 => 'Dokümanlar/Bilgi Bankası Yönetimi',
+        'info_bank_description'     => 'Dokümanlar/Bilgi Bankası\'nı yönet',
+        'education_activities'      => 'Eğitim Faaliyetleri Yönetimi',
+        'education_activities_description'=> 'Eğitim Faaliyetleri\'ni yönet',
+        'faqs'                      => 'Sorular (SSS) Yönetimi',
+        'faqs_description'          => 'Sorular (SSS)\'ı yönet',
+        'useful_links'              => 'Faydalı Linkler Yönetimi',
+        'useful_links_description'  => 'Faydalı Linkler\'i yönet',
+        // media we
+        'media_we_photo'            => 'Basında Biz Foto Galeri Yönetimi',
+        'media_we_photo_description'=> 'Basında Biz Foto Galeri\'yi yönet',
+        'media_we_video'            => 'Basında Biz Video Galeri Yönetimi',
+        'media_we_video_description'=> 'Basında Biz Video Galeri\'yi yönet',
+        'news'                      => 'Haberler/Duyurular Yönetimi',
+        'news_description'          => 'Haberler/Duyurular\'ı yönet',
+        // others
+        'dealers'                   => 'Bayilerimiz Yönetimi',
+        'dealers_description'       => 'Bayilerimiz\'i yönet',
+        'services'                  => 'Hizmetlerimiz Yönetimi',
+        'services_description'      => 'Hizmetlerimiz\'i yönet',
+        'projects'                  => 'Projelerimiz Yönetimi',
+        'projects_description'      => 'Projelerimiz\'i yönet',
+        'contact'                   => 'İletişim Yönetimi',
+        'contact_description'       => 'İletişim\'i yönet',
     ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
@@ -66,11 +105,7 @@ return [
         ],
         'page_management' => [
             'root'                  => 'Sayfa Yönetimleri',
-            'home'                  => 'Ana Sayfa Yönetimi',
-            'enterprise' => [
-                'root'              => 'Kurumsal',
-                'company'           => 'Firma Profili',
-            ]
+            'home'                  => 'Ana Sayfa Yönetimi'
         ],
     ],
 
@@ -151,6 +186,8 @@ return [
             'ad_small_image'        => 'Reklam Banner Küçük Fotoğraf',
             'item_visible'          => 'Neler görünsün?',
             'page_title'            => ':menu_page Sayfa Başlığı',
+            'page_button_text'      => ':menu_page Buton Metni',
+            'page_item_count'       => ':menu_page Sayfada Gösterilecek Nesne Sayısı',
         ],
         'frontend' => [
             'language'              => 'Dil',
