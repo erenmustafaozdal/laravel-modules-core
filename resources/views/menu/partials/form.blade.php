@@ -52,7 +52,7 @@
         <label class="control-label">{!! lmcTrans('laravel-menu-module/admin.fields.menu.color') !!}</label>
         <select class="bs-select form-control" data-show-subtext="true" name="color">
             <option value="" {{ (isset($menu) && is_null($menu->colorClass)) || !isset($menu) ? 'selected' : '' }} data-content="{!! lmcTrans('admin.fields.default') !!}">
-                {!! lmcTrans('admin.fields.dark_blue') !!}
+                {!! lmcTrans('admin.fields.default') !!}
             </option>
             <option value="primary" {{ isset($menu) && !is_null($menu->colorClass) && $menu->colorClass->color_class == 'primary' ? 'selected' : '' }} data-content="{!! lmcTrans('admin.fields.dark_blue') !!} <span class='label lable-sm label-primary' style='background: #037ac5;'>{!! lmcTrans('admin.fields.dark_blue') !!} </span>">
                 {!! lmcTrans('admin.fields.dark_blue') !!}

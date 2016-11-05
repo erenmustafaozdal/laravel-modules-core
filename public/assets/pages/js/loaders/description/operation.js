@@ -106,7 +106,7 @@
         var descriptionType = hasDescription ? 'show' : 'hide';
         var photoType = hasPhoto ? 'show' : 'hide';
         var linkType = hasLink ? 'show' : 'hide';
-        var contentType = hasDescription || hasPhoto ? 'show' : 'hide';
+        var contentType = hasDescription || hasPhoto || hasLink ? 'show' : 'hide';
         theSelect2.setInputDisplay(hasDescriptionObject, descriptionType);
         theSelect2.setInputDisplay(hasPhotoObject, photoType);
         theSelect2.setInputDisplay(hasLinkObject, linkType);

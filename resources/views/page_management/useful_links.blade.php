@@ -1,24 +1,28 @@
 @extends(config('ezelnet-frontend-module.views.page_management.layout'))
 
 @section('title')
-    {!! lmcTrans('ezelnet-frontend-module/admin.page_management.news') !!}
+    {!! lmcTrans('ezelnet-frontend-module/admin.page_management.useful_links') !!}
 @endsection
 
 @section('page-title')
     <h1>
-        {!! lmcTrans('ezelnet-frontend-module/admin.page_management.news') !!}
+        {!! lmcTrans('ezelnet-frontend-module/admin.page_management.useful_links') !!}
         <small>
-            {!! lmcTrans('ezelnet-frontend-module/admin.page_management.news_description') !!}
+            {!! lmcTrans('ezelnet-frontend-module/admin.page_management.useful_links_description') !!}
         </small>
     </h1>
 @endsection
 
 @section('css')
     @parent
+    {{-- Bootstrap Select --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css') !!}
+    {{-- /Bootstrap Select --}}
 @endsection
 
 @section('script')
     @parent
+    <script src="{!! lmcElixir('assets/pages/js/loaders/page_management/usefulLinks.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -30,7 +34,7 @@
             <div class="caption margin-right-10">
                 <i class="icon-pencil font-red"></i>
                 <span class="caption-subject font-red">
-                    {!! lmcTrans('ezelnet-frontend-module/admin.page_management.news') !!}
+                    {!! lmcTrans('ezelnet-frontend-module/admin.page_management.useful_links') !!}
                 </span>
             </div>
             {{-- /Caption --}}
@@ -55,7 +59,7 @@
                 {!! Form::open([
                     'method'=> 'POST',
                     'url'   => lmbRoute('admin.page_management.pageOptionUpdate',[
-                        'page'  => 'news',
+                        'page'  => 'useful_links',
                     ]),
                     'class' => 'form-horizontal form-bordered'
                 ]) !!}
@@ -67,8 +71,7 @@
 
                     @foreach($pages as $page)
                         @include('laravel-modules-core::page_management.partials.page_option_title')
-                        @include('laravel-modules-core::page_management.partials.page_option_button_text')
-                        @include('laravel-modules-core::page_management.partials.page_option_item_count')
+                        @include('laravel-modules-core::page_management.partials.page_option_item_color')
                     @endforeach
 
                 </div>

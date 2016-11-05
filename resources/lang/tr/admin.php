@@ -204,6 +204,7 @@ return [
         'green'                         => 'Yeşil',
         'yellow'                        => 'Sarı',
         'red'                           => 'Kırmızı',
+        'grey'                          => 'Gri-Siyah',
 
         'column'                        => 'Sütun',
 

@@ -15,10 +15,6 @@
 
 @section('css')
     @parent
-    {{-- No Ui Slider --}}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/nouislider/nouislider.min.css') !!}
-    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/nouislider/nouislider.pips.css') !!}
-    {{-- /No Ui Slider --}}
 @endsection
 
 @section('script')
