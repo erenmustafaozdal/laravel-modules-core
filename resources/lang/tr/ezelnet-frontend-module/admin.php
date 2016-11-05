@@ -25,6 +25,10 @@ return [
         'social_accounts_description'=> 'Sosyal medya hesaplarını düzenle',
         'footer_edits'              => 'Footer Düzenlemeleri',
         'footer_edits_description'  => 'Footer bölümünü düzenle',
+        'fast_management'           => 'Hızlı Yönetim',
+        'fast_management_description'=> 'Hızlı yönetim için istediğin menüleri sık kullanılanlar olarak ekle',
+        'contact_info'              => 'İletişim Bilgisi',
+        'contact_info_description'  => 'İletişim bilgilerini düzenle',
     ],
     'page_management' => [
         'home'                      => 'Ana Sayfa Yönetimi',
@@ -51,6 +55,8 @@ return [
             'root'                  => 'Genel Ayarlar',
             'social_accounts'       => 'Sosyal Medya Hesapları',
             'footer_edits'          => 'Footer Düzenlemeleri',
+            'fast_management'       => 'Hızlı Yönetim',
+            'contact_info'          => 'İletişim Bilgisi',
         ],
         'page_management' => [
             'root'                  => 'Sayfa Yönetimleri',
@@ -117,6 +123,10 @@ return [
             'description'           => 'Açıklama',
             'link_title'            => 'Bağlantı Metni',
             'link'                  => 'Bağlantı',
+
+            // contact info
+            'phone'                 => 'Telefon',
+            'email'                 => 'E-posta'
         ],
         'page_management' => [
             'enable_sortable'       => 'Sıralamayı Aç',

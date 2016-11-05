@@ -27,11 +27,6 @@
         {{-- routes --}}
         var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
         {{-- /routes --}}
-
-
-        $script.ready(['config','repeater'], function()
-        {
-        });
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/general_configs/footerEdits.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>

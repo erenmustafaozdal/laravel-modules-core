@@ -215,6 +215,8 @@ return [
         'photo'                         => '[0,1] Fotoğraf |[2,Inf] Fotoğraflar',
         'order_random'                  => 'Rastgele Sırala',
         'order_last'                    => 'Önce Son Eklenen',
+
+        'fast_management'               => 'Hızlı Yönetim',
     ],
 
     // helpers

@@ -101,6 +101,17 @@
                                 @include('laravel-modules-core::partials.admin.topbarUserLogin')
                             </li>
                             {{-- /User Login Dropdown --}}
+                            
+                            {{-- Quick Sidebar Toggler --}}
+                            <li class="dropdown dropdown-extended quick-sidebar-toggler tooltips"
+                                data-container="body"
+                                data-placement="bottom"
+                                data-original-title="{!! lmcTrans('admin.fields.fast_management') !!}"
+                            >
+                                <span class="sr-only">{!! lmcTrans('admin.fields.fast_management') !!}</span>
+                                <i class="icon-logout"></i>
+                            </li>
+                            {{-- /Quick Sidebar Toggler --}}
                         </ul>
                     </div>
                     {{-- /Navigation Menu --}}
@@ -162,6 +173,10 @@
                 {{-- /Page Content Body --}}
             </div>
             {{-- /Page Content Wrapper --}}
+            
+            {{-- Quick Sidebar --}}
+            @include('laravel-modules-core::partials.admin.quick_sidebar')
+            {{-- /Quick Sidebar --}}
             
         </div>
         {{-- /Container --}}

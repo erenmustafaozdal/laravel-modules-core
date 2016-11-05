@@ -1949,3 +1949,19 @@ body.modal-open {
     border: 2px dashed #eee;
     margin-bottom: 25px;
 }
+
+/* List Items */
+.mt-element-list .list-simple.mt-list-container ul > .mt-list-item > .list-item-content.parent {
+    padding-left: 0 !important;
+}
+
+/* Quick Side Bar */
+.page-quick-sidebar-wrapper a {
+    color: #99a8b5 !important;
+    text-decoration: none !important;
+}
+.page-quick-sidebar-wrapper li.media .media-body {
+    vertical-align: inherit !important;
+    width: inherit !important;
+    height: 22px !important;
+}

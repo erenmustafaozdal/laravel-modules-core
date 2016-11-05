@@ -26,6 +26,7 @@
 
     $script.ready('app', function() {
         $script('/vendor/laravel-modules-core/assets/layouts/layout4/scripts/layout.js','layout');
+        $script('/vendor/laravel-modules-core/assets/layouts/global/scripts/quick-sidebar.js');
     });
 
     $script.ready('layout', function() {
