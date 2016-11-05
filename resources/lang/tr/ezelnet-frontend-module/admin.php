@@ -150,7 +150,7 @@ return [
             'ad_big_image'          => 'Reklam Banner Büyük Fotoğraf',
             'ad_small_image'        => 'Reklam Banner Küçük Fotoğraf',
             'item_visible'          => 'Neler görünsün?',
-            'page_title'            => 'Sayfa Başlığı',
+            'page_title'            => ':menu_page Sayfa Başlığı',
         ],
         'frontend' => [
             'language'              => 'Dil',
@@ -172,7 +172,8 @@ return [
             'advertisement_banner'=> 'Reklam Banner\'ın aktif olması için iki imajın da yüklenmesi gerekiyor.',
             'not_options'  => 'Bu bölümün ayarları bulunmamaktadır.',
             'link'          => 'Veri ile alakalı bir internet adresi ekle. Bu alan zorunlu <em class="label label-warning">değildir</em>. Lütfen yazdığın internet adresinin başına <em class="label label-info">http://</em> veya <em class="label label-info">https://</em> eklemeyi unutma. <small class="text-muted">( Ör: http://siteadresi.com )</small> ',
-            'item_visible'  => 'Görünenler <em class="label label-info">2</em> adet olmalı.'
+            'item_visible'  => 'Görünenler <em class="label label-info">2</em> adet olmalı.',
+            'page_options'  => 'Menüye eklediğin sayfaların ilgili ayarlarını buradan yapabilirsin. Örneğin; <em class="text-info">sayfa başlığını</em> burada belirtmediğinde, kategorisine veya modülüne göre başlık alacaktır.',
         ],
         'design_management' => [
             // site color and footer color

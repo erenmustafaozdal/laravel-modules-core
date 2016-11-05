@@ -40,34 +40,42 @@
         {{-- Portlet Body --}}
         <div class="portlet-body form">
 
+            {{-- Helpers --}}
+            <div class="note note-info">
+                {!! lmcTrans('ezelnet-frontend-module/admin.helpers.page_management.page_options') !!}
+            </div>
+            {{-- /Helpers --}}
+
             {{-- Error Messages --}}
             @include('laravel-modules-core::partials.error_message')
             {{-- /Error Messages --}}
 
             {{-- Operation Form --}}
-            {!! Form::open([
-                'method'=> 'POST',
-                'url'   => lmbRoute('admin.page_management.updateSection',[
-                    'id'    => $page->sections->first()->id,
-                    'form'  => $page->sections->first()->slug,
-                    'page'  => 'brands_dealers',
-                ]),
-                'class' => 'form-horizontal form-bordered'
-            ]) !!}
+            @if( ! $pages->isEmpty())
+                {!! Form::open([
+                    'method'=> 'POST',
+                    'url'   => lmbRoute('admin.page_management.pageOptionUpdate',[
+                        'page'  => 'brands_dealers',
+                    ]),
+                    'class' => 'form-horizontal form-bordered'
+                ]) !!}
 
-            @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+                @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
 
-            {{-- Form Body --}}
-            <div class="form-body">
+                {{-- Form Body --}}
+                <div class="form-body">
 
-                @include('laravel-modules-core::page_management.partials.brands_dealers_form')
+                    @foreach($pages as $page)
+                        @include('laravel-modules-core::page_management.partials.page_option_title')
+                    @endforeach
 
-            </div>
-            {{-- /Form Body --}}
+                </div>
+                {{-- /Form Body --}}
 
-            @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+                @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
 
-            {!! Form::close() !!}
+                {!! Form::close() !!}
+            @endif
             {{-- /Operation Form --}}
 
         </div>
