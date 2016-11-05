@@ -35,6 +35,12 @@ return [
         'home_description'          => 'Ana Sayfa\'yı yönet',
         'company'                   => 'Firma Profili Yönetimi',
         'company_description'       => 'Firma Profili\'ni yönet',
+        'document'                  => 'Belgelerimiz Yönetimi',
+        'document_description'      => 'Belgelerimiz\'i yönet',
+        'reference'                 => 'Referanslarımız Yönetimi',
+        'reference_description'     => 'Referanslarımız\'ı yönet',
+        'brands_dealers'            => 'Markalar/Bayilikler Yönetimi',
+        'brands_dealers_description'=> 'Markalar/Bayilikler\'i yönet',
     ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
@@ -143,7 +149,8 @@ return [
             'background_photo'      => 'Arka Plan Fotoğrafı',
             'ad_big_image'          => 'Reklam Banner Büyük Fotoğraf',
             'ad_small_image'        => 'Reklam Banner Küçük Fotoğraf',
-            'item_visible'          => 'Neler görünsün?'
+            'item_visible'          => 'Neler görünsün?',
+            'page_title'            => 'Sayfa Başlığı',
         ],
         'frontend' => [
             'language'              => 'Dil',
