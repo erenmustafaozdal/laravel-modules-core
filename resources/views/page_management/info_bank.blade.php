@@ -1,24 +1,28 @@
 @extends(config('ezelnet-frontend-module.views.page_management.layout'))
 
 @section('title')
-    {!! lmcTrans('ezelnet-frontend-module/admin.page_management.education_activities') !!}
+    {!! lmcTrans('ezelnet-frontend-module/admin.page_management.info_bank') !!}
 @endsection
 
 @section('page-title')
     <h1>
-        {!! lmcTrans('ezelnet-frontend-module/admin.page_management.education_activities') !!}
+        {!! lmcTrans('ezelnet-frontend-module/admin.page_management.info_bank') !!}
         <small>
-            {!! lmcTrans('ezelnet-frontend-module/admin.page_management.education_activities_description') !!}
+            {!! lmcTrans('ezelnet-frontend-module/admin.page_management.info_bank_description') !!}
         </small>
     </h1>
 @endsection
 
 @section('css')
     @parent
+    {{-- Bootstrap Select --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css') !!}
+    {{-- /Bootstrap Select --}}
 @endsection
 
 @section('script')
     @parent
+    <script src="{!! lmcElixir('assets/pages/js/loaders/page_management/usefulLinks.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -30,7 +34,7 @@
             <div class="caption margin-right-10">
                 <i class="icon-pencil font-red"></i>
                 <span class="caption-subject font-red">
-                    {!! lmcTrans('ezelnet-frontend-module/admin.page_management.education_activities') !!}
+                    {!! lmcTrans('ezelnet-frontend-module/admin.page_management.info_bank') !!}
                 </span>
             </div>
             {{-- /Caption --}}
@@ -55,7 +59,7 @@
                 {!! Form::open([
                     'method'=> 'POST',
                     'url'   => lmbRoute('admin.page_management.pageOptionUpdate',[
-                        'page'  => 'education_activities',
+                        'page'  => 'info_bank',
                     ]),
                     'class' => 'form-horizontal form-bordered'
                 ]) !!}
@@ -67,10 +71,7 @@
 
                     @foreach($pages as $page)
                         @include('laravel-modules-core::page_management.partials.page_option_title')
-                        @include('laravel-modules-core::page_management.partials.page_option_button_text')
-                        @include('laravel-modules-core::page_management.partials.page_option_item_count',[
-                            'counts'    => config('ezelnet-frontend-module.page_item_count.blog')
-                        ])
+                        @include('laravel-modules-core::page_management.partials.page_option_item_color')
                     @endforeach
 
                 </div>

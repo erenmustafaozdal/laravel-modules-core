@@ -68,7 +68,9 @@
                     @foreach($pages as $page)
                         @include('laravel-modules-core::page_management.partials.page_option_title')
                         @include('laravel-modules-core::page_management.partials.page_option_button_text')
-                        @include('laravel-modules-core::page_management.partials.page_option_item_count')
+                        @include('laravel-modules-core::page_management.partials.page_option_item_count',[
+                            'counts'    => config('ezelnet-frontend-module.page_item_count.blog')
+                        ])
                     @endforeach
 
                 </div>

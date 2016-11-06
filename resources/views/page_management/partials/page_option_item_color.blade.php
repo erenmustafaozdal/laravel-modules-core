@@ -10,7 +10,7 @@
 
             @foreach(config('ezelnet-frontend-module.page_item_color') as $key => $color)
                 <option value="{{ $key }}"
-                        {{ !is_null($page->option) && $page->option->options_array->item_color == $key ? 'selected' : '' }}
+                        {{ !is_null($page->option) && !empty($page->option->options_array) && $page->option->options_array->item_color == $key ? 'selected' : '' }}
                         @if(is_array($color))
                         data-content="{!! lmcTrans("ezelnet-frontend-module/admin.fields.page_management.{$color['lang']}") !!} <span class='label lable-sm label-primary' style='background: {{ $color['color'] }};'>{!! lmcTrans("admin.fields.{$color['lang']}") !!} </span>"
                         @endif

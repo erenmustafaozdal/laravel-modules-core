@@ -49,8 +49,8 @@
     <label class="control-label">{!! lmcTrans('laravel-media-module/admin.fields.media_category.gallery_type') !!}</label>
         <select class="form-control form-control-solid placeholder-no-fix select2me" name="gallery_type" style="width: 100%">
             <option value="">{!! lmcTrans('admin.ops.select') !!}</option>
-            @foreach(config('laravel-media-module.gallery_types') as $type)
-                <option value="{!! $type !!}">{!! lmcTrans('laravel-media-module/admin.fields.media_category.' . $type) !!}</option>
+            @foreach(config('laravel-media-module.gallery_types') as $key => $type)
+                <option value="{!! $key !!}">{!! $type !!}</option>
             @endforeach
         </select>
         <span class="help-block"> {!! lmcTrans('laravel-media-module/admin.helpers.media_category.gallery_type') !!} </span>

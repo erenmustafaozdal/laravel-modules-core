@@ -126,7 +126,7 @@
 
                 {{-- DataTable --}}
                 {{-- if is not have child show info, if have child show table --}}
-                @if( (isset($parent_dealer_category) && $parent_dealer_category->isLeaf()) || App\DocumentCategory::all()->count() == 0 )
+                @if( (isset($parent_dealer_category) && $parent_dealer_category->isLeaf()) || App\DealerCategory::all()->count() == 0 )
                     <div class="well well-lg">
                         {!! lmcTrans('laravel-dealer-module/admin.helpers.dealer_category.not_have_child') !!}
                     </div>
