@@ -6,6 +6,7 @@
         ]) !!}
     </label>
     <div class="col-md-9">
+        {!! Form::hidden("pages[{$page->id}][options][is_active]",0) !!}
         {!! Form::checkbox( "pages[{$page->id}][options][is_active]", 1, !is_null($page->option) && !empty($page->option->options_array) && $page->option->options_array->is_active, [
             'class'         => 'make-switch',
             'data-on-text'  => '<i class="fa fa-check"></i>',
