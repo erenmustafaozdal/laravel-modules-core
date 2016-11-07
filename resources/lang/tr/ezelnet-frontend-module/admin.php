@@ -83,7 +83,7 @@ return [
     ],
     'frontend' => [
         'home'                      => 'Ana Sayfa',
-        'company'                   => 'Firma Profili'
+        'company'                   => 'Firma Profili',
     ],
 
     // menu

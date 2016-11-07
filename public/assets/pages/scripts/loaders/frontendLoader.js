@@ -13,6 +13,9 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/pixastic.custom.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/masonry.pkgd.min.js', 'masonry');
         $script('/vendor/laravel-modules-core/assets/global/plugins/TouchSwipe/jquery.touchSwipe.min.js', 'touchSwipe');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/isotope.pkgd.min.js', 'isotope');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/ladda/ladda.min.js');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-validator/bootstrapValidator.min.js');
 
         // revolution slider
         $script('/vendor/laravel-modules-core/assets/global/plugins/revolution/jquery.themepunch.tools.min.js','revolution_tools');
@@ -21,7 +24,7 @@
         // price regulator
         $script('/vendor/laravel-modules-core/assets/global/plugins/price-regulator.js','price_regulator');
     });
-    $script.ready(['bootstrap','revolution_tools','revolution','price_regulator','images_loaded','carousel'], function() {
+    $script.ready(['bootstrap','revolution_tools','revolution','price_regulator','images_loaded','carousel','isotope'], function() {
         $script(mainJS);
     });
 

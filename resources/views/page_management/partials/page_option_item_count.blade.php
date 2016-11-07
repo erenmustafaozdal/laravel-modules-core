@@ -6,7 +6,7 @@
         ]) !!}
     </label>
     <div class="col-md-9">
-        {!! Form::select( "pages[{$page->id}][options][item_count]", array_keys($counts)[0], is_null($page->option) || empty($page->option->options_array) ? 10 : $page->option->options_array->item_count, [
+        {!! Form::select( "pages[{$page->id}][options][item_count]", $counts, is_null($page->option) || empty($page->option->options_array) ? array_keys($counts)[0] : $page->option->options_array->item_count, [
             'class'         => 'form-control input-xsmall'
         ]) !!}
     </div>

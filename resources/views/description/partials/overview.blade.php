@@ -102,7 +102,7 @@
                     {!! lmcTrans('laravel-description-module/admin.fields.description.description') !!}
                 </label>
                 <div class="col-sm-10">
-                    <p class="form-control-static"> {{ $description->description->description or '' }} </p>
+                    <p class="form-control-static"> {!! $description->description->description or '' !!} </p>
                 </div>
             </div>
         @endif

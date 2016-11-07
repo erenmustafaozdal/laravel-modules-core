@@ -8,10 +8,10 @@ $(function() {
 			var ieversion=new Number(RegExp.$1);
 			if (ieversion>=9)
 				if (typeof this.naturalWidth === "undefined" || this.naturalWidth === 0)
-					this.src = "http://placehold.it/" + ($(this).attr('width') || this.width || $(this).naturalWidth()) + "x" + (this.naturalHeight || $(this).attr('height') || $(this).height());
+					this.src = "http://placehold.it/" + ($(this).attr('width') || this.width || $(this).naturalWidth()) + "x" + (this.naturalHeight || $(this).attr('height') || $(this).height()) + '/' + bgColor + '/' + textColor + '?text= ';
 		} else {
 			if (!this.complete || typeof this.naturalWidth === "undefined" || this.naturalWidth === 0)
-				this.src = "http://placehold.it/" + ($(this).attr('width') || this.width) + "x" + ($(this).attr('height') || $(this).height());
+				this.src = "http://placehold.it/" + ($(this).attr('width') || this.width) + "x" + ($(this).attr('height') || $(this).height()) + '/' + bgColor + '/' + textColor + '?text= ';
 		}
 	});
 });
