@@ -191,7 +191,7 @@ var Index = {
                             data: "category", name: "category",
                             render: function ( data, type, full, meta )
                             {
-                                if (data != null ) {
+                                if (data != null && data.name != '' ) {
                                     return '<a href="' + categoryURL.replace("###id###", data.id) + '"> ' + data.name + ' </a>';
                                 }
                                 return '';

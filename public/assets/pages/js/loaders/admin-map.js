@@ -1,6 +1,6 @@
 ;(function() {
     "use strict";
-    $script('http://maps.google.com/maps/api/js?sensor=true', 'google_maps');
+    $script('http://maps.google.com/maps/api/js', 'google_maps');
     $script.ready('google_maps', function()
     {
         $script('/vendor/laravel-modules-core/assets/global/plugins/gmaps/gmaps.js', 'gmaps');

@@ -55,6 +55,7 @@ return [
             'add_email'             => 'Yeni E-posta Ekle',
             'photo'                 => 'Fotoğraf',
             'description'           => 'Açıklama',
+            'task'                  => 'Görev',
             'phone'                 => 'Telefon',
             'add_phone'             => 'Yeni Telefon Ekle',
             'url'                   => 'Adresi'

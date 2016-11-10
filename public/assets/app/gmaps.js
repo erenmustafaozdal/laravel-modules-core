@@ -15,8 +15,8 @@ var Maps = {
      */
     window: '<h4>:title</h4>' +
     '<p>' +
-    '<b>' + LMCApp.lang.admin.ops.latitude + ' :</b> :latitude <br>' +
-    '<b>' + LMCApp.lang.admin.ops.longitude + ' :</b> :longitude' +
+        '<b>' + LMCApp.lang.admin.ops.latitude + ' :</b> :latitude <br>' +
+        '<b>' + LMCApp.lang.admin.ops.longitude + ' :</b> :longitude' +
     '</p>',
 
     /**

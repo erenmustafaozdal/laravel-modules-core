@@ -60,6 +60,7 @@ return [
         'description'   => 'Bütün verilerin gösterildiği bağlantı adresleri',
         'media'         => 'Bütün medyaların gösterildiği bağlantı adresleri',
         'dealer'        => 'Bütün bayilerin gösterildiği bağlantı adresleri',
+        'team'          => 'Bütün personellerin gösterildiği bağlantı adresleri',
         'product'       => 'Bütün ürünlerin veya yalnız bir ürünün gösterildiği bağlantı adresleri',
         'contact'       => 'İletişim sayfası bağlantı adresi',
         'company'       => 'Firma profili sayfası bağlantı adresi',

@@ -70,6 +70,7 @@
 
         {{-- languages --}}
         var messagesOfRules = {
+            category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
             name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
             province_id: { required: "{!! LMCValidation::getMessage('province_id','required') !!}" },
             county_id: { required: "{!! LMCValidation::getMessage('county_id','required') !!}" },

@@ -29,6 +29,8 @@ return [
         'fast_management_description'=> 'Hızlı yönetim için istediğin menüleri sık kullanılanlar olarak ekle',
         'contact_info'              => 'İletişim Bilgisi',
         'contact_info_description'  => 'İletişim bilgilerini düzenle',
+        'seo'                       => 'SEO',
+        'seo_description'           => 'SEO bilgilerini düzenle',
     ],
     'page_management' => [
         // home
@@ -84,6 +86,9 @@ return [
     'frontend' => [
         'home'                      => 'Ana Sayfa',
         'company'                   => 'Firma Profili',
+        'dealers'                   => 'Bayilerimiz',
+        'team'                      => 'Ekibimiz',
+        'contact'                   => 'İletişim',
     ],
 
     // menu
@@ -102,6 +107,7 @@ return [
             'footer_edits'          => 'Footer Düzenlemeleri',
             'fast_management'       => 'Hızlı Yönetim',
             'contact_info'          => 'İletişim Bilgisi',
+            'seo'                   => 'SEO',
         ],
         'page_management' => [
             'root'                  => 'Sayfa Yönetimleri',
@@ -211,7 +217,26 @@ return [
             'menu'                  => 'Menü',
             'phone'                 => 'Telefon',
             'see_all'               => 'Tümünü Gör',
-            'review'                => 'İncele'
+            'review'                => 'İncele',
+            'land_phone'            => 'Telefon',
+            'mobile_phone'          => 'Mobil',
+            'web'                   => 'Web',
+            'zone'                  => 'Bölge',
+            'email'                 => 'E-posta',
+            'name'                  => 'Ad Soyad',
+            'email_address'         => 'E-posta Adresiniz',
+            'comment'               => 'Mesaj',
+            'send'                  => 'Gönder',
+            'required_fields'       => 'Zorunlu Alanlar',
+        ],
+        'email' => [
+            'info'                  => 'Bu e-posta <b>Ezelnet</b> tarafından hazırlanmış bir yazılımdan gönderilmiştir.',
+            'copyright'             => 'Design © Ezelnet Yazılım',
+            'contact_subject'       => 'Yeni İletişim Mesajı',
+            'name'                  => 'Gönderenin Adı Soyadı',
+            'email_address'         => 'E-posta Adresi',
+            'phone'                 => 'Telefonu',
+            'comment'               => 'Mesajı',
         ]
     ],
 
@@ -243,6 +268,12 @@ return [
             'double'        => 'Bu menü stilinde "Renkli Bant", "Ana Menü"nün <em class="label label-info">üstünde</em> ve açıktır. Sayfada aşağı inildikçe "Ana Menü" ve "Renkli Bant" <em class="text-danger">kaymaz</em>.',
             'top_box_components' => 'Bileşenleri sürükleyerek <em class="text-info">Renkli Bant</em>\'ın sol veya sağ bölümüne taşı. Daha sonra <button class="btn green btn-outline" type="button"><i class="fa fa-floppy-o"></i><span class="hidden-xs"> Kaydet </span></button> butonuna basarak düzeni kaydet.',
         ]
+    ],
+
+    'flash' => [
+        'contact_success'           => 'Mesaj başarılı bir şekilde gönderildi',
+        'contact_error'             => 'Mesaj gönderilirken bir hata oldu! lütfen daha sonra tekrar dene.',
+        'contact_has_not_email'     => 'Kurum mesajı almak için henüz hazır değil.'
     ],
 
     // permissions

@@ -125,6 +125,7 @@
                             <th class="all" width="5%"> {!! lmcTrans('laravel-team-module/admin.fields.team.photo') !!} </th>
                             <th class="all" width="100"> {!! lmcTrans('laravel-team-module/admin.fields.team.first_name') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-team-module/admin.fields.team_category.name') !!} </th>
+                            <th class="all" width="%20"> {!! lmcTrans('laravel-team-module/admin.fields.team.task') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
                             <th class="all" width="13%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                             <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
@@ -154,6 +155,9 @@
                             </td>
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="category" placeholder="{!! lmcTrans('laravel-team-module/admin.fields.team_category.name') !!}">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-filter input-sm" name="task" placeholder="{!! lmcTrans('laravel-team-module/admin.fields.team.task') !!}">
                             </td>
                             <td>
                                 <select name="status" class="form-control form-filter input-sm">

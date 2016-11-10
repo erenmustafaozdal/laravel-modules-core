@@ -142,7 +142,7 @@ var Index = {
                     var detail =  '<table class="table table-hover table-light">' +
                         '<tbody>' +
                         '<tr>' +
-                        '<td style="width:150px; text-align:right;"> <strong>Albümler:</strong> </td>' +
+                        '<td style="width:150px; text-align:right;"> <strong>Departman:</strong> </td>' +
                         '<td class="text-left">';
 
                     var cats = '';
@@ -156,7 +156,12 @@ var Index = {
                     detail += '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Görev:</strong> </td>' +
+                            '<td class="text-left">' + ( data.task == null ? '' : data.task ) + '</td>' +
+                        '</tr>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Ad:</strong> </td>' +
                             '<td class="text-left">' + ( data.first_name + ' ' + data.last_name ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
@@ -242,6 +247,8 @@ var Index = {
                                 return cats;
                             }
                         },
+                        // task
+                        { data: "task", name: "task"},
                         // status
                         { data: "status", name: "is_publish", className: 'text-center',
                             render: function ( data, type, full, meta )

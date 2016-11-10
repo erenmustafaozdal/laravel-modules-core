@@ -43,6 +43,17 @@
     </div>
     {{-- /Category --}}
 
+    {{-- Task --}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            {!! lmcTrans('laravel-team-module/admin.fields.team.task') !!}
+        </label>
+        <div class="col-sm-10">
+            <p class="form-control-static"> {{ $team->task }} </p>
+        </div>
+    </div>
+    {{-- /Task --}}
+
     {{-- First Name --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">

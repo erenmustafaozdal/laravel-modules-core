@@ -25,6 +25,9 @@ var Operation = {
             isAjax: false,
             validate: {
                 rules: {
+                    category_id: {
+                        required: true
+                    },
                     name: {
                         required: true
                     },

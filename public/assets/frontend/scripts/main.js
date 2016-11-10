@@ -691,10 +691,10 @@ function initialize() {
 			zoom = parseFloat($this.data('zoom'));
 
 		if ($this.data('lat'))
-			lat = parseFloat($this.data('lat'));
+			lat = $this.data('lat').split('###');
 
 		if ($this.data('lng'))
-			lng = parseFloat($this.data('lng'));
+			lng = $this.data('lng').split('###');
 
 		if ($this.data('scrollwheel'))
 			scrollwheel = $this.data('scrollwheel');
@@ -709,47 +709,58 @@ function initialize() {
 		}
 
 		if ($this.data('title'))
-			title = $this.data('title');
+			title = $this.data('title').split('###');
 
 		if( isTouchDevice )
 			draggable = false;
 
 		var mapOptions = {
-			zoom        : zoom,
 			scrollwheel : scrollwheel,
 			draggable   : draggable,
-			center      : new google.maps.LatLng(lat, lng),
 			mapTypeId   : mapType
 		};
 
 		var map = new google.maps.Map($this[0], mapOptions);
+        var bounds = new google.maps.LatLngBounds();
 
 		var is_internetExplorer11= navigator.userAgent.toLowerCase().indexOf('trident') > -1;
-		var image = (is_internetExplorer11) ? 'img/map-marker.png' : 'img/svg/map-marker.svg';
+		var image = (is_internetExplorer11)
+				? '/vendor/laravel-modules-core/assets/frontend/img/map-marker.png'
+				: '/vendor/laravel-modules-core/assets/frontend/img/svg/map-marker.svg';
 
-		if ($this.data('content')) {
+		$.each(lat,function(index,value)
+		{
+			if (value == '') {
+				return;
+			}
+
 			contentString = '<div class="map-content">' +
-				'<h3 class="title">' + title + '</h3>' +
-				$this.data('content') +
+				'<h3 class="title">' + title[index] + '</h3>' +
+				'<p>' +
+					'<b>Enlem :</b> ' + lat[index] + '<br>' +
+					'<b>Boylam :</b> ' + lng[index] +'<br>' +
+				'</p>' +
 			'</div>';
-		}
 
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString
-		});
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString
+			});
 
-		var marker = new google.maps.Marker({
-			position : new google.maps.LatLng(lat, lng),
-			map      : map,
-			icon     : image,
-			title    : title
-		});
+			var marker = new google.maps.Marker({
+				position : new google.maps.LatLng(lat[index], lng[index]),
+				map      : map,
+				icon     : image,
+				title    : title[index]
+			});
+            bounds.extend(marker.position);
 
-		if ($this.data('content')) {
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.open(map,marker);
 			});
-		}
+		});
+
+        map.setCenter(bounds.getCenter());
+        map.fitBounds(bounds);
 
 		if ($this.data('hue')) {
 			var styles = [{
@@ -767,11 +778,14 @@ function loadScript() {
 	var script = document.createElement('script');
 	
 	script.type = 'text/javascript';
-	script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&' + 'callback=initialize&key=AIzaSyCjEWf270WVlOolKfwRe71Iq_G5UWmBnok';
+	script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' + 'callback=initialize&key=AIzaSyCjEWf270WVlOolKfwRe71Iq_G5UWmBnok';
 	document.body.appendChild(script);
 }
-if ($('.map-canvas').length)
-	window.onload = loadScript;
+if ($('.map-canvas').length) {
+	$(function() {
+		loadScript();
+	});
+}
 //Google Map End
 
 //Slider Start

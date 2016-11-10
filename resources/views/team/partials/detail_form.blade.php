@@ -10,6 +10,16 @@
 </div>
 {{-- /Description --}}
 
+{{-- Task --}}
+<div class="form-group">
+    <label class="control-label">{!! lmcTrans('laravel-team-module/admin.fields.team.task') !!}</label>
+    {!! Form::text( 'task', isset($team) ? $team->task : null, [
+        'class'         => 'form-control form-control-solid placeholder-no-fix',
+        'placeholder'   => lmcTrans('laravel-team-module/admin.fields.team.task')
+    ]) !!}
+</div>
+{{-- /Task --}}
+
 {{-- Photo --}}
 @include('laravel-modules-core::partials.form.fileinput_form', [
     'label'         => lmcTrans('laravel-team-module/admin.fields.team.photo'),
