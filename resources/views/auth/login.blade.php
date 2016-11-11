@@ -60,7 +60,7 @@
         </div>
         <div class="form-actions">
             {!! Form::button( lmcTrans('laravel-user-module/auth.login.submit'), [
-                'class'     => 'btn green uppercase',
+                'class'     => 'btn green btn-outline',
                 'type'      => 'submit',
                 'tabindex'  => 4
             ]) !!}

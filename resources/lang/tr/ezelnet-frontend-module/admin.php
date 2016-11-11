@@ -173,7 +173,25 @@ return [
 
             // contact info
             'phone'                 => 'Telefon',
-            'email'                 => 'E-posta'
+            'email'                 => 'E-posta',
+
+            // seo
+            'seo_title'             => 'Arama Motorları',
+            'facebook_title'        => 'Facebook Open Graph',
+            'analytics_title'       => 'Analytics',
+            'title'                 => 'Ad',
+            'meta_title'            => 'META Başlık',
+            'meta_description'      => 'META Açıklama',
+            'meta_keywords'         => 'META Anahtar Kelimeler',
+            'og_title'              => 'Başlık',
+            'og_description'        => 'Açıklama',
+            'og_url'                => 'Görünen Site Adresi',
+            'og_site_name'          => 'Site Adı',
+            'first_analytics'       => 'Google Analytics İzleme Kodu',
+            'second_analytics'      => 'Google Analytics İkinci İzleme Kodu',
+            'third_analytics'       => 'Google Analytics Üçüncü İzleme Kodu',
+            'tag_manager'           => 'Google Tag Manager Kodu',
+
         ],
         'page_management' => [
             'enable_sortable'       => 'Sıralamayı Aç',
@@ -267,6 +285,16 @@ return [
             'double_fixed'  => 'Bu menü stilinde "Renkli Bant", "Ana Menü"nün <em class="label label-info">üstünde</em> ve açıktır. Sayfada aşağı inildikçe <em class="text-info">Ana Menü</em> ve <em class="text-info">Renkli Bant</em> aşağı doğru kayar.',
             'double'        => 'Bu menü stilinde "Renkli Bant", "Ana Menü"nün <em class="label label-info">üstünde</em> ve açıktır. Sayfada aşağı inildikçe "Ana Menü" ve "Renkli Bant" <em class="text-danger">kaymaz</em>.',
             'top_box_components' => 'Bileşenleri sürükleyerek <em class="text-info">Renkli Bant</em>\'ın sol veya sağ bölümüne taşı. Daha sonra <button class="btn green btn-outline" type="button"><i class="fa fa-floppy-o"></i><span class="hidden-xs"> Kaydet </span></button> butonuna basarak düzeni kaydet.',
+        ],
+        'general_configs' => [
+            'title'             => 'Sistemin içinde çeşitli yerlerde kullanılacak kurum/firma başlığı.',
+            'meta_title'        => 'Arama motorlarını bilgilendirmek amacıyla kurum/firma başlığı yazın.',
+            'meta_description'  => 'Arama motorlarını bilgilendirmek amacıyla kurum/firma açıklaması yazın.',
+            'meta_keywords'     => 'Arama motorlarını bilgilendirmek amacıyla kurum/firma ile ilgili anahtar kelimeler yazın. Anahtar kelimeler arasına <em class="label label-info">virgül (,)</em> koyun.',
+            'og_title'          => 'Facebook\'ta link paylaşıldığında görünecek başlık.',
+            'og_description'    => 'Facebook\'ta link paylaşıldığında görünecek açıklama.',
+            'og_url'            => 'Facebook\'ta link paylaşıldığında görünecek site adresi.',
+            'og_site_name'      => 'Facebook\'ta link paylaşıldığında görünecek site adı.',
         ]
     ],
 

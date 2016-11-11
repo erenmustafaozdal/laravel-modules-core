@@ -1965,3 +1965,17 @@ body.modal-open {
     width: inherit !important;
     height: 22px !important;
 }
+
+/* Auth Blade */
+.login .font-green {
+    color: #76be1e !important;
+}
+.login a {
+    color: #70983f !important;
+}
+.login a.red {
+    color: #e7505a !important;
+}
+.login a.red:hover {
+    color: #ffffff !important;
+}

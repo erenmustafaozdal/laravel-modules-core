@@ -39,6 +39,16 @@
         {!! Html::style('vendor/laravel-modules-core/assets/pages/css/login.css') !!}
         {{-- /Page Styles --}}
 
+        {{-- Theme Layout Styles --}}
+        <link href="{!! lmcElixir('assets/layouts/layout4/css/admin.css') !!}" rel="stylesheet" type="text/css" />
+        {{-- /Theme Layout Styles --}}
+
+        {{-- Custom Css --}}
+        @if(config('laravel-modules-core.custom_css'))
+            {!! Html::style(config('laravel-modules-core.custom_css')) !!}
+        @endif
+        {{-- /Custom Css --}}
+
         <link rel="shortcut icon" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico" />
     </head>
 
@@ -46,9 +56,9 @@
 
         {{-- Logo --}}
         <div class="logo">
-            <a href="#">
+            <a href="javascript:;">
                 {!! HTML::image(
-                    config('laravel-modules-core.logos.light'),
+                    config('laravel-modules-core.logos.default'),
                     config('laravel-modules-core.app_name')
                 ) !!}
             </a>
