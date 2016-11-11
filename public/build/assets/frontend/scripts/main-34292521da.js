@@ -1739,11 +1739,12 @@ $(document).ready(function(){
 				navigationHOffset : -545,
 				navigationVOffset : 30,
 				hideTimerBar      : 'on',
+				onHoverStop    : 'on',
 				navigation : {
-					keyboardNavigation : 'off',
+					keyboardNavigation : 'on',
 					keyboard_direction : 'horizontal',
 					mouseScrollNavigation : 'off',
-					onHoverStop : 'off',
+					onHoverStop : 'on',
 					touch : {
 						touchenabled : 'on',
 						swipe_threshold : 75,
@@ -1777,10 +1778,10 @@ $(document).ready(function(){
 				navigationType : 'none',
 				onHoverStop    : 'on',
 				navigation : {
-					keyboardNavigation : 'off',
+					keyboardNavigation : 'on',
 					keyboard_direction : 'horizontal',
 					mouseScrollNavigation : 'off',
-					onHoverStop : 'off',
+					onHoverStop : 'on',
 					touch : {
 						touchenabled : 'on',
 						swipe_threshold : 75,

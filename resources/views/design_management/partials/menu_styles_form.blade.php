@@ -13,7 +13,7 @@
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/hidden_fixed.jpg',null,[
+                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/menu/hidden_fixed.jpg',null,[
                     'class' => 'img-responsive'
                 ]) !!}
             </div>
@@ -48,7 +48,7 @@
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/soft_fixed.jpg',null,[
+                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/menu/soft_fixed.jpg',null,[
                     'class' => 'img-responsive'
                 ]) !!}
             </div>
@@ -83,7 +83,7 @@
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/double_fixed_hidden.jpg',null,[
+                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/menu/double_fixed_hidden.jpg',null,[
                     'class' => 'img-responsive'
                 ]) !!}
             </div>
@@ -118,7 +118,7 @@
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/double_fixed.jpg',null,[
+                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/menu/double_fixed.jpg',null,[
                     'class' => 'img-responsive'
                 ]) !!}
             </div>
@@ -153,7 +153,7 @@
 
             {{-- Help Block --}}
             <div class="col-md-6 col-sm-6">
-                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/double.jpg',null,[
+                {!! Html::image('/vendor/laravel-modules-core/assets/global/img/design_management/menu/double.jpg',null,[
                     'class' => 'img-responsive'
                 ]) !!}
             </div>

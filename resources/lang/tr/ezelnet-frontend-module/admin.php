@@ -12,6 +12,8 @@ return [
         'logo_description'          => 'Logo ve favicon düzenle',
         'site_color'                => 'Site Renk Düzenlemesi',
         'site_color_description'    => 'Sitede kullanılan renkleri düzenle',
+        'site_styles'               => 'Site Stilleri / Banner Düzenleme',
+        'site_styles_description'   => 'Site stili belirle ve seçtiğin stile uygun banner düzenle',
         'menu_styles'               => 'Menü Stilleri',
         'menu_styles_description'   => 'Menü stili belirle ve renkli bantı düzenle',
         'top_box_order'             => 'Renkli Bant Düzeni',
@@ -19,6 +21,11 @@ return [
         'footer_color_description'  => 'Footerda kullanılan renkleri düzenle',
         'default_design'            => 'Default Tasarım Ayarları',
         'default_design_description'=> 'Default renklerine geri dön veya kullandığın renkleri default olarak kaydet',
+    ],
+    // banners
+    'business' => [
+        'index'             => 'Business Stil Slaytları',
+        'index_description' => 'Business site stilindeki bütün slaytlar',
     ],
     'general_configs' => [
         'social_accounts'           => 'Sosyal Medya Hesapları',
@@ -97,6 +104,7 @@ return [
             'root'                  => 'Tasarım Yönetimi',
             'logo'                  => 'Logo-Favicon Ayarları',
             'site_color'            => 'Site Renk Düzenlemesi',
+            'site_styles'           => 'Site Stilleri / Banner Düzenleme',
             'menu_styles'           => 'Menü Stilleri',
             'footer_color'          => 'Footer Renk Ayarları',
             'default_design'        => 'Default Tasarım Ayarları',
@@ -135,6 +143,18 @@ return [
             'footer_text_color'     => 'Footer Metin Rengi',
             'ezelnet_link_color'    => 'Ezelnet Link Rengi',
             'go_up_color'           => '<em>"Yukarı Çık"</em> Buton Rengi',
+
+            // site styles
+            'business'              => 'Business Stil',
+            'boxed'                 => 'Boxed Stil',
+            'creative'              => 'Creative Stil',
+            'display'               => 'Display Stil',
+            'metro'                 => 'Metro Stil',
+            'slider'                => 'Slider Stil',
+            'edit_banner'           => 'Banner Düzenle',
+            'photo'                 => 'Fotoğraf',
+            'mini_photo'            => 'Mini Fotoğraf',
+            'title'                 => 'Başlık',
 
             // menu styles
             'hidden_fixed'          => 'Hidden Fixed Menü',
@@ -285,6 +305,14 @@ return [
             'double_fixed'  => 'Bu menü stilinde "Renkli Bant", "Ana Menü"nün <em class="label label-info">üstünde</em> ve açıktır. Sayfada aşağı inildikçe <em class="text-info">Ana Menü</em> ve <em class="text-info">Renkli Bant</em> aşağı doğru kayar.',
             'double'        => 'Bu menü stilinde "Renkli Bant", "Ana Menü"nün <em class="label label-info">üstünde</em> ve açıktır. Sayfada aşağı inildikçe "Ana Menü" ve "Renkli Bant" <em class="text-danger">kaymaz</em>.',
             'top_box_components' => 'Bileşenleri sürükleyerek <em class="text-info">Renkli Bant</em>\'ın sol veya sağ bölümüne taşı. Daha sonra <button class="btn green btn-outline" type="button"><i class="fa fa-floppy-o"></i><span class="hidden-xs"> Kaydet </span></button> butonuna basarak düzeni kaydet.',
+
+            // site styles
+            'business'  => 'Her slayta <em class="text-info">ana resim</em>, <em class="text-info">küçük resim</em>, <em class="text-info">başlık</em>, <em class="text-info">açıklama</em> ve <em class="text-info">buton</em> eklenebilir. Başlık ve açıklamanın punto büyüklükleri ve renkleri ayarlanabilir. Butona link verilebilir. <em class="text-danger">Link verilmezse buton görünmez.</em><br><em class="text-warning">Ana stildir.</em> Diğer stiller seçildiği halde yayınlanma şartlarını sağlamadığı takdirde; bu stil uygulanı',
+            'boxed'     => 'Her slayta <em class="text-info">ana resim</em>, <em class="text-info">küçük resim</em>, <em class="text-info">başlık</em>, <em class="text-info">açıklama</em> ve <em class="text-info">buton</em> eklenebilir. Başlık ve açıklamanın punto büyüklükleri ve renkleri ayarlanabilir. Butona link verilebilir. <em class="text-danger">Link verilmezse buton görünmez.</em><br>Business stilinden farkı; ekrana yayılmaz. Kutu şeklinde ekranı ortalar.',
+            'creative'  => 'Her slayta <em class="text-info">ana resim</em>, <em class="text-info">küçük resim</em>, <em class="text-info">başlık</em>, <em class="text-info">açıklama</em> ve <em class="text-info">buton</em> eklenebilir. Başlık ve açıklamanın punto büyüklükleri ve renkleri ayarlanabilir. Butona link verilebilir. <em class="text-danger">Link verilmezse buton görünmez.</em><br>Business stilinden farkı; slayt tam ekrandır.',
+            'display'  => 'Üç adet <em class="text-info">minik resim</em> eklenir. Bu üç resim eklenmeden slayt çalışmaz ve <em class="text-warning">Business</em> stil geçerli olur. <em class="text-info">Arka plan resmi</em> eklenebilir veya iki adet geçiş <em class="text-info">rengi</em> eklenebilir. Her slayt için de sadece <em class="text-info">resim</em> eklenebilir.',
+            'metro'  => 'Üç sütunda toplam beş resim eklenir. Bu beş resim eklenmeden slayt çalışmaz ve <em class="text-warning">Business</em> stil geçerli olur. Sağ ve sol sütunlarda bir <em class="text-info">büyük</em> ve bir <em class="text-info">küçük resim</em> eklenir. Orta sütunda ise en <em class="text-info">büyük bir resim</em> eklenir. <em class="text-danger">Resimler sabit durur, hareket etmez.</em>',
+            'slider'  => 'Arka plan için resim eklenebilir veya geçişli iki renk seçilebilir. Her slayta <em class="text-info">resim</em>, <em class="text-info">başlık</em>, <em class="text-info">açıklama</em> ve <em class="text-info">buton</em> eklenebilir. Başlık ve açıklamanın punto büyüklükleri ve renkleri ayarlanabilir. Butona link verilebilir. <em class="text-danger">Link verilmezse buton görünmez.</em> Açıklama ve başlık arkasındaki alanın arka plan rengi de ayarlanabilir.',
         ],
         'general_configs' => [
             'title'             => 'Sistemin içinde çeşitli yerlerde kullanılacak kurum/firma başlığı.',
