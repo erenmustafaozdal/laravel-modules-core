@@ -25,6 +25,17 @@ var Index = {
 
         // LMCFileinput app is init
         LMCFileinput.init(this.options.Fileinput);
+        LMCFileinput.init(this.options.mainPhotoFileinput);
+        LMCFileinput.init(this.options.firstMiniFileinput);
+        LMCFileinput.init(this.options.secondMiniFileinput);
+        LMCFileinput.init(this.options.thirdMiniFileinput);
+
+        $('.color-picker').minicolors({
+            control: 'hue',
+            letterCase: 'lowercase',
+            position: 'bottom right',
+            theme: 'bootstrap'
+        });
 
         // publish model
         $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-publish',function()
@@ -102,9 +113,9 @@ var Index = {
                 exportTitle: 'Slaytlar',
                 datatableIsResponsive: true,
                 groupActionSupport: true,
-                rowDetailSupport: true,
+                rowDetailSupport: false,
                 datatableFilterSupport: true,
-                exportColumnSize: 5,
+                exportColumnSize: 3,
                 exportOrientation: 'landscape',
                 exportOptionsFormat: {
                     body: function (data, column, row) {
@@ -139,56 +150,7 @@ var Index = {
                  */
                 getDetailTableFormat: function(data)
                 {
-                    return '<table class="table table-hover table-light">' +
-                        '<tbody>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Fotoğraf/Renkler:</strong> </td>' +
-                            '<td class="text-left">' + ( data.photo == null ? '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.first_color + '"> ' + data.first_color + ' </div></div><div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.second_color + '"> ' + data.second_color + ' </div></div>' : '<img src="' + data.photo +'" height="200">' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Mini Fotoğraf:</strong> </td>' +
-                            '<td class="text-left">' + ( data.mini_photo == null ? '' : '<img src="' + data.mini_photo +'" height="200">' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Başlık Rengi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title_color == null ? '' : '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.title_color + '"> ' + data.title_color + ' </div></div>' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Başlık Puntosu:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title_point == null ? '' : data.title_point + ' px' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Açıklama:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description == null ? '' : data.description ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Açıklama Rengi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description_color == null ? '' : '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.description_color + '"> ' + data.description_color + ' </div></div>' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Açıklama Puntosu:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description_point == null ? '' : data.description_point + ' px' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Bağlantı Adresi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.link == null ? '' : data.link ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Buton Metni:</strong> </td>' +
-                            '<td class="text-left">' + ( data.button_text == null ? '' : data.button_text ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
-                            '<td class="text-left">' + data.created_at.display + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
-                            '<td class="text-left">' + data.updated_at.display + '</td>' +
-                        '</tr>';
+                    //
                 },
 
                 /**
@@ -209,25 +171,11 @@ var Index = {
                             render: function ( data, type, full, meta )
                             {
                                 if (data != null ) {
-                                    return '<img src="' + data + '" height="50">';
+                                    return '<img src="' + data + '" height="150">';
                                 }
                                 return '';
                             }
                         },
-                        // mini_photo
-                        {
-                            data: "mini_photo", name: "mini_photo",
-                            searchable: false, orderable: false, className: 'text-center',
-                            render: function ( data, type, full, meta )
-                            {
-                                if (data != null ) {
-                                    return '<img src="' + data + '" height="50">';
-                                }
-                                return '';
-                            }
-                        },
-                        // name
-                        { data: "title", name: "title" },
                         // status
                         { data: "status", name: "is_publish", className: 'text-center',
                             render: function ( data, type, full, meta )
@@ -249,12 +197,6 @@ var Index = {
                                     id: full.id,
                                     showUrl: null,
                                     buttons: [
-                                        {
-                                            title: '<i class="fa fa-pencil"></i> ' + LMCApp.lang.admin.ops.edit,
-                                            attributes: {
-                                                href: full.urls.edit_page
-                                            }
-                                        },
                                         {
                                             title: '<i class="fa fa-trash"></i> ' + LMCApp.lang.admin.ops.destroy,
                                             attributes: {
@@ -310,7 +252,7 @@ var Index = {
                                 $.ajax({
                                     url: apiStoreURL,
                                     data: {
-                                        photo: { photo: validation.form.find('input.elfinder[name="photo[photo]"]').val()},
+                                        photo: validation.form.find('input.elfinder[name="photo"]').val(),
                                         is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
                                     },
                                     type: 'POST',
@@ -394,6 +336,106 @@ var Index = {
                                 type: 'error'
                             });
                         }
+                    }
+                }
+            },
+            mainPhotoFileinput: {
+                src: '#main-photo',
+                formSrc:  'form.form-horizontal',
+                aspectRatio: mainAspectRatio,
+                fileinput: {
+                    maxFileSize: maxSize,
+                    showUpload: false,
+                    showCancel: false,
+                    fileActionSettings: {
+                        showUpload: false
+                    },
+                    previewTemplates: {
+                        image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                        '   <div class="kv-file-content">' +
+                        '       <img id="img-{previewId}" src="{data}" class="kv-preview-data file-preview-image jcrop-item" title="{caption}" alt="{caption}">\n' +
+                        '   </div>\n' +
+                        '   {footer}\n' +
+                        '   <input type="hidden" class="crop-x" name="photo[x]" value="0">\n' +
+                        '   <input type="hidden" class="crop-y" name="photo[y]" value="0">\n' +
+                        '   <input type="hidden" class="crop-width" name="photo[width]" value="0">\n' +
+                        '   <input type="hidden" class="crop-height" name="photo[height]" value="0">\n' +
+                        '</div>\n'
+                    }
+                }
+            },
+            firstMiniFileinput: {
+                src: '#first-mini-photo',
+                formSrc:  'form.form-horizontal',
+                aspectRatio: firstAspectRatio,
+                fileinput: {
+                    maxFileSize: maxSize,
+                    showUpload: false,
+                    showCancel: false,
+                    fileActionSettings: {
+                        showUpload: false
+                    },
+                    previewTemplates: {
+                        image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                        '   <div class="kv-file-content">' +
+                        '       <img id="img-{previewId}" src="{data}" class="kv-preview-data file-preview-image jcrop-item" title="{caption}" alt="{caption}">\n' +
+                        '   </div>\n' +
+                        '   {footer}\n' +
+                        '   <input type="hidden" class="crop-x" name="first_mini_photo[x]" value="0">\n' +
+                        '   <input type="hidden" class="crop-y" name="first_mini_photo[y]" value="0">\n' +
+                        '   <input type="hidden" class="crop-width" name="first_mini_photo[width]" value="0">\n' +
+                        '   <input type="hidden" class="crop-height" name="first_mini_photo[height]" value="0">\n' +
+                        '</div>\n'
+                    }
+                }
+            },
+            secondMiniFileinput: {
+                src: '#second-mini-photo',
+                formSrc:  'form.form-horizontal',
+                aspectRatio: secondAspectRatio,
+                fileinput: {
+                    maxFileSize: maxSize,
+                    showUpload: false,
+                    showCancel: false,
+                    fileActionSettings: {
+                        showUpload: false
+                    },
+                    previewTemplates: {
+                        image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                        '   <div class="kv-file-content">' +
+                        '       <img id="img-{previewId}" src="{data}" class="kv-preview-data file-preview-image jcrop-item" title="{caption}" alt="{caption}">\n' +
+                        '   </div>\n' +
+                        '   {footer}\n' +
+                        '   <input type="hidden" class="crop-x" name="second_mini_photo[x]" value="0">\n' +
+                        '   <input type="hidden" class="crop-y" name="second_mini_photo[y]" value="0">\n' +
+                        '   <input type="hidden" class="crop-width" name="second_mini_photo[width]" value="0">\n' +
+                        '   <input type="hidden" class="crop-height" name="second_mini_photo[height]" value="0">\n' +
+                        '</div>\n'
+                    }
+                }
+            },
+            thirdMiniFileinput: {
+                src: '#third-mini-photo',
+                formSrc:  'form.form-horizontal',
+                aspectRatio: thirdAspectRatio,
+                fileinput: {
+                    maxFileSize: maxSize,
+                    showUpload: false,
+                    showCancel: false,
+                    fileActionSettings: {
+                        showUpload: false
+                    },
+                    previewTemplates: {
+                        image: '<div class="file-preview-frame" id="{previewId}" data-fileindex="{fileindex}" data-template="{template}">\n' +
+                        '   <div class="kv-file-content">' +
+                        '       <img id="img-{previewId}" src="{data}" class="kv-preview-data file-preview-image jcrop-item" title="{caption}" alt="{caption}">\n' +
+                        '   </div>\n' +
+                        '   {footer}\n' +
+                        '   <input type="hidden" class="crop-x" name="third_mini_photo[x]" value="0">\n' +
+                        '   <input type="hidden" class="crop-y" name="third_mini_photo[y]" value="0">\n' +
+                        '   <input type="hidden" class="crop-width" name="third_mini_photo[width]" value="0">\n' +
+                        '   <input type="hidden" class="crop-height" name="third_mini_photo[height]" value="0">\n' +
+                        '</div>\n'
                     }
                 }
             }

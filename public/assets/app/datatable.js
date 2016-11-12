@@ -558,12 +558,14 @@ var DataTable = {
         }, options);
 
         // show button
-        menu += '<a href="' + ops.showUrl + '" ' +
-            'class="btn green btn-outline tooltips" ' +
-            'title="' + LMCApp.lang.admin.ops.show + '" ' +
-            'style="margin-right:0;">';
-        menu += '<i class="fa fa-search"></i>';
-        menu += '</a>';
+        if (ops.showUrl) {
+            menu += '<a href="' + ops.showUrl + '" ' +
+                'class="btn green btn-outline tooltips" ' +
+                'title="' + LMCApp.lang.admin.ops.show + '" ' +
+                'style="margin-right:0;">';
+            menu += '<i class="fa fa-search"></i>';
+            menu += '</a>';
+        }
 
         if (ops.buttons.length < 1) {
             return menu + '</div>';

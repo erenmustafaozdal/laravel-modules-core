@@ -99,7 +99,7 @@ var Index = {
         return {
             DataTable: {
                 src: ".lmcDataTable",
-                exportTitle: 'Business Stil Slaytlar',
+                exportTitle: 'Slaytlar',
                 datatableIsResponsive: true,
                 groupActionSupport: true,
                 rowDetailSupport: true,
@@ -142,20 +142,20 @@ var Index = {
                     return '<table class="table table-hover table-light">' +
                         '<tbody>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Fotoğraf:</strong> </td>' +
-                            '<td class="text-left">' + ( data.photo == null ? '<span class="color-view bold uppercase" style="background-color: ' + data.first_color + ';"> ' + data.first_color + ' </span><span class="color-view bold uppercase" style="background-color: ' + data.second_color + ';"> ' + data.second_color + ' </span>' : '<img src="' + data.photo +'">' ) + '</td>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Fotoğraf/Renkler:</strong> </td>' +
+                            '<td class="text-left">' + ( data.photo == null ? '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.first_color + '"> ' + data.first_color + ' </div></div><div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.second_color + '"> ' + data.second_color + ' </div></div>' : '<img src="' + data.photo +'" height="200">' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Mini Fotoğraf:</strong> </td>' +
-                            '<td class="text-left">' + ( data.mini_photo == null ? '' : '<img src="' + data.mini_photo +'">' ) + '</td>' +
+                            '<td class="text-left">' + ( data.mini_photo == null ? '' : '<img src="' + data.mini_photo +'" height="200">' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title == null ? '' : '<img src="' + data.title +'">' ) + '</td>' +
+                            '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Başlık Rengi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title_color == null ? '' : '<span class="color-view bold uppercase" style="background-color: ' + data.title_color + ';"> ' + data.title_color + ' </span>' ) + '</td>' +
+                            '<td class="text-left">' + ( data.title_color == null ? '' : '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.title_color + '"> ' + data.title_color + ' </div></div>' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Başlık Puntosu:</strong> </td>' +
@@ -163,11 +163,11 @@ var Index = {
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Açıklama:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description == null ? '' : '<img src="' + data.description +'">' ) + '</td>' +
+                            '<td class="text-left">' + ( data.description == null ? '' : data.description ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Açıklama Rengi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description_color == null ? '' : '<span class="color-view bold uppercase" style="background-color: ' + data.description_color + ';"> ' + data.description_color + ' </span>' ) + '</td>' +
+                            '<td class="text-left">' + ( data.description_color == null ? '' : '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.description_color + '"> ' + data.description_color + ' </div></div>' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Açıklama Puntosu:</strong> </td>' +
@@ -178,12 +178,16 @@ var Index = {
                             '<td class="text-left">' + ( data.link == null ? '' : data.link ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                        '<td style="width:150px; text-align:right;"> <strong>Buton Rengi:</strong> </td>' +
-                        '<td class="text-left">' + ( data.button_color == null ? '' : '<span class="color-view bold uppercase" style="background-color: ' + data.button_color + ';"> ' + data.button_color + ' </span>' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Buton Metni:</strong> </td>' +
                             '<td class="text-left">' + ( data.button_text == null ? '' : data.button_text ) + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +
+                            '<td class="text-left">' + data.created_at.display + '</td>' +
+                        '</tr>' +
+                        '<tr>' +
+                            '<td style="width:150px; text-align:right;"> <strong>Düzenleme Tarihi:</strong> </td>' +
+                            '<td class="text-left">' + data.updated_at.display + '</td>' +
                         '</tr>';
                 },
 
@@ -205,7 +209,7 @@ var Index = {
                             render: function ( data, type, full, meta )
                             {
                                 if (data != null ) {
-                                    return '<img src="' + data + '">';
+                                    return '<img src="' + data + '" height="50">';
                                 }
                                 return '';
                             }
@@ -217,7 +221,7 @@ var Index = {
                             render: function ( data, type, full, meta )
                             {
                                 if (data != null ) {
-                                    return '<img src="' + data + '">';
+                                    return '<img src="' + data + '" height="50">';
                                 }
                                 return '';
                             }
@@ -245,15 +249,6 @@ var Index = {
                                     id: full.id,
                                     showUrl: null,
                                     buttons: [
-                                        {
-                                            title: '<i class="fa fa-pencil"></i> ' + LMCApp.lang.admin.ops.fast_edit,
-                                            attributes: {
-                                                href: '#editor-modal',
-                                                'data-toggle': 'modal',
-                                                'data-action': 'fast-edit',
-                                                'data-id': full.id
-                                            }
-                                        },
                                         {
                                             title: '<i class="fa fa-pencil"></i> ' + LMCApp.lang.admin.ops.edit,
                                             attributes: {
@@ -289,12 +284,7 @@ var Index = {
             Editor: {
                 modalShowCallback: function(Editor)
                 {
-                    var element = $('#photo');
-                    if (Editor.actionType === 'fast-edit') {
-                        LMCFileinput.disable(element);
-                    } else {
-                        LMCFileinput.enable(element);
-                    }
+                    //
                 },
                 actionButtonCallback: function(Editor)
                 {
@@ -317,44 +307,27 @@ var Index = {
                                     return;
                                 }
 
-                                var url, type, message_success, title_success, message_error, title_error, datas = {
-                                    is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
-                                };
-                                if (Editor.actionType === 'fast-add') {
-                                    type = 'POST';
-                                    url = apiStoreURL;
-                                    datas['photo'] = validation.form.find('input.elfinder[name="photo"]').val();
-                                    message_success = LMCApp.lang.admin.flash.store_success.message;
-                                    title_success = LMCApp.lang.admin.flash.store_success.title;
-                                    message_error = LMCApp.lang.admin.flash.store_error.message;
-                                    title_error = LMCApp.lang.admin.flash.store_error.title;
-                                } else {
-                                    type = 'PATCH';
-                                    url = Editor.row.data().urls.edit;
-                                    message_success = LMCApp.lang.admin.flash.update_success.message;
-                                    title_success = LMCApp.lang.admin.flash.update_success.title;
-                                    message_error = LMCApp.lang.admin.flash.update_error.message;
-                                    title_error = LMCApp.lang.admin.flash.update_error.title;
-                                }
-
                                 $.ajax({
-                                    url: url,
-                                    data: datas,
-                                    type: type,
+                                    url: apiStoreURL,
+                                    data: {
+                                        photo: { photo: validation.form.find('input.elfinder[name="photo[photo]"]').val()},
+                                        is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
+                                    },
+                                    type: 'POST',
                                     success: function(data)
                                     {
                                         if (data.result === 'success') {
                                             LMCApp.getNoty({
-                                                message: message_success,
-                                                title: title_success,
+                                                message: LMCApp.lang.admin.flash.store_success.message,
+                                                title: LMCApp.lang.admin.flash.store_success.title,
                                                 type: 'success'
                                             });
                                             Editor.modal.modal('hide');
                                             return;
                                         }
                                         LMCApp.getNoty({
-                                            message: message_error,
-                                            title: title_error,
+                                            message: LMCApp.lang.admin.flash.store_error.message,
+                                            title: LMCApp.lang.admin.flash.update_error.title,
                                             type: 'error'
                                         });
                                     }
@@ -382,6 +355,12 @@ var Index = {
                     showCancel: false,
                     fileActionSettings: {
                         showUpload: false
+                    },
+                    uploadExtraData: function (previewId, index) {
+                        var form = $('.form');
+                        return {
+                            is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state')
+                        };
                     },
                     ajaxSettings: {
                         success: function(data)

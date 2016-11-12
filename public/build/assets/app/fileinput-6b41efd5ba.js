@@ -196,7 +196,7 @@ var LMCFileinput = {
                 LMCApp.initTooltips();
                 var options = LMCFileinputs['.' + $(event.currentTarget).prop('class')];
                 if (options == undefined) {
-                    options = LMCFileinputs['.' + $(event.currentTarget).prop('id')];
+                    options = LMCFileinputs['#' + $(event.currentTarget).prop('id')];
                 }
                 theLMCJcrop.setupElement(previewId, options);
             },

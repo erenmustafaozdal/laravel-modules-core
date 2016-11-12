@@ -26,7 +26,48 @@ return [
     'business' => [
         'index'             => 'Business Stil Slaytları',
         'index_description' => 'Business site stilindeki bütün slaytlar',
+        'create'            => 'Business Stil Slaytı Ekle',
+        'create_description'=> 'Yeni bir Business site stili slaytı ekle',
+        'edit'              => 'Business Stil Slaytını Düzenle',
+        'edit_description'  => ':slide Business site stili slaytını düzenle',
     ],
+    'boxed' => [
+        'index'             => 'Boxed Stil Slaytları',
+        'index_description' => 'Boxed site stilindeki bütün slaytlar',
+        'create'            => 'Boxed Stil Slaytı Ekle',
+        'create_description'=> 'Yeni bir Boxed site stili slaytı ekle',
+        'edit'              => 'Boxed Stil Slaytını Düzenle',
+        'edit_description'  => ':slide Boxed site stili slaytını düzenle',
+    ],
+    'creative' => [
+        'index'             => 'Creative Stil Slaytları',
+        'index_description' => 'Creative site stilindeki bütün slaytlar',
+        'create'            => 'Creative Stil Slaytı Ekle',
+        'create_description'=> 'Yeni bir Creative site stili slaytı ekle',
+        'edit'              => 'Creative Stil Slaytını Düzenle',
+        'edit_description'  => ':slide Creative site stili slaytını düzenle',
+    ],
+    'display' => [
+        'index'             => 'Display Stil Slaytları',
+        'index_description' => 'Display site stilindeki bütün slaytlar',
+        'create'            => 'Display Stil Slaytı Ekle',
+        'create_description'=> 'Yeni bir Display site stili slaytı ekle',
+    ],
+    'metro' => [
+        'edit'              => 'Display Stil Fotoğraflarını Düzenle',
+        'edit_description'  => 'Display site stili fotoğraflarını düzenle',
+    ],
+    'slider' => [
+        'index'             => 'Slider Stil Slaytları',
+        'index_description' => 'Slider site stilindeki bütün slaytlar',
+        'create'            => 'Slider Stil Slaytı Ekle',
+        'create_description'=> 'Yeni bir Slider site stili slaytı ekle',
+        'edit'              => 'Slider Stil Slaytını Düzenle',
+        'edit_description'  => ':slide Slider site stili slaytını düzenle',
+    ],
+
+
+
     'general_configs' => [
         'social_accounts'           => 'Sosyal Medya Hesapları',
         'social_accounts_description'=> 'Sosyal medya hesaplarını düzenle',
@@ -145,6 +186,8 @@ return [
             'go_up_color'           => '<em>"Yukarı Çık"</em> Buton Rengi',
 
             // site styles
+            'table'                 => 'Tablo',
+            'configs'               => 'Ayarlar',
             'business'              => 'Business Stil',
             'boxed'                 => 'Boxed Stil',
             'creative'              => 'Creative Stil',
@@ -153,8 +196,27 @@ return [
             'slider'                => 'Slider Stil',
             'edit_banner'           => 'Banner Düzenle',
             'photo'                 => 'Fotoğraf',
+            'first_color'           => 'Birinci Renk',
+            'second_color'          => 'İkinci Renk',
             'mini_photo'            => 'Mini Fotoğraf',
             'title'                 => 'Başlık',
+            'title_color'           => 'Başlık Rengi',
+            'title_point'           => 'Başlık Puntosu',
+            'description'           => 'Açıklama',
+            'description_color'     => 'Açıklama Rengi',
+            'description_point'     => 'Açıklama Puntosu',
+            'link'                  => 'Bağlantı Adresi',
+            'button_color'          => 'Button Rengi',
+            'button_text'           => 'Button Metni',
+            'current_mini_photo'    => 'Geçerli Mini Fotoğraf',
+            'current_photo'         => 'Geçerli Fotoğraf',
+            'mini_photo_login_type' => 'Mini Fotoğraf Nereden Giriş Yapsın?',
+            'first_mini_photo'      => 'Birinci Fotoğraf',
+            'first_link'            => 'Birinci Fotoğrafın Bağlantı Adresi',
+            'second_mini_photo'     => 'İkinci Fotoğraf',
+            'second_link'           => 'İkinci Fotoğrafın Bağlantı Adresi',
+            'third_mini_photo'      => 'Üçüncü Fotoğraf',
+            'third_link'            => 'Üçüncü Fotoğrafın Bağlantı Adresi',
 
             // menu styles
             'hidden_fixed'          => 'Hidden Fixed Menü',

@@ -1,12 +1,12 @@
 @extends(config('ezelnet-frontend-module.views.design_management.layout'))
 
 @section('title')
-    {!! lmcTrans('ezelnet-frontend-module/admin.business.index') !!}
+    {!! lmcTrans('ezelnet-frontend-module/admin.boxed.index') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('ezelnet-frontend-module/admin.business.index') !!}
-        <small>{!! lmcTrans('ezelnet-frontend-module/admin.business.index_description') !!}</small>
+    <h1>{!! lmcTrans('ezelnet-frontend-module/admin.boxed.index') !!}
+        <small>{!! lmcTrans('ezelnet-frontend-module/admin.boxed.index_description') !!}</small>
     </h1>
 @endsection
 
@@ -43,18 +43,18 @@
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! lmbRoute('api.business.index') !!}";
-        var apiStoreURL = "{!! lmbRoute('api.business.store') !!}";
-        var apiGroupAction = "{!! lmbRoute('api.business.group') !!}";
+        var ajaxURL = "{!! lmbRoute('api.boxed.index') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.boxed.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.boxed.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
             photo: { required: "{!! LMCValidation::getMessage('photo','required') !!}" }
         };
-        var validExtension = "{!! config('ezelnet-frontend-module.business.uploads.photo.mimes') !!}";
-        var maxSize = "{!! config('ezelnet-frontend-module.business.uploads.photo.max_size') !!}";
-        var aspectRatio = "{!! config('ezelnet-frontend-module.business.uploads.photo.aspect_ratio.photo') !!}";
+        var validExtension = "{!! config('ezelnet-frontend-module.boxed.uploads.photo.mimes') !!}";
+        var maxSize = "{!! config('ezelnet-frontend-module.boxed.uploads.photo.max_size') !!}";
+        var aspectRatio = "{!! config('ezelnet-frontend-module.boxed.uploads.photo.aspect_ratio.photo') !!}";
         {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/design_management/business/index.js') !!}"></script>
@@ -70,11 +70,11 @@
             <div class="caption">
                 <i class="fa fa-picture-o font-red"></i>
                 <span class="caption-subject font-red">
-                    {!! lmcTrans('ezelnet-frontend-module/admin.business.index') !!}
+                    {!! lmcTrans('ezelnet-frontend-module/admin.boxed.index') !!}
                 </span>
             </div>
             @include('laravel-modules-core::partials.common.indexActions', [
-                'module'    => 'business',
+                'module'    => 'boxed',
                 'fast_add'  => true,
                 'add'       => true,
                 'tools'     => false
