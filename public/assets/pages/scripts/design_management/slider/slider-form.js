@@ -9,7 +9,7 @@ var ModelForm = {
     getDefaultOptions: function()
     {
         return {
-            src: '.form',
+            src: 'form.form',
             isAjax: false,
             submitAjax: function(validation)
             {

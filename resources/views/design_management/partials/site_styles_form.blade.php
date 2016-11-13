@@ -213,7 +213,7 @@
 
             {{-- Banner Edit Button --}}
             <div class="col-md-3 col-sm-3">
-                <a href="{{ $design->site_style === 'metro' ? lmbRoute('admin.metro.index') : 'javascript:;' }}"
+                <a href="{{ $design->site_style === 'metro' ? lmbRoute('admin.metro.edit') : 'javascript:;' }}"
                    class="btn purple btn-outline {{ $design->site_style === 'metro' ? '' : 'disabled' }}">
                     <i class="fa fa-pencil"></i>
                     <span class="hidden-xs"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.edit_banner') !!} </span>

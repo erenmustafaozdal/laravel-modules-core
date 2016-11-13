@@ -198,6 +198,7 @@ return [
             'photo'                 => 'Fotoğraf',
             'first_color'           => 'Birinci Renk',
             'second_color'          => 'İkinci Renk',
+            'text_background_color' => 'Yazı Arka Plan Rengi',
             'mini_photo'            => 'Mini Fotoğraf',
             'title'                 => 'Başlık',
             'title_color'           => 'Başlık Rengi',
@@ -217,6 +218,10 @@ return [
             'second_link'           => 'İkinci Fotoğrafın Bağlantı Adresi',
             'third_mini_photo'      => 'Üçüncü Fotoğraf',
             'third_link'            => 'Üçüncü Fotoğrafın Bağlantı Adresi',
+            'fourth_mini_photo'     => 'Dördüncü Fotoğraf',
+            'fourth_link'           => 'Dördüncü Fotoğrafın Bağlantı Adresi',
+            'fifth_mini_photo'      => 'Beşinci Fotoğraf',
+            'fifth_link'            => 'Beşinci Fotoğrafın Bağlantı Adresi',
 
             // menu styles
             'hidden_fixed'          => 'Hidden Fixed Menü',

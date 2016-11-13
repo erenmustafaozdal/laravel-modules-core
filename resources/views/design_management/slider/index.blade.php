@@ -1,12 +1,12 @@
 @extends(config('ezelnet-frontend-module.views.design_management.layout'))
 
 @section('title')
-    {!! lmcTrans('ezelnet-frontend-module/admin.display.index') !!}
+    {!! lmcTrans('ezelnet-frontend-module/admin.slider.index') !!}
 @endsection
 
 @section('page-title')
-    <h1>{!! lmcTrans('ezelnet-frontend-module/admin.display.index') !!}
-        <small>{!! lmcTrans('ezelnet-frontend-module/admin.display.index_description') !!}</small>
+    <h1>{!! lmcTrans('ezelnet-frontend-module/admin.slider.index') !!}
+        <small>{!! lmcTrans('ezelnet-frontend-module/admin.slider.index_description') !!}</small>
     </h1>
 @endsection
 
@@ -42,30 +42,27 @@
         var datatableJs = "{!! lmcElixir('assets/app/datatable.js') !!}";
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
-        var formJs = "{!! lmcElixir('assets/pages/scripts/design_management/display/display-form.js') !!}";
-        var indexJs = "{!! lmcElixir('assets/pages/scripts/design_management/display/index.js') !!}";
+        var formJs = "{!! lmcElixir('assets/pages/scripts/design_management/slider/slider-form.js') !!}";
+        var indexJs = "{!! lmcElixir('assets/pages/scripts/design_management/slider/index.js') !!}";
         {{-- /js file path --}}
 
         {{-- routes --}}
-        var ajaxURL = "{!! lmbRoute('api.display.index') !!}";
-        var apiStoreURL = "{!! lmbRoute('api.display.store') !!}";
-        var apiGroupAction = "{!! lmbRoute('api.display.group') !!}";
+        var ajaxURL = "{!! lmbRoute('api.slider.index') !!}";
+        var apiStoreURL = "{!! lmbRoute('api.slider.store') !!}";
+        var apiGroupAction = "{!! lmbRoute('api.slider.group') !!}";
         {{-- /routes --}}
 
         {{-- languages --}}
         var messagesOfRules = {
-            photo: { required: "{!! LMCValidation::getMessage('photo','required') !!}" },
+            photo: { required: "{!! LMCValidation::getMessage('photo','required') !!}" }
         };
-        var validExtension = "{!! config('ezelnet-frontend-module.display.uploads.photo.mimes') !!}";
-        var maxSize = "{!! config('ezelnet-frontend-module.display.uploads.photo.max_size') !!}";
-        var aspectRatio = "{!! config('ezelnet-frontend-module.display.uploads.photo.aspect_ratio') !!}";
-        var mainAspectRatio = "{!! config('ezelnet-frontend-module.display_main.uploads.photo.aspect_ratio.photo') !!}";
-        var firstAspectRatio = "{!! config('ezelnet-frontend-module.display_main.uploads.photo.aspect_ratio.first_mini_photo') !!}";
-        var secondAspectRatio = "{!! config('ezelnet-frontend-module.display_main.uploads.photo.aspect_ratio.second_mini_photo') !!}";
-        var thirdAspectRatio = "{!! config('ezelnet-frontend-module.display_main.uploads.photo.aspect_ratio.third_mini_photo') !!}";
+        var validExtension = "{!! config('ezelnet-frontend-module.slider.uploads.photo.mimes') !!}";
+        var maxSize = "{!! config('ezelnet-frontend-module.slider.uploads.photo.max_size') !!}";
+        var aspectRatio = "{!! config('ezelnet-frontend-module.slider.uploads.photo.aspect_ratio') !!}";
+        var mainAspectRatio = "{!! config('ezelnet-frontend-module.slider_main.uploads.photo.aspect_ratio') !!}";
         {{-- /languages --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/design_management/display/index.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/design_management/slider/index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
 @endsection
@@ -78,7 +75,7 @@
             <div class="caption">
                 <i class="fa fa-picture-o font-red"></i>
                 <span class="caption-subject font-red">
-                    {!! lmcTrans('ezelnet-frontend-module/admin.display.index') !!}
+                    {!! lmcTrans('ezelnet-frontend-module/admin.slider.index') !!}
                 </span>
             </div>
 
@@ -113,7 +110,7 @@
 
                         <div class="pull-right margin-bottom-25">
                             @include('laravel-modules-core::partials.common.indexActions', [
-                                'module'    => 'display',
+                                'module'    => 'slider',
                                 'fast_add'  => true,
                                 'add'       => true,
                                 'tools'     => false
@@ -134,8 +131,13 @@
                                     <th class="all" width="5%"> <input type="checkbox" class="group-checkable"> </th>
                                     {{-- /Datatable Group Action Column --}}
 
+                                    {{-- Datatable Row Detail Column --}}
+                                    <th class="all" width="5%"></th>
+                                    {{-- /Datatable Row Detail Column --}}
+
                                     <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
-                                    <th class="all" width="40%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.photo') !!} </th>
+                                    <th class="all" width="30%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.photo') !!} </th>
+                                    <th class="all" width="20%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title') !!} </th>
                                     <th class="all" width="15%"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
                                     <th class="all" width="20%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
                                     <th class="all" width="15%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
@@ -147,10 +149,17 @@
                                     <td></td>
                                     {{-- /Datatable Group Action Column --}}
 
+                                    {{-- Datatable Row Detail Column --}}
+                                    <td></td>
+                                    {{-- /Datatable Row Detail Column --}}
+
                                     <td>
                                         <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
                                     </td>
                                     <td> </td>
+                                    <td>
+                                        <input type="text" class="form-control form-filter input-sm" name="name" placeholder="{!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title') !!}">
+                                    </td>
                                     <td>
                                         <select name="status" class="form-control form-filter input-sm">
                                             <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
@@ -177,12 +186,12 @@
                 <div class="tab-pane" id="configs">
                     {!! Form::open([
                         'method'    => 'POST',
-                        'url'       => lmbRoute('admin.display.mainUpdate'),
+                        'url'       => lmbRoute('admin.slider.mainUpdate'),
                         'class'     => 'form-horizontal form-bordered',
                         'files'     => true
                     ]) !!}
                         @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-                        @include('laravel-modules-core::design_management.display.partials.main_form')
+                        @include('laravel-modules-core::design_management.slider.partials.main_form')
                         @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
                     {!! Form::close() !!}
                 </div>
@@ -197,7 +206,7 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'design_management.display.partials.form'        => [
+            'design_management.slider.partials.form'        => [
                 'columns'           => false,
                 'helpBlockAfter'    => true
             ]

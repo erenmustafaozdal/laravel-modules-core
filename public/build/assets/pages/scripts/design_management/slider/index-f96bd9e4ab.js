@@ -25,6 +25,14 @@ var Index = {
 
         // LMCFileinput app is init
         LMCFileinput.init(this.options.Fileinput);
+        LMCFileinput.init(this.options.mainPhotoFileinput);
+
+        $('.color-picker').minicolors({
+            control: 'hue',
+            letterCase: 'lowercase',
+            position: 'bottom right',
+            theme: 'bootstrap'
+        });
 
         // publish model
         $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-publish',function()
@@ -143,11 +151,7 @@ var Index = {
                         '<tbody>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Fotoğraf/Renkler:</strong> </td>' +
-                            '<td class="text-left">' + ( data.photo == null ? '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.first_color + '"> ' + data.first_color + ' </div></div><div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.second_color + '"> ' + data.second_color + ' </div></div>' : '<img src="' + data.photo +'" height="200">' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Mini Fotoğraf:</strong> </td>' +
-                            '<td class="text-left">' + ( data.mini_photo == null ? '' : '<img src="' + data.mini_photo +'" height="200">' ) + '</td>' +
+                            '<td class="text-left">' + ( data.photo == null ? '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.first_color + '"> ' + data.first_color + ' </div></div><div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.second_color + '"> ' + data.second_color + ' </div></div>' : '<img src="' + data.photo +'" height="300">' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Başlık:</strong> </td>' +
@@ -209,19 +213,7 @@ var Index = {
                             render: function ( data, type, full, meta )
                             {
                                 if (data != null ) {
-                                    return '<img src="' + data + '" height="50">';
-                                }
-                                return '';
-                            }
-                        },
-                        // mini_photo
-                        {
-                            data: "mini_photo", name: "mini_photo",
-                            searchable: false, orderable: false, className: 'text-center',
-                            render: function ( data, type, full, meta )
-                            {
-                                if (data != null ) {
-                                    return '<img src="' + data + '" height="50">';
+                                    return '<img src="' + data + '" height="150">';
                                 }
                                 return '';
                             }
@@ -310,7 +302,7 @@ var Index = {
                                 $.ajax({
                                     url: apiStoreURL,
                                     data: {
-                                        photo: { photo: validation.form.find('input.elfinder[name="photo[photo]"]').val()},
+                                        photo: validation.form.find('input.elfinder[name="photo"]').val(),
                                         is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
                                     },
                                     type: 'POST',
@@ -347,6 +339,7 @@ var Index = {
             Fileinput: {
                 src: '#photo',
                 fileinput: {
+                    maxFileSize: maxSize,
                     uploadUrl: apiStoreURL,
                     allowedFileExtensions: validExtension.split(','),
                     allowedFileTypes: null,
@@ -357,7 +350,7 @@ var Index = {
                         showUpload: false
                     },
                     uploadExtraData: function (previewId, index) {
-                        var form = $('.form');
+                        var form = $('form.form');
                         return {
                             is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state')
                         };
@@ -394,6 +387,19 @@ var Index = {
                                 type: 'error'
                             });
                         }
+                    }
+                }
+            },
+            mainPhotoFileinput: {
+                src: '#main-photo',
+                formSrc:  'form.form-horizontal',
+                aspectRatio: mainAspectRatio,
+                fileinput: {
+                    maxFileSize: maxSize,
+                    showUpload: false,
+                    showCancel: false,
+                    fileActionSettings: {
+                        showUpload: false
                     }
                 }
             }
