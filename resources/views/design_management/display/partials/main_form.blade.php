@@ -5,9 +5,23 @@
             {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.current_photo') !!}
         </label>
         <div class="col-md-9">
-            {!! Html::image( $main->photo_url, null, [
-                'height'    => 100
-            ] ) !!}
+            <div class="mt-element-overlay">
+                <div class="mt-overlay-1">
+                    {!! Html::image( $main->photo_url ) !!}
+                    <div class="mt-overlay">
+                        <ul class="mt-info">
+                            <li>
+                                <a class="btn btn-sm red btn-outline"
+                                   href="javascript:;"
+                                   onclick="bootbox.confirm('{!! trans('laravel-modules-core::admin.ops.destroy_confirmation') !!}',function(r){if(r) window.location = '{!! lmbRoute('admin.display.photoDestroy') !!}';}); return false;">
+                                    <i class="fa fa-trash"></i>
+                                    <span class="hidden-xs"> {!! trans('laravel-modules-core::admin.ops.destroy') !!}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+            </div>
         </div>
     </div>
 @endif

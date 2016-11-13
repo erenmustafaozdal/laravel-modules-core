@@ -54,8 +54,8 @@ return [
         'create_description'=> 'Yeni bir Display site stili slaytı ekle',
     ],
     'metro' => [
-        'edit'              => 'Display Stil Fotoğraflarını Düzenle',
-        'edit_description'  => 'Display site stili fotoğraflarını düzenle',
+        'edit'              => 'Metro Stil Fotoğraflarını Düzenle',
+        'edit_description'  => 'Metro site stili fotoğraflarını düzenle',
     ],
     'slider' => [
         'index'             => 'Slider Stil Slaytları',
@@ -396,7 +396,8 @@ return [
     'flash' => [
         'contact_success'           => 'Mesaj başarılı bir şekilde gönderildi',
         'contact_error'             => 'Mesaj gönderilirken bir hata oldu! lütfen daha sonra tekrar dene.',
-        'contact_has_not_email'     => 'Kurum mesajı almak için henüz hazır değil.'
+        'contact_has_not_email'     => 'Kurum mesajı almak için henüz hazır değil.',
+        'banner_not_active'         => ':banner düzenlemesi yapabilmen için önce aktifleştirmen gerekiyor.'
     ],
 
     // permissions

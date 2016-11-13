@@ -1,31 +1,3 @@
-{{-- First Color --}}
-<div class="form-group">
-    <label class="col-md-3 control-label">
-        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.first_color') !!}
-    </label>
-    <div class="col-md-9">
-        {!! Form::text( 'first_color', isset($model) ? $model->first_color : null, [
-            'class'         => 'form-control form-control-solid placeholder-no-fix color-picker',
-            'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.design_management.first_color')
-        ]) !!}
-    </div>
-</div>
-{{-- /First Color --}}
-
-{{-- Second Color --}}
-<div class="form-group">
-    <label class="col-md-3 control-label">
-        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.second_color') !!}
-    </label>
-    <div class="col-md-9">
-        {!! Form::text( 'second_color', isset($model) ? $model->second_color : null, [
-            'class'         => 'form-control form-control-solid placeholder-no-fix color-picker',
-            'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.design_management.second_color')
-        ]) !!}
-    </div>
-</div>
-{{-- /Second Color --}}
-
 {{-- Current Mini Photo --}}
 @if(isset($model) && ! is_null($model->mini_photo))
 <div class="form-group">

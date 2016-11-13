@@ -11,42 +11,6 @@
 </div>
 {{-- /Title --}}
 
-{{-- Title Color --}}
-<div class="form-group">
-    <label class="col-md-3 control-label">
-        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title_color') !!}
-    </label>
-    <div class="col-md-9">
-        {!! Form::text( 'title_color', isset($model) ? $model->title_color : null, [
-            'class'         => 'form-control form-control-solid placeholder-no-fix color-picker',
-            'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title_color')
-        ]) !!}
-    </div>
-</div>
-{{-- /Title Color --}}
-
-{{-- Title Point --}}
-<div class="form-group">
-    <label class="col-md-3 control-label">
-        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title_point') !!}
-    </label>
-    <div class="col-md-9">
-        <select class="bs-select form-control" data-show-subtext="true" name="title_point">
-
-            @foreach(config('ezelnet-frontend-module.title_point') as $key => $value)
-                <option value="{{ $key }}"
-                        {{ isset($model) && $model->title_point == $key ? 'selected' : '' }}
-                        data-content="{!! $value !!}"
-                >
-                    {!! $value !!}
-                </option>
-            @endforeach
-
-        </select>
-    </div>
-</div>
-{{-- /Title Point --}}
-
 {{-- Description --}}
 <div class="form-group">
     <label class="col-md-3 control-label">{!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.description') !!}</label>
@@ -61,42 +25,6 @@
 </div>
 {{-- /Description --}}
 
-{{-- Description Color --}}
-<div class="form-group">
-    <label class="col-md-3 control-label">
-        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.description_color') !!}
-    </label>
-    <div class="col-md-9">
-        {!! Form::text( 'description_color', isset($model) ? $model->description_color : null, [
-            'class'         => 'form-control form-control-solid placeholder-no-fix color-picker',
-            'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.design_management.description_color')
-        ]) !!}
-    </div>
-</div>
-{{-- /Description Color --}}
-
-{{-- Description Point --}}
-<div class="form-group">
-    <label class="col-md-3 control-label">
-        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.description_point') !!}
-    </label>
-    <div class="col-md-9">
-        <select class="bs-select form-control" data-show-subtext="true" name="description_point">
-
-            @foreach(config('ezelnet-frontend-module.description_point') as $key => $value)
-                <option value="{{ $key }}"
-                        {{ isset($model) && $model->description_point == $key ? 'selected' : '' }}
-                        data-content="{!! $value !!}"
-                >
-                    {!! $value !!}
-                </option>
-            @endforeach
-
-        </select>
-    </div>
-</div>
-{{-- /Description Point --}}
-
 {{-- Link --}}
 <div class="form-group">
     <label class="col-md-3 control-label">{!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.link') !!}</label>
@@ -109,30 +37,6 @@
     </div>
 </div>
 {{-- /Link --}}
-
-{{-- Button Color --}}
-<div class="form-group">
-    <label class="col-md-3 control-label">
-        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.button_color') !!}
-    </label>
-    <div class="col-md-9">
-        <select class="bs-select form-control" data-show-subtext="true" name="button_color">
-
-            @foreach(config('ezelnet-frontend-module.button_color') as $key => $value)
-                <option value="{{ $key }}"
-                        {{ isset($model) && $model->button_color == $key ? 'selected' : '' }}
-                        @if(is_array($value))
-                        data-content="{!! $value['lang'] !!} <span class='label lable-sm label-primary' style='background: {{ $value['color'] }};'>{!! $value['lang'] !!} </span>"
-                        @endif
-                >
-                    {!! is_array($value) ? $value['lang'] : $value !!}
-                </option>
-            @endforeach
-
-        </select>
-    </div>
-</div>
-{{-- /Button Color --}}
 
 {{-- Button Text --}}
 <div class="form-group">

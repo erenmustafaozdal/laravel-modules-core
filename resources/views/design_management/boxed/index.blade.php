@@ -12,6 +12,10 @@
 
 @section('css')
     @parent
+    {{-- Jquery Mini Color Picker --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jquery-minicolors/jquery.minicolors.css') !!}
+    {{-- /Jquery Mini Color Picker --}}
+
     {{-- Datatable Css --}}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/datatables.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
@@ -64,99 +68,136 @@
 
 @section('content')
     {{-- Table Portlet --}}
-    <div class="portlet light portlet-datatable bordered portlet-fit">
+    <div class="portlet light portlet-datatable bordered">
         {{-- Table Portlet Title and Actions --}}
-        <div class="portlet-title">
+        <div class="portlet-title tabbable-line">
             <div class="caption">
                 <i class="fa fa-picture-o font-red"></i>
                 <span class="caption-subject font-red">
                     {!! lmcTrans('ezelnet-frontend-module/admin.boxed.index') !!}
                 </span>
             </div>
-            @include('laravel-modules-core::partials.common.indexActions', [
-                'module'    => 'boxed',
-                'fast_add'  => true,
-                'add'       => true,
-                'tools'     => false
-            ])
+
+            {{-- Nav Tabs --}}
+            <ul class="nav nav-tabs nav-tabs-lg">
+                <li class="active">
+                    <a href="#table" data-toggle="tab" aria-expanded="true">
+                        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.table') !!}
+                    </a>
+                </li>
+                <li>
+                    <a href="#configs" data-toggle="tab" aria-expanded="true">
+                        {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.configs') !!}
+                    </a>
+                </li>
+            </ul>
+            {{-- /Nav Tabs --}}
         </div>
         {{-- /Table Portlet Title and Actions --}}
 
         {{-- Table Portlet Body --}}
-        <div class="portlet-body">
+        <div class="portlet-body form">
 
             {{-- Error Messages --}}
             @include('laravel-modules-core::partials.error_message')
             {{-- /Error Messages --}}
 
-            <div class="table-container">
-                {{-- Table Actions --}}
-                @include('laravel-modules-core::partials.common.indexTableActions', [
-                    'actions'   => ['publish','not_publish','destroy']
-                ])
-                {{-- /Table Actions --}}
+            {{-- Tab Contents --}}
+            <div class="tab-content">
+                <div class="tab-pane active" id="table">
+                    <div class="table-container">
 
-                {{-- DataTable --}}
-                <table class="table table-striped table-bordered table-hover table-checkable lmcDataTable">
-                    <thead>
-                        <tr role="row" class="heading">
-                            {{-- Datatable Group Action Column --}}
-                            <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
-                            {{-- /Datatable Group Action Column --}}
+                        <div class="pull-right margin-bottom-25">
+                            @include('laravel-modules-core::partials.common.indexActions', [
+                                'module'    => 'boxed',
+                                'fast_add'  => true,
+                                'add'       => true,
+                                'tools'     => false
+                            ])
+                        </div>
 
-                            {{-- Datatable Row Detail Column --}}
-                            <th class="all" width="2%"></th>
-                            {{-- /Datatable Row Detail Column --}}
+                        {{-- Table Actions --}}
+                        @include('laravel-modules-core::partials.common.indexTableActions', [
+                            'actions'   => ['publish','not_publish','destroy']
+                        ])
+                        {{-- /Table Actions --}}
 
-                            <th class="all" width="2%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
-                            <th class="all" width="20%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.photo') !!} </th>
-                            <th class="all" width="10%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.mini_photo') !!} </th>
-                            <th class="all" width="20%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title') !!} </th>
-                            <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
-                            <th class="all" width="13%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
-                            <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
-                        </tr>
+                        {{-- DataTable --}}
+                        <table class="table table-striped table-bordered table-hover table-checkable lmcDataTable">
+                            <thead>
+                                <tr role="row" class="heading">
+                                    {{-- Datatable Group Action Column --}}
+                                    <th class="all" width="2%"> <input type="checkbox" class="group-checkable"> </th>
+                                    {{-- /Datatable Group Action Column --}}
 
-                        {{-- Datatable Filter --}}
-                        <tr role="row" class="filter">
-                            {{-- Datatable Group Action Column --}}
-                            <td></td>
-                            {{-- /Datatable Group Action Column --}}
+                                    {{-- Datatable Row Detail Column --}}
+                                    <th class="all" width="2%"></th>
+                                    {{-- /Datatable Row Detail Column --}}
 
-                            {{-- Datatable Row Detail Column --}}
-                            <td></td>
-                            {{-- /Datatable Row Detail Column --}}
+                                    <th class="all" width="2%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
+                                    <th class="all" width="20%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.photo') !!} </th>
+                                    <th class="all" width="10%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.mini_photo') !!} </th>
+                                    <th class="all" width="20%"> {!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title') !!} </th>
+                                    <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.status') !!} </th>
+                                    <th class="all" width="13%"> {!! trans('laravel-modules-core::admin.fields.created_at') !!} </th>
+                                    <th class="all" width="10%"> {!! trans('laravel-modules-core::admin.ops.action') !!} </th>
+                                </tr>
 
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
-                            </td>
-                            <td> </td>
-                            <td> </td>
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="name" placeholder="{!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title') !!}">
-                            </td>
-                            <td>
-                                <select name="status" class="form-control form-filter input-sm">
-                                    <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
-                                    <option value="1">{!! trans('laravel-modules-core::admin.ops.published') !!}</option>
-                                    <option value="0">{!! trans('laravel-modules-core::admin.ops.not_published') !!}</option>
-                                </select>
-                            </td>
-                            <td>
-                                @include('laravel-modules-core::partials.common.datatables.filterDate')
-                            </td>
-                            <td>
-                                @include('laravel-modules-core::partials.common.datatables.filterActions')
-                            </td>
-                        </tr>
-                        {{-- /Datatable Filter --}}
+                                {{-- Datatable Filter --}}
+                                <tr role="row" class="filter">
+                                    {{-- Datatable Group Action Column --}}
+                                    <td></td>
+                                    {{-- /Datatable Group Action Column --}}
 
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-                {{-- /DataTable --}}
+                                    {{-- Datatable Row Detail Column --}}
+                                    <td></td>
+                                    {{-- /Datatable Row Detail Column --}}
+
+                                    <td>
+                                        <input type="text" class="form-control form-filter input-sm" name="id" placeholder="{!! trans('laravel-modules-core::admin.fields.id') !!}">
+                                    </td>
+                                    <td> </td>
+                                    <td> </td>
+                                    <td>
+                                        <input type="text" class="form-control form-filter input-sm" name="name" placeholder="{!! lmcTrans('ezelnet-frontend-module/admin.fields.design_management.title') !!}">
+                                    </td>
+                                    <td>
+                                        <select name="status" class="form-control form-filter input-sm">
+                                            <option value="">{!! trans('laravel-modules-core::admin.ops.select') !!}</option>
+                                            <option value="1">{!! trans('laravel-modules-core::admin.ops.published') !!}</option>
+                                            <option value="0">{!! trans('laravel-modules-core::admin.ops.not_published') !!}</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        @include('laravel-modules-core::partials.common.datatables.filterDate')
+                                    </td>
+                                    <td>
+                                        @include('laravel-modules-core::partials.common.datatables.filterActions')
+                                    </td>
+                                </tr>
+                                {{-- /Datatable Filter --}}
+
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        {{-- /DataTable --}}
+                    </div>
+                </div>
+                <div class="tab-pane" id="configs">
+                    {!! Form::open([
+                        'method'    => 'POST',
+                        'url'       => lmbRoute('admin.boxed.mainUpdate'),
+                        'class'     => 'form-horizontal form-bordered'
+                    ]) !!}
+                    @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
+                    @include('laravel-modules-core::design_management.boxed.partials.main_form')
+                    @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
+                    {!! Form::close() !!}
+                </div>
             </div>
+            {{-- /Tab Contents --}}
+
         </div>
         {{-- /Table Portlet Body --}}
     </div>

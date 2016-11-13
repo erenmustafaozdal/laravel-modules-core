@@ -26,6 +26,13 @@ var Index = {
         // LMCFileinput app is init
         LMCFileinput.init(this.options.Fileinput);
 
+        $('.color-picker').minicolors({
+            control: 'hue',
+            letterCase: 'lowercase',
+            position: 'bottom right',
+            theme: 'bootstrap'
+        });
+
         // publish model
         $(DataTable.tableOptions.src + ' tbody').on('click','tr td ul.dropdown-menu a.fast-publish',function()
         {
