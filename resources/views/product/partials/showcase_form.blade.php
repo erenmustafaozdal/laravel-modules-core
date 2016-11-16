@@ -11,6 +11,7 @@
 </div>
 {{-- /Helpers --}}
 
+{!! Form::hidden("showcase_id",0) !!}
 @foreach(\App\ProductShowcase::all() as $showcase)
 
     {{-- Showcase --}}

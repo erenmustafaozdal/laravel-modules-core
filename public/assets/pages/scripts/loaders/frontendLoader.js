@@ -16,6 +16,7 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/isotope.pkgd.min.js', 'isotope');
         $script('/vendor/laravel-modules-core/assets/global/plugins/ladda/ladda.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-validator/bootstrapValidator.min.js');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.elevateZoom-3.0.8.min.js');
 
         // revolution slider
         $script('/vendor/laravel-modules-core/assets/global/plugins/revolution/jquery.themepunch.tools.min.js','revolution_tools');

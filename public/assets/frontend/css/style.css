@@ -6253,7 +6253,7 @@ a.edit i:before {
   background-color: rgba(0, 0, 0, 0.05);
   color: #1e1e1e;
   display: block;
-  padding: 9px 9px 9px 60px;
+  padding: 9px 9px 9px 30px;
   position: relative;
   text-decoration: none;
   -webkit-transition: all .2s linear;
@@ -6266,7 +6266,7 @@ a.edit i:before {
   bottom: 0;
   content: "";
   display: block;
-  left: 45px;
+  left: 25px;
   position: absolute;
   top: 0;
   width: 1px;
@@ -6303,7 +6303,7 @@ a.edit i:before {
   left: 0;
   position: absolute;
   top: 0;
-  width: 45px;
+  width: 26px;
 }
 /* line 164, ../sass/_sidebar.scss */
 .sidebar .menu li.parent > a .open-sub:before, .sidebar .menu li.parent > a .open-sub:after {
@@ -6312,7 +6312,7 @@ a.edit i:before {
   display: block;
   height: 2px;
   left: 0;
-  margin: 19px 0 0 15px;
+  margin: 19px 0 0 5px;
   position: absolute;
   top: 0;
   width: 16px;
@@ -6320,7 +6320,7 @@ a.edit i:before {
 /* line 176, ../sass/_sidebar.scss */
 .sidebar .menu li.parent > a .open-sub:after {
   height: 16px;
-  margin: 12px 0 0 22px;
+  margin: 12px 0 0 12px;
   width: 2px;
 }
 /* line 186, ../sass/_sidebar.scss */
@@ -6346,7 +6346,7 @@ a.edit i:before {
   background: none;
   color: #7f7f7f;
   margin: 0;
-  padding: 4px 9px 4px 60px;
+  padding: 4px 9px 4px 30px;
 }
 /* line 212, ../sass/_sidebar.scss */
 .sidebar .menu .sub li a:before {
@@ -6359,18 +6359,18 @@ a.edit i:before {
 }
 /* line 221, ../sass/_sidebar.scss */
 .sidebar .menu .sub li.parent > a .open-sub {
-  left: 10px;
+  left: 0;
 }
 /* line 224, ../sass/_sidebar.scss */
 .sidebar .menu .sub li.parent > a .open-sub:before, .sidebar .menu .sub li.parent > a .open-sub:after {
   background: #7f7f7f;
-  margin: 14px 0 0 22px;
+  margin: 14px 0 0 8px;
   width: 12px;
 }
 /* line 230, ../sass/_sidebar.scss */
 .sidebar .menu .sub li.parent > a .open-sub:after {
   height: 12px;
-  margin: 9px 0 0 27px;
+  margin: 9px 0 0 13px;
   width: 2px;
 }
 /* line 237, ../sass/_sidebar.scss */
@@ -7059,7 +7059,6 @@ a.edit i:before {
 .product {
   border-radius: 3px;
   display: inline-block;
-  float: none;
   margin: 0 0 40px;
   min-width: 240px;
   overflow: hidden;

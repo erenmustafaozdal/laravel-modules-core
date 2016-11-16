@@ -158,24 +158,8 @@ var Index = {
                             '<td class="text-left">' + ( data.title == null ? '' : data.title ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Başlık Rengi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title_color == null ? '' : '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.title_color + '"> ' + data.title_color + ' </div></div>' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Başlık Puntosu:</strong> </td>' +
-                            '<td class="text-left">' + ( data.title_point == null ? '' : data.title_point + ' px' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Açıklama:</strong> </td>' +
                             '<td class="text-left">' + ( data.description == null ? '' : data.description ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Açıklama Rengi:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description_color == null ? '' : '<div class="color-demo"><div class="color-view bold uppercase" style="color: #fff; background-color: ' + data.description_color + '"> ' + data.description_color + ' </div></div>' ) + '</td>' +
-                        '</tr>' +
-                        '<tr>' +
-                            '<td style="width:150px; text-align:right;"> <strong>Açıklama Puntosu:</strong> </td>' +
-                            '<td class="text-left">' + ( data.description_point == null ? '' : data.description_point + ' px' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Bağlantı Adresi:</strong> </td>' +

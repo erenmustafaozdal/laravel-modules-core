@@ -116,12 +116,15 @@
                 {{-- Profile Navigation --}}
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
+                        @if( ! is_null($product->mainPhoto))
                         <li>
                             {!! $product->mainPhoto->getPhoto([
                                 'class' => 'img-responsive pic-bordered',
                                 'alt'   => $product->name_uc_first,
                             ], last(array_keys(config('laravel-product-module.product.uploads.photo.thumbnails'))),false,'product','product_id') !!}
                         </li>
+                        @endif
+
                         <li class="active">
                             <a data-toggle="tab" href="#overview">
                                 <i class="fa fa-info"></i>
