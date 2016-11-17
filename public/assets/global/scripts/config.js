@@ -288,6 +288,7 @@ var LMCApp = {
      */
     init: function()
     {
+        this.initDateTimepicker(); // init date time picker
         this.initClipboard(); // init clipboard
         this.initBootstrapSelect(); // init bootstrap select
         this.initMaxLength(); // init maxlength
@@ -376,6 +377,30 @@ var LMCApp = {
             clearBtn: true
         },option);
         $('.date-picker').datepicker(option);
+    },
+
+    /**
+     * date timepicker init
+     *
+     * @param option
+     */
+    initDateTimepicker: function(option)
+    {
+        if (!$().datetimepicker) {
+            return;
+        }
+        option = $.extend(true, {
+            orientation: "auto",
+            format: "dd.mm.yyyy hh:ii",
+            pickerPosition: 'bottom-left',
+            language: 'tr',
+            todayHighlight: true,
+            autoclose: true,
+            weekStart: 1,
+            todayBtn: true,
+            clearBtn: true
+        },option);
+        $('.date-time-picker').datetimepicker(option);
     },
 
     /**

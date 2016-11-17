@@ -285,6 +285,10 @@ fieldset[disabled] .btn.green:not(.btn-outline).focus {
     box-shadow: 5px 5px rgba(46, 240, 10, 0.2);
 }
 
+.bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-success,
+.bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-success {
+    background: #76be1e !important; }
+
 
 
 /**

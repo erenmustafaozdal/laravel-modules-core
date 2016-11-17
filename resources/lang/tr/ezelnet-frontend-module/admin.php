@@ -79,6 +79,8 @@ return [
         'contact_info_description'  => 'İletişim bilgilerini düzenle',
         'seo'                       => 'SEO',
         'seo_description'           => 'SEO bilgilerini düzenle',
+        'general_options'           => 'Sistem Ayarları',
+        'general_options_description'=> 'Sistem Ayarlarını düzenle',
     ],
     'page_management' => [
         // home
@@ -163,6 +165,7 @@ return [
             'fast_management'       => 'Hızlı Yönetim',
             'contact_info'          => 'İletişim Bilgisi',
             'seo'                   => 'SEO',
+            'general_options'       => 'Sistem Ayarları',
         ],
         'page_management' => [
             'root'                  => 'Sayfa Yönetimleri',

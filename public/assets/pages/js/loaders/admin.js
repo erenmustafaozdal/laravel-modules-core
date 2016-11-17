@@ -140,6 +140,11 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootbox/bootbox.min.js','bootbox');
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-toastr/toastr.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.js');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js','datetimepicker');
+    });
+    $script.ready('datetimepicker', function()
+    {
+        $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.tr.js');
     });
 
     $script.ready('app', function() {

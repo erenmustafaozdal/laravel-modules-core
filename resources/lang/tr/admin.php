@@ -218,6 +218,15 @@ return [
         'order_last'                    => 'Önce Son Eklenen',
 
         'fast_management'               => 'Hızlı Yönetim',
+        'general_options'               => 'Sistem Ayarları',
+        'coming_soon'                   => 'Yapım Aşaması',
+        'coming_soon_is_active'         => 'Yapım Aşaması Aktif mi?',
+        'coming_soon_title'             => 'Başlık',
+        'coming_soon_message'           => 'Mesaj',
+        'coming_soon_date'              => 'Açılış Tarihi',
+        'coming_soon_social_is_active'  => 'Sosyal Medya Aktif mi?',
+        'coming_soon_social_message'    => 'Sosyal Medya Mesajı',
+        'coming_soon_phone_is_active'   => 'Telefon Aktif mi?',
     ],
 
     // helpers

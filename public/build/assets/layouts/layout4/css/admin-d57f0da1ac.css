@@ -1965,6 +1965,11 @@ body.modal-open {
     width: inherit !important;
     height: 22px !important;
 }
+.page-quick-sidebar-wrapper .page-quick-sidebar .page-quick-sidebar-settings .page-quick-sidebar-settings-list .list-items li .form-control {
+    width: 100% !important;
+    float: none !important;
+    margin-top: 0 !important;
+}
 
 /* Auth Blade */
 .login .font-green {
