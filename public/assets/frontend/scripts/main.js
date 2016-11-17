@@ -2211,8 +2211,10 @@ $(document).ready(function(){
 
 	//Country
 	if ($.fn.county){
-		$('#count-down').county({
-			endDateTime: new Date('2016/12/29 10:00:00'),
+		var element = $('#count-down');
+		var date = element.data('date');
+		element.county({
+			endDateTime: new Date(date),
 			reflection: false
 		}).addClass('count-loaded');
 	}

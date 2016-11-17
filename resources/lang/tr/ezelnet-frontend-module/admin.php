@@ -363,6 +363,9 @@ return [
             'email_address'         => 'E-posta Adresi',
             'phone'                 => 'Telefonu',
             'comment'               => 'Mesajı',
+        ],
+        'coming_soon' => [
+            'title'                  => 'Yapım Aşaması'
         ]
     ],
 

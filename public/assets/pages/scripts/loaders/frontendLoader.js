@@ -7,7 +7,6 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/fancybox/jquery.fancybox.pack.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.touchwipe.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.appear.js');
-        $script('/vendor/laravel-modules-core/assets/global/plugins/SmoothScroll.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/spin.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/raphael.min.js','raphael');
         $script('/vendor/laravel-modules-core/assets/global/plugins/pixastic.custom.js');
@@ -17,6 +16,7 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/ladda/ladda.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-validator/bootstrapValidator.min.js');
         $script('/vendor/laravel-modules-core/assets/global/plugins/jquery.elevateZoom-3.0.8.min.js');
+        $script('/vendor/laravel-modules-core/assets/global/plugins/country.js');
 
         // revolution slider
         $script('/vendor/laravel-modules-core/assets/global/plugins/revolution/jquery.themepunch.tools.min.js','revolution_tools');
