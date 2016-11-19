@@ -15,11 +15,13 @@
                     {!! lmcTrans('admin.fields.fast_management') !!}
                 </a>
             </li>
+            @if(hasPermission('admin.general_configs.generalOptionsUpdate'))
             <li>
                 <a href="javascript:;" data-target="#general_options" data-toggle="tab">
                     {!! lmcTrans('admin.fields.general_options') !!}
                 </a>
             </li>
+            @endif
         </ul>
         {{-- /Tabs --}}
 
@@ -51,6 +53,7 @@
             {{-- /Fast Management --}}
 
             {{-- General Options --}}
+            @if(hasPermission('admin.general_configs.generalOptionsUpdate'))
             <div class="tab-pane page-quick-sidebar-settings" id="general_options">
                 <div class="page-quick-sidebar-settings-list">
 
@@ -150,6 +153,7 @@
                     {!! Form::close() !!}
                 </div>
             </div>
+            @endif
             {{-- /General Options --}}
             
         </div>
