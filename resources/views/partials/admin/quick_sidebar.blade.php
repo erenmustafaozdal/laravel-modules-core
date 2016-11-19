@@ -32,7 +32,7 @@
 
                         {{-- Menu --}}
                         @foreach($fastMenus as $menu)
-                            @if($auth_user->is_super_admin || Sentinel::hasAccess($menu->permission))
+                            @if (hasPermission($menu->permission))
                             <li class="media">
                                 <a href="{{ $menu->link }}">
                                     <i class="{{ $menu->icon }}"></i>

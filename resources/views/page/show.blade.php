@@ -76,7 +76,7 @@
         @endif
         var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
         var tinymceSaveURL = "{!! lmbRoute('api.page.contentUpdate', [ 'id' => $page->id ]) !!}";
-        var tinymcePermission = {!! Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.page.update') ? 'true' : 'false' !!};
+        var tinymcePermission = {!! hasPermission('api.page.update') ? 'true' : 'false' !!};
         {{-- /routes --}}
 
         {{-- languages --}}
@@ -160,7 +160,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($page_category) ? 'page_category.page' : 'page') .'.update'))
+                        @if (hasPermission('admin.'. (isset($page_category) ? 'page_category.page' : 'page') .'.update' . (isset($page_category) ? '#####'.$page_category->id : '')))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -191,7 +191,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($page_category) ? 'page_category.page' : 'page') .'.update'))
+                        @if (hasPermission('admin.'. (isset($page_category) ? 'page_category.page' : 'page') .'.update' . (isset($page_category) ? '#####'.$page_category->id : '')))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($page,[
                                 'method'    => 'PATCH',

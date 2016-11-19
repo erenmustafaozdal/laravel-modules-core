@@ -161,7 +161,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($product_category) ? 'product_category.product' : 'product') .'.update'))
+                        @if (hasPermission('admin.'. (isset($product_category) ? 'product_category.product' : 'product') .'.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -234,7 +234,7 @@
                         {{-- /Showcase --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($product_category) ? 'product_category.product' : 'product') .'.update'))
+                        @if (hasPermission('admin.'. (isset($product_category) ? 'product_category.product' : 'product') .'.update'))
 
                         {{-- Edit Info --}}
                         <div id="edit_info" class="tab-pane form">

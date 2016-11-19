@@ -85,7 +85,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.update'))
+                        @if (hasPermission('admin.role.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -95,7 +95,7 @@
                         </li>
                         @endif
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.update'))
+                        @if (hasPermission('admin.role.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_permission">
                                 <i class="fa fa-user-secret"></i>
@@ -172,7 +172,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.update'))
+                        @if (hasPermission('admin.role.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -196,7 +196,7 @@
                         {{-- /Edit Info --}}
 
                         {{-- Edit Permission --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.role.update'))
+                        @if (hasPermission('admin.role.update'))
                         <div id="edit_permission" class="tab-pane">
                             {!! Form::open([
                                 'method'    => 'PATCH',

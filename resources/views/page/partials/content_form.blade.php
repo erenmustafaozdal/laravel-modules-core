@@ -9,7 +9,7 @@
         ]) !!}
     </div>
 @else
-    @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('api.page.update'))
+    @if (hasPermission('api.page.update'))
         <div class="note note-info">{!! lmcTrans('laravel-page-module/admin.helpers.page.inline_edit_help') !!}</div>
     @endif
     <div class="tinymce">{!! $page->content or null !!}</div>

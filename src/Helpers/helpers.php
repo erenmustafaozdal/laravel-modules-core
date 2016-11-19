@@ -89,7 +89,7 @@ if (! function_exists('getOps')) {
 
         // edit buton
         if ( $currentPage !== 'edit' ) {
-            if ( Sentinel::getUser()->is_super_admin || ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$routeName}.edit") ) {
+            if ( ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || hasPermission("admin.{$routeName}.edit") ) {
                 $ops .= '<a href="' . lmbRoute("admin.{$routeName}.edit", $routeParams) . '" class="btn btn-sm btn-outline yellow margin-right-10">';
                 $ops .= '<i class="fa fa-pencil"></i>';
                 $ops .= '<span class="hidden-xs">';
@@ -101,7 +101,8 @@ if (! function_exists('getOps')) {
 
         // show buton
         if ( $currentPage !== 'show' ) {
-            if ( Sentinel::getUser()->is_super_admin || ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || Sentinel::hasAccess("admin.{$routeName}.show") ) {
+            $hackedRoute = routeHackable("admin.{$routeName}.show") ? "admin.{$routeName}.show#####".$model->id : "admin.{$routeName}.show";
+            if ( ($routeName === 'user' && $model->id === Sentinel::getUser()->id) || hasPermission($hackedRoute) ) {
                 $ops .= '<a href="' . lmbRoute("admin.{$routeName}.show", $routeParams) . '" class="btn btn-sm btn-outline green margin-right-10">';
                 $ops .= '<i class="fa fa-search"></i>';
                 $ops .= '<span class="hidden-xs">';
@@ -112,7 +113,8 @@ if (! function_exists('getOps')) {
         }
 
         // silme butonu
-        if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.destroy") ) {
+        $hackedRoute = routeHackable("admin.{$routeName}.destroy") ? "admin.{$routeName}.destroy#####".$model->id : "admin.{$routeName}.destroy";
+        if ( hasPermission($hackedRoute) ) {
             if ( $routeName !== 'user' || $model->id !== Sentinel::getUser()->id ) {
                 $ops .= '<button type="submit" onclick="bootbox.confirm( \'' . trans('laravel-modules-core::admin.ops.destroy_confirmation') . '\', function(r){if(r) $(\'#destroy_form_' . $model->id . '\').submit();}); return false;" class="btn btn-sm red btn-outline margin-right-10">';
                 $ops .= '<i class="fa fa-trash"></i>';
@@ -127,7 +129,8 @@ if (! function_exists('getOps')) {
         if ( $isPublishable ) {
             // yayından kaldırma
             if ($model->is_publish) {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.notPublish") ) {
+                $hackedRoute = routeHackable("admin.{$routeName}.notPublish") ? "admin.{$routeName}.notPublish#####".$model->id : "admin.{$routeName}.notPublish";
+                if ( hasPermission($hackedRoute) ) {
                     $ops .= '<a href="' . lmbRoute("admin.{$routeName}.notPublish", $routeParams) . '" class="btn btn-sm btn-outline purple margin-right-10">';
                     $ops .= '<i class="fa fa-times"></i>';
                     $ops .= '<span class="hidden-xs">';
@@ -138,7 +141,8 @@ if (! function_exists('getOps')) {
             }
             // yayınlama
             else {
-                if ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.{$routeName}.notPublish") ) {
+                $hackedRoute = routeHackable("admin.{$routeName}.publish") ? "admin.{$routeName}.publish#####".$model->id : "admin.{$routeName}.publish";
+                if ( hasPermission($hackedRoute) ) {
                     $ops .= '<a href="' . lmbRoute("admin.{$routeName}.publish", $routeParams) . '" class="btn btn-sm btn-outline blue margin-right-10">';
                     $ops .= '<i class="fa fa-bullhorn"></i>';
                     $ops .= '<span class="hidden-xs">';

@@ -45,7 +45,7 @@
                             <div class="cbp-l-caption-alignCenter">
                                 <div class="cbp-l-caption-body">
                                     {{-- Show Button --}}
-                                    @if(Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.show"))
+                                    @if(hasPermission('admin.'. (isset($parent_media_category) ? 'media_category.media' : 'media') .'.show' . (isset($parent_media_category) ? '#####'.$parent_media_category->id : '')))
                                     <a href="{!! isset($parent_media_category)
                                             ? lmbRoute('admin.media_category.media.show', [
                                                 'id'=> $category->id,
@@ -64,7 +64,7 @@
                                     {{-- /Show Button --}}
 
                                     {{-- Publish or Not Publish Button --}}
-                                    @if( ! $media->is_publish && ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.publish") ) )
+                                    @if( ! $media->is_publish && hasPermission('admin.'. (isset($parent_media_category) ? 'media_category.media' : 'media') .'.publish' . (isset($parent_media_category) ? '#####'.$parent_media_category->id : '')))
                                         <a href="{!! isset($parent_media_category)
                                             ? lmbRoute('admin.media_category.media.publish', [
                                                 'id'=> $category->id,
@@ -79,7 +79,7 @@
                                     </a>
                                    @endif
 
-                                    @if( $media->is_publish && ( Sentinel::getUser()->is_super_admin || Sentinel::hasAccess("admin.media_category.media.publish") ) )
+                                    @if( $media->is_publish && hasPermission('admin.'. (isset($parent_media_category) ? 'media_category.media' : 'media') .'.notPublish' . (isset($parent_media_category) ? '#####'.$parent_media_category->id : '')))
                                         <a href="{!! isset($parent_media_category)
                                             ? lmbRoute('admin.media_category.media.notPublish', [
                                                 'id'=> $category->id,

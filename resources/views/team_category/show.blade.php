@@ -82,7 +82,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.team_category.update'))
+                        @if (hasPermission('admin.team_category.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -107,7 +107,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.team_category.update'))
+                        @if (hasPermission('admin.team_category.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::model($team_category,[
                                 'method'    => 'PATCH',

@@ -172,7 +172,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($document_category) ? 'document_category.document' : 'document') .'.update'))
+                        @if (hasPermission('admin.'. (isset($document_category) ? 'document_category.document' : 'document') .'.update' . (isset($document_category) ? '#####'.$document_category->id : '')))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -197,7 +197,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($document_category) ? 'document_category.document' : 'document') .'.update'))
+                        @if (hasPermission('admin.'. (isset($document_category) ? 'document_category.document' : 'document') .'.update' . (isset($document_category) ? '#####'.$document_category->id : '')))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',

@@ -71,7 +71,8 @@ class BreadcrumbService
         if ( strpos($this->route_name, 'index')  !== false) {
             $breadcrumbs  .= $parent_text;
         } else if (Route::has($this->index_route_name)) {
-            $route = Sentinel::getUser()->is_super_admin || Sentinel::hasAccess($this->index_route_name) ? lmbRoute($this->index_route_name, $modelRoute) : 'javascript:;';
+            $hackedRoute = isset($modelRoute['id']) && routeHackable($this->index_route_name) ? $this->index_route_name . '#####' . $modelRoute['id'] : $this->index_route_name;
+            $route = hasPermission($hackedRoute) ? lmbRoute($this->index_route_name, $modelRoute) : 'javascript:;';
             $breadcrumbs  .= '<a href="'. $route .'">'.$parent_text.'</a><i class="fa fa-circle"></i>';
         }
 
@@ -124,7 +125,7 @@ class BreadcrumbService
      */
     public function getDashboardBreadcrumb()
     {
-        if ( ! Sentinel::getUser()->is_super_admin && ! Sentinel::hasAccess('admin.dashboard.index') ) {
+        if ( ! hasPermission('admin.dashboard.index') ) {
             return '';
         }
         $breadcrumbs  = '<li>';

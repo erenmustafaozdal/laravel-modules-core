@@ -111,7 +111,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.contact.update'))
+                        @if (hasPermission('admin.contact.update'))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -120,7 +120,7 @@
                         </li>
                         @endif
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.contact.update'))
+                        @if (hasPermission('admin.contact.update'))
                         <li>
                             <a data-toggle="tab" href="#location">
                                 <i class="fa fa-map-marker"></i>
@@ -153,7 +153,7 @@
                         {{-- /Detail --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.contact.update'))
+                        @if (hasPermission('admin.contact.update'))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
@@ -172,7 +172,7 @@
                         {{-- /Edit Info --}}
 
                         {{-- Edit Map --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.contact.update'))
+                        @if (hasPermission('admin.contact.update'))
                         <div id="location" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',

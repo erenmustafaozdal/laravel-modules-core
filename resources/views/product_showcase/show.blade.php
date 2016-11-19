@@ -82,7 +82,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.product_showcase.update'))
+                        @if (hasPermission('admin.product_showcase.update'))
                             <li>
                                 <a data-toggle="tab" href="#edit_info">
                                     <i class="fa fa-pencil"></i>
@@ -107,7 +107,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.product_showcase.update'))
+                        @if (hasPermission('admin.product_showcase.update'))
                             <div id="edit_info" class="tab-pane form">
                                 {!! Form::model($product_showcase,[
                                     'method'    => 'PATCH',

@@ -160,7 +160,7 @@
                             <span class="after"> </span>
                         </li>
 
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($media_category) ? 'media_category.media' : 'media') .'.update'))
+                        @if (hasPermission('admin.'. (isset($media_category) ? 'media_category.media' : 'media') .'.update' . (isset($media_category) ? '#####'.$media_category->id : '')))
                         <li>
                             <a data-toggle="tab" href="#edit_info">
                                 <i class="fa fa-pencil"></i>
@@ -185,7 +185,7 @@
                         {{-- /Overview --}}
 
                         {{-- Edit Info --}}
-                        @if (Sentinel::getUser()->is_super_admin || Sentinel::hasAccess('admin.'. (isset($media_category) ? 'media_category.media' : 'media') .'.update'))
+                        @if (hasPermission('admin.'. (isset($media_category) ? 'media_category.media' : 'media') .'.update' . (isset($media_category) ? '#####'.$media_category->id : '')))
                         <div id="edit_info" class="tab-pane form">
                             {!! Form::open([
                                 'method'    => 'PATCH',
