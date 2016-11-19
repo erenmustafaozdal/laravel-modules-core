@@ -104,10 +104,7 @@ class MenuMiddleware
             if (is_null($item->data('permissions'))) {
                 return true;
             }
-            $access = is_array($item->data('permissions'))
-                ? Sentinel::hasAnyAccess($item->data('permissions'))
-                : Sentinel::hasAccess($item->data('permissions'));
-            return $this->user->is_super_admin || $access ?: false;
+            return $this->user->is_super_admin || hasPermission($item->data('permissions')) ?: false;
         });
 
     }

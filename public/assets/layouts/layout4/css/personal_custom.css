@@ -372,6 +372,62 @@ fieldset[disabled] .btn.green:not(.btn-outline).focus {
 
 
 
+/**
+ * Background
+ */
+.bg-green {
+    background: #76BE1E !important; }
+
+.bg-green-opacity {
+    background: rgba(118,190,30, 0.8) !important; }
+
+.bg-hover-green:hover {
+    background: #76BE1E !important; }
+
+.font-green {
+    color: #76BE1E !important; }
+
+.border-green {
+    border-color: #76BE1E !important; }
+
+.border-top-green {
+    border-top-color: #76BE1E !important; }
+
+.border-bottom-green {
+    border-bottom-color: #76BE1E !important; }
+
+.border-left-green {
+    border-left-color: #76BE1E !important; }
+
+.border-right-green {
+    border-right-color: #76BE1E !important; }
+
+.bg-before-green:before,
+.bg-after-green:after {
+    background: #76BE1E !important; }
+
+.border-before-green:before,
+.border-after-green:after {
+    border-color: #76BE1E !important; }
+
+.border-top-before-green:before,
+.border-top-after-green:after {
+    border-top-color: #76BE1E !important; }
+
+.border-bottom-before-green:before,
+.border-bottom-after-green:after {
+    border-bottom-color: #76BE1E !important; }
+
+.border-left-before-green:before,
+.border-left-after-green:after {
+    border-left-color: #76BE1E !important; }
+
+.border-right-before-green:before,
+.border-right-after-green:after {
+    border-right-color: #76BE1E !important; }
+
+
+
 
 
 

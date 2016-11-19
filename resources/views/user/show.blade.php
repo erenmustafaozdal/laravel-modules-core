@@ -104,9 +104,6 @@
                 {{-- Profile Navigation --}}
                 <div class="col-md-3">
                     <ul class="ver-inline-menu tabbable margin-bottom-40">
-                        <li class="padding-tb-10">
-                            @include('laravel-modules-core::partials.laravel-user-module.permissions_rate',['model'=>$user])
-                        </li>
                         <li>
                             {!! $user->getPhoto([
                                 'class' => 'img-responsive pic-bordered',

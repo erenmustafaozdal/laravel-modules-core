@@ -33,7 +33,7 @@
         {{-- Lists --}}
         @foreach($permission->routes as $module => $routes)
         <a class="list-toggle-container" data-toggle="collapse" href="#{{ $module }}" aria-expanded="false">
-            <div class="list-toggle"> {{ $routes['title'] }}
+            <div class="list-toggle bg-hover-green"> {{ $routes['title'] }}
                 <?php $count = 0; foreach($routes['routes'] as $route => $infos){ if(hasPermission($route)) $count++; } ?>
                 <span class="badge badge-default pull-right bg-white font-dark bold">{{ $count }}</span>
             </div>
@@ -80,7 +80,6 @@
 
                     {{-- Checkbox Form --}}
                     <div class="list-datetime">
-                        {!! Form::hidden("permissions[{$route}]", 0) !!}
                         {!! Form::checkbox( "permissions[{$route}]", 1, isset($permissions[$route]), [
                             'class'         => 'make-switch  item-permission',
                             'data-on-text'  => '<i class="fa fa-check"></i>',
