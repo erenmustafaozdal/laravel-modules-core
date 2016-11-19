@@ -44,9 +44,9 @@ var Permission = {
      */
     changeGroup: function(element, state)
     {
-        $(element).closest('.task-list').find('input[type="checkbox"].item-permission').each(function(index, element)
+        $(element).closest('.mt-list-item').nextAll().each(function(index, element)
         {
-            $(element).bootstrapSwitch('state', state, true);
+            $(element).find('input[type="checkbox"].item-permission').bootstrapSwitch('state', state, true);
         });
     },
 
@@ -91,9 +91,9 @@ var Permission = {
         $('.group-permission').each(function(index, element)
         {
             var isGroupChecked = true;
-            $(element).closest('.task-list').find('input[type="checkbox"].item-permission').each(function(index, subElement)
+            $(element).closest('.mt-list-item').nextAll().each(function(index, subElement)
             {
-                if ( ! $(subElement).bootstrapSwitch('state') ) {
+                if ( ! $(subElement).find('input[type="checkbox"].item-permission').bootstrapSwitch('state') ) {
                     isGroupChecked = false;
                 }
             });

@@ -289,6 +289,32 @@ return [
             'uploadDeny'    => ['all'],
             'uploadMaxSize' => '5M',
         ],
-    ]
+    ],
+
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Permissions
+    |--------------------------------------------------------------------------
+    */
+    'permissions' => [
+        'theme' => [
+            'title'                 => 'Admin Tema Ayarları',
+            'routes' => [
+                'api.themeLayout.change' => [
+                    'title'         => 'Tema Düzeni',
+                    'description'   => 'Bu izne sahip olanlar admin paneli düzenini düzenleyebilir.',
+                ],
+                'api.themeColor.change' => [
+                    'title'         => 'Tema Rengi',
+                    'description'   => 'Bu izne sahip olanlar admin panel tema rengini düzenleyebilir.',
+                ],
+            ],
+        ],
+    ],
 
 ];

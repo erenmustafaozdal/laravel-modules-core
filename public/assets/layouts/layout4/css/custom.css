@@ -91,7 +91,7 @@ body.modal-open {
 }
 
 /* List Items */
-.mt-element-list .list-simple.mt-list-container ul > .mt-list-item > .list-item-content.parent {
+.mt-element-list .list-simple.mt-list-container ul > .mt-list-item > .list-item-content.parent, .mt-element-list .list-default.mt-list-container ul > .mt-list-item > .list-item-content.parent {
     padding-left: 0 !important;
 }
 
