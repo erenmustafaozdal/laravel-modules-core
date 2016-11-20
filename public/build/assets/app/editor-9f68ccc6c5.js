@@ -121,7 +121,7 @@ var Editor = {
 
                     // categories gelince
                     if (value != null && typeof value == 'object') {
-                        var className = LMCSelect2s['.select2me'] != undefined ? 'select2me' : 'select2category';
+                        var className = typeof LMCSelect2s != 'undefined' && LMCSelect2s['.select2me'] != undefined ? 'select2me' : 'select2category';
 
                         $('select.' + className +'[name="' + key + '"]', theEditor.form).each(function () {
                             var element = $(this);

@@ -55,7 +55,7 @@
         {{-- routes --}}
         @if(isset($page_category))
         var ajaxURL = "{!! lmbRoute('api.page_category.page.index', ['id' => $page_category->id]) !!}";
-        var modelsURL = "{!! lmbRoute('api.document_category.models', ['id' => $page_category->id]) !!}";
+        var modelsURL = "{!! lmbRoute('api.page_category.models', ['id' => $page_category->id]) !!}";
         @else
         var ajaxURL = "{!! lmbRoute('api.page.index') !!}";
         var categoryURL = "{!! lmbRoute('admin.page_category.show', ['id' => '###id###']) !!}";

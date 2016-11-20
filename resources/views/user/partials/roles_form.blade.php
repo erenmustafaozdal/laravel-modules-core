@@ -1,4 +1,5 @@
 {{-- Roles --}}
+@if(hasPermission('api.role.models'))
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-user-module/admin.fields.user.roles') !!}</label>
     {!! Form::hidden('roles[]',0) !!}
@@ -11,4 +12,5 @@
     </select>
     <span class="help-block"> {!! lmcTrans('laravel-user-module/admin.helpers.user.roles_help') !!} </span>
 </div>
+@endif
 {{-- /Roles --}}
