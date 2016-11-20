@@ -260,7 +260,7 @@ var Tinymce = {
                     'preview print searchreplace tabfocus table textcolor template wordcount'
                 ],
                 toolbar: [
-                    'fontselect fontsizeselect | forecolor backcolor | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media table template | styleselect codesample emoticons insertdatetime hr pagebreak charmap',
+                    'fontselect fontsizeselect | forecolor backcolor | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media table | styleselect codesample emoticons insertdatetime hr pagebreak charmap',
                     'undo redo print searchreplace | code fullscreen preview'
                 ],
                 file_browser_callback : theTinymce.fileBrowserCallback,

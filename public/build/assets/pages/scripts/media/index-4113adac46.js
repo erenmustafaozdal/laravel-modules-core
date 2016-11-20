@@ -24,7 +24,7 @@ var Index = {
             return {
                 category_id: form.find('select[name="category_id[]"]').val() == null ? form.find('input[name="category_id[]"]').val() : form.find('select[name="category_id[]"]').val(),
                 title: form.find('input[name="title"]').val(),
-                description: form.find('textarea[name="description"]').val(),
+                description: form.find('textarea[name="description"]').length < 1 ? '' : form.find('textarea[name="description"]').val(),
                 is_publish: form.find('input[name="is_publish"]').bootstrapSwitch('state'),
                 x: $("input[name='x[]']").map(function(){return $(this).val();}).get(),
                 y: $("input[name='y[]']").map(function(){return $(this).val();}).get(),
@@ -420,7 +420,7 @@ var Index = {
                                 var url, type, message_success, title_success, message_error, title_error, datas = {
                                     category_id: validation.form.find('select[name="category_id[]"]').val() == null ? validation.form.find('input[name="category_id[]"]').val() : validation.form.find('select[name="category_id[]"]').val(),
                                     title: validation.form.find('input[name="title"]').val(),
-                                    description: validation.form.find('textarea[name="description"]').val(),
+                                    description: validation.form.find('textarea[name="description"]').val() == undefined ? '' : validation.form.find('textarea[name="description"]').val(),
                                     is_publish: validation.form.find('input[name="is_publish"]').bootstrapSwitch('state')
                                 };
                                 var video = $('#video');
