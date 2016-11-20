@@ -218,6 +218,13 @@
         var districtURL = "{!! lmbRoute('address.districts', ['id' => '###id###']) !!}";
         var neighborhoodURL = "{!! lmbRoute('address.neighborhoods', ['id' => '###id###']) !!}";
         var postalCodeURL = "{!! lmbRoute('address.postalCode', ['id' => '###id###']) !!}";
+        var tinyMceCSS = [
+            "http://fonts.googleapis.com/css?family=Arimo:400,700,400italic,700italic",
+            "{!! lmcElixir('assets/frontend/css/style.css') !!}",
+            "{!! lmcElixir('assets/frontend/css/customizer/pages.css') !!}",
+            "{{ route('frontend.css.style') }}",
+            "{!! lmcElixir('assets/frontend/css/ie/ie.css') !!}"
+        ];
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin.js') !!}"></script>
     <script type="text/javascript">
