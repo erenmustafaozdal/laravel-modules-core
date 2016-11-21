@@ -188,14 +188,6 @@
             county_id: {
                 url: districtURL,
                 element: '#district_id'
-            },
-            district_id: {
-                url: neighborhoodURL,
-                element: '#neighborhood_id'
-            },
-            neighborhood_id: {
-                url: postalCodeURL,
-                element: '#postal_code_id'
             }
         };
 
@@ -271,41 +263,6 @@
                     }
                 },
                 onChange: addressChange
-            });
-        }
-        if ($('#county_id').length) {
-            Select2.init({
-                src: '#county_id',
-                select2: {
-                    ajax: null
-                },
-                onChange: addressChange
-            });
-        }
-        if ($('#district_id').length) {
-            Select2.init({
-                src: '#district_id',
-                select2: {
-                    ajax: null
-                },
-                onChange: addressChange
-            });
-        }
-        if ($('#neighborhood_id').length) {
-            Select2.init({
-                src: '#neighborhood_id',
-                select2: {
-                    ajax: null
-                },
-                onChange: addressChange
-            });
-        }
-        if ($('#postal_code_id').length) {
-            Select2.init({
-                src: '#postal_code_id',
-                select2: {
-                    ajax: null
-                }
             });
         }
     });

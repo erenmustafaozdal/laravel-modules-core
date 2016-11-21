@@ -30,7 +30,7 @@ var Model = {
         var defaultAjax = function(type)
         {
             $.ajax({
-                data: {form: 'default-design', type: type},
+                data: {form: 'default_design', type: type},
                 url: defaultDesignChangeURL,
                 success: function(data)
                 {
