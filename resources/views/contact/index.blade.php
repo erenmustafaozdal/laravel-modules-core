@@ -44,8 +44,6 @@
 
         {{-- routes --}}
         var ajaxURL = "{!! lmbRoute('api.contact.index') !!}";
-        var categoryURL = "{!! lmbRoute('admin.contact_category.show', ['id' => '###id###']) !!}";
-        var modelsURL = "{!! lmbRoute('api.contact_category.models') !!}";
         var apiStoreURL = "{!! lmbRoute('api.contact.store') !!}";
         var apiGroupAction = "{!! lmbRoute('api.contact.group') !!}";
         {{-- /routes --}}

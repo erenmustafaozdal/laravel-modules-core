@@ -25,6 +25,9 @@ var ModelForm = {
                     },
                     name: {
                         required: true
+                    },
+                    amount: {
+                        required: true
                     }
                 },
                 messages: messagesOfRules

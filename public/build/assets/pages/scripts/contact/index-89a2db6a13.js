@@ -209,7 +209,7 @@ var Index = {
 
                     detail += '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Harita:</strong> </td>' +
-                            '<td class="text-left">' + ( data.map.latitude == '' || data.map.longitude == ''  || data.map.zoom == '' ? '' : '<img src="' + Maps.getStaticMapUrl([800,400],data.map.latitude,data.map.longitude,data.map.zoom) ) + '">' + '</td>' +
+                            '<td class="text-left">' + ( data.map.latitude == null || data.map.longitude == null  || data.map.zoom == null ? '' : '<img src="' + Maps.getStaticMapUrl([800,400],data.map.latitude,data.map.longitude,data.map.zoom)  + '">' ) + '</td>' +
                         '</tr>' +
                         '<tr>' +
                             '<td style="width:150px; text-align:right;"> <strong>Oluşturma Tarihi:</strong> </td>' +

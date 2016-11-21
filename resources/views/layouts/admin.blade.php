@@ -22,6 +22,24 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         {{-- /Meta tags --}}
 
+        <link rel="shortcut icon" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico" />
+
+        {{-- Theme Color --}}
+        <meta name="theme-color" content="#76be1e">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        {{-- /Theme Color --}}
+        <link rel="icon" sizes="192x192" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico">
+
+        <meta name="msapplication-square310x310logo" content="/vendor/laravel-modules-core/assets/global/img/favicon.ico">
+
+        {{-- Apple & Saari --}}
+        <link rel="apple-touch-startup-image" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico">
+        <link rel="apple-touch-icon" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico">
+        <link rel="apple-touch-icon" sizes="76x76" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico">
+        <link rel="apple-touch-icon" sizes="120x120" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico">
+        <link rel="apple-touch-icon" sizes="152x152" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico">
+        {{-- /Apple & Saari --}}
+
         {{-- Global styles --}}
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
         {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/font-awesome/css/font-awesome.min.css') !!}
@@ -58,8 +76,6 @@
             {!! Html::style(config('laravel-modules-core.custom_css')) !!}
         @endif
         {{-- /Custom Css --}}
-
-        <link rel="shortcut icon" href="/vendor/laravel-modules-core/assets/global/img/favicon.ico" />
 
     </head>
 

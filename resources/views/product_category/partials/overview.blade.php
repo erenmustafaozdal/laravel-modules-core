@@ -16,14 +16,14 @@
     {{-- /Name --}}
 
     {{-- Crop Type --}}
-    <div class="form-group">
-        <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-product-module/admin.fields.product_category.crop_type') !!}
-        </label>
-        <div class="col-sm-10">
-            <p class="form-control-static"> {{ lmcTrans("admin.fields.{$product_category->crop_type}_crop") }} </p>
-        </div>
-    </div>
+    {{--<div class="form-group">--}}
+        {{--<label class="col-sm-2 control-label">--}}
+            {{--{!! lmcTrans('laravel-product-module/admin.fields.product_category.crop_type') !!}--}}
+        {{--</label>--}}
+        {{--<div class="col-sm-10">--}}
+            {{--<p class="form-control-static"> {{ lmcTrans("admin.fields.{$product_category->crop_type}_crop") }} </p>--}}
+        {{--</div>--}}
+    {{--</div>--}}
     {{-- /Crop Type --}}
 
     {{-- Created At --}}
