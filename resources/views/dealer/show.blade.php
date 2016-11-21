@@ -70,7 +70,6 @@
         @else
             var modelsURL = "{!! lmbRoute('api.dealer_category.models') !!}";
         @endif
-        var categoryDetailURL = "{!! lmbRoute('api.dealer_category.detail', ['id' => '###id###']) !!}";
         {{-- /lmbRoutes --}}
 
         {{-- languages --}}
