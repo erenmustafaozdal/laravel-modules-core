@@ -32,13 +32,15 @@
         </label>
         <div class="col-sm-10">
             <p class="form-control-static">
-                @foreach(\LMBCollection::renderAncestorsAndSelf($media->categories,'/',['name_uc_first','type']) as $category)
+                @foreach(\LMBCollection::renderAncestorsAndSelf($media->categories,'/',['name_uc_first','gallery_type','type']) as $category)
                     {!! $category['parent_name_uc_first'] === ''
                         ? $category['name_uc_first']
                         : '<span class="text-muted">' . $category['parent_name_uc_first'] . '/</span>' . $category['name_uc_first'] !!}
+                    @if($category['type'] === 'photo')
                     <span class="text-muted">
-                        ({!! lmcTrans('laravel-media-module/admin.fields.media_category.' . $category['type']) !!})
+                        ({!! lmcTrans('laravel-media-module/admin.fields.media_category.' . $category['gallery_type']) !!})
                     </span>
+                    @endif
                     <br>
                 @endforeach
             </p>
