@@ -121,6 +121,6 @@ body.modal-open {
 .login a.red {
     color: #e7505a !important;
 }
-.login a.red:hover {
+.login a.red:hover, .login a.red:active, .login a.red:active:focus, .login a.red:focus {
     color: #ffffff !important;
 }

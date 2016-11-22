@@ -76,11 +76,11 @@
             ]) !!}
         </div>
         <div class="form-actions">
-            <a href="{!! lmbRoute('getLogin') !!}" class="btn btn-default">
-                <span>{!! lmcTrans('laravel-user-module/auth.reset_password.login') !!}</span>
+            <a href="{!! lmbRoute('getLogin') !!}" class="btn red btn-outline">
+                <span>{!! lmcTrans('laravel-user-module/auth.forget_password.login') !!}</span>
             </a>
             {!! Form::button( lmcTrans('laravel-user-module/auth.reset_password.submit'), [
-                'class' => 'btn btn-success uppercase pull-right',
+                'class' => 'btn green btn-outline pull-right',
                 'type' => 'submit'
             ]) !!}
         </div>
