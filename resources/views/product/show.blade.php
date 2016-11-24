@@ -60,7 +60,6 @@
         {{-- languages --}}
         var messagesOfRules = {
             'category_id': { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            brand_id: { required: "{!! LMCValidation::getMessage('brand_id','required') !!}" },
             name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };
         var validExtension = "{!! config('laravel-product-module.product.uploads.photo.mimes') !!}";

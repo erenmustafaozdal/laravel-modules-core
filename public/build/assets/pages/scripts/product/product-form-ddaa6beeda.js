@@ -1,1 +1,0 @@
-var ModelForm={init:function(e){var i=$.extend(!0,this.getDefaultOptions(),e);Validation.init(i)},getDefaultOptions:function(){return{src:".form",isAjax:!1,submitAjax:function(e){},validate:{rules:{category_id:{required:!0},brand_id:{required:!0},name:{required:!0},amount:{required:!0}},messages:messagesOfRules}}}};
