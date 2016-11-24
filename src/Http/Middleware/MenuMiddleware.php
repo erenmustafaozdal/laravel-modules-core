@@ -8,22 +8,6 @@ use Sentinel;
 
 class MenuMiddleware
 {
-    /**
-     * action menu classes
-     *
-     * @var array
-     */
-    protected $actionMenus = [
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\UserMenu::class,
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\TeamMenu::class,
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\PageMenu::class,
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\DocumentMenu::class,
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\DescriptionMenu::class,
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\MediaMenu::class,
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\DealerMenu::class,
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\ProductMenu::class,
-        \ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\Menus\Action\ContactMenu::class,
-    ];
 
     /**
      * sidebar menu classes
@@ -79,7 +63,6 @@ class MenuMiddleware
     {
         if ( ! is_null($this->user) )
         {
-            $this->menuInit('action');
             $this->menuInit('sidebar');
             $this->menuInit('user');
         }

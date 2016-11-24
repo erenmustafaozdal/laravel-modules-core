@@ -100,12 +100,6 @@
                 {{-- Responsive Menu Toggler --}}
                 <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
                 {{-- /Responsive Menu Toggler --}}
-                
-                {{-- Page Actions --}}
-                <div class="page-actions">
-                    @include('laravel-modules-core::partials.admin.topbarActions')
-                </div>
-                {{-- /Page Actions --}}
 
                 {{-- Page Top --}}
                 <div class="page-top">
