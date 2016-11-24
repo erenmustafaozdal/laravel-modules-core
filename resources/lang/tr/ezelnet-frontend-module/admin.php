@@ -277,6 +277,7 @@ return [
             'analytics_title'       => 'Analytics',
             'title'                 => 'Ad',
             'meta_title'            => 'META Başlık',
+            'meta_abstract'         => 'Site Konusu',
             'meta_description'      => 'META Açıklama',
             'meta_keywords'         => 'META Anahtar Kelimeler',
             'og_title'              => 'Başlık',
@@ -408,6 +409,7 @@ return [
         'general_configs' => [
             'title'             => 'Sistemin içinde çeşitli yerlerde kullanılacak kurum/firma başlığı.',
             'meta_title'        => 'Arama motorlarını bilgilendirmek amacıyla kurum/firma başlığı yazın.',
+            'meta_abstract'     => 'Arama motorlarını bilgilendirmek amacıyla sitenin konusunu yazın.',
             'meta_description'  => 'Arama motorlarını bilgilendirmek amacıyla kurum/firma açıklaması yazın.',
             'meta_keywords'     => 'Arama motorlarını bilgilendirmek amacıyla kurum/firma ile ilgili anahtar kelimeler yazın. Anahtar kelimeler arasına <em class="label label-info">virgül (,)</em> koyun.',
             'og_title'          => 'Facebook\'ta link paylaşıldığında görünecek başlık.',

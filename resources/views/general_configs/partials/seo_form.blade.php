@@ -20,7 +20,7 @@
         {!! Form::text( 'meta_title', is_null($seo) ? null : $seo->meta_title, [
             'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
             'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.general_configs.meta_title'),
-            'maxlength'     => 255
+            'maxlength'     => 70
         ]) !!}
         <span class="help-block"> {!! lmcTrans('ezelnet-frontend-module/admin.helpers.general_configs.meta_title') !!} </span>
     </div>
@@ -35,7 +35,7 @@
             'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
             'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.general_configs.meta_description'),
             'rows'          => 3,
-            'maxlength'     => 255
+            'maxlength'     => 160
         ]) !!}
         <span class="help-block"> {!! lmcTrans('ezelnet-frontend-module/admin.helpers.general_configs.meta_description') !!} </span>
     </div>
@@ -55,6 +55,21 @@
     </div>
 </div>
 {{-- /Meta Keywords --}}
+
+{{-- Meta Abstract --}}
+<div class="form-group">
+    <label class="col-md-3 control-label">{!! lmcTrans('ezelnet-frontend-module/admin.fields.general_configs.meta_abstract') !!}</label>
+    <div class="col-md-9">
+        {!! Form::textarea( 'meta_abstract', is_null($seo) ? null : $seo->meta_abstract, [
+            'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
+            'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.general_configs.meta_abstract'),
+            'rows'          => 3,
+            'maxlength'     => 160
+        ]) !!}
+        <span class="help-block"> {!! lmcTrans('ezelnet-frontend-module/admin.helpers.general_configs.meta_abstract') !!} </span>
+    </div>
+</div>
+{{-- /Meta Abstract --}}
 
 
 <h4>{!! lmcTrans('ezelnet-frontend-module/admin.fields.general_configs.facebook_title') !!}</h4>
