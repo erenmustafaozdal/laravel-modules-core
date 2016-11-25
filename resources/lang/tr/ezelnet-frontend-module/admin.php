@@ -3,10 +3,14 @@
 return [
     /*
     |--------------------------------------------------------------------------
-    | Ezelnet Frontend mmodule language lines for admin panel
+    | Ezelnet Frontend module language lines for admin panel
     |--------------------------------------------------------------------------
     */
-    // Titles of the frontends, naming is made with each routes' name
+    // Titles of the frontend, naming is made with each routes' name
+    'dashboard' => [
+        'index'                     => 'Yönetim Paneli',
+        'index_description'         => 'Yönetim Paneli\'ne hoş geldin...',
+    ],
     'design_management' => [
         'logo'                      => 'Logo-Favicon Yönetimi',
         'logo_description'          => 'Logo ve favicon düzenle',
