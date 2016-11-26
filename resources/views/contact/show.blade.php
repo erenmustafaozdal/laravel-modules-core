@@ -46,7 +46,7 @@
             county_id: { required: "{!! LMCValidation::getMessage('county_id','required') !!}" }
         };
         var apiKey = "{!! config('laravel-contact-module.google_api_key') !!}";
-        var defaultZoom = {{ isset($contact) ? $contact->zoom : 0 }};
+        var defaultZoom = {{ isset($contact) && $contact->zoom ? $contact->zoom : 0 }};
         var defaultLatitude = "{{ isset($contact) ? $contact->latitude : '' }}";
         var defaultLongitude = "{{ isset($contact) ? $contact->longitude : '' }}";
         var defaultMapTitle = "{{ isset($contact) ? $contact->map_title : '' }}";

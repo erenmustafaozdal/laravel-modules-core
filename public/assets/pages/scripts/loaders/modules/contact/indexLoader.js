@@ -9,7 +9,7 @@
         $script(indexJs,'index');
     });
 
-    $script.ready(['config','index','app_gmaps'], function()
+    $script.ready(['config','index','app_gmaps','app_select2'], function()
     {
         Index.init({
             DataTable: {

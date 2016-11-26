@@ -147,5 +147,40 @@
                 onChange: addressChange
             });
         }
+        if ($('#county_id').length) {
+            Select2.init({
+                src: '#county_id',
+                select2: {
+                    ajax: null
+                },
+                onChange: addressChange
+            });
+        }
+        if ($('#district_id').length) {
+            Select2.init({
+                src: '#district_id',
+                select2: {
+                    ajax: null
+                },
+                onChange: addressChange
+            });
+        }
+        if ($('#neighborhood_id').length) {
+            Select2.init({
+                src: '#neighborhood_id',
+                select2: {
+                    ajax: null
+                },
+                onChange: addressChange
+            });
+        }
+        if ($('#postal_code_id').length) {
+            Select2.init({
+                src: '#postal_code_id',
+                select2: {
+                    ajax: null
+                }
+            });
+        }
     });
 })();
