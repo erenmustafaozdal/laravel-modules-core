@@ -1,1 +1,0 @@
-var ModuleShow,Show={options:{formSrc:"#media-edit-info"},form:null,init:function(){ModuleShow=this,this.form=$(this.options.formSrc),Validation.init({src:this.options.formSrc,isAjax:!1,validate:{rules:{title:{required:!0}},messages:messagesOfRules}})}};

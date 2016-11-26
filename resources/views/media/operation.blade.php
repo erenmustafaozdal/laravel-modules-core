@@ -78,14 +78,14 @@
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var operationJs = "{!! lmcElixir('assets/pages/scripts/media/operation.js') !!}";
         var videoPhotoJs = "{!! lmcElixir('assets/pages/scripts/media/video_photo.js') !!}";
-    {{-- /js file path --}}
+        {{-- /js file path --}}
 
-    {{-- Description Is Editor --}}
-    @if(isset($media_category) && $media_category->description_is_editor)
-        var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
-        var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
-    @endif
-    {{-- /Description Is Editor --}}
+        {{-- Description Is Editor --}}
+        @if(isset($media_category) && $media_category->description_is_editor)
+            var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
+            var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
+        @endif
+        {{-- /Description Is Editor --}}
 
         {{-- routes --}}
         @if(isset($media_category))
@@ -97,7 +97,6 @@
 
         {{-- languages --}}
         var messagesOfRules = {
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
             photo: { required: "{!! LMCValidation::getMessage('photo','required') !!}" },
             video: { required: "{!! LMCValidation::getMessage('video','required') !!}" }
         };

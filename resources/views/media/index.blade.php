@@ -100,7 +100,6 @@
 
         {{-- languages --}}
         var messagesOfRules = {
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
             photo: { required: "{!! LMCValidation::getMessage('photo','required') !!}" },
             video: { required: "{!! LMCValidation::getMessage('video','required') !!}" }
         };

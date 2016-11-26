@@ -86,12 +86,6 @@
         @endif
         var categoryDetailURL = "{!! lmbRoute('api.media_category.detail', ['id' => '###id###']) !!}";
         {{-- /routes --}}
-
-        {{-- languages --}}
-        var messagesOfRules = {
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
-        };
-        {{-- /languages --}}
     </script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/media/show.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
