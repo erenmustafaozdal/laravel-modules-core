@@ -133,7 +133,7 @@ body.modal-open {
     font-size: 13px !important;
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li>a>i, .page-sidebar .page-sidebar-menu>li>a>i {
-    font-size: 15px !important;
+    font-size: 12px !important;
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu>li.heading, .page-sidebar .page-sidebar-menu>li.heading {
     height: 40px !important;
@@ -144,5 +144,8 @@ body.modal-open {
     font-size: 13px !important;
 }
 .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li>a>i, .page-sidebar .page-sidebar-menu .sub-menu li>a>i {
-    font-size: 14px !important;
+    font-size: 12px !important;
+}
+.page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu .sub-menu li>a, .page-sidebar .page-sidebar-menu .sub-menu .sub-menu li>a {
+    padding: 1px 10px 1px 45px !important;
 }

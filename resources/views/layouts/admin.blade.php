@@ -86,7 +86,7 @@
             <div class="page-header-inner ">
                 {{-- Logo --}}
                 <div class="page-logo">
-                    <a href="javascript:;">
+                    <a href="{!! lmbRoute('admin.dashboard.index') !!}">
                         {!! HTML::image(
                             config('laravel-modules-core.logos.' . (Cache::get('theme_color')['color'] == '' ? 'light' : Cache::get('theme_color')['color'])),
                             config('laravel-modules-core.app_name'),

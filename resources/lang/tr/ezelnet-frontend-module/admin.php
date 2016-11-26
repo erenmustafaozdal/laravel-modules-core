@@ -157,7 +157,7 @@ return [
             'root'                  => 'Tasarım Yönetimi',
             'logo'                  => 'Logo-Favicon Ayarları',
             'site_color'            => 'Site Renk Düzenlemesi',
-            'site_styles'           => 'Site Stilleri / Banner Düzenleme',
+            'site_styles'           => 'Site Stilleri/Banner Düzenle',
             'menu_styles'           => 'Menü Stilleri',
             'footer_color'          => 'Footer Renk Ayarları',
             'default_design'        => 'Default Tasarım Ayarları',
