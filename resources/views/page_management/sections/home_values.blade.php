@@ -8,8 +8,6 @@
     'class' => 'form-horizontal form-bordered'
 ]) !!}
 
-@include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-
 <div class="form-body">
 
     {{-- Title --}}

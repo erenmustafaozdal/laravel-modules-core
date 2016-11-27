@@ -15,8 +15,6 @@
 </div>
 {{-- /Note --}}
 
-@include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-
 <div class="form-body">
 
     {{-- Current Photo --}}

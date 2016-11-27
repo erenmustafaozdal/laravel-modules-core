@@ -377,10 +377,7 @@ return [
     // helpers
     'helpers' => [
         'page_management' => [
-            'root'          => '<button type="button" class="btn green btn-outline">' .
-                '<i class="fa fa-floppy-o"></i>' .
-                '<span class="hidden-xs"> Tümünü Kaydet </span>' .
-                '</button> tuşu ile kayıt işlemi sırasında bölümlerin <span class="label label-info">başlıkları</span>, <span class="label label-info">aktif olup olmadıkları</span> da kaydedilir.',
+            'root'          => '<span class="label label-success">Tümünü Kaydet</span> tuşu ile bölümlerin <span class="label label-info">sıralamasını</span>, <span class="label label-info">başlıklarını</span> ve <span class="label label-info">aktif olup olmadıklarını</span> kaydedersin. Bölümlerin kendi ayarlarını içindeki form ile ayrıca kaydetmelisin.',
             'image_banner'  => 'En az <span class="label label-info">2</span>, en fazla <span class="label label-info">12</span> imaj ekleyebilirsin. İmajlara link eklemek zorunlu değildir.',
             'advertisement_banner'=> 'Reklam Banner\'ın aktif olması için iki imajın da yüklenmesi gerekiyor.',
             'not_options'  => 'Bu bölümün ayarları bulunmamaktadır.',

@@ -27,8 +27,6 @@
     'files' => true
 ]) !!}
 
-@include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-
 <div class="form-body">
 
     <div class="mt-repeater margin-bottom-40">
