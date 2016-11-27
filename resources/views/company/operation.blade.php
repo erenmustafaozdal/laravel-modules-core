@@ -45,8 +45,7 @@
 
         {{-- languages --}}
         var messagesOfRules = {
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
-            slug: { alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}" }
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
         };
         var validExtension = "{!! config('laravel-company-module.company.uploads.photo.mimes') !!}";
         var maxSize = "{!! config('laravel-company-module.company.uploads.photo.max_size') !!}";

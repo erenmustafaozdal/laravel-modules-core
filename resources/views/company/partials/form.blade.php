@@ -8,19 +8,6 @@
 </div>
 {{-- /Name --}}
 
-{{-- Slug --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-company-module/admin.fields.company.slug') !!}</label>
-    {!! Form::text( 'slug', is_null($company) ? null : $company->slug, [
-        'class'         => 'form-control form-control-solid placeholder-no-fix',
-        'placeholder'   => lmcTrans('laravel-company-module/admin.fields.company.slug')
-    ]) !!}
-    <span class="help-block">
-        {!! lmcTrans('laravel-company-module/admin.helpers.company.slug') !!}
-    </span>
-</div>
-{{-- /Slug --}}
-
 {{-- Company Profile --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-company-module/admin.fields.company.company_profile') !!}</label>
