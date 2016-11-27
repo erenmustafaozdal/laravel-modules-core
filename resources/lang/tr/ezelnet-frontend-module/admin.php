@@ -297,7 +297,7 @@ return [
         'page_management' => [
             'enable_sortable'       => 'Sıralamayı Aç',
             'disable_sortable'      => 'Sıralamayı Kapat',
-            'save_sortable'         => 'Sıralamayı Kaydet',
+            'save_sortable'         => 'Tümünü Kaydet',
             'auto_play'             => 'Slider otomatik oynatılsın mı?',
             'is_revert'             => 'Ürün imajı dönme efekti aktif olsun mu?',
             'order_type'            => 'Veriler nasıl sıralansın?',
@@ -379,7 +379,7 @@ return [
         'page_management' => [
             'root'          => '<button type="button" class="btn green btn-outline">' .
                 '<i class="fa fa-floppy-o"></i>' .
-                '<span class="hidden-xs"> Sıralamayı Kaydet </span>' .
+                '<span class="hidden-xs"> Tümünü Kaydet </span>' .
                 '</button> tuşu ile kayıt işlemi sırasında bölümlerin <span class="label label-info">başlıkları</span>, <span class="label label-info">aktif olup olmadıkları</span> da kaydedilir.',
             'image_banner'  => 'En az <span class="label label-info">2</span>, en fazla <span class="label label-info">12</span> imaj ekleyebilirsin. İmajlara link eklemek zorunlu değildir.',
             'advertisement_banner'=> 'Reklam Banner\'ın aktif olması için iki imajın da yüklenmesi gerekiyor.',

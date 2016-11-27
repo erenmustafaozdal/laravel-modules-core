@@ -45,14 +45,12 @@
         $('#enable_sortable').on('click',function(e)
         {
             $("#sortable_portlets").sortable( "enable" );
-            $('#save_sortable').removeClass('disabled').prop('disabled',false);
             $('#disable_sortable').removeClass('hidden');
             $(this).addClass('hidden');
         });
         $('#disable_sortable').on('click',function(e)
         {
             $("#sortable_portlets").sortable( "disable" );
-            $('#save_sortable').addClass('disabled').prop('disabled',true);
             $('#enable_sortable').removeClass('hidden');
             $(this).addClass('hidden');
         });
