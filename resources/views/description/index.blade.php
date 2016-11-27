@@ -123,7 +123,7 @@
             @if(isset($description_category))
                 @include('laravel-modules-core::partials.common.indexActions', [
                     'module' => [ 'id' =>  $description_category->id, 'route' => 'description_category.description'],
-                    'fast_add'  => isset($description_category) ? $description_category->datatable_fast_add : (config('laravel-modules-core.options.description.datatable_fast_add')),
+                    'fast_add'  => false,
                     'add'       => true,
                     'tools'     => isset($description_category) ? $description_category->datatable_tools : (config('laravel-modules-core.options.description.datatable_tools'))
                 ])

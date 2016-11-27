@@ -9,7 +9,7 @@
         $script(indexJs,'index');
     });
 
-    $script.ready(['config','index'], function()
+    $script.ready(['config','index','app_fileinput','app_jcrop'], function()
     {
         Index.init({
             DataTable: {
