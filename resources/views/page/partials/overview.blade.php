@@ -47,17 +47,6 @@
     </div>
     {{-- /Title --}}
 
-    {{-- Slug --}}
-    <div class="form-group">
-        <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!}
-        </label>
-        <div class="col-sm-10">
-            <p class="form-control-static"> {{ $page->slug }} </p>
-        </div>
-    </div>
-    {{-- /Slug --}}
-
     {{-- Description --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">

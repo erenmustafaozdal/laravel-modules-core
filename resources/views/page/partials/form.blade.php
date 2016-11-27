@@ -31,27 +31,6 @@
 </div>
 {{-- /Name --}}
 
-{{-- Slug --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!}</label>
-    {!! Form::text( 'slug', null, [
-        'class'         => 'form-control form-control-solid placeholder-no-fix',
-        'placeholder'   => lmcTrans('laravel-page-module/admin.fields.page.slug')
-    ]) !!}
-
-    @if ( ! isset($helpBlockAfter) )
-        <span class="help-block">
-            {!! lmcTrans('laravel-page-module/admin.helpers.page.slug') !!}
-        </span>
-    @endif
-</div>
-@if ( isset($helpBlockAfter) )
-    <span class="help-block">
-        {!! lmcTrans('laravel-page-module/admin.helpers.page.slug') !!}
-    </span>
-@endif
-{{-- /Slug --}}
-
 {{-- Description --}}
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.description') !!}</label>

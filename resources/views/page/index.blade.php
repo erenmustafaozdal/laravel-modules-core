@@ -56,6 +56,7 @@
         @if(isset($page_category))
         var ajaxURL = "{!! lmbRoute('api.page_category.page.index', ['id' => $page_category->id]) !!}";
         var modelsURL = "{!! lmbRoute('api.page_category.models', ['id' => $page_category->id]) !!}";
+        var categoryURL = "";
         @else
         var ajaxURL = "{!! lmbRoute('api.page.index') !!}";
         var categoryURL = "{!! lmbRoute('admin.page_category.show', ['id' => '###id###']) !!}";
@@ -68,8 +69,7 @@
         {{-- languages --}}
         var messagesOfRules = {
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
-            slug: { alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}" }
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
         };
         {{-- /languages --}}
 
@@ -162,7 +162,6 @@
 
                             <th class="all" width="5%"> {!! trans('laravel-modules-core::admin.fields.id') !!} </th>
                             <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page.title') !!} </th>
-                            <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!} </th>
                             @if( ! isset($page_category))
                             <th class="all" width="%30"> {!! lmcTrans('laravel-page-module/admin.fields.page_category.name') !!} </th>
                             @endif
@@ -200,9 +199,6 @@
                             </td>
                             <td>
                                 <input type="text" class="form-control form-filter input-sm" name="title" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page.title') !!}">
-                            </td>
-                            <td>
-                                <input type="text" class="form-control form-filter input-sm" name="slug" placeholder="{!! lmcTrans('laravel-page-module/admin.fields.page.slug') !!}">
                             </td>
                             @if( ! isset($page_category))
                             <td>

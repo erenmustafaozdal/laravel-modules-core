@@ -72,8 +72,7 @@
         {{-- languages --}}
         var messagesOfRules = {
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" },
-            slug: { alpha_dash: "{!! LMCValidation::getMessage('slug','alpha_dash') !!}" }
+            title: { required: "{!! LMCValidation::getMessage('title','required') !!}" }
         };
         {{-- /languages --}}
     </script>
