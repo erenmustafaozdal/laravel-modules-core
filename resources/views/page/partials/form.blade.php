@@ -31,18 +31,6 @@
 </div>
 {{-- /Name --}}
 
-{{-- Description --}}
-<div class="form-group">
-    <label class="control-label">{!! lmcTrans('laravel-page-module/admin.fields.page.description') !!}</label>
-    {!! Form::textarea( 'description', null, [
-        'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
-        'placeholder'   => lmcTrans('laravel-page-module/admin.fields.page.description'),
-        'rows'          => 3,
-        'maxlength'     => 255
-    ]) !!}
-</div>
-{{-- /Description --}}
-
 {{-- Status --}}
 <div class="form-group last">
     <label class="control-label">{!! trans('laravel-modules-core::admin.ops.status') !!}</label>

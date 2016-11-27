@@ -104,7 +104,7 @@
             @if(isset($page_category))
                 @include('laravel-modules-core::partials.common.indexActions', [
                     'module' => [ 'id' =>  $page_category->id, 'route' => 'page_category.page'],
-                    'fast_add'  => isset($page_category) ? $page_category->datatable_fast_add : (config('laravel-modules-core.options.page.datatable_fast_add')),
+                    'fast_add'  => false,
                     'add'       => true,
                     'tools'     => isset($page_category) ? $page_category->datatable_tools : (config('laravel-modules-core.options.page.datatable_tools'))
                 ])

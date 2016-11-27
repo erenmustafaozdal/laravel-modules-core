@@ -122,11 +122,6 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#content_info" data-toggle="tab" aria-expanded="true">
-                        {!! trans('laravel-modules-core::admin.fields.content_info') !!}
-                    </a>
-                </li>
-                <li>
                     <a href="#seo" data-toggle="tab" aria-expanded="true">
                         {!! trans('laravel-modules-core::admin.fields.seo') !!}
                     </a>
@@ -173,8 +168,6 @@
                         @include('laravel-modules-core::page.partials.form', [
                             'isRelation'    => isset($page_category) ? true : false
                         ])
-                    </div>
-                    <div class="tab-pane" id="content_info">
                         @include('laravel-modules-core::page.partials.content_form', [ 'isForm' => true ])
                     </div>
                     <div class="tab-pane" id="seo">

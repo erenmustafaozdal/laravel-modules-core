@@ -47,17 +47,6 @@
     </div>
     {{-- /Title --}}
 
-    {{-- Description --}}
-    <div class="form-group">
-        <label class="col-sm-2 control-label">
-            {!! lmcTrans('laravel-page-module/admin.fields.page.description') !!}
-        </label>
-        <div class="col-sm-10">
-            <p class="form-control-static"> {{ $page->description }} </p>
-        </div>
-    </div>
-    {{-- /Description --}}
-
     {{-- Created At --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">

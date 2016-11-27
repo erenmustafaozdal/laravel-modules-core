@@ -1,1 +1,0 @@
-var ModelForm={init:function(t){var e=$.extend(!0,this.getDefaultOptions(),t);Validation.init(e)},getDefaultOptions:function(){return{src:"form.form",isAjax:!1,submitAjax:function(t){},validate:{rules:{photo:{required:!0}},messages:messagesOfRules}}}};
