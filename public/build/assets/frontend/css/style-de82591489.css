@@ -2683,6 +2683,9 @@ a.edit i:before {
 .social .icon-instagram {
   background: #d94a39;
 }
+.social .icon-youtube {
+  background: #C52F30;
+}
 /* line 420, ../sass/_helper-classes.scss */
 .social .icon-linkedin {
   background: #1b92bd;
@@ -12922,7 +12925,6 @@ a.big-icon:hover {
 .employee {
   border-radius: 3px;
   display: inline-block;
-  float: none;
   margin: 0 0 40px;
   min-width: 260px;
   overflow: hidden;

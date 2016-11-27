@@ -209,9 +209,10 @@ return [
         'column'                        => 'Sütun',
 
         'facebook'                      => 'Facebook',
-        'google'                        => 'Google',
+        'instagram'                     => 'Instagram',
         'twitter'                       => 'Twitter',
         'linkedin'                      => 'Linkedin',
+        'youtube'                       => 'Youtube',
 
         'photo'                         => '[0,1] Fotoğraf |[2,Inf] Fotoğraflar',
         'order_random'                  => 'Rastgele Sırala',
