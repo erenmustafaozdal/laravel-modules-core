@@ -15,6 +15,15 @@
 
 {{-- Document Photo --}}
 <div class="form-group" id="photo_wrapper">
+
+    {{-- Multiple Photo Note --}}
+    @if(( isset($description) && $description->category->is_multiple_photo ) || ( isset($description_category) && $description_category->is_multiple_photo ))
+        <div class="note note-info">
+            {!! lmcTrans('laravel-description-module/admin.helpers.description.multiple_photo') !!}
+        </div>
+    @endif
+    {{-- /Multiple Photo Note --}}
+
     @include('laravel-modules-core::partials.form.fileinput_form', [
         'label'         => lmcTrans('laravel-description-module/admin.fields.description.photo'),
         'input_name'    => 'photo',

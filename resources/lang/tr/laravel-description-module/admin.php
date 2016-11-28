@@ -102,6 +102,12 @@ return [
             'is_publish_help'       => 'Yayında olması, ziyaretçilerin bilgileri görebilmesini sağlar. Yayında olmayan veriler ziyaretçilere açık değildir.',
             'description'           => 'Açıklayıcı bir yazı yaz.',
             'photo'                 => '{0} İlişkili fotoğraf ekle. İstersen bu fotoğrafı ekledikten sonra kırpabilirsin. |[1,Inf] Fotoğraflar Ekle',
+            'multiple_photo'        => '<h5>Çoklu Fotoğraf Ekleme Kuralları</h5>' .
+                '<ul>' .
+                    '<li>Tek seferde en fazla <em class="label label-danger">6 fotoğraf</em> ekleyebilirsin.</li>' .
+                    '<li>Diğer fotoğrafları daha sonra ekleyebilirsin.</li>' .
+                    '<li>En son eklenen fotoğraf <em class="label label-danger">vitrin fotoğrafı olur</em>.</li>' .
+                '</ul>',
             'link'                  => 'Bilgiler ile alakalı bir internet adresi ekle. Bu alan zorunlu <em class="label label-warning">değildir</em>. Lütfen yazdığın internet adresinin başına <em class="label label-info">http://</em> veya <em class="label label-info">https://</em> eklemeyi unutma. <small class="text-muted">( Ör: http://siteadresi.com )</small> ',
         ]
     ],
