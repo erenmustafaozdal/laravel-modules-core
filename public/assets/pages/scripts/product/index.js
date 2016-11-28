@@ -249,25 +249,14 @@ var Index = {
                             '<td class="text-left">';
 
                     if (data.showcases.length > 0) {
-                        detail += '<table class="child-table table table-striped table-bordered table-advance table-hover">' +
-                            '<thead>' +
-                                '<tr>' +
-                                    '<th> Vitrin Adı </th>' +
-                                    '<th> Ürün Sırası </th>' +
-                                '</tr>' +
-                            '</thead>' +
-                            '<tbody>';
+                        detail += '<ul class="list-unstyled">';
 
                         $.each(data.showcases, function(key,value)
                         {
-                            detail += '<tr>' +
-                                '<td class="highlight"> <div class="warning"> </div> ' + value.name + '</td>' +
-                                '<td>' + value.pivot.order + '</td>' +
-                            '</tr>';
+                            detail += '<li>' + value.name + '</li>';
                         });
 
-                        detail += '</tbody>' +
-                        '</table>';
+                        detail += '</ul>';
                     }
 
                     detail += '</td>' +

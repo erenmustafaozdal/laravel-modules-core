@@ -86,6 +86,21 @@
     </div>
     {{-- /Code --}}
 
+    {{-- Showcase --}}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            {!! lmcTrans('laravel-product-module/admin.fields.product.showcases') !!}
+        </label>
+        <div class="col-sm-10">
+            <ul class="form-control-static list-unstyled">
+            @foreach($product->showcases as $showcase)
+                <li>{{ $showcase->name_uc_first }}</li>
+            @endforeach
+            </ul>
+        </div>
+    </div>
+    {{-- /Showcase --}}
+
     {{-- Created At --}}
     <div class="form-group">
         <label class="col-sm-2 control-label">

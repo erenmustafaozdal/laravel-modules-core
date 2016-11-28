@@ -152,13 +152,6 @@
                             </a>
                             <span class="after"> </span>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#showcase">
-                                <i class="fa fa-shopping-cart"></i>
-                                {!! trans('laravel-modules-core::admin.fields.showcase') !!}
-                            </a>
-                            <span class="after"> </span>
-                        </li>
 
                         @if (hasPermission('admin.'. (isset($product_category) ? 'product_category.product' : 'product') .'.update'))
                         <li>
@@ -177,12 +170,6 @@
                             <a data-toggle="tab" href="#change_seo">
                                 <i class="fa fa-google-plus"></i>
                                 {!! trans('laravel-modules-core::admin.fields.change_seo') !!}
-                            </a>
-                        </li>
-                        <li>
-                            <a data-toggle="tab" href="#change_showcase">
-                                <i class="fa fa-cart-plus"></i>
-                                {!! trans('laravel-modules-core::admin.fields.change_showcase') !!}
                             </a>
                         </li>
                         @endif
@@ -223,14 +210,6 @@
                             </div>
                         </div>
                         {{-- /Seo --}}
-
-                        {{-- Showcase --}}
-                        <div id="showcase" class="tab-pane">
-                            <div class="profile-info">
-                                @include('laravel-modules-core::product.partials.showcase')
-                            </div>
-                        </div>
-                        {{-- /Showcase --}}
 
                         {{-- Edit Info --}}
                         @if (hasPermission('admin.'. (isset($product_category) ? 'product_category.product' : 'product') .'.update'))
@@ -282,21 +261,6 @@
                             {!! Form::close() !!}
                         </div>
                         {{-- /Change Seo --}}
-
-                        {{-- Change Showcase --}}
-                        <div id="change_showcase" class="tab-pane form">
-                            {!! Form::open([
-                                'method'    => 'PATCH',
-                                'url'       => lmbRoute('admin.product.update', [ 'id' => $product->id, 'form' => 'showcase' ])
-                            ]) !!}
-                                @include('laravel-modules-core::partials.form.actions', ['type' => 'top'])
-                                <div class="form-body">
-                                    @include('laravel-modules-core::product.partials.showcase_form')
-                                </div>
-                                @include('laravel-modules-core::partials.form.actions', ['type' => 'fluid'])
-                            {!! Form::close() !!}
-                        </div>
-                        {{-- /Change Showcase --}}
 
                         @endif
                         {{-- /Edit Info --}}

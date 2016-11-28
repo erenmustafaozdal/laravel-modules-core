@@ -147,11 +147,6 @@
                         {!! lmcTrans('admin.fields.seo') !!}
                     </a>
                 </li>
-                <li id="showcase_tab">
-                    <a href="#showcase" data-toggle="tab" aria-expanded="true">
-                        {!! lmcTrans('admin.fields.showcase') !!}
-                    </a>
-                </li>
             </ul>
             {{-- /Nav Tabs --}}
         </div>
@@ -206,9 +201,6 @@
                     </div>
                     <div class="tab-pane" id="seo">
                         @include('laravel-modules-core::product.partials.seo_form')
-                    </div>
-                    <div class="tab-pane" id="showcase">
-                        @include('laravel-modules-core::product.partials.showcase_form')
                     </div>
                 </div>
                 {{-- /Tab Contents --}}

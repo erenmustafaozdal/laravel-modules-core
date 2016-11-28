@@ -88,6 +88,30 @@
 @endif
 {{-- /Code --}}
 
+{{-- Showcase --}}
+{!! Form::hidden("showcase_id",0) !!}
+
+<label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product.showcases') !!}</label>
+<div class="form-group">
+    <div class="input-group">
+        <div class="icheck-inline">
+            @foreach(\App\ProductShowcase::all() as $showcase)
+                <label>
+                    <input type="checkbox"
+                           name="showcase_id[{{ $showcase->id }}][type]"
+                           value="random"
+                           class="icheck"
+                           data-checkbox="icheckbox_line-grey"
+                           data-label="{{ $showcase->name_uc_first }}"
+                            {{ isset($product) && $showcase->getProduct($product->id) ? 'checked' : '' }}
+                    >
+                </label>
+            @endforeach
+        </div>
+    </div>
+</div>
+{{-- /Showcase --}}
+
 {{-- Status --}}
 <div class="form-group last">
     <label class="control-label">{!! trans('laravel-modules-core::admin.ops.status') !!}</label>
