@@ -3017,6 +3017,9 @@ a.edit i:before {
 #top-box .top-social.bg-social .icon-item .fa-instagram {
   background: #d94a39;
 }
+#top-box .top-social.bg-social .icon-item .fa-youtube {
+  background: #C52F30;
+}
 /* line 175, ../sass/_top-bar.scss */
 #top-box .top-social.bg-social .icon-item .fa-linkedin {
   background: #1b92bd;
