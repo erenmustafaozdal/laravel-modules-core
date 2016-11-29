@@ -101,11 +101,11 @@
         @endif
         {{-- /Product Copy Preview --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/product/operation.js') !!}"></script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/product/operation.js') !!}"></script>
 @endsection
 
 @section('content')

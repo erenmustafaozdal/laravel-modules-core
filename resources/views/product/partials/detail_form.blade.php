@@ -19,15 +19,7 @@
             <div class="panel-body">
 
                 {{-- Short Description --}}
-                <div class="form-group">
-                    <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product.short_description') !!}</label>
-                    {!! Form::textarea( 'short_description', isset($product) ? $product->short_description : null, [
-                        'class'         => 'form-control form-control-solid placeholder-no-fix tinymce',
-                        'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.short_description'),
-                        'rows'          => 5
-                    ]) !!}
-                    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.short_description') !!} </span>
-                </div>
+                @include('laravel-modules-core::product.partials.short_description_form')
                 {{-- /Short Description --}}
 
                 {{-- Description --}}

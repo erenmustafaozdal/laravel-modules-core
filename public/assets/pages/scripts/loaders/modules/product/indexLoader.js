@@ -14,7 +14,7 @@
         $script('/vendor/laravel-modules-core/assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js','touchspin');
     });
 
-    $script.ready(['config','index','touchspin','inputmask'], function()
+    $script.ready(['config','index','touchspin','inputmask','app_fileinput','app_jcrop'], function()
     {
         Index.init({
             DataTable: {
@@ -26,6 +26,26 @@
         });
 
         // bootstrap touch spins init
+        LMCApp.initTouchSpin({
+            src:'#amount_from',
+            touchspin: {
+                max: 99999,
+                decimals: 2,
+                step: 10,
+                postfix: '₺'
+            }
+        });
+        LMCApp.initTouchSpin({
+            src:'#amount_to',
+            touchspin: {
+                max: 99999,
+                decimals: 2,
+                step: 10,
+                postfix: '₺'
+            }
+        });
+
+
         $('input[name="amount_from"],input[name="amount_to"]').on('change',function(e)
         {
             var val = $(this).val();

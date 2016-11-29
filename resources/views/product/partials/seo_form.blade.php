@@ -6,8 +6,15 @@
         'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.meta_title'),
         'maxlength'     => 255
     ]) !!}
+
+    @if ( ! isset($helpBlockAfter) )
     <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.meta_title_help') !!} </span>
+    @endif
 </div>
+
+@if ( isset($helpBlockAfter) )
+    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.meta_title_help') !!} </span>
+@endif
 {{-- /Meta Title --}}
 
 {{-- Meta Description --}}
@@ -19,8 +26,15 @@
         'rows'          => 3,
         'maxlength'     => 255
     ]) !!}
+
+    @if ( ! isset($helpBlockAfter) )
     <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.meta_description_help') !!} </span>
+    @endif
 </div>
+
+@if ( isset($helpBlockAfter) )
+    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.meta_description_help') !!} </span>
+@endif
 {{-- /Meta Description --}}
 
 {{-- Meta Keywords --}}
@@ -31,6 +45,13 @@
         'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.meta_keywords'),
         'maxlength'     => 255
     ]) !!}
+
+    @if ( ! isset($helpBlockAfter) )
     <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.meta_keywords_help') !!} </span>
+    @endif
 </div>
+
+@if ( isset($helpBlockAfter) )
+    <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.meta_keywords_help') !!} </span>
+@endif
 {{-- /Meta Keywords --}}

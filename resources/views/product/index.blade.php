@@ -25,6 +25,12 @@
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2.min.css') !!}
     {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/select2/dist/css/select2-bootstrap.min.css') !!}
     {{-- /Select2 --}}
+
+    {{-- jCrop Image Crop Extension --}}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/jcrop/css/jquery.Jcrop.min.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/pages/css/image-crop.css') !!}
+    {!! Html::style('vendor/laravel-modules-core/assets/global/plugins/bootstrap-fileinput/css/fileinput.min.css') !!}
+    {{-- /jCrop Image Crop Extension --}}
 @endsection
 
 @section('script')
@@ -32,6 +38,8 @@
     <script type="text/javascript">
         {{-- js file path --}}
         var formLoaderJs = "{!! lmcElixir('assets/pages/js/loaders/admin-form.js') !!}";
+        var fileinputJS = "{!! lmcElixir('assets/app/fileinput.js') !!}";
+        var jcropJS = "{!! lmcElixir('assets/app/jcrop.js') !!}";
         var datatableJs = "{!! lmcElixir('assets/app/datatable.js') !!}";
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
@@ -56,9 +64,12 @@
         {{-- languages --}}
         var messagesOfRules = {
             category_id: { required: "{!! LMCValidation::getMessage('category_id','required') !!}" },
-            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" },
-            amount: { required: "{!! LMCValidation::getMessage('amount','required') !!}" }
+            'photo[]': { required: "{!! LMCValidation::getMessage('photo','required') !!}" },
+            name: { required: "{!! LMCValidation::getMessage('name','required') !!}" }
         };
+        var validExtension = "{!! config('laravel-product-module.product.uploads.photo.mimes') !!}";
+        var maxSize = "{!! config('laravel-product-module.product.uploads.photo.max_size') !!}";
+        var aspectRatio = 1;
         {{-- /languages --}}
 
         {{-- scripts --}}
@@ -68,9 +79,10 @@
         var datatableFilterSupport = {!! config('laravel-modules-core.options.product.datatable_filter') ? 'true' : 'false' !!};
         {{-- /scripts --}}
     </script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/product/index.js') !!}"></script>
-    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/product/index.js') !!}"></script>
 @endsection
 
 @section('content')
@@ -202,7 +214,21 @@
     {{-- Create and Edit modal --}}
     @include('laravel-modules-core::partials.common.datatables.modal', [
         'includes' => [
-            'product.partials.form'        => [
+            'product.partials.form' => [
+                'helpBlockAfter'    => true
+            ],
+            'product.partials.short_description_form' => [
+                'helpBlockAfter'    => true
+            ],
+            'partials.form.fileinput_form' => [
+                'label'         => lmcTrans('laravel-product-module/admin.fields.product.photo'),
+                'input_name'    => 'photo',
+                'input_id'      => 'photo',
+                'elfinder'      => true,
+                'elfinder_id'   => 'elfinder-photo',
+                'multiple'      => false
+            ],
+            'product.partials.seo_form' => [
                 'helpBlockAfter'    => true
             ]
         ]
