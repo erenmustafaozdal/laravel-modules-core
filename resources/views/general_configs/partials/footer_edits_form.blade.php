@@ -36,12 +36,12 @@
 
     {{-- Tabs --}}
     <ul class="nav nav-tabs tabs-reversed">
-        <li {{ $footer->menus->isEmpty() && ! is_null($footer->description) ? '' : 'class=active' }}>
+        <li {{ is_null($footer->description) || ( ! is_null($footer->description) && ! $footer->menus->isEmpty()) ? 'class=active' : '' }}>
             <a href="#links_{{ $footer->slug }}" data-toggle="tab" data-tab="links" class="tab_footer">
                 {!! lmcTrans('ezelnet-frontend-module/admin.fields.general_configs.links') !!}
             </a>
         </li>
-        <li {{ is_null($footer->description) ? '' : 'class=active' }}>
+        <li {{  $footer->menus->isEmpty() && ! is_null($footer->description) ? 'class=active' : '' }}>
             <a href="#description_{{ $footer->slug }}" data-toggle="tab" data-tab="description" class="tab_footer">
                 {!! lmcTrans('ezelnet-frontend-module/admin.fields.general_configs.description') !!}
             </a>
@@ -53,7 +53,7 @@
     <div class="tab-content">
 
         {{-- Links --}}
-        <div class="tab-pane links {{ $footer->menus->isEmpty() && ! is_null($footer->description) ? '' : 'active' }}"
+        <div class="tab-pane links {{ is_null($footer->description) || ( ! is_null($footer->description) && ! $footer->menus->isEmpty()) ? 'active' : '' }}"
             id="links_{{ $footer->slug }}"
         >
             <div class="mt-repeater">
@@ -75,7 +75,7 @@
         {{-- /Links --}}
 
         {{-- Description --}}
-        <div class="tab-pane description {{ is_null($footer->description) ? '' : 'active' }}"
+        <div class="tab-pane description {{ $footer->menus->isEmpty() && ! is_null($footer->description) ? 'active' : '' }}"
              id="description_{{ $footer->slug }}"
         >
             {!! Form::textarea( 'description', is_null($footer->description) ? null : $footer->description->description, [

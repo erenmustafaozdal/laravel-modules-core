@@ -30,14 +30,6 @@
 
             });
         });
-
-        // tab change
-        $('.tab_footer').on('click',function(e)
-        {
-            var el = $(this), tab = el.data('tab');
-            el.closest('.tabbable-line').find('div.tab-pane').find('input,textarea').prop('disabled',true);
-            el.closest('.tabbable-line').find('div.' + tab).find('input,textarea').prop('disabled',false);
-        });
     });
     $script.ready(['config','app_tinymce'], function()
     {
