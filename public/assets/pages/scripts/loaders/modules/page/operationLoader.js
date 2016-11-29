@@ -8,7 +8,7 @@
     {
         $script(operationJs,'operation');
     });
-    $script.ready(['config','operation'], function()
+    $script.ready(['config','operation','tinymce'], function()
     {
         Operation.init();
     });
