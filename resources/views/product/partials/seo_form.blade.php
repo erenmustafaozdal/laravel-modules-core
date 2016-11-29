@@ -55,3 +55,9 @@
     <span class="help-block"> {!! lmcTrans('laravel-product-module/admin.helpers.product.meta_keywords_help') !!} </span>
 @endif
 {{-- /Meta Keywords --}}
+
+{{-- Note --}}
+@if ( isset($helpBlockAfter) )
+    <div class="note note-info margin-top-40"> <b>Dikkat:</b> Bu bölümden girilen ürünlerin detay sayfası <span class="label label-danger">olmaz</span>. Ürüne ait tüm bilgiler vitrin resminin ön ve arka yüzünde görüntülenir. </div>
+@endif
+{{-- /Note --}}
