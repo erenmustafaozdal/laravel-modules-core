@@ -24,7 +24,7 @@
             {!! lmcTrans('admin.fields.current_photo', [], 1) !!}
         </label>
         <div class="col-md-9">
-            {!! Html::image( $model->imageOption()->typeImage('big')->first()->getPhoto([], 'normal', true, 'page_management','section_id'), null, [
+            {!! Html::image( $model->imageOption()->typeImage('big')->first()->getPhoto([], 'big', true, 'page_management','section_id'), null, [
                 'height'    => 150
             ] ) !!}
         </div>
