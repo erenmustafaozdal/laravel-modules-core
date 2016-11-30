@@ -19,7 +19,7 @@
             'class'         => 'form-control form-control-solid placeholder-no-fix maxlength',
             'placeholder'   => lmcTrans('ezelnet-frontend-module/admin.fields.design_management.description'),
             'rows'          => 3,
-            'maxlength'     => 750
+            'maxlength'     => 600
         ]) !!}
     </div>
 </div>
