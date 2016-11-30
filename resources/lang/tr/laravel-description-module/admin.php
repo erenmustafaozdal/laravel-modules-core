@@ -98,7 +98,7 @@ return [
             'is_multiple_photo'     => 'Bu kategoride bulunan verilerin birden fazla fotoğrafı mı olacak? Eğer <em class="label label-info">Hayır</em> cevabı verirsen; her veri için sadece bir adet fotoğraf ekleyebilirsin. Ya da her veri için sınırsız fotoğraf ekleyebilirsin. Bu ikinci şık daha çok galeri tarzından olan veriler için uygun olur!',
         ],
         'description' => [
-            'category_id_help'      => 'Kategori seç. Bu alan <em class="label label-warning">zorunludur</em>.',
+            'category_id_help'      => 'Kategori seç.',
             'is_publish_help'       => 'Yayında olması, ziyaretçilerin bilgileri görebilmesini sağlar. Yayında olmayan veriler ziyaretçilere açık değildir.',
             'description'           => 'Açıklayıcı bir yazı yaz.',
             'photo'                 => '{0} İlişkili fotoğraf ekle. İstersen bu fotoğrafı ekledikten sonra kırpabilirsin. |[1,Inf] Fotoğraflar Ekle',
