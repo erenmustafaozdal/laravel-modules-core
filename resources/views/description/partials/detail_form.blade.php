@@ -1,4 +1,4 @@
-{{-- Document Description --}}
+{{-- Description Description --}}
 <div class="form-group" id="description_wrapper">
     <label class="control-label">{!! lmcTrans('laravel-description-module/admin.fields.description.description') !!}</label>
     {!! Form::textarea( 'description', isset($description) && ! is_null($description->description) ? $description->description->description : null, [
@@ -11,9 +11,9 @@
         {!! lmcTrans('laravel-description-module/admin.helpers.description.description') !!}
     </span>
 </div>
-{{-- /Document Description --}}
+{{-- /Description Description --}}
 
-{{-- Document Photo --}}
+{{-- Description Photo --}}
 <div class="form-group" id="photo_wrapper">
 
     {{-- Multiple Photo Note --}}
@@ -50,7 +50,7 @@
     {{-- /Current Photo/Photos --}}
 
 </div>
-{{-- /Document Photo --}}
+{{-- /Description Photo --}}
 
 {{-- Link --}}
 <div id="link_wrapper" class="form-group">
