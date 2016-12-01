@@ -284,7 +284,13 @@ return [
                 'application/vnd.oasis.opendocument.text',
                 'application/vnd.oasis.opendocument.text-master',
                 'application/vnd.oasis.opendocument.text-template',
-                'application/vnd.oasis.opendocument.text-web'
+                'application/vnd.oasis.opendocument.text-web',
+                'application/xhtml+xml',
+                'application/xml',
+                'text/xml',
+                'application/xslt+xml',
+                'image/svg+xml',
+                'application/rss+xml'
             ],
             'uploadDeny'    => ['all'],
             'uploadMaxSize' => '5M',
