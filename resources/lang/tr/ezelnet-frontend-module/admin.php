@@ -358,7 +358,8 @@ return [
             'comment'               => 'Mesaj',
             'send'                  => 'Gönder',
             'required_fields'       => 'Zorunlu Alanlar',
-            'display_paginate'      => ':total nesne içinden, :start ile :finish arasındakiler gösteriliyor.'
+            'display_paginate'      => ':total nesne içinden, :start ile :finish arasındakiler gösteriliyor.',
+            'other_dealers'         => 'Diğer Bayiler'
         ],
         'email' => [
             'info'                  => 'Bu e-posta <b>Ezelnet</b> tarafından hazırlanmış bir yazılımdan gönderilmiştir.',
