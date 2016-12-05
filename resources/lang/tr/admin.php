@@ -73,7 +73,7 @@ return [
         'copy_confirmation'             => 'Kayıt kopyalanacak! Emin misin?',
         'submit'                        => 'Gönder',
         'search'                        => 'Ara',
-        'reset'                         => 'Temizle',
+        'reset'                         => 'Sıfırla',
         'add'                           => 'Yeni Ekle',
         'fast_add'                      => 'Hızlı Ekle',
         'cancel'                        => 'İptal',
@@ -243,18 +243,5 @@ return [
         'datatable_detail'  => 'Bu kategoride bulunan verilerin listelendiği sayfadaki tablo üzerinde verinin detay bilgileri hızlı bir şekilde gösterilsin mi?',
         'description_is_editor'=> 'Bu kategoride bulunan verilerin açıklamaları editör ile yazılsın mı?',
         'config_propagation'=> 'Bu kategorinin alt kategorilerinde de bu ayarlar geçerli olsun mu?',
-    ],
-
-    // permissions
-    'permission' => [
-        'ThemeController' => [
-            'icon'                          => 'fa fa-pencil',
-            'title'                         => 'Yönetim Paneli Tema İşlemleri',
-            // routes
-            'themeLayout_change'            => 'Yönetim Paneli Yerleşimi',
-            'themeLayout_change_desc'       => 'Bu izne sahip olanlar yönetim panelinin yerleşim düzenini değiştirebilir',
-            'themeColor_change'             => 'Yönetim Paneli Rengi',
-            'themeColor_change_desc'        => 'Bu izne sahip olanlar yönetim panelinin rengini değiştirebilir'
-        ]
     ],
 ];

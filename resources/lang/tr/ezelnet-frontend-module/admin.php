@@ -293,6 +293,11 @@ return [
             'third_analytics'       => 'Google Analytics Üçüncü İzleme Kodu',
             'tag_manager'           => 'Google Tag Manager Kodu',
 
+            // demo datas
+            'system_datas'          => 'Sistem Verileri',
+            'reset_system_datas'    => 'Sistem Verilerini Sıfırla',
+            'load_demo_datas'       => 'Demo Verileri Tekrar Yükle',
+
         ],
         'page_management' => [
             'enable_sortable'       => 'Sıralamayı Aç',
@@ -418,6 +423,23 @@ return [
             'og_description'    => 'Facebook\'ta link paylaşıldığında görünecek açıklama.',
             'og_url'            => 'Facebook\'ta link paylaşıldığında görünecek site adresi.',
             'og_site_name'      => 'Facebook\'ta link paylaşıldığında görünecek site adı.',
+
+            'system_datas'      => '<b><i class="fa fa-exclamation"></i>Dikkat:</b> Burada yapılan değişiklikler geri alınamaz.',
+            'reset_system_datas'=> '<p>Sistem içindeki bütün verileri kalıcı olarak silmek üzeresin!</p>' .
+                '<ul class="margin-top-10 margin-bottom-10">' .
+                    '<li>Bu işlem sonunda daha önce kaydedilen bütün veriler kalıcı olarak silinir.</li>' .
+                    '<li>Silinen bu veriler geri döndürülemez.</li>' .
+                '</ul>' .
+                '<p>Sistem verilerini sıfırlamak istiyorsan, lütfen şifreni girerek onayla!!!</p>',
+            'load_demo_datas'   => '<p>Demo verileri tekrar yükleyerek sistemi kurulum haline döndürmek üzeresin!</p>' .
+                '<ul class="margin-top-10 margin-bottom-10">' .
+                    '<li>Bu işlem sonunda daha önce kaydedilen bütün veriler kalıcı olarak silinir.</li>' .
+                    '<li>Silinen bu veriler geri döndürülemez.</li>' .
+                    '<li>Veriler silindikten sonra kurulum verileri <em class="label label-info">(demo veriler)</em> tekrar yüklenir.</li>' .
+                    '<li>Sistem tekrar kurulum haline döner.</li>' .
+                    '<li>3 günlük <em class="label label-info">Yapım Aşaması</em>\'na alınır.</li>' .
+                '</ul>' .
+                '<p>Sistem verilerini sıfırlamak ve demo verileri tekrar yüklemek istiyorsan, lütfen şifreni girerek onayla!!!</p>',
         ]
     ],
 
@@ -425,7 +447,10 @@ return [
         'contact_success'           => 'Mesaj başarılı bir şekilde gönderildi',
         'contact_error'             => 'Mesaj gönderilirken bir hata oldu! lütfen daha sonra tekrar dene.',
         'contact_has_not_email'     => 'Kurum mesajı almak için henüz hazır değil.',
-        'banner_not_active'         => ':banner düzenlemesi yapabilmen için önce aktifleştirmen gerekiyor.'
+        'banner_not_active'         => ':banner düzenlemesi yapabilmen için önce aktifleştirmen gerekiyor.',
+        'forbidden'                 => 'Bu işlem için yetkin yok!',
+        'reset_system_datas'        => 'Sistem verileri başarılı bir şekilde sıfırlandı.',
+        'reload_demo_datas'         => 'Demo verileri başarılı bir şekilde tekrar yüklendi. Sistem ilk kurulum haline döndü.'
     ],
 
     // permissions

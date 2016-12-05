@@ -203,9 +203,9 @@
             </div>
         </div>
         {{-- /Footer --}}
-    
+
         {{-- Modals --}}
-        @include('laravel-modules-core::partials.admin.notPermissionModal')
+        @include('laravel-modules-core::partials.admin.modals')
         {{-- /Modals --}}
 
     </body>

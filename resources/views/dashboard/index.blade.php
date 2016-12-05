@@ -22,6 +22,11 @@
 @endsection
 
 @section('content')
+
+    {{-- Error Messages --}}
+    @include('laravel-modules-core::partials.error_message')
+    {{-- /Error Messages --}}
+
     {!! Html::image('vendor/laravel-modules-core/assets/frontend/img/dashboard/dashboard.png',null,[
         'class' => 'img-responsive'
     ]) !!}
