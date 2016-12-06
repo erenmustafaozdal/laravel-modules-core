@@ -53,6 +53,10 @@
             {!! lmcTrans('ezelnet-frontend-module/admin.helpers.page_management.root') !!}
         </div>
         {{-- /Note --}}
+
+        {{-- Error Messages --}}
+        @include('laravel-modules-core::partials.error_message')
+        {{-- /Error Messages --}}
         
         <div class="sortable">
 
