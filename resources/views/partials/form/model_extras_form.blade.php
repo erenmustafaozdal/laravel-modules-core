@@ -24,6 +24,7 @@
                         </button>
                     </span>
                 </div>
+                <span class="help-block">Tarih alanı zorunludur.</span>
             @else
                 {!! Form::text( "extras[{$extra->id}][value]", $model && ! is_null($extra->$relation->first()) ? $extra->$relation->first()->pivot->value : null, [
                     'class'         => 'form-control form-control-solid placeholder-no-fix',
