@@ -34,9 +34,9 @@
         {{-- /Link --}}
 
         {{-- Repeater Delete --}}
-        <a href="javascript:;" data-repeater-delete class="btn red btn-outline mt-repeater-delete disabled">
-            <i class="fa fa-close"></i>  {!! lmcTrans('admin.fields.remove_value') !!}
-        </a>
+        {{--<a href="javascript:;" data-repeater-delete class="btn red btn-outline mt-repeater-delete disabled">--}}
+            {{--<i class="fa fa-close"></i>  {!! lmcTrans('admin.fields.remove_value') !!}--}}
+        {{--</a>--}}
         {{-- /Repeater Delete --}}
 
     </div>
