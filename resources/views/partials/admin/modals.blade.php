@@ -28,7 +28,6 @@
                     {!! Form::open([
                         'method'=> 'POST',
                         'url'   => lmbRoute('admin.general_configs.resetSystemDatas'),
-                        'class' => 'form',
                         'id'    => 'reset-system-datas-form'
                     ]) !!}
                     <div class="form-group">
@@ -88,7 +87,6 @@
                     {!! Form::open([
                         'method'=> 'POST',
                         'url'   => lmbRoute('admin.general_configs.loadDemoDatas'),
-                        'class' => 'form',
                         'id'    => 'load-demo-datas-form'
                     ]) !!}
                     <div class="form-group">
