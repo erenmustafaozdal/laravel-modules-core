@@ -113,4 +113,10 @@
             }
         });
     });
+    $script.ready(['config','app_tinymce'], function()
+    {
+        Tinymce.init({
+            route: tinymceURL
+        });
+    });
 })();

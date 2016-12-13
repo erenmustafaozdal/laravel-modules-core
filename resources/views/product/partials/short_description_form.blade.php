@@ -1,7 +1,7 @@
 <div class="form-group">
     <label class="control-label">{!! lmcTrans('laravel-product-module/admin.fields.product.short_description') !!}</label>
     {!! Form::textarea( 'short_description', isset($product) ? $product->short_description : null, [
-        'class'         => 'form-control form-control-solid placeholder-no-fix',
+        'class'         => 'form-control form-control-solid placeholder-no-fix tinymce',
         'placeholder'   => lmcTrans('laravel-product-module/admin.fields.product.short_description'),
         'rows'          => 5
     ]) !!}

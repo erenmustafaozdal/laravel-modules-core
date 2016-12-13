@@ -122,7 +122,7 @@ return [
             'is_publish_help'   => 'Ürünün yayında olması, ziyaretçilerin ürünü görebilmesini sağlar. Yayında olmayan ürünler ziyaretçilere açık değildir.',
             'amount'            => 'Ürünün fiyatını yaz',
             'code'              => 'Ürünün kodunu yaz',
-            'short_description' => 'Ürüne ait kısa bir açıklama yaz. <em class="label label-info">Bu açıklama; asıl açıklamanın özeti olmalıdır</em>',
+            'short_description' => 'Ürüne ait kısa bir açıklama yaz. <em class="label label-info">Bu açıklama; asıl açıklamanın özeti olmalıdır. Ürün arkasına uyacak uzunlukta tutmalısın!</em>',
             'description'       => 'Ürünün açıklamasını yaz',
             'meta_title_help'               => 'Arama motorlarını bilgilendirmek amacıyla içerik başlığı yazın.',
             'meta_description_help'         => 'Arama motorlarını bilgilendirmek amacıyla içerik açıklaması yazın.',

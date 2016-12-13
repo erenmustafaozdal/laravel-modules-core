@@ -44,6 +44,7 @@
         var editorJs = "{!! lmcElixir('assets/app/editor.js') !!}";
         var validationJs = "{!! lmcElixir('assets/app/validation.js') !!}";
         var select2Js = "{!! lmcElixir('assets/app/select2.js') !!}";
+        var tinymceJs = "{!! lmcElixir('assets/app/tinymce.js') !!}";
         var formJs = "{!! lmcElixir('assets/pages/scripts/product/product-form.js') !!}";
         var validationMethodsJs = "{!! lmcElixir('assets/app/validationMethods.js') !!}";
         var indexJs = "{!! lmcElixir('assets/pages/scripts/product/index.js') !!}";
@@ -57,6 +58,7 @@
         var brandsURL = "{!! lmbRoute('api.product_brand.models') !!}";
         var apiStoreURL = "{!! lmbRoute('api.product.store') !!}";
         var apiGroupAction = "{!! lmbRoute('api.product.group') !!}";
+        var tinymceURL = "{!! lmbRoute('elfinder.tinymce4') !!}";
         var removePhotoURL = "{!! lmbRoute('api.product.removePhoto', ['id' => '###id###']) !!}";
         var setMainPhotoURL = "{!! lmbRoute('api.product.setMainPhoto', ['id' => '###id###']) !!}";
         {{-- /routes --}}
@@ -82,6 +84,7 @@
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-select2.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-index.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/admin-image.js') !!}"></script>
+    <script src="{!! lmcElixir('assets/pages/js/loaders/admin-tinymce.js') !!}"></script>
     <script src="{!! lmcElixir('assets/pages/js/loaders/product/index.js') !!}"></script>
 @endsection
 
