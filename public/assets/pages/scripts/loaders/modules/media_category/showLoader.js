@@ -19,7 +19,7 @@
                 },
 
                 hide: function (deleteElement) {
-                    bootbox.confirm(LMCApp.lang.admin.ops.destroy_confirm, function(result)
+                    bootbox.confirm(LMCApp.lang.admin.ops.destroy_input_confirm, function(result)
                     {
                         if (result) {
                             $(this).slideUp(deleteElement);

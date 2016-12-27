@@ -76,7 +76,7 @@
                 hide: function (deleteElement) {
                     var element = $(this).closest('.mt-repeater');
                     var elLen = element.find('.mt-repeater-item').length;
-                    bootbox.confirm(LMCApp.lang.admin.ops.destroy_confirm, function(result)
+                    bootbox.confirm(LMCApp.lang.admin.ops.destroy_input_confirm, function(result)
                     {
                         if (result) {
                             changeRepeaterButton(element,elLen - 1);
