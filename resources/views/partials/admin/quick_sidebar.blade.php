@@ -40,7 +40,7 @@
                 'admin.general_configs.loadDemoDatas',
             ]))
             <div class="tab-pane page-quick-sidebar-settings" id="general_options">
-                <div class="page-quick-sidebar-settings-list">
+                <div class="page-quick-sidebar-settings-list" data-handle-color="#76be1e">
 
                     {{-- System Datas --}}
                     @include('laravel-modules-core::partials.admin.quick_sidebar.system_datas')
