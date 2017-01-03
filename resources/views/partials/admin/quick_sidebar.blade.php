@@ -22,6 +22,13 @@
                 </a>
             </li>
             @endif
+            {{-- Youtube Education Videos --}}
+            <li>
+                <a href="javascript:;" data-target="#education_videos" data-toggle="tab">
+                    Eğitim Videoları
+                </a>
+            </li>
+            {{-- /Youtube Education Videos --}}
         </ul>
         {{-- /Tabs --}}
 
@@ -54,6 +61,14 @@
             </div>
             @endif
             {{-- /General Options --}}
+
+            {{-- Youtube Education Videos --}}
+            <div class="tab-pane page-quick-sidebar-videos" id="education_videos">
+                <div class="page-quick-sidebar-videos-list" data-handle-color="#76be1e">
+                    @include('laravel-modules-core::partials.admin.quick_sidebar.education_videos')
+                </div>
+            </div>
+            {{-- /Youtube Education Videos --}}
             
         </div>
     </div>

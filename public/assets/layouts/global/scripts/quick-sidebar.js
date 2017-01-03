@@ -17,13 +17,9 @@ var QuickSidebar = function () {
 
         var initSettingsSlimScroll = function () {
             var settingsList = wrapper.find('.page-quick-sidebar-settings-list');
-            console.log(settingsList);
             var settingsListHeight;
 
-            console.log(wrapper.height());
-            console.log(wrapper.find('.nav-justified > .nav-tabs').outerHeight());
             settingsListHeight = wrapper.height() - 80 - wrapper.find('.nav-justified > .nav-tabs').outerHeight();
-            console.log(settingsListHeight);
 
             // alerts list
             App.destroySlimScroll(settingsList);

@@ -462,5 +462,5 @@ return [
             'page_management_home'          => 'Ana Sayfa Yönetimi',
             'page_management_home_desc'     => 'Bu izne sahip olanlar ana sayfayı yönetme sayfasına gidebilir',
         ]
-    ]
+    ],
 ];
