@@ -89,7 +89,7 @@
                            class="icheck"
                            data-checkbox="icheckbox_line-grey"
                            data-label="{!! lmcTrans('laravel-product-module/admin.fields.product.name') !!}"
-                            {{ !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || !in_array('name',$model->carouselOption->options_array->item_visible) ? '' : 'checked' }}
+                            {{ !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || in_array('name',$model->carouselOption->options_array->item_visible) ? 'checked' : '' }}
                             @if(! is_null($model->carouselOption) && $model->carouselOption->item_type === 'Project')
                             disabled
                             @endif
@@ -102,7 +102,7 @@
                            class="icheck"
                            data-checkbox="icheckbox_line-grey"
                            data-label="{!! lmcTrans('laravel-product-module/admin.fields.product.code') !!}"
-                           {{ !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || !in_array('code',$model->carouselOption->options_array->item_visible) ? '' : 'checked' }}
+                           {{ !$model->carouselOption->options_array || !isset($model->carouselOption->options_array->item_visible) || in_array('code',$model->carouselOption->options_array->item_visible) ? 'checked' : '' }}
                            @if(! is_null($model->carouselOption) && $model->carouselOption->item_type === 'Project')
                            disabled
                             @endif
