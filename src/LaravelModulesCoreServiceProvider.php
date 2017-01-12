@@ -52,8 +52,6 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/laravel-modules-core.php', 'laravel-modules-core'
         );
-        // merge default configs with publish configs
-        $this->mergeDefaultConfig();
 
         $router = $this->app['router'];
         $router->middleware('theme_api',\ErenMustafaOzdal\LaravelModulesCore\Http\Middleware\ApiTheme::class);
@@ -98,24 +96,5 @@ class LaravelModulesCoreServiceProvider extends ServiceProvider
         $this->app->singleton('laravelmodulescore.breadcrumb', function ($app) {
             return new BreadcrumbService();
         });
-    }
-
-    /**
-     * merge default configs with publish configs
-     */
-    protected function mergeDefaultConfig()
-    {
-        $config = $this->app['config']->get('laravel-modules-core', []);
-        $default = require __DIR__.'/../config/default.php';
-
-        $config['packages'] = $default['packages'];
-        $config['elfinder']['dir'] = $default['elfinder']['dir'];
-        $config['elfinder']['disks'] = $default['elfinder']['disks'];
-        $config['elfinder']['route']['prefix'] = $default['elfinder']['route']['prefix'];
-        $config['elfinder']['access'] = $default['elfinder']['access'];
-        $config['elfinder']['roots'] = $default['elfinder']['roots'];
-        $config['elfinder']['options'] = $default['elfinder']['options'];
-
-        $this->app['config']->set('laravel-modules-core', $config);
     }
 }
