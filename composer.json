@@ -16,13 +16,12 @@
             "src/Helpers/helpers.php"
         ]
     },
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.5.9",
         "illuminate/support": "~5",
         "caffeinated/menus": "~2.0",
         "laravelcollective/html": "^5.0",
-        "erenmustafaozdal/laravel-modules-base": "dev-master",
+        "erenmustafaozdal/laravel-modules-base": "dev-master@dev",
         "barryvdh/laravel-elfinder": "0.3.*"
     },
     "require-dev": {
