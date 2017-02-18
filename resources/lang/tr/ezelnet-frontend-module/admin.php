@@ -364,7 +364,8 @@ return [
             'send'                  => 'Gönder',
             'required_fields'       => 'Zorunlu Alanlar',
             'display_paginate'      => ':total nesne içinden, :start ile :finish arasındakiler gösteriliyor.',
-            'other_dealers'         => 'Diğer Bayiler'
+            'other_dealers'         => 'Diğer Bayiler',
+            'dealers'               => 'Bayiler',
         ],
         'email' => [
             'info'                  => 'Bu e-posta <b>Ezelnet</b> tarafından hazırlanmış bir yazılımdan gönderilmiştir.',
