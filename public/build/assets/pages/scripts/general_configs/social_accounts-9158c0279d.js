@@ -1,1 +1,0 @@
-var theEMOModel,EMOModel={options:{formSrc:"form.form-horizontal"},form:null,init:function(){theEMOModel=this,this.form=$(this.options.formSrc),Validation.init({src:this.options.formSrc,isAjax:!1,validate:{rules:modelRules,messages:messagesOfRules}})}};

@@ -1,1 +1,32 @@
-var ModelForm={init:function(e){var t=$.extend(!0,this.getDefaultOptions(),e);Validation.init(t)},getDefaultOptions:function(){return{src:".form",isAjax:!1,submitAjax:function(e){},validate:{rules:{category_id:{required:!0},title:{required:!0}},messages:messagesOfRules}}}};
+var ModelForm = {
+
+    init: function(options)
+    {
+        var ops = $.extend(true, this.getDefaultOptions(), options);
+        Validation.init(ops);
+    },
+
+    getDefaultOptions: function()
+    {
+        return {
+            src: '.form',
+            isAjax: false,
+            submitAjax: function(validation)
+            {
+                //
+            },
+            validate: {
+                rules: {
+                    category_id: {
+                        required: true
+                    },
+                    title: {
+                        required: true
+                    }
+                },
+                messages: messagesOfRules
+            }
+        }
+    }
+
+};

@@ -1,1 +1,0 @@
-function processSelectedFile(e,o){$("#"+o).val(e).trigger("change")}$(document).on("click",".popup_selector",function(e){e.preventDefault();var o=$(this).attr("data-inputid"),t="/elfinder/popup/",i=t+o;$.colorbox({href:i,fastIframe:!0,iframe:!0,width:"90%",height:"80%"}),$(window).resize(function(){$(".colorbox").colorbox.resize({width:"90%",height:"80%"})})});
