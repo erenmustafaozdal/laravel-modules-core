@@ -1,0 +1,39 @@
+{
+  "name": "bootstrap-gtreetable",
+  "main": [
+    "dist"
+  ],
+  "ignore": [
+    ".*",
+    "Gruntfile.js",
+    "bower.json",
+    "package.json",
+    "src"
+  ],
+  "authors": [
+    "Maciej Kłak <klak.maciej@gmail.com> (http://gilek.net)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "tree",
+    "boostrap",
+    "twitter",
+    "extension",
+    "nested"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.1",
+    "bootstrap": ">=3.0 <4.0"
+  },
+  "homepage": "https://github.com/gilek/bootstrap-gtreetable",
+  "version": "2.2.1-alpha",
+  "_release": "2.2.1-alpha",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.2.1-alpha",
+    "commit": "123f23272b6b4b62381ef8c85debee4a452247fa"
+  },
+  "_source": "git://github.com/gilek/bootstrap-gtreetable.git",
+  "_target": "~2.2.*",
+  "_originalSource": "bootstrap-gtreetable"
+}

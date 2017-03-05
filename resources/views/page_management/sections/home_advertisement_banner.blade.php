@@ -18,7 +18,7 @@
 <div class="form-body">
 
     {{-- Current Photo --}}
-    @if(! is_null($model->imageOption))
+    @if(! is_null($model->imageOption()->typeImage('big')->first()))
     <div class="form-group">
         <label class="col-md-3 control-label">
             {!! lmcTrans('admin.fields.current_photo', [], 1) !!}
@@ -67,7 +67,7 @@
 
 
     {{-- Current Photo --}}
-    @if(! is_null($model->imageOption))
+    @if(! is_null($model->imageOption()->typeImage('small')->first()))
         <div class="form-group">
             <label class="col-md-3 control-label">
                 {!! lmcTrans('admin.fields.current_photo', [], 1) !!}
